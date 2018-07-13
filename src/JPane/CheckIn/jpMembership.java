@@ -1,7 +1,10 @@
 package JPane.CheckIn;
 
+import javaClass.*;
+
 public class jpMembership extends javax.swing.JPanel {
 
+    
     public jpMembership() {
         initComponents();
     }

@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javaClass.*;
 import javafx.application.Platform;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -25,7 +26,7 @@ public class logIn extends javax.swing.JFrame {
     public logIn() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+                
         jpA = new jpAccess(rootPane);
         jpP = new jpPassword(rootPane);
         

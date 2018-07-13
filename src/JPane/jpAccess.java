@@ -5,6 +5,7 @@ import com.placeholder.PlaceHolder;
 import jFrame.logIn;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javaClass.*;
 import javaClass.connection;
 import javaClass.standardization;
 import javax.swing.JPanel;
@@ -12,6 +13,7 @@ import javax.swing.JPanel;
 public class jpAccess extends javax.swing.JPanel {
 
     private JPanel rootPane;
+
     
     public static jpCreateUser jpCU;
     
@@ -19,7 +21,6 @@ public class jpAccess extends javax.swing.JPanel {
 
     public void setRootPane(JPanel rootPane) {
         this.rootPane = rootPane;
-        
     }
  
     public jpAccess(JPanel rootPane) {

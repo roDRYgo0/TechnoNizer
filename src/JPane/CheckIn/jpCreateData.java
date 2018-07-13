@@ -16,6 +16,7 @@ public class jpCreateData extends javax.swing.JPanel {
         initComponents();
         this.rootPane = rootPane;
         
+        
         PlaceHolder hName = new PlaceHolder(txtName, "Nombres");
         PlaceHolder hLastName = new PlaceHolder(txtLastName, "Apellidos");
         PlaceHolder hDate = new PlaceHolder(dpDate, "dd-mm-yyyy");

@@ -32,4 +32,12 @@ public class standardization {
         home.setVisible(true);
     }
     
+    public static boolean campoVacio(String text){
+        text=text.replaceAll(" ", "");
+        if(text.isEmpty() || text.length() == 0)
+            return true;
+        else
+            return false;
+    }
+    
 }
