@@ -182,7 +182,7 @@ public class jpRecoverPasswordMailCode extends javax.swing.JPanel {
     //</editor-fold>
     
     private void jbNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNextActionPerformed
-        if(connection.stateConnection() || logIn.internet)
+        if( logIn.internet)
         {
             
         }

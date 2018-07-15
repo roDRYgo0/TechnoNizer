@@ -15,20 +15,22 @@ public class jpCreateUser extends javax.swing.JPanel {
 
     private JPanel rootPane;
     
-    boolean sw;
+    PlaceHolder hMail;
+    PlaceHolder hPassword;
+    PlaceHolder hPasswordConfirm ;
+    PlaceHolder hNickName;
+    
+    boolean sw, continueM, continueN;
     char echoChar;
     
     public jpCreateUser(JPanel rootPane) {
         initComponents();
         this.rootPane = rootPane;
-        
-        PlaceHolder hMail = new PlaceHolder(txtMail, "Correo electrónico");
-        PlaceHolder hPassword = new PlaceHolder(txtPassword, "Contraseña");
-        PlaceHolder hPasswordConfirm = new PlaceHolder(txtPasswordConfirm, "Contraseña");
-        PlaceHolder hNickName = new PlaceHolder(txtNickName, "Usuario");
+        continueM = false;
+        continueN = false;
+
         loadEye();
-        
-        lblExists.setVisible(false);
+
     }
 
     //<editor-fold defaultstate="collapsed" desc="compiled code">
@@ -52,10 +54,11 @@ public class jpCreateUser extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
         txtNickName = new javax.swing.JTextField();
-        spMail1 = new javax.swing.JSeparator();
+        spNickName = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
-        lblExists = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        lblExisteNickName = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblExisteMail = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -170,20 +173,22 @@ public class jpCreateUser extends javax.swing.JPanel {
             }
         });
 
-        spMail1.setForeground(new java.awt.Color(204, 204, 204));
+        spNickName.setForeground(new java.awt.Color(204, 204, 204));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Crea tu usuario");
 
-        lblExists.setText("Este usuario ya existe.");
+        lblExisteNickName.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        lblExisteNickName.setForeground(new java.awt.Color(255, 255, 255));
+        lblExisteNickName.setText("Este usuario ya existe.");
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel2.setText("Recuerda que tu usuario debe ser unico.");
+
+        lblExisteMail.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        lblExisteMail.setForeground(new java.awt.Color(255, 255, 255));
+        lblExisteMail.setText("Este correo ya esta registrado.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -195,7 +200,7 @@ public class jpCreateUser extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,10 +208,7 @@ public class jpCreateUser extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(spMail1)
-                        .addComponent(txtNickName, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(spPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -214,43 +216,49 @@ public class jpCreateUser extends javax.swing.JPanel {
                         .addComponent(txtPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(lblEyeConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(spPassword)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(lblEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblExisteNickName, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(spNickName)
+                            .addComponent(txtNickName, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(spMail)
                         .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblExists, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblExisteMail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(103, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addGap(58, 58, 58)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addGap(1, 1, 1)
                 .addComponent(txtNickName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(spMail1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(lblExists)
-                .addGap(33, 33, 33)
+                .addComponent(spNickName, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblExisteNickName)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel4)
                 .addGap(1, 1, 1)
                 .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(spMail, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(0, 0, 0)
+                .addComponent(lblExisteMail)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel5)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,13 +274,11 @@ public class jpCreateUser extends javax.swing.JPanel {
                     .addComponent(lblEyeConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(spPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(72, 72, 72)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35))
+                .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
     //</editor-fold>
@@ -286,10 +292,21 @@ public class jpCreateUser extends javax.swing.JPanel {
 
     private void txtMailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMailFocusGained
         spMail.setBackground(Color.red);
+        lblExisteMail.setForeground(Color.white);
     }//GEN-LAST:event_txtMailFocusGained
 
     private void txtMailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMailFocusLost
         spMail.setBackground(Color.gray);
+        if(!standardization.campoVacio(txtMail.getText()))
+        {
+            if(methodsSQL.exists("SELECT * FROM users WHERE mail = ? ", txtMail.getText()))
+            {
+                lblExisteMail.setForeground(Color.red);
+                continueM = false;
+            }
+            else
+                continueM = true;
+        }
     }//GEN-LAST:event_txtMailFocusLost
 
     private void txtPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusGained
@@ -337,22 +354,28 @@ public class jpCreateUser extends javax.swing.JPanel {
     }//GEN-LAST:event_lblEyeConfirmMouseClicked
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        if(connection.stateConnection() || logIn.internet)
+        if(logIn.internet)
         {
-            if(Arrays.equals(txtPasswordConfirm.getPassword(), txtPassword.getPassword())) {
+            if(Arrays.equals(txtPasswordConfirm.getPassword(), txtPassword.getPassword()) && continueM && continueN &&
+                    !standardization.campoVacio(txtMail.getText()) && !standardization.campoVacio(txtNickName.getText())) {
                 jpCreateData jpCD = new jpCreateData(rootPane);
 
+                classUsuario.setNickname(txtNickName.getText());
+                classUsuario.setMail(txtMail.getText());
+                classUsuario.setPassword(Arrays.toString(txtPassword.getPassword()));
+                
+                System.out.println(classUsuario.getPassword());
+                
                 jpCD.setSize(420,603);
                 jpCD.setLocation(0,0);
                 rootPane.removeAll();
                 rootPane.add(jpCD,BorderLayout.CENTER);
                 rootPane.revalidate();
                 rootPane.repaint();
-                
-                
-                
             } 
-            else 
+            else if(!continueM || !continueN)
+                standardization.showMessage("warning", "Llene todos los campos.");
+            else
                 standardization.showMessage("warning", "Las contraseñas no coinciden.");
         }
         else
@@ -360,20 +383,29 @@ public class jpCreateUser extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtNickNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNickNameFocusGained
-        // TODO add your handling code here:
+        spNickName.setBackground(Color.red);
+        lblExisteNickName.setForeground(Color.white);
     }//GEN-LAST:event_txtNickNameFocusGained
 
     private void txtNickNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNickNameFocusLost
-        // TODO add your handling code here:
+        spNickName.setBackground(Color.gray);
+        if(!standardization.campoVacio(txtNickName.getText()))
+        {
+            if(methodsSQL.exists("SELECT * FROM users WHERE nickname = ? ", txtNickName.getText()))
+            {
+                lblExisteNickName.setForeground(Color.red);
+                continueN = false;
+            }
+            else
+                continueN = true;
+        }
     }//GEN-LAST:event_txtNickNameFocusLost
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.out.println(camposVacios());
-    }//GEN-LAST:event_jButton2ActionPerformed
     
     public boolean camposVacios(){
-        return (standardization.campoVacio(txtNickName.getText()) || standardization.campoVacio(txtMail.getText()) ||
-                standardization.campoVacio(txtPassword.getText()) || standardization.campoVacio(txtPasswordConfirm.getText()));
+        if(standardization.campoVacio(txtNickName.getText()) || standardization.campoVacio(txtMail.getText()) )
+            return true;
+        else
+            return false;
 
     }
     
@@ -411,17 +443,18 @@ public class jpCreateUser extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel lblExists;
+    private javax.swing.JLabel lblExisteMail;
+    private javax.swing.JLabel lblExisteNickName;
     private javax.swing.JLabel lblEye;
     private javax.swing.JLabel lblEyeConfirm;
     private javax.swing.JSeparator spMail;
-    private javax.swing.JSeparator spMail1;
+    private javax.swing.JSeparator spNickName;
     private javax.swing.JSeparator spPassword;
     private javax.swing.JSeparator spPasswordConfirm;
     private javax.swing.JTextField txtMail;

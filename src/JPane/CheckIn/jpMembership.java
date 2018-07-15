@@ -1,12 +1,17 @@
 package JPane.CheckIn;
 
+import jFrame.*;
 import javaClass.*;
+import javax.swing.JPanel;
 
 public class jpMembership extends javax.swing.JPanel {
 
+    private JPanel rootPane;
     
-    public jpMembership() {
+    public jpMembership(JPanel rootPane) {
         initComponents();
+        
+        this.rootPane = rootPane;
     }
 
 
@@ -27,6 +32,9 @@ public class jpMembership extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        cmbMembership = new javax.swing.JComboBox<>();
+        btnNext = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -161,6 +169,32 @@ public class jpMembership extends javax.swing.JPanel {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        cmbMembership.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "gratis", "vip", "premium" }));
+
+        btnNext.setBackground(new java.awt.Color(0, 153, 255));
+        btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnNext.setForeground(new java.awt.Color(255, 255, 255));
+        btnNext.setText("Siguiente");
+        btnNext.setBorderPainted(false);
+        btnNext.setFocusable(false);
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+
+        btnBack.setBackground(new java.awt.Color(255, 255, 255));
+        btnBack.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        btnBack.setText("Atras");
+        btnBack.setBorderPainted(false);
+        btnBack.setFocusable(false);
+        btnBack.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,11 +206,19 @@ public class jpMembership extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cmbMembership, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)))))
                 .addGap(35, 35, 35))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,12 +231,51 @@ public class jpMembership extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
+                .addGap(86, 86, 86)
+                .addComponent(cmbMembership, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        if(logIn.internet)
+        {
+            classUsuario.setIdMemberships(methodsSQL.getExecuteInt("SELECT id FROM memberships WHERE name = ? ", cmbMembership.getSelectedItem().toString()));
+
+            
+        }
+        else if(camposVacios())
+            standardization.showMessage("warning", "Se encontraron campos vacios.");
+        else
+            standardization.showMessage("error", "Error al establecer una conexion de red.");
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+//        jpCU.setSize(420,603);
+//        jpCU.setLocation(0,0);
+//        rootPane.removeAll();
+//        rootPane.add(jpCU,BorderLayout.CENTER);
+//        rootPane.revalidate();
+//        rootPane.repaint();
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    
+    public boolean camposVacios(){
+        if(cmbMembership.getSelectedIndex()==-1)
+            return true;
+        else
+            return false;
+    }
+           
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JComboBox<String> cmbMembership;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;

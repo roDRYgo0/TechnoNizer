@@ -181,7 +181,7 @@ public class jpAccess extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMailFocusLost
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        if(connection.stateConnection() || logIn.internet)
+        if(logIn.internet)
         {
             jpP = new jpPassword(rootPane);
         
@@ -197,7 +197,7 @@ public class jpAccess extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
-        if(connection.stateConnection() || logIn.internet)
+        if(logIn.internet)
         {
             jpCU = new jpCreateUser(rootPane);
         

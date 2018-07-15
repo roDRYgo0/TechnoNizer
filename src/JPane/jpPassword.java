@@ -221,7 +221,7 @@ public class jpPassword extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPasswordFocusLost
 
     private void jbNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNextActionPerformed
-        if(connection.stateConnection() || logIn.internet)
+        if(logIn.internet)
         {
             invokeHome();
         }
@@ -230,7 +230,7 @@ public class jpPassword extends javax.swing.JPanel {
     }//GEN-LAST:event_jbNextActionPerformed
 
     private void btnRecoverPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecoverPasswordActionPerformed
-        if(connection.stateConnection() || logIn.internet)
+        if(logIn.internet)
         {
             jpRecoverPasswordMail jpR = new jpRecoverPasswordMail(rootPane);
         

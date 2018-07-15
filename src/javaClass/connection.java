@@ -1,8 +1,5 @@
 package javaClass;
 
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,21 +7,6 @@ import java.sql.SQLException;
 public class connection {
     
     static Connection contacto = null;
-    
-    public static boolean stateConnection(){ 
-        boolean state; 
-            try { 
-
-                URL ruta=new URL("http://www.google.es"); 
-                URLConnection rutaC=ruta.openConnection(); 
-                rutaC.connect(); 
-                state = true; 
-               }catch(IOException e){ 
-
-                state = false; 
-            } 
-        return state; 
-    } 
     
     public static Connection getConnection(){
 

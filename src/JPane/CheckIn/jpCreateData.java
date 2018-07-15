@@ -1,12 +1,18 @@
 package JPane.CheckIn;
 
 import static JPane.jpAccess.jpCU;
-import com.placeholder.PlaceHolder;
 import jFrame.*;
 import java.awt.BorderLayout;
 import javaClass.*;
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Image;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class jpCreateData extends javax.swing.JPanel {
 
@@ -16,11 +22,8 @@ public class jpCreateData extends javax.swing.JPanel {
         initComponents();
         this.rootPane = rootPane;
         
-        
-        PlaceHolder hName = new PlaceHolder(txtName, "Nombres");
-        PlaceHolder hLastName = new PlaceHolder(txtLastName, "Apellidos");
-        PlaceHolder hDate = new PlaceHolder(dpDate, "dd-mm-yyyy");
-        
+        loadData();
+        cargarComboBox();
     }
 
     //<editor-fold defaultstate="collapsed" desc="compiled code">
@@ -42,7 +45,8 @@ public class jpCreateData extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         spDate = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbGender = new javax.swing.JComboBox<>();
+        lblImage = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -128,27 +132,31 @@ public class jpCreateData extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("Género");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        lblImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblImage.setText("Not Found");
+        lblImage.setMaximumSize(new java.awt.Dimension(150, 150));
+        lblImage.setMinimumSize(new java.awt.Dimension(150, 150));
+        lblImage.setPreferredSize(new java.awt.Dimension(150, 150));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(133, 133, 133))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -166,7 +174,7 @@ public class jpCreateData extends javax.swing.JPanel {
                                     .addComponent(spDate, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(dpDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
                                 .addGap(34, 34, 34)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(55, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -174,7 +182,9 @@ public class jpCreateData extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1)
-                .addGap(102, 102, 102)
+                .addGap(27, 27, 27)
+                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,14 +203,14 @@ public class jpCreateData extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dpDate, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(spDate, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(99, 99, 99)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35))
+                .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
     //</editor-fold>
@@ -215,9 +225,14 @@ public class jpCreateData extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        if(connection.stateConnection() || logIn.internet)
+        if(logIn.internet && !camposVacios())
         {
-            jpMembership jpM = new jpMembership();
+            jpMembership jpM = new jpMembership(rootPane);
+            
+            classUsuario.setFirstName(txtName.getText());
+            classUsuario.setLastName(txtLastName.getText());
+            classUsuario.setBirthdate(dpDate.getText());
+            classUsuario.setId_gender(methodsSQL.getExecuteInt("SELECT id FROM genders WHERE gender = ? ", cmbGender.getSelectedItem().toString()));
             
             jpM.setSize(420,603);
             jpM.setLocation(0,0);
@@ -226,8 +241,10 @@ public class jpCreateData extends javax.swing.JPanel {
             rootPane.revalidate();
             rootPane.repaint();
         }
+        else if(camposVacios())
+            standardization.showMessage("warning", "Se encontraron campos vacios.");
         else
-        standardization.showMessage("error", "Error al establecer una conexion de red.");
+            standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusGained
@@ -254,19 +271,49 @@ public class jpCreateData extends javax.swing.JPanel {
         spDate.setBackground(Color.gray);
     }//GEN-LAST:event_dpDateFocusLost
     
+    public void loadData()
+    {
+        ImageIcon original = new ImageIcon(getClass().getResource("/imagenes/user.png"));
+        Icon icono = new ImageIcon(original.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
+        lblImage.setText("");
+        lblImage.setIcon(icono);
+    }
+    
+    public void cargarComboBox(){
+        try {
+            ResultSet rs = methodsSQL.getExecute("SELECT gender FROM genders");
+            while(rs.next())
+                {
+                    cmbGender.addItem(rs.getString(1));
+                }
+            } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        cmbGender.setSelectedIndex(-1);
+    }
+    
+    public boolean camposVacios(){
+        if(standardization.campoVacio(txtName.getText()) || standardization.campoVacio(txtLastName.getText()) ||
+                standardization.campoVacio(dpDate.getText())  || 
+                cmbGender.getSelectedIndex() == -1 )
+            return true;
+        else
+            return false;
+    }
 
     //<editor-fold defaultstate="collapsed" desc="compiled code">
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnNext;
+    private javax.swing.JComboBox<String> cmbGender;
     private javax.swing.JFormattedTextField dpDate;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel lblImage;
     private javax.swing.JSeparator spDate;
     private javax.swing.JSeparator spLastName;
     private javax.swing.JSeparator spName;
