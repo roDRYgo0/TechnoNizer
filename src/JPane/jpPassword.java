@@ -30,7 +30,8 @@ public class jpPassword extends javax.swing.JPanel {
         
         PlaceHolder hPassword = new PlaceHolder(txtPassword, "Contraseña");
         loadEye();
-        loadData();
+        lblImage.setIcon((Icon) new standardization().changeImage("/imagenes/user.png", 150, 150));
+        lblImage.setText("");
         
     }
     
@@ -245,14 +246,6 @@ public class jpPassword extends javax.swing.JPanel {
             standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_btnRecoverPasswordActionPerformed
     
-        
-    public void loadData()
-    {
-        ImageIcon original = new ImageIcon(getClass().getResource("/imagenes/user.png"));
-        Icon icono = new ImageIcon(original.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
-        lblImage.setText("");
-        lblImage.setIcon(icono);
-    }
     
     //<editor-fold defaultstate="collapsed" desc="compiled code eye">
         

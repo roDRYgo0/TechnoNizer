@@ -2,18 +2,7 @@ package jFrame;
 
 import JPane.*;
 import java.awt.BorderLayout;
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.awt.image.ConvolveOp;
-import java.awt.image.Kernel;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javaClass.*;
 import javafx.application.Platform;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
 public class logIn extends javax.swing.JFrame {
 
@@ -40,8 +29,6 @@ public class logIn extends javax.swing.JFrame {
         rootPane.add(jpA,BorderLayout.CENTER);
         rootPane.revalidate();
         rootPane.repaint();
-        
-//        load();
     }
     
     //<editor-fold defaultstate="collapsed" desc="compiled code">
@@ -302,37 +289,7 @@ public class logIn extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void load(){
-        String path = "src/imagenes/escritorio.jpg";
-        File file = new File(path);
-        BufferedImage image = null;
-        try {
-            image = ImageIO.read(file);
-        } catch (IOException ex) {
-            Logger.getLogger(logIn.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        String path2 = "src/imagenes/escritorio.jpg";
-        File file2 = new File(path2);
-        BufferedImage image2;
-        try {
-            image2 = ImageIO.read(file2);
-        } catch (IOException ex) {
-            Logger.getLogger(logIn.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
-        float[] matrix = new float[400];
-        for (int i = 0; i < 400; i++)
-            matrix[i] = 1.0f/400.0f;
-
-        BufferedImageOp op = new ConvolveOp( new Kernel(20, 20, matrix), ConvolveOp.EDGE_NO_OP, null );
-        image2 = op.filter(image, null);
-
-        ImageIcon imageIcon = new ImageIcon(image2);
-        lblDesktop.setIcon(imageIcon);
-    }
-    
     //<editor-fold defaultstate="collapsed" desc="compiled code">
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -6,7 +6,6 @@ import jFrame.logIn;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javaClass.*;
-import javaClass.connection;
 import javaClass.standardization;
 import javax.swing.JPanel;
 
@@ -26,7 +25,6 @@ public class jpAccess extends javax.swing.JPanel {
     public jpAccess(JPanel rootPane) {
         initComponents();
         this.rootPane = rootPane;
-        PlaceHolder hCode = new PlaceHolder(txtMail, "Correo o teléfono");
         btnNext.requestFocus();
     }
 
@@ -145,9 +143,9 @@ public class jpAccess extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(28, 28, 28)
                 .addComponent(jLabel4)
@@ -155,13 +153,13 @@ public class jpAccess extends javax.swing.JPanel {
                 .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(spMail, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
+                .addGap(137, 137, 137)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(btnCreateAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,7 +179,7 @@ public class jpAccess extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMailFocusLost
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        if(logIn.internet)
+        if(logIn.internet && !standardization.campoVacio(txtMail.getText()))
         {
             jpP = new jpPassword(rootPane);
         
@@ -192,6 +190,8 @@ public class jpAccess extends javax.swing.JPanel {
             rootPane.revalidate();
             rootPane.repaint();
         }
+        else if(standardization.campoVacio(txtMail.getText()))
+            standardization.showMessage("warning", "Ingrese su correo por favor.");
         else
             standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_btnNextActionPerformed
