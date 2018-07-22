@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 public class jpPassword extends javax.swing.JPanel {
 
     private JPanel rootPane;
+    controller contr = new controller();
     
     boolean sw;
     
@@ -30,7 +31,7 @@ public class jpPassword extends javax.swing.JPanel {
         
         PlaceHolder hPassword = new PlaceHolder(txtPassword, "Contraseña");
         loadEye();
-        lblImage.setIcon((Icon) new standardization().changeImage("/imagenes/user.png", 150, 150));
+        lblImage.setIcon(contr.changeImage("/imagenes/user.png", 150, 150));
         lblImage.setText("");
         
     }

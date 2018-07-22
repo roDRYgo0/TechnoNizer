@@ -58,7 +58,7 @@
                               <Component id="txtMail" alignment="0" pref="286" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="98" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>

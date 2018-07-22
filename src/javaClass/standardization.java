@@ -10,6 +10,8 @@ import static technonizer.TechnoNizer.*;
 
 public class standardization {
     
+    controller control = new controller();
+    
     public static void showMessage(String Image, String Message){
         if(!Image.equals(""))
             mess.changeImage(Image);
@@ -41,12 +43,6 @@ public class standardization {
             return true;
         else
             return false;
-    }
-    
-    public Icon changeImage(String path, int width, int height){
-        ImageIcon original = new ImageIcon(getClass().getResource(path));
-        Icon icono = new ImageIcon(original.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
-        return icono;
     }
     
 }

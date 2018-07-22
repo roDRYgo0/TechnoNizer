@@ -137,7 +137,7 @@ public class jpAccess extends javax.swing.JPanel {
                                 .addComponent(jLabel2)
                                 .addComponent(jLabel1)
                                 .addComponent(txtMail, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(98, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
