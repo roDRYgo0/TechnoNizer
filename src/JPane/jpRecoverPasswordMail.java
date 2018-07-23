@@ -1,24 +1,14 @@
 package JPane;
 
 import jFrame.*;
-import static jFrame.logIn.*;
 import java.awt.BorderLayout;
 import javaClass.*;
-import javax.swing.JPanel;
+import technonizer.TechnoNizer;
 
 public class jpRecoverPasswordMail extends javax.swing.JPanel {
 
-    private JPanel rootPane;
-    public static jpRecoverPasswordMailCode jpRC;
-
-    public void setRootPane(JPanel rootPane) {
-        this.rootPane = rootPane;
-    }
-    
-    public jpRecoverPasswordMail(JPanel rootPane) {
-        initComponents();
-        this.rootPane = rootPane;
-        
+    public jpRecoverPasswordMail() {
+        initComponents();        
         
     }
 
@@ -169,37 +159,37 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
         
         if(logIn.internet)
         {
-           jpRC = new jpRecoverPasswordMailCode(rootPane);
+           controller.jpRC = new jpRecoverPasswordMailCode();
         
-            jpRC.setSize(420,603);
-            jpRC.setLocation(0,0);
-            rootPane.removeAll();
-            rootPane.add(jpRC,BorderLayout.CENTER);
-            rootPane.revalidate();
-            rootPane.repaint(); 
+            controller.jpRC.setSize(420,603);
+            controller.jpRC.setLocation(0,0);
+            controller.rootPane.removeAll();
+            controller.rootPane.add(controller.jpRC,BorderLayout.CENTER);
+            controller.rootPane.revalidate();
+            controller.rootPane.repaint(); 
         }
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.");
+            standardization.showMessage("error", "Error al establecer una conexion de red.",TechnoNizer.log);
         
     }//GEN-LAST:event_jbNextActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        rootPane.removeAll();
-        rootPane.add(jpAccess.jpP,BorderLayout.CENTER);
-        rootPane.revalidate();
-        rootPane.repaint();
+        controller.rootPane.removeAll();
+        controller.rootPane.add(controller.jpP,BorderLayout.CENTER);
+        controller.rootPane.revalidate();
+        controller.rootPane.repaint();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void lblTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTNMouseClicked
-        jpA = new jpAccess(rootPane);
+        controller.jpA = new jpAccess();
         
-        jpA.setSize(420,603);
-        jpA.setLocation(0,0);
+        controller.jpA.setSize(420,603);
+        controller.jpA.setLocation(0,0);
         
-        rootPane.removeAll();
-        rootPane.add(jpA,BorderLayout.CENTER);
-        rootPane.revalidate();
-        rootPane.repaint();
+        controller.rootPane.removeAll();
+        controller.rootPane.add(controller.jpA,BorderLayout.CENTER);
+        controller.rootPane.revalidate();
+        controller.rootPane.repaint();
     }//GEN-LAST:event_lblTNMouseClicked
 
     //<editor-fold defaultstate="collapsed" desc="compiled code">

@@ -2,12 +2,11 @@ package jFrame;
 
 import JPane.*;
 import java.awt.BorderLayout;
+import javaClass.controller;
 import javafx.application.Platform;
 
 public class logIn extends javax.swing.JFrame {
 
-    public static jpAccess jpA;
-    public static jpPassword jpP;
     public static boolean internet = true;
     
     int x, y;
@@ -15,18 +14,19 @@ public class logIn extends javax.swing.JFrame {
     public logIn() {
         initComponents();
         this.setLocationRelativeTo(null);
-                
-        jpA = new jpAccess(rootPane);
-        jpP = new jpPassword(rootPane);
+        controller.asignar(rootPane);
         
-        jpA.setSize(420,603);
-        jpA.setLocation(0,0);
+        controller.jpA = new jpAccess();
+        controller.jpP = new jpPassword();
         
-        jpP.setSize(420,603);
-        jpP.setLocation(0,0);
+        controller.jpA.setSize(420,603);
+        controller.jpA.setLocation(0,0);
+        
+        controller.jpP.setSize(420,603);
+        controller.jpP.setLocation(0,0);
         
         rootPane.removeAll();
-        rootPane.add(jpA,BorderLayout.CENTER);
+        rootPane.add(controller.jpA,BorderLayout.CENTER);
         rootPane.revalidate();
         rootPane.repaint();
     }
@@ -168,9 +168,9 @@ public class logIn extends javax.swing.JFrame {
         topBarLayout.setVerticalGroup(
             topBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topBarLayout.createSequentialGroup()
-                .addGroup(topBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tbtnInternet, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLenguage, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(topBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(tbtnInternet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblLenguage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(topBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

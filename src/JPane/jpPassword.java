@@ -9,29 +9,21 @@ import javaClass.*;
 import static javaClass.standardization.*;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
+import technonizer.TechnoNizer;
 
 public class jpPassword extends javax.swing.JPanel {
-
-    private JPanel rootPane;
-    controller contr = new controller();
     
     boolean sw;
     
     char echoChar;
     
-    public void setRootPane(JPanel rootPane) {
-        this.rootPane = rootPane;
-    }
-
     
-    public jpPassword(JPanel rootPane) {
+    public jpPassword() {
         initComponents();
-        this.rootPane = rootPane;
         
         PlaceHolder hPassword = new PlaceHolder(txtPassword, "Contraseña");
         loadEye();
-        lblImage.setIcon(contr.changeImage("/imagenes/user.png", 150, 150));
+        lblImage.setIcon(new controller().changeImage("/imagenes/user.png", 150, 150));
         lblImage.setText("");
         
     }
@@ -196,10 +188,10 @@ public class jpPassword extends javax.swing.JPanel {
     
        
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        rootPane.removeAll();
-        rootPane.add(logIn.jpA,BorderLayout.CENTER);
-        rootPane.revalidate();
-        rootPane.repaint();
+        controller.rootPane.removeAll();
+        controller.rootPane.add(controller.jpA,BorderLayout.CENTER);
+        controller.rootPane.revalidate();
+        controller.rootPane.repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void lblEyeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEyeMouseClicked
@@ -228,23 +220,23 @@ public class jpPassword extends javax.swing.JPanel {
             invokeHome();
         }
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.");
+            standardization.showMessage("error", "Error al establecer una conexion de red.",TechnoNizer.log);
     }//GEN-LAST:event_jbNextActionPerformed
 
     private void btnRecoverPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecoverPasswordActionPerformed
         if(logIn.internet)
         {
-            jpRecoverPasswordMail jpR = new jpRecoverPasswordMail(rootPane);
+            controller.jpRP = new jpRecoverPasswordMail();
         
-            jpR.setSize(420,603);
-            jpR.setLocation(0,0);
-            rootPane.removeAll();
-            rootPane.add(jpR,BorderLayout.CENTER);
-            rootPane.revalidate();
-            rootPane.repaint();
+            controller.jpRP.setSize(420,603);
+            controller.jpRP.setLocation(0,0);
+            controller.rootPane.removeAll();
+            controller.rootPane.add(controller.jpRP,BorderLayout.CENTER);
+            controller.rootPane.revalidate();
+            controller.rootPane.repaint();
         }
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.");
+            standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
     }//GEN-LAST:event_btnRecoverPasswordActionPerformed
     
     

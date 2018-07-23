@@ -1,9 +1,6 @@
 package javaClass;
 
 import jFrame.*;
-import java.awt.Image;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import technonizer.*;
 import static technonizer.TechnoNizer.*;
@@ -12,7 +9,21 @@ public class standardization {
     
     controller control = new controller();
     
-    public static void showMessage(String Image, String Message){
+    public static void showLoad(JFrame over){
+        sLoad.setVisible(true);
+        sLoad.setLocationRelativeTo(over);
+        over.setEnabled(false);
+        over.setOpacity(0.85f);
+    }
+    
+    public static void hideLoad(JFrame over){
+        over.setVisible(true);
+        over.setEnabled(true);
+        over.setOpacity(1);
+        sLoad.setVisible(false);
+    }
+    
+    public static void showMessage(String Image, String Message, JFrame over){
         if(!Image.equals(""))
             mess.changeImage(Image);
         
@@ -23,10 +34,10 @@ public class standardization {
         log.setOpacity(0.85f);
     }
     
-    public static void hideMessage(JFrame frame){
+    public static void hideMessage(JFrame over){
         log.setEnabled(true);
         log.setOpacity(1);
-        frame.setVisible(false);
+        over.setVisible(false);
     }
     
     public static void invokeHome()

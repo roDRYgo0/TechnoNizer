@@ -1,2 +1,0 @@
-javaClass.Loading_Test
-javaClass.WaitLayerUI

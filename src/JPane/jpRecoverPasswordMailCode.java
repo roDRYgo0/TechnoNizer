@@ -1,24 +1,15 @@
 package JPane;
 
 import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import com.placeholder.PlaceHolder;
 import jFrame.*;
-import static jFrame.logIn.*;
 import javaClass.*;
+import technonizer.TechnoNizer;
 
 public class jpRecoverPasswordMailCode extends javax.swing.JPanel {
-
-    private JPanel rootPane;
-
-    public void setRootPane(JPanel rootPane) {
-        this.rootPane = rootPane;
-    }
     
-    public jpRecoverPasswordMailCode(JPanel rootPane) {
+    public jpRecoverPasswordMailCode() {
         initComponents();
-        this.rootPane = rootPane;
-        PlaceHolder hCode = new PlaceHolder(txtCode, "Codigo");
+
     }
 
     //<editor-fold defaultstate="collapsed" desc="compiled code">
@@ -187,26 +178,26 @@ public class jpRecoverPasswordMailCode extends javax.swing.JPanel {
             
         }
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.");
+            standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
     }//GEN-LAST:event_jbNextActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        rootPane.removeAll();
-        rootPane.add(jpAccess.jpP,BorderLayout.CENTER);
-        rootPane.revalidate();
-        rootPane.repaint();
+        controller.rootPane.removeAll();
+        controller.rootPane.add(controller.jpP,BorderLayout.CENTER);
+        controller.rootPane.revalidate();
+        controller.rootPane.repaint();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void lblTNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTNMouseClicked
-        jpA = new jpAccess(rootPane);
+        controller.jpA = new jpAccess();
         
-        jpA.setSize(420,603);
-        jpA.setLocation(0,0);
+        controller.jpA.setSize(420,603);
+        controller.jpA.setLocation(0,0);
         
-        rootPane.removeAll();
-        rootPane.add(jpA,BorderLayout.CENTER);
-        rootPane.revalidate();
-        rootPane.repaint();
+        controller.rootPane.removeAll();
+        controller.rootPane.add(controller.jpA,BorderLayout.CENTER);
+        controller.rootPane.revalidate();
+        controller.rootPane.repaint();
     }//GEN-LAST:event_lblTNMouseClicked
 
 

@@ -1,31 +1,23 @@
 package JPane;
 
 import JPane.CheckIn.*;
-import com.placeholder.PlaceHolder;
 import jFrame.logIn;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javaClass.*;
-import javaClass.standardization;
-import javax.swing.JPanel;
+import javax.swing.Timer;
+import technonizer.*;
 
 public class jpAccess extends javax.swing.JPanel {
 
-    private JPanel rootPane;
-
+    Timer timer;
     
-    public static jpCreateUser jpCU;
-    
-    public static jpPassword jpP;
-
-    public void setRootPane(JPanel rootPane) {
-        this.rootPane = rootPane;
-    }
- 
-    public jpAccess(JPanel rootPane) {
+    public jpAccess() {
         initComponents();
-        this.rootPane = rootPane;
         btnNext.requestFocus();
+        iconUsername.setIcon(new controller().changeImage("/imagenes/customer.png", 35, 35));
     }
 
     //<editor-fold defaultstate="collapsed" desc="compiled code">
@@ -46,6 +38,7 @@ public class jpAccess extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         btnCreateAccount = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
+        iconUsername = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -109,6 +102,10 @@ public class jpAccess extends javax.swing.JPanel {
             }
         });
 
+        iconUsername.setMaximumSize(new java.awt.Dimension(35, 35));
+        iconUsername.setMinimumSize(new java.awt.Dimension(35, 35));
+        iconUsername.setPreferredSize(new java.awt.Dimension(35, 35));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,6 +114,13 @@ public class jpAccess extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(iconUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(spMail)
+                            .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -132,12 +136,9 @@ public class jpAccess extends javax.swing.JPanel {
                                 .addComponent(jLabel6))
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(spMail)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel1)
-                                .addComponent(txtMail, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)))
-                        .addContainerGap(98, Short.MAX_VALUE))))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addContainerGap(198, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,11 +150,14 @@ public class jpAccess extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addGap(28, 28, 28)
                 .addComponent(jLabel4)
-                .addGap(1, 1, 1)
-                .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(spMail, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(spMail, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iconUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,48 +179,69 @@ public class jpAccess extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMailFocusGained
 
     private void txtMailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMailFocusLost
-        spMail.setBackground(Color.gray);
+        spMail.setBackground(Color.white);
     }//GEN-LAST:event_txtMailFocusLost
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         if(logIn.internet && !standardization.campoVacio(txtMail.getText()))
         {
-            jpP = new jpPassword(rootPane);
+            controller.jpP = new jpPassword();
         
-            jpP.setSize(420,603);
-            jpP.setLocation(0,0);
-            rootPane.removeAll();
-            rootPane.add(jpP,BorderLayout.CENTER);
-            rootPane.revalidate();
-            rootPane.repaint();
+            controller.jpP.setSize(420,603);
+            controller.jpP.setLocation(0,0);
+            controller.rootPane.removeAll();
+            controller.rootPane.add(controller.jpP,BorderLayout.CENTER);
+            controller.rootPane.revalidate();
+            controller.rootPane.repaint();
         }
         else if(standardization.campoVacio(txtMail.getText()))
-            standardization.showMessage("warning", "Ingrese su correo por favor.");
+            standardization.showMessage("warning", "Ingrese su correo por favor.", TechnoNizer.log);
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.");
+            standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
         if(logIn.internet)
         {
-            jpCU = new jpCreateUser(rootPane);
-        
-            jpCU.setSize(420,603);
-            jpCU.setLocation(0,0);
-            rootPane.removeAll();
-            rootPane.add(jpCU,BorderLayout.CENTER);
-            rootPane.revalidate();
-            rootPane.repaint();
+            createAccount();
+            standardization.showLoad(TechnoNizer.log);
         }
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.");
+            standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
     }//GEN-LAST:event_btnCreateAccountActionPerformed
 
+    public void createAccount() {
+        
+        Thread load = new loadCreateAccount();
+        load.start();
+        
+        ActionListener listener = (ActionEvent evt) -> {           
+            if (controller.actionCompleted==true) {
+                
+                controller.jpCU = new jpCreateUser();
+        
+                controller.jpCU.setSize(420,603);
+                controller.jpCU.setLocation(0,0);
+                controller.rootPane.removeAll();
+                controller.rootPane.add(controller.jpCU,BorderLayout.CENTER);
+                controller.rootPane.revalidate();
+                controller.rootPane.repaint();                
+                controller.actionCompleted=false;
+                standardization.hideLoad(TechnoNizer.log);
+                timer.stop();
+            }
+        };
+
+        timer = new Timer(1000, listener);
+        timer.start();  
+    }
+    
     //<editor-fold defaultstate="collapsed" desc="compiled code">
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateAccount;
     private javax.swing.JButton btnNext;
+    private javax.swing.JLabel iconUsername;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

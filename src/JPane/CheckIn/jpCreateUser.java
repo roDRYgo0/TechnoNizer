@@ -2,24 +2,19 @@ package JPane.CheckIn;
 
 import jFrame.*;
 import java.awt.BorderLayout;
-import javax.swing.JPanel;
 import java.awt.Color;
 import java.util.Arrays;
 import javaClass.*;
+import technonizer.TechnoNizer;
 
 public class jpCreateUser extends javax.swing.JPanel {
-
-    private final JPanel rootPane;
-
-    controller contr = new controller();
     
     boolean sw, continueM, continueN;
     char echoChar;
     
-    public jpCreateUser(JPanel rootPane) {
+    public jpCreateUser() {
         initComponents();
         
-        this.rootPane = rootPane;
         continueM = false;
         continueN = false;
         
@@ -28,10 +23,10 @@ public class jpCreateUser extends javax.swing.JPanel {
     
     void loadIcons(){
         loadEye();
-        iconUsername.setIcon(contr.changeImage("/imagenes/username.png", 35, 35));
-        iconEmail.setIcon(contr.changeImage("/imagenes/email.png", 35, 35));
-        iconPass.setIcon(contr.changeImage("/imagenes/password.png", 35, 35));
-        iconPass2.setIcon(contr.changeImage("/imagenes/password.png", 35, 35));
+        iconUsername.setIcon(new controller().changeImage("/imagenes/username.png", 35, 35));
+        iconEmail.setIcon(new controller().changeImage("/imagenes/email.png", 35, 35));
+        iconPass.setIcon(new controller().changeImage("/imagenes/password.png", 35, 35));
+        iconPass2.setIcon(new controller().changeImage("/imagenes/password.png", 35, 35));
     }
 
     //<editor-fold defaultstate="collapsed" desc="compiled code">
@@ -66,14 +61,16 @@ public class jpCreateUser extends javax.swing.JPanel {
         iconPass2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(204, 204, 204));
         setMaximumSize(new java.awt.Dimension(420, 603));
         setMinimumSize(new java.awt.Dimension(420, 603));
         setPreferredSize(new java.awt.Dimension(420, 603));
         setRequestFocusEnabled(false);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Crea tu cuenta en TechnoNizer");
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
@@ -213,11 +210,14 @@ public class jpCreateUser extends javax.swing.JPanel {
         iconPass2.setMinimumSize(new java.awt.Dimension(35, 35));
         iconPass2.setPreferredSize(new java.awt.Dimension(35, 35));
 
-        jSeparator1.setForeground(new java.awt.Color(102, 102, 102));
+        jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
         jSeparator1.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setText("Recuerda que tu usuario debe ser unico");
+
+        jSeparator2.setForeground(new java.awt.Color(204, 204, 204));
+        jSeparator2.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -270,14 +270,8 @@ public class jpCreateUser extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(checkEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(85, 85, 85))
-                            .addComponent(jLabel1)))
+                            .addComponent(jLabel2)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,8 +284,15 @@ public class jpCreateUser extends javax.swing.JPanel {
                                     .addComponent(txtNickName)
                                     .addComponent(spNickName, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(checkUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                                .addComponent(checkUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(85, 85, 85))
+                            .addComponent(jLabel1))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,7 +301,7 @@ public class jpCreateUser extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -310,7 +311,9 @@ public class jpCreateUser extends javax.swing.JPanel {
                         .addComponent(txtNickName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(spNickName, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
@@ -356,10 +359,10 @@ public class jpCreateUser extends javax.swing.JPanel {
     //</editor-fold>
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        rootPane.removeAll();
-        rootPane.add(logIn.jpA,BorderLayout.CENTER);
-        rootPane.revalidate();
-        rootPane.repaint();
+        controller.rootPane.removeAll();
+        controller.rootPane.add(controller.jpA,BorderLayout.CENTER);
+        controller.rootPane.revalidate();
+        controller.rootPane.repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtMailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMailFocusGained
@@ -372,11 +375,11 @@ public class jpCreateUser extends javax.swing.JPanel {
         {
             if(methodsSQL.exists("SELECT * FROM users WHERE mail = ? ", txtMail.getText()))
             {
-                checkEmail.setIcon(contr.changeImage("/imagenes/cancel.png", 25, 25));
+                checkEmail.setIcon(new controller().changeImage("/imagenes/cancel.png", 20, 20));
                 continueM = false;
             }
             else{
-                checkEmail.setIcon(contr.changeImage("/imagenes/ok.png", 25, 25));
+                checkEmail.setIcon(new controller().changeImage("/imagenes/ok.png", 20, 20));
                 continueM = true;
             }     
         }else
@@ -432,7 +435,7 @@ public class jpCreateUser extends javax.swing.JPanel {
         {
             if(Arrays.equals(txtPasswordConfirm.getPassword(), txtPassword.getPassword()) && continueM && continueN &&
                     !standardization.campoVacio(txtMail.getText()) && !standardization.campoVacio(txtNickName.getText())) {
-                jpCreateData jpCD = new jpCreateData(rootPane);
+                controller.jpCD = new jpCreateData();
 
                 classUsuario.setNickname(txtNickName.getText());
                 classUsuario.setMail(txtMail.getText());
@@ -440,20 +443,20 @@ public class jpCreateUser extends javax.swing.JPanel {
                 
                 System.out.println(classUsuario.getPassword());
                 
-                jpCD.setSize(420,603);
-                jpCD.setLocation(0,0);
-                rootPane.removeAll();
-                rootPane.add(jpCD,BorderLayout.CENTER);
-                rootPane.revalidate();
-                rootPane.repaint();
+                controller.jpCD.setSize(420,603);
+                controller.jpCD.setLocation(0,0);
+                controller.rootPane.removeAll();
+                controller.rootPane.add(controller.jpCD,BorderLayout.CENTER);
+                controller.rootPane.revalidate();
+                controller.rootPane.repaint();
             } 
             else if(!continueM || !continueN)
-                standardization.showMessage("warning", "Llene todos los campos.");
+                standardization.showMessage("warning", "Llene todos los campos.", TechnoNizer.log);
             else
-                standardization.showMessage("warning", "Las contraseñas no coinciden.");
+                standardization.showMessage("warning", "Las contraseñas no coinciden.", TechnoNizer.log);
         }
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.");
+            standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtNickNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNickNameFocusGained
@@ -465,11 +468,11 @@ public class jpCreateUser extends javax.swing.JPanel {
         if(!standardization.campoVacio(txtNickName.getText())){
             if(methodsSQL.exists("SELECT * FROM users WHERE nickname = ? ", txtNickName.getText()))
             {
-                checkUsername.setIcon(contr.changeImage("/imagenes/cancel.png", 25, 25));
+                checkUsername.setIcon(new controller().changeImage("/imagenes/cancel.png", 20, 20));
                 continueN = false;
             }
             else{
-                checkUsername.setIcon(contr.changeImage("/imagenes/ok.png", 25, 25));
+                checkUsername.setIcon(new controller().changeImage("/imagenes/ok.png", 20, 20));
                 continueN = true;
             }       
         }else
@@ -489,20 +492,20 @@ public class jpCreateUser extends javax.swing.JPanel {
     public void loadEye()
     {
         echoChar = txtPassword.getEchoChar();
-        lblEye.setIcon(contr.changeImage("/imagenes/eye.png", 20, 20));
-        lblEyeConfirm.setIcon(contr.changeImage("/imagenes/eye.png", 20, 20));
+        lblEye.setIcon(new controller().changeImage("/imagenes/eye.png", 20, 20));
+        lblEyeConfirm.setIcon(new controller().changeImage("/imagenes/eye.png", 20, 20));
     }
     
     public void changeEye(boolean e){
         if(e)
         {
-            lblEye.setIcon(contr.changeImage("/imagenes/eye_.png", 20, 20));
-            lblEyeConfirm.setIcon(contr.changeImage("/imagenes/eye_.png", 20, 20));
+            lblEye.setIcon(new controller().changeImage("/imagenes/eye_.png", 20, 20));
+            lblEyeConfirm.setIcon(new controller().changeImage("/imagenes/eye_.png", 20, 20));
         }
         else
         {
-            lblEye.setIcon(contr.changeImage("/imagenes/eye.png", 20, 20));
-            lblEyeConfirm.setIcon(contr.changeImage("/imagenes/eye.png", 20, 20));
+            lblEye.setIcon(new controller().changeImage("/imagenes/eye.png", 20, 20));
+            lblEyeConfirm.setIcon(new controller().changeImage("/imagenes/eye.png", 20, 20));
         }
     }
     //</editor-fold>
@@ -526,6 +529,7 @@ public class jpCreateUser extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblEye;
     private javax.swing.JLabel lblEyeConfirm;
     private javax.swing.JSeparator spMail;
