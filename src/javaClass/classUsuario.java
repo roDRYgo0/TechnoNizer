@@ -10,10 +10,17 @@ public class classUsuario {
     private static Integer id_gender;
     private static String password;
     private static Integer idMemberships; 
-
-
+    private static Integer durationMem;
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static Integer getDurationMem() {
+        return durationMem;
+    }
+
+    public static void setDurationMem(Integer durationMem) {
+        classUsuario.durationMem = durationMem;
+    }
+    
     public static Integer getIdMemberships() {
         return idMemberships;
     }
@@ -78,5 +85,14 @@ public class classUsuario {
     }
 //</editor-fold>
     
+    public static boolean insert(){
+        boolean status = false;
+        status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, durationMem, idMemberships) VALUES ( ?, ?, ?, ?, ?, ?)",
+                nickname, mail, password, 1, durationMem, idMemberships);
+        if(status)
+            status= methodsSQL.execute("INSERT INTO usersInformation VALUES (?, ?, ? ,?, ?)",
+                    firstName, lastName, birthdate, id_gender, nickname);
+        return status;
+    }
     
 }

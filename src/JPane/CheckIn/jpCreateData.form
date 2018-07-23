@@ -258,6 +258,9 @@
           <Dimension value="[150, 150]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImageMouseReleased"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtName">
       <Properties>

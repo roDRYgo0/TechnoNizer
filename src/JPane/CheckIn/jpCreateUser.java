@@ -439,9 +439,8 @@ public class jpCreateUser extends javax.swing.JPanel {
 
                 classUsuario.setNickname(txtNickName.getText());
                 classUsuario.setMail(txtMail.getText());
-                classUsuario.setPassword(Arrays.toString(txtPassword.getPassword()));
                 
-                System.out.println(classUsuario.getPassword());
+                classUsuario.setPassword(standardization.sha1(standardization.md5(Arrays.toString(txtPassword.getPassword()))));
                 
                 controller.jpCD.setSize(420,603);
                 controller.jpCD.setLocation(0,0);

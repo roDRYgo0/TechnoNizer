@@ -185,14 +185,19 @@ public class jpAccess extends javax.swing.JPanel {
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         if(logIn.internet && !standardization.campoVacio(txtMail.getText()))
         {
-            controller.jpP = new jpPassword();
+            String Mail = txtMail.getText().replace(" ","");
+            if(methodsSQL.exists("SELECT * FROM users WHERE nickname = ?", Mail)){
+                classUsuario.setNickname(Mail);
+                controller.jpP = new jpPassword(true);
         
-            controller.jpP.setSize(420,603);
-            controller.jpP.setLocation(0,0);
-            controller.rootPane.removeAll();
-            controller.rootPane.add(controller.jpP,BorderLayout.CENTER);
-            controller.rootPane.revalidate();
-            controller.rootPane.repaint();
+                controller.jpP.setSize(420,603);
+                controller.jpP.setLocation(0,0);
+                controller.rootPane.removeAll();
+                controller.rootPane.add(controller.jpP,BorderLayout.CENTER);
+                controller.rootPane.revalidate();
+                controller.rootPane.repaint();
+            }else
+                standardization.showMessage("warning", "El usuario no existe.", TechnoNizer.log);
         }
         else if(standardization.campoVacio(txtMail.getText()))
             standardization.showMessage("warning", "Ingrese su correo por favor.", TechnoNizer.log);

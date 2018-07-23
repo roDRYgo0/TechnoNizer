@@ -91,6 +91,11 @@ public class jpCreateData extends javax.swing.JPanel {
         lblImage.setMaximumSize(new java.awt.Dimension(150, 150));
         lblImage.setMinimumSize(new java.awt.Dimension(150, 150));
         lblImage.setPreferredSize(new java.awt.Dimension(150, 150));
+        lblImage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblImageMouseReleased(evt);
+            }
+        });
 
         txtName.setAutoscrolls(false);
         txtName.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -307,10 +312,9 @@ public class jpCreateData extends javax.swing.JPanel {
             
             classUsuario.setFirstName(txtName.getText());
             classUsuario.setLastName(txtLastName.getText());
-            classUsuario.setBirthdate(txtDia.getText()+"-"+(cmbMes.getSelectedIndex()+1)+"-"+txtAnio.getText());
+            classUsuario.setBirthdate(txtAnio.getText()+"-"+(cmbMes.getSelectedIndex()+1)+"-"+txtDia.getText());
 //            classUsuario.setId_gender(methodsSQL.getExecuteInt("SELECT id FROM genders WHERE gender = ? ", cmbGender.getSelectedItem().toString()));
             classUsuario.setId_gender(cmbGender.getSelectedIndex());
-            System.out.println(cmbGender.getSelectedIndex());
             
             controller.jpM.setSize(420,603);
             controller.jpM.setLocation(0,0);
@@ -352,6 +356,10 @@ public class jpCreateData extends javax.swing.JPanel {
     private void txtAnioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAnioFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAnioFocusGained
+
+    private void lblImageMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblImageMouseReleased
     
     public void loadData()
     {

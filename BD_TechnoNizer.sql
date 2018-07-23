@@ -39,6 +39,10 @@ id_gender int not null references genders(id),
 nickname nvarchar(50) not null references users(nickname)
 )
 
+select ui.firstName, ui.lastName from usersInformation ui where ui.nickname = 'dev.rodrig'
+
+select * from users where nickname = ?, password = ?
+
 create table contactType(
 id int identity(1,1) primary key not null,
 type nvarchar(60)
@@ -129,6 +133,10 @@ idCardas int not null references cards(id)
  staff int not null,
  condition int not null,
  )
+
+ alter table events alter column staff int
+
+ select * from events
 
  create table staff(
  id int identity(1,1) primary key not null,
@@ -267,3 +275,25 @@ nickname nvarchar(50) not null references users(nickname),
 idProject int references projects(id),
 idEvent int references events(id)
 )
+
+
+insert into genders values (0, 'Femenino')
+ insert into genders values (1, 'Masculino')
+
+ select * from genders
+
+ insert into memberships values('Free','free', 1, 40, 1, 0, 50, 0)
+ insert into memberships values('Vip','vip', 1, -1, 10, 50, 500, 49.90)
+ insert into memberships values('Premium','premium', 1, -1, -1, -1, -1, 179.90)
+
+ select * from memberships
+
+ select * from users
+ delete from users where nickname = 'dev.rodrig'
+ select * from usersInformation
+
+ select * from events
+
+ select m.name, m.description, m.condition, m.numberEvents, m.numberAdmins, m.numberModerators, m.numberGuests from memberships m where m.id = 1
+
+ SELECT m.name, m.description, m.condition, m.numberEvents, m.numberAdmins, m.numberModerators, m.numberGuests FROM memberships m WHERE m.id = 2

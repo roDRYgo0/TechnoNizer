@@ -4,6 +4,7 @@ import jFrame.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javaClass.*;
+import technonizer.*;
 
 public class jpMembership extends javax.swing.JPanel {
     
@@ -311,9 +312,9 @@ public class jpMembership extends javax.swing.JPanel {
                     .addComponent(pnVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnPremium, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(sortFree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sortVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sortVip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sortPremium, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
@@ -346,14 +347,13 @@ public class jpMembership extends javax.swing.JPanel {
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         if(logIn.internet)
         {
-//            classUsuario.setIdMemberships(methodsSQL.getExecuteInt("SELECT id FROM memberships WHERE name = ? ", cmbMembership.getSelectedItem().toString()));
-
-            
+            if(classUsuario.insert())
+                standardization.showMessage("ok", "Se inserto correctamente.", TechnoNizer.log); 
+            else
+                standardization.showMessage("error", "Error al insertar datos.", TechnoNizer.log); 
         }
-//        else if(camposVacios())
-//            standardization.showMessage("warning", "Se encontraron campos vacios.");
-//        else
-//            standardization.showMessage("error", "Error al establecer una conexion de red.");
+        else
+            standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -395,6 +395,7 @@ public class jpMembership extends javax.swing.JPanel {
                 pnFree.setBackground(new Color(33,150,243));
                 sortFree.setIcon(new controller().changeImage("/imagenes/sortDown.png", 36, 36));
                 capturarDatos(0);
+                classUsuario.setIdMemberships(1);
                 mostrarDatos();
                 break;
             case 2:
@@ -402,6 +403,7 @@ public class jpMembership extends javax.swing.JPanel {
                 pnVip.setBackground(new Color(33,150,243));
                 sortVip.setIcon(new controller().changeImage("/imagenes/sortDown.png", 36, 36));
                 capturarDatos(1);
+                classUsuario.setIdMemberships(2);
                 mostrarDatos();
                 break;
             case 3:
@@ -409,6 +411,7 @@ public class jpMembership extends javax.swing.JPanel {
                 pnPremium.setBackground(new Color(33,150,243));
                 sortPremium.setIcon(new controller().changeImage("/imagenes/sortDown.png", 36, 36));
                 capturarDatos(2);
+                classUsuario.setIdMemberships(3);
                 mostrarDatos();
                 break;
         }
@@ -424,6 +427,17 @@ public class jpMembership extends javax.swing.JPanel {
         numberModerators = controller.member[m].getNumberModerators();
         numberGuests = controller.member[m].getNumberGuests();
         price = controller.member[m].getPrice();
+        switch(m){
+            case 1:
+                classUsuario.setDurationMem(0);
+                break;
+            case 2:
+                classUsuario.setDurationMem(365);
+                break;
+            case 3:
+                classUsuario.setDurationMem(365);
+                break;
+        }
     }
  
     void mostrarDatos(){
