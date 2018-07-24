@@ -11,8 +11,17 @@ public class classUsuario {
     private static String password;
     private static Integer idMemberships; 
     private static Integer durationMem;
+    private static String code;
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static String getCode() {
+        return code;
+    }
+
+    public static void setCode(String code) {
+        classUsuario.code = code;
+    }
+    
     public static Integer getDurationMem() {
         return durationMem;
     }
@@ -92,6 +101,12 @@ public class classUsuario {
         if(status)
             status= methodsSQL.execute("INSERT INTO usersInformation VALUES (?, ?, ? ,?, ?)",
                     firstName, lastName, birthdate, id_gender, nickname);
+        return status;
+    }
+    
+    public static boolean changePassword(){
+        boolean status = false;
+        status = methodsSQL.execute("UPDATE users SET password = ? WHERE nickname = ?", password, nickname);
         return status;
     }
     

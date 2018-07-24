@@ -1,5 +1,6 @@
 package JPane.CheckIn;
 
+import JPane.*;
 import jFrame.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -347,8 +348,18 @@ public class jpMembership extends javax.swing.JPanel {
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         if(logIn.internet)
         {
-            if(classUsuario.insert())
+            if(classUsuario.insert()){
                 standardization.showMessage("ok", "Se inserto correctamente.", TechnoNizer.log); 
+                controller.jpW = new jpWelcome();
+
+                controller.jpW.setSize(420,603);
+                controller.jpW.setLocation(0,0);
+
+                controller.rootPane.removeAll();
+                controller.rootPane.add(controller.jpW,BorderLayout.CENTER);
+                controller.rootPane.revalidate();
+                controller.rootPane.repaint();
+            }
             else
                 standardization.showMessage("error", "Error al insertar datos.", TechnoNizer.log); 
         }
@@ -357,10 +368,8 @@ public class jpMembership extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        controller.jpCU.setSize(420,603);
-        controller.jpCU.setLocation(0,0);
         controller.rootPane.removeAll();
-        controller.rootPane.add(controller.jpCU,BorderLayout.CENTER);
+        controller.rootPane.add(controller.jpCD,BorderLayout.CENTER);
         controller.rootPane.revalidate();
         controller.rootPane.repaint();
     }//GEN-LAST:event_btnBackActionPerformed

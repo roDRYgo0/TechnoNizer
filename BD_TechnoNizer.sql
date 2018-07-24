@@ -289,7 +289,10 @@ insert into genders values (0, 'Femenino')
  select * from memberships
 
  select * from users
+
+ delete from usersInformation where nickname = 'dev.rodrig'
  delete from users where nickname = 'dev.rodrig'
+
  select * from usersInformation
 
  select * from events

@@ -1,6 +1,14 @@
 package javaClass;
 
 import jFrame.*;
+import java.util.Properties;
+import java.util.UUID;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JFrame;
 import technonizer.*;
 import static technonizer.TechnoNizer.*;
@@ -81,4 +89,39 @@ public class standardization {
         return getHash(txt, "SHA1");
     }
     
+    public static String generatedCode(){
+        String[] codigos = UUID.randomUUID().toString().split("-");
+        return codigos[0];
+    }
+    
+    public static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
+        String remitente = "technonizer@technonizer.com";
+        String clave = "Masupial.48";
+        String destinatari = destinatario;
+
+        Properties props = System.getProperties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.user", remitente);
+        props.put("mail.smtp.clave", clave); 
+        props.put("mail.smtp.auth", "true");   
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.port", "587"); 
+
+        Session session = Session.getDefaultInstance(props);
+        MimeMessage message = new MimeMessage(session);
+
+        try {
+            message.setFrom(new InternetAddress(remitente));
+            message.addRecipients(Message.RecipientType.TO, destinatari); 
+            message.setSubject(asunto);
+            message.setText(cuerpo);
+            Transport transport = session.getTransport("smtp");
+            transport.connect("smtp.gmail.com", remitente, clave);
+            transport.sendMessage(message, message.getAllRecipients());
+            transport.close();
+        }
+        catch (MessagingException me) {
+            me.printStackTrace();
+        }
+    }
 }

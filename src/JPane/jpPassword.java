@@ -247,11 +247,12 @@ public class jpPassword extends javax.swing.JPanel {
                 System.out.println(ex.getMessage());
             }
             System.out.println(passdb);
+            
             if(pass.equals(passdb)){
                 System.out.println("adelante");
                 invokeHome();
             }else
-                System.out.println("fuera");
+                standardization.showMessage("error", "La contraseña no coinsiden.",TechnoNizer.log);
  
         }
         else
@@ -261,6 +262,8 @@ public class jpPassword extends javax.swing.JPanel {
     private void btnRecoverPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecoverPasswordActionPerformed
         if(logIn.internet)
         {
+//            standardization.enviarConGMail("dev.rodrig@gmail.com", "recuperacion de contraseña", "su codiguito es este papu");
+            
             controller.jpRP = new jpRecoverPasswordMail();
         
             controller.jpRP.setSize(420,603);
