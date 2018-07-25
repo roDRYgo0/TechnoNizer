@@ -1,5 +1,8 @@
 package javaClass;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class classUsuario {
     
     private static String nickname;
@@ -93,6 +96,24 @@ public class classUsuario {
         id_gender = aId_gender;
     }
 //</editor-fold>
+    
+    public static boolean select(){
+        boolean status = false;
+        ResultSet rs = methodsSQL.getExecute("SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender FROM users u, usersInformation ui WHERE u.nickname = ui.nickname and u.nickname =  ?", nickname);
+        try {
+            while(rs.next()){
+                firstName = rs.getString(1);
+                lastName = rs.getString(2);
+                birthdate = rs.getString(3);
+                mail = rs.getString(4);
+                id_gender = rs.getInt(5);
+            }
+            status = true;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return status;
+    }
     
     public static boolean insert(){
         boolean status = false;

@@ -1,9 +1,8 @@
 package javaClass;
 
-import JPane.CheckIn.jpCreateData;
-import JPane.CheckIn.jpCreateUser;
-import JPane.CheckIn.*;
-import JPane.*;
+import JPanel.CheckIn.jpMembership;
+import JPanel.*;
+import JPanel.CheckIn.*;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -21,6 +20,7 @@ public class controller {
     public static jpMembership jpM;
     public static jpWelcome jpW;
     public static jpNewPassword jpNP;
+    public static jpHome jpH;
     public static classMembership[] member = new classMembership[3];
     public static String[] genders = new String[2];
     public static boolean actionCompleted = false;
@@ -36,6 +36,8 @@ public class controller {
         Icon icono = new ImageIcon(original.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
         return icono;
     }
+    
+    
 
     
 }

@@ -39,6 +39,8 @@ id_gender int not null references genders(id),
 nickname nvarchar(50) not null references users(nickname)
 )
 
+SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender FROM users u, usersInformation ui
+
 select ui.firstName, ui.lastName from usersInformation ui where ui.nickname = 'dev.rodrig'
 
 select * from users where nickname = ?, password = ?

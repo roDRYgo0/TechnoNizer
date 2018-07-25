@@ -1,8 +1,10 @@
 package jFrame;
 
-import JPane.*;
+import JPanel.jpPassword;
+import JPanel.jpAccess;
 import java.awt.BorderLayout;
 import javaClass.controller;
+import static javaClass.standardization.invokeHome;
 import javafx.application.Platform;
 
 public class logIn extends javax.swing.JFrame {
@@ -250,10 +252,11 @@ public class logIn extends javax.swing.JFrame {
     }//GEN-LAST:event_lblLenguageMouseClicked
 
     private void tbtnInternetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnInternetActionPerformed
-        if(tbtnInternet.isSelected())
-            internet=false;
-        else
-            internet=true;
+//        if(tbtnInternet.isSelected())
+//            internet=false;
+//        else
+//            internet=true;
+        invokeHome(false);
     }//GEN-LAST:event_tbtnInternetActionPerformed
 //</editor-fold>
         

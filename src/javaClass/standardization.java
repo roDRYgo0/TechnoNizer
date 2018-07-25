@@ -48,9 +48,9 @@ public class standardization {
         over.setVisible(false);
     }
     
-    public static void invokeHome()
+    public static void invokeHome(boolean load)
     {
-        home = new home();
+        home = new home(load);
         home.setLocationRelativeTo(null);
         log.setVisible(false);
         home.setVisible(true);
