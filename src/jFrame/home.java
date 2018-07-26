@@ -5,7 +5,6 @@ import java.awt.BorderLayout;
 import java.awt.Image;
 import javaClass.*;
 import static javaClass.controller.jpH;
-import javafx.application.Platform;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -19,8 +18,8 @@ public class home extends javax.swing.JFrame {
     
     public home(boolean load) {
         initComponents();
+        controller.rootFrame = this;
         this.internet = logIn.internet;
-        TechnoNizer.mess = new message(TechnoNizer.home);
         load(load);
     }
     
@@ -135,7 +134,6 @@ public class home extends javax.swing.JFrame {
         btnExit.setAlignmentY(0.0F);
         btnExit.setBorderPainted(false);
         btnExit.setFocusable(false);
-        btnExit.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnExit.setMaximumSize(new java.awt.Dimension(30, 30));
         btnExit.setMinimumSize(new java.awt.Dimension(30, 30));
         btnExit.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -150,7 +148,6 @@ public class home extends javax.swing.JFrame {
         btnMin.setAlignmentY(0.0F);
         btnMin.setBorderPainted(false);
         btnMin.setFocusable(false);
-        btnMin.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnMin.setMaximumSize(new java.awt.Dimension(30, 30));
         btnMin.setMinimumSize(new java.awt.Dimension(30, 30));
         btnMin.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -165,7 +162,6 @@ public class home extends javax.swing.JFrame {
         btnMax.setAlignmentY(0.0F);
         btnMax.setBorderPainted(false);
         btnMax.setFocusable(false);
-        btnMax.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnMax.setMaximumSize(new java.awt.Dimension(30, 30));
         btnMax.setMinimumSize(new java.awt.Dimension(30, 30));
         btnMax.setPreferredSize(new java.awt.Dimension(30, 30));
@@ -263,7 +259,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -567,7 +563,6 @@ public class home extends javax.swing.JFrame {
     //</editor-fold>
     
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        Platform.exit();
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 

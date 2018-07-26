@@ -11,8 +11,8 @@ public class TechnoNizer {
     public static AddProject aProj;
     
     public static void main(String[] args) {
-        log = new logIn();
         mess = new message();
+        log = new logIn();
         sLoad = new load();
         aProj = new AddProject();
         log.setDefaultCloseOperation(3);

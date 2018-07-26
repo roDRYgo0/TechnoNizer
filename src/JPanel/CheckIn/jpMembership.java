@@ -349,7 +349,7 @@ public class jpMembership extends javax.swing.JPanel {
         if(logIn.internet)
         {
             if(classUsuario.insert()){
-                standardization.showMessage("ok", "Se inserto correctamente.", TechnoNizer.log); 
+                standardization.showMessage("ok", "Se inserto correctamente."); 
                 controller.jpW = new jpWelcome();
 
                 controller.jpW.setSize(420,603);
@@ -361,10 +361,10 @@ public class jpMembership extends javax.swing.JPanel {
                 controller.rootPane.repaint();
             }
             else
-                standardization.showMessage("error", "Error al insertar datos.", TechnoNizer.log); 
+                standardization.showMessage("error", "Error al insertar datos."); 
         }
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
+            standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

@@ -637,27 +637,21 @@ public class jpEditUser extends javax.swing.JPanel {
 
                 classUsuario.setId_gender(cmbGender.getSelectedIndex());
                 if(classUsuario.update()){
-                    standardization.showMessage("ok", "Exito al actualizar.",TechnoNizer.home);
+                    standardization.showMessage("ok", "Exito al actualizar.");
                     
                     load();
                     loadImagenes();
                 }
                    
                 else{
-                    standardization.showMessage("error", "No se logro actualizar.",TechnoNizer.home);
-                    TechnoNizer.home.setEnabled(true);
-                    TechnoNizer.home.setOpacity(1); 
+                    standardization.showMessage("error", "No se logro actualizar.");
                 }                                
             }else{
-                standardization.showMessage("error", "La contraseña no coinsiden.",TechnoNizer.home);
-                TechnoNizer.home.setEnabled(true);
-                TechnoNizer.home.setOpacity(1); 
+                standardization.showMessage("error", "La contraseña no coinsiden.");
             }
                 
         }else{
-            standardization.showMessage("warning", "Campos vacios.",TechnoNizer.home);
-            TechnoNizer.home.setEnabled(true);
-            TechnoNizer.home.setOpacity(1); 
+            standardization.showMessage("warning", "Campos vacios.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

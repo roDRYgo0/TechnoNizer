@@ -352,9 +352,9 @@ public class jpCreateData extends javax.swing.JPanel {
             controller.rootPane.repaint();
         }
         else if(camposVacios())
-            standardization.showMessage("warning", "Se encontraron campos vacios.", TechnoNizer.log);
+            standardization.showMessage("warning", "Se encontraron campos vacios.");
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.",TechnoNizer.log);
+            standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusGained

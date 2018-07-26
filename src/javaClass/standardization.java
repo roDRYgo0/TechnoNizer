@@ -102,24 +102,24 @@ public class standardization {
         over.setOpacity(1);
         sLoad.setVisible(false);
     }
-    
-    public static void showMessage(String Image, String Message, JFrame over){
+//    
+    public static void showMessage(String Image, String Message){
         if(!Image.equals(""))
             mess.changeImage(Image);
         
         mess.changeMessage(Message);
         mess.setVisible(true);
         mess.setLocationRelativeTo(TechnoNizer.log);
-        over.setEnabled(false);
-        over.setOpacity(0.85f);
+        controller.rootFrame.setEnabled(false);
+        controller.rootFrame.setOpacity(0.85f);
     }
     
-    public static void hideMessage(JFrame so, JFrame over){
-        over.setEnabled(true);
-        over.setOpacity(1);
-        so.setVisible(false);
+    public static void hideMessage(){
+        controller.rootFrame.setEnabled(true);
+        controller.rootFrame.setOpacity(1);
+        mess.setVisible(false);
     }
-    
+//    
     public static void invokeHome(boolean load)
     {
         home = new home(load);

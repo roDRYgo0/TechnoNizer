@@ -8,17 +8,9 @@ import technonizer.TechnoNizer;
 
 public class message extends javax.swing.JFrame {
 
-    JFrame ob;
-    
     public message() {
         initComponents();
-        ob = TechnoNizer.log;
     }
-    public message(JFrame over) {
-        initComponents();
-        ob = TechnoNizer.log;
-    }
-    
     //<editor-fold defaultstate="collapsed" desc="compiled code">
 
     @SuppressWarnings("unchecked")
@@ -72,7 +64,8 @@ public class message extends javax.swing.JFrame {
     //</editor-fold>
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        standardization.hideMessage(this, ob);
+        standardization.hideMessage();
+
     }//GEN-LAST:event_jButton1ActionPerformed
    
     public void changeImage(String image)

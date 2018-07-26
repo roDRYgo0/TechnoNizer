@@ -6,6 +6,7 @@ import JPanel.CheckIn.*;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class controller {
@@ -21,14 +22,13 @@ public class controller {
     public static jpWelcome jpW;
     public static jpNewPassword jpNP;
     public static jpHome jpH;
-<<<<<<< HEAD
     public static jpProjects jpPJ;
-=======
     public static jpEditUser jpU;
->>>>>>> cdd2a1a22bbacbc12d32d8c9f5cc6e3da52a6acb
     public static classMembership[] member = new classMembership[3];
     public static String[] genders = new String[2];
     public static boolean actionCompleted = false;
+    
+    public static JFrame rootFrame;
     
     
     

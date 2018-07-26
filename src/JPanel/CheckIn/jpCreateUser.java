@@ -460,12 +460,12 @@ public class jpCreateUser extends javax.swing.JPanel {
                 controller.rootPane.repaint();
             } 
             else if(!continueM || !continueN)
-                standardization.showMessage("warning", "Llene todos los campos.", TechnoNizer.log);
+                standardization.showMessage("warning", "Llene todos los campos.");
             else
-                standardization.showMessage("warning", "Las contraseñas no coinciden.", TechnoNizer.log);
+                standardization.showMessage("warning", "Las contraseñas no coinciden.");
         }
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
+            standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtNickNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNickNameFocusGained
