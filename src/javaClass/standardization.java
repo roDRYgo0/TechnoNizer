@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -197,5 +199,11 @@ public class standardization {
         }
     }
     
+//    
+//    public static boolean validatePassword(String cadena){
+//        boolean status = false;
+//        Pattern pat = Pattern.compile(".*abc.*");
+//        Matcher mat = pat.matcher(cadena);
+//    }
     
 }

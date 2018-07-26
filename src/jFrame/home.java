@@ -24,10 +24,10 @@ public class home extends javax.swing.JFrame {
     }
     
     void load(boolean load){        
-        controller.jpPJ = new jpProjects();
-        controller.jpPJ.setLocation(0,0);
+        jpH = new jpHome(true, this);
+        jpH.setLocation(0,0);
 
-        scrollContainer.setViewportView(controller.jpPJ);
+        scrollContainer.setViewportView(jpH);
         scrollContainer.revalidate();
         scrollContainer.repaint();
 
@@ -595,7 +595,7 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_topBarMousePressed
 
     private void lblUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsersMouseClicked
-        controller.jpU = new jpEditUser();
+        controller.jpU = new jpEditUser(lblImageUser);
         controller.jpU.setLocation(0,0);
 
         scrollContainer.setViewportView(controller.jpU);
@@ -604,16 +604,20 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_lblUsersMouseClicked
 
     private void jPanel4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseReleased
-        controller.jpU = new jpEditUser();
+        showEditUser();
+    }//GEN-LAST:event_jPanel4MouseReleased
+
+    public void showEditUser(){
+        controller.jpU = new jpEditUser(lblImageUser);
         controller.jpU.setLocation(0,0);
 
         scrollContainer.setViewportView(controller.jpU);
         scrollContainer.revalidate();
         scrollContainer.repaint();
-    }//GEN-LAST:event_jPanel4MouseReleased
-
+    }
+    
     private void jPanel3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseReleased
-        jpH = new jpHome(true);
+        jpH = new jpHome(true, this);
         jpH.setLocation(0,0);
 
         scrollContainer.setViewportView(jpH);

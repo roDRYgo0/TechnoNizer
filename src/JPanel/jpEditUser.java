@@ -17,6 +17,7 @@ import javaClass.standardization;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import technonizer.TechnoNizer;
 
@@ -26,12 +27,13 @@ public class jpEditUser extends javax.swing.JPanel {
         
     char echoChar;
     
+    JLabel lblUserImage;
     
-    public jpEditUser() {
+    public jpEditUser(JLabel label) {
         initComponents();
         continueM = false;
         continueN = false;
-        
+        lblUserImage = label;
         load();
         loadImagenes();
     }
@@ -638,7 +640,7 @@ public class jpEditUser extends javax.swing.JPanel {
                 classUsuario.setId_gender(cmbGender.getSelectedIndex());
                 if(classUsuario.update()){
                     standardization.showMessage("ok", "Exito al actualizar.");
-                    
+                    lblUserImage.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
                     load();
                     loadImagenes();
                 }
