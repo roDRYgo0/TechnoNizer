@@ -39,7 +39,7 @@ id_gender int not null references genders(id),
 nickname nvarchar(50) not null references users(nickname)
 )
 
-SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender FROM users u, usersInformation ui
+SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender FROM users u, usersInformation ui where u.nickname = ui.nickname and u.nickname = 
 
 select ui.firstName, ui.lastName from usersInformation ui where ui.nickname = 'dev.rodrig'
 
