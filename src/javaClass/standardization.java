@@ -1,14 +1,23 @@
 package javaClass;
 
 import jFrame.*;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 import java.util.UUID;
+import javax.imageio.ImageIO;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import technonizer.*;
 import static technonizer.TechnoNizer.*;
@@ -16,6 +25,53 @@ import static technonizer.TechnoNizer.*;
 public class standardization {
     
     controller control = new controller();
+    public static byte[] image;
+    
+    
+    public byte[] defaultImage(){
+        ImageIcon original = new ImageIcon(getClass().getResource("/imagenes/user.png"));
+        image =  getImgBytes(original.getImage());
+        classUsuario.setImage(image);
+        return image;
+    }
+    
+    //<editor-fold defaultstate="collapsed" desc="convert">
+    public byte [] getImgBytes(Image image) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(getBufferedImage(image), "JPEG", baos);
+        } catch (IOException ex) {
+        }
+        return baos.toByteArray();
+    }
+     
+    private BufferedImage getBufferedImage(Image image) {
+        int width = image.getWidth(null);
+        int height = image.getHeight(null);
+        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        return bi;
+    }
+//</editor-fold>
+    
+    public static Icon getImgIcon(byte[] bi){
+        Icon imgi = null;
+        try {
+            BufferedImage image = null;
+            InputStream in = new ByteArrayInputStream(bi);
+            image = ImageIO.read(in);
+            imgi = new ImageIcon(image.getScaledInstance(150, 150, 0));
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return imgi;
+    }
+    
+    public  Icon defaultIcon(int width, int height){
+        ImageIcon original = new ImageIcon(getClass().getResource("/imagenes/user.png"));
+        Icon icono = new ImageIcon(original.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+        return icono;
+    }
     
     public static void showLoad(JFrame over){
         sLoad.setVisible(true);
@@ -38,14 +94,14 @@ public class standardization {
         mess.changeMessage(Message);
         mess.setVisible(true);
         mess.setLocationRelativeTo(TechnoNizer.log);
-        log.setEnabled(false);
-        log.setOpacity(0.85f);
+        over.setEnabled(false);
+        over.setOpacity(0.85f);
     }
     
-    public static void hideMessage(JFrame over){
-        log.setEnabled(true);
-        log.setOpacity(1);
-        over.setVisible(false);
+    public static void hideMessage(JFrame so, JFrame over){
+        over.setEnabled(true);
+        over.setOpacity(1);
+        so.setVisible(false);
     }
     
     public static void invokeHome(boolean load)
@@ -124,4 +180,6 @@ public class standardization {
             me.printStackTrace();
         }
     }
+    
+    
 }

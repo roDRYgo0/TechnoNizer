@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import javaClass.*;
 import javax.swing.Timer;
 import technonizer.*;
@@ -63,6 +64,14 @@ public class jpAccess extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtMailFocusLost(evt);
+            }
+        });
+        txtMail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMailKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMailKeyTyped(evt);
             }
         });
 
@@ -214,6 +223,17 @@ public class jpAccess extends javax.swing.JPanel {
         else
             standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
     }//GEN-LAST:event_btnCreateAccountActionPerformed
+
+    private void txtMailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMailKeyTyped
+        char c = evt.getKeyChar();
+        if(c == ' ')
+            evt.consume();
+    }//GEN-LAST:event_txtMailKeyTyped
+
+    private void txtMailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMailKeyPressed
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER)
+            btnNextActionPerformed(null);
+    }//GEN-LAST:event_txtMailKeyPressed
 
     public void createAccount() {
         

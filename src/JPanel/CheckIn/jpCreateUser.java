@@ -99,6 +99,11 @@ public class jpCreateUser extends javax.swing.JPanel {
                 txtMailFocusLost(evt);
             }
         });
+        txtMail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMailKeyTyped(evt);
+            }
+        });
 
         spMail.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -185,6 +190,11 @@ public class jpCreateUser extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtNickNameFocusLost(evt);
+            }
+        });
+        txtNickName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNickNameKeyTyped(evt);
             }
         });
 
@@ -437,8 +447,8 @@ public class jpCreateUser extends javax.swing.JPanel {
                     !standardization.campoVacio(txtMail.getText()) && !standardization.campoVacio(txtNickName.getText())) {
                 controller.jpCD = new jpCreateData();
 
-                classUsuario.setNickname(txtNickName.getText());
-                classUsuario.setMail(txtMail.getText());
+                classUsuario.setNickname(txtNickName.getText().replace(" ", ""));
+                classUsuario.setMail(txtMail.getText().replace(" ", ""));
                 
                 classUsuario.setPassword(standardization.sha1(standardization.md5(Arrays.toString(txtPassword.getPassword()))));
                 
@@ -477,6 +487,18 @@ public class jpCreateUser extends javax.swing.JPanel {
         }else
             checkUsername.setIcon(null);
     }//GEN-LAST:event_txtNickNameFocusLost
+
+    private void txtNickNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNickNameKeyTyped
+        char c = evt.getKeyChar();
+        if(c == ' ')
+            evt.consume();
+    }//GEN-LAST:event_txtNickNameKeyTyped
+
+    private void txtMailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMailKeyTyped
+        char c = evt.getKeyChar();
+        if(c == ' ')
+            evt.consume();
+    }//GEN-LAST:event_txtMailKeyTyped
     
     public boolean camposVacios(){
         if(standardization.campoVacio(txtNickName.getText()) || standardization.campoVacio(txtMail.getText()) )
