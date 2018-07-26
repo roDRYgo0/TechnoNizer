@@ -9,12 +9,12 @@ public class TechnoNizer {
     public static message mess;
     public static load sLoad;    
     public static AddProject aProj;
+    public static DeleteProject dProj;
     
     public static void main(String[] args) {
         log = new logIn();
         mess = new message();
         sLoad = new load();
-        aProj = new AddProject();
         log.setDefaultCloseOperation(3);
         
         log.setVisible(true);
