@@ -21,6 +21,7 @@ import javax.mail.internet.MimeMessage;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JTable;
 import technonizer.*;
 import static technonizer.TechnoNizer.*;
 
@@ -77,8 +78,9 @@ public class standardization {
         return icono;
     }
     
-    public static void showaddProject(JFrame over){
-        aProj.setVisible(true);
+     public static void showaddProject(JFrame over, JTable tabla){
+        aProj = new AddProject(tabla);
+         aProj.setVisible(true);
         aProj.setLocationRelativeTo(over);
         over.setEnabled(false);
         over.setOpacity(0.85f);
@@ -89,6 +91,23 @@ public class standardization {
         over.setEnabled(true);
         over.setOpacity(1);
         aProj.setVisible(false);
+    }
+    
+    
+    
+    public static void showdeleteProject(JFrame over, JTable tabla){
+        dProj = new DeleteProject(tabla);
+        dProj.setVisible(true);
+        dProj.setLocationRelativeTo(over);
+        over.setEnabled(false);
+        over.setOpacity(0.85f);
+    }
+    
+    public static void hidedeleteProject(JFrame over){
+        over.setVisible(true);
+        over.setEnabled(true);
+        over.setOpacity(1);
+        dProj.setVisible(false);
     }
     
     public static void showLoad(JFrame over){

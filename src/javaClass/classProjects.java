@@ -21,10 +21,19 @@ public class classProjects {
     private static Integer condition;
     private static String teams;
     private static String nickname;
-   
+ private static Integer id;
+    
     //<editor-fold defaultstate="collapsed" desc="Getter y Setter">
     
+public static Integer getId() {
+        return id;
+    }
 
+    public static void setId(Integer id) {
+        classProjects.id = id;
+    }
+   
+   
    
 
     public static String getName() {
@@ -85,13 +94,26 @@ public class classProjects {
 public static DefaultTableModel cargarInte() {
 
            
-           DefaultTableModel model = methodsSQL.getTableModel("SELECT name , description , datetime  from projects", "Nombre", "Descripción", "Fecha");
+           DefaultTableModel model = methodsSQL.getTableModel("SELECT id, name , description , datetime  from projects", "ID", "Nombre", "Descripción", "Fecha");
        return model;
    }
 
-   
-    
+public static boolean deleteProj(){
+    boolean status = false;
+    status = methodsSQL.execute("DELETE FROM projects where id = ?", id);
+    return status;
+  
+    }
+
+public static boolean updateProj(){
+    boolean status = false;
+        status = methodsSQL.execute("UPDATE projects SET name=? , description=? , datetime=?, condition=?, teams=? where id=?)",
+                name, description, datetime, 1, 0, id);
+        return status;
+    }
 }
+
+   
     
     
     
