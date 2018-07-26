@@ -277,7 +277,7 @@
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="leftPanel" max="32767" attributes="0"/>
-                      <Component id="scrollContainer" pref="606" max="32767" attributes="0"/>
+                      <Component id="scrollContainer" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -307,7 +307,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="811" max="32767" attributes="0"/>
                       <Component id="lblUsers" min="-2" pref="108" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Component id="lblSettings" min="-2" pref="58" max="-2" attributes="0"/>
@@ -394,7 +394,7 @@
                       <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="155" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

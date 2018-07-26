@@ -14,8 +14,24 @@ import technonizer.*;
 import static technonizer.TechnoNizer.*;
 
 public class standardization {
+
+   
     
     controller control = new controller();
+    
+    public static void showaddProject(JFrame over){
+        aProj.setVisible(true);
+        aProj.setLocationRelativeTo(over);
+        over.setEnabled(false);
+        over.setOpacity(0.85f);
+    }
+    
+    public static void hideaddProject(JFrame over){
+        over.setVisible(true);
+        over.setEnabled(true);
+        over.setOpacity(1);
+        aProj.setVisible(false);
+    }
     
     public static void showLoad(JFrame over){
         sLoad.setVisible(true);
