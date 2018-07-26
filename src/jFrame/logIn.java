@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import javaClass.controller;
 import static javaClass.standardization.invokeHome;
 import javafx.application.Platform;
+import technonizer.TechnoNizer;
 
 public class logIn extends javax.swing.JFrame {
 
@@ -15,6 +16,8 @@ public class logIn extends javax.swing.JFrame {
     
     public logIn() {
         initComponents();
+        
+        TechnoNizer.mess = new message();
         this.setLocationRelativeTo(null);
         controller.asignar(rootPane);
         

@@ -14,6 +14,16 @@ numberModerators numeric(4),
 numberGuests numeric(4),
 price smallmoney not null
 )
+ 
+ select * from users
+
+ delete from usersInformation
+ delete  from events
+ delete from users
+
+ select ui.firstName, ui.lastName, u.imagen from users u, usersInformation ui where u.nickname = ui.nickname and ui.nickname = 'asd'
+
+ SELECT * FROM users WHERE nickname = ' mama'
 
 create table genders(
 id int not null primary key,
@@ -30,6 +40,10 @@ durationMem int not null,
 idMemberships int not null references memberships(id)
 )
 
+select * from memberships
+
+select m.name, u.durationMem, m.numberEvents from users u, memberships m where u.idMemberships = m.id and u.nickname = 
+
 create table usersInformation(
 id int identity(1,1) primary key not null,
 firstName nvarchar(50) not null,
@@ -39,7 +53,7 @@ id_gender int not null references genders(id),
 nickname nvarchar(50) not null references users(nickname)
 )
 
-SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender FROM users u, usersInformation ui
+SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender FROM users u, usersInformation ui where u.nickname = ui.nickname and u.nickname = 
 
 select ui.firstName, ui.lastName from usersInformation ui where ui.nickname = 'dev.rodrig'
 
@@ -82,6 +96,8 @@ condition int not null,
 teams int not null,
 nickname nvarchar(50) not null references users(nickname)
 )
+
+alter table projects alter column datetime nvarchar(100) not null
 
 create table teams(
 id int identity(1,1) primary key not null,

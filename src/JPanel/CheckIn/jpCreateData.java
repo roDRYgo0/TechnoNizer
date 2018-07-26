@@ -5,15 +5,22 @@ import java.awt.BorderLayout;
 import javaClass.*;
 import java.awt.Color;
 import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import technonizer.*;
 
 public class jpCreateData extends javax.swing.JPanel {
     
+    
     public jpCreateData() {
         initComponents();
-
+        
         iconBirthday.setIcon(new controller().changeImage("/imagenes/birthday.png", 35, 35));
         iconGender.setIcon(new controller().changeImage("/imagenes/gender.png", 35, 35));
         
@@ -107,6 +114,11 @@ public class jpCreateData extends javax.swing.JPanel {
                 txtNameFocusLost(evt);
             }
         });
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNameKeyTyped(evt);
+            }
+        });
 
         spName.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -118,6 +130,11 @@ public class jpCreateData extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtLastNameFocusLost(evt);
+            }
+        });
+        txtLastName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLastNameKeyTyped(evt);
             }
         });
 
@@ -142,6 +159,11 @@ public class jpCreateData extends javax.swing.JPanel {
                 txtDiaFocusLost(evt);
             }
         });
+        txtDia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDiaKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Día");
 
@@ -158,6 +180,11 @@ public class jpCreateData extends javax.swing.JPanel {
         txtAnio.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtAnioFocusGained(evt);
+            }
+        });
+        txtAnio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAnioKeyTyped(evt);
             }
         });
 
@@ -309,11 +336,12 @@ public class jpCreateData extends javax.swing.JPanel {
         if(logIn.internet && !camposVacios())
         {
             controller.jpM = new jpMembership();
-            
+            System.out.println(classUsuario.getImage());
             classUsuario.setFirstName(txtName.getText());
             classUsuario.setLastName(txtLastName.getText());
             classUsuario.setBirthdate(txtAnio.getText()+"-"+(cmbMes.getSelectedIndex()+1)+"-"+txtDia.getText());
 //            classUsuario.setId_gender(methodsSQL.getExecuteInt("SELECT id FROM genders WHERE gender = ? ", cmbGender.getSelectedItem().toString()));
+            
             classUsuario.setId_gender(cmbGender.getSelectedIndex());
             
             controller.jpM.setSize(420,603);
@@ -358,11 +386,56 @@ public class jpCreateData extends javax.swing.JPanel {
     }//GEN-LAST:event_txtAnioFocusGained
 
     private void lblImageMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageMouseReleased
-        // TODO add your handling code here:
+        JFileChooser j = new JFileChooser();
+        FileNameExtensionFilter fil = new FileNameExtensionFilter("JPG, PNG & GIF","jpg","png","gif");
+        j.setFileFilter(fil);
+        
+        int s = j.showOpenDialog(this);
+        if(s == JFileChooser.APPROVE_OPTION){
+            String path = j.getSelectedFile().getAbsolutePath();
+            File ruta = new File(path);
+            try{
+                byte[] icono = new byte[(int) ruta.length()];
+                InputStream input = new FileInputStream(ruta);
+                input.read(icono);
+                classUsuario.setImage(icono);
+                System.out.println(icono);
+                lblImage.setIcon(standardization.getImgIcon(icono));
+            }catch(IOException ex){
+                classUsuario.setImage(standardization.image);
+            }
+        }
     }//GEN-LAST:event_lblImageMouseReleased
+
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+        char c = evt.getKeyChar();
+        if(txtName.getText().contains(" ") && c==' ')
+            evt.consume();
+    }//GEN-LAST:event_txtNameKeyTyped
+
+    private void txtLastNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameKeyTyped
+        char c = evt.getKeyChar();
+        if(txtLastName.getText().contains(" ") && c==' ')
+            evt.consume();
+    }//GEN-LAST:event_txtLastNameKeyTyped
+
+    private void txtDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiaKeyTyped
+        char c = evt.getKeyChar();
+        if(txtDia.getText().length()>1 || c < '0' || c >'9')
+            evt.consume();
+    }//GEN-LAST:event_txtDiaKeyTyped
+
+    private void txtAnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnioKeyTyped
+        char c = evt.getKeyChar();
+        if(txtAnio.getText().length()>3 || c < '0' || c >'9')
+            evt.consume();
+    }//GEN-LAST:event_txtAnioKeyTyped
+
     
     public void loadData()
     {
+        classUsuario.setImage(null);
+        lblImage.setIcon(new controller().changeImage("/imagenes/user.png", 150, 150));
         ImageIcon original = new ImageIcon(getClass().getResource("/imagenes/user.png"));
         Icon icono = new ImageIcon(original.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
         lblImage.setText("");

@@ -4,6 +4,7 @@ import jFrame.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -74,6 +75,11 @@ public class jpPassword extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtPasswordFocusLost(evt);
+            }
+        });
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
             }
         });
 
@@ -278,6 +284,11 @@ public class jpPassword extends javax.swing.JPanel {
         else
             standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
     }//GEN-LAST:event_btnRecoverPasswordActionPerformed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER)
+            jbNextActionPerformed(null);
+    }//GEN-LAST:event_txtPasswordKeyPressed
     
     void loadData(){
         loadEye();
@@ -285,12 +296,14 @@ public class jpPassword extends javax.swing.JPanel {
         lblImage.setIcon(new controller().changeImage("/imagenes/user.png", 150, 150));
         lblImage.setText("");
         
-        ResultSet rs = methodsSQL.getExecute("select ui.firstName, ui.lastName from usersInformation ui where ui.nickname = ?", classUsuario.getNickname());
+        ResultSet rs = methodsSQL.getExecute("select ui.firstName, ui.lastName, u.imagen from users u, usersInformation ui where u.nickname = ui.nickname and ui.nickname = ?", classUsuario.getNickname());
         
         try {
             while(rs.next()){
+                System.out.println(classUsuario.getNickname());
                 classUsuario.setFirstName(rs.getString(1));
                 classUsuario.setLastName(rs.getString(2));
+                classUsuario.setImage(rs.getBytes(3));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -299,7 +312,12 @@ public class jpPassword extends javax.swing.JPanel {
         String[] name = classUsuario.getFirstName().split(" ");
         String[] lastName = classUsuario.getLastName().split(" ");
         txtName.setText(name[0]+" "+lastName[0]);
-        
+                System.out.println(classUsuario.getImage());
+
+        if(classUsuario.getImage()==null)
+            lblImage.setIcon(new controller().changeImage("/imagenes/user.png", 150, 150));
+        else
+            lblImage.setIcon(standardization.getImgIcon(classUsuario.getImage()));
     }
     
     //<editor-fold defaultstate="collapsed" desc="compiled code eye">

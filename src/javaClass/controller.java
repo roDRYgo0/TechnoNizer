@@ -21,7 +21,11 @@ public class controller {
     public static jpWelcome jpW;
     public static jpNewPassword jpNP;
     public static jpHome jpH;
+<<<<<<< HEAD
     public static jpProjects jpPJ;
+=======
+    public static jpEditUser jpU;
+>>>>>>> cdd2a1a22bbacbc12d32d8c9f5cc6e3da52a6acb
     public static classMembership[] member = new classMembership[3];
     public static String[] genders = new String[2];
     public static boolean actionCompleted = false;
@@ -35,6 +39,12 @@ public class controller {
     public  Icon changeImage(String path, int width, int height){
         ImageIcon original = new ImageIcon(getClass().getResource(path));
         Icon icono = new ImageIcon(original.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
+        return icono;
+    }
+    
+    public  Icon changeSizeImage(Icon original, int width, int height){
+        ImageIcon d = (ImageIcon)original;
+        Icon icono = new ImageIcon(d.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
         return icono;
     }
     

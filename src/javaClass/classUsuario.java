@@ -15,8 +15,17 @@ public class classUsuario {
     private static Integer idMemberships; 
     private static Integer durationMem;
     private static String code;
+    private static byte[] image;
+
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static byte[] getImage() {
+        return image;
+    }
+
+    public static void setImage(byte[] foto) {
+        classUsuario.image = foto;
+    }
     public static String getCode() {
         return code;
     }
@@ -99,7 +108,7 @@ public class classUsuario {
     
     public static boolean select(){
         boolean status = false;
-        ResultSet rs = methodsSQL.getExecute("SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender FROM users u, usersInformation ui WHERE u.nickname = ui.nickname and u.nickname =  ?", nickname);
+        ResultSet rs = methodsSQL.getExecute("SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender, u.imagen, u.idMemberships FROM users u, usersInformation ui WHERE u.nickname = ui.nickname and u.nickname =  ?", nickname);
         try {
             while(rs.next()){
                 firstName = rs.getString(1);
@@ -107,6 +116,8 @@ public class classUsuario {
                 birthdate = rs.getString(3);
                 mail = rs.getString(4);
                 id_gender = rs.getInt(5);
+                image = rs.getBytes(6);
+                idMemberships = rs.getInt(7);
             }
             status = true;
         } catch (SQLException ex) {
@@ -117,11 +128,44 @@ public class classUsuario {
     
     public static boolean insert(){
         boolean status = false;
-        status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, durationMem, idMemberships) VALUES ( ?, ?, ?, ?, ?, ?)",
-                nickname, mail, password, 1, durationMem, idMemberships);
-        if(status)
-            status= methodsSQL.execute("INSERT INTO usersInformation VALUES (?, ?, ? ,?, ?)",
-                    firstName, lastName, birthdate, id_gender, nickname);
+        if(image==null){
+            System.out.println("aqui");
+            status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, durationMem, idMemberships) VALUES ( ?, ?, ?, ?, ?, ?)",
+                    nickname, mail, password, 1, durationMem, idMemberships);
+            if(status)
+                status= methodsSQL.execute("INSERT INTO usersInformation VALUES (?, ?, ? ,?, ?)",
+                        firstName, lastName, birthdate, id_gender, nickname);
+        
+        }else{
+            System.out.println("aqui no");
+            status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, imagen, durationMem, idMemberships) VALUES ( ?, ?, ?, ?, ?, ?, ?)",
+                    nickname, mail, password, 1, image, durationMem, idMemberships);
+            if(status)
+                status= methodsSQL.execute("INSERT INTO usersInformation VALUES (?, ?, ? ,?, ?)",
+                        firstName, lastName, birthdate, id_gender, nickname);
+            
+        }
+        return status;
+    }
+    
+    public static boolean update(){
+        boolean status = false;
+        if(image==null){
+            status = methodsSQL.execute("UPDATE users SET mail = ?  WHERE nickname = ?",
+                    mail, nickname);
+            if(status)
+                status= methodsSQL.execute("Update usersInformation SET firstName = ?, lastName = ?, birthdate = ?, id_gender = ? WHERE nickname  = ?",
+                        firstName, lastName, birthdate, id_gender, nickname);
+        
+        }else{
+            System.out.println("aqui no");
+            status = methodsSQL.execute("UPDATE users SET mail = ?, imagen = ?  WHERE nickname = ?",
+                    mail, image, nickname);
+            if(status)
+                status= methodsSQL.execute("Update usersInformation SET firstName = ?, lastName = ?, birthdate = ?, id_gender = ? WHERE nickname  = ?",
+                        firstName, lastName, birthdate, id_gender, nickname);
+            
+        }
         return status;
     }
     

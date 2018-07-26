@@ -9,6 +9,7 @@ import javafx.application.Platform;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import technonizer.TechnoNizer;
 
 public class home extends javax.swing.JFrame {
 
@@ -19,7 +20,7 @@ public class home extends javax.swing.JFrame {
     public home(boolean load) {
         initComponents();
         this.internet = logIn.internet;
-        
+        TechnoNizer.mess = new message(TechnoNizer.home);
         load(load);
     }
     
@@ -38,7 +39,10 @@ public class home extends javax.swing.JFrame {
     void loadImage(){
         lblStart.setIcon(new controller().changeImage("/imagenes/home.png", 24, 24));
         lblUser.setIcon(new controller().changeImage("/imagenes/username.png", 24, 24));
-        lblImageUser.setIcon(new controller().changeImage("/imagenes/user.png", 97, 97));
+        if(classUsuario.getImage()==null)
+            lblImageUser.setIcon(new controller().changeImage("/imagenes/user.png", 97, 97));
+        else
+            lblImageUser.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
         lblMembership.setIcon(new controller().changeImage("/imagenes/membership.png", 24, 24));
         lblEvent.setIcon(new controller().changeImage("/imagenes/event.png", 24, 24));
         lblProject.setIcon(new controller().changeImage("/imagenes/project.png", 24, 24));
@@ -267,6 +271,11 @@ public class home extends javax.swing.JFrame {
         leftPanel.setBackground(new java.awt.Color(42, 42, 42));
 
         jPanel3.setBackground(new java.awt.Color(34, 34, 34));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel3MouseReleased(evt);
+            }
+        });
 
         lblStart.setMaximumSize(new java.awt.Dimension(28, 28));
         lblStart.setMinimumSize(new java.awt.Dimension(28, 28));
@@ -298,6 +307,11 @@ public class home extends javax.swing.JFrame {
         );
 
         jPanel4.setBackground(new java.awt.Color(34, 34, 34));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel4MouseReleased(evt);
+            }
+        });
 
         lblUser.setMaximumSize(new java.awt.Dimension(28, 28));
         lblUser.setMinimumSize(new java.awt.Dimension(28, 28));
@@ -586,15 +600,31 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_topBarMousePressed
 
     private void lblUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsersMouseClicked
-        jpUser jpU = new jpUser();
-        jpU.setSize(698, 460);
-        jpU.setLocation(0,0);
-        
-        scrollContainer.removeAll();
-        scrollContainer.add(jpU,BorderLayout.CENTER);
+        controller.jpU = new jpEditUser();
+        controller.jpU.setLocation(0,0);
+
+        scrollContainer.setViewportView(controller.jpU);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }//GEN-LAST:event_lblUsersMouseClicked
+
+    private void jPanel4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseReleased
+        controller.jpU = new jpEditUser();
+        controller.jpU.setLocation(0,0);
+
+        scrollContainer.setViewportView(controller.jpU);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }//GEN-LAST:event_jPanel4MouseReleased
+
+    private void jPanel3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseReleased
+        jpH = new jpHome(true);
+        jpH.setLocation(0,0);
+
+        scrollContainer.setViewportView(jpH);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }//GEN-LAST:event_jPanel3MouseReleased
 
     public void loadData(String image, String text, JLabel label)
     {
