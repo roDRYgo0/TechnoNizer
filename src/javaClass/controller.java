@@ -6,6 +6,7 @@ import JPanel.CheckIn.*;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class controller {
@@ -27,6 +28,8 @@ public class controller {
     public static classMembership[] member = new classMembership[3];
     public static String[] genders = new String[2];
     public static boolean actionCompleted = false;
+    
+    public static JFrame rootFrame;
     
     
     

@@ -14,8 +14,8 @@ public class TechnoNizer {
     public static DeleteReminder dRem;
     
     public static void main(String[] args) {
-        log = new logIn();
         mess = new message();
+        log = new logIn();
         sLoad = new load();
         log.setDefaultCloseOperation(3);
         

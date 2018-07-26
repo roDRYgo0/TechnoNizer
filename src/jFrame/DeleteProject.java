@@ -121,9 +121,9 @@ public class DeleteProject extends javax.swing.JFrame {
            int eliminar = JOptionPane.showConfirmDialog(this, "¿Está seguro que desea eliminar?","Atención", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
            if (eliminar==0){    
             if(classProjects.deleteProj()){
-                standardization.showMessage("ok", "Datos Eliminados", this);
+                standardization.showMessage("ok", "Datos Eliminados");
             }else{
-                standardization.showMessage("warning", "Error al eliminar los datos", this);
+                standardization.showMessage("warning", "Error al eliminar los datos");
             }
             }
                

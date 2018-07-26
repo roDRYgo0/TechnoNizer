@@ -2,7 +2,6 @@ package jFrame;
 
 import javaClass.classProjects;
 import javaClass.standardization;
-import javafx.application.Platform;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import technonizer.TechnoNizer;
