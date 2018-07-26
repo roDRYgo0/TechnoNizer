@@ -10,6 +10,7 @@ public class TechnoNizer {
     public static load sLoad;    
     public static AddProject aProj;
     public static DeleteProject dProj;
+    public static UpdateProject uProj;
     
     public static void main(String[] args) {
         log = new logIn();
