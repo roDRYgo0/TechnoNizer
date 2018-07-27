@@ -269,6 +269,7 @@ public class jpReminder extends javax.swing.JPanel {
         txtFecha1.setVisible(true);
         txtHora1.setVisible(true);
         jBInsertar1.setVisible(true);
+        jBInsertar.setVisible(false);
         txtId1.setVisible(false);
         labelId.setVisible(false);
         ButDelete.setVisible(false);
@@ -330,6 +331,7 @@ public class jpReminder extends javax.swing.JPanel {
         txtReminder1.setVisible(false);
         txtFecha1.setVisible(false);
         txtHora1.setVisible(false);
+        jBInsertar.setVisible(false);
             }else{
                 JOptionPane.showMessageDialog(this, "Error al actualizar recordatorio");
             }
