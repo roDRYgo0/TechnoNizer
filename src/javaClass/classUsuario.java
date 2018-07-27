@@ -17,8 +17,43 @@ public class classUsuario {
     private static String code;
     private static byte[] image;
 
+    private static String myGender;
+    private static String myMembership;
+    private static int myDuration;
+    private static int myNumEvent;
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static String getMyGender() {
+        return myGender;
+    }
+
+    public static void setMyGender(String myGender) {
+        classUsuario.myGender = myGender;
+    }
+
+    public static String getMyMembership() {
+        return myMembership;
+    }
+
+    public static void setMyMembership(String myMembership) {
+        classUsuario.myMembership = myMembership;
+    }
+
+    public static int getMyDuration() {
+        return myDuration;
+    }
+
+    public static void setMyDuration(int myDuration) {
+        classUsuario.myDuration = myDuration;
+    }
+
+    public static int getMyNumEvent() {
+        return myNumEvent;
+    }
+
+    public static void setMyNumEvent(int myNumEvent) {
+        classUsuario.myNumEvent = myNumEvent;
+    }
     public static byte[] getImage() {
         return image;
     }
@@ -106,6 +141,80 @@ public class classUsuario {
     }
 //</editor-fold>
     
+    public static boolean updateSelect(){
+        boolean status = true;
+        ResultSet rs;
+        if(status)
+            status=select();  
+        System.out.println(status);
+        if(status){
+            rs = methodsSQL.getExecute("SELECT gender FROM genders WHERE id = ?", classUsuario.getId_gender());
+            try {
+                while(rs.next())
+                    myGender = rs.getString(1);
+                status = true;
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+                status = false;
+            }
+        }
+        if(status){
+            rs = methodsSQL.getExecute("select m.name, u.durationMem, m.numberEvents from users u, memberships m where u.idMemberships = m.id and u.nickname = ?", classUsuario.getNickname());
+            try {
+                while(rs.next()){
+                    myMembership = rs.getString(1);
+                    myDuration = rs.getInt(2);
+                    myNumEvent = rs.getInt(3);
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+                status= false;
+            }
+        }
+        return status;
+    }
+    
+    public static void loadAllMember(){
+        for(int i=0; i < 3; i++){
+            controller.member[i] = asignarDatos(i+1);
+        }
+        controller.genders = capturarGeneros();
+    }
+    
+    static String[] capturarGeneros(){
+        String[] genders = new String[2];
+        
+        ResultSet rs = methodsSQL.getExecute("SELECT gender FROM genders");
+        try {
+            for(int i = 0; rs.next(); i++){
+                genders[i]= rs.getString(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return genders;
+    }
+    
+    static classMembership asignarDatos(int m){
+        classMembership member = new classMembership();
+        try {
+            ResultSet rs = methodsSQL.getExecute("SELECT m.name, m.description, m.condition, m.numberEvents, m.numberAdmins, m.numberModerators, m.numberGuests, m.price FROM memberships m WHERE m.id = ? ", m);
+            while(rs.next()){
+                member.setName(rs.getString(1));
+                member.setDescription(rs.getString(2));
+                member.setCondition(rs.getInt(3));
+                member.setNumberEvents(rs.getInt(4));
+                member.setNumberAdmins(rs.getInt(5));
+                member.setNumberModerators(rs.getInt(6));
+                member.setNumberGuests(rs.getInt(7));
+                member.setPrice(rs.getFloat(8));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return member;
+    }
+    
     public static boolean updateMembership(){
         return  methodsSQL.execute("UPDATE users SET idMemberships = ? WHERE nickname = ?", idMemberships, nickname);
     }
@@ -172,6 +281,10 @@ public class classUsuario {
         }
         return status;
     }
+    
+//    public static boolean delete(){
+//        return methodsSQL.execute("UPDATE users SET condition = 0 WHERE nickname = ?", nickname);
+//    }
     
     public static boolean changePassword(){
         boolean status = false;

@@ -25,6 +25,7 @@ public class controller {
     public static jpProjects jpPJ;
     public static jpMembershipChange jpMC;
     public static jpEditUser jpU;
+    public static jpEvent jpE;
     public static jpReminder jpREM;
     public static classMembership[] member = new classMembership[3];
     public static String[] genders = new String[2];

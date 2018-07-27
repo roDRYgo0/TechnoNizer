@@ -81,8 +81,16 @@ public class standardization {
     
      public static void showaddProject(JFrame over, JTable tabla){
         aProj = new AddProject(tabla);
-         aProj.setVisible(true);
+        aProj.setVisible(true);
         aProj.setLocationRelativeTo(over);
+        over.setEnabled(false);
+        over.setOpacity(0.85f);
+    }
+     
+      public static void showupdateProject(JFrame over){
+        uProj = new UpdateProject();
+        uProj.setVisible(true);
+        uProj.setLocationRelativeTo(over);
         over.setEnabled(false);
         over.setOpacity(0.85f);
     }
@@ -177,6 +185,14 @@ public class standardization {
         home.setVisible(true);
     }
     
+    public static void invokeLogin()
+    {
+        log = new logIn();
+        log.setLocationRelativeTo(null);
+        home.setVisible(false);
+        log.setVisible(true);
+    }
+    
     public static boolean campoVacio(String text){
         text=text.replaceAll(" ", "");
         if(text.isEmpty() || text.length() == 0)
@@ -248,10 +264,22 @@ public class standardization {
     
     
     public static boolean validatePassword(String cadena){
-        
-        
-       String formato = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$";
-        return cadena.matches(formato);
+         Pattern pattern = Pattern.compile("(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$");
+         Matcher mather = pattern.matcher(cadena);
+        return mather.find();
+    }
+    
+    public static boolean vlidateEmail(String cadena){
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Matcher mather = pattern.matcher(cadena);
+        return mather.find();
+    }
+    
+    public static String convertPassword(char[] pass){
+        String password="";
+        for(char a : pass)
+            password+=Character.toString(a);
+        return password;
     }
     
 }
