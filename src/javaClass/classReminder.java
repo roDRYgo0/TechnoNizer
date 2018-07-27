@@ -92,7 +92,7 @@ public static boolean deleteReminder(){
   
     }
 
-public static boolean updateProj(){
+public static boolean updatereminder(){
     boolean status = false;
         status = methodsSQL.execute("UPDATE reminders SET condition=? , reminder=? , alarmDateTime=?, repeat=?, nickname=? where id=?)",
                 1, reminder, datetime, repeat, "asd", id);
