@@ -264,6 +264,7 @@ public class jpReminder extends javax.swing.JPanel {
         jLabel3.setVisible(true);
         jLabel4.setVisible(true);
         jLabel5.setVisible(true);
+        ButDelete.setVisible(false);
         txtReminder1.setVisible(true);
         txtFecha1.setVisible(true);
         txtHora1.setVisible(true);
@@ -295,6 +296,7 @@ public class jpReminder extends javax.swing.JPanel {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
       txtId1.setVisible(true);
+      ButDelete.setVisible(false);
         labelId.setVisible(true);
         jLabel2.setVisible(true);
         jLabel3.setVisible(true);
@@ -303,6 +305,7 @@ public class jpReminder extends javax.swing.JPanel {
         txtReminder1.setVisible(true);
         txtFecha1.setVisible(true);
         txtHora1.setVisible(true);            
+        jBInsertar.setVisible(true);
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void jBInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInsertarActionPerformed
@@ -317,6 +320,9 @@ public class jpReminder extends javax.swing.JPanel {
 
             if(classReminder.updatereminder()){
                 JOptionPane.showMessageDialog(this, "Recordatorio actualizado");
+                txtId1.setVisible(false);
+        labelId.setVisible(false);
+        ButDelete.setVisible(false);
                  jLabel2.setVisible(false);
         jLabel3.setVisible(false);
         jLabel4.setVisible(false);
