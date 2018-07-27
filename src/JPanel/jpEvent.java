@@ -1,6 +1,7 @@
 package JPanel;
 
 import java.awt.BorderLayout;
+import javaClass.classUsuario;
 import javaClass.controller;
 
 public class jpEvent extends javax.swing.JPanel {
@@ -11,7 +12,7 @@ public class jpEvent extends javax.swing.JPanel {
     public jpEvent() {
         initComponents();
         paneles = 12;
-        insertarPaneles(paneles);
+        insertarPaneles(classUsuario.getMyNumberEventUse()+3);
     }
     
     void insertarPaneles(int paneles){
@@ -37,6 +38,19 @@ public class jpEvent extends javax.swing.JPanel {
             count++;
             linea++;
         }
+        if(linea>3){
+            x=50;
+            y+=155;
+            linea=0;
+        }
+        controller.jpAE = new addEvent();
+
+        controller.jpAE.setSize(190,120);
+        controller.jpAE.setLocation(x,y);
+        controller.jpAE.removeAll();
+        this.add(controller.jpAE,BorderLayout.CENTER);
+        this.revalidate();
+        this.repaint();
     }
 
     @SuppressWarnings("unchecked")

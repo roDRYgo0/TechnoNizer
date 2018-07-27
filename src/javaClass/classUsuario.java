@@ -2,6 +2,8 @@ package javaClass;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class classUsuario {
     
@@ -21,8 +23,24 @@ public class classUsuario {
     private static String myMembership; 
     private static int myDuration;
     private static int myNumEvent;
+    private static int myNumberEventDisp;
+    private static int myNumberEventUse;
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static int getMyNumberEventUse() {
+        return myNumberEventUse;
+    }
+
+    public static void setMyNumberEventUse(int myNumberEventUse) {
+        classUsuario.myNumberEventUse = myNumberEventUse;
+    }
+    public static int getMyNumberEventDisp() {
+        return myNumberEventDisp;
+    }
+
+    public static void setMyNumberEventDisp(int myNumberEventDisp) {
+        classUsuario.myNumberEventDisp = myNumberEventDisp;
+    }
     public static String getMyGender() {
         return myGender;
     }
@@ -169,6 +187,17 @@ public class classUsuario {
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
                 status= false;
+            }
+        }
+        if(status){
+            rs=methodsSQL.getExecute("SELECT COUNT(*) FROM events WHERE nicknameCreator = ?", nickname);
+            try {
+                while(rs.next()){
+                    myNumberEventUse = rs.getInt(1);
+                }
+                myNumberEventDisp = myNumEvent-myNumberEventUse;
+            } catch (SQLException ex) {
+                Logger.getLogger(classUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return status;
