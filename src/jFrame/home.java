@@ -1,14 +1,13 @@
 package jFrame;
 
 import JPanel.*;
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Image;
 import javaClass.*;
 import static javaClass.controller.jpH;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import technonizer.TechnoNizer;
 
 public class home extends javax.swing.JFrame {
 
@@ -18,6 +17,8 @@ public class home extends javax.swing.JFrame {
     
     public home(boolean load) {
         initComponents();
+        classUsuario.updateSelect();
+        classUsuario.loadAllMember();
         controller.rootFrame = this;
         this.internet = logIn.internet;
         load(load);
@@ -46,7 +47,8 @@ public class home extends javax.swing.JFrame {
         lblEvent.setIcon(new controller().changeImage("/imagenes/event.png", 24, 24));
         lblProject.setIcon(new controller().changeImage("/imagenes/project.png", 24, 24));
         lblAgenda.setIcon(new controller().changeImage("/imagenes/agenda.png", 24, 24));
-        loadData("user","Not found", lblUsers);
+        lblUsers.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 24, 24));
+        lblUsers.setText(classUsuario.getNickname());
         loadData("settings","", lblSettings);
         
     }
@@ -60,6 +62,8 @@ public class home extends javax.swing.JFrame {
         popupLenguage = new javax.swing.JPopupMenu();
         itemSpanish = new javax.swing.JMenuItem();
         itemEnglish = new javax.swing.JMenuItem();
+        popupSettings = new javax.swing.JPopupMenu();
+        itemSettings = new javax.swing.JMenuItem();
         topBar = new javax.swing.JPanel();
         btnExit = new javax.swing.JButton();
         btnMin = new javax.swing.JButton();
@@ -72,27 +76,27 @@ public class home extends javax.swing.JFrame {
         lblSettings = new javax.swing.JLabel();
         lblUsers = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        pnGeneral = new javax.swing.JPanel();
         lblStart = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        pnUser = new javax.swing.JPanel();
         lblUser = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        pnMem = new javax.swing.JPanel();
         lblMembership = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         lblImageUser = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
+        pnEve = new javax.swing.JPanel();
         lblEvent = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
+        pnProj = new javax.swing.JPanel();
         lblProject = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        pnAgenda = new javax.swing.JPanel();
         lblAgenda = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         scrollContainer = new javax.swing.JScrollPane();
 
         popupLenguage.setBorderPainted(false);
@@ -107,12 +111,19 @@ public class home extends javax.swing.JFrame {
         itemEnglish.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         popupLenguage.add(itemEnglish);
 
+        itemSettings.setText("Cerrar sesión");
+        itemSettings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                itemSettingsMouseReleased(evt);
+            }
+        });
+        popupSettings.add(itemSettings);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1150, 680));
         setMinimumSize(new java.awt.Dimension(1150, 680));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1150, 680));
 
         topBar.setBackground(new java.awt.Color(255, 255, 255));
         topBar.setMaximumSize(new java.awt.Dimension(420, 30));
@@ -132,6 +143,7 @@ public class home extends javax.swing.JFrame {
         btnExit.setBackground(new java.awt.Color(255, 255, 255));
         btnExit.setText("X");
         btnExit.setAlignmentY(0.0F);
+        btnExit.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnExit.setBorderPainted(false);
         btnExit.setFocusable(false);
         btnExit.setMaximumSize(new java.awt.Dimension(30, 30));
@@ -146,6 +158,7 @@ public class home extends javax.swing.JFrame {
         btnMin.setBackground(new java.awt.Color(255, 255, 255));
         btnMin.setText("-");
         btnMin.setAlignmentY(0.0F);
+        btnMin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnMin.setBorderPainted(false);
         btnMin.setFocusable(false);
         btnMin.setMaximumSize(new java.awt.Dimension(30, 30));
@@ -160,6 +173,7 @@ public class home extends javax.swing.JFrame {
         btnMax.setBackground(new java.awt.Color(255, 255, 255));
         btnMax.setText("⬜");
         btnMax.setAlignmentY(0.0F);
+        btnMax.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnMax.setBorderPainted(false);
         btnMax.setFocusable(false);
         btnMax.setMaximumSize(new java.awt.Dimension(30, 30));
@@ -174,6 +188,7 @@ public class home extends javax.swing.JFrame {
         lblLenguage.setBackground(new java.awt.Color(255, 255, 255));
         lblLenguage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/globe.png"))); // NOI18N
         lblLenguage.setAlignmentY(0.0F);
+        lblLenguage.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         lblLenguage.setMaximumSize(new java.awt.Dimension(30, 30));
         lblLenguage.setMinimumSize(new java.awt.Dimension(30, 30));
         lblLenguage.setOpaque(true);
@@ -233,6 +248,11 @@ public class home extends javax.swing.JFrame {
         jLabel2.setText("TechnoNizer");
 
         lblSettings.setText("settings");
+        lblSettings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblSettingsMouseReleased(evt);
+            }
+        });
 
         lblUsers.setForeground(new java.awt.Color(255, 255, 255));
         lblUsers.setText("Not found");
@@ -259,17 +279,25 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
             .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         leftPanel.setBackground(new java.awt.Color(42, 42, 42));
 
-        jPanel3.setBackground(new java.awt.Color(34, 34, 34));
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnGeneral.setBackground(new java.awt.Color(34, 34, 34));
+        pnGeneral.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pnGeneralFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pnGeneralFocusLost(evt);
+            }
+        });
+        pnGeneral.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jPanel3MouseReleased(evt);
+                pnGeneralMouseReleased(evt);
             }
         });
 
@@ -281,31 +309,39 @@ public class home extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("General");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnGeneralLayout = new javax.swing.GroupLayout(pnGeneral);
+        pnGeneral.setLayout(pnGeneralLayout);
+        pnGeneralLayout.setHorizontalGroup(
+            pnGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnGeneralLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(lblStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        pnGeneralLayout.setVerticalGroup(
+            pnGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGeneralLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jPanel4.setBackground(new java.awt.Color(34, 34, 34));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnUser.setBackground(new java.awt.Color(34, 34, 34));
+        pnUser.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pnUserFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pnUserFocusLost(evt);
+            }
+        });
+        pnUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jPanel4MouseReleased(evt);
+                pnUserMouseReleased(evt);
             }
         });
 
@@ -317,31 +353,39 @@ public class home extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Usuario");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnUserLayout = new javax.swing.GroupLayout(pnUser);
+        pnUser.setLayout(pnUserLayout);
+        pnUserLayout.setHorizontalGroup(
+            pnUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnUserLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        pnUserLayout.setVerticalGroup(
+            pnUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUserLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jPanel5.setBackground(new java.awt.Color(34, 34, 34));
-        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnMem.setBackground(new java.awt.Color(34, 34, 34));
+        pnMem.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pnMemFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pnMemFocusLost(evt);
+            }
+        });
+        pnMem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jPanel5MouseReleased(evt);
+                pnMemMouseReleased(evt);
             }
         });
 
@@ -353,22 +397,22 @@ public class home extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Membresia");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnMemLayout = new javax.swing.GroupLayout(pnMem);
+        pnMem.setLayout(pnMemLayout);
+        pnMemLayout.setHorizontalGroup(
+            pnMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnMemLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(lblMembership, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        pnMemLayout.setVerticalGroup(
+            pnMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMemLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMembership, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -396,7 +440,20 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel8.setBackground(new java.awt.Color(34, 34, 34));
+        pnEve.setBackground(new java.awt.Color(34, 34, 34));
+        pnEve.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pnEveFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pnEveFocusLost(evt);
+            }
+        });
+        pnEve.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                pnEveMouseReleased(evt);
+            }
+        });
 
         lblEvent.setMaximumSize(new java.awt.Dimension(28, 28));
         lblEvent.setMinimumSize(new java.awt.Dimension(28, 28));
@@ -406,31 +463,39 @@ public class home extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Eventos");
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnEveLayout = new javax.swing.GroupLayout(pnEve);
+        pnEve.setLayout(pnEveLayout);
+        pnEveLayout.setHorizontalGroup(
+            pnEveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnEveLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+        pnEveLayout.setVerticalGroup(
+            pnEveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnEveLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnEveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEvent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jPanel9.setBackground(new java.awt.Color(34, 34, 34));
-        jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnProj.setBackground(new java.awt.Color(34, 34, 34));
+        pnProj.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pnProjFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pnProjFocusLost(evt);
+            }
+        });
+        pnProj.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jPanel9MouseReleased(evt);
+                pnProjMouseReleased(evt);
             }
         });
 
@@ -438,58 +503,71 @@ public class home extends javax.swing.JFrame {
         lblProject.setMinimumSize(new java.awt.Dimension(28, 28));
         lblProject.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Proyectos");
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Proyectos");
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnProjLayout = new javax.swing.GroupLayout(pnProj);
+        pnProj.setLayout(pnProjLayout);
+        pnProjLayout.setHorizontalGroup(
+            pnProjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnProjLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(lblProject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+        pnProjLayout.setVerticalGroup(
+            pnProjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnProjLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnProjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jPanel10.setBackground(new java.awt.Color(34, 34, 34));
+        pnAgenda.setBackground(new java.awt.Color(34, 34, 34));
+        pnAgenda.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                pnAgendaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pnAgendaFocusLost(evt);
+            }
+        });
+        pnAgenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                pnAgendaMouseReleased(evt);
+            }
+        });
 
         lblAgenda.setMaximumSize(new java.awt.Dimension(28, 28));
         lblAgenda.setMinimumSize(new java.awt.Dimension(28, 28));
         lblAgenda.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Agenda");
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Aenda");
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnAgendaLayout = new javax.swing.GroupLayout(pnAgenda);
+        pnAgenda.setLayout(pnAgendaLayout);
+        pnAgendaLayout.setHorizontalGroup(
+            pnAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnAgendaLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(lblAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        pnAgendaLayout.setVerticalGroup(
+            pnAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnAgendaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -498,13 +576,13 @@ public class home extends javax.swing.JFrame {
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnMem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnEve, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnProj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnAgenda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator1)
         );
         leftPanelLayout.setVerticalGroup(
@@ -512,20 +590,20 @@ public class home extends javax.swing.JFrame {
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnMem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnProj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addComponent(pnAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         scrollContainer.setBackground(new java.awt.Color(255, 51, 255));
@@ -613,9 +691,9 @@ public class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }//GEN-LAST:event_lblUsersMouseClicked
 
-    private void jPanel4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseReleased
+    private void pnUserMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnUserMouseReleased
         showEditUser();
-    }//GEN-LAST:event_jPanel4MouseReleased
+    }//GEN-LAST:event_pnUserMouseReleased
 
     public void showEditUser(){
         controller.jpU = new jpEditUser(lblImageUser);
@@ -627,7 +705,7 @@ public class home extends javax.swing.JFrame {
     }
     
     public void membershipChange(){
-        controller.jpMC = new jpMembershipChange();
+        controller.jpMC = new jpMembershipChange(this);
         controller.jpMC.setLocation(0,0);
 
         scrollContainer.setViewportView(controller.jpMC);
@@ -635,28 +713,105 @@ public class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
-    private void jPanel3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseReleased
+    private void pnGeneralMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnGeneralMouseReleased
         jpH = new jpHome(true, this);
         jpH.setLocation(0,0);
 
         scrollContainer.setViewportView(jpH);
         scrollContainer.revalidate();
         scrollContainer.repaint();
-    }//GEN-LAST:event_jPanel3MouseReleased
+    }//GEN-LAST:event_pnGeneralMouseReleased
 
-    private void jPanel9MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseReleased
+    private void pnProjMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnProjMouseReleased
         controller.jpPJ = new jpProjects();
         controller.jpPJ.setLocation(0,0);
 
         scrollContainer.setViewportView(controller.jpPJ);
         scrollContainer.revalidate();
         scrollContainer.repaint();
-    }//GEN-LAST:event_jPanel9MouseReleased
+    }//GEN-LAST:event_pnProjMouseReleased
 
-    private void jPanel5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseReleased
+    private void pnMemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnMemMouseReleased
         membershipChange();
-    }//GEN-LAST:event_jPanel5MouseReleased
+    }//GEN-LAST:event_pnMemMouseReleased
 
+    private void lblSettingsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettingsMouseReleased
+        popupSettings.show(this,lblSettings.getX()-45,lblSettings.getY()+70);
+    }//GEN-LAST:event_lblSettingsMouseReleased
+
+    private void itemSettingsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemSettingsMouseReleased
+        standardization.invokeLogin();
+    }//GEN-LAST:event_itemSettingsMouseReleased
+
+    //<editor-fold defaultstate="collapsed" desc="fail">
+        
+    private void pnGeneralFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnGeneralFocusGained
+        pnGeneral.setBackground(new Color(54,54,54));
+    }//GEN-LAST:event_pnGeneralFocusGained
+
+    private void pnGeneralFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnGeneralFocusLost
+        pnGeneral.setBackground(new Color(34,34,34));
+    }//GEN-LAST:event_pnGeneralFocusLost
+
+    private void pnUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnUserFocusGained
+        pnUser.setBackground(new Color(54,54,54));
+    }//GEN-LAST:event_pnUserFocusGained
+
+    private void pnUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnUserFocusLost
+        pnUser.setBackground(new Color(34,34,34));
+    }//GEN-LAST:event_pnUserFocusLost
+
+    private void pnMemFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnMemFocusGained
+        pnMem.setBackground(new Color(54,54,54));
+    }//GEN-LAST:event_pnMemFocusGained
+
+    private void pnMemFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnMemFocusLost
+        pnMem.setBackground(new Color(34,34,34));
+    }//GEN-LAST:event_pnMemFocusLost
+
+    private void pnEveFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnEveFocusGained
+        pnEve.setBackground(new Color(54,54,54));
+    }//GEN-LAST:event_pnEveFocusGained
+
+    private void pnEveFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnEveFocusLost
+        pnEve.setBackground(new Color(34,34,34));
+    }//GEN-LAST:event_pnEveFocusLost
+
+    private void pnProjFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnProjFocusGained
+        pnProj.setBackground(new Color(54,54,54));
+    }//GEN-LAST:event_pnProjFocusGained
+
+    private void pnProjFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnProjFocusLost
+        pnProj.setBackground(new Color(34,34,34));
+    }//GEN-LAST:event_pnProjFocusLost
+
+    private void pnAgendaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnAgendaFocusGained
+        pnAgenda.setBackground(new Color(54,54,54));
+    }//GEN-LAST:event_pnAgendaFocusGained
+
+    private void pnAgendaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnAgendaFocusLost
+        pnAgenda.setBackground(new Color(34,34,34));
+    }//GEN-LAST:event_pnAgendaFocusLost
+
+    private void pnEveMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnEveMouseReleased
+        controller.jpE = new jpEvent();
+        controller.jpE.setLocation(0,0);
+
+        scrollContainer.setViewportView(controller.jpE);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }//GEN-LAST:event_pnEveMouseReleased
+
+    private void pnAgendaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnAgendaMouseReleased
+        controller.jpREM = new jpReminder();
+        controller.jpREM.setLocation(0,0);
+
+        scrollContainer.setViewportView(controller.jpREM);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }//GEN-LAST:event_pnAgendaMouseReleased
+    //</editor-fold>
+    
     public void loadData(String image, String text, JLabel label)
     {
         ImageIcon original = new ImageIcon(getClass().getResource("/imagenes/"+image+".png"));
@@ -664,13 +819,6 @@ public class home extends javax.swing.JFrame {
         label.setText(text);
         label.setIcon(icono);
     }
-    
-//    public void loadImage()
-//    {
-//        ImageIcon original = new ImageIcon(getClass().getResource("/imagenes/user.png"));
-//        Icon icono = new ImageIcon(original.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
-//        lblImage.setIcon(icono);
-//    }
 
     //<editor-fold defaultstate="collapsed" desc="compiled code">
     
@@ -679,22 +827,17 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JButton btnMax;
     private javax.swing.JButton btnMin;
     private javax.swing.JMenuItem itemEnglish;
+    private javax.swing.JMenuItem itemSettings;
     private javax.swing.JMenuItem itemSpanish;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel10;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAgenda;
     private javax.swing.JLabel lblEvent;
@@ -707,7 +850,14 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JLabel lblUser;
     private javax.swing.JLabel lblUsers;
     private javax.swing.JPanel leftPanel;
+    private javax.swing.JPanel pnAgenda;
+    private javax.swing.JPanel pnEve;
+    private javax.swing.JPanel pnGeneral;
+    private javax.swing.JPanel pnMem;
+    private javax.swing.JPanel pnProj;
+    private javax.swing.JPanel pnUser;
     private javax.swing.JPopupMenu popupLenguage;
+    private javax.swing.JPopupMenu popupSettings;
     private javax.swing.JPanel rootpane;
     private javax.swing.JScrollPane scrollContainer;
     private javax.swing.JToggleButton tbtnInternet;

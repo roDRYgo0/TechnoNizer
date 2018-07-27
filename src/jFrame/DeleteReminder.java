@@ -70,6 +70,12 @@ public class DeleteReminder extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ingrese el ID del recordatorio a Eliminar");
 
+        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIDKeyTyped(evt);
+            }
+        });
+
         jButton1.setText("ELIMINAR RECORDATORIO");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +145,11 @@ public class DeleteReminder extends javax.swing.JFrame {
         TechnoNizer.home.setEnabled(true);
         TechnoNizer.home.setOpacity(1);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
+             char c=evt.getKeyChar();
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_txtIDKeyTyped
 
    
 

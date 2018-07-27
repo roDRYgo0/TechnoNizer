@@ -5,11 +5,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Arrays;
 import javaClass.*;
-import technonizer.TechnoNizer;
 
 public class jpCreateUser extends javax.swing.JPanel {
     
-    boolean sw, continueM, continueN;
+    boolean sw, continueM, continueN, continueP;
     char echoChar;
     
     public jpCreateUser() {
@@ -62,6 +61,7 @@ public class jpCreateUser extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        checkPass = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(204, 204, 204));
@@ -78,7 +78,6 @@ public class jpCreateUser extends javax.swing.JPanel {
         jButton1.setText("Atras");
         jButton1.setBorderPainted(false);
         jButton1.setFocusable(false);
-        jButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -229,6 +228,10 @@ public class jpCreateUser extends javax.swing.JPanel {
         jSeparator2.setForeground(new java.awt.Color(204, 204, 204));
         jSeparator2.setEnabled(false);
 
+        checkPass.setMaximumSize(new java.awt.Dimension(25, 25));
+        checkPass.setMinimumSize(new java.awt.Dimension(25, 25));
+        checkPass.setPreferredSize(new java.awt.Dimension(25, 25));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -258,12 +261,15 @@ public class jpCreateUser extends javax.swing.JPanel {
                                 .addGap(0, 0, 0)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(spPassword)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 0, 0)
-                                            .addComponent(lblEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(spPassword)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, 0)
+                                                .addComponent(lblEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(checkPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,26 +346,33 @@ public class jpCreateUser extends javax.swing.JPanel {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(iconPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(spPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(0, 0, 0)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblEyeConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(iconPass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(checkPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(spPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(0, 0, 0)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(iconPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
-                .addComponent(spPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(0, 0, 0)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEyeConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(iconPass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
-                .addComponent(spPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                            .addComponent(lblEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(170, 170, 170)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -383,15 +396,23 @@ public class jpCreateUser extends javax.swing.JPanel {
         spMail.setBackground(Color.white);
         if(!standardization.campoVacio(txtMail.getText()))
         {
-            if(methodsSQL.exists("SELECT * FROM users WHERE mail = ? ", txtMail.getText()))
-            {
+            checkEmail.setIcon(new controller().changeImage("/imagenes/load.png", 20, 20));
+            if(standardization.vlidateEmail(txtMail.getText())){
+                new Thread(()->{
+                    if(methodsSQL.exists("SELECT * FROM users WHERE mail = ? ", txtMail.getText()))
+                {
+                    checkEmail.setIcon(new controller().changeImage("/imagenes/cancel.png", 20, 20));
+                    continueM = false;
+                }
+                else{
+                    checkEmail.setIcon(new controller().changeImage("/imagenes/ok.png", 20, 20));
+                    continueM = true;
+                } 
+                }).start();
+            }else{
                 checkEmail.setIcon(new controller().changeImage("/imagenes/cancel.png", 20, 20));
                 continueM = false;
             }
-            else{
-                checkEmail.setIcon(new controller().changeImage("/imagenes/ok.png", 20, 20));
-                continueM = true;
-            }     
         }else
             checkEmail.setIcon(null);
     }//GEN-LAST:event_txtMailFocusLost
@@ -402,6 +423,15 @@ public class jpCreateUser extends javax.swing.JPanel {
 
     private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
         spPassword.setBackground(Color.white);
+        if(!standardization.validatePassword(standardization.convertPassword(txtPassword.getPassword()))){
+            standardization.showMessage("warning", "La contraseña no cumple las espectativas");
+            checkPass.setIcon(new controller().changeImage("/imagenes/cancel.png", 20, 20));
+            continueP = false;
+        }
+        else{
+            checkPass.setIcon(new controller().changeImage("/imagenes/ok.png", 20, 20));
+            continueP = true;
+        }
     }//GEN-LAST:event_txtPasswordFocusLost
 
     private void lblEyeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEyeMouseClicked
@@ -444,7 +474,8 @@ public class jpCreateUser extends javax.swing.JPanel {
         if(logIn.internet)
         {
             if(Arrays.equals(txtPasswordConfirm.getPassword(), txtPassword.getPassword()) && continueM && continueN &&
-                    !standardization.campoVacio(txtMail.getText()) && !standardization.campoVacio(txtNickName.getText())) {
+                    !standardization.campoVacio(txtMail.getText()) && !standardization.campoVacio(txtNickName.getText())
+                    && continueP) {
                 controller.jpCD = new jpCreateData();
 
                 classUsuario.setNickname(txtNickName.getText().replace(" ", ""));
@@ -475,15 +506,18 @@ public class jpCreateUser extends javax.swing.JPanel {
     private void txtNickNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNickNameFocusLost
         spNickName.setBackground(Color.white);
         if(!standardization.campoVacio(txtNickName.getText())){
-            if(methodsSQL.exists("SELECT * FROM users WHERE nickname = ? ", txtNickName.getText()))
-            {
-                checkUsername.setIcon(new controller().changeImage("/imagenes/cancel.png", 20, 20));
-                continueN = false;
-            }
-            else{
-                checkUsername.setIcon(new controller().changeImage("/imagenes/ok.png", 20, 20));
-                continueN = true;
-            }       
+            checkUsername.setIcon(new controller().changeImage("/imagenes/load.png", 20, 20));
+            new Thread(()->{
+                if(methodsSQL.exists("SELECT * FROM users WHERE nickname = ? ", txtNickName.getText()) || txtNickName.getText().length()<6)
+                {
+                    checkUsername.setIcon(new controller().changeImage("/imagenes/cancel.png", 20, 20));
+                    continueN = false;
+                }
+                else{
+                    checkUsername.setIcon(new controller().changeImage("/imagenes/ok.png", 20, 20));
+                    continueN = true;
+                } 
+            }).start();
         }else
             checkUsername.setIcon(null);
     }//GEN-LAST:event_txtNickNameFocusLost
@@ -536,6 +570,7 @@ public class jpCreateUser extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
     private javax.swing.JLabel checkEmail;
+    private javax.swing.JLabel checkPass;
     private javax.swing.JLabel checkUsername;
     private javax.swing.JLabel iconEmail;
     private javax.swing.JLabel iconPass;
