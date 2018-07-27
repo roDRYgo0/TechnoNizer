@@ -18,7 +18,7 @@ public class classUsuario {
     private static byte[] image;
 
     private static String myGender;
-    private static String myMembership;
+    private static String myMembership; 
     private static int myDuration;
     private static int myNumEvent;
 
