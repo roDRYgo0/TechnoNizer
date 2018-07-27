@@ -22,6 +22,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTable;
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import technonizer.*;
 import static technonizer.TechnoNizer.*;
 
@@ -92,6 +93,13 @@ public class standardization {
         over.setOpacity(1);
         aProj.setVisible(false);
     }
+    public static void showaddReminder(JFrame over, JTable tabla){
+        aRem = new AddReminder(tabla);
+         aRem.setVisible(true);
+        aRem.setLocationRelativeTo(over);
+        over.setEnabled(false);
+        over.setOpacity(0.85f);
+    }
     
     public static void showupdateProject(JFrame over){
         uProj = new UpdateProject();
@@ -99,6 +107,13 @@ public class standardization {
         uProj.setLocationRelativeTo(over);
         over.setEnabled(false);
         over.setOpacity(0.85f);
+        } 
+    
+    public static void hideaddReminder(JFrame over){
+        over.setVisible(true);
+        over.setEnabled(true);
+        over.setOpacity(1);
+        aRem.setVisible(false); 
     }
     
     public static void hideupdateProject(JFrame over){
@@ -121,6 +136,20 @@ public class standardization {
         over.setEnabled(true);
         over.setOpacity(1);
         dProj.setVisible(false);
+    }
+     public static void showdeleteReminder(JFrame over, JTable tabla){
+        dRem = new DeleteReminder(tabla);
+        dRem.setVisible(true);
+        dRem.setLocationRelativeTo(over);
+        over.setEnabled(false);
+        over.setOpacity(0.85f);
+    }
+    
+    public static void hidedeleteReminder(JFrame over){
+        over.setVisible(true);
+        over.setEnabled(true);
+        over.setOpacity(1);
+        dRem.setVisible(false);
     }
     
     public static void showLoad(JFrame over){
@@ -231,11 +260,12 @@ public class standardization {
         }
     }
     
-//    
-//    public static boolean validatePassword(String cadena){
-//        boolean status = false;
-//        Pattern pat = Pattern.compile(".*abc.*");
-//        Matcher mat = pat.matcher(cadena);
-//    }
+    
+    public static boolean validatePassword(String cadena){
+        
+        
+       String formato = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$";
+        return cadena.matches(formato);
+    }
     
 }

@@ -9,8 +9,10 @@ public class TechnoNizer {
     public static message mess;
     public static load sLoad;    
     public static AddProject aProj;
+    public static AddReminder aRem;
     public static DeleteProject dProj;
     public static UpdateProject uProj;
+    public static DeleteReminder dRem;
     
     public static void main(String[] args) {
         mess = new message();

@@ -5,7 +5,6 @@ import jFrame.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javaClass.*;
-import technonizer.*;
 
 public class jpMembership extends javax.swing.JPanel {
     
@@ -76,11 +75,11 @@ public class jpMembership extends javax.swing.JPanel {
         pnFree.setMinimumSize(new java.awt.Dimension(100, 100));
         pnFree.setPreferredSize(new java.awt.Dimension(100, 100));
         pnFree.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnFreeMouseClicked(evt);
-            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 pnFreeMouseReleased(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnFreeMouseClicked(evt);
             }
         });
 
@@ -95,7 +94,7 @@ public class jpMembership extends javax.swing.JPanel {
             .addGroup(pnFreeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(5, Short.MAX_VALUE))
         );
         pnFreeLayout.setVerticalGroup(
             pnFreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +121,6 @@ public class jpMembership extends javax.swing.JPanel {
         btnBack.setText("Atras");
         btnBack.setBorderPainted(false);
         btnBack.setFocusable(false);
-        btnBack.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -135,11 +133,11 @@ public class jpMembership extends javax.swing.JPanel {
         pnVip.setMinimumSize(new java.awt.Dimension(100, 100));
         pnVip.setPreferredSize(new java.awt.Dimension(100, 100));
         pnVip.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnVipMouseClicked(evt);
-            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 pnVipMouseReleased(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnVipMouseClicked(evt);
             }
         });
 
@@ -154,7 +152,7 @@ public class jpMembership extends javax.swing.JPanel {
             .addGroup(pnVipLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel3)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         pnVipLayout.setVerticalGroup(
             pnVipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,11 +168,11 @@ public class jpMembership extends javax.swing.JPanel {
         pnPremium.setMinimumSize(new java.awt.Dimension(100, 100));
         pnPremium.setPreferredSize(new java.awt.Dimension(100, 100));
         pnPremium.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnPremiumMouseClicked(evt);
-            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 pnPremiumMouseReleased(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnPremiumMouseClicked(evt);
             }
         });
 

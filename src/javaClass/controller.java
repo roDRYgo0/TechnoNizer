@@ -23,7 +23,9 @@ public class controller {
     public static jpNewPassword jpNP;
     public static jpHome jpH;
     public static jpProjects jpPJ;
+    public static jpMembershipChange jpMC;
     public static jpEditUser jpU;
+    public static jpReminder jpREM;
     public static classMembership[] member = new classMembership[3];
     public static String[] genders = new String[2];
     public static boolean actionCompleted = false;

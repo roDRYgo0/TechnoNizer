@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.methodsSQL;
-import javax.swing.JFrame;
 
 
 public class jpHome extends javax.swing.JPanel {
