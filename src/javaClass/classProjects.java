@@ -1,23 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaClass;
 
-import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Lenovo
- */
 public class classProjects {
 
     
     private static String name;
     private static String description;
-    private static String datetime; //Está bien como string?
+    private static String datetime; 
     private static Integer condition;
     private static String teams;
     private static String nickname;
