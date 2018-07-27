@@ -417,6 +417,7 @@ public class jpCreateData extends javax.swing.JPanel {
         char c = evt.getKeyChar();
         if(txtLastName.getText().contains(" ") && c==' ')
             evt.consume();
+         
     }//GEN-LAST:event_txtLastNameKeyTyped
 
     private void txtDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiaKeyTyped

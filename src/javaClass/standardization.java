@@ -81,8 +81,16 @@ public class standardization {
     
      public static void showaddProject(JFrame over, JTable tabla){
         aProj = new AddProject(tabla);
-         aProj.setVisible(true);
+        aProj.setVisible(true);
         aProj.setLocationRelativeTo(over);
+        over.setEnabled(false);
+        over.setOpacity(0.85f);
+    }
+     
+      public static void showupdateProject(JFrame over){
+        uProj = new UpdateProject();
+        uProj.setVisible(true);
+        uProj.setLocationRelativeTo(over);
         over.setEnabled(false);
         over.setOpacity(0.85f);
     }

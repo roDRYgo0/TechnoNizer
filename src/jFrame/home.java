@@ -93,10 +93,10 @@ public class home extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         pnProj = new javax.swing.JPanel();
         lblProject = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         pnAgenda = new javax.swing.JPanel();
         lblAgenda = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         scrollContainer = new javax.swing.JScrollPane();
 
         popupLenguage.setBorderPainted(false);
@@ -503,9 +503,9 @@ public class home extends javax.swing.JFrame {
         lblProject.setMinimumSize(new java.awt.Dimension(28, 28));
         lblProject.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Proyectos");
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Proyectos");
 
         javax.swing.GroupLayout pnProjLayout = new javax.swing.GroupLayout(pnProj);
         pnProj.setLayout(pnProjLayout);
@@ -515,16 +515,16 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblProject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnProjLayout.setVerticalGroup(
             pnProjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnProjLayout.createSequentialGroup()
+            .addGroup(pnProjLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnProjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -537,14 +537,19 @@ public class home extends javax.swing.JFrame {
                 pnAgendaFocusLost(evt);
             }
         });
+        pnAgenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                pnAgendaMouseReleased(evt);
+            }
+        });
 
         lblAgenda.setMaximumSize(new java.awt.Dimension(28, 28));
         lblAgenda.setMinimumSize(new java.awt.Dimension(28, 28));
         lblAgenda.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Agenda");
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Aenda");
 
         javax.swing.GroupLayout pnAgendaLayout = new javax.swing.GroupLayout(pnAgenda);
         pnAgenda.setLayout(pnAgendaLayout);
@@ -554,15 +559,15 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnAgendaLayout.setVerticalGroup(
             pnAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnAgendaLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnAgendaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -796,6 +801,15 @@ public class home extends javax.swing.JFrame {
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }//GEN-LAST:event_pnEveMouseReleased
+
+    private void pnAgendaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnAgendaMouseReleased
+        controller.jpREM = new jpReminder();
+        controller.jpREM.setLocation(0,0);
+
+        scrollContainer.setViewportView(controller.jpREM);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }//GEN-LAST:event_pnAgendaMouseReleased
     //</editor-fold>
     
     public void loadData(String image, String text, JLabel label)
@@ -815,13 +829,13 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemEnglish;
     private javax.swing.JMenuItem itemSettings;
     private javax.swing.JMenuItem itemSpanish;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator1;
