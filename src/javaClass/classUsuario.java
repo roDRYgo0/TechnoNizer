@@ -15,7 +15,7 @@ public class classUsuario {
     private static Integer idMemberships; 
     private static Integer durationMem;
     private static String code;
-    private static byte[] image;
+    private static byte[] image = null;
 
     private static String myGender;
     private static String myMembership; 

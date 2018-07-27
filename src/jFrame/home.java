@@ -39,15 +39,19 @@ public class home extends javax.swing.JFrame {
     void loadImage(){
         lblStart.setIcon(new controller().changeImage("/imagenes/home.png", 24, 24));
         lblUser.setIcon(new controller().changeImage("/imagenes/username.png", 24, 24));
-        if(classUsuario.getImage()==null)
-            lblImageUser.setIcon(new controller().changeImage("/imagenes/user.png", 97, 97));
-        else
-            lblImageUser.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
+//        if(classUsuario.getImage()==null)
+//            lblImageUser.setIcon(new controller().changeImage("/imagenes/user.png", 97, 97));
+//        else
+//            lblImageUser.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
         lblMembership.setIcon(new controller().changeImage("/imagenes/membership.png", 24, 24));
         lblEvent.setIcon(new controller().changeImage("/imagenes/event.png", 24, 24));
         lblProject.setIcon(new controller().changeImage("/imagenes/project.png", 24, 24));
         lblAgenda.setIcon(new controller().changeImage("/imagenes/agenda.png", 24, 24));
-        lblUsers.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 24, 24));
+        System.out.println(classUsuario.getImage());
+        if(classUsuario.getImage()==null)
+            lblUsers.setIcon(new controller().changeImage("/imagenes/user.png", 24, 24));
+        else
+            lblUsers.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
         lblUsers.setText(classUsuario.getNickname());
         loadData("settings","", lblSettings);
         
@@ -280,7 +284,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
