@@ -101,13 +101,27 @@ public class standardization {
         over.setOpacity(0.85f);
     }
     
+    public static void showupdateProject(JFrame over){
+        uProj = new UpdateProject();
+        uProj.setVisible(true);
+        uProj.setLocationRelativeTo(over);
+        over.setEnabled(false);
+        over.setOpacity(0.85f);
+        } 
+    
     public static void hideaddReminder(JFrame over){
         over.setVisible(true);
         over.setEnabled(true);
         over.setOpacity(1);
-        aRem.setVisible(false);
+        aRem.setVisible(false); 
     }
     
+    public static void hideupdateProject(JFrame over){
+        over.setVisible(true);
+        over.setEnabled(true);
+        over.setOpacity(1);
+        uProj.setVisible(false);
+    }
     
     public static void showdeleteProject(JFrame over, JTable tabla){
         dProj = new DeleteProject(tabla);

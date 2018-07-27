@@ -11,6 +11,7 @@ public class TechnoNizer {
     public static AddProject aProj;
     public static AddReminder aRem;
     public static DeleteProject dProj;
+    public static UpdateProject uProj;
     public static DeleteReminder dRem;
     
     public static void main(String[] args) {
