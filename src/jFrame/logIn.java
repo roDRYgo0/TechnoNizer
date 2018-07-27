@@ -5,7 +5,6 @@ import JPanel.jpAccess;
 import java.awt.BorderLayout;
 import javaClass.controller;
 import static javaClass.standardization.invokeHome;
-import javafx.application.Platform;
 import technonizer.TechnoNizer;
 
 public class logIn extends javax.swing.JFrame {
@@ -16,8 +15,7 @@ public class logIn extends javax.swing.JFrame {
     
     public logIn() {
         initComponents();
-        
-        TechnoNizer.mess = new message();
+        controller.rootFrame = this;
         this.setLocationRelativeTo(null);
         controller.asignar(rootPane);
         
@@ -238,7 +236,6 @@ public class logIn extends javax.swing.JFrame {
     }//GEN-LAST:event_topBarMousePressed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        Platform.exit();
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 

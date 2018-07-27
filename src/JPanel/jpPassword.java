@@ -260,11 +260,11 @@ public class jpPassword extends javax.swing.JPanel {
                 
                 invokeHome(true);
             }else
-                standardization.showMessage("error", "La contraseña no coinsiden.",TechnoNizer.log);
+                standardization.showMessage("error", "La contraseña no coinsiden.");
  
         }
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.",TechnoNizer.log);
+            standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_jbNextActionPerformed
 
     private void btnRecoverPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecoverPasswordActionPerformed
@@ -282,7 +282,7 @@ public class jpPassword extends javax.swing.JPanel {
             controller.rootPane.repaint();
         }
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
+            standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_btnRecoverPasswordActionPerformed
 
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed

@@ -216,7 +216,7 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
             controller.rootPane.repaint(); 
         }
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.",TechnoNizer.log);
+            standardization.showMessage("error", "Error al establecer una conexion de red.");
         
     }//GEN-LAST:event_jbNextActionPerformed
 

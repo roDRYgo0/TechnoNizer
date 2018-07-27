@@ -283,7 +283,7 @@ public class jpNewPassword extends javax.swing.JPanel {
                 classUsuario.setPassword(standardization.sha1(standardization.md5(Arrays.toString(txtPassword.getPassword()))));
                 
                 if(classUsuario.changePassword()){
-                    standardization.showMessage("ok", "Contraseña actualizada.", TechnoNizer.log);
+                    standardization.showMessage("ok", "Contraseña actualizada.");
                     
                     controller.jpA.setSize(420,603);
                     controller.jpA.setLocation(0,0);
@@ -295,13 +295,13 @@ public class jpNewPassword extends javax.swing.JPanel {
                     
                 }
                 else
-                    standardization.showMessage("error", "No se pudo cambiar la contraseña.", TechnoNizer.log);
+                    standardization.showMessage("error", "No se pudo cambiar la contraseña.");
                 
             } else
-                standardization.showMessage("warning", "Las contraseñas no coinciden.", TechnoNizer.log);
+                standardization.showMessage("warning", "Las contraseñas no coinciden.");
         }
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
+            standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_jbNextActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

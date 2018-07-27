@@ -1,5 +1,6 @@
 package JPanel;
 
+import jFrame.home;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -7,13 +8,17 @@ import java.util.logging.Logger;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.methodsSQL;
+import javax.swing.JFrame;
 
 
 public class jpHome extends javax.swing.JPanel {
 
-    public jpHome(boolean load) {
+    home hom;
+    
+    public jpHome(boolean load, home hom) {
         initComponents();
         load(load);
+        this.hom = hom;
     }
     
     void load(boolean load){
@@ -164,6 +169,11 @@ public class jpHome extends javax.swing.JPanel {
         btnEdit.setText("Editar perfil");
         btnEdit.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnEdit.setFocusPainted(false);
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -353,6 +363,10 @@ public class jpHome extends javax.swing.JPanel {
                 .addContainerGap(51, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        hom.showEditUser();
+    }//GEN-LAST:event_btnEditActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

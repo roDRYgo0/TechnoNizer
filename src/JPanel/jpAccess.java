@@ -206,12 +206,12 @@ public class jpAccess extends javax.swing.JPanel {
                 controller.rootPane.revalidate();
                 controller.rootPane.repaint();
             }else
-                standardization.showMessage("warning", "El usuario no existe.", TechnoNizer.log);
+                standardization.showMessage("warning", "El usuario no existe.");
         }
         else if(standardization.campoVacio(txtMail.getText()))
-            standardization.showMessage("warning", "Ingrese su correo por favor.", TechnoNizer.log);
+            standardization.showMessage("warning", "Ingrese su correo por favor.");
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
+            standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
@@ -221,7 +221,7 @@ public class jpAccess extends javax.swing.JPanel {
             standardization.showLoad(TechnoNizer.log);
         }
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
+            standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_btnCreateAccountActionPerformed
 
     private void txtMailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMailKeyTyped

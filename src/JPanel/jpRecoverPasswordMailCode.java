@@ -199,12 +199,12 @@ public class jpRecoverPasswordMailCode extends javax.swing.JPanel {
                 controller.rootPane.revalidate();
                 controller.rootPane.repaint();
             }else
-                standardization.showMessage("error", "Los codigos no coinciden.", TechnoNizer.log);
+                standardization.showMessage("error", "Los codigos no coinciden.");
                 
                 
         }
         else
-            standardization.showMessage("error", "Error al establecer una conexion de red.", TechnoNizer.log);
+            standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_jbNextActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
