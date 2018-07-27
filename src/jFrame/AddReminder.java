@@ -72,7 +72,7 @@ public class AddReminder extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jButton1)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -86,6 +86,18 @@ public class AddReminder extends javax.swing.JFrame {
         });
 
         jLabel4.setText("Repetir dentro de ");
+
+        txtHora.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtHoraKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtHoraKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHoraKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("horas");
 
@@ -168,6 +180,19 @@ public class AddReminder extends javax.swing.JFrame {
         TechnoNizer.home.setEnabled(true);
         TechnoNizer.home.setOpacity(1);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtHoraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoraKeyPressed
+        // TODO add your handling code here:zzz
+    }//GEN-LAST:event_txtHoraKeyPressed
+
+    private void txtHoraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoraKeyReleased
+   
+    }//GEN-LAST:event_txtHoraKeyReleased
+
+    private void txtHoraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoraKeyTyped
+             char c=evt.getKeyChar();
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_txtHoraKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
