@@ -93,7 +93,20 @@ public class standardization {
         over.setOpacity(1);
         aProj.setVisible(false);
     }
+    public static void showaddReminder(JFrame over, JTable tabla){
+        aRem = new AddReminder(tabla);
+         aRem.setVisible(true);
+        aRem.setLocationRelativeTo(over);
+        over.setEnabled(false);
+        over.setOpacity(0.85f);
+    }
     
+    public static void hideaddReminder(JFrame over){
+        over.setVisible(true);
+        over.setEnabled(true);
+        over.setOpacity(1);
+        aRem.setVisible(false);
+    }
     
     
     public static void showdeleteProject(JFrame over, JTable tabla){
@@ -109,6 +122,20 @@ public class standardization {
         over.setEnabled(true);
         over.setOpacity(1);
         dProj.setVisible(false);
+    }
+     public static void showdeleteReminder(JFrame over, JTable tabla){
+        dRem = new DeleteReminder(tabla);
+        dRem.setVisible(true);
+        dRem.setLocationRelativeTo(over);
+        over.setEnabled(false);
+        over.setOpacity(0.85f);
+    }
+    
+    public static void hidedeleteReminder(JFrame over){
+        over.setVisible(true);
+        over.setEnabled(true);
+        over.setOpacity(1);
+        dRem.setVisible(false);
     }
     
     public static void showLoad(JFrame over){
