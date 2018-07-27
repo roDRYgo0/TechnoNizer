@@ -27,11 +27,11 @@ public class controller {
     public static jpEditUser jpU;
     public static jpEvent jpE;
     public static event jpEv;
-    public static addEvent jp;
+    public static addEvent jpAE;
     public static jpReminder jpREM;
     public static classMembership[] member = new classMembership[3];
     public static String[] genders = new String[2];
-    public static boolean actionCompletedes = false;
+    public static boolean actionCompleted = false;
     
     public static JFrame rootFrame;
     
