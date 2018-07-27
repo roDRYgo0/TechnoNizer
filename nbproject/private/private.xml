@@ -3,22 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Lenovo/Documents/EXPO%202018/TechnoNizer-master/TechnoNizer/src/jFrame/AddProject.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/EXPO%202018/TechnoNizer-master/TechnoNizer/src/jFrame/UpdateProject.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/EXPO%202018/TechnoNizer-master/TechnoNizer/src/jFrame/DeleteProject.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/EXPO%202018/TechnoNizer-master/TechnoNizer/src/JPanel/jpProjectsView.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/EXPO%202018/TechnoNizer-master/TechnoNizer/src/javaClass/methodsSQL.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/EXPO%202018/TechnoNizer-master/TechnoNizer/src/jFrame/home.java</file>
             <file>file:/C:/Users/Lenovo/Documents/EXPO%202018/TechnoNizer-master/TechnoNizer/src/JPanel/jpProjects.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/EXPO%202018/TechnoNizer-master/TechnoNizer/src/technonizer/TechnoNizer.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/EXPO%202018/TechnoNizer-master/TechnoNizer/src/JPanel/jpEditUser.java</file>
             <file>file:/C:/Users/Lenovo/Documents/EXPO%202018/TechnoNizer-master/TechnoNizer/src/javaClass/standardization.java</file>
-=======
-            <file>file:/C:/Users/luis_/Downloads/Git/TechnoNizer/src/jFrame/home.java</file>
-            <file>file:/C:/Users/luis_/Downloads/Git/TechnoNizer/src/jFrame/AddProject.java</file>
-            <file>file:/C:/Users/luis_/Downloads/Git/TechnoNizer/src/javaClass/standardization.java</file>
-            <file>file:/C:/Users/luis_/Downloads/Git/TechnoNizer/src/technonizer/TechnoNizer.java</file>
-            <file>file:/C:/Users/luis_/Downloads/Git/TechnoNizer/src/JPanel/jpProjects.java</file>
-            <file>file:/C:/Users/luis_/Downloads/Git/TechnoNizer/src/jFrame/DeleteProject.java</file>
-            <file>file:/C:/Users/luis_/Downloads/Git/TechnoNizer/src/javaClass/controller.java</file>
->>>>>>> 7860513aad091525505fdf9152f94db3ad45f159
         </group>
     </open-files>
 </project-private>
