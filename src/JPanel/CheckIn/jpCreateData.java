@@ -379,6 +379,10 @@ public class jpCreateData extends javax.swing.JPanel {
 
     private void txtDiaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDiaFocusLost
         spDay.setBackground(Color.white);
+        if(Integer.parseInt(txtDia.getText())>31){
+            standardization.showMessage("error", "Numero de dias invalido");
+            txtDia.setText("");
+        }
     }//GEN-LAST:event_txtDiaFocusLost
 
     private void txtAnioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAnioFocusGained
