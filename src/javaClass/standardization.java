@@ -22,6 +22,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTable;
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import technonizer.*;
 import static technonizer.TechnoNizer.*;
 
@@ -218,11 +219,12 @@ public class standardization {
         }
     }
     
-//    
-//    public static boolean validatePassword(String cadena){
-//        boolean status = false;
-//        Pattern pat = Pattern.compile(".*abc.*");
-//        Matcher mat = pat.matcher(cadena);
-//    }
+    
+    public static boolean validatePassword(String cadena){
+        
+        
+       String formato = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$";
+        return cadena.matches(formato);
+    }
     
 }

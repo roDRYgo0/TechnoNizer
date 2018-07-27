@@ -106,6 +106,10 @@ public class classUsuario {
     }
 //</editor-fold>
     
+    public static boolean updateMembership(){
+        return  methodsSQL.execute("UPDATE users SET idMemberships = ? WHERE nickname = ?", idMemberships, nickname);
+    }
+    
     public static boolean select(){
         boolean status = false;
         ResultSet rs = methodsSQL.getExecute("SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender, u.imagen, u.idMemberships FROM users u, usersInformation ui WHERE u.nickname = ui.nickname and u.nickname =  ?", nickname);

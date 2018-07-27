@@ -521,6 +521,9 @@
                   <Color blue="22" green="22" red="22" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel5MouseReleased"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -681,6 +684,9 @@
                   <Color blue="22" green="22" red="22" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel9MouseReleased"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">

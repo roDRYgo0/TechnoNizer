@@ -339,6 +339,11 @@ public class home extends javax.swing.JFrame {
         );
 
         jPanel5.setBackground(new java.awt.Color(34, 34, 34));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel5MouseReleased(evt);
+            }
+        });
 
         lblMembership.setMaximumSize(new java.awt.Dimension(28, 28));
         lblMembership.setMinimumSize(new java.awt.Dimension(28, 28));
@@ -423,6 +428,11 @@ public class home extends javax.swing.JFrame {
         );
 
         jPanel9.setBackground(new java.awt.Color(34, 34, 34));
+        jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel9MouseReleased(evt);
+            }
+        });
 
         lblProject.setMaximumSize(new java.awt.Dimension(28, 28));
         lblProject.setMinimumSize(new java.awt.Dimension(28, 28));
@@ -616,6 +626,15 @@ public class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
+    public void membershipChange(){
+        controller.jpMC = new jpMembershipChange();
+        controller.jpMC.setLocation(0,0);
+
+        scrollContainer.setViewportView(controller.jpMC);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
     private void jPanel3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseReleased
         jpH = new jpHome(true, this);
         jpH.setLocation(0,0);
@@ -624,6 +643,19 @@ public class home extends javax.swing.JFrame {
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }//GEN-LAST:event_jPanel3MouseReleased
+
+    private void jPanel9MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseReleased
+        controller.jpPJ = new jpProjects();
+        controller.jpPJ.setLocation(0,0);
+
+        scrollContainer.setViewportView(controller.jpPJ);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }//GEN-LAST:event_jPanel9MouseReleased
+
+    private void jPanel5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseReleased
+        membershipChange();
+    }//GEN-LAST:event_jPanel5MouseReleased
 
     public void loadData(String image, String text, JLabel label)
     {
