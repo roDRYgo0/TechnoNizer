@@ -47,7 +47,11 @@ public class home extends javax.swing.JFrame {
         lblEvent.setIcon(new controller().changeImage("/imagenes/event.png", 24, 24));
         lblProject.setIcon(new controller().changeImage("/imagenes/project.png", 24, 24));
         lblAgenda.setIcon(new controller().changeImage("/imagenes/agenda.png", 24, 24));
-        lblUsers.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 24, 24));
+        System.out.println(classUsuario.getImage());
+        if(classUsuario.getImage()==null)
+            lblUsers.setIcon(new controller().changeImage("/imagenes/user.png", 24, 24));
+        else
+            lblUsers.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
         lblUsers.setText(classUsuario.getNickname());
         loadData("settings","", lblSettings);
         
