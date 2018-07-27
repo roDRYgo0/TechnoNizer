@@ -11,7 +11,7 @@ import technonizer.TechnoNizer;
 
 public class jpNewPassword extends javax.swing.JPanel {
 
-    boolean sw;
+    boolean sw, continueP;
     char echoChar;
     
     public jpNewPassword() {
@@ -39,6 +39,7 @@ public class jpNewPassword extends javax.swing.JPanel {
         lblEye = new javax.swing.JLabel();
         jbNext = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        checkPass = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -134,12 +135,15 @@ public class jpNewPassword extends javax.swing.JPanel {
         btnBack.setText("Atras");
         btnBack.setBorderPainted(false);
         btnBack.setFocusable(false);
-        btnBack.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
+
+        checkPass.setMaximumSize(new java.awt.Dimension(25, 25));
+        checkPass.setMinimumSize(new java.awt.Dimension(25, 25));
+        checkPass.setPreferredSize(new java.awt.Dimension(25, 25));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -170,15 +174,18 @@ public class jpNewPassword extends javax.swing.JPanel {
                                 .addGap(0, 0, 0)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(spPassword)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 0, 0)
-                                            .addComponent(lblEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(spPassword)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, 0)
+                                                .addComponent(lblEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(checkPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jLabel1)
                             .addComponent(lblTN))
-                        .addGap(0, 68, Short.MAX_VALUE)))
+                        .addGap(0, 42, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
@@ -192,14 +199,17 @@ public class jpNewPassword extends javax.swing.JPanel {
                 .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(0, 0, 0)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(iconPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, 0)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(iconPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
-                .addComponent(spPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(spPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(checkPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -260,6 +270,15 @@ public class jpNewPassword extends javax.swing.JPanel {
 
     private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
         spPassword.setBackground(Color.white);
+        if(!standardization.validatePassword(standardization.convertPassword(txtPassword.getPassword()))){
+            standardization.showMessage("warning", "La contraseña no cumple las espectativas");
+            checkPass.setIcon(new controller().changeImage("/imagenes/cancel.png", 20, 20));
+            continueP = false;
+        }
+        else{
+            checkPass.setIcon(new controller().changeImage("/imagenes/ok.png", 20, 20));
+            continueP = true;
+        }
     }//GEN-LAST:event_txtPasswordFocusLost
 
     private void lblEyeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEyeMouseClicked
@@ -282,7 +301,7 @@ public class jpNewPassword extends javax.swing.JPanel {
             if(Arrays.equals(txtPasswordConfirm.getPassword(), txtPassword.getPassword())){
                 classUsuario.setPassword(standardization.sha1(standardization.md5(Arrays.toString(txtPassword.getPassword()))));
                 
-                if(classUsuario.changePassword()){
+                if(classUsuario.changePassword() && continueP){
                     standardization.showMessage("ok", "Contraseña actualizada.");
                     
                     controller.jpA.setSize(420,603);
@@ -335,6 +354,7 @@ public class jpNewPassword extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JLabel checkPass;
     private javax.swing.JLabel iconPass;
     private javax.swing.JLabel iconPass2;
     private javax.swing.JLabel jLabel1;

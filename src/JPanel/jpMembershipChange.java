@@ -1,5 +1,6 @@
 package JPanel;
 
+import jFrame.home;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,13 +22,14 @@ public class jpMembershipChange extends javax.swing.JPanel {
     int numberModerators;
     int numberGuests;
     float price;
+    int yourMembership;
+    home house;
     
-    public jpMembershipChange() {
+    public jpMembershipChange(home house) {
         initComponents();
-        for(int i=0; i < 3; i++){
-            controller.member[i] = asignarDatos(i+1);
-        }
-        name = "";
+        this.house = house;
+        yourMembership = classUsuario.getIdMemberships();
+         name = "";
         description = "";
         condition = -1;
         numberEvents = -2;
@@ -38,7 +40,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
         sortFree.setIcon(new controller().changeImage("/imagenes/sortDown.png", 36, 36));
         pnFree.setBackground(new Color(33,150,243));
         loadMyMember();
-        seleccionarMembership(classUsuario.getIdMemberships());
+        seleccionarMembership(yourMembership);
     }
 
     @SuppressWarnings("unchecked")
@@ -101,12 +103,13 @@ public class jpMembershipChange extends javax.swing.JPanel {
         pnFree.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         pnFree.setMaximumSize(new java.awt.Dimension(100, 100));
         pnFree.setMinimumSize(new java.awt.Dimension(100, 100));
+        pnFree.setPreferredSize(new java.awt.Dimension(100, 100));
         pnFree.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                pnFreeMouseReleased(evt);
-            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnFreeMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                pnFreeMouseReleased(evt);
             }
         });
 
@@ -121,7 +124,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
             .addGroup(pnFreeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         pnFreeLayout.setVerticalGroup(
             pnFreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,6 +138,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
         pnVip.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         pnVip.setMaximumSize(new java.awt.Dimension(100, 100));
         pnVip.setMinimumSize(new java.awt.Dimension(100, 100));
+        pnVip.setPreferredSize(new java.awt.Dimension(100, 100));
         pnVip.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 pnVipMouseReleased(evt);
@@ -155,7 +159,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
             .addGroup(pnVipLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel4)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         pnVipLayout.setVerticalGroup(
             pnVipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,6 +173,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
         pnPremium.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         pnPremium.setMaximumSize(new java.awt.Dimension(100, 100));
         pnPremium.setMinimumSize(new java.awt.Dimension(100, 100));
+        pnPremium.setPreferredSize(new java.awt.Dimension(100, 100));
         pnPremium.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 pnPremiumMouseReleased(evt);
@@ -294,7 +299,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
                             .addComponent(lblEvents, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblModer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(48, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -447,38 +452,33 @@ public class jpMembershipChange extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(jLabel2))
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel2))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnChangeMembership, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)))
+                            .addComponent(btnChangeMembership, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
+                .addGap(103, 103, 103))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
-                        .addComponent(btnChangeMembership, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(96, Short.MAX_VALUE))
+                        .addGap(44, 44, 44)
+                        .addComponent(btnChangeMembership, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -507,11 +507,24 @@ public class jpMembershipChange extends javax.swing.JPanel {
     }//GEN-LAST:event_pnPremiumMouseClicked
 
     private void btnChangeMembershipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeMembershipActionPerformed
-        if(classUsuario.updateMembership())
+        if(classUsuario.updateMembership()){
+            classUsuario.updateSelect();
             standardization.showMessage("ok","Tu membresia fue actualizada");
+            house.membershipChange();
+        }
+            
     }//GEN-LAST:event_btnChangeMembershipActionPerformed
 
     void seleccionarMembership(int m){
+        if(yourMembership == m){
+            btnChangeMembership.setEnabled(false);
+        btnChangeMembership.setBackground(new Color(255,123,123));
+        } 
+        else{
+            btnChangeMembership.setEnabled(true);
+            btnChangeMembership.setBackground(new Color(255,0,0));
+        }
+            
         switch(m){
             case 1:
                 limpiar();
@@ -607,59 +620,33 @@ public class jpMembershipChange extends javax.swing.JPanel {
         sortPremium.setIcon(null);
     }
     
-    classMembership asignarDatos(int m){
-        classMembership member = new classMembership();
-        try {
-            ResultSet rs = methodsSQL.getExecute("SELECT m.name, m.description, m.condition, m.numberEvents, m.numberAdmins, m.numberModerators, m.numberGuests, m.price FROM memberships m WHERE m.id = ? ", m);
-            while(rs.next()){
-                member.setName(rs.getString(1));
-                member.setDescription(rs.getString(2));
-                member.setCondition(rs.getInt(3));
-                member.setNumberEvents(rs.getInt(4));
-                member.setNumberAdmins(rs.getInt(5));
-                member.setNumberModerators(rs.getInt(6));
-                member.setNumberGuests(rs.getInt(7));
-                member.setPrice(rs.getFloat(8));
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return member;
-    }
+    
     
     public void loadMyMember(){
-        ResultSet rs = methodsSQL.getExecute("select m.name, u.durationMem, m.numberEvents from users u, memberships m where u.idMemberships = m.id and u.nickname = ?", classUsuario.getNickname());
-            try {
-                while(rs.next()){
-                    lblNameMember.setText(rs.getString(1));
-                    lblDuration.setText(rs.getString(2));
-                    lblNumEvents.setText(rs.getString(3));
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(jpHome.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            switch(lblNameMember.getText()){
-                case "Free":
-                    lblTypeMember.setIcon(new controller().changeImage("/imagenes/free.png", 40, 40));
-                    break;
-                case "Vip":
-                    lblTypeMember.setIcon(new controller().changeImage("/imagenes/vip.png", 40, 40));
-                    break;
-                case "Premium":
-                    lblTypeMember.setIcon(new controller().changeImage("/imagenes/premium.png", 40, 40));
-                    break;
-            }
-            
-            switch(lblNumEvents.getText()){
-                case "-1":
-                    lblNumEvents.setText("Ilimitados");
-                    lblImageEvent.setIcon(new controller().changeImage("/imagenes/infinity.png", 40, 40));
-                    break;
-                default:
-                    lblImageEvent.setIcon(new controller().changeImage("/imagenes/hashtag.png", 40, 40));
-                    break;
-            }
+        lblNameMember.setText(classUsuario.getMyMembership());
+        lblDuration.setText(classUsuario.getMyDuration()+"");
+        lblNumEvents.setText(classUsuario.getMyNumEvent()+"");
+        switch(lblNameMember.getText()){
+            case "Free":
+                lblTypeMember.setIcon(new controller().changeImage("/imagenes/free.png", 40, 40));
+                break;
+            case "Vip":
+                lblTypeMember.setIcon(new controller().changeImage("/imagenes/vip.png", 40, 40));
+                break;
+            case "Premium":
+                lblTypeMember.setIcon(new controller().changeImage("/imagenes/premium.png", 40, 40));
+                break;
+        }
+
+        switch(lblNumEvents.getText()){
+            case "-1":
+                lblNumEvents.setText("Ilimitados");
+                lblImageEvent.setIcon(new controller().changeImage("/imagenes/infinity.png", 40, 40));
+                break;
+            default:
+                lblImageEvent.setIcon(new controller().changeImage("/imagenes/hashtag.png", 40, 40));
+                break;
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
