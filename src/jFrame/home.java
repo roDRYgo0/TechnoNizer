@@ -202,6 +202,7 @@ public class home extends javax.swing.JFrame {
         tbtnInternet.setBackground(new java.awt.Color(255, 255, 255));
         tbtnInternet.setText("Internet");
         tbtnInternet.setBorderPainted(false);
+        tbtnInternet.setEnabled(false);
         tbtnInternet.setFocusPainted(false);
         tbtnInternet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -549,7 +550,7 @@ public class home extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Aenda");
+        jLabel6.setText("Agenda");
 
         javax.swing.GroupLayout pnAgendaLayout = new javax.swing.GroupLayout(pnAgenda);
         pnAgenda.setLayout(pnAgendaLayout);
@@ -667,6 +668,7 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_lblLenguageMouseClicked
 
     private void tbtnInternetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnInternetActionPerformed
+        
         if(tbtnInternet.isSelected())
             internet=false;
         else

@@ -145,6 +145,7 @@ public class logIn extends javax.swing.JFrame {
         tbtnInternet.setBackground(new java.awt.Color(255, 255, 255));
         tbtnInternet.setText("Internet");
         tbtnInternet.setBorderPainted(false);
+        tbtnInternet.setEnabled(false);
         tbtnInternet.setFocusPainted(false);
         tbtnInternet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,6 +257,7 @@ public class logIn extends javax.swing.JFrame {
 //            internet=false;
 //        else
 //            internet=true;
+   
         invokeHome(false);
     }//GEN-LAST:event_tbtnInternetActionPerformed
 //</editor-fold>
