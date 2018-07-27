@@ -550,7 +550,7 @@ public class home extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Aenda");
+        jLabel6.setText("Agenda");
 
         javax.swing.GroupLayout pnAgendaLayout = new javax.swing.GroupLayout(pnAgenda);
         pnAgenda.setLayout(pnAgendaLayout);
