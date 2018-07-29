@@ -17,12 +17,16 @@ public class jpAccess extends javax.swing.JPanel {
     
     public jpAccess() {
         initComponents();
+        load();
+    }
+
+    void load(){
         enable();
-        
+        classUsuario.restartUser();
         iconUsername.setIcon(new controller().changeImage("/imagenes/customer.png", 35, 35));
         lblTitle.setIcon(new controller().changeImage("/imagenes/technonizer.png", 285, 50));
     }
-
+    
     //<editor-fold defaultstate="collapsed" desc="compiled code">
     
     @SuppressWarnings("unchecked")
@@ -32,7 +36,7 @@ public class jpAccess extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         spMail = new javax.swing.JSeparator();
-        txtMail = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -57,22 +61,22 @@ public class jpAccess extends javax.swing.JPanel {
 
         spMail.setForeground(new java.awt.Color(204, 204, 204));
 
-        txtMail.setAutoscrolls(false);
-        txtMail.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtMail.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtUsername.setAutoscrolls(false);
+        txtUsername.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtUsername.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtMailFocusGained(evt);
+                txtUsernameFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtMailFocusLost(evt);
+                txtUsernameFocusLost(evt);
             }
         });
-        txtMail.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtMailKeyPressed(evt);
+                txtUsernameKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtMailKeyTyped(evt);
+                txtUsernameKeyTyped(evt);
             }
         });
 
@@ -80,7 +84,7 @@ public class jpAccess extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Ingrese su correo electroónico o teléfono");
+        jLabel4.setText("Ingrese su nombre de usuario");
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/facebook.png"))); // NOI18N
 
@@ -132,15 +136,6 @@ public class jpAccess extends javax.swing.JPanel {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCreateAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
@@ -154,11 +149,20 @@ public class jpAccess extends javax.swing.JPanel {
                                 .addGap(0, 0, 0)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(spMail)
-                                    .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(checkMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 34, Short.MAX_VALUE))))
+                        .addGap(0, 34, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCreateAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +178,7 @@ public class jpAccess extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(checkMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, 0)
                         .addComponent(spMail, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -199,36 +203,48 @@ public class jpAccess extends javax.swing.JPanel {
 
     //</editor-fold>
     
-    private void txtMailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMailFocusGained
+    private void txtUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsernameFocusGained
         spMail.setBackground(Color.red);
-    }//GEN-LAST:event_txtMailFocusGained
+    }//GEN-LAST:event_txtUsernameFocusGained
 
-    private void txtMailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMailFocusLost
+    private void txtUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsernameFocusLost
         spMail.setBackground(Color.white);
-    }//GEN-LAST:event_txtMailFocusLost
+    }//GEN-LAST:event_txtUsernameFocusLost
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        if(logIn.internet && !standardization.campoVacio(txtMail.getText()))
+        if(logIn.internet && !standardization.campoVacio(txtUsername.getText()))
         {
-            String Mail = txtMail.getText().replace(" ","");
-            if(methodsSQL.exists("SELECT * FROM users WHERE nickname = ?", Mail)){
+            String username = txtUsername.getText();
+            new Thread(()->{
                 disable();
-                new Thread(()->{
-                    classUsuario.setNickname(Mail);
-                    controller.jpP = new jpPassword(true);
+                if(methodsSQL.exists("SELECT * FROM users WHERE nickname = ?", username)){
+                    
+                    
+                    
+                    checkMail.setIcon(standardization.checkImage(1));
+                    new Thread(()->{
+                            
+                        classUsuario.setNickname(username);
+                        
+                        controller.jpP = new jpPassword();
 
-                    controller.jpP.setSize(420,603);
-                    controller.jpP.setLocation(0,0);
-                    controller.rootPane.removeAll();
-                    controller.rootPane.add(controller.jpP,BorderLayout.CENTER);
-                    controller.rootPane.revalidate();
-                    controller.rootPane.repaint();
-                }).start();
-                
-            }else
-                standardization.showMessage("warning", "El usuario no existe.");
+                        controller.jpP.setSize(420,603);
+                        controller.jpP.setLocation(0,0);
+                        controller.rootPane.removeAll();
+                        controller.rootPane.add(controller.jpP,BorderLayout.CENTER);
+                        controller.rootPane.revalidate();
+                        controller.rootPane.repaint();
+                    }).start();
+
+                }else{
+                    standardization.showMessage("warning", "El usuario no existe.");
+                    enable();
+                }
+                    
+            }).start();
+            
         }
-        else if(standardization.campoVacio(txtMail.getText()))
+        else if(standardization.campoVacio(txtUsername.getText()))
             standardization.showMessage("warning", "Ingrese su correo por favor.");
         else
             standardization.showMessage("error", "Error al establecer una conexion de red.");
@@ -244,21 +260,21 @@ public class jpAccess extends javax.swing.JPanel {
             standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_btnCreateAccountActionPerformed
 
-    private void txtMailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMailKeyTyped
+    private void txtUsernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyTyped
         char c = evt.getKeyChar();
         if(c == ' ')
             evt.consume();
-    }//GEN-LAST:event_txtMailKeyTyped
+    }//GEN-LAST:event_txtUsernameKeyTyped
 
-    private void txtMailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMailKeyPressed
+    private void txtUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyPressed
         if(evt.getKeyCode()== KeyEvent.VK_ENTER)
             btnNextActionPerformed(null);
-    }//GEN-LAST:event_txtMailKeyPressed
+    }//GEN-LAST:event_txtUsernameKeyPressed
 
     public void disable(){
         progress.setForeground(new Color(33,150,243));
-        checkMail.setIcon(new controller().changeImage("/imagenes/ok.png", 20, 20));
-        txtMail.setFocusable(false);
+        checkMail.setIcon(standardization.checkImage(2));
+        txtUsername.setFocusable(false);
         btnCreateAccount.setEnabled(false);
         btnNext.setEnabled(false);
     }
@@ -266,7 +282,8 @@ public class jpAccess extends javax.swing.JPanel {
     public void enable(){
         progress.setForeground(new Color(255,255,255));
         checkMail.setIcon(null);
-        txtMail.setFocusable(true);
+        txtUsername.setFocusable(true);
+        txtUsername.setText("");
         btnCreateAccount.setEnabled(true);
         btnNext.setEnabled(true);
     }
@@ -314,7 +331,7 @@ public class jpAccess extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle;
     private rojerusan.componentes.RSProgressMaterial progress;
     private javax.swing.JSeparator spMail;
-    private javax.swing.JTextField txtMail;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
     //</editor-fold>

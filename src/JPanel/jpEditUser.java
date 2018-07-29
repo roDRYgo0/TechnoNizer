@@ -1,6 +1,5 @@
 package JPanel;
 
-import jFrame.message;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
@@ -654,7 +653,7 @@ public class jpEditUser extends javax.swing.JPanel {
                 if(classUsuario.update()){
                     standardization.showMessage("ok", "Exito al actualizar.");
                     lblUserImage.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
-                    classUsuario.updateSelect();
+                    classUsuario.select();
                     load();
                     loadImagenes();
                 }

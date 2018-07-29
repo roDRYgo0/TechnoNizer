@@ -8,6 +8,8 @@ import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javaClass.*;
 import static javaClass.standardization.*;
 import javax.swing.Icon;
@@ -16,17 +18,13 @@ import javax.swing.ImageIcon;
 public class jpPassword extends javax.swing.JPanel {
     
     boolean sw;
-    
+    ResultSet rs;
     char echoChar;
+    String passdb;
     
-    
-    public jpPassword() {
+    public jpPassword(){
         initComponents();
-    }
-    
-    public jpPassword(boolean b){
-       initComponents();
-        
+        txtPassword.requestFocus();
         loadData(); 
     }
     
@@ -50,10 +48,12 @@ public class jpPassword extends javax.swing.JPanel {
         lblPassword = new javax.swing.JLabel();
         progress = new rojerusan.componentes.RSProgressMaterial();
         checkPass = new javax.swing.JLabel();
+        checkImage = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
         setMinimumSize(new java.awt.Dimension(420, 603));
+        setNextFocusableComponent(txtPassword);
         setPreferredSize(new java.awt.Dimension(420, 603));
 
         lblImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -70,6 +70,7 @@ public class jpPassword extends javax.swing.JPanel {
         txtName.setPreferredSize(new java.awt.Dimension(350, 30));
 
         txtPassword.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtPassword.setNextFocusableComponent(txtPassword);
         txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtPasswordFocusGained(evt);
@@ -129,6 +130,7 @@ public class jpPassword extends javax.swing.JPanel {
         btnRecoverPassword.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         btnRecoverPassword.setForeground(new java.awt.Color(0, 153, 255));
         btnRecoverPassword.setText("¿Olvidaste la contraseña?");
+        btnRecoverPassword.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnRecoverPassword.setBorderPainted(false);
         btnRecoverPassword.setFocusable(false);
         btnRecoverPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +151,10 @@ public class jpPassword extends javax.swing.JPanel {
         checkPass.setMinimumSize(new java.awt.Dimension(25, 25));
         checkPass.setPreferredSize(new java.awt.Dimension(25, 25));
 
+        checkImage.setMaximumSize(new java.awt.Dimension(25, 25));
+        checkImage.setMinimumSize(new java.awt.Dimension(25, 25));
+        checkImage.setPreferredSize(new java.awt.Dimension(25, 25));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -157,6 +163,8 @@ public class jpPassword extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(121, 121, 121)
                 .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(checkImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
@@ -194,7 +202,9 @@ public class jpPassword extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77)
-                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
@@ -224,9 +234,7 @@ public class jpPassword extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     //</editor-fold>
-    
-    
-       
+   
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         controller.rootPane.removeAll();
         controller.rootPane.add(controller.jpA,BorderLayout.CENTER);
@@ -260,28 +268,29 @@ public class jpPassword extends javax.swing.JPanel {
         {
             String pass = standardization.sha1(standardization.md5(Arrays.toString(txtPassword.getPassword())));
             System.out.println(pass);
-            String passdb="";
-            ResultSet rs = methodsSQL.getExecute("SELECT password FROM users WHERE nickname = ?",classUsuario.getNickname() );
-            
-            try {
-                while(rs.next())
-                    passdb= rs.getString(1);
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-            System.out.println(passdb);
-            
-            if(pass.equals(passdb)){
+            new Thread(()->{
                 disable();
-                checkPass.setIcon(new controller().changeImage("/imagenes/ok.png", 20, 20));
-                progress.setForeground(new Color(33,150,243));
-                new Thread(()->{
-                    classUsuario.select();
-                
-                    invokeHome(true);
-                }).start();
-            }else
-                standardization.showMessage("error", "La contraseña no coinsiden.");
+                rs = methodsSQL.getExecute("SELECT password FROM users WHERE nickname = ?",classUsuario.getNickname() );
+
+                try {
+                    while(rs.next())
+                        passdb= rs.getString(1);
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                if(pass.equals(passdb)){
+                    
+                    checkPass.setIcon(standardization.checkImage(1));
+                    new Thread(()->{
+                        classUsuario.select();
+
+                        invokeHome(true);
+                    }).start();
+                }else{
+                    standardization.showMessage("error", "La contraseña no coinsiden.");
+                    enable();
+                }
+            }).start();
  
         }
         else
@@ -290,9 +299,7 @@ public class jpPassword extends javax.swing.JPanel {
 
     private void btnRecoverPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecoverPasswordActionPerformed
         if(logIn.internet)
-        {
-//            standardization.enviarConGMail("dev.rodrig@gmail.com", "recuperacion de contraseña", "su codiguito es este papu");
-            
+        {           
             controller.jpRP = new jpRecoverPasswordMail();
         
             controller.jpRP.setSize(420,603);
@@ -312,10 +319,21 @@ public class jpPassword extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPasswordKeyPressed
     
     public void disable(){
+        checkPass.setIcon(standardization.checkImage(2));
+        progress.setForeground(new Color(33,150,243));
         txtPassword.setFocusable(false);
         btnRecoverPassword.setEnabled(false);
         btnBack.setEnabled(false);
         btnNext.setEnabled(false);
+    }
+    
+    public void enable(){
+        progress.setForeground(new Color(255,255,255));
+        checkPass.setIcon(null);
+        txtPassword.setFocusable(true);
+        btnRecoverPassword.setEnabled(true);
+        btnBack.setEnabled(true);
+        btnNext.setEnabled(true);
     }
     
     void loadData(){
@@ -324,28 +342,33 @@ public class jpPassword extends javax.swing.JPanel {
         lblImage.setIcon(new controller().changeImage("/imagenes/user.png", 150, 150));
         lblImage.setText("");
         
-        ResultSet rs = methodsSQL.getExecute("select ui.firstName, ui.lastName, u.imagen from users u, usersInformation ui where u.nickname = ui.nickname and ui.nickname = ?", classUsuario.getNickname());
+        rs = methodsSQL.getExecute("select ui.firstName, ui.lastName from users u, usersInformation ui where u.nickname = ui.nickname and ui.nickname = ?", classUsuario.getNickname());
         
         try {
             while(rs.next()){
                 System.out.println(classUsuario.getNickname());
                 classUsuario.setFirstName(rs.getString(1));
                 classUsuario.setLastName(rs.getString(2));
-                classUsuario.setImage(rs.getBytes(3));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
         String[] name = classUsuario.getFirstName().split(" ");
         String[] lastName = classUsuario.getLastName().split(" ");
         txtName.setText(name[0]+" "+lastName[0]);
-                System.out.println(classUsuario.getImage());
-
-        if(classUsuario.getImage()==null)
-            lblImage.setIcon(new controller().changeImage("/imagenes/user.png", 150, 150));
-        else
-            lblImage.setIcon(standardization.getImgIcon(classUsuario.getImage()));
+        checkImage.setIcon(standardization.checkImage(2));
+        new Thread(()->{
+            rs = methodsSQL.getExecute("select imagen from users where nickname = ?", classUsuario.getNickname());
+            try {
+                while(rs.next())
+                    classUsuario.setImage(rs.getBytes(1));
+            } catch (SQLException ex) {
+                Logger.getLogger(jpPassword.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(classUsuario.getImage()!=null)
+                lblImage.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 150, 150));
+            checkImage.setIcon(null);
+        }).start();        
     }
     
     //<editor-fold defaultstate="collapsed" desc="compiled code eye">
@@ -380,6 +403,7 @@ public class jpPassword extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnRecoverPassword;
+    private javax.swing.JLabel checkImage;
     private javax.swing.JLabel checkPass;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator2;

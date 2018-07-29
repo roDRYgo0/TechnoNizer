@@ -1,6 +1,7 @@
 package technonizer;
 
 import jFrame.*;
+import javaClass.classUsuario;
 
 public class TechnoNizer {
 
@@ -15,6 +16,10 @@ public class TechnoNizer {
     public static DeleteReminder dRem;
     
     public static void main(String[] args) {
+        new Thread(()->{
+            classUsuario.loadAllFinal();
+            System.out.println("Carga de constantes");
+        }).start();
         mess = new message();
         log = new logIn();
         sLoad = new load();
