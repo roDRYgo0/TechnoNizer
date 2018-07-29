@@ -57,6 +57,16 @@ public class standardization {
         return image;
     }
     
+    public static int getRow(){
+        int row = (classUsuario.getMyNumberEventUse()+1)/4;
+        if((classUsuario.getMyNumberEventUse()+1)%4!=0)
+            row++;
+        if(row<=3)
+            return 0;
+        else
+            return row - 3;
+    }
+    
     //<editor-fold defaultstate="collapsed" desc="convert">
     public byte [] getImgBytes(Image image) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

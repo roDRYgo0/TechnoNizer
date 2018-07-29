@@ -2,6 +2,7 @@ package jFrame;
 
 import JPanel.*;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import javaClass.*;
 import static javaClass.controller.jpH;
@@ -283,7 +284,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -801,6 +802,14 @@ public class home extends javax.swing.JFrame {
     private void pnEveMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnEveMouseReleased
         controller.jpE = new jpEvent();
         controller.jpE.setLocation(0,0);
+        classUsuario.setMyNumberEventUse(12);
+        System.out.println(classUsuario.getMyNumberEventUse());
+        System.out.println("Scroll bar "+standardization.getRow());
+        
+        int x = controller.jpE.getPreferredSize().width;
+        int y = controller.jpE.getPreferredSize().height + (155*standardization.getRow());
+        
+        controller.jpE.setPreferredSize(new Dimension(x, y));
 
         scrollContainer.setViewportView(controller.jpE);
         scrollContainer.revalidate();
