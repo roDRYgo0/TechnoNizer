@@ -2,8 +2,6 @@ package javaClass;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class classUsuario {
     
@@ -21,7 +19,6 @@ public class classUsuario {
 
     private static String myGender;
     private static String myMembership; 
-    private static int myDuration;
     private static int myNumEvent;
     private static int myNumberEventDisp;
     private static int myNumberEventUse;
@@ -55,14 +52,6 @@ public class classUsuario {
 
     public static void setMyMembership(String myMembership) {
         classUsuario.myMembership = myMembership;
-    }
-
-    public static int getMyDuration() {
-        return myDuration;
-    }
-
-    public static void setMyDuration(int myDuration) {
-        classUsuario.myDuration = myDuration;
     }
 
     public static int getMyNumEvent() {
@@ -159,36 +148,48 @@ public class classUsuario {
     }
 //</editor-fold>
     
-    public static boolean updateSelect(){
-        boolean status = true;
-        ResultSet rs;
-        if(status)
-            status=select();  
-        System.out.println(status);
-        if(status){
-            rs = methodsSQL.getExecute("SELECT gender FROM genders WHERE id = ?", classUsuario.getId_gender());
-            try {
-                while(rs.next())
-                    myGender = rs.getString(1);
-                status = true;
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-                status = false;
+    public static void restartUser(){
+        nickname = null;
+        firstName = null;
+        lastName = null;
+        birthdate = null;
+        mail = null;
+        id_gender = null;
+        password = null;
+        idMemberships = null;
+        durationMem = null;
+        code = null;
+        image = null;
+        myGender = null;
+        myMembership = null;
+        myNumEvent = 0;
+        myNumberEventDisp = 0;
+        myNumberEventUse = 0;
+    }
+    
+    public static boolean select(){
+        boolean status = false;
+        ResultSet rs = methodsSQL.getExecute("SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender,"
+                + " u.imagen, u.idMemberships, g.gender, u.durationMem FROM users u, usersInformation ui, genders g WHERE ui.id_gender = g.id and u.nickname = ui.nickname and u.nickname =  ?", nickname);
+        try {
+            while(rs.next()){
+                firstName = rs.getString(1);
+                lastName = rs.getString(2);
+                birthdate = rs.getString(3);
+                mail = rs.getString(4);
+                id_gender = rs.getInt(5);
+                image = rs.getBytes(6);
+                idMemberships = rs.getInt(7);
+                myGender = rs.getString(8);
+                durationMem = rs.getInt(9);
             }
+            status = true;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            status = false;
         }
-        if(status){
-            rs = methodsSQL.getExecute("select m.name, u.durationMem, m.numberEvents from users u, memberships m where u.idMemberships = m.id and u.nickname = ?", classUsuario.getNickname());
-            try {
-                while(rs.next()){
-                    myMembership = rs.getString(1);
-                    myDuration = rs.getInt(2);
-                    myNumEvent = rs.getInt(3);
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-                status= false;
-            }
-        }
+        myMembership = controller.member[idMemberships-1].getName();
+        myNumEvent = controller.member[idMemberships-1].getNumberEvents();
         if(status){
             rs=methodsSQL.getExecute("SELECT COUNT(*) FROM events WHERE nicknameCreator = ?", nickname);
             try {
@@ -196,14 +197,17 @@ public class classUsuario {
                     myNumberEventUse = rs.getInt(1);
                 }
                 myNumberEventDisp = myNumEvent-myNumberEventUse;
+                status = true;
             } catch (SQLException ex) {
-                Logger.getLogger(classUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex.getMessage());
+                status = false;
             }
         }
         return status;
     }
-    
-    public static void loadAllMember(){
+
+    //<editor-fold defaultstate="collapsed" desc="Load final">
+    public static void loadAllFinal(){
         for(int i=0; i < 3; i++){
             controller.member[i] = asignarDatos(i+1);
         }
@@ -243,35 +247,15 @@ public class classUsuario {
         }
         return member;
     }
+    //</editor-fold>
     
     public static boolean updateMembership(){
         return  methodsSQL.execute("UPDATE users SET idMemberships = ? WHERE nickname = ?", idMemberships, nickname);
     }
-    
-    public static boolean select(){
-        boolean status = false;
-        ResultSet rs = methodsSQL.getExecute("SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender, u.imagen, u.idMemberships FROM users u, usersInformation ui WHERE u.nickname = ui.nickname and u.nickname =  ?", nickname);
-        try {
-            while(rs.next()){
-                firstName = rs.getString(1);
-                lastName = rs.getString(2);
-                birthdate = rs.getString(3);
-                mail = rs.getString(4);
-                id_gender = rs.getInt(5);
-                image = rs.getBytes(6);
-                idMemberships = rs.getInt(7);
-            }
-            status = true;
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return status;
-    }
-    
+ 
     public static boolean insert(){
         boolean status = false;
         if(image==null){
-            System.out.println("aqui");
             status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, durationMem, idMemberships) VALUES ( ?, ?, ?, ?, ?, ?)",
                     nickname, mail, password, 1, durationMem, idMemberships);
             if(status)
@@ -279,7 +263,6 @@ public class classUsuario {
                         firstName, lastName, birthdate, id_gender, nickname);
         
         }else{
-            System.out.println("aqui no");
             status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, imagen, durationMem, idMemberships) VALUES ( ?, ?, ?, ?, ?, ?, ?)",
                     nickname, mail, password, 1, image, durationMem, idMemberships);
             if(status)

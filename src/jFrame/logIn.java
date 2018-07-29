@@ -1,11 +1,8 @@
 package jFrame;
 
-import JPanel.jpPassword;
 import JPanel.jpAccess;
 import java.awt.BorderLayout;
 import javaClass.controller;
-import static javaClass.standardization.invokeHome;
-import technonizer.TechnoNizer;
 
 public class logIn extends javax.swing.JFrame {
 
@@ -20,13 +17,9 @@ public class logIn extends javax.swing.JFrame {
         controller.asignar(rootPane);
         
         controller.jpA = new jpAccess();
-        controller.jpP = new jpPassword();
         
         controller.jpA.setSize(420,603);
         controller.jpA.setLocation(0,0);
-        
-        controller.jpP.setSize(420,603);
-        controller.jpP.setLocation(0,0);
         
         rootPane.removeAll();
         rootPane.add(controller.jpA,BorderLayout.CENTER);
@@ -253,12 +246,7 @@ public class logIn extends javax.swing.JFrame {
     }//GEN-LAST:event_lblLenguageMouseClicked
 
     private void tbtnInternetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnInternetActionPerformed
-//        if(tbtnInternet.isSelected())
-//            internet=false;
-//        else
-//            internet=true;
-   
-        invokeHome(false);
+
     }//GEN-LAST:event_tbtnInternetActionPerformed
 //</editor-fold>
         

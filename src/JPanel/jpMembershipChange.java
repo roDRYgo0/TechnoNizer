@@ -2,14 +2,8 @@ package JPanel;
 
 import jFrame.home;
 import java.awt.Color;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javaClass.classMembership;
 import javaClass.classUsuario;
 import javaClass.controller;
-import javaClass.methodsSQL;
 import javaClass.standardization;
 
 public class jpMembershipChange extends javax.swing.JPanel {
@@ -508,7 +502,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
 
     private void btnChangeMembershipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeMembershipActionPerformed
         if(classUsuario.updateMembership()){
-            classUsuario.updateSelect();
+            classUsuario.select();
             standardization.showMessage("ok","Tu membresia fue actualizada");
             house.membershipChange();
         }
@@ -624,7 +618,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
     
     public void loadMyMember(){
         lblNameMember.setText(classUsuario.getMyMembership());
-        lblDuration.setText(classUsuario.getMyDuration()+"");
+        lblDuration.setText(classUsuario.getDurationMem()+"");
         lblNumEvents.setText(classUsuario.getMyNumEvent()+"");
         switch(lblNameMember.getText()){
             case "Free":

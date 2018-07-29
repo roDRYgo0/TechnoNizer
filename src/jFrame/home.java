@@ -17,8 +17,7 @@ public class home extends javax.swing.JFrame {
     
     public home(boolean load) {
         initComponents();
-        classUsuario.updateSelect();
-        classUsuario.loadAllMember();
+        classUsuario.select();
         System.out.println("Numero de eventos es: "+classUsuario.getMyNumberEventUse());
         controller.rootFrame = this;
         this.internet = logIn.internet;
@@ -284,7 +283,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
             .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );

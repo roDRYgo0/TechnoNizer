@@ -22,7 +22,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTable;
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import technonizer.*;
 import static technonizer.TechnoNizer.*;
 
@@ -33,6 +32,23 @@ public class standardization {
     controller control = new controller();
     public static byte[] image;
     
+    
+    public static Icon checkImage(int status){
+        Icon ico=null;
+        switch(status){
+            case 0:
+                ico = (new controller().changeImage("/imagenes/cancel.png", 20, 20));
+                break;
+            case 1:
+                ico = (new controller().changeImage("/imagenes/ok.png", 20, 20));
+                break;
+            case 2:
+                ico = (new controller().changeImage("/imagenes/load.png", 20, 20));
+                break;
+        }
+        
+        return ico;
+    }
     
     public byte[] defaultImage(){
         ImageIcon original = new ImageIcon(getClass().getResource("/imagenes/user.png"));

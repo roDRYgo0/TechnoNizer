@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javaClass.*;
-import technonizer.TechnoNizer;
 
 public class jpRecoverPasswordMail extends javax.swing.JPanel {
 
@@ -17,15 +16,19 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
     }
     
     void load(){
-        ResultSet rs = methodsSQL.getExecute("SELECT mail FROM users WHERE nickname = ?", classUsuario.getNickname());
-        try {
-            while(rs.next())
-                classUsuario.setMail(rs.getString(1));
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-        lblMail.setText(classUsuario.getMail());
+        checkMail.setIcon(standardization.checkImage(2));
+        new Thread(()->{
+            ResultSet rs = methodsSQL.getExecute("SELECT mail FROM users WHERE nickname = ?",classUsuario.getNickname());
+            try {
+                while(rs.next())
+                    classUsuario.setMail(rs.getString(1));
+                lblMail.setText(classUsuario.getMail());
+                checkMail.setIcon(null);
+                btnNext.setEnabled(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(jpAccess.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }).start();
         System.out.println(classUsuario.getMail());
         lblResetPassword.setIcon(new controller().changeImage("/imagenes/resetPassword.png", 40, 40));
         lblThinking.setIcon(new controller().changeImage("/imagenes/thinking.png", 96, 96));
@@ -39,7 +42,7 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
     private void initComponents() {
 
         spTop = new javax.swing.JSeparator();
-        jbNext = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -51,6 +54,7 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
         lblTN = new javax.swing.JLabel();
         lblThinking = new javax.swing.JLabel();
         lblImageMail = new javax.swing.JLabel();
+        checkMail = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -59,15 +63,16 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
 
         spTop.setForeground(new java.awt.Color(153, 153, 153));
 
-        jbNext.setBackground(new java.awt.Color(0, 153, 255));
-        jbNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jbNext.setForeground(new java.awt.Color(255, 255, 255));
-        jbNext.setText("Enviar");
-        jbNext.setBorderPainted(false);
-        jbNext.setFocusable(false);
-        jbNext.addActionListener(new java.awt.event.ActionListener() {
+        btnNext.setBackground(new java.awt.Color(0, 153, 255));
+        btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnNext.setForeground(new java.awt.Color(255, 255, 255));
+        btnNext.setText("Enviar");
+        btnNext.setBorderPainted(false);
+        btnNext.setEnabled(false);
+        btnNext.setFocusable(false);
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbNextActionPerformed(evt);
+                btnNextActionPerformed(evt);
             }
         });
 
@@ -76,7 +81,6 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
         btnBack.setText("Atras");
         btnBack.setBorderPainted(false);
         btnBack.setFocusable(false);
-        btnBack.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -124,6 +128,10 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
         lblImageMail.setMinimumSize(new java.awt.Dimension(35, 35));
         lblImageMail.setPreferredSize(new java.awt.Dimension(35, 35));
 
+        checkMail.setMaximumSize(new java.awt.Dimension(25, 25));
+        checkMail.setMinimumSize(new java.awt.Dimension(25, 25));
+        checkMail.setPreferredSize(new java.awt.Dimension(25, 25));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,7 +148,7 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
-                                .addComponent(jbNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
@@ -151,18 +159,18 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblImageMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
-                                .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(checkMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblResetPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, 0)
-                                        .addComponent(jLabel3))))
+                                    .addComponent(jLabel3)))
                             .addComponent(jLabel4)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 22, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,19 +194,21 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblImageMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblImageMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(checkMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
     }// </editor-fold>//GEN-END:initComponents
     //</editor-fold>
     
-    private void jbNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNextActionPerformed
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         
         if(logIn.internet)
         {
@@ -218,7 +228,7 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
         else
             standardization.showMessage("error", "Error al establecer una conexion de red.");
         
-    }//GEN-LAST:event_jbNextActionPerformed
+    }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         controller.rootPane.removeAll();
@@ -243,12 +253,13 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JLabel checkMail;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JButton jbNext;
     private javax.swing.JLabel lblImageMail;
     private javax.swing.JLabel lblMail;
     private javax.swing.JLabel lblResetPassword;

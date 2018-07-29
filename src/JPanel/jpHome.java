@@ -1,13 +1,8 @@
 package JPanel;
 
 import jFrame.home;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javaClass.classUsuario;
 import javaClass.controller;
-import javaClass.methodsSQL;
 
 
 public class jpHome extends javax.swing.JPanel {
@@ -31,7 +26,7 @@ public class jpHome extends javax.swing.JPanel {
             lblBirthday.setText(classUsuario.getBirthdate());
             lblGender.setText(classUsuario.getMyGender());
             lblNameMember.setText(classUsuario.getMyMembership());
-            lblDuration.setText(classUsuario.getMyDuration()+"");
+            lblDuration.setText(classUsuario.getDurationMem()+"");
             lblNumEvents.setText(classUsuario.getMyNumEvent()+"");
 
             
