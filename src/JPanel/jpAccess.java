@@ -7,6 +7,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javaClass.*;
 import javax.swing.Timer;
 import technonizer.*;
@@ -48,6 +50,7 @@ public class jpAccess extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
         checkMail = new javax.swing.JLabel();
         progress = new rojerusan.componentes.RSProgressMaterial();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -127,6 +130,13 @@ public class jpAccess extends javax.swing.JPanel {
         progress.setAnchoProgress(6);
         progress.setPreferredSize(new java.awt.Dimension(34, 34));
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,7 +163,7 @@ public class jpAccess extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(checkMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 34, Short.MAX_VALUE))
+                        .addGap(0, 26, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -163,6 +173,10 @@ public class jpAccess extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(72, 72, 72))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +203,9 @@ public class jpAccess extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -254,7 +270,7 @@ public class jpAccess extends javax.swing.JPanel {
         if(logIn.internet)
         {
             createAccount();
-            standardization.showLoad(TechnoNizer.log);
+//            standardization.showLoad(TechnoNizer.log);
         }
         else
             standardization.showMessage("error", "Error al establecer una conexion de red.");
@@ -270,6 +286,11 @@ public class jpAccess extends javax.swing.JPanel {
         if(evt.getKeyCode()== KeyEvent.VK_ENTER)
             btnNextActionPerformed(null);
     }//GEN-LAST:event_txtUsernameKeyPressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void disable(){
         progress.setForeground(new Color(33,150,243));
@@ -290,13 +311,7 @@ public class jpAccess extends javax.swing.JPanel {
     
     public void createAccount() {
         
-        Thread load = new loadCreateAccount();
-        load.start();
-        
-        ActionListener listener = (ActionEvent evt) -> {           
-            if (controller.actionCompleted==true) {
-                
-                controller.jpCU = new jpCreateUser();
+        controller.jpCU = new jpCreateUser();
         
                 controller.jpCU.setSize(420,603);
                 controller.jpCU.setLocation(0,0);
@@ -305,13 +320,21 @@ public class jpAccess extends javax.swing.JPanel {
                 controller.rootPane.revalidate();
                 controller.rootPane.repaint();                
                 controller.actionCompleted=false;
-                standardization.hideLoad(TechnoNizer.log);
-                timer.stop();
-            }
-        };
+//                standardization.hideLoad(TechnoNizer.log);
+        
+//        Thread load = new loadCreateAccount();
+//        load.start();
+//        
+//        ActionListener listener = (ActionEvent evt) -> {           
+//            if (controller.actionCompleted==true) {
+//                
+//                
+//                timer.stop();
+//            }
+//        };
 
-        timer = new Timer(1000, listener);
-        timer.start();  
+//        timer = new Timer(1000, listener);
+//        timer.start();  
     }
     
     //<editor-fold defaultstate="collapsed" desc="compiled code">
@@ -321,6 +344,7 @@ public class jpAccess extends javax.swing.JPanel {
     private javax.swing.JButton btnNext;
     private javax.swing.JLabel checkMail;
     private javax.swing.JLabel iconUsername;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
