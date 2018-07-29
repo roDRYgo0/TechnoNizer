@@ -32,6 +32,11 @@ public class addEvent extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(230, 230, 230));
         setPreferredSize(new java.awt.Dimension(190, 120));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Cantarell", 1, 16)); // NOI18N
         jLabel1.setText("Agregar nuevo evento");
@@ -62,6 +67,10 @@ public class addEvent extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+   
+    }//GEN-LAST:event_formMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

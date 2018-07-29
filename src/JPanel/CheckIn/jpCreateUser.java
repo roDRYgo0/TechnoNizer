@@ -98,6 +98,11 @@ public class jpCreateUser extends javax.swing.JPanel {
                 txtMailFocusLost(evt);
             }
         });
+        txtMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMailActionPerformed(evt);
+            }
+        });
         txtMail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtMailKeyTyped(evt);
@@ -533,6 +538,10 @@ public class jpCreateUser extends javax.swing.JPanel {
         if(c == ' ')
             evt.consume();
     }//GEN-LAST:event_txtMailKeyTyped
+
+    private void txtMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMailActionPerformed
     
     public boolean camposVacios(){
         if(standardization.campoVacio(txtNickName.getText()) || standardization.campoVacio(txtMail.getText()) )
