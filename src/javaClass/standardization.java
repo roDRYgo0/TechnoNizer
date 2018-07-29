@@ -7,6 +7,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -32,6 +34,21 @@ public class standardization {
     controller control = new controller();
     public static byte[] image;
     
+    
+    public static boolean validateDate(int year, int month, int dayOfMonth){
+        try{
+            if (year < 1900)
+                throw new IllegalArgumentException("Año inválido.");
+
+            LocalDate today = LocalDate.of(year, month, dayOfMonth);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            System.out.println(formatter.format(today));
+            return true;
+        }catch(Exception ex){
+            System.out.println("Malo");
+            return false;
+        }
+    }
     
     public static Icon checkImage(int status){
         Icon ico=null;

@@ -7,6 +7,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javaClass.*;
 import javax.swing.Timer;
 import technonizer.*;
@@ -268,7 +270,7 @@ public class jpAccess extends javax.swing.JPanel {
         if(logIn.internet)
         {
             createAccount();
-            standardization.showLoad(TechnoNizer.log);
+//            standardization.showLoad(TechnoNizer.log);
         }
         else
             standardization.showMessage("error", "Error al establecer una conexion de red.");
@@ -286,9 +288,8 @@ public class jpAccess extends javax.swing.JPanel {
     }//GEN-LAST:event_txtUsernameKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int x = 4;
-        int y = 12;
-        System.out.println((y/x)+"   "+(y%x));
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void disable(){
@@ -310,13 +311,7 @@ public class jpAccess extends javax.swing.JPanel {
     
     public void createAccount() {
         
-        Thread load = new loadCreateAccount();
-        load.start();
-        
-        ActionListener listener = (ActionEvent evt) -> {           
-            if (controller.actionCompleted==true) {
-                
-                controller.jpCU = new jpCreateUser();
+        controller.jpCU = new jpCreateUser();
         
                 controller.jpCU.setSize(420,603);
                 controller.jpCU.setLocation(0,0);
@@ -325,13 +320,21 @@ public class jpAccess extends javax.swing.JPanel {
                 controller.rootPane.revalidate();
                 controller.rootPane.repaint();                
                 controller.actionCompleted=false;
-                standardization.hideLoad(TechnoNizer.log);
-                timer.stop();
-            }
-        };
+//                standardization.hideLoad(TechnoNizer.log);
+        
+//        Thread load = new loadCreateAccount();
+//        load.start();
+//        
+//        ActionListener listener = (ActionEvent evt) -> {           
+//            if (controller.actionCompleted==true) {
+//                
+//                
+//                timer.stop();
+//            }
+//        };
 
-        timer = new Timer(1000, listener);
-        timer.start();  
+//        timer = new Timer(1000, listener);
+//        timer.start();  
     }
     
     //<editor-fold defaultstate="collapsed" desc="compiled code">
