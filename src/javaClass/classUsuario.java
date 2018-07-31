@@ -250,26 +250,16 @@ public class classUsuario {
     //</editor-fold>
     
     public static boolean updateMembership(){
-        return  methodsSQL.execute("UPDATE users SET idMemberships = ? WHERE nickname = ?", idMemberships, nickname);
+        return  methodsSQL.execute("UPDATE users SET idMemberships = ?, durationMem = ? WHERE nickname = ?", idMemberships, durationMem, nickname);
     }
  
     public static boolean insert(){
         boolean status = false;
-        if(image==null){
-            status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, durationMem, idMemberships) VALUES ( ?, ?, ?, ?, ?, ?)",
+        status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, imagen, durationMem, idMemberships) VALUES ( ?, ?, ?, ?, "+image+", ?, ?)",
                     nickname, mail, password, 1, durationMem, idMemberships);
             if(status)
                 status= methodsSQL.execute("INSERT INTO usersInformation VALUES (?, ?, ? ,?, ?)",
                         firstName, lastName, birthdate, id_gender, nickname);
-        
-        }else{
-            status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, imagen, durationMem, idMemberships) VALUES ( ?, ?, ?, ?, ?, ?, ?)",
-                    nickname, mail, password, 1, image, durationMem, idMemberships);
-            if(status)
-                status= methodsSQL.execute("INSERT INTO usersInformation VALUES (?, ?, ? ,?, ?)",
-                        firstName, lastName, birthdate, id_gender, nickname);
-            
-        }
         return status;
     }
     
@@ -293,10 +283,32 @@ public class classUsuario {
         }
         return status;
     }
+
+    //<editor-fold defaultstate="collapsed" desc="Update">
+    public static boolean updateImage(){
+        return methodsSQL.execute("UPDATE users SET imagen = ? WHERE nickname = ?",image, nickname);
+    }
     
-//    public static boolean delete(){
-//        return methodsSQL.execute("UPDATE users SET condition = 0 WHERE nickname = ?", nickname);
-//    }
+    public static boolean updateFirstName(){
+        return methodsSQL.execute("UPDATE usersInformation SET firstName = ? WHERE nickname = ?",firstName, nickname);
+    }
+    
+    public static boolean updateLastName(){
+        return methodsSQL.execute("UPDATE usersInformation SET lastName = ? WHERE nickname = ?",lastName, nickname);
+    }
+    
+    public static boolean updateMail(){
+        return methodsSQL.execute("UPDATE users SET mail = ? WHERE nickname = ?",mail, nickname);
+    }
+    
+    public static boolean updateBirthdate(){
+        return methodsSQL.execute("UPDATE usersInformation SET birthdate = ? WHERE nickname = ?",birthdate, nickname);
+    }
+    
+    public static boolean updateGender(){
+        return methodsSQL.execute("UPDATE usersInformation SET id_gender = ? WHERE nickname = ?",id_gender, nickname);
+    }
+    //</editor-fold>
     
     public static boolean changePassword(){
         boolean status = false;

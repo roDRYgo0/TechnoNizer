@@ -16,8 +16,15 @@ public class home extends javax.swing.JFrame {
     boolean cambio=true;
     int x, y;
     
+    public static JLabel imageUserTop;
+    public static JLabel imageUserLeft;
+    
     public home(boolean load) {
         initComponents();
+        
+        imageUserTop = lblImageUserTop;
+        imageUserLeft = lblImageUserLeft;
+        
         classUsuario.select();
         System.out.println("Numero de eventos es: "+classUsuario.getMyNumberEventUse());
         controller.rootFrame = this;
@@ -41,18 +48,18 @@ public class home extends javax.swing.JFrame {
         lblStart.setIcon(new controller().changeImage("/imagenes/home.png", 24, 24));
         lblUser.setIcon(new controller().changeImage("/imagenes/username.png", 24, 24));
         if(classUsuario.getImage()==null)
-            lblImageUser.setIcon(new controller().changeImage("/imagenes/user.png", 97, 97));
+            lblImageUserLeft.setIcon(new controller().changeImage("/imagenes/user.png", 97, 97));
         else
-            lblImageUser.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
+            lblImageUserLeft.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
         lblMembership.setIcon(new controller().changeImage("/imagenes/membership.png", 24, 24));
         lblEvent.setIcon(new controller().changeImage("/imagenes/event.png", 24, 24));
         lblProject.setIcon(new controller().changeImage("/imagenes/project.png", 24, 24));
         lblAgenda.setIcon(new controller().changeImage("/imagenes/agenda.png", 24, 24));
         if(classUsuario.getImage()==null)
-            lblUsers.setIcon(new controller().changeImage("/imagenes/user.png", 24, 24));
+            lblImageUserTop.setIcon(new controller().changeImage("/imagenes/user.png", 24, 24));
         else
-            lblUsers.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 24, 24));
-        lblUsers.setText(classUsuario.getNickname());
+            lblImageUserTop.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 24, 24));
+        lblImageUserTop.setText(classUsuario.getNickname());
         loadData("settings","", lblSettings);
         
     }
@@ -78,7 +85,7 @@ public class home extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         lblSettings = new javax.swing.JLabel();
-        lblUsers = new javax.swing.JLabel();
+        lblImageUserTop = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
         pnGeneral = new javax.swing.JPanel();
         lblStart = new javax.swing.JLabel();
@@ -91,7 +98,7 @@ public class home extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
-        lblImageUser = new javax.swing.JLabel();
+        lblImageUserLeft = new javax.swing.JLabel();
         pnEve = new javax.swing.JPanel();
         lblEvent = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -259,11 +266,11 @@ public class home extends javax.swing.JFrame {
             }
         });
 
-        lblUsers.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsers.setText("Not found");
-        lblUsers.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblImageUserTop.setForeground(new java.awt.Color(255, 255, 255));
+        lblImageUserTop.setText("Not found");
+        lblImageUserTop.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblUsersMouseClicked(evt);
+                lblImageUserTopMouseClicked(evt);
             }
         });
 
@@ -275,7 +282,7 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 811, Short.MAX_VALUE)
-                .addComponent(lblUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblImageUserTop, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
                 .addComponent(lblSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -284,9 +291,9 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
             .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblUsers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblImageUserTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         leftPanel.setBackground(new java.awt.Color(42, 42, 42));
@@ -434,14 +441,14 @@ public class home extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(lblImageUser, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblImageUserLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblImageUser, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                .addComponent(lblImageUserLeft, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -688,21 +695,16 @@ public class home extends javax.swing.JFrame {
         y = evt.getY();
     }//GEN-LAST:event_topBarMousePressed
 
-    private void lblUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsersMouseClicked
-        controller.jpU = new jpEditUser(lblImageUser);
-        controller.jpU.setLocation(0,0);
-
-        scrollContainer.setViewportView(controller.jpU);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
-    }//GEN-LAST:event_lblUsersMouseClicked
+    private void lblImageUserTopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageUserTopMouseClicked
+        showEditUser();
+    }//GEN-LAST:event_lblImageUserTopMouseClicked
 
     private void pnUserMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnUserMouseReleased
         showEditUser();
     }//GEN-LAST:event_pnUserMouseReleased
 
     public void showEditUser(){
-        controller.jpU = new jpEditUser(lblImageUser);
+        controller.jpU = new jpEditUser();
         controller.jpU.setLocation(0,0);
 
         scrollContainer.setViewportView(controller.jpU);
@@ -802,8 +804,7 @@ public class home extends javax.swing.JFrame {
     private void pnEveMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnEveMouseReleased
         controller.jpE = new jpEvent();
         controller.jpE.setLocation(0,0);
-        classUsuario.setMyNumberEventUse(12);
-        System.out.println(classUsuario.getMyNumberEventUse());
+        System.out.println("El es "+classUsuario.getMyNumberEventUse());
         System.out.println("Scroll bar "+standardization.getRow());
         
         int x = controller.jpE.getPreferredSize().width;
@@ -855,14 +856,14 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAgenda;
     private javax.swing.JLabel lblEvent;
-    private javax.swing.JLabel lblImageUser;
+    private javax.swing.JLabel lblImageUserLeft;
+    private javax.swing.JLabel lblImageUserTop;
     private javax.swing.JLabel lblLenguage;
     private javax.swing.JLabel lblMembership;
     private javax.swing.JLabel lblProject;
     private javax.swing.JLabel lblSettings;
     private javax.swing.JLabel lblStart;
     private javax.swing.JLabel lblUser;
-    private javax.swing.JLabel lblUsers;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JPanel pnAgenda;
     private javax.swing.JPanel pnEve;

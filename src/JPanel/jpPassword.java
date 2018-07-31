@@ -20,7 +20,6 @@ public class jpPassword extends javax.swing.JPanel {
     boolean sw;
     ResultSet rs;
     char echoChar;
-    String passdb;
     
     public jpPassword(){
         initComponents();
@@ -274,11 +273,12 @@ public class jpPassword extends javax.swing.JPanel {
 
                 try {
                     while(rs.next())
-                        passdb= rs.getString(1);
+                        classUsuario.setPassword(rs.getString(1));
                 } catch (SQLException ex) {
                     System.out.println(ex.getMessage());
                 }
-                if(pass.equals(passdb)){
+                System.out.println(classUsuario.getPassword());
+                if(pass.equals(classUsuario.getPassword())){
                     
                     checkPass.setIcon(standardization.checkImage(1));
                     new Thread(()->{
