@@ -21,6 +21,7 @@ public class methodsSQL {
             return true;
         } catch(SQLException e) { 
             System.out.println(e.getMessage());
+            System.out.println(e);
             return false; 
         }
     }

@@ -8,6 +8,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import sucurity.jpChangePassword;
 
 public class controller {
     
@@ -28,7 +29,9 @@ public class controller {
     public static jpEvent jpE;
     public static event jpEv;
     public static addEvent jpAE;
+    public static jpSecurity jpSe;
     public static jpReminder jpREM;
+    public static jpChangePassword jpCp;
     public static classMembership[] member = new classMembership[3];
     public static String[] genders = new String[2];
     public static boolean actionCompleted = false;

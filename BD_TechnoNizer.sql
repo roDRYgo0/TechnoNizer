@@ -30,6 +30,15 @@ id int not null primary key,
 gender nvarchar(25) not null
 )
 
+select * from users
+delete from reminders
+delete from projects
+delete from ticketType
+delete from events
+delete from usersInformation
+delete from users
+
+
 create table users(
 nickname nvarchar(50) primary key not null,
 mail nvarchar(100) not null,
@@ -39,6 +48,8 @@ imagen image,
 durationMem int not null,
 idMemberships int not null references memberships(id)
 )
+
+alter table users add keyen nvarchar(20)
 
 select * from memberships
 

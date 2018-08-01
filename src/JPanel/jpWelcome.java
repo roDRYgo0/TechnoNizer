@@ -133,8 +133,7 @@ public class jpWelcome extends javax.swing.JPanel {
     }//GEN-LAST:event_lblTNMouseClicked
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        classUsuario.select();
-        invokeHome(true);
+        invokeHome(false);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed

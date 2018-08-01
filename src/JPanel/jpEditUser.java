@@ -28,18 +28,17 @@ public class jpEditUser extends javax.swing.JPanel {
     
     
     public jpEditUser() {
-        birth = classUsuario.getBirthdate();
         initComponents();
         continueM = false;
         continueN = false;
-        birthdate = birth.split("-");
-        System.out.println("aja puto " +Arrays.toString(birthdate));
         load();
         image = classUsuario.getImage();
         loadImagenes();
     }
     
     void load(){
+        birth = classUsuario.getBirthdate();
+        birthdate = birth.split("-");
         lblNickname.setText(classUsuario.getNickname());
         txtName.setText(classUsuario.getFirstName());
         txtLastName.setText(classUsuario.getLastName());
@@ -1003,26 +1002,7 @@ public class jpEditUser extends javax.swing.JPanel {
                      }
                      else
                         standardization.showMessage("error", "No se logro actualizar.");
-                 }).start();
-                 
-                 
-//                classUsuario.setFirstName(txtName.getText());
-//                classUsuario.setLastName(txtLastName.getText());
-//                classUsuario.setBirthdate(txtAnio.getText()+"-"+(cmbMes.getSelectedIndex()+1)+"-"+txtDia.getText());
-//                classUsuario.setMail(txtMail.getText().replace(" ", ""));
-//
-//                classUsuario.setId_gender(cmbGender.getSelectedIndex());
-//                if(classUsuario.update()){
-//                    standardization.showMessage("ok", "Exito al actualizar.");
-//                    lblUserImage.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
-//                    classUsuario.select();
-//                    load();
-//                    loadImagenes();
-//                }
-//                   
-//                else{
-//                    standardization.showMessage("error", "No se logro actualizar.");
-//                }                                
+                 }).start();                            
             }else{
                 standardization.showMessage("error", "La contraseña no coinsiden.");
             }

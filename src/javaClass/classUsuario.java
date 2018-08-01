@@ -205,6 +205,39 @@ public class classUsuario {
         }
         return status;
     }
+    
+    public static boolean selectAlter(){
+        boolean status = true;
+        myMembership = controller.member[idMemberships-1].getName();
+        myNumEvent = controller.member[idMemberships-1].getNumberEvents();
+        ResultSet rs;
+        
+        if(status){
+            rs=methodsSQL.getExecute("SELECT g.gender FROM genders g, usersInformation u WHERE u.id_gender = g.id and u.nickname = ?",nickname);
+            try {
+                while(rs.next())
+                    myGender = rs.getString(1);
+                status = true;
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+                status = false;
+            }
+        }
+        if(status){
+            rs=methodsSQL.getExecute("SELECT COUNT(*) FROM events WHERE nicknameCreator = ?", nickname);
+            try {
+                while(rs.next()){
+                    myNumberEventUse = rs.getInt(1);
+                }
+                myNumberEventDisp = myNumEvent-myNumberEventUse;
+                status = true;
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+                status = false;
+            }
+        }
+        return status;
+    }
 
     //<editor-fold defaultstate="collapsed" desc="Load final">
     public static void loadAllFinal(){
@@ -255,11 +288,29 @@ public class classUsuario {
  
     public static boolean insert(){
         boolean status = false;
-        status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, imagen, durationMem, idMemberships) VALUES ( ?, ?, ?, ?, "+image+", ?, ?)",
+        System.out.println(nickname);
+        System.out.println(mail);
+        System.out.println(password);
+        System.out.println(image);
+        System.out.println(durationMem);
+        System.out.println(idMemberships);
+        System.out.println(firstName);
+        System.out.println(lastName);
+        System.out.println(birthdate);
+        System.out.println(id_gender);
+        if(image == null){
+            status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, imagen, durationMem, idMemberships) VALUES ( ?, ?, ?, ?, "+image+", ?, ?)",
                     nickname, mail, password, 1, durationMem, idMemberships);
             if(status)
                 status= methodsSQL.execute("INSERT INTO usersInformation VALUES (?, ?, ? ,?, ?)",
                         firstName, lastName, birthdate, id_gender, nickname);
+        }else{
+            status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, imagen, durationMem, idMemberships) VALUES ( ?, ?, ?, ?, ?, ?, ?)",
+                    nickname, mail, password, 1, image, durationMem, idMemberships);
+            if(status)
+                status= methodsSQL.execute("INSERT INTO usersInformation VALUES (?, ?, ? ,?, ?)",
+                        firstName, lastName, birthdate, id_gender, nickname);
+        }
         return status;
     }
     
