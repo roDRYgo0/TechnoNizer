@@ -38,6 +38,7 @@ delete from events
 delete from usersInformation
 delete from users
 
+update users set checkKeygen  = 0 where nickname = 'dev.rodrig'
 
 create table users(
 nickname nvarchar(50) primary key not null,
@@ -49,7 +50,9 @@ durationMem int not null,
 idMemberships int not null references memberships(id)
 )
 
-alter table users add keyen nvarchar(20)
+alter table users add keygen nvarchar(40)
+alter table users add checkKeygen int
+
 
 select * from memberships
 

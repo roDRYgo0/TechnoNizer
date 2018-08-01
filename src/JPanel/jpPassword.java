@@ -270,7 +270,6 @@ public class jpPassword extends javax.swing.JPanel {
             new Thread(()->{
                 disable();
                 rs = methodsSQL.getExecute("SELECT password FROM users WHERE nickname = ?",classUsuario.getNickname() );
-
                 try {
                     while(rs.next())
                         classUsuario.setPassword(rs.getString(1));
@@ -282,10 +281,21 @@ public class jpPassword extends javax.swing.JPanel {
                     
                     checkPass.setIcon(standardization.checkImage(1));
                     new Thread(()->{
-                        classUsuario.select();
+                        if(classUsuario.getCheckKeygen()==1){
+                            controller.jpCheck = new jpAuthenticator();
 
-                        invokeHome(true);
+                            controller.jpCheck.setSize(420,603);
+                            controller.jpCheck.setLocation(0,0);
+                            controller.rootPane.removeAll();
+                            controller.rootPane.add(controller.jpCheck,BorderLayout.CENTER);
+                            controller.rootPane.revalidate();
+                            controller.rootPane.repaint();
+                        }else{
+                            classUsuario.select();
+                            invokeHome(true);
+                        }
                     }).start();
+                    
                 }else{
                     standardization.showMessage("error", "La contraseña no coinsiden.");
                     enable();

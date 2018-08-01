@@ -32,6 +32,10 @@ public class controller {
     public static jpSecurity jpSe;
     public static jpReminder jpREM;
     public static jpChangePassword jpCp;
+    public static jpConfAuthenticator jpAu;
+    public static jpCheckAuthenticator jpCa;
+    public static sucurity.jpAuthenticator jpAuthe;
+    public static jpAuthenticator jpCheck;
     public static classMembership[] member = new classMembership[3];
     public static String[] genders = new String[2];
     public static boolean actionCompleted = false;

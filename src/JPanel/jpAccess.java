@@ -56,6 +56,7 @@ public class jpAccess extends javax.swing.JPanel {
         checkMail = new javax.swing.JLabel();
         progress = new rojerusan.componentes.RSProgressMaterial();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -142,6 +143,13 @@ public class jpAccess extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -179,7 +187,8 @@ public class jpAccess extends javax.swing.JPanel {
                                 .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18))))
         );
         layout.setVerticalGroup(
@@ -218,6 +227,8 @@ public class jpAccess extends javax.swing.JPanel {
                             .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(26, 26, 26)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -241,14 +252,16 @@ public class jpAccess extends javax.swing.JPanel {
             String username = txtUsername.getText();
             new Thread(()->{
                 disable();
-                if(methodsSQL.exists("SELECT * FROM users WHERE nickname = ?", username)){
-                    
-                    
-                    
+                if(methodsSQL.exists("SELECT mail FROM users WHERE nickname = ?", username)){
                     checkMail.setIcon(standardization.checkImage(1));
                     new Thread(()->{
                             
                         classUsuario.setNickname(username);
+                        
+                        if(!classUsuario.selectKeygen())
+                            standardization.showMessage("cancel", "Error keygen");   
+                        else
+                            System.out.println("listo");
                         
                         controller.jpP = new jpPassword();
 
@@ -296,7 +309,7 @@ public class jpAccess extends javax.swing.JPanel {
     }//GEN-LAST:event_txtUsernameKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        classUsuario.setNickname(txtUsername.getText());
+        classUsuario.setNickname("dev.rodrig");
         ResultSet rs = methodsSQL.getExecute("SELECT password FROM users WHERE nickname = ?",classUsuario.getNickname() );
 
         try {
@@ -310,6 +323,10 @@ public class jpAccess extends javax.swing.JPanel {
         invokeHome(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+  
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     public void disable(){
@@ -365,6 +382,7 @@ public class jpAccess extends javax.swing.JPanel {
     private javax.swing.JLabel checkMail;
     private javax.swing.JLabel iconUsername;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

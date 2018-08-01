@@ -1,8 +1,10 @@
 package JPanel;
 
+import sucurity.jpAuthenticator;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import javaClass.classUsuario;
 import javaClass.controller;
 import sucurity.jpChangePassword;
 
@@ -12,6 +14,18 @@ public class jpSecurity extends javax.swing.JPanel {
         initComponents();
         loadImage();
         jpShow.setPreferredSize(new Dimension(445, 465));
+        load();
+    }
+    
+    void load(){
+        System.out.println(classUsuario.getKeygen());
+        if(classUsuario.getKeygen().equals("null")){
+            lblStatusAuthen.setText("No configurado");
+            lblStatusAuthen.setForeground(Color.red);
+        }else{
+            lblStatusAuthen.setText("Configurado");
+            lblStatusAuthen.setForeground(Color.green);
+        }
     }
     
     void loadImage(){
@@ -24,6 +38,18 @@ public class jpSecurity extends javax.swing.JPanel {
         jpBackPass.setBackground(Color.white);
         jpBackAuthen.setBackground(Color.white);
         jpBackSms.setBackground(Color.white);
+    }
+    
+    public void endAuthenticator(String keygen){
+        controller.jpCa = new jpCheckAuthenticator(keygen);
+        
+        controller.jpCa.setSize(445, 465);
+        controller.jpCa.setLocation(0,0);
+        
+        jpShow.removeAll();
+        jpShow.add(controller.jpCa,BorderLayout.CENTER);
+        jpShow.revalidate();
+        jpShow.repaint();
     }
 
     @SuppressWarnings("unchecked")
@@ -40,7 +66,7 @@ public class jpSecurity extends javax.swing.JPanel {
         jpFrontAuthen = new javax.swing.JPanel();
         iconAuthen = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblStatusAuthen = new javax.swing.JLabel();
         jpBackSms = new javax.swing.JPanel();
         jpFrontSms = new javax.swing.JPanel();
         iconSms = new javax.swing.JLabel();
@@ -131,10 +157,10 @@ public class jpSecurity extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Authenticator");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("No configrado");
+        lblStatusAuthen.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblStatusAuthen.setForeground(new java.awt.Color(255, 0, 0));
+        lblStatusAuthen.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblStatusAuthen.setText("No configrado");
 
         javax.swing.GroupLayout jpFrontAuthenLayout = new javax.swing.GroupLayout(jpFrontAuthen);
         jpFrontAuthen.setLayout(jpFrontAuthenLayout);
@@ -146,7 +172,7 @@ public class jpSecurity extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblStatusAuthen, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jpFrontAuthenLayout.setVerticalGroup(
@@ -160,7 +186,7 @@ public class jpSecurity extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFrontAuthenLayout.createSequentialGroup()
                         .addGroup(jpFrontAuthenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel2))
+                            .addComponent(lblStatusAuthen))
                         .addGap(24, 24, 24))))
         );
 
@@ -198,7 +224,7 @@ public class jpSecurity extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("No configrado");
+        jLabel6.setText("No verificado");
 
         javax.swing.GroupLayout jpFrontSmsLayout = new javax.swing.GroupLayout(jpFrontSms);
         jpFrontSms.setLayout(jpFrontSmsLayout);
@@ -243,7 +269,7 @@ public class jpSecurity extends javax.swing.JPanel {
                 .addComponent(jpFrontSms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jpShow.setBackground(new java.awt.Color(204, 0, 204));
+        jpShow.setBackground(new java.awt.Color(245, 245, 245));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 153, 153));
@@ -314,7 +340,10 @@ public class jpSecurity extends javax.swing.JPanel {
     private void jpFrontPassMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpFrontPassMouseReleased
         resetColor();
         jpBackPass.setBackground(new Color(33,150,243));
-        
+        changePassword();
+    }//GEN-LAST:event_jpFrontPassMouseReleased
+
+    public void changePassword(){
         controller.jpCp = new jpChangePassword();
         
         System.out.println(jpShow.getPreferredSize());
@@ -327,15 +356,42 @@ public class jpSecurity extends javax.swing.JPanel {
         jpShow.add(controller.jpCp,BorderLayout.CENTER);
         jpShow.revalidate();
         jpShow.repaint();
-
-        
-    }//GEN-LAST:event_jpFrontPassMouseReleased
-
+    }
+    
     private void jpFrontAuthenMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpFrontAuthenMouseReleased
         resetColor();
         jpBackAuthen.setBackground(new Color(33,150,243));
+        if(classUsuario.getKeygen().equals("null"))
+            newAuthenticator();
+        else
+            authenticator();
+        
     }//GEN-LAST:event_jpFrontAuthenMouseReleased
 
+    public void newAuthenticator(){
+        controller.jpAu = new jpConfAuthenticator();
+        
+        controller.jpAu.setSize(445, 465);
+        controller.jpAu.setLocation(0,0);
+        
+        jpShow.removeAll();
+        jpShow.add(controller.jpAu,BorderLayout.CENTER);
+        jpShow.revalidate();
+        jpShow.repaint();
+    }
+    
+    public void authenticator(){
+        controller.jpAuthe = new jpAuthenticator();
+        
+        controller.jpAuthe.setSize(445, 465);
+        controller.jpAuthe.setLocation(0,0);
+        
+        jpShow.removeAll();
+        jpShow.add(controller.jpAuthe,BorderLayout.CENTER);
+        jpShow.revalidate();
+        jpShow.repaint();
+    }
+    
     private void jpFrontSmsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpFrontSmsMouseReleased
         resetColor();
         jpBackSms.setBackground(new Color(33,150,243));
@@ -347,7 +403,6 @@ public class jpSecurity extends javax.swing.JPanel {
     private javax.swing.JLabel iconPass;
     private javax.swing.JLabel iconSms;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -361,5 +416,6 @@ public class jpSecurity extends javax.swing.JPanel {
     private javax.swing.JPanel jpFrontPass;
     private javax.swing.JPanel jpFrontSms;
     private javax.swing.JPanel jpShow;
+    private javax.swing.JLabel lblStatusAuthen;
     // End of variables declaration//GEN-END:variables
 }

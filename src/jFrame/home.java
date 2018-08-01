@@ -887,14 +887,18 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnSecurityFocusLost
 
     private void pnSecurityMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSecurityMouseReleased
+        pnSecurity();
+    }//GEN-LAST:event_pnSecurityMouseReleased
+    //</editor-fold>
+    
+    public void pnSecurity(){
         controller.jpSe = new jpSecurity();
         controller.jpSe.setLocation(0, 0);
         
         scrollContainer.setViewportView(controller.jpSe);
         scrollContainer.revalidate();
         scrollContainer.repaint();
-    }//GEN-LAST:event_pnSecurityMouseReleased
-    //</editor-fold>
+    }
     
     public void loadData(String image, String text, JLabel label)
     {

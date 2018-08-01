@@ -1,5 +1,6 @@
 package sucurity;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.Arrays;
@@ -11,7 +12,7 @@ import javax.swing.ImageIcon;
 
 public class jpChangePassword extends javax.swing.JPanel {
 
-    boolean sw, continueM, continueN, continueP;
+    boolean sw, continueA, continueP;
     char echoChar;
     
     boolean sww;
@@ -19,6 +20,8 @@ public class jpChangePassword extends javax.swing.JPanel {
     
     public jpChangePassword() {
         initComponents();
+        continueA =false;
+        continueP =false;
         loadImagenes();
     }
 
@@ -53,6 +56,7 @@ public class jpChangePassword extends javax.swing.JPanel {
         spPasswordConfirm = new javax.swing.JSeparator();
         txtPasswordConfirm = new javax.swing.JPasswordField();
         iconEyeConfirm = new javax.swing.JLabel();
+        btnNext = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(245, 245, 245));
         setMaximumSize(new java.awt.Dimension(445, 465));
@@ -168,6 +172,18 @@ public class jpChangePassword extends javax.swing.JPanel {
             }
         });
 
+        btnNext.setBackground(new java.awt.Color(0, 153, 255));
+        btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnNext.setForeground(new java.awt.Color(255, 255, 255));
+        btnNext.setText("Siguiente");
+        btnNext.setBorderPainted(false);
+        btnNext.setFocusable(false);
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -213,7 +229,11 @@ public class jpChangePassword extends javax.swing.JPanel {
                         .addComponent(checkPassOld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +284,9 @@ public class jpChangePassword extends javax.swing.JPanel {
                             .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(iconEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(93, 93, 93)))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -275,10 +297,14 @@ public class jpChangePassword extends javax.swing.JPanel {
     private void txtPasswordOldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordOldFocusLost
         spPasswordOld.setBackground(Color.gray);
         String pass = standardization.sha1(standardization.md5(Arrays.toString(txtPasswordOld.getPassword())));
-        if(pass.equals(classUsuario.getPassword()))
+        if(pass.equals(classUsuario.getPassword())){
             checkPassOld.setIcon(standardization.checkImage(1));
-        else
+            continueA=true;
+        }
+        else{
             checkPassOld.setIcon(standardization.checkImage(0));
+            continueA=false;
+        }
     }//GEN-LAST:event_txtPasswordOldFocusLost
 
     private void txtPasswordOldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordOldKeyPressed
@@ -298,11 +324,11 @@ public class jpChangePassword extends javax.swing.JPanel {
     }//GEN-LAST:event_lblEyeOldMouseClicked
 
     private void txtPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusGained
-        spPasswordOld.setBackground(Color.red);
+        spPassword.setBackground(Color.red);
     }//GEN-LAST:event_txtPasswordFocusGained
 
     private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
-        spPasswordOld.setBackground(Color.white);
+        spPassword.setBackground(Color.white);
         if(!standardization.validatePassword(standardization.convertPassword(txtPassword.getPassword())) && txtPassword.getPassword().length!=0){
             standardization.showMessage("warning", "La contraseña no cumple las espectativas");
             checkPass.setIcon(new controller().changeImage("/imagenes/cancel.png", 20, 20));
@@ -350,6 +376,33 @@ public class jpChangePassword extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_iconEyeConfirmMouseClicked
 
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        if(continueA)
+        {
+            
+            if(continueP){              
+                new Thread(()->{
+                if(Arrays.equals(txtPasswordConfirm.getPassword(), txtPassword.getPassword())){
+                    classUsuario.setPassword(standardization.sha1(standardization.md5(Arrays.toString(txtPassword.getPassword()))));
+
+                    if(!Arrays.equals(txtPasswordOld.getPassword(),txtPassword.getPassword())){
+                        if(classUsuario.changePassword() && continueP){
+                            standardization.showMessage("ok", "Contraseña actualizada.");
+                        }
+                        else
+                            standardization.showMessage("error", "No se pudo cambiar la contraseña.");
+                    }else
+                        standardization.showMessage("error", "Esta contraseña ya la has usado");
+                } else
+                    standardization.showMessage("warning", "Las contraseñas no coinciden.");
+            }).start();
+            }else
+                standardization.showMessage("warning", "Ingrese una contraseña valida por favor");
+        }
+        else
+            standardization.showMessage("error", "Las contraseñas no coinciden");
+    }//GEN-LAST:event_btnNextActionPerformed
+
     
     public void loadEyeOld()
     {
@@ -395,6 +448,7 @@ public class jpChangePassword extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnNext;
     private javax.swing.JLabel checkPass;
     private javax.swing.JLabel checkPassOld;
     private javax.swing.JLabel iconEye;

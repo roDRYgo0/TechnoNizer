@@ -16,6 +16,8 @@ public class classUsuario {
     private static Integer durationMem;
     private static String code;
     private static byte[] image = null;
+    private static String keygen;
+    private static Integer checkKeygen;
 
     private static String myGender;
     private static String myMembership; 
@@ -24,6 +26,20 @@ public class classUsuario {
     private static int myNumberEventUse;
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static Integer getCheckKeygen() {
+        return checkKeygen;
+    }
+
+    public static void setCheckKeygen(Integer checlKeygen) {
+        classUsuario.checkKeygen = checlKeygen;
+    }
+    public static String getKeygen() {
+        return keygen;
+    }
+
+    public static void setKeygen(String keygen) {
+        classUsuario.keygen = keygen;
+    }
     public static int getMyNumberEventUse() {
         return myNumberEventUse;
     }
@@ -165,12 +181,13 @@ public class classUsuario {
         myNumEvent = 0;
         myNumberEventDisp = 0;
         myNumberEventUse = 0;
+        keygen=null;
     }
     
     public static boolean select(){
         boolean status = false;
         ResultSet rs = methodsSQL.getExecute("SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender,"
-                + " u.imagen, u.idMemberships, g.gender, u.durationMem FROM users u, usersInformation ui, genders g WHERE ui.id_gender = g.id and u.nickname = ui.nickname and u.nickname =  ?", nickname);
+                + " u.imagen, u.idMemberships, g.gender, u.durationMem, u.keygen, u.checkKeygen FROM users u, usersInformation ui, genders g WHERE ui.id_gender = g.id and u.nickname = ui.nickname and u.nickname =  ?", nickname);
         try {
             while(rs.next()){
                 firstName = rs.getString(1);
@@ -182,6 +199,8 @@ public class classUsuario {
                 idMemberships = rs.getInt(7);
                 myGender = rs.getString(8);
                 durationMem = rs.getInt(9);
+                keygen = rs.getString(10);
+                checkKeygen = rs.getInt(11);
             }
             status = true;
         } catch (SQLException ex) {
@@ -235,6 +254,24 @@ public class classUsuario {
                 System.out.println(ex.getMessage());
                 status = false;
             }
+        }
+        return status;
+    }
+    
+    public static boolean selectKeygen(){
+        boolean status = false;
+        ResultSet rs=methodsSQL.getExecute("SELECT keygen, checkKeygen FROM users WHERE nickname = ?", nickname);
+        try {
+            while(rs.next()){
+                keygen = rs.getString(1);
+                checkKeygen = rs.getInt(2);
+            }
+            System.out.println(keygen);
+            System.out.println(checkKeygen);
+            status = true;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            status = false;
         }
         return status;
     }
@@ -299,13 +336,13 @@ public class classUsuario {
         System.out.println(birthdate);
         System.out.println(id_gender);
         if(image == null){
-            status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, imagen, durationMem, idMemberships) VALUES ( ?, ?, ?, ?, "+image+", ?, ?)",
+            status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, imagen, durationMem, idMemberships, checkKeygen, keygen) VALUES ( ?, ?, ?, ?, "+image+", ?, ?, 0, 'null')",
                     nickname, mail, password, 1, durationMem, idMemberships);
             if(status)
                 status= methodsSQL.execute("INSERT INTO usersInformation VALUES (?, ?, ? ,?, ?)",
                         firstName, lastName, birthdate, id_gender, nickname);
         }else{
-            status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, imagen, durationMem, idMemberships) VALUES ( ?, ?, ?, ?, ?, ?, ?)",
+            status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, imagen, durationMem, idMemberships, checkKeygen, keygen) VALUES ( ?, ?, ?, ?, ?, ?, ?, 0, 'null')",
                     nickname, mail, password, 1, image, durationMem, idMemberships);
             if(status)
                 status= methodsSQL.execute("INSERT INTO usersInformation VALUES (?, ?, ? ,?, ?)",
@@ -364,6 +401,27 @@ public class classUsuario {
     public static boolean changePassword(){
         boolean status = false;
         status = methodsSQL.execute("UPDATE users SET password = ? WHERE nickname = ?", password, nickname);
+        return status;
+    }
+    
+    public static boolean insertKeygen(){
+        boolean status = false;
+        status = methodsSQL.execute("UPDATE users SET keygen = ?, checkKeygen = 1 WHERE nickname = ?", keygen, nickname);
+        return status;
+    }
+    
+    public static boolean changeCheckKeygen(int i){
+        boolean status = false;
+        status = methodsSQL.execute("UPDATE users SET checkKeygen = "+i+" WHERE nickname = ?", nickname);
+        classUsuario.setCheckKeygen(i);
+        return status;
+    }
+    
+    public static boolean deleteKeygen(){
+        boolean status = false;
+        status = methodsSQL.execute("UPDATE users SET checkKeygen = 0, keygen = 'null' WHERE nickname = ?", nickname);
+        checkKeygen = 0;
+        keygen = "null";
         return status;
     }
     
