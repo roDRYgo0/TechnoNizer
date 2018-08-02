@@ -73,10 +73,15 @@ select ui.firstName, ui.lastName from usersInformation ui where ui.nickname = 'd
 
 select * from users where nickname = ?, password = ?
 
+
 create table contactType(
 id int identity(1,1) primary key not null,
 type nvarchar(60)
 )
+
+select * from contactType
+
+insert into contactType values ('Teléfono'),('Email')
 
 create table contactUsers(
 id int identity(1,1) primary key not null,
@@ -84,8 +89,7 @@ contact nvarchar(150),
 idContactType int not null references contactType(id),
 idUsersInf int not null references usersInformation(id)
 )
-
-
+alter table contactUsers alter column condition int not null
 
 create table questionBank(
 id int identity(1,1) primary key not null,

@@ -18,7 +18,9 @@ public class classUsuario {
     private static byte[] image = null;
     private static String keygen;
     private static Integer checkKeygen;
+    private static Integer idUsersInf;
 
+    
     private static String myGender;
     private static String myMembership; 
     private static int myNumEvent;
@@ -26,6 +28,13 @@ public class classUsuario {
     private static int myNumberEventUse;
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static Integer getIdUsersInf() {
+        return idUsersInf;
+    }
+
+    public static void setIdUsersInf(Integer idUsersInf) {
+        classUsuario.idUsersInf = idUsersInf;
+    }
     public static Integer getCheckKeygen() {
         return checkKeygen;
     }
@@ -187,7 +196,7 @@ public class classUsuario {
     public static boolean select(){
         boolean status = false;
         ResultSet rs = methodsSQL.getExecute("SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender,"
-                + " u.imagen, u.idMemberships, g.gender, u.durationMem, u.keygen, u.checkKeygen FROM users u, usersInformation ui, genders g WHERE ui.id_gender = g.id and u.nickname = ui.nickname and u.nickname =  ?", nickname);
+                + " u.imagen, u.idMemberships, g.gender, u.durationMem, u.keygen, u.checkKeygen, ui.id FROM users u, usersInformation ui, genders g WHERE ui.id_gender = g.id and u.nickname = ui.nickname and u.nickname =  ?", nickname);
         try {
             while(rs.next()){
                 firstName = rs.getString(1);
@@ -201,6 +210,7 @@ public class classUsuario {
                 durationMem = rs.getInt(9);
                 keygen = rs.getString(10);
                 checkKeygen = rs.getInt(11);
+                idUsersInf = rs.getInt(12);
             }
             status = true;
         } catch (SQLException ex) {
