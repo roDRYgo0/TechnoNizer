@@ -332,6 +332,12 @@ public class standardization {
         return mather.find();
     }
     
+    public static boolean validateNumber(String cadena){
+        Pattern pattern = Pattern.compile("^([0-9])*$");
+        Matcher mather = pattern.matcher(cadena);
+        return mather.find();
+    }
+    
     public static boolean validateString(String cadena){
         Pattern pattern = Pattern.compile("|^[a-zA-Z]+(\\s*[a-zA-Z]*)*[a-zA-Z]+$|");
         Matcher mather = pattern.matcher(cadena);

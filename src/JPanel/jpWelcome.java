@@ -1,7 +1,6 @@
 package JPanel;
 
 import java.awt.BorderLayout;
-import javaClass.classUsuario;
 import javaClass.controller;
 import static javaClass.standardization.invokeHome;
 

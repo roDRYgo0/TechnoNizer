@@ -676,6 +676,7 @@ public class home extends javax.swing.JFrame {
         scrollContainer.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollContainer.setMaximumSize(new java.awt.Dimension(456000, 456000));
         scrollContainer.setMinimumSize(new java.awt.Dimension(0, 0));
+        scrollContainer.setPreferredSize(new java.awt.Dimension(1, 1));
         scrollContainer.setWheelScrollingEnabled(false);
 
         javax.swing.GroupLayout rootpaneLayout = new javax.swing.GroupLayout(rootpane);
@@ -759,6 +760,7 @@ public class home extends javax.swing.JFrame {
 
     public void showEditUser(){
         controller.jpU = new jpEditUser();
+        controller.jpU.setPreferredSize(new Dimension(980,601));
         controller.jpU.setLocation(0,0);
 
         scrollContainer.setViewportView(controller.jpU);
