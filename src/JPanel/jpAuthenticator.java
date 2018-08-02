@@ -3,6 +3,7 @@ package JPanel;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javaClass.authenticator;
+import javaClass.classContact;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
@@ -188,6 +189,7 @@ public class jpAuthenticator extends javax.swing.JPanel {
             if(myCode == authenticator.returnCode(classUsuario.getKeygen())){
                 checkCode.setIcon(standardization.checkImage(1));
                 classUsuario.select();
+                classContact.select();
                 invokeHome(true);
             }
             else{

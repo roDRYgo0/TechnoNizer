@@ -292,6 +292,7 @@ public class jpPassword extends javax.swing.JPanel {
                             controller.rootPane.repaint();
                         }else{
                             classUsuario.select();
+                            classContact.select();
                             invokeHome(true);
                         }
                     }).start();

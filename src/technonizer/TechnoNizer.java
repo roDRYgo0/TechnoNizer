@@ -20,14 +20,10 @@ public class TechnoNizer {
     public static void main(String[] args) {
         new Thread(()->{
             classUsuario.loadAllFinal();
+            classContact.loadCopntactType();
             System.out.println("Carga de constantes");
         }).start();
-        new Thread(()->{
-            classContact.loadCopntactType();
-            classContact.select();
-            System.out.println(Arrays.toString(classContact.getContactType()));
-            System.out.println(classContact.existContact());
-        }).start();
+        
         mess = new message();
         log = new logIn();
         sLoad = new load();

@@ -4,6 +4,7 @@ import JPanel.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.util.Arrays;
 import javaClass.*;
 import static javaClass.controller.jpH;
 import javax.swing.Icon;
@@ -21,6 +22,13 @@ public class home extends javax.swing.JFrame {
     
     public home(boolean load) {
         initComponents();
+        
+        new Thread(()->{
+            classContact.select();
+            System.out.println("Numero es eses"+classContact.getNumContact());
+            System.out.println(Arrays.toString(classContact.getContactType()));
+            System.out.println(classContact.existContact());
+        }).start();
         
         imageUserTop = lblImageUserTop;
         imageUserLeft = lblImageUserLeft;
@@ -298,7 +306,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblImageUserTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );

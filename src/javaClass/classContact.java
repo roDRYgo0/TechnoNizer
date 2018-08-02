@@ -8,12 +8,28 @@ import java.util.logging.Logger;
 public class classContact {
     
     private static String[] contactType;
+    private static Integer id;
     private static String contact;
     private static Integer condition;
     private static Integer numContact;
+    private static Integer idContactType;
 
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static Integer getId() {
+        return id;
+    }
+
+    public static void setId(Integer id) {
+        classContact.id = id;
+    }
+    public static Integer getIdContactType() {
+        return idContactType;
+    }
+
+    public static void setIdContactType(Integer idContactType) {
+        classContact.idContactType = idContactType;
+    }
     public static Integer getNumContact() {
         return numContact;
     }
@@ -48,16 +64,22 @@ public class classContact {
     
     public static int getSpaceContact(){
         numContact += 1;
-        int space = 1;
+        int space = 0;
         if(numContact>5){
             return numContact - 5;
         }
         return space;
     }
     
-    public static boolean insertContact(int type){
+    public static boolean insert(){
         boolean status = false;
-        status = methodsSQL.execute("INSERT INTO contactUsers VALUES(?, ?, ?)", contact, type, classUsuario.getIdUsersInf());
+        status = methodsSQL.execute("INSERT INTO contactUsers VALUES(?, ?, ?, 1)", contact, idContactType, classUsuario.getIdUsersInf());
+        return status;
+    }
+    
+    public static boolean delete(){
+        boolean status = false;
+        status = methodsSQL.execute("DELETE FROM contactUsers WHERE id = ?", id);
         return status;
     }
     
@@ -76,7 +98,7 @@ public class classContact {
         }
         if(numContact!=0){
             controller.contac = new contactUsers[numContact];
-            rs = methodsSQL.getExecute("SELECT contact, idContactType FROM contactUsers WHERE idUsersInf = ?", classUsuario.getIdUsersInf());
+            rs = methodsSQL.getExecute("SELECT id FROM contactUsers WHERE idUsersInf = ?", classUsuario.getIdUsersInf());
             try {
                 for(int i = 0; rs.next(); i++){
                   controller.contac[i] = loadContact(i+1);  
@@ -90,12 +112,13 @@ public class classContact {
     
     static contactUsers loadContact(int m){
         contactUsers cont = new contactUsers();
-        ResultSet rs = methodsSQL.getExecute("SELECT id, contact, idContactType FROM contactUsers WHERE idUsersInf = ? and id = ?", classUsuario.getIdUsersInf(), m);
+        ResultSet rs = methodsSQL.getExecute("SELECT contact, idContactType FROM contactUsers WHERE idUsersInf = ? and id = ?", classUsuario.getIdUsersInf(), m);
         try {
             while(rs.next()){
-                cont.setId(rs.getInt(1));
-                cont.setContact(rs.getString(2));
-                cont.setIdContactType(rs.getInt(3));
+                cont.setId(m);
+                System.out.println(rs.getString(1));
+                cont.setContact(rs.getString(1));
+                cont.setIdContactType(rs.getInt(2));
             }
         } catch (SQLException ex) {
             Logger.getLogger(classContact.class.getName()).log(Level.SEVERE, null, ex);

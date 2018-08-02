@@ -14,13 +14,13 @@ public class jpContact extends javax.swing.JPanel {
     void loadPanel(){
         int x = 16;
         int y = 3;
-        for(int i = 0; i<20; i++){
-            controller.cont = new addContact();
+        for(int i = 0; i<classContact.getNumContact(); i++){
+            controller.itemCont = new itemContact(i);
 
-            controller.cont.setSize(450,55);
-            controller.cont.setLocation(x,y);
-            controller.cont.removeAll();
-            this.add(controller.cont,BorderLayout.CENTER);
+            controller.itemCont.setSize(450,55);
+            controller.itemCont.setLocation(x,y);
+            controller.itemCont.removeAll();
+            this.add(controller.itemCont,BorderLayout.CENTER);
             this.revalidate();
             this.repaint();
             y+=71;

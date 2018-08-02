@@ -4,6 +4,7 @@ import JPanel.CheckIn.jpMembership;
 import JPanel.*;
 import JPanel.CheckIn.*;
 import JPanel.contact.addContact;
+import JPanel.contact.itemContact;
 import JPanel.contact.jpContact;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -39,6 +40,7 @@ public class controller {
     public static sucurity.jpAuthenticator jpAuthe;
     public static jpAuthenticator jpCheck;
     public static addContact cont;
+    public static itemContact itemCont;
     public static jpContact jpCont;
     public static classMembership[] member = new classMembership[3];
     public static contactUsers[] contac = new contactUsers[10];

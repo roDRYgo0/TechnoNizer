@@ -1,37 +1,38 @@
 package JPanel.contact;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 import javaClass.classContact;
 import javaClass.controller;
 import javaClass.standardization;
 
-public class addContact extends javax.swing.JPanel {
-
-    boolean action;
-    int contactType = 0;
+public class itemContact extends javax.swing.JPanel {
     
-    public addContact() {
+    int id;
+    
+    public itemContact(int id) {
         initComponents();
-        this.action = false;
+        this.id = id;
+        load();
     }
     
-    public addContact(boolean action){
-        initComponents();
-        this.action = action;
+    public void load(){
+        txtContact.setText(controller.contac[id].getContact());
+        if(controller.contac[id].getIdContactType() == 1)
+            lblContact.setText("Telefono");
+        else
+            lblContact.setText("Email");
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         lblContact = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         txtContact = new javax.swing.JTextField();
         spMail = new javax.swing.JSeparator();
+        jButton2 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(204, 255, 0));
+        setBackground(new java.awt.Color(254, 254, 254));
         setMaximumSize(new java.awt.Dimension(450, 55));
         setMinimumSize(new java.awt.Dimension(450, 55));
         setPreferredSize(new java.awt.Dimension(450, 55));
@@ -39,20 +40,10 @@ public class addContact extends javax.swing.JPanel {
         lblContact.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblContact.setText("Contacto");
 
-        jButton1.setBackground(new java.awt.Color(33, 150, 243));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Agregar");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setFocusPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
+        txtContact.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtContact.setAutoscrolls(false);
         txtContact.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtContact.setFocusable(false);
         txtContact.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtContactFocusGained(evt);
@@ -72,19 +63,30 @@ public class addContact extends javax.swing.JPanel {
 
         spMail.setForeground(new java.awt.Color(204, 204, 204));
 
+        jButton2.setBackground(java.awt.Color.red);
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Eliminar");
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setFocusPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblContact, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblContact, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spMail)
-                    .addComponent(txtContact, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE))
+                    .addComponent(spMail, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                    .addComponent(txtContact))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -93,13 +95,14 @@ public class addContact extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtContact, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtContact, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, 0)
                         .addComponent(spMail, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblContact, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblContact, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -111,51 +114,27 @@ public class addContact extends javax.swing.JPanel {
         spMail.setBackground(Color.white);
     }//GEN-LAST:event_txtContactFocusLost
 
-    private void txtContactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyPressed
-        
-    }//GEN-LAST:event_txtContactKeyPressed
-
     private void txtContactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyTyped
-        char c = evt.getKeyChar();    
-        if(c == ' ')
-            evt.consume();  
-        validar(7);
+        evt.consume();
     }//GEN-LAST:event_txtContactKeyTyped
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(validar(8)){
-            classContact.setIdContactType(contactType);
-            classContact.setContact(txtContact.getText());
-            if(classContact.insert()){
-                standardization.showMessage("ok", "Se ingreso correctamente");
-                controller.jpU.loadPanel(true);
-            }else{
-                standardization.showMessage("cancel", "No se pudo ingresar");
-            }
-        }else
-            System.out.println("nellson");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void txtContactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyPressed
 
-    boolean validar(int l){
-        boolean status = true;
-        if(standardization.validateEmail(txtContact.getText())){
-            lblContact.setText("Email");
-            contactType = 2;
+    }//GEN-LAST:event_txtContactKeyPressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        classContact.setId(id);
+        if(classContact.delete()){
+            standardization.showMessage("ok", "Se elimino correctamente");
+            controller.jpU.loadPanel(true);
         }
-        else if(standardization.validateNumber(txtContact.getText()) && txtContact.getText().length()>=l){
-            lblContact.setText("Teléfono");
-            contactType = 1;
-        }
-        else{
-            lblContact.setText("Contacto");
-            contactType = 0;
-            status = false;
-        }
-        return status;
-    }
+        else
+            standardization.showMessage("cancel", "No se logro eliminar");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel lblContact;
     private javax.swing.JSeparator spMail;
     private javax.swing.JTextField txtContact;

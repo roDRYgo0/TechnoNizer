@@ -321,7 +321,7 @@ public class jpAccess extends javax.swing.JPanel {
             System.out.println(ex.getMessage());
         }
         classUsuario.select();
-
+        classContact.select();
         invokeHome(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
