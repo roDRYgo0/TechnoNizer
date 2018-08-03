@@ -30,6 +30,16 @@ id int not null primary key,
 gender nvarchar(25) not null
 )
 
+select * from users
+delete from reminders
+delete from projects
+delete from ticketType
+delete from events
+delete from usersInformation
+delete from users
+
+update users set checkKeygen  = 0 where nickname = 'dev.rodrig'
+
 create table users(
 nickname nvarchar(50) primary key not null,
 mail nvarchar(100) not null,
@@ -39,6 +49,10 @@ imagen image,
 durationMem int not null,
 idMemberships int not null references memberships(id)
 )
+
+alter table users add keygen nvarchar(40)
+alter table users add checkKeygen int
+
 
 select * from memberships
 
@@ -59,10 +73,17 @@ select ui.firstName, ui.lastName from usersInformation ui where ui.nickname = 'd
 
 select * from users where nickname = ?, password = ?
 
+
 create table contactType(
 id int identity(1,1) primary key not null,
 type nvarchar(60)
 )
+
+select * from contactType
+
+insert into contactType values ('Teléfono'),('Email')
+
+select * from contactUsers
 
 create table contactUsers(
 id int identity(1,1) primary key not null,
@@ -70,8 +91,7 @@ contact nvarchar(150),
 idContactType int not null references contactType(id),
 idUsersInf int not null references usersInformation(id)
 )
-
-
+alter table contactUsers alter column condition int not null
 
 create table questionBank(
 id int identity(1,1) primary key not null,

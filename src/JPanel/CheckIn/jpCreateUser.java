@@ -402,7 +402,7 @@ public class jpCreateUser extends javax.swing.JPanel {
         if(!standardization.campoVacio(txtMail.getText()))
         {
             checkEmail.setIcon(new controller().changeImage("/imagenes/load.png", 20, 20));
-            if(standardization.vlidateEmail(txtMail.getText())){
+            if(standardization.validateEmail(txtMail.getText())){
                 new Thread(()->{
                     if(methodsSQL.exists("SELECT * FROM users WHERE mail = ? ", txtMail.getText()))
                 {

@@ -20,7 +20,6 @@ public class jpPassword extends javax.swing.JPanel {
     boolean sw;
     ResultSet rs;
     char echoChar;
-    String passdb;
     
     public jpPassword(){
         initComponents();
@@ -271,21 +270,33 @@ public class jpPassword extends javax.swing.JPanel {
             new Thread(()->{
                 disable();
                 rs = methodsSQL.getExecute("SELECT password FROM users WHERE nickname = ?",classUsuario.getNickname() );
-
                 try {
                     while(rs.next())
-                        passdb= rs.getString(1);
+                        classUsuario.setPassword(rs.getString(1));
                 } catch (SQLException ex) {
                     System.out.println(ex.getMessage());
                 }
-                if(pass.equals(passdb)){
+                System.out.println(classUsuario.getPassword());
+                if(pass.equals(classUsuario.getPassword())){
                     
                     checkPass.setIcon(standardization.checkImage(1));
                     new Thread(()->{
-                        classUsuario.select();
+                        if(classUsuario.getCheckKeygen()==1){
+                            controller.jpCheck = new jpAuthenticator();
 
-                        invokeHome(true);
+                            controller.jpCheck.setSize(420,603);
+                            controller.jpCheck.setLocation(0,0);
+                            controller.rootPane.removeAll();
+                            controller.rootPane.add(controller.jpCheck,BorderLayout.CENTER);
+                            controller.rootPane.revalidate();
+                            controller.rootPane.repaint();
+                        }else{
+                            classUsuario.select();
+                            classContact.select();
+                            invokeHome(true);
+                        }
                     }).start();
+                    
                 }else{
                     standardization.showMessage("error", "La contraseña no coinsiden.");
                     enable();

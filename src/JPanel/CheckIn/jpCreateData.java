@@ -9,13 +9,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import technonizer.*;
 
 public class jpCreateData extends javax.swing.JPanel {
     
@@ -346,15 +343,13 @@ public class jpCreateData extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        if(logIn.internet && !camposVacios())
+        if(logIn.internet && !camposVacios() && standardization.validateDate(Integer.parseInt(txtAnio.getText()), (cmbMes.getSelectedIndex()+1), Integer.parseInt(txtDia.getText())))
         {
             controller.jpM = new jpMembership();
             System.out.println(classUsuario.getImage());
-            classUsuario.setFirstName(txtName.getText());
-            classUsuario.setLastName(txtLastName.getText());
-            classUsuario.setBirthdate(txtAnio.getText()+"-"+(cmbMes.getSelectedIndex()+1)+"-"+txtDia.getText());
-//            classUsuario.setId_gender(methodsSQL.getExecuteInt("SELECT id FROM genders WHERE gender = ? ", cmbGender.getSelectedItem().toString()));
-            
+            classUsuario.setFirstName(txtName.getText().trim());
+            classUsuario.setLastName(txtLastName.getText().trim());
+            classUsuario.setBirthdate(txtAnio.getText()+"-"+(cmbMes.getSelectedIndex()+1)+"-"+txtDia.getText());            
             classUsuario.setId_gender(cmbGender.getSelectedIndex());
             
             controller.jpM.setSize(420,603);
@@ -366,6 +361,8 @@ public class jpCreateData extends javax.swing.JPanel {
         }
         else if(camposVacios())
             standardization.showMessage("warning", "Se encontraron campos vacios.");
+        else if(!standardization.validateDate(Integer.parseInt(txtAnio.getText()), (cmbMes.getSelectedIndex()+1), Integer.parseInt(txtDia.getText())))
+            standardization.showMessage("Error","Fecha invalida");
         else
             standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_btnNextActionPerformed
@@ -419,22 +416,31 @@ public class jpCreateData extends javax.swing.JPanel {
                 System.out.println(icono);
                 lblImage.setIcon(standardization.getImgIcon(icono));
             }catch(IOException ex){
-                classUsuario.setImage(standardization.image);
+                classUsuario.setImage(null);
             }
         }
     }//GEN-LAST:event_lblImageMouseReleased
 
     private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
         char c = evt.getKeyChar();
-        if(txtName.getText().contains(" ") && c==' ')
+        if(txtName.getText().length()<41){
+            if(Character.isLetter(c) || Character.isSpaceChar(c))
+                System.out.println("Hello");
+            else
+                evt.consume();
+        }else
             evt.consume();
     }//GEN-LAST:event_txtNameKeyTyped
 
     private void txtLastNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameKeyTyped
         char c = evt.getKeyChar();
-        if(txtLastName.getText().contains(" ") && c==' ')
+        if(txtName.getText().length()<41){
+            if(Character.isLetter(c) || Character.isSpaceChar(c))
+                System.out.println("Hello");
+            else
+                evt.consume();
+        }else
             evt.consume();
-         
     }//GEN-LAST:event_txtLastNameKeyTyped
 
     private void txtDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiaKeyTyped
@@ -472,7 +478,7 @@ public class jpCreateData extends javax.swing.JPanel {
     }
     
     public boolean camposVacios(){
-        if(standardization.campoVacio(txtName.getText()) || standardization.campoVacio(txtLastName.getText()) ||
+        if(standardization.campoVacio(txtName.getText().trim()) || standardization.campoVacio(txtLastName.getText().trim()) ||
                 standardization.campoVacio(txtDia.getText())  || standardization.campoVacio(txtAnio.getText())  ||
                 cmbGender.getSelectedIndex() == -1 || cmbMes.getSelectedIndex() == -1 )
             return true;

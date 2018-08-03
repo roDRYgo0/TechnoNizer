@@ -1,6 +1,8 @@
 package technonizer;
 
 import jFrame.*;
+import java.util.Arrays;
+import javaClass.classContact;
 import javaClass.classUsuario;
 
 public class TechnoNizer {
@@ -18,8 +20,10 @@ public class TechnoNizer {
     public static void main(String[] args) {
         new Thread(()->{
             classUsuario.loadAllFinal();
+            classContact.loadCopntactType();
             System.out.println("Carga de constantes");
         }).start();
+        
         mess = new message();
         log = new logIn();
         sLoad = new load();

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Properties;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -33,21 +34,33 @@ public class standardization {
     
     controller control = new controller();
     public static byte[] image;
-    
+    static Calendar cal= Calendar.getInstance();
     
     public static boolean validateDate(int year, int month, int dayOfMonth){
         try{
-            if (year < 1900)
+            if (year < 1900 || year > cal.get(Calendar.YEAR) - 15)
                 throw new IllegalArgumentException("Año inválido.");
-
-            LocalDate today = LocalDate.of(year, month, dayOfMonth);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            System.out.println(formatter.format(today));
-            return true;
+            else{
+                LocalDate today = LocalDate.of(year, month, dayOfMonth);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                System.out.println(formatter.format(today));
+                return true;
+            }
+            
         }catch(Exception ex){
             System.out.println("Malo");
             return false;
         }
+    }
+    
+    public static String month(int n){
+        String month;
+        
+        if(n<10)
+            month = "0"+(n+1);
+        else
+            month = ""+(n+1);
+        return month;
     }
     
     public static Icon checkImage(int status){
@@ -75,6 +88,7 @@ public class standardization {
     }
     
     public static int getRow(){
+        System.out.println("papa "+classUsuario.getMyNumberEventUse());
         int row = (classUsuario.getMyNumberEventUse()+1)/4;
         if((classUsuario.getMyNumberEventUse()+1)%4!=0)
             row++;
@@ -312,8 +326,20 @@ public class standardization {
         return mather.find();
     }
     
-    public static boolean vlidateEmail(String cadena){
+    public static boolean validateEmail(String cadena){
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Matcher mather = pattern.matcher(cadena);
+        return mather.find();
+    }
+    
+    public static boolean validateNumber(String cadena){
+        Pattern pattern = Pattern.compile("^([0-9])*$");
+        Matcher mather = pattern.matcher(cadena);
+        return mather.find();
+    }
+    
+    public static boolean validateString(String cadena){
+        Pattern pattern = Pattern.compile("|^[a-zA-Z]+(\\s*[a-zA-Z]*)*[a-zA-Z]+$|");
         Matcher mather = pattern.matcher(cadena);
         return mather.find();
     }

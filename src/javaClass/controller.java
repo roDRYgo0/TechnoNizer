@@ -3,11 +3,15 @@ package javaClass;
 import JPanel.CheckIn.jpMembership;
 import JPanel.*;
 import JPanel.CheckIn.*;
+import JPanel.contact.addContact;
+import JPanel.contact.itemContact;
+import JPanel.contact.jpContact;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import sucurity.jpChangePassword;
 
 public class controller {
     
@@ -28,8 +32,18 @@ public class controller {
     public static jpEvent jpE;
     public static event jpEv;
     public static addEvent jpAE;
+    public static jpSecurity jpSe;
     public static jpReminder jpREM;
+    public static jpChangePassword jpCp;
+    public static jpConfAuthenticator jpAu;
+    public static jpCheckAuthenticator jpCa;
+    public static sucurity.jpAuthenticator jpAuthe;
+    public static jpAuthenticator jpCheck;
+    public static addContact cont;
+    public static itemContact itemCont;
+    public static jpContact jpCont;
     public static classMembership[] member = new classMembership[3];
+    public static contactUsers[] contac = new contactUsers[10];
     public static String[] genders = new String[2];
     public static boolean actionCompleted = false;
     
