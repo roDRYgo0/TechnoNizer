@@ -7,6 +7,7 @@
 package jFrame;
 
 import java.awt.event.KeyAdapter;
+import javaClass.standardization;
 import javax.swing.JOptionPane;
 
 /**
@@ -48,7 +49,7 @@ public class AddEventFrame extends javax.swing.JFrame {
         PictureProfile = new javax.swing.JLabel();
         PictureBackGround = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        Day = new javax.swing.JTextField();
+        InitDay = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -131,14 +132,14 @@ public class AddEventFrame extends javax.swing.JFrame {
 
         PictureBackGround.setText("fondo");
 
-        Day.addActionListener(new java.awt.event.ActionListener() {
+        InitDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DayActionPerformed(evt);
+                InitDayActionPerformed(evt);
             }
         });
-        Day.addKeyListener(new java.awt.event.KeyAdapter() {
+        InitDay.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                DayKeyTyped(evt);
+                InitDayKeyTyped(evt);
             }
         });
 
@@ -220,7 +221,7 @@ public class AddEventFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Day, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(InitDay, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(initmonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -271,7 +272,7 @@ public class AddEventFrame extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(InitDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(initmonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(InitYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -305,28 +306,27 @@ public class AddEventFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitActionPerformed
 
     private void AddEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddEventActionPerformed
-        if(NameUser.getText().isEmpty()||NameEvent.getText().isEmpty()||Day.getText().isEmpty()||InitYear.getText().isEmpty()||Enday.getText().isEmpty()||EndYear.getText().isEmpty())
+        boolean initdate=standardization.validateDate(Integer.parseInt(InitDay.getText()), initmonth.getSelectedIndex()+1,(Integer.parseInt(InitYear.getText())));
+        boolean Enddate=standardization.validateDate(Integer.parseInt(Enday.getText()), endmonth.getSelectedIndex()+1,(Integer.parseInt(EndYear.getText())));
+
+        if(NameUser.getText().isEmpty()||NameEvent.getText().isEmpty()||InitDay.getText().isEmpty()||InitYear.getText().isEmpty()||Enday.getText().isEmpty()||EndYear.getText().isEmpty())
         {JOptionPane.showMessageDialog(this,"Hay campos vacios");}
-        
-        else if(Integer.parseInt(Day.getText())>=32&&Integer.parseInt(Day.getText())>2018){JOptionPane.showMessageDialog(this,"JA no puedes entrar");}
-        else if(Integer.parseInt(Day.getText())>=32 && initmonth.getSelectedItem()=="Enero"){JOptionPane.showMessageDialog(this,"JA no puedes entrar");}
-        else if(Integer.parseInt(Day.getText())>=32 && initmonth.getSelectedItem()=="Marzo"){JOptionPane.showMessageDialog(this,"JA no puedes entrar");}
-        else if(Integer.parseInt(Day.getText())>=32 && initmonth.getSelectedItem()=="Mayo"){JOptionPane.showMessageDialog(this,"JA no puedes entrar");}
-        else if(Integer.parseInt(Day.getText())>=32 && initmonth.getSelectedItem()=="Julio"){JOptionPane.showMessageDialog(this,"JA no puedes entrar");}
+        else if(initdate==false && Enddate==false){JOptionPane.showMessageDialog(this, "Fechas incorrecta");}
         else{
+           
         }
     }//GEN-LAST:event_AddEventActionPerformed
 
-    private void DayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DayActionPerformed
+    private void InitDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InitDayActionPerformed
 
 
-    }//GEN-LAST:event_DayActionPerformed
+    }//GEN-LAST:event_InitDayActionPerformed
 
-    private void DayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DayKeyTyped
+    private void InitDayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InitDayKeyTyped
        char c = evt.getKeyChar();
-        if(Day.getText().length()>1 || c < '0' || c >'9')
+        if(InitDay.getText().length()>1 || c < '0' || c >'9')
             evt.consume();
-    }//GEN-LAST:event_DayKeyTyped
+    }//GEN-LAST:event_InitDayKeyTyped
 
     private void InitYearKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InitYearKeyTyped
         char c = evt.getKeyChar();
@@ -387,10 +387,10 @@ public class AddEventFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddEvent;
-    private javax.swing.JTextField Day;
     private javax.swing.JTextField EndYear;
     private javax.swing.JTextField Enday;
     private javax.swing.JButton Exit;
+    private javax.swing.JTextField InitDay;
     private javax.swing.JTextField InitYear;
     private javax.swing.JTextField NameEvent;
     private javax.swing.JTextField NameUser;
