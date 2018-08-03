@@ -41,11 +41,11 @@ public final class jpEditUser extends javax.swing.JPanel {
         changeAction= true;
         continueM = false;
         continueN = false;
-        load();
+        loadPanel(false);
         image = classUsuario.getImage();
         loadImagenes();
         
-        loadPanel(false);
+        load();
     }
     
     public void enable(){
@@ -75,14 +75,35 @@ public final class jpEditUser extends javax.swing.JPanel {
     }
     
     public void loadPanel(boolean load){
-        if(load){
-            loadContact loadC = new loadContact();
-            loadC.setLocation(0, 0);
-            scrollContact.setViewportView(loadC);
+        if(classUsuario.getCondition()==1){
+            controller.jpContDis = new jpContactDisable();
+            controller.jpContDis.setLocation(0,0);
+
+            controller.jpContDis.setPreferredSize(new Dimension(492, 355));
+
+            scrollContact.setViewportView(controller.jpContDis);
             scrollContact.revalidate();
             scrollContact.repaint();
-            new Thread(()->{
-                classContact.select();
+        }else{
+            if(load){
+                loadContact loadC = new loadContact();
+                loadC.setLocation(0, 0);
+                scrollContact.setViewportView(loadC);
+                scrollContact.revalidate();
+                scrollContact.repaint();
+                new Thread(()->{
+                    classContact.select();
+                    controller.jpCont = new jpContact();
+                    controller.jpCont.setLocation(0,0);
+
+                    controller.jpCont.setPreferredSize(new Dimension(492, 355+(71*classContact.getSpaceContact())));
+
+                    scrollContact.setViewportView(controller.jpCont);
+                    scrollContact.revalidate();
+                    scrollContact.repaint();
+                    checkContact(0);
+                }).start();
+            }else{
                 controller.jpCont = new jpContact();
                 controller.jpCont.setLocation(0,0);
 
@@ -91,17 +112,7 @@ public final class jpEditUser extends javax.swing.JPanel {
                 scrollContact.setViewportView(controller.jpCont);
                 scrollContact.revalidate();
                 scrollContact.repaint();
-                checkContact(0);
-            }).start();
-        }else{
-            controller.jpCont = new jpContact();
-            controller.jpCont.setLocation(0,0);
-
-            controller.jpCont.setPreferredSize(new Dimension(492, 355+(71*classContact.getSpaceContact())));
-
-            scrollContact.setViewportView(controller.jpCont);
-            scrollContact.revalidate();
-            scrollContact.repaint();
+            }
         }
         changeAction = true;
     }
@@ -135,6 +146,10 @@ public final class jpEditUser extends javax.swing.JPanel {
             lblImage.setIcon(new controller().changeImage("/imagenes/user.png", 97, 97));
         else
             lblImage.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
+        if(classUsuario.getCondition()==1){
+            disable();
+            txtMail.setEnabled(true);
+        }
     }
     
     void loadImagenes(){
@@ -855,6 +870,10 @@ public final class jpEditUser extends javax.swing.JPanel {
         else{
             standardization.showMessage("warning", "Campos vacios.");
             enable();
+        }
+        if(classUsuario.getCondition()==1){
+            disable();
+            txtMail.setEnabled(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

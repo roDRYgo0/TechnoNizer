@@ -38,7 +38,7 @@ delete from events
 delete from usersInformation
 delete from users
 
-update users set checkKeygen  = 0 where nickname = 'dev.rodrig'
+update users set condition = 1 where nickname = 'dev.rodrig'
 
 create table users(
 nickname nvarchar(50) primary key not null,

@@ -3,10 +3,7 @@ package JPanel;
 import java.awt.BorderLayout;
 import jFrame.*;
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.UUID;
 import javaClass.*;
-import technonizer.TechnoNizer;
 
 public class jpRecoverPasswordMailCode extends javax.swing.JPanel {
     
