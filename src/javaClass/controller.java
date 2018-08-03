@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import sucurity.jpChangePassword;
+import sucurity.jpSecurityQuestions;
 
 public class controller {
     
@@ -46,6 +47,7 @@ public class controller {
     public static addContact cont;
     public static itemContact itemCont;
     public static jpContact jpCont;
+    public static jpSecurityQuestions jpSeQue;
     public static classMembership[] member = new classMembership[3];
     public static contactUsers[] contac = new contactUsers[10];
     public static String[] genders = new String[2];

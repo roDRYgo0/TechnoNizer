@@ -14,7 +14,7 @@ numberModerators numeric(4),
 numberGuests numeric(4),
 price smallmoney not null
 )
- select * from users
+ select * from .users
 
 create table genders(
 id int not null primary key,
@@ -288,3 +288,8 @@ insert into genders values (1, 'Masculino')
 insert into memberships values('Free','free', 1, 40, 1, 0, 50, 0)
 insert into memberships values('Vip','vip', 1, -1, 10, 50, 500, 49.90)
 insert into memberships values('Premium','premium', 1, -1, -1, -1, -1, 179.90)
+
+select * from usersBinnacle
+select * from users
+
+insert into questionBank values('Tu mama'),('papa'),('Tu hermano'),('Tu mascota'),('Tu amaca')

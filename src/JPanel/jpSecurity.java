@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import javaClass.classUsuario;
 import javaClass.controller;
 import sucurity.jpChangePassword;
+import sucurity.jpSecurityQuestions;
 
 public class jpSecurity extends javax.swing.JPanel {
 
@@ -364,7 +365,7 @@ public class jpSecurity extends javax.swing.JPanel {
     private void jpFrontAuthenMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpFrontAuthenMouseReleased
         if(perm){
             resetColor();
-            jpBackAuthen.setBackground(new Color(33,150,243));
+            changeColorAuthen();
             if(classUsuario.getKeygen().equals("null"))
                 newAuthenticator();
             else
@@ -374,6 +375,10 @@ public class jpSecurity extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jpFrontAuthenMouseReleased
 
+    public void changeColorAuthen(){
+        jpBackAuthen.setBackground(new Color(33,150,243));
+    }
+    
     public void newAuthenticator(){
         controller.jpAu = new jpConfAuthenticator();
         
@@ -398,10 +403,23 @@ public class jpSecurity extends javax.swing.JPanel {
         jpShow.repaint();
     }
     
+    public void questions(){
+        controller.jpSeQue = new jpSecurityQuestions();
+        
+        controller.jpSeQue.setSize(445, 465);
+        controller.jpSeQue.setLocation(0,0);
+        
+        jpShow.removeAll();
+        jpShow.add(controller.jpSeQue,BorderLayout.CENTER);
+        jpShow.revalidate();
+        jpShow.repaint();
+    }
+    
     private void jpFrontSecQuestionsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpFrontSecQuestionsMouseReleased
         if(perm){
             resetColor();
             jpBackSecQuestions.setBackground(new Color(33,150,243));
+            questions();
         }else
             Toolkit.getDefaultToolkit().beep();
         
