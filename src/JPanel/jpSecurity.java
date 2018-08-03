@@ -4,21 +4,24 @@ import sucurity.jpAuthenticator;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import javaClass.classUsuario;
 import javaClass.controller;
 import sucurity.jpChangePassword;
 
 public class jpSecurity extends javax.swing.JPanel {
 
+    boolean perm;
+    
     public jpSecurity() {
         initComponents();
         loadImage();
         jpShow.setPreferredSize(new Dimension(445, 465));
+        checkAccount();
         load();
     }
     
     void load(){
-        System.out.println(classUsuario.getKeygen());
         if(classUsuario.getKeygen().equals("null")){
             lblStatusAuthen.setText("No configurado");
             lblStatusAuthen.setForeground(Color.red);
@@ -26,6 +29,13 @@ public class jpSecurity extends javax.swing.JPanel {
             lblStatusAuthen.setText("Configurado");
             lblStatusAuthen.setForeground(Color.green);
         }
+        System.out.println("La condicion es "+classUsuario.getCondition());
+        if(classUsuario.getCondition()==1){
+            jpBackAuthen.setBackground(Color.red);
+            jpBackSms.setBackground(Color.red);
+            perm=false;
+        }else
+            perm=true;
     }
     
     void loadImage(){
@@ -73,7 +83,6 @@ public class jpSecurity extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jpShow = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(980, 601));
@@ -83,6 +92,11 @@ public class jpSecurity extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("Seguridad");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel1MouseReleased(evt);
+            }
+        });
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -270,26 +284,17 @@ public class jpSecurity extends javax.swing.JPanel {
         );
 
         jpShow.setBackground(new java.awt.Color(245, 245, 245));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel7.setText("Tu seguridad es muy importante");
+        jpShow.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
         javax.swing.GroupLayout jpShowLayout = new javax.swing.GroupLayout(jpShow);
         jpShow.setLayout(jpShowLayout);
         jpShowLayout.setHorizontalGroup(
             jpShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpShowLayout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(71, 71, 71))
+            .addGap(0, 445, Short.MAX_VALUE)
         );
         jpShowLayout.setVerticalGroup(
             jpShowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpShowLayout.createSequentialGroup()
-                .addGap(201, 201, 201)
-                .addComponent(jLabel7)
-                .addContainerGap(242, Short.MAX_VALUE))
+            .addGap(0, 465, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -310,7 +315,7 @@ public class jpSecurity extends javax.swing.JPanel {
                     .addComponent(jpBackPass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpBackAuthen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpBackSms, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(jpShow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
         );
@@ -331,24 +336,48 @@ public class jpSecurity extends javax.swing.JPanel {
                         .addComponent(jpBackSms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jpShow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jpFrontPassMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpFrontPassMouseReleased
-        resetColor();
+        if(classUsuario.getCondition()==1){
+            
+        }else
+            resetColor();
         jpBackPass.setBackground(new Color(33,150,243));
         changePassword();
     }//GEN-LAST:event_jpFrontPassMouseReleased
 
+    public void checkAccount(){
+        if(classUsuario.getCondition()==1){
+            controller.checkAc = new checkAccount();
+        
+            controller.checkAc.setSize(445, 465);
+            controller.checkAc.setLocation(0,0);
+
+            jpShow.removeAll();
+            jpShow.add(controller.checkAc,BorderLayout.CENTER);
+            jpShow.revalidate();
+            jpShow.repaint();
+        }else{
+            controller.secAcc = new securityAccount();
+        
+            controller.secAcc.setSize(445, 465);
+            controller.secAcc.setLocation(0,0);
+
+            jpShow.removeAll();
+            jpShow.add(controller.secAcc,BorderLayout.CENTER);
+            jpShow.revalidate();
+            jpShow.repaint();
+        }
+    }
+    
     public void changePassword(){
         controller.jpCp = new jpChangePassword();
-        
-        System.out.println(jpShow.getPreferredSize());
-        System.out.println(jpShow.getLocation());
-        
+                
         controller.jpCp.setSize(445, 465);
         controller.jpCp.setLocation(0,0);
         
@@ -356,15 +385,19 @@ public class jpSecurity extends javax.swing.JPanel {
         jpShow.add(controller.jpCp,BorderLayout.CENTER);
         jpShow.revalidate();
         jpShow.repaint();
+        
     }
     
     private void jpFrontAuthenMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpFrontAuthenMouseReleased
-        resetColor();
-        jpBackAuthen.setBackground(new Color(33,150,243));
-        if(classUsuario.getKeygen().equals("null"))
-            newAuthenticator();
-        else
-            authenticator();
+        if(perm){
+            resetColor();
+            jpBackAuthen.setBackground(new Color(33,150,243));
+            if(classUsuario.getKeygen().equals("null"))
+                newAuthenticator();
+            else
+                authenticator();
+        }else
+            Toolkit.getDefaultToolkit().beep();
         
     }//GEN-LAST:event_jpFrontAuthenMouseReleased
 
@@ -393,9 +426,17 @@ public class jpSecurity extends javax.swing.JPanel {
     }
     
     private void jpFrontSmsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpFrontSmsMouseReleased
-        resetColor();
-        jpBackSms.setBackground(new Color(33,150,243));
+        if(perm){
+            resetColor();
+            jpBackSms.setBackground(new Color(33,150,243));
+        }else
+            Toolkit.getDefaultToolkit().beep();
+        
     }//GEN-LAST:event_jpFrontSmsMouseReleased
+
+    private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
+        checkAccount();
+    }//GEN-LAST:event_jLabel1MouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -407,7 +448,6 @@ public class jpSecurity extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel jpBackAuthen;
     private javax.swing.JPanel jpBackPass;

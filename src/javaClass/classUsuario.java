@@ -10,6 +10,7 @@ public class classUsuario {
     private static String lastName;
     private static String birthdate;
     private static String mail;
+    private static Integer condition;
     private static Integer id_gender;
     private static String password;
     private static Integer idMemberships; 
@@ -28,6 +29,13 @@ public class classUsuario {
     private static int myNumberEventUse;
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static Integer getCondition() {
+        return condition;
+    }
+
+    public static void setCondition(Integer condition) {
+        classUsuario.condition = condition;
+    }
     public static Integer getIdUsersInf() {
         return idUsersInf;
     }
@@ -196,7 +204,7 @@ public class classUsuario {
     public static boolean select(){
         boolean status = false;
         ResultSet rs = methodsSQL.getExecute("SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender,"
-                + " u.imagen, u.idMemberships, g.gender, u.durationMem, u.keygen, u.checkKeygen, ui.id FROM users u, usersInformation ui, genders g WHERE ui.id_gender = g.id and u.nickname = ui.nickname and u.nickname =  ?", nickname);
+                + " u.imagen, u.idMemberships, g.gender, u.durationMem, u.keygen, u.checkKeygen, ui.id, u.condition FROM users u, usersInformation ui, genders g WHERE ui.id_gender = g.id and u.nickname = ui.nickname and u.nickname =  ?", nickname);
         try {
             while(rs.next()){
                 firstName = rs.getString(1);
@@ -211,6 +219,7 @@ public class classUsuario {
                 keygen = rs.getString(10);
                 checkKeygen = rs.getInt(11);
                 idUsersInf = rs.getInt(12);
+                condition = rs.getInt(13);
             }
             status = true;
         } catch (SQLException ex) {
@@ -405,6 +414,10 @@ public class classUsuario {
     
     public static boolean updateGender(){
         return methodsSQL.execute("UPDATE usersInformation SET id_gender = ? WHERE nickname = ?",id_gender, nickname);
+    }
+    
+    public static boolean updateCondition(){
+        return methodsSQL.execute("UPDATE users SET condition = ? WHERE nickname = ?",condition, nickname);
     }
     //</editor-fold>
     

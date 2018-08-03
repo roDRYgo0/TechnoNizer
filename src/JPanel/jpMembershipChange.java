@@ -511,13 +511,17 @@ public class jpMembershipChange extends javax.swing.JPanel {
     }//GEN-LAST:event_btnChangeMembershipActionPerformed
 
     void seleccionarMembership(int m){
-        if(yourMembership == m){
+        if(classUsuario.getCondition()==1){
             btnChangeMembership.setEnabled(false);
-        btnChangeMembership.setBackground(new Color(255,123,123));
-        } 
-        else{
-            btnChangeMembership.setEnabled(true);
-            btnChangeMembership.setBackground(new Color(255,0,0));
+        }else{
+            if(yourMembership == m){
+                btnChangeMembership.setEnabled(false);
+            btnChangeMembership.setBackground(new Color(255,123,123));
+            } 
+            else{
+                btnChangeMembership.setEnabled(true);
+                btnChangeMembership.setBackground(new Color(255,0,0));
+            }
         }
             
         switch(m){

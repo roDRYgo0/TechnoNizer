@@ -27,6 +27,7 @@ public class controller {
     public static jpNewPassword jpNP;
     public static jpHome jpH;
     public static jpProjects jpPJ;
+    public static securityAccount secAcc;
     public static jpMembershipChange jpMC;
     public static jpEditUser jpU;
     public static jpEvent jpE;
@@ -35,6 +36,9 @@ public class controller {
     public static jpSecurity jpSe;
     public static jpReminder jpREM;
     public static jpChangePassword jpCp;
+    public static checkAccount checkAc;
+    public static jpContactDisable jpContDis;
+    public static jpDisable jpDis;
     public static jpConfAuthenticator jpAu;
     public static jpCheckAuthenticator jpCa;
     public static sucurity.jpAuthenticator jpAuthe;

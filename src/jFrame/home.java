@@ -4,7 +4,6 @@ import JPanel.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
-import java.util.Arrays;
 import javaClass.*;
 import static javaClass.controller.jpH;
 import javax.swing.Icon;
@@ -30,8 +29,9 @@ public class home extends javax.swing.JFrame {
         imageUserTop = lblImageUserTop;
         imageUserLeft = lblImageUserLeft;
         
-        if(load)
-            classUsuario.select();
+        if(load){
+            System.out.println("listo");
+        }
         else
             classUsuario.selectAlter();
         controller.rootFrame = this;
@@ -40,6 +40,10 @@ public class home extends javax.swing.JFrame {
     }
     
     void load(){        
+        
+        if(classUsuario.getCondition()==1)
+            lblAlert.setIcon(new controller().changeImage("/imagenes/alert.png", 28, 28));
+        
         jpH = new jpHome(true, this);
         jpH.setLocation(0,0);
 
@@ -63,11 +67,19 @@ public class home extends javax.swing.JFrame {
         lblEvent.setIcon(new controller().changeImage("/imagenes/event.png", 24, 24));
         lblProject.setIcon(new controller().changeImage("/imagenes/project.png", 24, 24));
         lblAgenda.setIcon(new controller().changeImage("/imagenes/agenda.png", 24, 24));
-        if(classUsuario.getImage()==null)
-            lblImageUserTop.setIcon(new controller().changeImage("/imagenes/user.png", 24, 24));
-        else
-            lblImageUserTop.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 24, 24));
-        lblImageUserTop.setText(classUsuario.getNickname());
+        if(classUsuario.getCondition()==1){
+            lblImageUserTop.setIcon(new controller().changeImage("/imagenes/alert.png", 24, 24));
+            lblImageUserTop.setText("Activa tu cuenta");
+            pnEve.setBackground(new Color(64, 64, 64));
+            pnProj.setBackground(new Color(64, 64, 64));
+            pnAgenda.setBackground(new Color(64, 64, 64));
+        }else{
+            if(classUsuario.getImage()==null)
+                lblImageUserTop.setIcon(new controller().changeImage("/imagenes/user.png", 24, 24));
+            else
+                lblImageUserTop.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 24, 24));
+            lblImageUserTop.setText(classUsuario.getNickname());
+        }
         loadData("settings","", lblSettings);
         
     }
@@ -119,6 +131,7 @@ public class home extends javax.swing.JFrame {
         pnSecurity = new javax.swing.JPanel();
         lblSecurity = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        lblAlert = new javax.swing.JLabel();
         scrollContainer = new javax.swing.JScrollPane();
 
         popupLenguage.setBorderPainted(false);
@@ -165,7 +178,7 @@ public class home extends javax.swing.JFrame {
         btnExit.setBackground(new java.awt.Color(255, 255, 255));
         btnExit.setText("X");
         btnExit.setAlignmentY(0.0F);
-        btnExit.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnExit.setBorder(null);
         btnExit.setBorderPainted(false);
         btnExit.setFocusable(false);
         btnExit.setMaximumSize(new java.awt.Dimension(30, 30));
@@ -180,7 +193,7 @@ public class home extends javax.swing.JFrame {
         btnMin.setBackground(new java.awt.Color(255, 255, 255));
         btnMin.setText("-");
         btnMin.setAlignmentY(0.0F);
-        btnMin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnMin.setBorder(null);
         btnMin.setBorderPainted(false);
         btnMin.setFocusable(false);
         btnMin.setMaximumSize(new java.awt.Dimension(30, 30));
@@ -195,7 +208,7 @@ public class home extends javax.swing.JFrame {
         btnMax.setBackground(new java.awt.Color(255, 255, 255));
         btnMax.setText("⬜");
         btnMax.setAlignmentY(0.0F);
-        btnMax.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnMax.setBorder(null);
         btnMax.setBorderPainted(false);
         btnMax.setFocusable(false);
         btnMax.setMaximumSize(new java.awt.Dimension(30, 30));
@@ -283,6 +296,9 @@ public class home extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblImageUserTopMouseClicked(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblImageUserTopMouseReleased(evt);
+            }
         });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -292,10 +308,10 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 811, Short.MAX_VALUE)
-                .addComponent(lblImageUserTop, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(lblSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 793, Short.MAX_VALUE)
+                .addComponent(lblImageUserTop, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,8 +319,8 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addContainerGap(13, Short.MAX_VALUE))
+            .addComponent(lblImageUserTop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblImageUserTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         leftPanel.setBackground(new java.awt.Color(42, 42, 42));
@@ -384,7 +400,7 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnUserLayout.setVerticalGroup(
@@ -428,7 +444,7 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblMembership, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnMemLayout.setVerticalGroup(
@@ -453,7 +469,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(lblImageUserLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,7 +510,7 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnEveLayout.setVerticalGroup(
@@ -538,7 +554,7 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblProject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnProjLayout.setVerticalGroup(
@@ -582,7 +598,7 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnAgendaLayout.setVerticalGroup(
@@ -618,6 +634,10 @@ public class home extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Seguridad");
 
+        lblAlert.setMaximumSize(new java.awt.Dimension(28, 28));
+        lblAlert.setMinimumSize(new java.awt.Dimension(28, 28));
+        lblAlert.setPreferredSize(new java.awt.Dimension(28, 28));
+
         javax.swing.GroupLayout pnSecurityLayout = new javax.swing.GroupLayout(pnSecurity);
         pnSecurity.setLayout(pnSecurityLayout);
         pnSecurityLayout.setHorizontalGroup(
@@ -626,16 +646,19 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblSecurity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblAlert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnSecurityLayout.setVerticalGroup(
             pnSecurityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSecurityLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnSecurityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSecurity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnSecurityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblSecurity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -665,7 +688,7 @@ public class home extends javax.swing.JFrame {
                 .addComponent(pnMem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(pnSecurity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(pnEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -755,7 +778,7 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_topBarMousePressed
 
     private void lblImageUserTopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageUserTopMouseClicked
-        showEditUser();
+        
     }//GEN-LAST:event_lblImageUserTopMouseClicked
 
     private void pnUserMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnUserMouseReleased
@@ -791,12 +814,21 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnGeneralMouseReleased
 
     private void pnProjMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnProjMouseReleased
-        controller.jpPJ = new jpProjects();
-        controller.jpPJ.setLocation(0,0);
+        if(classUsuario.getCondition()==1){
+            controller.jpDis = new jpDisable();
+            controller.jpDis.setLocation(0,0);
 
-        scrollContainer.setViewportView(controller.jpPJ);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
+            scrollContainer.setViewportView(controller.jpDis);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+        }else{
+            controller.jpPJ = new jpProjects();
+            controller.jpPJ.setLocation(0,0);
+
+            scrollContainer.setViewportView(controller.jpPJ);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+        }
     }//GEN-LAST:event_pnProjMouseReleased
 
     private void pnMemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnMemMouseReleased
@@ -862,26 +894,45 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnAgendaFocusLost
 
     private void pnEveMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnEveMouseReleased
-        controller.jpE = new jpEvent();
-        controller.jpE.setLocation(0,0);
-        
-        int x = controller.jpE.getPreferredSize().width;
-        int y = controller.jpE.getPreferredSize().height + (155*standardization.getRow());
-        
-        controller.jpE.setPreferredSize(new Dimension(x, y));
+        if(classUsuario.getCondition()==1){
+            controller.jpDis = new jpDisable();
+            controller.jpDis.setLocation(0,0);
 
-        scrollContainer.setViewportView(controller.jpE);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
+            scrollContainer.setViewportView(controller.jpDis);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+        }else{
+            controller.jpE = new jpEvent();
+            controller.jpE.setLocation(0,0);
+
+            int x = controller.jpE.getPreferredSize().width;
+            int y = controller.jpE.getPreferredSize().height + (155*standardization.getRow());
+
+            controller.jpE.setPreferredSize(new Dimension(x, y));
+
+            scrollContainer.setViewportView(controller.jpE);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+        }
     }//GEN-LAST:event_pnEveMouseReleased
 
     private void pnAgendaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnAgendaMouseReleased
-        controller.jpREM = new jpReminder();
-        controller.jpREM.setLocation(0,0);
+        if(classUsuario.getCondition()==1){
+            controller.jpDis = new jpDisable();
+            controller.jpDis.setLocation(0,0);
 
-        scrollContainer.setViewportView(controller.jpREM);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
+            scrollContainer.setViewportView(controller.jpDis);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+        }else{
+            controller.jpREM = new jpReminder();
+            controller.jpREM.setLocation(0,0);
+
+            scrollContainer.setViewportView(controller.jpREM);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+        }
+        
     }//GEN-LAST:event_pnAgendaMouseReleased
 
     private void pnSecurityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnSecurityFocusGained
@@ -895,6 +946,13 @@ public class home extends javax.swing.JFrame {
     private void pnSecurityMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSecurityMouseReleased
         pnSecurity();
     }//GEN-LAST:event_pnSecurityMouseReleased
+
+    private void lblImageUserTopMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageUserTopMouseReleased
+        if(classUsuario.getCondition()==1){
+            pnSecurity();
+        }else
+            showEditUser();
+    }//GEN-LAST:event_lblImageUserTopMouseReleased
     //</editor-fold>
     
     public void pnSecurity(){
@@ -935,6 +993,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAgenda;
+    private javax.swing.JLabel lblAlert;
     private javax.swing.JLabel lblEvent;
     private javax.swing.JLabel lblImageUserLeft;
     private javax.swing.JLabel lblImageUserTop;
