@@ -16,11 +16,15 @@ public class itemContact extends javax.swing.JPanel {
     }
     
     public void load(){
-        txtContact.setText(controller.contac[id].getContact());
-        if(controller.contac[id].getIdContactType() == 1)
-            lblContact.setText("Telefono");
-        else
-            lblContact.setText("Email");
+        try{
+            txtContact.setText(controller.contac[id].getContact());
+            if(controller.contac[id].getIdContactType() == 1)
+                lblContact.setText("Telefono");
+            else
+                lblContact.setText("Email");
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }            
     }
 
     @SuppressWarnings("unchecked")
@@ -123,13 +127,19 @@ public class itemContact extends javax.swing.JPanel {
     }//GEN-LAST:event_txtContactKeyPressed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        classContact.setId(id);
-        if(classContact.delete()){
-            standardization.showMessage("ok", "Se elimino correctamente");
-            controller.jpU.loadPanel(true);
+        if(controller.jpU.changeAction){
+            classContact.setId(controller.contac[id].getId());
+            controller.jpU.changeAction = false;
+            controller.jpU.checkContact(2);
+            new Thread(()->{
+               if(classContact.delete()){
+                    standardization.showMessage("ok", "Se elimino correctamente");
+                    controller.jpU.loadPanel(true);
+                }
+                else
+                    standardization.showMessage("cancel", "No se logro eliminar"); 
+            }).start();
         }
-        else
-            standardization.showMessage("cancel", "No se logro eliminar");
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

@@ -63,10 +63,10 @@ public class classContact {
     //</editor-fold>
     
     public static int getSpaceContact(){
-        numContact += 1;
+        int numberContact = numContact + 1;
         int space = 0;
-        if(numContact>5){
-            return numContact - 5;
+        if(numberContact>5){
+            return numberContact - 5;
         }
         return space;
     }
@@ -101,7 +101,7 @@ public class classContact {
             rs = methodsSQL.getExecute("SELECT id FROM contactUsers WHERE idUsersInf = ?", classUsuario.getIdUsersInf());
             try {
                 for(int i = 0; rs.next(); i++){
-                  controller.contac[i] = loadContact(i+1);  
+                  controller.contac[i] = loadContact(rs.getInt(1));  
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(classContact.class.getName()).log(Level.SEVERE, null, ex);

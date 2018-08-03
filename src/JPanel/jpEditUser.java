@@ -1,6 +1,7 @@
 package JPanel;
 
 import JPanel.contact.jpContact;
+import JPanel.contact.loadContact;
 import jFrame.home;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -24,15 +25,20 @@ public final class jpEditUser extends javax.swing.JPanel {
 
     boolean sw, continueM, continueN;
     boolean result;
+    boolean chooseImg;
     char echoChar;
     String[] birthdate;
     String birth;
     byte[] image;
     
+    public boolean changeAction;
+    
     
     public jpEditUser() {
         initComponents();
         
+        chooseImg = true;
+        changeAction= true;
         continueM = false;
         continueN = false;
         load();
@@ -42,17 +48,76 @@ public final class jpEditUser extends javax.swing.JPanel {
         loadPanel(false);
     }
     
+    public void enable(){
+        lblImage.setEnabled(true);
+        chooseImg = true;
+        cmbGender.setEnabled(true);
+        txtName.setEnabled(true);
+        txtLastName.setEnabled(true);
+        txtMail.setEnabled(true);
+        txtDia.setEnabled(true);
+        cmbMes.setEnabled(true);
+        txtAnio.setEnabled(true);
+        txtPassword.setEnabled(true);
+    }
+    
+    public void disable(){
+        lblImage.setEnabled(false);
+        chooseImg = false;
+        cmbGender.setEnabled(false);
+        txtName.setEnabled(false);
+        txtLastName.setEnabled(false);
+        txtMail.setEnabled(false);
+        txtDia.setEnabled(false);
+        cmbMes.setEnabled(false);
+        txtAnio.setEnabled(false);
+        txtPassword.setEnabled(false);
+    }
+    
     public void loadPanel(boolean load){
-        if(load)
-            classContact.select();
-        controller.jpCont = new jpContact();
-        controller.jpCont.setLocation(0,0);
-        
-        controller.jpCont.setPreferredSize(new Dimension(492, 355+(71*classContact.getSpaceContact())));
-        
-        scrollContact.setViewportView(controller.jpCont);
-        scrollContact.revalidate();
-        scrollContact.repaint();
+        if(load){
+            loadContact loadC = new loadContact();
+            loadC.setLocation(0, 0);
+            scrollContact.setViewportView(loadC);
+            scrollContact.revalidate();
+            scrollContact.repaint();
+            new Thread(()->{
+                classContact.select();
+                controller.jpCont = new jpContact();
+                controller.jpCont.setLocation(0,0);
+
+                controller.jpCont.setPreferredSize(new Dimension(492, 355+(71*classContact.getSpaceContact())));
+
+                scrollContact.setViewportView(controller.jpCont);
+                scrollContact.revalidate();
+                scrollContact.repaint();
+                checkContact(0);
+            }).start();
+        }else{
+            controller.jpCont = new jpContact();
+            controller.jpCont.setLocation(0,0);
+
+            controller.jpCont.setPreferredSize(new Dimension(492, 355+(71*classContact.getSpaceContact())));
+
+            scrollContact.setViewportView(controller.jpCont);
+            scrollContact.revalidate();
+            scrollContact.repaint();
+        }
+        changeAction = true;
+    }
+    
+    public void checkContact(int status){
+        switch(status){
+            case 0:
+                checkContact.setIcon(null);
+                break;
+            case 1:
+                checkContact.setIcon(standardization.checkImage(1));
+                break;
+            case 2:
+                checkContact.setIcon(standardization.checkImage(2));
+                break;
+        }
     }
     
     void load(){
@@ -133,6 +198,8 @@ public final class jpEditUser extends javax.swing.JPanel {
         checkUpdate = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         scrollContact = new javax.swing.JScrollPane();
+        checkContact = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(980, 601));
@@ -379,6 +446,17 @@ public final class jpEditUser extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        checkContact.setMaximumSize(new java.awt.Dimension(25, 25));
+        checkContact.setMinimumSize(new java.awt.Dimension(25, 25));
+        checkContact.setPreferredSize(new java.awt.Dimension(25, 25));
+
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -467,23 +545,29 @@ public final class jpEditUser extends javax.swing.JPanel {
                                         .addGap(0, 0, 0)
                                         .addComponent(checkEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel12))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(57, 57, 57)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(checkContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton2)
+                                        .addGap(82, 82, 82))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -528,7 +612,11 @@ public final class jpEditUser extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel12))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel11)
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11)
+                            .addComponent(checkContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -573,7 +661,7 @@ public final class jpEditUser extends javax.swing.JPanel {
                                         .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(checkUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -666,28 +754,31 @@ public final class jpEditUser extends javax.swing.JPanel {
     }//GEN-LAST:event_txtDiaKeyTyped
 
     private void lblImageMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageMouseReleased
-        JFileChooser j = new JFileChooser();
-        FileNameExtensionFilter fil = new FileNameExtensionFilter("JPG, PNG & GIF","jpg","png","gif");
-        j.setFileFilter(fil);
-        
-        int s = j.showOpenDialog(this);
-        if(s == JFileChooser.APPROVE_OPTION){
-            String path = j.getSelectedFile().getAbsolutePath();
-            File ruta = new File(path);
-            try{
-                byte[] icono = new byte[(int) ruta.length()];
-                InputStream input = new FileInputStream(ruta);
-                input.read(icono);
-                image = icono;
-                lblImage.setIcon(standardization.getImgIcon(icono));
-            }catch(IOException ex){
-                image = null;
+        if(chooseImg){
+            JFileChooser j = new JFileChooser();
+            FileNameExtensionFilter fil = new FileNameExtensionFilter("JPG, PNG & GIF","jpg","png","gif");
+            j.setFileFilter(fil);
+
+            int s = j.showOpenDialog(this);
+            if(s == JFileChooser.APPROVE_OPTION){
+                String path = j.getSelectedFile().getAbsolutePath();
+                File ruta = new File(path);
+                try{
+                    byte[] icono = new byte[(int) ruta.length()];
+                    InputStream input = new FileInputStream(ruta);
+                    input.read(icono);
+                    image = icono;
+                    lblImage.setIcon(standardization.getImgIcon(icono));
+                }catch(IOException ex){
+                    image = null;
+                }
             }
         }
     }//GEN-LAST:event_lblImageMouseReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(!camposVacios()){
+        disable();
+        if(!camposVacios() && standardization.validateDate(Integer.parseInt(txtAnio.getText()), (cmbMes.getSelectedIndex()+1), Integer.parseInt(txtDia.getText()))){
             result = true;
             String pass = standardization.sha1(standardization.md5(Arrays.toString(txtPassword.getPassword())));
              if(pass.equals(classUsuario.getPassword())){
@@ -741,20 +832,29 @@ public final class jpEditUser extends javax.swing.JPanel {
                      if(result){
                         classUsuario.select();
                         standardization.showMessage("ok", "Exito al actualizar.");
+                        enable();
                         home.imageUserLeft.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
                         home.imageUserTop.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 24, 24));
                         load();
                         loadImagenes();
                      }
-                     else
-                        standardization.showMessage("error", "No se logro actualizar.");
+                     else{
+                         standardization.showMessage("error", "No se logro actualizar.");
+                         enable();
+                     }
                  }).start();                            
             }else{
                 standardization.showMessage("error", "La contraseña no coinsiden.");
+                enable();
             }
                 
-        }else{
+        }else if(!standardization.validateDate(Integer.parseInt(txtAnio.getText()), (cmbMes.getSelectedIndex()+1), Integer.parseInt(txtDia.getText()))){
+            standardization.showMessage("error", "Fecha invalida.");
+            enable();
+        }
+        else{
             standardization.showMessage("warning", "Campos vacios.");
+            enable();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -781,6 +881,10 @@ public final class jpEditUser extends javax.swing.JPanel {
             changeEye(sw);
         }
     }//GEN-LAST:event_lblEyeMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        disable();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     boolean camposVacios(){
@@ -819,6 +923,7 @@ public final class jpEditUser extends javax.swing.JPanel {
     //</editor-fold>
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel checkContact;
     private javax.swing.JLabel checkEmail;
     private javax.swing.JLabel checkUpdate;
     private javax.swing.JComboBox<String> cmbGender;
@@ -828,6 +933,7 @@ public final class jpEditUser extends javax.swing.JPanel {
     private javax.swing.JLabel iconGender;
     private javax.swing.JLabel iconUsername;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

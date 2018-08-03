@@ -83,6 +83,8 @@ select * from contactType
 
 insert into contactType values ('Teléfono'),('Email')
 
+select * from contactUsers
+
 create table contactUsers(
 id int identity(1,1) primary key not null,
 contact nvarchar(150),

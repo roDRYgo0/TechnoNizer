@@ -25,10 +25,7 @@ public class home extends javax.swing.JFrame {
         
         new Thread(()->{
             classContact.select();
-            System.out.println("Numero es eses"+classContact.getNumContact());
-            System.out.println(Arrays.toString(classContact.getContactType()));
-            System.out.println(classContact.existContact());
-        }).start();
+          }).start();
         
         imageUserTop = lblImageUserTop;
         imageUserLeft = lblImageUserLeft;
@@ -37,7 +34,6 @@ public class home extends javax.swing.JFrame {
             classUsuario.select();
         else
             classUsuario.selectAlter();
-        System.out.println("Numero de eventos es: "+classUsuario.getMyNumberEventUse());
         controller.rootFrame = this;
         this.internet = logIn.internet;
         load();
@@ -306,7 +302,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
             .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblImageUserTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );

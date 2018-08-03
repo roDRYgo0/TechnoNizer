@@ -1,8 +1,8 @@
 package JPanel.contact;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 import javaClass.classContact;
+import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
 
@@ -10,6 +10,8 @@ public class addContact extends javax.swing.JPanel {
 
     boolean action;
     int contactType = 0;
+    String [] contacts;
+    int numContact;
     
     public addContact() {
         initComponents();
@@ -31,7 +33,7 @@ public class addContact extends javax.swing.JPanel {
         txtContact = new javax.swing.JTextField();
         spMail = new javax.swing.JSeparator();
 
-        setBackground(new java.awt.Color(204, 255, 0));
+        setBackground(new java.awt.Color(200, 255, 105));
         setMaximumSize(new java.awt.Dimension(450, 55));
         setMinimumSize(new java.awt.Dimension(450, 55));
         setPreferredSize(new java.awt.Dimension(450, 55));
@@ -123,17 +125,37 @@ public class addContact extends javax.swing.JPanel {
     }//GEN-LAST:event_txtContactKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(validar(8)){
-            classContact.setIdContactType(contactType);
-            classContact.setContact(txtContact.getText());
-            if(classContact.insert()){
-                standardization.showMessage("ok", "Se ingreso correctamente");
-                controller.jpU.loadPanel(true);
-            }else{
-                standardization.showMessage("cancel", "No se pudo ingresar");
-            }
-        }else
-            System.out.println("nellson");
+        if(controller.jpU.changeAction){
+            new Thread(()->{
+                controller.jpU.changeAction = false;
+                controller.jpU.checkContact(2);
+                if(validate(txtContact.getText())){
+                    standardization.showMessage("cancel", "Este contacto ya existe");
+                    controller.jpU.changeAction = true;
+                    controller.jpU.checkContact(0);
+                }else{
+                    controller.jpU.checkContact(1);
+                    if(validar(8) ){
+                        classContact.setIdContactType(contactType);
+                        classContact.setContact(txtContact.getText());
+                        new Thread(()->{
+                            if(classContact.insert()){
+                                standardization.showMessage("ok", "Se ingreso correctamente");
+                                controller.jpU.loadPanel(true);
+                            }else{
+                                standardization.showMessage("cancel", "No se pudo ingresar");
+                                controller.jpU.loadPanel(false);
+                            }
+                        }).start();
+                    }else{
+                        standardization.showMessage("error", "No se reconoce el tipo de contacto");
+                        controller.jpU.checkContact(0);
+                        controller.jpU.changeAction = true;
+                    }
+                        
+                }
+            }).start();
+        }  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     boolean validar(int l){
@@ -150,6 +172,21 @@ public class addContact extends javax.swing.JPanel {
             lblContact.setText("Contacto");
             contactType = 0;
             status = false;
+        }
+        return status;
+    }
+    
+    public boolean validate(String campo){
+        boolean status = false;
+        if(classUsuario.getMail().equals(campo))
+            status=true;
+        else{
+            for(int i = 0; i< classContact.getNumContact(); i++){
+                if(controller.contac[i].getContact().equals(campo)){
+                    status = true;
+                    break;
+                }
+            }
         }
         return status;
     }
