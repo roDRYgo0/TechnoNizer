@@ -14,16 +14,7 @@ numberModerators numeric(4),
 numberGuests numeric(4),
 price smallmoney not null
 )
- 
  select * from users
-
- delete from usersInformation
- delete  from events
- delete from users
-
- select ui.firstName, ui.lastName, u.imagen from users u, usersInformation ui where u.nickname = ui.nickname and ui.nickname = 'asd'
-
- SELECT * FROM users WHERE nickname = ' mama'
 
 create table genders(
 id int not null primary key,
@@ -38,25 +29,17 @@ delete from events
 delete from usersInformation
 delete from users
 
-update users set condition = 1 where nickname = 'dev.rodrig'
-
 create table users(
 nickname nvarchar(50) primary key not null,
 mail nvarchar(100) not null,
 password nvarchar(150) not null,
 condition int not null,
 imagen image,
+keygen nvarchar(40),
+checkKeygen int,
 durationMem int not null,
 idMemberships int not null references memberships(id)
 )
-
-alter table users add keygen nvarchar(40)
-alter table users add checkKeygen int
-
-
-select * from memberships
-
-select m.name, u.durationMem, m.numberEvents from users u, memberships m where u.idMemberships = m.id and u.nickname = 
 
 create table usersInformation(
 id int identity(1,1) primary key not null,
@@ -67,31 +50,21 @@ id_gender int not null references genders(id),
 nickname nvarchar(50) not null references users(nickname)
 )
 
-SELECT ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender FROM users u, usersInformation ui where u.nickname = ui.nickname and u.nickname = 
-
-select ui.firstName, ui.lastName from usersInformation ui where ui.nickname = 'dev.rodrig'
-
-select * from users where nickname = ?, password = ?
-
 
 create table contactType(
 id int identity(1,1) primary key not null,
 type nvarchar(60)
 )
 
-select * from contactType
-
 insert into contactType values ('Teléfono'),('Email')
-
-select * from contactUsers
 
 create table contactUsers(
 id int identity(1,1) primary key not null,
 contact nvarchar(150),
 idContactType int not null references contactType(id),
-idUsersInf int not null references usersInformation(id)
+idUsersInf int not null references usersInformation(id),
+condition int not null
 )
-alter table contactUsers alter column condition int not null
 
 create table questionBank(
 id int identity(1,1) primary key not null,
@@ -116,8 +89,6 @@ condition int not null,
 teams int not null,
 nickname nvarchar(50) not null references users(nickname)
 )
-
-alter table projects alter column datetime nvarchar(100) not null
 
 create table teams(
 id int identity(1,1) primary key not null,
@@ -168,12 +139,9 @@ idCardas int not null references cards(id)
  visibility int not null,
  startDateTime datetime not null,
  endDateTime datetime not null,
- staff int not null,
+ staff int,
  condition int not null,
  )
-
- alter table events alter column staff int
-
  select * from events
 
  create table staff(
@@ -310,31 +278,13 @@ id int identity(1,1) primary key not null,
 description nvarchar(200) not null,
 dateTime datetime not null,
 nickname nvarchar(50) not null references users(nickname),
-idProject int references projects(id),
-idEvent int references events(id)
+idType int not null
 )
 
-
 insert into genders values (0, 'Femenino')
- insert into genders values (1, 'Masculino')
+insert into genders values (1, 'Masculino')
 
- select * from genders
 
- insert into memberships values('Free','free', 1, 40, 1, 0, 50, 0)
- insert into memberships values('Vip','vip', 1, -1, 10, 50, 500, 49.90)
- insert into memberships values('Premium','premium', 1, -1, -1, -1, -1, 179.90)
-
- select * from memberships
-
- select * from users
-
- delete from usersInformation where nickname = 'dev.rodrig'
- delete from users where nickname = 'dev.rodrig'
-
- select * from usersInformation
-
- select * from events
-
- select m.name, m.description, m.condition, m.numberEvents, m.numberAdmins, m.numberModerators, m.numberGuests from memberships m where m.id = 1
-
- SELECT m.name, m.description, m.condition, m.numberEvents, m.numberAdmins, m.numberModerators, m.numberGuests FROM memberships m WHERE m.id = 2
+insert into memberships values('Free','free', 1, 40, 1, 0, 50, 0)
+insert into memberships values('Vip','vip', 1, -1, 10, 50, 500, 49.90)
+insert into memberships values('Premium','premium', 1, -1, -1, -1, -1, 179.90)

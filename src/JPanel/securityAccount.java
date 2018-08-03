@@ -1,9 +1,31 @@
 package JPanel;
 
+import java.awt.Color;
+import javaClass.classUsuario;
+import javaClass.controller;
+
 public class securityAccount extends javax.swing.JPanel {
 
     public securityAccount() {
         initComponents();
+        load();
+    }
+    
+    void load(){
+        if(classUsuario.getKeygen().equals("null")){
+            lblStatusAuthen.setText("No configurado");
+            lblStatusAuthen.setForeground(Color.red);
+        }else{
+            lblStatusAuthen.setText("Configurado");
+            lblStatusAuthen.setForeground(Color.green);
+        }
+        loadImage();
+    }
+    
+    void loadImage(){
+        lblCheckAccount.setIcon(new controller().changeImage("/imagenes/email.png", 40, 40));
+        lblAuthenticator.setIcon(new controller().changeImage("/imagenes/authenticator.png", 40, 40));
+        lblSecurityQuestions.setIcon(new controller().changeImage("/imagenes/questions.png", 40, 40));
     }
 
     @SuppressWarnings("unchecked")
@@ -11,6 +33,12 @@ public class securityAccount extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTN = new javax.swing.JLabel();
+        lblCheckAccount = new javax.swing.JLabel();
+        lblAuthenticator = new javax.swing.JLabel();
+        lblSecurityQuestions = new javax.swing.JLabel();
+        lblStatusAuthen = new javax.swing.JLabel();
+        lblStatusAccount = new javax.swing.JLabel();
+        lblStatusAuthen1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(445, 465));
@@ -24,21 +52,66 @@ public class securityAccount extends javax.swing.JPanel {
             }
         });
 
+        lblCheckAccount.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblCheckAccount.setText("Varificación de la cuenta");
+
+        lblAuthenticator.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblAuthenticator.setText("Authenticador");
+
+        lblSecurityQuestions.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblSecurityQuestions.setText("Preguntas de seguridad");
+
+        lblStatusAuthen.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblStatusAuthen.setForeground(new java.awt.Color(255, 0, 0));
+        lblStatusAuthen.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblStatusAuthen.setText("No configurado");
+
+        lblStatusAccount.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblStatusAccount.setForeground(new java.awt.Color(0, 255, 0));
+        lblStatusAccount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblStatusAccount.setText("Verificada");
+
+        lblStatusAuthen1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblStatusAuthen1.setForeground(new java.awt.Color(255, 0, 0));
+        lblStatusAuthen1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblStatusAuthen1.setText("No configuradas");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(lblTN)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblCheckAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAuthenticator, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSecurityQuestions, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTN))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStatusAuthen, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStatusAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStatusAuthen1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(207, 207, 207)
+                .addGap(67, 67, 67)
                 .addComponent(lblTN)
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCheckAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStatusAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAuthenticator, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStatusAuthen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSecurityQuestions, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStatusAuthen1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -48,6 +121,12 @@ public class securityAccount extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblAuthenticator;
+    private javax.swing.JLabel lblCheckAccount;
+    private javax.swing.JLabel lblSecurityQuestions;
+    private javax.swing.JLabel lblStatusAccount;
+    private javax.swing.JLabel lblStatusAuthen;
+    private javax.swing.JLabel lblStatusAuthen1;
     private javax.swing.JLabel lblTN;
     // End of variables declaration//GEN-END:variables
 }

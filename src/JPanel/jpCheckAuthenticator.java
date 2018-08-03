@@ -204,8 +204,7 @@ public class jpCheckAuthenticator extends javax.swing.JPanel {
                     standardization.showMessage("ok", "Authenticador configurado");
                     classUsuario.setCheckKeygen(1);
                     technonizer.TechnoNizer.home.pnSecurity();
-                    controller.jpSe.authenticator();
-                }else{
+                 }else{
                     standardization.showMessage("calcel", "El authenticador no se configurado");
                     enable();
                 }
