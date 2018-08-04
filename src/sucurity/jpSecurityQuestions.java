@@ -12,11 +12,24 @@ public class jpSecurityQuestions extends javax.swing.JPanel {
 
     void load(){
         if(classSecurityQuestions.getQuestions()[0]==null)
-            loadConfQuestion(classSecurityQuestions.numQuestion+1);
+            loadConfQuestion(1);
+        else
+            loadQuestions();
     }
     
     public void loadConfQuestion(int i){
         questionsConf question = new questionsConf(i);
+        question.setSize(425, 379);
+        question.setLocation(0,0);
+
+        rootPaneSecurity.removeAll();
+        rootPaneSecurity.add(question,BorderLayout.CENTER);
+        rootPaneSecurity.revalidate();
+        rootPaneSecurity.repaint();
+    }
+    
+    public void loadQuestions(){
+        jpQuestions question = new jpQuestions();
         question.setSize(425, 379);
         question.setLocation(0,0);
 

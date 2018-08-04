@@ -51,6 +51,8 @@ public class controller {
     public static classMembership[] member = new classMembership[3];
     public static contactUsers[] contac = new contactUsers[10];
     public static String[] genders = new String[2];
+    public static String[] questions;
+    public static String[] answers;
     public static boolean actionCompleted = false;
     
     public static JFrame rootFrame;

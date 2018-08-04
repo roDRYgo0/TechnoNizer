@@ -9,7 +9,6 @@ import javaClass.standardization;
 public class questionsConf extends javax.swing.JPanel {
 
     int numQues, pos;
-    
     boolean va;
     
     public questionsConf(int i) {
@@ -23,7 +22,7 @@ public class questionsConf extends javax.swing.JPanel {
     void load(){
         for(int i = 0; i < classSecurityQuestions.allNumQuestion; i++){
             for(int e = 0; e < 3; e++){
-                if(classSecurityQuestions.getAllQuestions()[i].equals(classSecurityQuestions.getQuestions()[e]))
+                if(classSecurityQuestions.getAllQuestions()[i].equals(controller.questions[e]))
                     va = true;
             }
             if(!va){
@@ -47,6 +46,7 @@ public class questionsConf extends javax.swing.JPanel {
         txtAnswer = new javax.swing.JTextField();
         spAnswer = new javax.swing.JSeparator();
         btnNext = new javax.swing.JButton();
+        progress = new rojerusan.componentes.RSProgressMaterial();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(425, 379));
@@ -99,6 +99,10 @@ public class questionsConf extends javax.swing.JPanel {
             }
         });
 
+        progress.setForeground(new java.awt.Color(255, 255, 255));
+        progress.setAnchoProgress(6);
+        progress.setPreferredSize(new java.awt.Dimension(34, 34));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,9 +126,11 @@ public class questionsConf extends javax.swing.JPanel {
                                     .addComponent(txtAnswer)
                                     .addComponent(spAnswer)
                                     .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 30, Short.MAX_VALUE))
+                        .addGap(0, 5, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -142,13 +148,16 @@ public class questionsConf extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(cmbQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(spAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(spAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -167,18 +176,40 @@ public class questionsConf extends javax.swing.JPanel {
     }//GEN-LAST:event_txtAnswerKeyPressed
 
     private void txtAnswerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnswerKeyTyped
-        char c = evt.getKeyChar();
-        if(c == ' ')
-        evt.consume();
+//        char c = evt.getKeyChar();
+//        if(c == ' ')
+//        evt.consume();
     }//GEN-LAST:event_txtAnswerKeyTyped
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         if(cmbQuestion.getSelectedIndex()==-1 || standardization.campoVacio(txtAnswer.getText()))
             standardization.showMessage("warning", "Llene todos los campos por favor");
         else{
-            System.out.println(pos+"    d    "+ (numQues-1));
-            classSecurityQuestions.setQuestions(cmbQuestion.getSelectedItem().toString(),numQues-1);
-            controller.jpSeQue.loadConfQuestion(numQues+1);
+            if(numQues==3){
+                controller.answers[numQues-1]=txtAnswer.getText().trim();
+                controller.questions[numQues-1]=cmbQuestion.getSelectedItem().toString();
+                classSecurityQuestions.setAswers(controller.answers);
+                classSecurityQuestions.setQuestions(controller.questions);
+                progress.setForeground(new Color(33, 150, 243));
+                new Thread(()->{
+                    if(classSecurityQuestions.change){
+                        classSecurityQuestions.delete();
+                        classSecurityQuestions.change = false;
+                    }                    
+                    if(classSecurityQuestions.insert()){
+                        technonizer.TechnoNizer.home.pnSecurity();
+                        controller.jpSe.questions();
+                        standardization.showMessage("ok", "Exito al ingresar");
+                    }
+                    else
+                        standardization.showMessage("cancel", "Error pegro");
+                    progress.setForeground(new Color(255, 255, 255));
+                }).start();
+            }else{
+                controller.answers[numQues-1]=txtAnswer.getText().trim();
+                controller.questions[numQues-1]=cmbQuestion.getSelectedItem().toString();
+                controller.jpSeQue.loadConfQuestion(numQues+1);
+            }
         }
     }//GEN-LAST:event_btnNextActionPerformed
 
@@ -191,6 +222,7 @@ public class questionsConf extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblQuestion;
+    private rojerusan.componentes.RSProgressMaterial progress;
     private javax.swing.JSeparator spAnswer;
     private javax.swing.JTextField txtAnswer;
     // End of variables declaration//GEN-END:variables

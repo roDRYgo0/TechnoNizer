@@ -20,9 +20,10 @@ public class TechnoNizer {
     public static void main(String[] args) {
         new Thread(()->{
             classUsuario.loadAllFinal();
-            classSecurityQuestions.loadAllQuestions();
             classContact.loadCopntactType();
             System.out.println("Carga de constantes");
+            classSecurityQuestions.loadAllQuestions();
+            System.out.println("Carga de preguntas");
         }).start();
         
         mess = new message();

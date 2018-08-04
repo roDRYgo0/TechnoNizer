@@ -4,7 +4,6 @@ import JPanel.CheckIn.jpCreateUser;
 import jFrame.logIn;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;

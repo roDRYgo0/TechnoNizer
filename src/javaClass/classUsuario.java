@@ -241,6 +241,8 @@ public class classUsuario {
                 status = false;
             }
         }
+        if(status)
+            status = classSecurityQuestions.select();
         return status;
     }
     

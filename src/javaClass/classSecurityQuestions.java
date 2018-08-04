@@ -11,8 +11,9 @@ public class classSecurityQuestions {
     private static String[] questions = new String[3];
     private static String[] answers = new String[3];    
     private static String[] allQuestions;
-    public static int numQuestion = 0;
     public static int allNumQuestion;
+    public static boolean change = false;
+    
     
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
     public static String[] getAllQuestions() {
@@ -33,8 +34,8 @@ public class classSecurityQuestions {
         return questions;
     }
 
-    public static void setQuestions(String questions, int p) {
-        classSecurityQuestions.questions[p] = questions;
+    public static void setQuestions(String[] questions) {
+        classSecurityQuestions.questions = questions;
     }
 
     public static String[] getAswers() {
@@ -45,6 +46,32 @@ public class classSecurityQuestions {
         classSecurityQuestions.answers = aswers;
     }
 //</editor-fold>
+    
+    
+    public static boolean delete(){
+        boolean status = false;
+        status = methodsSQL.execute("DELETE FROM security WHERE nickname = ?", classUsuario.getNickname());
+        if(status){
+            questions = new String[3];
+            answers = new String[3];
+        }
+        return status;
+    }
+    
+    public static boolean insert(){
+        boolean status = true;
+        int ids;
+        for(int i = 0; i < 3; i++){
+            if(status){
+                System.out.println("la pregunta"+questions[i]);
+                System.out.println("la respusta "+answers[i]);
+                ids = methodsSQL.getExecuteInt("SELECT id FROM questionBank WHERE question = ?", questions[i]);
+                System.out.println("El id "+ids);
+                status = methodsSQL.execute("INSERT INTO security VALUES (?, ?, ?)",answers[i], ids, classUsuario.getNickname());
+            }
+        }
+        return status;
+    }
     
     public static boolean loadAllQuestions(){
         boolean status = false;
