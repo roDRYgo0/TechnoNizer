@@ -19,12 +19,12 @@ public class jpAuthenticator extends javax.swing.JPanel {
         switch(classUsuario.getCheckKeygen()){
             case 0:
                 lblStatus.setText("Deshabilitado");
-                lblStatus.setForeground(Color.red);
+                lblStatus.setForeground(new Color(255,61,0));
                 lblToggle.setIcon(new controller().changeImage("/imagenes/toggleOff.png", 45, 45));
                 break;
             case 1:
                 lblStatus.setText("Habilitado");
-                lblStatus.setForeground(Color.green);
+                lblStatus.setForeground(new Color(139, 195, 74));
                 lblToggle.setIcon(new controller().changeImage("/imagenes/toggleOn.png", 45, 45));
                 break;
         }
@@ -42,7 +42,6 @@ public class jpAuthenticator extends javax.swing.JPanel {
 
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        btnStatus = new javax.swing.JButton();
         lblTrash = new javax.swing.JLabel();
         lblRefresh = new javax.swing.JLabel();
         btnChange = new javax.swing.JButton();
@@ -66,21 +65,9 @@ public class jpAuthenticator extends javax.swing.JPanel {
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
-        btnStatus.setBackground(new java.awt.Color(33, 150, 243));
-        btnStatus.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnStatus.setForeground(new java.awt.Color(255, 255, 255));
-        btnStatus.setText("Deshabilitar");
-        btnStatus.setBorderPainted(false);
-        btnStatus.setFocusable(false);
-        btnStatus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStatusActionPerformed(evt);
-            }
-        });
-
-        btnChange.setBackground(new java.awt.Color(255, 255, 255));
+        btnChange.setBackground(new java.awt.Color(33, 150, 243));
         btnChange.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnChange.setForeground(new java.awt.Color(33, 150, 243));
+        btnChange.setForeground(new java.awt.Color(255, 255, 255));
         btnChange.setText("Cambiar");
         btnChange.setBorderPainted(false);
         btnChange.setFocusable(false);
@@ -90,9 +77,9 @@ public class jpAuthenticator extends javax.swing.JPanel {
             }
         });
 
-        btnDelete.setBackground(new java.awt.Color(255, 255, 255));
+        btnDelete.setBackground(new java.awt.Color(33, 150, 243));
         btnDelete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(33, 150, 243));
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Eliminar");
         btnDelete.setBorderPainted(false);
         btnDelete.setFocusable(false);
@@ -187,14 +174,12 @@ public class jpAuthenticator extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(checkChange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(checkChange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(jLabel3))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,19 +197,14 @@ public class jpAuthenticator extends javax.swing.JPanel {
                             .addComponent(lblTrash, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(checkDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRefresh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnChange, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkChange, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(checkChange, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(88, 88, 88))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusActionPerformed
-        
-    }//GEN-LAST:event_btnStatusActionPerformed
 
     private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
         controller.jpSe.newAuthenticator();
@@ -254,11 +234,14 @@ public class jpAuthenticator extends javax.swing.JPanel {
                     classUsuario.changeCheckKeygen(1);
                     home.pnSecurity();
                     controller.jpSe.authenticator();
+                    controller.jpSe.changeColorAuthen();
                     break;
                 case 1:
                     classUsuario.changeCheckKeygen(0);
                     home.pnSecurity();
                     controller.jpSe.authenticator();
+                    controller.jpSe.changeColorAuthen();
+
                     break;
             }
         }).start();
@@ -266,7 +249,6 @@ public class jpAuthenticator extends javax.swing.JPanel {
 
     
     public void enable(){
-        btnStatus.setEnabled(true);
         btnDelete.setEnabled(true);
         btnChange.setEnabled(true);
         checkStatus.setIcon(null);
@@ -275,7 +257,6 @@ public class jpAuthenticator extends javax.swing.JPanel {
     }
     
     public void disable(){
-        btnStatus.setEnabled(false);
         btnDelete.setEnabled(false);
         btnChange.setEnabled(false);
     }
@@ -283,7 +264,6 @@ public class jpAuthenticator extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChange;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnStatus;
     private javax.swing.JLabel checkChange;
     private javax.swing.JLabel checkDelete;
     private javax.swing.JLabel checkStatus;

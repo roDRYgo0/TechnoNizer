@@ -1,8 +1,8 @@
 package technonizer;
 
 import jFrame.*;
-import java.util.Arrays;
 import javaClass.classContact;
+import javaClass.classSecurityQuestions;
 import javaClass.classUsuario;
 
 public class TechnoNizer {
@@ -22,6 +22,8 @@ public class TechnoNizer {
             classUsuario.loadAllFinal();
             classContact.loadCopntactType();
             System.out.println("Carga de constantes");
+            classSecurityQuestions.loadAllQuestions();
+            System.out.println("Carga de preguntas");
         }).start();
         
         mess = new message();

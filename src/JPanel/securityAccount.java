@@ -1,6 +1,7 @@
 package JPanel;
 
 import java.awt.Color;
+import javaClass.classSecurityQuestions;
 import javaClass.classUsuario;
 import javaClass.controller;
 
@@ -18,6 +19,13 @@ public class securityAccount extends javax.swing.JPanel {
         }else{
             lblStatusAuthen.setText("Configurado");
             lblStatusAuthen.setForeground(Color.green);
+        }
+        if(classSecurityQuestions.getQuestions()[0]==null){
+            lblStatusQuestions.setText("No configurado");
+            lblStatusQuestions.setForeground(Color.red);
+        }else{
+            lblStatusQuestions.setText("Configurado");
+            lblStatusQuestions.setForeground(Color.green);
         }
         loadImage();
     }
@@ -38,7 +46,7 @@ public class securityAccount extends javax.swing.JPanel {
         lblSecurityQuestions = new javax.swing.JLabel();
         lblStatusAuthen = new javax.swing.JLabel();
         lblStatusAccount = new javax.swing.JLabel();
-        lblStatusAuthen1 = new javax.swing.JLabel();
+        lblStatusQuestions = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(445, 465));
@@ -71,10 +79,10 @@ public class securityAccount extends javax.swing.JPanel {
         lblStatusAccount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblStatusAccount.setText("Verificada");
 
-        lblStatusAuthen1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblStatusAuthen1.setForeground(new java.awt.Color(255, 0, 0));
-        lblStatusAuthen1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblStatusAuthen1.setText("No configuradas");
+        lblStatusQuestions.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblStatusQuestions.setForeground(new java.awt.Color(255, 0, 0));
+        lblStatusQuestions.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblStatusQuestions.setText("No configuradas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -91,7 +99,7 @@ public class securityAccount extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblStatusAuthen, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblStatusAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStatusAuthen1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblStatusQuestions, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -110,7 +118,7 @@ public class securityAccount extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSecurityQuestions, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStatusAuthen1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblStatusQuestions, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(149, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -126,7 +134,7 @@ public class securityAccount extends javax.swing.JPanel {
     private javax.swing.JLabel lblSecurityQuestions;
     private javax.swing.JLabel lblStatusAccount;
     private javax.swing.JLabel lblStatusAuthen;
-    private javax.swing.JLabel lblStatusAuthen1;
+    private javax.swing.JLabel lblStatusQuestions;
     private javax.swing.JLabel lblTN;
     // End of variables declaration//GEN-END:variables
 }
