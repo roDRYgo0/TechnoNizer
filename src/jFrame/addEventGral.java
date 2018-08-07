@@ -1,6 +1,8 @@
 package jFrame;
 
 import java.awt.Color;
+import javaClass.classEvent;
+import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
 import javax.swing.JFrame;
@@ -10,6 +12,9 @@ import javax.swing.JFrame;
 public class addEventGral extends javax.swing.JFrame {
 
 
+    byte[] cover;
+    byte[] profil;
+    
     public addEventGral() {
         initComponents();
         loadImage();
@@ -339,17 +344,15 @@ public class addEventGral extends javax.swing.JFrame {
                                     .addComponent(jLabel11))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtAnioEnd)
-                                            .addComponent(jLabel13)
-                                            .addComponent(spYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(cmbMesEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(87, 87, 87)
-                                        .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jLabel12)
+                                    .addComponent(cmbMesEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtAnioEnd)
+                                    .addComponent(jLabel13)
+                                    .addComponent(spYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -425,8 +428,8 @@ public class addEventGral extends javax.swing.JFrame {
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtAnioEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
 
@@ -519,6 +522,14 @@ public class addEventGral extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAnioEndFocusLost
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
+
+        classEvent.setEventName(txtEvent.getText());
+        classEvent.setNicknameCreator(classUsuario.getNickname());
+        classEvent.setProfilePicture(profil);
+        classEvent.setCoverPicture(cover);
+        classEvent.setStartDateTime(txtAnioStart.getText()+"-"+(cmbMesStart.getSelectedIndex()+1)+"-"+txtDiaStart.getText());
+        classEvent.setEndDateTime(txtAnioEnd.getText()+"-"+(cmbMesEnd.getSelectedIndex()+1)+"-"+txtDiaEnd.getText());
+
         standardization.hide(controller.gralEvent);
         controller.addEvents = new addEvent();
         standardization.show(controller.addEvents);

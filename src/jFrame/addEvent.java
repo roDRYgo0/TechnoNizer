@@ -4,6 +4,7 @@ import event.allPrice;
 import java.awt.Color;
 import java.awt.Dimension;
 import javaClass.classEvent;
+import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
 
@@ -16,6 +17,7 @@ public class addEvent extends javax.swing.JFrame {
     public addEvent() {
         initComponents();
         visibility = 1;
+        classEvent.setVisibility(visibility);
         switchVisibility();
         load();
     }
@@ -47,6 +49,7 @@ public class addEvent extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         lblVisibility = new javax.swing.JLabel();
         lblSwitch = new javax.swing.JLabel();
+        btnNext1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(405, 585));
@@ -131,6 +134,18 @@ public class addEvent extends javax.swing.JFrame {
             }
         });
 
+        btnNext1.setBackground(new java.awt.Color(0, 153, 255));
+        btnNext1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnNext1.setForeground(new java.awt.Color(255, 255, 255));
+        btnNext1.setText("Siguiente");
+        btnNext1.setBorderPainted(false);
+        btnNext1.setFocusable(false);
+        btnNext1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNext1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -138,22 +153,26 @@ public class addEvent extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(scrollPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel5)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(64, 64, 64)))
+                            .addComponent(jLabel5))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(lblVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(202, 202, 202))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +190,9 @@ public class addEvent extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(lblVisibility)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -189,18 +210,36 @@ public class addEvent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        standardization.hide(controller.gralEvent);
+        standardization.hide(controller.addEvents);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void lblSwitchMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSwitchMouseReleased
         if(visibility == 0){
             visibility = 1;
+            classEvent.setVisibility(visibility);
             switchVisibility();
         }else{
             visibility = 0;
+            classEvent.setVisibility(visibility);
             switchVisibility();
         }
     }//GEN-LAST:event_lblSwitchMouseReleased
+
+    private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
+
+        classEvent.setStaff(0);
+        classEvent.setCondition(1);
+        
+        standardization.hide(controller.addEvents);
+        
+        if(classEvent.insert()){
+            standardization.showMessage("ok", "Exito al crear evento");
+            classUsuario.setMyNumberEventUse(classUsuario.getMyNumberEventUse()+1);
+        }
+        else
+            standardization.showMessage("cancel", "No se pudo crear el evento");
+        
+    }//GEN-LAST:event_btnNext1ActionPerformed
 
     void switchVisibility(){
         switch(visibility){
@@ -219,6 +258,7 @@ public class addEvent extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnNext1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;

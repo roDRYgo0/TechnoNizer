@@ -1,5 +1,6 @@
 package javaClass;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,4 +118,40 @@ public class classEvent {
             return prices.size()-3;
         }
     }
+    
+    public static boolean select(){
+        boolean status = false;
+        ResultSet rs = methodsSQL.getExecute("");
+        return status;
+    }
+    
+    public static boolean insert(){
+        boolean status = false;
+        System.out.println(profilePicture);
+        System.out.println(coverPicture);
+        if(profilePicture == null && profilePicture == null){
+            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+profilePicture+", "+coverPicture+", ?, ?, ?, ?, ?)",
+                    eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition);
+            System.out.println("aqui");
+        }else if(coverPicture == null){
+            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, ?, "+coverPicture+", ?, ?, ?, ?, ?)",
+                    eventName, nicknameCreator, profilePicture, visibility, startDateTime, endDateTime, staff, condition);
+        }else if(coverPicture == null ){
+            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+profilePicture+", ?, ?, ?, ?, ?, ?)",
+                    eventName, nicknameCreator, coverPicture, visibility, startDateTime, endDateTime, staff, condition);
+        }else{
+            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    eventName, nicknameCreator, profilePicture, coverPicture, visibility, startDateTime, endDateTime, staff, condition);
+        }
+        
+        if(status && prices.size() > 0){
+            id = methodsSQL.getExecuteInt("SELECT id FROM events WHERE eventName = ?", eventName);
+            for (classPrice price : prices) {
+                status = methodsSQL.execute("INSERT INTO tickets VALUES (?, ?, ?)", price.getName(), price.getPrice(), id);
+            }
+        }
+        
+        return status;
+    }
+    
 }

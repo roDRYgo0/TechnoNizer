@@ -229,21 +229,23 @@ public class classUsuario {
         myMembership = controller.member[idMemberships-1].getName();
         myNumEvent = controller.member[idMemberships-1].getNumberEvents();
         if(status){
-            rs=methodsSQL.getExecute("SELECT COUNT(*) FROM events WHERE nicknameCreator = ?", nickname);
+            numEvents();
+        }
+        if(status)
+            status = classSecurityQuestions.select();
+        return status;
+    }
+    
+    public static void numEvents(){
+        ResultSet rs=methodsSQL.getExecute("SELECT COUNT(*) FROM events WHERE nicknameCreator = ?", nickname);
             try {
                 while(rs.next()){
                     myNumberEventUse = rs.getInt(1);
                 }
                 myNumberEventDisp = myNumEvent-myNumberEventUse;
-                status = true;
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
-                status = false;
             }
-        }
-        if(status)
-            status = classSecurityQuestions.select();
-        return status;
     }
     
     public static boolean selectAlter(){

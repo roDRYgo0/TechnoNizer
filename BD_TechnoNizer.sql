@@ -136,7 +136,7 @@ idCardas int not null references cards(id)
  nicknameCreator nvarchar(50)not null references users(nickname),
  profilePicture image,
  coverPicture image,
- price smallmoney,
+ /*price smallmoney,*/
  visibility int not null,
  startDateTime datetime not null,
  endDateTime datetime not null,
@@ -144,6 +144,18 @@ idCardas int not null references cards(id)
  condition int not null,
  )
  select * from events
+ select * from tickets
+
+ alter table events drop column price
+ drop table tickets
+
+ create table tickets(
+ id int identity(1,1) not null,
+ nameTicket nvarchar(35) not null,
+ priceTicket smallmoney not null,
+ idEvetn int not null references events(id)
+ )
+ 
 
  create table staff(
  id int identity(1,1) primary key not null,
