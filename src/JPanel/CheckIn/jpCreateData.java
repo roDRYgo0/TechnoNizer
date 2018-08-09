@@ -424,8 +424,7 @@ public class jpCreateData extends javax.swing.JPanel {
     private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
         char c = evt.getKeyChar();
         if(txtName.getText().length()<41){
-            if(Character.isLetter(c) || Character.isSpaceChar(c))
-                System.out.println("Hello");
+            if(Character.isLetter(c) || Character.isSpaceChar(c)){}
             else
                 evt.consume();
         }else
@@ -435,8 +434,7 @@ public class jpCreateData extends javax.swing.JPanel {
     private void txtLastNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameKeyTyped
         char c = evt.getKeyChar();
         if(txtName.getText().length()<41){
-            if(Character.isLetter(c) || Character.isSpaceChar(c))
-                System.out.println("Hello");
+            if(Character.isLetter(c) || Character.isSpaceChar(c)){}
             else
                 evt.consume();
         }else

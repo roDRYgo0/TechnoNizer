@@ -1,13 +1,16 @@
 package javaClass;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /** @author rodri */
 
 public class classEvent {
-    
+
     private static Integer id;
     private static String eventName;
     private static String nicknameCreator;
@@ -20,6 +23,8 @@ public class classEvent {
     private static Integer staff;
     private static Integer condition;
     public static List<classPrice> prices= new ArrayList<classPrice>();
+    
+    public static List<event> eventos = new ArrayList<event>();
     
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
     public static Integer getId() {
@@ -121,7 +126,29 @@ public class classEvent {
     
     public static boolean select(){
         boolean status = false;
-        ResultSet rs = methodsSQL.getExecute("");
+        event evento;
+        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator FROM events e WHERE e.nicknameCreator = ? ",
+                classUsuario.getNickname());
+        
+        try {
+            while(rs.next()){
+                evento = new event();
+                evento.setId(rs.getInt(1));
+                evento.setEventName(rs.getString(2));
+                evento.setProfilePicture(rs.getBytes(3));
+                evento.setCoverPicture(rs.getBytes(4));
+                evento.setVisibility(rs.getInt(5));
+                evento.setStartDateTime(rs.getString(6));
+                evento.setEndDateTime(rs.getString(7));
+                evento.setStaff(rs.getInt(8));
+                evento.setCondition(rs.getInt(9));
+                evento.setNicknameCreator(rs.getString(10));
+                eventos.add(evento);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         return status;
     }
     

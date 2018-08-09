@@ -465,8 +465,12 @@ public class addEventGral extends javax.swing.JFrame {
 
     private void txtEventKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEventKeyTyped
         char c = evt.getKeyChar();
-        if(c == ' ')
-        evt.consume();
+        if(txtEvent.getText().length()<41){
+            if(Character.isLetter(c) || Character.isSpaceChar(c)){}
+            else
+                evt.consume();
+        }else
+            evt.consume();
     }//GEN-LAST:event_txtEventKeyTyped
 
     private void txtAnioStartFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAnioStartFocusGained

@@ -143,6 +143,8 @@ idCardas int not null references cards(id)
  staff int,
  condition int not null,
  )
+
+
  select * from events
  select * from tickets
 

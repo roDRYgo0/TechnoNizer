@@ -233,19 +233,15 @@ public class classUsuario {
         }
         if(status)
             status = classSecurityQuestions.select();
+        System.out.println("Este men tiene "+classEvent.eventos.size());
+        System.out.println("y lo otro es "+myNumberEventUse);
         return status;
     }
     
     public static void numEvents(){
-        ResultSet rs=methodsSQL.getExecute("SELECT COUNT(*) FROM events WHERE nicknameCreator = ?", nickname);
-            try {
-                while(rs.next()){
-                    myNumberEventUse = rs.getInt(1);
-                }
-                myNumberEventDisp = myNumEvent-myNumberEventUse;
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
+        classEvent.select();
+        myNumberEventUse = classEvent.eventos.size();
+        myNumberEventDisp = myNumEvent-myNumberEventUse;
     }
     
     public static boolean selectAlter(){
@@ -265,19 +261,19 @@ public class classUsuario {
                 status = false;
             }
         }
-        if(status){
-            rs=methodsSQL.getExecute("SELECT COUNT(*) FROM events WHERE nicknameCreator = ?", nickname);
-            try {
-                while(rs.next()){
-                    myNumberEventUse = rs.getInt(1);
-                }
-                myNumberEventDisp = myNumEvent-myNumberEventUse;
-                status = true;
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-                status = false;
-            }
-        }
+//        if(status){
+//            rs=methodsSQL.getExecute("SELECT COUNT(*) FROM events WHERE nicknameCreator = ?", nickname);
+//            try {
+//                while(rs.next()){
+//                    myNumberEventUse = rs.getInt(1);
+//                }
+//                myNumberEventDisp = myNumEvent-myNumberEventUse;
+//                status = true;
+//            } catch (SQLException ex) {
+//                System.out.println(ex.getMessage());
+//                status = false;
+//            }
+//        }
         return status;
     }
     

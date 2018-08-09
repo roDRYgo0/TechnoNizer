@@ -36,7 +36,7 @@ public class controller {
     public static jpMembershipChange jpMC;
     public static jpEditUser jpU;
     public static jpEvent jpE;
-    public static event jpEv;
+    public static showEvent jpEv;
     public static addEvent jpAE;
     public static jpSecurity jpSe;
     public static jpReminder jpREM;

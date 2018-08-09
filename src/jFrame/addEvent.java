@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
+import javaClass.event;
 import javaClass.standardization;
 
 /** @author rodri */
@@ -154,21 +155,19 @@ public class addEvent extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(202, 202, 202))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(scrollPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel5))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(202, 202, 202))))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,6 +234,19 @@ public class addEvent extends javax.swing.JFrame {
         if(classEvent.insert()){
             standardization.showMessage("ok", "Exito al crear evento");
             classUsuario.setMyNumberEventUse(classUsuario.getMyNumberEventUse()+1);
+            event evento = new event();
+            evento.setId(classEvent.getId());
+            evento.setEventName(classEvent.getEventName());
+            evento.setProfilePicture(classEvent.getProfilePicture());
+            evento.setCoverPicture(classEvent.getCoverPicture());
+            evento.setVisibility(classEvent.getVisibility());
+            evento.setStartDateTime(classEvent.getStartDateTime());
+            evento.setEndDateTime(classEvent.getEndDateTime());
+            evento.setStaff(classEvent.getStaff());
+            evento.setCondition(classEvent.getCondition());
+            evento.setNicknameCreator(classUsuario.getNickname());
+            classEvent.eventos.add(evento);
+            technonizer.TechnoNizer.home.pnEvent();
         }
         else
             standardization.showMessage("cancel", "No se pudo crear el evento");
