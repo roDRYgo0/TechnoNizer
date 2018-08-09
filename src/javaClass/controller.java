@@ -6,6 +6,10 @@ import JPanel.CheckIn.*;
 import JPanel.contact.addContact;
 import JPanel.contact.itemContact;
 import JPanel.contact.jpContact;
+import event.addPrice;
+import event.allPrice;
+import event.price;
+import jFrame.addEventGral;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -32,7 +36,7 @@ public class controller {
     public static jpMembershipChange jpMC;
     public static jpEditUser jpU;
     public static jpEvent jpE;
-    public static event jpEv;
+    public static showEvent jpEv;
     public static addEvent jpAE;
     public static jpSecurity jpSe;
     public static jpReminder jpREM;
@@ -48,12 +52,24 @@ public class controller {
     public static itemContact itemCont;
     public static jpContact jpCont;
     public static jpSecurityQuestions jpSeQue;
+    
+    public static allEvents allE;
+    
+    public static addPrice addP;
+    public static price pric;
+    public static allPrice allP;
+    
     public static classMembership[] member = new classMembership[3];
     public static contactUsers[] contac = new contactUsers[10];
     public static String[] genders = new String[2];
     public static String[] questions;
     public static String[] answers;
     public static boolean actionCompleted = false;
+    
+    //<editor-fold defaultstate="collapsed" desc="jFrame">
+    public static addEventGral gralEvent;
+    public static jFrame.addEvent addEvents;
+//</editor-fold>
     
     public static JFrame rootFrame;
     

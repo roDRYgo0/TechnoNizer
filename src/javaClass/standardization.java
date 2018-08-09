@@ -36,6 +36,21 @@ public class standardization {
     public static byte[] image;
     static Calendar cal= Calendar.getInstance();
     
+    public static void show(JFrame show){
+        show.setVisible(true);
+        show.setLocationRelativeTo(controller.rootFrame);
+        controller.rootFrame.setEnabled(false);
+        controller.rootFrame.setOpacity(0.85f);
+    }
+    
+    public static void hide(JFrame show){
+        controller.rootFrame.setVisible(true);
+        controller.rootFrame.setEnabled(true);
+        controller.rootFrame.setOpacity(1);
+        show.setVisible(false);
+    }
+    
+    
     public static boolean validateDate(int year, int month, int dayOfMonth){
         try{
             if (year < 1900 || year > cal.get(Calendar.YEAR) - 15)
