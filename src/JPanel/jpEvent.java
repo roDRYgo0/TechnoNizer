@@ -16,13 +16,12 @@ public class jpEvent extends javax.swing.JPanel {
         initComponents();
     }
     
-    void insertarPaneles(int paneles){
+    public void insertarPaneles(int paneles){
         int x=50;
         int y=131;
         int row = 1;
-        int count = 0;
         int linea = 0;
-        while(count<paneles){
+        for(int count = 0; count<paneles; count++){
             if(linea>3){
                 x=50;
                 y+=155;
@@ -32,7 +31,7 @@ public class jpEvent extends javax.swing.JPanel {
                     this.setPreferredSize(new Dimension(this.getSize().width, this.getSize().height+140) );
                 
             }
-            controller.jpEv = new event();
+            controller.jpEv = new JPanel.showEvent(count);
 
             controller.jpEv.setSize(190,120);
             controller.jpEv.setLocation(x,y);
@@ -41,7 +40,6 @@ public class jpEvent extends javax.swing.JPanel {
             this.revalidate();
             this.repaint();
             x+=225;
-            count++;
             linea++;
         }
         if(linea>3){

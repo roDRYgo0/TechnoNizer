@@ -902,17 +902,7 @@ public class home extends javax.swing.JFrame {
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }else{
-            controller.jpE = new jpEvent();
-            controller.jpE.setLocation(0,0);
-
-            int x = controller.jpE.getPreferredSize().width;
-            int y = controller.jpE.getPreferredSize().height + (155*standardization.getRow());
-
-            controller.jpE.setPreferredSize(new Dimension(x, y));
-
-            scrollContainer.setViewportView(controller.jpE);
-            scrollContainer.revalidate();
-            scrollContainer.repaint();
+            pnEvent();
         }
     }//GEN-LAST:event_pnEveMouseReleased
 
@@ -954,6 +944,20 @@ public class home extends javax.swing.JFrame {
             showEditUser();
     }//GEN-LAST:event_lblImageUserTopMouseReleased
     //</editor-fold>
+    
+    public void pnEvent(){
+        controller.jpE = new jpEvent();
+        controller.jpE.setLocation(0,0);
+
+        int x = controller.jpE.getPreferredSize().width;
+        int y = controller.jpE.getPreferredSize().height + (155*standardization.getRow());
+
+        controller.jpE.setPreferredSize(new Dimension(x, y));
+
+        scrollContainer.setViewportView(controller.jpE);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
     
     public void pnSecurity(){
         controller.jpSe = new jpSecurity();
