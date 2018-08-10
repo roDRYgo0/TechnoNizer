@@ -526,17 +526,24 @@ public class addEventGral extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAnioEndFocusLost
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
+int year=Integer.parseInt(txtAnioStart.getText());
+int yearend=Integer.parseInt(txtAnioEnd.getText());
+        if(txtEvent.getText().isEmpty()&&standardization.validateDate(Integer.parseInt(txtAnioStart.getText()), (cmbMesStart.getSelectedIndex()+1), Integer.parseInt(txtDiaStart.getText()))&&
+                standardization.validateDate(Integer.parseInt(txtAnioEnd.getText()), (cmbMesEnd.getSelectedIndex()+1), Integer.parseInt(txtDiaEnd.getText()))&& year<2018
+                ){
+        }else{
+            
+            classEvent.setEventName(txtEvent.getText());
+            classEvent.setNicknameCreator(classUsuario.getNickname());
+            classEvent.setProfilePicture(profil);
+            classEvent.setCoverPicture(cover);
+            classEvent.setStartDateTime(txtAnioStart.getText()+"-"+(cmbMesStart.getSelectedIndex()+1)+"-"+txtDiaStart.getText());
+            classEvent.setEndDateTime(txtAnioEnd.getText()+"-"+(cmbMesEnd.getSelectedIndex()+1)+"-"+txtDiaEnd.getText());
 
-        classEvent.setEventName(txtEvent.getText());
-        classEvent.setNicknameCreator(classUsuario.getNickname());
-        classEvent.setProfilePicture(profil);
-        classEvent.setCoverPicture(cover);
-        classEvent.setStartDateTime(txtAnioStart.getText()+"-"+(cmbMesStart.getSelectedIndex()+1)+"-"+txtDiaStart.getText());
-        classEvent.setEndDateTime(txtAnioEnd.getText()+"-"+(cmbMesEnd.getSelectedIndex()+1)+"-"+txtDiaEnd.getText());
-
-        standardization.hide(controller.gralEvent);
-        controller.addEvents = new addEvent();
-        standardization.show(controller.addEvents);
+            standardization.hide(controller.gralEvent);
+            controller.addEvents = new addEvent();
+            standardization.show(controller.addEvents);
+}
     }//GEN-LAST:event_btnNext1ActionPerformed
 
 

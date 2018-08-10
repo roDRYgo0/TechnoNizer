@@ -248,6 +248,23 @@ public class standardization {
         controller.rootFrame.setOpacity(1);
         mess.setVisible(false);
     }
+    
+    public static void showMessage(String Image, String Message, JFrame frame){
+        if(!Image.equals(""))
+            mess.changeImage(Image);
+        
+        mess.changeMessage(Message);
+        mess.setVisible(true);
+        mess.setLocationRelativeTo(TechnoNizer.log);
+        frame.setEnabled(false);
+        frame.setOpacity(0.85f);
+    }
+    
+    public static void hideMessage(JFrame frame){
+        frame.setEnabled(true);
+        frame.setOpacity(1);
+        mess.setVisible(false);
+    }
 //    
     public static void invokeHome(boolean load)
     {

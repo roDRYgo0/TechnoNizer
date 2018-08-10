@@ -21,6 +21,7 @@ public class jpSecurity extends javax.swing.JPanel {
         loadImage();
         jpShow.setPreferredSize(new Dimension(445, 465));
         checkAccount();
+        perm=true;
         load();
     }
     
@@ -44,8 +45,7 @@ public class jpSecurity extends javax.swing.JPanel {
             jpBackAuthen.setBackground(Color.red);
             jpBackSecQuestions.setBackground(Color.red);
             perm=false;
-        }else
-            perm=true;
+        }
     }
     
     void loadImage(){
