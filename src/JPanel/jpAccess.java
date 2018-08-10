@@ -270,6 +270,7 @@ public class jpAccess extends javax.swing.JPanel {
                         new Thread(()->{
                             classSecurityQuestions.select();
                             System.out.println("Preguntas de seguridad cargadas");
+                            System.out.println("Tu primera pregunta es "+classSecurityQuestions.getQuestions()[0]);
                         }).start();
                         classUsuario.setCondition(methodsSQL.getExecuteInt("SELECT condition FROM users WHERE nickname = ?", classUsuario.getNickname()));
                         

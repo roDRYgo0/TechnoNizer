@@ -6,70 +6,28 @@
             <file>file:/root/Documentos/Git/TechnoNizer/src/javaClass/loadCreateAccount.java</file>
             <file>file:/root/Documentos/Git/TechnoNizer/src/javaClass/classContact.java</file>
             <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/CheckIn/jpCreateData.java</file>
-            <file>file:/root/Documentos/Git/TechnoNizer/src/javaClass/standardization.java</file>
             <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/jpSecurity.java</file>
+            <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/contact/jpContact.java</file>
+            <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/contact/addContact.java</file>
+            <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/jpRecoverPasswordMail.java</file>
+            <file>file:/root/Documentos/Git/TechnoNizer/src/jFrame/logIn.java</file>
+            <file>file:/root/Documentos/Git/TechnoNizer/src/javaClass/classSecurityQuestions.java</file>
+            <file>file:/root/Documentos/Git/TechnoNizer/src/javaClass/controller.java</file>
+            <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/jpAuthenticator.java</file>
+            <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/jpAccess.java</file>
+            <file>file:/root/Documentos/Git/TechnoNizer/src/javaClass/standardization.java</file>
             <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/jpEvent.java</file>
             <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/addEvent.java</file>
             <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/contact/itemContact.java</file>
             <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/CheckIn/jpCreateUser.java</file>
             <file>file:/root/Documentos/Git/TechnoNizer/src/technonizer/TechnoNizer.java</file>
-            <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/contact/jpContact.java</file>
             <file>file:/root/Documentos/Git/TechnoNizer/src/javaClass/classUsuario.java</file>
             <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/jpEditUser.java</file>
-            <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/contact/addContact.java</file>
-            <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/jpRecoverPasswordMail.java</file>
             <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/jpHome.java</file>
-            <file>file:/root/Documentos/Git/TechnoNizer/src/jFrame/logIn.java</file>
             <file>file:/root/Documentos/Git/TechnoNizer/src/jFrame/home.java</file>
-            <file>file:/root/Documentos/Git/TechnoNizer/src/javaClass/classSecurityQuestions.java</file>
-            <file>file:/root/Documentos/Git/TechnoNizer/src/javaClass/controller.java</file>
             <file>file:/root/Documentos/Git/TechnoNizer/src/javaClass/contactUsers.java</file>
             <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/jpPassword.java</file>
-            <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/jpAuthenticator.java</file>
-            <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/jpAccess.java</file>
-        </group>
-    </open-files>
-</project-private>
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpConfAuthenticator.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/classPrice.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/controller.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/event/price.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/connection.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/event.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/contactUsers.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/classUsuario.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/sucurity/questionsConf.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpEvent.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpPassword.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/standardization.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpContactDisable.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/sucurity/jpQuestions.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/jFrame/addEventGral.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/showEvent.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/allEvents.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpCheckAuthenticator.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/classSecurityQuestions.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/contact/jpContact.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/event/addPrice.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/technonizer/TechnoNizer.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/jFrame/addEvent.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/classMembership.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpSecurity.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/sucurity/jpSecurityQuestions.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/addEvent.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpAuthenticator.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/CheckIn/jpCreateData.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/sucurity/jpAuthenticator.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpEditUser.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/jFrame/home.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/classEvent.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpAccess.java</file>
-            <file>file:/C:/Users/rodri/git/TechnoNizer/src/event/allPrice.java</file>
+            <file>file:/root/Documentos/Git/TechnoNizer/src/JPanel/allEvents.java</file>
         </group>
     </open-files>
 </project-private>

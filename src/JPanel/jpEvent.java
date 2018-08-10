@@ -32,7 +32,7 @@ public class jpEvent extends javax.swing.JPanel {
         controller.allE = new allEvents(paneles, search);
         controller.allE.setLocation(0,0);
 
-        controller.allE.setPreferredSize(new Dimension(960, 480+(155 * classEvent.spaceEvent(paneles))));
+        controller.allE.setPreferredSize(new Dimension(960, 488+(155 * classEvent.spaceEvent(paneles))));
 
         if(controller.allE == null)
             System.out.println("que pedo");

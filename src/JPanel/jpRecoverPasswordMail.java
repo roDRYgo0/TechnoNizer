@@ -55,6 +55,7 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
         lblThinking = new javax.swing.JLabel();
         lblImageMail = new javax.swing.JLabel();
         checkMail = new javax.swing.JLabel();
+        btnRecoverPassword = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -132,6 +133,19 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
         checkMail.setMinimumSize(new java.awt.Dimension(25, 25));
         checkMail.setPreferredSize(new java.awt.Dimension(25, 25));
 
+        btnRecoverPassword.setBackground(new java.awt.Color(255, 255, 255));
+        btnRecoverPassword.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        btnRecoverPassword.setForeground(new java.awt.Color(0, 153, 255));
+        btnRecoverPassword.setText("Otro metodo");
+        btnRecoverPassword.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnRecoverPassword.setBorderPainted(false);
+        btnRecoverPassword.setFocusable(false);
+        btnRecoverPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecoverPasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -171,6 +185,10 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 22, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnRecoverPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +217,9 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
                         .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblImageMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(checkMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addComponent(btnRecoverPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -249,11 +269,28 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
         controller.rootPane.repaint();
     }//GEN-LAST:event_lblTNMouseClicked
 
+    private void btnRecoverPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecoverPasswordActionPerformed
+        if(logIn.internet)
+        {
+            controller.jpRP = new jpRecoverPasswordMail();
+
+            controller.jpRP.setSize(420,603);
+            controller.jpRP.setLocation(0,0);
+            controller.rootPane.removeAll();
+            controller.rootPane.add(controller.jpRP,BorderLayout.CENTER);
+            controller.rootPane.revalidate();
+            controller.rootPane.repaint();
+        }
+        else
+        standardization.showMessage("error", "Error al establecer una conexion de red.");
+    }//GEN-LAST:event_btnRecoverPasswordActionPerformed
+
     //<editor-fold defaultstate="collapsed" desc="compiled code">
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnRecoverPassword;
     private javax.swing.JLabel checkMail;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
