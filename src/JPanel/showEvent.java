@@ -4,15 +4,20 @@ import javaClass.classEvent;
 
 public class showEvent extends javax.swing.JPanel {
 
-    public showEvent(int event) {
+    public showEvent(int event, boolean search) {
         initComponents();
         
-        load(event);
+        load(event, search);
     }
 
-    void load(int e){
-        lblEventName.setText(classEvent.eventos.get(e).getEventName());
-        lblNickname.setText(classEvent.eventos.get(e).getNicknameCreator());
+    void load(int e, boolean search){
+        if(search){
+            lblEventName.setText(classEvent.eventos.get(e).getEventName());
+            lblNickname.setText(classEvent.eventos.get(e).getNicknameCreator());
+        }else{
+            lblEventName.setText(classEvent.eventosSearch.get(e).getEventName());
+            lblNickname.setText(classEvent.eventosSearch.get(e).getNicknameCreator());
+        }
     }
     
     @SuppressWarnings("unchecked")

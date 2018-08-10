@@ -53,6 +53,8 @@ public class controller {
     public static jpContact jpCont;
     public static jpSecurityQuestions jpSeQue;
     
+    public static allEvents allE;
+    
     public static addPrice addP;
     public static price pric;
     public static allPrice allP;

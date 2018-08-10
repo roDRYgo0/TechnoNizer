@@ -8,6 +8,7 @@ import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.event;
 import javaClass.standardization;
+import javax.swing.JOptionPane;
 
 /** @author rodri */
 
@@ -28,7 +29,7 @@ public class addEvent extends javax.swing.JFrame {
         controller.allP = new allPrice();
         controller.allP.setLocation(0,0);
 
-        controller.allP.setPreferredSize(new Dimension(316, 235+(56 * classEvent.space())));
+        controller.allP.setPreferredSize(new Dimension(316, 235+(56 * classEvent.spacePrice())));
 
         scrollPrice.setViewportView(controller.allP);
         scrollPrice.revalidate();
@@ -225,7 +226,10 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSwitchMouseReleased
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-
+if(scrollPrice.contains(null)){
+JOptionPane.showMessageDialog(this, "No podemos agregar sin datos a obtener");
+}
+else{    
         classEvent.setStaff(0);
         classEvent.setCondition(1);
         
@@ -246,11 +250,11 @@ public class addEvent extends javax.swing.JFrame {
             evento.setCondition(classEvent.getCondition());
             evento.setNicknameCreator(classUsuario.getNickname());
             classEvent.eventos.add(evento);
-            technonizer.TechnoNizer.home.pnEvent();
+            technonizer.TechnoNizer.home.pnEvent(true);
         }
         else
             standardization.showMessage("cancel", "No se pudo crear el evento");
-        
+}
     }//GEN-LAST:event_btnNext1ActionPerformed
 
     void switchVisibility(){

@@ -902,7 +902,7 @@ public class home extends javax.swing.JFrame {
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }else{
-            pnEvent();
+            pnEvent(true);
         }
     }//GEN-LAST:event_pnEveMouseReleased
 
@@ -945,8 +945,8 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_lblImageUserTopMouseReleased
     //</editor-fold>
     
-    public void pnEvent(){
-        controller.jpE = new jpEvent();
+    public void pnEvent(boolean start){
+        controller.jpE = new jpEvent(start);
         controller.jpE.setLocation(0,0);
 
         int x = controller.jpE.getPreferredSize().width;

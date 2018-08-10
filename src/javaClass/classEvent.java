@@ -25,6 +25,7 @@ public class classEvent {
     public static List<classPrice> prices= new ArrayList<classPrice>();
     
     public static List<event> eventos = new ArrayList<event>();
+    public static List<event> eventosSearch = new ArrayList<event>();
     
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
     public static Integer getId() {
@@ -116,11 +117,20 @@ public class classEvent {
     }
 //</editor-fold>
     
-    public static int space(){
+    public static int spacePrice(){
         if(prices.size()<3)
             return 0;
         else{
             return prices.size()-3;
+        }
+    }
+    
+    public static int spaceEvent(int num){
+        num /=4;
+        if(num<3)
+            return 0;
+        else{
+            return num-2;
         }
     }
     

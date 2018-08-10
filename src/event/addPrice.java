@@ -4,6 +4,7 @@ import java.awt.Color;
 import javaClass.classEvent;
 import javaClass.classPrice;
 import javaClass.controller;
+import javax.swing.JOptionPane;
 
 /** @author rodri */
 
@@ -170,11 +171,15 @@ public class addPrice extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPriceKeyTyped
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+       if(txtNamePrice.getText().isEmpty()||txtPrice.getText().isEmpty())
+       {JOptionPane.showMessageDialog(this, "No se puede agregar");}
+       else{
         classPrice cp = new classPrice();
         cp.setName(txtNamePrice.getText());
         cp.setPrice(Double.parseDouble(txtPrice.getText()));
         classEvent.prices.add(cp);
         controller.addEvents.load();
+       }
     }//GEN-LAST:event_btnNextActionPerformed
 
 
