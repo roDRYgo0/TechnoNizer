@@ -3,13 +3,16 @@ package event;
 import java.awt.BorderLayout;
 import javaClass.classEvent;
 import javaClass.controller;
+import javax.swing.JFrame;
 
 /** @author rodri */
 
 public class allPrice extends javax.swing.JPanel {
-
-    public allPrice() {
+    JFrame event;
+    
+    public allPrice(JFrame event) {
         initComponents();
+        this.event=event;
         load();
     }
     
@@ -30,7 +33,7 @@ public class allPrice extends javax.swing.JPanel {
                 y+=56;
             }
         }
-        controller.addP = new addPrice();
+        controller.addP = new addPrice(event);
 
         controller.addP.setSize(306, 45);
         controller.addP.setLocation(x,y);

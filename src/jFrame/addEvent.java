@@ -26,7 +26,7 @@ public class addEvent extends javax.swing.JFrame {
 
     public void load(){
         System.out.println(classEvent.prices.size());
-        controller.allP = new allPrice();
+        controller.allP = new allPrice(this);
         controller.allP.setLocation(0,0);
 
         controller.allP.setPreferredSize(new Dimension(316, 235+(56 * classEvent.spacePrice())));
@@ -226,10 +226,8 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSwitchMouseReleased
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-if(scrollPrice.contains(null)){
-JOptionPane.showMessageDialog(this, "No podemos agregar sin datos a obtener");
-}
-else{    
+
+  
         classEvent.setStaff(0);
         classEvent.setCondition(1);
         
@@ -254,7 +252,7 @@ else{
         }
         else
             standardization.showMessage("cancel", "No se pudo crear el evento");
-}
+
     }//GEN-LAST:event_btnNext1ActionPerformed
 
     void switchVisibility(){

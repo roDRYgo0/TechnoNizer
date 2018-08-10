@@ -4,14 +4,17 @@ import java.awt.Color;
 import javaClass.classEvent;
 import javaClass.classPrice;
 import javaClass.controller;
+import javaClass.standardization;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /** @author rodri */
 
 public class addPrice extends javax.swing.JPanel {
-
-    public addPrice() {
+  JFrame event;
+    public addPrice(JFrame event) {
         initComponents();
+        this.event=event;
     }
 
     @SuppressWarnings("unchecked")
@@ -172,7 +175,9 @@ public class addPrice extends javax.swing.JPanel {
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
        if(txtNamePrice.getText().isEmpty()||txtPrice.getText().isEmpty())
-       {JOptionPane.showMessageDialog(this, "No se puede agregar");}
+       {
+           standardization.showMessage("warning","Hay campos vacios!",event);
+       }
        else{
         classPrice cp = new classPrice();
         cp.setName(txtNamePrice.getText());

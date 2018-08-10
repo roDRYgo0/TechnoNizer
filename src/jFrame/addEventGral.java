@@ -1,6 +1,7 @@
 package jFrame;
 
 import java.awt.Color;
+import java.util.Calendar;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
@@ -11,12 +12,19 @@ import javax.swing.JFrame;
 
 public class addEventGral extends javax.swing.JFrame {
 
-
+    JFrame event;
     byte[] cover;
     byte[] profil;
     
+    public addEventGral(JFrame event) {
+        initComponents();
+             this.event=event;
+        loadImage();
+      
+    }
     public addEventGral() {
         initComponents();
+             this.event=event;
         loadImage();
     }
     
@@ -526,24 +534,42 @@ public class addEventGral extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAnioEndFocusLost
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-int year=Integer.parseInt(txtAnioStart.getText());
-int yearend=Integer.parseInt(txtAnioEnd.getText());
-        if(txtEvent.getText().isEmpty()&&standardization.validateDate(Integer.parseInt(txtAnioStart.getText()), (cmbMesStart.getSelectedIndex()+1), Integer.parseInt(txtDiaStart.getText()))&&
-                standardization.validateDate(Integer.parseInt(txtAnioEnd.getText()), (cmbMesEnd.getSelectedIndex()+1), Integer.parseInt(txtDiaEnd.getText()))&& year<2018
-                ){
-        }else{
+        Calendar cal= Calendar.getInstance();
+        int year= cal.get(Calendar.YEAR);
+        
+        if(txtEvent.getText().isEmpty()||txtAnioStart.getText().isEmpty()||txtAnioEnd.getText().isEmpty()||txtDiaStart.getText().isEmpty()||txtDiaEnd.getText().isEmpty())
+        {
+              standardization.showMessage("warning","Hay campos vacios!",this);
+        }
+        else 
+        {
+            int yearStart=Integer.parseInt(txtAnioStart.getText());
+            int yearEnd=Integer.parseInt(txtAnioEnd.getText());
             
-            classEvent.setEventName(txtEvent.getText());
-            classEvent.setNicknameCreator(classUsuario.getNickname());
-            classEvent.setProfilePicture(profil);
-            classEvent.setCoverPicture(cover);
-            classEvent.setStartDateTime(txtAnioStart.getText()+"-"+(cmbMesStart.getSelectedIndex()+1)+"-"+txtDiaStart.getText());
-            classEvent.setEndDateTime(txtAnioEnd.getText()+"-"+(cmbMesEnd.getSelectedIndex()+1)+"-"+txtDiaEnd.getText());
+            if(standardization.validateDate(Integer.parseInt(txtAnioStart.getText()), (cmbMesStart.getSelectedIndex()+1), Integer.parseInt(txtDiaStart.getText()))&&
+            standardization.validateDate(Integer.parseInt(txtAnioEnd.getText()), (cmbMesEnd.getSelectedIndex()+1), Integer.parseInt(txtDiaEnd.getText())
+            ))
+            {
+                 standardization.showMessage("warning","Fechas malas establecidas",this);
+            }
+            else if(yearStart<year || yearEnd<year)
+            {
+                standardization.showMessage("warning","Fechas malas establecidas",event);
+            }
+            else{
 
-            standardization.hide(controller.gralEvent);
-            controller.addEvents = new addEvent();
-            standardization.show(controller.addEvents);
-}
+                classEvent.setEventName(txtEvent.getText());
+                classEvent.setNicknameCreator(classUsuario.getNickname());
+                classEvent.setProfilePicture(profil);
+                classEvent.setCoverPicture(cover);
+                classEvent.setStartDateTime(txtAnioStart.getText()+"-"+(cmbMesStart.getSelectedIndex()+1)+"-"+txtDiaStart.getText());
+                classEvent.setEndDateTime(txtAnioEnd.getText()+"-"+(cmbMesEnd.getSelectedIndex()+1)+"-"+txtDiaEnd.getText());
+
+                standardization.hide(controller.gralEvent);
+                controller.addEvents = new addEvent();
+                standardization.show(controller.addEvents);
+    }
+            }
     }//GEN-LAST:event_btnNext1ActionPerformed
 
 
