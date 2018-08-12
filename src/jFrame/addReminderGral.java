@@ -9,13 +9,13 @@ import javax.swing.JFrame;
 
 /** @author Alexg */
 
-public class addEventGral extends javax.swing.JFrame {
+public class addReminderGral extends javax.swing.JFrame {
 
 
     byte[] cover;
     byte[] profil;
     
-    public addEventGral() {
+    public addReminderGral() {
         initComponents();
         loadImage();
     }

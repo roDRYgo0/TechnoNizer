@@ -6,9 +6,9 @@ import javaClass.standardization;
 
 /** @author rodri*/
 
-public class addEvent extends javax.swing.JPanel {
+public class addReminder extends javax.swing.JPanel {
 
-    public addEvent() {
+    public addReminder() {
         initComponents();
     }
 
