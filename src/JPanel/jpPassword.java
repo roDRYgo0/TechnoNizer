@@ -265,7 +265,7 @@ public class jpPassword extends javax.swing.JPanel {
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         if(logIn.internet)
         {
-            String pass = standardization.sha1(standardization.md5(Arrays.toString(txtPassword.getPassword())));
+            String pass = standardization.sha1(standardization.md5(standardization.convertPassword(txtPassword.getPassword())));
             System.out.println(pass);
             new Thread(()->{
                 disable();

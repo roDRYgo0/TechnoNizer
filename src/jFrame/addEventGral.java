@@ -2,6 +2,7 @@ package jFrame;
 
 import java.awt.Color;
 import java.util.Calendar;
+import java.util.Date;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
@@ -18,13 +19,13 @@ public class addEventGral extends javax.swing.JFrame {
     
     public addEventGral(JFrame event) {
         initComponents();
-             this.event=event;
+        this.event=event;
         loadImage();
       
     }
     public addEventGral() {
         initComponents();
-             this.event=event;
+        this.event=event;
         loadImage();
     }
     
@@ -72,6 +73,7 @@ public class addEventGral extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         spYearEnd = new javax.swing.JSeparator();
         btnNext1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -296,6 +298,13 @@ public class addEventGral extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -360,7 +369,9 @@ public class addEventGral extends javax.swing.JFrame {
                                     .addComponent(jLabel13)
                                     .addComponent(spYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton2))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -411,7 +422,7 @@ public class addEventGral extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbMesStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -435,7 +446,9 @@ public class addEventGral extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAnioEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtAnioEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))
                         .addGap(4, 4, 4)
                         .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -456,6 +469,7 @@ public class addEventGral extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        controller.rootFrame = technonizer.TechnoNizer.home;
         standardization.hide(controller.gralEvent);
     }//GEN-LAST:event_btnNextActionPerformed
 
@@ -534,27 +548,22 @@ public class addEventGral extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAnioEndFocusLost
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-        Calendar cal= Calendar.getInstance();
-        int year= cal.get(Calendar.YEAR);
-        
         if(txtEvent.getText().isEmpty()||txtAnioStart.getText().isEmpty()||txtAnioEnd.getText().isEmpty()||txtDiaStart.getText().isEmpty()||txtDiaEnd.getText().isEmpty())
         {
-              standardization.showMessage("warning","Hay campos vacios!",this);
+            standardization.showMessage("warning","Hay campos vacios!",this);
         }
         else 
         {
-            int yearStart=Integer.parseInt(txtAnioStart.getText());
-            int yearEnd=Integer.parseInt(txtAnioEnd.getText());
+            Date dateStart = new Date(Integer.parseInt(txtAnioStart.getText()), (cmbMesStart.getSelectedIndex()+1), Integer.parseInt(txtDiaStart.getText()));
+            Date dateEnd = new Date(Integer.parseInt(txtAnioEnd.getText()), (cmbMesEnd.getSelectedIndex()+1), Integer.parseInt(txtDiaEnd.getText()));
             
             if(standardization.validateDate(Integer.parseInt(txtAnioStart.getText()), (cmbMesStart.getSelectedIndex()+1), Integer.parseInt(txtDiaStart.getText()))&&
             standardization.validateDate(Integer.parseInt(txtAnioEnd.getText()), (cmbMesEnd.getSelectedIndex()+1), Integer.parseInt(txtDiaEnd.getText())
             ))
+                standardization.showMessage("warning","Fechas invalidas",this);
+            else if(true == true)
             {
-                 standardization.showMessage("warning","Fechas malas establecidas",this);
-            }
-            else if(yearStart<year || yearEnd<year)
-            {
-                standardization.showMessage("warning","Fechas malas establecidas",event);
+                standardization.showMessage("warning","Fechas invalidas",this);
             }
             else{
 
@@ -569,10 +578,16 @@ public class addEventGral extends javax.swing.JFrame {
                 controller.addEvents = new addEvent();
                 standardization.show(controller.addEvents);
     }
-            }
+           }
     }//GEN-LAST:event_btnNext1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Date dateStart = new Date(Integer.parseInt(txtAnioStart.getText()), (cmbMesStart.getSelectedIndex()+1), Integer.parseInt(txtDiaStart.getText()));
+        Date dateEnd = new Date(Integer.parseInt(txtAnioEnd.getText()), (cmbMesEnd.getSelectedIndex()+1), Integer.parseInt(txtDiaEnd.getText()));
+        standardization.compareDate(dateStart, standardization.currentDate);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
@@ -582,6 +597,7 @@ public class addEventGral extends javax.swing.JFrame {
     private javax.swing.JLabel iconEnd;
     private javax.swing.JLabel iconStart;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

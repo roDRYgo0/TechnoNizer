@@ -1,7 +1,6 @@
 package JPanel.CheckIn;
 
 import JPanel.jpWelcome;
-import jFrame.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javaClass.*;
@@ -17,6 +16,8 @@ public class jpMembership extends javax.swing.JPanel {
     int numberGuests;
     float price;
     
+    boolean start;
+    
     public jpMembership() {
         initComponents();
         name = "";
@@ -27,6 +28,7 @@ public class jpMembership extends javax.swing.JPanel {
         numberModerators = -2;
         numberGuests = -2;
         price = -1;
+        start = true;
         sortFree.setIcon(new controller().changeImage("/imagenes/sortDown.png", 36, 36));
         pnFree.setBackground(new Color(33,150,243));
         
@@ -60,6 +62,7 @@ public class jpMembership extends javax.swing.JPanel {
         lblEvents = new javax.swing.JLabel();
         lblModer = new javax.swing.JLabel();
         lblPrice = new javax.swing.JLabel();
+        progress = new rojerusan.componentes.RSProgressMaterial();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -78,9 +81,6 @@ public class jpMembership extends javax.swing.JPanel {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 pnFreeMouseReleased(evt);
             }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnFreeMouseClicked(evt);
-            }
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -94,7 +94,7 @@ public class jpMembership extends javax.swing.JPanel {
             .addGroup(pnFreeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(5, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         pnFreeLayout.setVerticalGroup(
             pnFreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,9 +136,6 @@ public class jpMembership extends javax.swing.JPanel {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 pnVipMouseReleased(evt);
             }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnVipMouseClicked(evt);
-            }
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -152,7 +149,7 @@ public class jpMembership extends javax.swing.JPanel {
             .addGroup(pnVipLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel3)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         pnVipLayout.setVerticalGroup(
             pnVipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,9 +167,6 @@ public class jpMembership extends javax.swing.JPanel {
         pnPremium.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 pnPremiumMouseReleased(evt);
-            }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnPremiumMouseClicked(evt);
             }
         });
 
@@ -255,6 +249,10 @@ public class jpMembership extends javax.swing.JPanel {
         lblPrice.setMinimumSize(new java.awt.Dimension(30, 30));
         lblPrice.setPreferredSize(new java.awt.Dimension(30, 30));
 
+        progress.setForeground(new java.awt.Color(255, 255, 255));
+        progress.setAnchoProgress(6);
+        progress.setPreferredSize(new java.awt.Dimension(34, 34));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -263,6 +261,8 @@ public class jpMembership extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
             .addGroup(layout.createSequentialGroup()
@@ -332,37 +332,48 @@ public class jpMembership extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblModer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        if(logIn.internet)
+        if(start)
         {
-            if(classUsuario.insert()){
-                standardization.showMessage("ok", "Se inserto correctamente."); 
-                controller.jpW = new jpWelcome();
+            start = false;
+            btnNext.setEnabled(false);
+            progress.setForeground(new Color(33,150,243));
+            new Thread(()->{
+                if(classUsuario.insert()){
+                    standardization.showMessage("ok", "Se registro correctamente."); 
+                    controller.jpW = new jpWelcome();
 
-                controller.jpW.setSize(420,603);
-                controller.jpW.setLocation(0,0);
+                    controller.jpW.setSize(420,603);
+                    controller.jpW.setLocation(0,0);
 
-                controller.rootPane.removeAll();
-                controller.rootPane.add(controller.jpW,BorderLayout.CENTER);
-                controller.rootPane.revalidate();
-                controller.rootPane.repaint();
-            }
-            else
-                standardization.showMessage("error", "Error al insertar datos."); 
+                    controller.rootPane.removeAll();
+                    controller.rootPane.add(controller.jpW,BorderLayout.CENTER);
+                    controller.rootPane.revalidate();
+                    controller.rootPane.repaint();
+                }
+                else{
+                    standardization.showMessage("error", "Error al insertar datos."); 
+                    start = true;
+                    btnNext.setEnabled(true);
+                    progress.setForeground(new Color(255, 255, 255));
+                }
+            }).start();
+
         }
-        else
-            standardization.showMessage("error", "Error al establecer una conexion de red.");
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -371,28 +382,21 @@ public class jpMembership extends javax.swing.JPanel {
         controller.rootPane.revalidate();
         controller.rootPane.repaint();
     }//GEN-LAST:event_btnBackActionPerformed
-    
-    //<editor-fold defaultstate="collapsed" desc="click">
-    private void pnFreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnFreeMouseClicked
-    }//GEN-LAST:event_pnFreeMouseClicked
-
-    private void pnVipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnVipMouseClicked
-    }//GEN-LAST:event_pnVipMouseClicked
-
-    private void pnPremiumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnPremiumMouseClicked
-    }//GEN-LAST:event_pnPremiumMouseClicked
-    //</editor-fold>
+        //</editor-fold>
     
     private void pnPremiumMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnPremiumMouseReleased
-        seleccionarMembership(3);
+        if(start)
+            seleccionarMembership(3);
     }//GEN-LAST:event_pnPremiumMouseReleased
 
     private void pnVipMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnVipMouseReleased
-        seleccionarMembership(2);
+        if(start)
+            seleccionarMembership(2);
     }//GEN-LAST:event_pnVipMouseReleased
 
     private void pnFreeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnFreeMouseReleased
-        seleccionarMembership(1);
+        if(start)
+            seleccionarMembership(1);
     }//GEN-LAST:event_pnFreeMouseReleased
 
     void seleccionarMembership(int m){
@@ -511,6 +515,7 @@ public class jpMembership extends javax.swing.JPanel {
     private javax.swing.JPanel pnFree;
     private javax.swing.JPanel pnPremium;
     private javax.swing.JPanel pnVip;
+    private rojerusan.componentes.RSProgressMaterial progress;
     private javax.swing.JLabel sortFree;
     private javax.swing.JLabel sortPremium;
     private javax.swing.JLabel sortVip;

@@ -14,14 +14,10 @@ public class jpEvent extends javax.swing.JPanel {
     int paneles;
     
     public jpEvent(boolean start) {
-
-
         initComponents();
         insertarPaneles(classUsuario.getMyNumberEventUse(), start);
         txtSearch.requestFocus();
         load();
-        
-        System.out.println("");
     }
     
     void load(){

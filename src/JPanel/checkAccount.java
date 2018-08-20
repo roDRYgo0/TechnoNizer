@@ -46,6 +46,7 @@ public class checkAccount extends javax.swing.JPanel {
         lblInsertCode = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
         spCode = new javax.swing.JSeparator();
+        progress = new rojerusan.componentes.RSProgressMaterial();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(445, 465));
@@ -126,12 +127,18 @@ public class checkAccount extends javax.swing.JPanel {
 
         spCode.setForeground(new java.awt.Color(204, 204, 204));
 
+        progress.setForeground(new java.awt.Color(255, 255, 255));
+        progress.setAnchoProgress(6);
+        progress.setPreferredSize(new java.awt.Dimension(34, 34));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
@@ -182,23 +189,28 @@ public class checkAccount extends javax.swing.JPanel {
                                 .addComponent(jLabel9))
                             .addComponent(lblResetPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblImageMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(checkMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(lblInsertCode)
-                .addGap(18, 18, 18)
-                .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(spCode, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblImageMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(checkMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblInsertCode)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(spCode, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -208,30 +220,39 @@ public class checkAccount extends javax.swing.JPanel {
     }//GEN-LAST:event_lblTNMouseClicked
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        switch(step){
-            case 0:
-                classUsuario.setCode(standardization.generatedCode());
-                standardization.enviarConGMail(classUsuario.getMail(), "Verificación tu cuenta TechnoNizer",
-                    "Este es su codigo de verificación, valido para la cuenta "+classUsuario.getNickname()+" : "+classUsuario.getCode());
-                lblInsertCode.setVisible(true);
-                txtCode.setVisible(true);
-                spCode.setVisible(true);
-                step++;
-                break;
-            case 1:
-                if(txtCode.getText().equals(classUsuario.getCode())){
-                    classUsuario.setCondition(2);
-                    if(classUsuario.updateCondition()){
-                        technonizer.TechnoNizer.home.setVisible(false);
-                        invokeHome(true);
-                        standardization.showMessage("ok", "Se verifico correctamente");
-                    }
-                    else
-                        standardization.showMessage("error", "No se puede verificar en este momento");
-                }else
-                    standardization.showMessage("error", "El código no coincide");
-                break;
-        }
+        btnNext.setEnabled(false);
+        progress.setForeground(new Color(33,150,243));
+        new Thread(()->{
+            switch(step){
+                case 0:
+                    classUsuario.setCode(standardization.generatedCode());
+                    standardization.enviarConGMail(classUsuario.getMail(), "Verificación tu cuenta TechnoNizer",
+                        "Este es su codigo de verificación, valido para la cuenta "+classUsuario.getNickname()+" : "+classUsuario.getCode());
+                    System.out.println(classUsuario.getCode());
+                    lblInsertCode.setVisible(true);
+                    txtCode.setVisible(true);
+                    spCode.setVisible(true);
+                    step++;
+                    btnNext.setEnabled(true);
+                    progress.setForeground(new Color(255,255,255));
+                    break;
+                case 1:
+                    if(txtCode.getText().equals(classUsuario.getCode())){
+                        classUsuario.setCondition(2);
+                        if(classUsuario.updateCondition()){
+                            technonizer.TechnoNizer.home.setVisible(false);
+                            invokeHome(true);
+                            standardization.showMessage("ok", "Se verifico correctamente");
+                        }
+                        else
+                            standardization.showMessage("error", "No se puede verificar en este momento");
+                    }else
+                        standardization.showMessage("error", "El código no coincide");
+                    btnNext.setEnabled(true);
+                    progress.setForeground(new Color(255,255,255));
+                    break;
+            }
+        }).start();
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodeFocusGained
@@ -257,6 +278,7 @@ public class checkAccount extends javax.swing.JPanel {
     private javax.swing.JLabel lblResetPassword;
     private javax.swing.JLabel lblTN;
     private javax.swing.JLabel lblThinking;
+    private rojerusan.componentes.RSProgressMaterial progress;
     private javax.swing.JSeparator spCode;
     private javax.swing.JTextField txtCode;
     // End of variables declaration//GEN-END:variables

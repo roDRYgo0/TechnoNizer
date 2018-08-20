@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -30,11 +31,14 @@ import static technonizer.TechnoNizer.*;
 
 public class standardization {
 
-   
+
+    
     
     controller control = new controller();
     public static byte[] image;
     static Calendar cal= Calendar.getInstance();
+    
+    public static Date currentDate = new Date(cal.get(Calendar.YEAR) , cal.get(Calendar.MONTH), cal.get(Calendar.DATE)); 
     
     public static void show(JFrame show){
         show.setVisible(true);
@@ -50,6 +54,20 @@ public class standardization {
         show.setVisible(false);
     }
     
+    public static void compareDate(Date date, Date compareTo){
+        int res= 0;
+        int dateDay = date.getDate();
+        int day = compareTo.getDate();
+        int dateMonth = date.getMonth();
+        int month = compareTo.getMonth();
+        int dateYear = date.getYear();
+        int year = compareTo.getYear();
+        if(dateYear>year)
+            res = -1;
+        else if(dateYear == year){
+            
+        }
+}
     
     public static boolean validateDate(int year, int month, int dayOfMonth){
         try{
@@ -103,7 +121,6 @@ public class standardization {
     }
     
     public static int getRow(){
-        System.out.println("papa "+classUsuario.getMyNumberEventUse());
         int row = (classUsuario.getMyNumberEventUse()+1)/4;
         if((classUsuario.getMyNumberEventUse()+1)%4!=0)
             row++;
@@ -252,7 +269,6 @@ public class standardization {
     public static void showMessage(String Image, String Message, JFrame frame){
         if(!Image.equals(""))
             mess.changeImage(Image);
-        
         mess.changeMessage(Message);
         mess.setVisible(true);
         mess.setLocationRelativeTo(TechnoNizer.log);

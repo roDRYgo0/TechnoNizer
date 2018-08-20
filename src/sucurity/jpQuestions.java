@@ -285,7 +285,7 @@ public class jpQuestions extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
-        String pass = standardization.sha1(standardization.md5(Arrays.toString(txtPassword.getPassword())));
+        String pass = standardization.sha1(standardization.md5(standardization.convertPassword(txtPassword.getPassword())));
         if(pass.equals(classUsuario.getPassword())){
             controller.jpSeQue.loadConfQuestion(1);
             classSecurityQuestions.change = true;

@@ -1,6 +1,5 @@
 package sucurity;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.Arrays;
@@ -383,7 +382,7 @@ public class jpChangePassword extends javax.swing.JPanel {
             if(continueP){              
                 new Thread(()->{
                 if(Arrays.equals(txtPasswordConfirm.getPassword(), txtPassword.getPassword())){
-                    classUsuario.setPassword(standardization.sha1(standardization.md5(Arrays.toString(txtPassword.getPassword()))));
+                    classUsuario.setPassword(standardization.sha1(standardization.md5(standardization.convertPassword(txtPassword.getPassword()))));
 
                     if(!Arrays.equals(txtPasswordOld.getPassword(),txtPassword.getPassword())){
                         if(classUsuario.changePassword() && continueP){

@@ -5,7 +5,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.util.Arrays;
 import javaClass.classSecurityQuestions;
 import javaClass.classUsuario;
 import javaClass.controller;
@@ -448,8 +447,6 @@ public class jpSecurity extends javax.swing.JPanel {
     }
     
     private void jpFrontSecQuestionsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpFrontSecQuestionsMouseReleased
-        System.out.println(Arrays.toString(classSecurityQuestions.getQuestions()));
-        System.out.println(Arrays.toString(classSecurityQuestions.getAswers()));
         if(perm){
             resetColor();
             jpBackSecQuestions.setBackground(new Color(33,150,243));
@@ -464,6 +461,8 @@ public class jpSecurity extends javax.swing.JPanel {
     private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
         checkAccount();
         resetColor();
+        jpBackAuthen.setBackground(Color.red);
+        jpBackSecQuestions.setBackground(Color.red);
     }//GEN-LAST:event_jLabel1MouseReleased
 
 

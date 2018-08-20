@@ -7,7 +7,6 @@ import java.util.Arrays;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
-import technonizer.TechnoNizer;
 
 public class jpNewPassword extends javax.swing.JPanel {
 
@@ -299,7 +298,7 @@ public class jpNewPassword extends javax.swing.JPanel {
         if( logIn.internet)
         {
             if(Arrays.equals(txtPasswordConfirm.getPassword(), txtPassword.getPassword())){
-                classUsuario.setPassword(standardization.sha1(standardization.md5(Arrays.toString(txtPassword.getPassword()))));
+                classUsuario.setPassword(standardization.sha1(standardization.md5(standardization.convertPassword(txtPassword.getPassword()))));
                 
                 if(classUsuario.changePassword() && continueP){
                     standardization.showMessage("ok", "Contraseña actualizada.");

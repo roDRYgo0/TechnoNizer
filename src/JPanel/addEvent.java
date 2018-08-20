@@ -60,6 +60,7 @@ public class addEvent extends javax.swing.JPanel {
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
         controller.gralEvent = new addEventGral();
         standardization.show(controller.gralEvent);
+        controller.rootFrame = controller.gralEvent;
     }//GEN-LAST:event_formMouseReleased
 
 

@@ -199,6 +199,8 @@ public class classUsuario {
         myNumberEventDisp = 0;
         myNumberEventUse = 0;
         keygen=null;
+        checkKeygen = -1;
+        idUsersInf = -1;
     }
     
     public static boolean select(){

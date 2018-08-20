@@ -307,6 +307,16 @@ insert into memberships values('Premium','premium', 1, -1, -1, -1, -1, 179.90)
 select * from usersBinnacle
 select * from users
 
+delete from contactUsers
+delete from tickets
+delete from events
+delete from reminders
+delete from security
+delete from projects
+delete from usersInformation where nickname = 'dev.rodrig'
+delete from users where nickname = 'dev.rodrig'
+
+
 select * from security
 
 delete from security
