@@ -18,6 +18,11 @@ public class showEvent extends javax.swing.JPanel {
             lblEventName.setText(classEvent.eventosSearch.get(e).getEventName());
             lblNickname.setText(classEvent.eventosSearch.get(e).getNicknameCreator());
         }
+        
+        if(lblEventName.getText().length() >= 22){
+            lblEventName.setToolTipText(lblEventName.getText());
+            lblEventName.setText(lblEventName.getText().substring(0, 22)+"...");
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -27,8 +32,9 @@ public class showEvent extends javax.swing.JPanel {
         lblEventName = new javax.swing.JLabel();
         lblNickname = new javax.swing.JLabel();
 
-        lblEventName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblEventName.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblEventName.setText("Not Found");
+        lblEventName.setToolTipText("");
 
         lblNickname.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNickname.setText("nickName");
@@ -47,9 +53,9 @@ public class showEvent extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
-                .addComponent(lblEventName)
-                .addGap(27, 27, 27)
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addComponent(lblEventName, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNickname)
                 .addContainerGap())
         );

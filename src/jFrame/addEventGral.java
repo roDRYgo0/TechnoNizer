@@ -1,13 +1,19 @@
 package jFrame;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Calendar;
 import java.util.Date;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /** @author Alexg */
 
@@ -32,6 +38,13 @@ public class addEventGral extends javax.swing.JFrame {
     void loadImage(){
         iconStart.setIcon(new controller().changeImage("/imagenes/calendarPlus.png", 35, 35));
         iconEnd.setIcon(new controller().changeImage("/imagenes/calendarMinus.png", 35, 35));
+        txtDayStart.setText(standardization.currentDateTime().getDate()+"");
+        txtDayEnd.setText(standardization.currentDateTime().getDate()+"");
+        cmbMonthStart.setSelectedIndex(standardization.currentDateTime().getMonth()-1);
+        cmbMonthEnd.setSelectedIndex(standardization.currentDateTime().getMonth()-1);
+        txtYearStart.setText(standardization.currentDateTime().getYear()+"");
+        txtYearEnd.setText(standardization.currentDateTime().getYear()+"");
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -55,21 +68,21 @@ public class addEventGral extends javax.swing.JFrame {
         lblCover = new javax.swing.JLabel();
         lblProfil = new javax.swing.JLabel();
         spDayStart = new javax.swing.JSeparator();
-        cmbMesStart = new javax.swing.JComboBox<>();
+        cmbMonthStart = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        txtAnioStart = new javax.swing.JTextField();
+        txtYearStart = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         spYearStart = new javax.swing.JSeparator();
         iconStart = new javax.swing.JLabel();
-        txtDiaStart = new javax.swing.JTextField();
+        txtDayStart = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         iconEnd = new javax.swing.JLabel();
-        txtDiaEnd = new javax.swing.JTextField();
+        txtDayEnd = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         spDayEnd = new javax.swing.JSeparator();
         jLabel12 = new javax.swing.JLabel();
-        cmbMesEnd = new javax.swing.JComboBox<>();
-        txtAnioEnd = new javax.swing.JTextField();
+        cmbMonthEnd = new javax.swing.JComboBox<>();
+        txtYearEnd = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         spYearEnd = new javax.swing.JSeparator();
         btnNext1 = new javax.swing.JButton();
@@ -160,9 +173,6 @@ public class addEventGral extends javax.swing.JFrame {
             }
         });
         txtEvent.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtEventKeyPressed(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtEventKeyTyped(evt);
             }
@@ -176,6 +186,11 @@ public class addEventGral extends javax.swing.JFrame {
 
         lblCover.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCover.setText("Fondo");
+        lblCover.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblCoverMouseReleased(evt);
+            }
+        });
 
         lblProfil.setBackground(new java.awt.Color(255, 255, 204));
         lblProfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -183,28 +198,33 @@ public class addEventGral extends javax.swing.JFrame {
         lblProfil.setMaximumSize(new java.awt.Dimension(80, 80));
         lblProfil.setMinimumSize(new java.awt.Dimension(80, 80));
         lblProfil.setPreferredSize(new java.awt.Dimension(80, 80));
+        lblProfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblProfilMouseReleased(evt);
+            }
+        });
 
         spDayStart.setForeground(new java.awt.Color(204, 204, 204));
 
-        cmbMesStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-        cmbMesStart.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        cmbMonthStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        cmbMonthStart.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         jLabel6.setText("Mes");
 
-        txtAnioStart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtAnioStart.setText("2000");
-        txtAnioStart.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtAnioStart.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtYearStart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtYearStart.setText("2000");
+        txtYearStart.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtYearStart.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtAnioStartFocusGained(evt);
+                txtYearStartFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtAnioStartFocusLost(evt);
+                txtYearStartFocusLost(evt);
             }
         });
-        txtAnioStart.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtYearStart.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAnioStartKeyTyped(evt);
+                txtYearStartKeyTyped(evt);
             }
         });
 
@@ -216,20 +236,20 @@ public class addEventGral extends javax.swing.JFrame {
         iconStart.setMinimumSize(new java.awt.Dimension(35, 35));
         iconStart.setPreferredSize(new java.awt.Dimension(35, 35));
 
-        txtDiaStart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtDiaStart.setText("12");
-        txtDiaStart.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtDiaStart.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtDayStart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtDayStart.setText("12");
+        txtDayStart.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtDayStart.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDiaStartFocusGained(evt);
+                txtDayStartFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDiaStartFocusLost(evt);
+                txtDayStartFocusLost(evt);
             }
         });
-        txtDiaStart.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtDayStart.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDiaStartKeyTyped(evt);
+                txtDayStartKeyTyped(evt);
             }
         });
 
@@ -239,20 +259,20 @@ public class addEventGral extends javax.swing.JFrame {
         iconEnd.setMinimumSize(new java.awt.Dimension(35, 35));
         iconEnd.setPreferredSize(new java.awt.Dimension(35, 35));
 
-        txtDiaEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtDiaEnd.setText("12");
-        txtDiaEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtDiaEnd.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtDayEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtDayEnd.setText("12");
+        txtDayEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtDayEnd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDiaEndFocusGained(evt);
+                txtDayEndFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDiaEndFocusLost(evt);
+                txtDayEndFocusLost(evt);
             }
         });
-        txtDiaEnd.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtDayEnd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDiaEndKeyTyped(evt);
+                txtDayEndKeyTyped(evt);
             }
         });
 
@@ -262,23 +282,23 @@ public class addEventGral extends javax.swing.JFrame {
 
         jLabel12.setText("Mes");
 
-        cmbMesEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-        cmbMesEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        cmbMonthEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        cmbMonthEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        txtAnioEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtAnioEnd.setText("2000");
-        txtAnioEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtAnioEnd.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtYearEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtYearEnd.setText("2000");
+        txtYearEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtYearEnd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtAnioEndFocusGained(evt);
+                txtYearEndFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtAnioEndFocusLost(evt);
+                txtYearEndFocusLost(evt);
             }
         });
-        txtAnioEnd.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtYearEnd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAnioEndKeyTyped(evt);
+                txtYearEndKeyTyped(evt);
             }
         });
 
@@ -315,12 +335,6 @@ public class addEventGral extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addContainerGap(302, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblCover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(10, 10, 10))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -340,14 +354,14 @@ public class addEventGral extends javax.swing.JFrame {
                                         .addGap(10, 10, 10)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(spDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtDiaStart, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(txtDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
-                                    .addComponent(cmbMesStart, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cmbMonthStart, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtAnioStart)
+                                    .addComponent(txtYearStart)
                                     .addComponent(jLabel8)
                                     .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -356,23 +370,30 @@ public class addEventGral extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtDiaEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(spDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(jLabel11))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12)
-                                    .addComponent(cmbMesEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cmbMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtAnioEnd)
+                                    .addComponent(txtYearEnd)
                                     .addComponent(jLabel13)
                                     .addComponent(spYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton2))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(0, 292, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,7 +427,7 @@ public class addEventGral extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel10)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtDiaStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(1, 1, 1)
                             .addComponent(spDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -414,13 +435,13 @@ public class addEventGral extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtAnioStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10))
                             .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbMesStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbMonthStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -432,7 +453,7 @@ public class addEventGral extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(jLabel11)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtDiaEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(iconEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(1, 1, 1)
                                     .addComponent(spDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -440,14 +461,14 @@ public class addEventGral extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbMesEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)))
                         .addGap(52, 52, 52))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtAnioEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton2))
                         .addGap(4, 4, 4)
                         .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -481,87 +502,83 @@ public class addEventGral extends javax.swing.JFrame {
         spEvent.setBackground(Color.white);
     }//GEN-LAST:event_txtEventFocusLost
 
-    private void txtEventKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEventKeyPressed
-        
-    }//GEN-LAST:event_txtEventKeyPressed
-
     private void txtEventKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEventKeyTyped
         char c = evt.getKeyChar();
         if(txtEvent.getText().length()<41){
-            if(Character.isLetter(c) || Character.isSpaceChar(c)){}
+            if(Character.isLetter(c) || Character.isSpaceChar(c) || Character.isDigit(c)){}
             else
                 evt.consume();
         }else
             evt.consume();
     }//GEN-LAST:event_txtEventKeyTyped
 
-    private void txtAnioStartFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAnioStartFocusGained
+    private void txtYearStartFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearStartFocusGained
         spYearStart.setBackground(Color.red);
-    }//GEN-LAST:event_txtAnioStartFocusGained
+    }//GEN-LAST:event_txtYearStartFocusGained
 
-    private void txtAnioStartKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnioStartKeyTyped
+    private void txtYearStartKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtYearStartKeyTyped
         char c = evt.getKeyChar();
-        if(txtAnioStart.getText().length()>3 || c < '0' || c >'9')
+        if(txtYearStart.getText().length()>3 || c < '0' || c >'9')
         evt.consume();
-    }//GEN-LAST:event_txtAnioStartKeyTyped
+    }//GEN-LAST:event_txtYearStartKeyTyped
 
-    private void txtDiaStartFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDiaStartFocusGained
+    private void txtDayStartFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDayStartFocusGained
         spDayStart.setBackground(Color.red);
-    }//GEN-LAST:event_txtDiaStartFocusGained
+    }//GEN-LAST:event_txtDayStartFocusGained
 
-    private void txtDiaStartFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDiaStartFocusLost
+    private void txtDayStartFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDayStartFocusLost
         spDayStart.setBackground(Color.white);
-    }//GEN-LAST:event_txtDiaStartFocusLost
+    }//GEN-LAST:event_txtDayStartFocusLost
 
-    private void txtDiaStartKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiaStartKeyTyped
+    private void txtDayStartKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDayStartKeyTyped
         char c = evt.getKeyChar();
-        if(txtDiaStart.getText().length()>1 || c < '0' || c >'9')
-        evt.consume();
-    }//GEN-LAST:event_txtDiaStartKeyTyped
+        if(txtDayStart.getText().length()>1 || c < '0' || c >'9')
+            evt.consume();
+    }//GEN-LAST:event_txtDayStartKeyTyped
 
-    private void txtDiaEndFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDiaEndFocusGained
+    private void txtDayEndFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDayEndFocusGained
         spDayEnd.setBackground(Color.red);
-    }//GEN-LAST:event_txtDiaEndFocusGained
+    }//GEN-LAST:event_txtDayEndFocusGained
 
-    private void txtDiaEndFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDiaEndFocusLost
+    private void txtDayEndFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDayEndFocusLost
         spDayEnd.setBackground(Color.white);
-    }//GEN-LAST:event_txtDiaEndFocusLost
+    }//GEN-LAST:event_txtDayEndFocusLost
 
-    private void txtDiaEndKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiaEndKeyTyped
+    private void txtDayEndKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDayEndKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDiaEndKeyTyped
+    }//GEN-LAST:event_txtDayEndKeyTyped
 
-    private void txtAnioEndFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAnioEndFocusGained
+    private void txtYearEndFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearEndFocusGained
         spYearEnd.setBackground(Color.red);
-    }//GEN-LAST:event_txtAnioEndFocusGained
+    }//GEN-LAST:event_txtYearEndFocusGained
 
-    private void txtAnioEndKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnioEndKeyTyped
+    private void txtYearEndKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtYearEndKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAnioEndKeyTyped
+    }//GEN-LAST:event_txtYearEndKeyTyped
 
-    private void txtAnioStartFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAnioStartFocusLost
+    private void txtYearStartFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearStartFocusLost
         spYearStart.setBackground(Color.white);
-    }//GEN-LAST:event_txtAnioStartFocusLost
+    }//GEN-LAST:event_txtYearStartFocusLost
 
-    private void txtAnioEndFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAnioEndFocusLost
+    private void txtYearEndFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearEndFocusLost
         spYearEnd.setBackground(Color.white);
-    }//GEN-LAST:event_txtAnioEndFocusLost
+    }//GEN-LAST:event_txtYearEndFocusLost
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-        if(txtEvent.getText().isEmpty()||txtAnioStart.getText().isEmpty()||txtAnioEnd.getText().isEmpty()||txtDiaStart.getText().isEmpty()||txtDiaEnd.getText().isEmpty())
+        if(txtEvent.getText().isEmpty()||txtYearStart.getText().isEmpty()||txtYearEnd.getText().isEmpty()||txtDayStart.getText().isEmpty()||txtDayEnd.getText().isEmpty())
         {
             standardization.showMessage("warning","Hay campos vacios!",this);
         }
         else 
         {
-            Date dateStart = new Date(Integer.parseInt(txtAnioStart.getText()), (cmbMesStart.getSelectedIndex()+1), Integer.parseInt(txtDiaStart.getText()));
-            Date dateEnd = new Date(Integer.parseInt(txtAnioEnd.getText()), (cmbMesEnd.getSelectedIndex()+1), Integer.parseInt(txtDiaEnd.getText()));
+            Date dateStart = new Date(Integer.parseInt(txtYearStart.getText()), (cmbMonthStart.getSelectedIndex()+1), Integer.parseInt(txtDayStart.getText()));
+            Date dateEnd = new Date(Integer.parseInt(txtYearEnd.getText()), (cmbMonthEnd.getSelectedIndex()+1), Integer.parseInt(txtDayEnd.getText()));
             
-            if(standardization.validateDate(Integer.parseInt(txtAnioStart.getText()), (cmbMesStart.getSelectedIndex()+1), Integer.parseInt(txtDiaStart.getText()))&&
-            standardization.validateDate(Integer.parseInt(txtAnioEnd.getText()), (cmbMesEnd.getSelectedIndex()+1), Integer.parseInt(txtDiaEnd.getText())
+            if(standardization.validateDate(Integer.parseInt(txtYearStart.getText()), (cmbMonthStart.getSelectedIndex()+1), Integer.parseInt(txtDayStart.getText()))&&
+            standardization.validateDate(Integer.parseInt(txtYearEnd.getText()), (cmbMonthEnd.getSelectedIndex()+1), Integer.parseInt(txtDayEnd.getText())
             ))
                 standardization.showMessage("warning","Fechas invalidas",this);
-            else if(true == true)
+            else if(standardization.compareDate(dateEnd, dateStart) == -1 || standardization.compareDate(dateStart, standardization.currentDateTime()) == -1)
             {
                 standardization.showMessage("warning","Fechas invalidas",this);
             }
@@ -571,29 +588,82 @@ public class addEventGral extends javax.swing.JFrame {
                 classEvent.setNicknameCreator(classUsuario.getNickname());
                 classEvent.setProfilePicture(profil);
                 classEvent.setCoverPicture(cover);
-                classEvent.setStartDateTime(txtAnioStart.getText()+"-"+(cmbMesStart.getSelectedIndex()+1)+"-"+txtDiaStart.getText());
-                classEvent.setEndDateTime(txtAnioEnd.getText()+"-"+(cmbMesEnd.getSelectedIndex()+1)+"-"+txtDiaEnd.getText());
+                classEvent.setStartDateTime(txtYearStart.getText()+"-"+(cmbMonthStart.getSelectedIndex()+1)+"-"+txtDayStart.getText());
+                classEvent.setEndDateTime(txtYearEnd.getText()+"-"+(cmbMonthEnd.getSelectedIndex()+1)+"-"+txtDayEnd.getText());
 
                 standardization.hide(controller.gralEvent);
                 controller.addEvents = new addEvent();
                 standardization.show(controller.addEvents);
+                controller.rootFrame = controller.addEvents;
     }
            }
     }//GEN-LAST:event_btnNext1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Date dateStart = new Date(Integer.parseInt(txtAnioStart.getText()), (cmbMesStart.getSelectedIndex()+1), Integer.parseInt(txtDiaStart.getText()));
-        Date dateEnd = new Date(Integer.parseInt(txtAnioEnd.getText()), (cmbMesEnd.getSelectedIndex()+1), Integer.parseInt(txtDiaEnd.getText()));
-        standardization.compareDate(dateStart, standardization.currentDate);
+        Date dateStart = new Date(Integer.parseInt(txtYearStart.getText()), (cmbMonthStart.getSelectedIndex()+1), Integer.parseInt(txtDayStart.getText()));
+        Date dateEnd = new Date(Integer.parseInt(txtYearEnd.getText()), (cmbMonthEnd.getSelectedIndex()+1), Integer.parseInt(txtDayEnd.getText()));
+        if(standardization.compareDate(dateEnd, dateStart) == 1)
+            System.out.println("tu muy bien");
+        else
+            System.out.println("estas muy mall");
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void lblCoverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCoverMouseReleased
+        JFileChooser j = new JFileChooser();
+        FileNameExtensionFilter fil = new FileNameExtensionFilter("JPG, PNG & GIF","jpg","png","gif");
+        j.setFileFilter(fil);
+
+        int s = j.showOpenDialog(this);
+        if(s == JFileChooser.APPROVE_OPTION){
+            String path = j.getSelectedFile().getAbsolutePath();
+            File ruta = new File(path);
+            try{
+                byte[] icono = new byte[(int) ruta.length()];
+                InputStream input = new FileInputStream(ruta);
+                input.read(icono);
+                cover = icono;
+//                lblCover.setIcon(new controller().changeSizeImage(standardization.getImgIcon(icono), 385, 119));
+                lblCover.setIcon(standardization.getImgIcon(icono, 235, 119));
+                lblCover.setText(null);
+            }catch(IOException ex){
+                cover = null;
+                lblCover.setText("Fondo");
+
+            }
+        }
+    }//GEN-LAST:event_lblCoverMouseReleased
+
+    private void lblProfilMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblProfilMouseReleased
+        JFileChooser j = new JFileChooser();
+        FileNameExtensionFilter fil = new FileNameExtensionFilter("JPG, PNG & GIF","jpg","png","gif");
+        j.setFileFilter(fil);
+
+        int s = j.showOpenDialog(this);
+        if(s == JFileChooser.APPROVE_OPTION){
+            String path = j.getSelectedFile().getAbsolutePath();
+            File ruta = new File(path);
+            try{
+                byte[] icono = new byte[(int) ruta.length()];
+                InputStream input = new FileInputStream(ruta);
+                input.read(icono);
+                profil = icono;
+                lblProfil.setIcon(standardization.getImgIcon(icono, 80, 80));
+                lblProfil.setText(null);
+            }catch(IOException ex){
+                profil = null;                
+                lblProfil.setText("Perfil");
+
+            }
+        }
+    }//GEN-LAST:event_lblProfilMouseReleased
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
     private javax.swing.JLabel checkEvent;
-    private javax.swing.JComboBox<String> cmbMesEnd;
-    private javax.swing.JComboBox<String> cmbMesStart;
+    private javax.swing.JComboBox<String> cmbMonthEnd;
+    private javax.swing.JComboBox<String> cmbMonthStart;
     private javax.swing.JLabel iconEnd;
     private javax.swing.JLabel iconStart;
     private javax.swing.JButton jButton1;
@@ -620,11 +690,11 @@ public class addEventGral extends javax.swing.JFrame {
     private javax.swing.JSeparator spEvent;
     private javax.swing.JSeparator spYearEnd;
     private javax.swing.JSeparator spYearStart;
-    private javax.swing.JTextField txtAnioEnd;
-    private javax.swing.JTextField txtAnioStart;
-    private javax.swing.JTextField txtDiaEnd;
-    private javax.swing.JTextField txtDiaStart;
+    private javax.swing.JTextField txtDayEnd;
+    private javax.swing.JTextField txtDayStart;
     private javax.swing.JTextField txtEvent;
+    private javax.swing.JTextField txtYearEnd;
+    private javax.swing.JTextField txtYearStart;
     // End of variables declaration//GEN-END:variables
 
 }

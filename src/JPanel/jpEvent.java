@@ -29,9 +29,6 @@ public class jpEvent extends javax.swing.JPanel {
         controller.allE.setLocation(0,0);
 
         controller.allE.setPreferredSize(new Dimension(960, 488+(155 * classEvent.spaceEvent(paneles))));
-
-        if(controller.allE == null)
-            System.out.println("que pedo");
         
         scrollEvent.setViewportView(controller.allE);
         scrollEvent.revalidate();

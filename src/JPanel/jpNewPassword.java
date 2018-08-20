@@ -36,7 +36,7 @@ public class jpNewPassword extends javax.swing.JPanel {
         txtPassword = new javax.swing.JPasswordField();
         spPassword = new javax.swing.JSeparator();
         lblEye = new javax.swing.JLabel();
-        jbNext = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         checkPass = new javax.swing.JLabel();
 
@@ -117,15 +117,15 @@ public class jpNewPassword extends javax.swing.JPanel {
             }
         });
 
-        jbNext.setBackground(new java.awt.Color(0, 153, 255));
-        jbNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jbNext.setForeground(new java.awt.Color(255, 255, 255));
-        jbNext.setText("Continuar");
-        jbNext.setBorderPainted(false);
-        jbNext.setFocusable(false);
-        jbNext.addActionListener(new java.awt.event.ActionListener() {
+        btnNext.setBackground(new java.awt.Color(0, 153, 255));
+        btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnNext.setForeground(new java.awt.Color(255, 255, 255));
+        btnNext.setText("Continuar");
+        btnNext.setBorderPainted(false);
+        btnNext.setFocusable(false);
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbNextActionPerformed(evt);
+                btnNextActionPerformed(evt);
             }
         });
 
@@ -155,7 +155,7 @@ public class jpNewPassword extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -222,7 +222,7 @@ public class jpNewPassword extends javax.swing.JPanel {
                 .addComponent(spPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
@@ -294,13 +294,14 @@ public class jpNewPassword extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_lblEyeMouseClicked
 
-    private void jbNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNextActionPerformed
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         if( logIn.internet)
         {
             if(Arrays.equals(txtPasswordConfirm.getPassword(), txtPassword.getPassword())){
                 classUsuario.setPassword(standardization.sha1(standardization.md5(standardization.convertPassword(txtPassword.getPassword()))));
-                
-                if(classUsuario.changePassword() && continueP){
+                disable();
+                new Thread(()->{
+                    if(classUsuario.changePassword() && continueP){
                     standardization.showMessage("ok", "Contraseña actualizada.");
                     
                     controller.jpA.setSize(420,603);
@@ -310,17 +311,18 @@ public class jpNewPassword extends javax.swing.JPanel {
                     controller.rootPane.add(controller.jpA,BorderLayout.CENTER);
                     controller.rootPane.revalidate();
                     controller.rootPane.repaint();
-                    
                 }
                 else
                     standardization.showMessage("error", "No se pudo cambiar la contraseña.");
+                enable();
+                }).start();
                 
             } else
                 standardization.showMessage("warning", "Las contraseñas no coinciden.");
         }
         else
             standardization.showMessage("error", "Error al establecer una conexion de red.");
-    }//GEN-LAST:event_jbNextActionPerformed
+    }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         controller.rootPane.removeAll();
@@ -329,6 +331,18 @@ public class jpNewPassword extends javax.swing.JPanel {
         controller.rootPane.repaint();
     }//GEN-LAST:event_btnBackActionPerformed
 
+    public void disale(){
+        txtPassword.setEnabled(false);
+        txtPasswordConfirm.setEnabled(false);
+        btnNext.setEnabled(false);
+    }
+    
+    public void enable(){
+        txtPassword.setEnabled(true);
+        txtPasswordConfirm.setEnabled(true);
+        btnNext.setEnabled(true);
+    }
+    
     public void loadIcon()
     {
         echoChar = txtPassword.getEchoChar();
@@ -353,13 +367,13 @@ public class jpNewPassword extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnNext;
     private javax.swing.JLabel checkPass;
     private javax.swing.JLabel iconPass;
     private javax.swing.JLabel iconPass2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JButton jbNext;
     private javax.swing.JLabel lblEye;
     private javax.swing.JLabel lblEyeConfirm;
     private javax.swing.JLabel lblTN;

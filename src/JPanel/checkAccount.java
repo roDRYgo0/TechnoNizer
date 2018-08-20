@@ -238,6 +238,7 @@ public class checkAccount extends javax.swing.JPanel {
                     break;
                 case 1:
                     if(txtCode.getText().equals(classUsuario.getCode())){
+                        classUsuario.setPreviousCondition(classUsuario.getCondition());
                         classUsuario.setCondition(2);
                         if(classUsuario.updateCondition()){
                             technonizer.TechnoNizer.home.setVisible(false);

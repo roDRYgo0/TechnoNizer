@@ -790,41 +790,37 @@ public final class jpEditUser extends javax.swing.JPanel {
                  new Thread(()->{
                      while(result){
                         if(!txtName.getText().trim().equals(classUsuario.getFirstName())){
-                            System.out.println("Nombre "+txtName.getText().trim()+" = "+classUsuario.getFirstName());
+                            classUsuario.setPreviousFirstName(classUsuario.getFirstName());
                             classUsuario.setFirstName(txtName.getText().trim());
                             result = classUsuario.updateFirstName();
                             if(result==false)break;
                         }
                         if(!txtLastName.getText().trim().equals(classUsuario.getLastName())){
-                            System.out.println("Apellido");
+                            classUsuario.setPreviousLastName(classUsuario.getLastName());
                             classUsuario.setLastName(txtLastName.getText().trim());
                             result = classUsuario.updateLastName();
                             if(result==false)break;
                         }
                         if(!txtMail.getText().trim().equals(classUsuario.getMail())){
-                            System.out.println("Mail");
+                            classUsuario.setPreviousMail(classUsuario.getMail());
                             classUsuario.setMail(txtMail.getText().trim());
                             result = classUsuario.updateMail();
                             if(result==false)break;
                         }
                         if(cmbGender.getSelectedIndex()!=classUsuario.getId_gender()){
-                            System.out.println("gender");
+                            classUsuario.setPreviousId_gender(classUsuario.getId_gender());
                             classUsuario.setId_gender(cmbGender.getSelectedIndex());
                             result = classUsuario.updateGender();
                             if(result==false)break;
                         }
                         
-                         System.out.println(txtAnio.getText()+"-"+standardization.month(cmbMes.getSelectedIndex())+"-"+txtDia.getText());
-                         System.out.println(classUsuario.getBirthdate());
-                        
                         if(!(txtAnio.getText()+"-"+standardization.month(cmbMes.getSelectedIndex())+"-"+txtDia.getText()).equals(classUsuario.getBirthdate())){
-                            System.out.println("cumple");
+                            classUsuario.setPreviousBirthdate(classUsuario.getBirthdate());
                             classUsuario.setBirthdate(txtAnio.getText()+"-"+standardization.month(cmbMes.getSelectedIndex())+"-"+txtDia.getText());
                             result = classUsuario.updateBirthdate();
                             if(result==false)break;
                         }
                         if(!Arrays.equals(image, classUsuario.getImage())){
-                            System.out.println("imagen");
                             classUsuario.setImage(image);
                             result = classUsuario.updateImage();
                             if(result==false)break;
@@ -832,12 +828,15 @@ public final class jpEditUser extends javax.swing.JPanel {
                         break;
                      }
                      if(result){
+                        checkUpdate.setIcon(standardization.checkImage(1));
                         classUsuario.select();
                         standardization.showMessage("ok", "Exito al actualizar.");
                         enable();
                         home.imageUserLeft.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
                         home.imageUserTop.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 24, 24));
                         load();
+                        checkUpdate.setIcon(null);
+                        txtPassword.setText("");
                         loadImagenes();
                      }
                      else{

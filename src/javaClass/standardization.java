@@ -38,7 +38,15 @@ public class standardization {
     public static byte[] image;
     static Calendar cal= Calendar.getInstance();
     
-    public static Date currentDate = new Date(cal.get(Calendar.YEAR) , cal.get(Calendar.MONTH), cal.get(Calendar.DATE)); 
+    public static Date currentDateTime(){
+        cal= Calendar.getInstance();
+        return new Date(cal.get(Calendar.YEAR) , cal.get(Calendar.MONTH)+1, cal.get(Calendar.DATE), cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND));
+    }
+    
+    public static String getDateTime(){
+        cal= Calendar.getInstance();
+        return cal.get(Calendar.YEAR) +"-"+ (cal.get(Calendar.MONTH)+1) +"-"+ cal.get(Calendar.DATE) +" "+ cal.get(Calendar.HOUR) +":"+ cal.get(Calendar.MINUTE) +":"+ cal.get(Calendar.SECOND)+"."+cal.get(Calendar.MILLISECOND);
+    }
     
     public static void show(JFrame show){
         show.setVisible(true);
@@ -54,7 +62,7 @@ public class standardization {
         show.setVisible(false);
     }
     
-    public static void compareDate(Date date, Date compareTo){
+    public static int compareDate(Date date, Date compareTo){
         int res= 0;
         int dateDay = date.getDate();
         int day = compareTo.getDate();
@@ -62,12 +70,21 @@ public class standardization {
         int month = compareTo.getMonth();
         int dateYear = date.getYear();
         int year = compareTo.getYear();
-        if(dateYear>year)
+        if(dateYear < year)
             res = -1;
-        else if(dateYear == year){
-            
+        else
+        {
+            if(dateMonth < month)
+                res = -1;
+            else{
+                if(dateDay < day)
+                    res=-1;
+                else
+                    res = 1;
+            }
         }
-}
+        return res;
+    }
     
     public static boolean validateDate(int year, int month, int dayOfMonth){
         try{
@@ -119,16 +136,7 @@ public class standardization {
         classUsuario.setImage(image);
         return image;
     }
-    
-    public static int getRow(){
-        int row = (classUsuario.getMyNumberEventUse()+1)/4;
-        if((classUsuario.getMyNumberEventUse()+1)%4!=0)
-            row++;
-        if(row<=3)
-            return 0;
-        else
-            return row - 3;
-    }
+
     
     //<editor-fold defaultstate="collapsed" desc="convert">
     public byte [] getImgBytes(Image image) {
@@ -155,6 +163,20 @@ public class standardization {
             InputStream in = new ByteArrayInputStream(bi);
             image = ImageIO.read(in);
             imgi = new ImageIcon(image.getScaledInstance(150, 150, 0));
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return imgi;
+    }
+    
+    public static Icon getImgIcon(byte[] bi, int width, int heght){
+        Icon imgi = null;
+        try {
+            BufferedImage image = null;
+            InputStream in = new ByteArrayInputStream(bi);
+            image = ImageIO.read(in);
+            imgi = new ImageIcon(image.getScaledInstance(width, heght, 0));
             
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -288,6 +310,9 @@ public class standardization {
         home.setLocationRelativeTo(null);
         log.setVisible(false);
         home.setVisible(true);
+        new Thread(()->{
+            System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+classUsuario.getNickname()+" inicio sesión', ?, ?, 1)", standardization.getDateTime(), classUsuario.getNickname()));
+        }).start();
     }
     
     public static void invokeLogin()

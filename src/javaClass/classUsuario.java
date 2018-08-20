@@ -10,8 +10,18 @@ public class classUsuario {
     private static String lastName;
     private static String birthdate;
     private static String mail;
-    private static Integer condition;
     private static Integer id_gender;
+    private static Integer condition;
+    
+    private static String previousFirstName;
+    private static String previousLastName;
+    private static String previousBirthdate;
+    private static String previousMail;
+    private static Integer previousId_gender;
+    private static Integer previousCondition;
+    private static Integer previousIdMemberships; 
+
+    
     private static String password;
     private static Integer idMemberships; 
     private static Integer durationMem;
@@ -29,6 +39,65 @@ public class classUsuario {
     private static int myNumberEventUse;
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+
+    public static Integer getPreviousIdMemberships() {
+        return previousIdMemberships;
+    }
+
+    public static void setPreviousIdMemberships(Integer previousIdMemberships) {
+        classUsuario.previousIdMemberships = previousIdMemberships;
+    }
+
+    
+    public static String getPreviousFirstName() {
+        return previousFirstName;
+    }
+
+    public static void setPreviousFirstName(String previousFirstName) {
+        classUsuario.previousFirstName = previousFirstName;
+    }
+
+    public static String getPreviousLastName() {
+        return previousLastName;
+    }
+
+    public static void setPreviousLastName(String previousLastName) {
+        classUsuario.previousLastName = previousLastName;
+    }
+
+    public static String getPreviousBirthdate() {
+        return previousBirthdate;
+    }
+
+    public static void setPreviousBirthdate(String previousBirthdate) {
+        classUsuario.previousBirthdate = previousBirthdate;
+    }
+
+    public static String getPreviousMail() {
+        return previousMail;
+    }
+
+    public static void setPreviousMail(String previousMail) {
+        classUsuario.previousMail = previousMail;
+    }
+
+    public static Integer getPreviousId_gender() {
+        return previousId_gender;
+    }
+
+    public static void setPreviousId_gender(Integer previousId_gender) {
+        classUsuario.previousId_gender = previousId_gender;
+    }
+
+    public static Integer getPreviousCondition() {
+        return previousCondition;
+    }
+
+    public static void setPreviousCondition(Integer previousCondition) {
+        classUsuario.previousCondition = previousCondition;
+    }
+    
+    
     public static Integer getCondition() {
         return condition;
     }
@@ -235,8 +304,6 @@ public class classUsuario {
         }
         if(status)
             status = classSecurityQuestions.select();
-        System.out.println("Este men tiene "+classEvent.eventos.size());
-        System.out.println("y lo otro es "+myNumberEventUse);
         return status;
     }
     
@@ -341,6 +408,7 @@ public class classUsuario {
     //</editor-fold>
     
     public static boolean updateMembership(){
+        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+nickname+" cambio su membresia de *#*#"+previousIdMemberships+"#*#* a *#*#"+idMemberships+"#*#*', ?, ?, 10)", standardization.getDateTime(), nickname));
         return  methodsSQL.execute("UPDATE users SET idMemberships = ?, durationMem = ? WHERE nickname = ?", idMemberships, durationMem, nickname);
     }
  
@@ -369,74 +437,90 @@ public class classUsuario {
                 status= methodsSQL.execute("INSERT INTO usersInformation VALUES (?, ?, ? ,?, ?)",
                         firstName, lastName, birthdate, id_gender, nickname);
         }
+        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+nickname+" se registro en el sistema', ?, ?, 0)", standardization.getDateTime(), nickname));
         return status;
     }
     
-    public static boolean update(){
-        boolean status = false;
-        if(image==null){
-            status = methodsSQL.execute("UPDATE users SET mail = ?  WHERE nickname = ?",
-                    mail, nickname);
-            if(status)
-                status= methodsSQL.execute("Update usersInformation SET firstName = ?, lastName = ?, birthdate = ?, id_gender = ? WHERE nickname  = ?",
-                        firstName, lastName, birthdate, id_gender, nickname);
-        
-        }else{
-            System.out.println("aqui no");
-            status = methodsSQL.execute("UPDATE users SET mail = ?, imagen = ?  WHERE nickname = ?",
-                    mail, image, nickname);
-            if(status)
-                status= methodsSQL.execute("Update usersInformation SET firstName = ?, lastName = ?, birthdate = ?, id_gender = ? WHERE nickname  = ?",
-                        firstName, lastName, birthdate, id_gender, nickname);
-            
-        }
-        return status;
-    }
+    //<editor-fold defaultstate="collapsed" desc="previous update">
+    
+    //    public static boolean updates(){
+//        boolean status = false;
+//        if(image==null){
+//            status = methodsSQL.execute("UPDATE users SET mail = ?  WHERE nickname = ?",
+//                    mail, nickname);
+//            if(status)
+//                status= methodsSQL.execute("Update usersInformation SET firstName = ?, lastName = ?, birthdate = ?, id_gender = ? WHERE nickname  = ?",
+//                        firstName, lastName, birthdate, id_gender, nickname);
+//        
+//        }else{
+//            System.out.println("aqui no");
+//            status = methodsSQL.execute("UPDATE users SET mail = ?, imagen = ?  WHERE nickname = ?",
+//                    mail, image, nickname);
+//            if(status)
+//                status= methodsSQL.execute("Update usersInformation SET firstName = ?, lastName = ?, birthdate = ?, id_gender = ? WHERE nickname  = ?",
+//                        firstName, lastName, birthdate, id_gender, nickname);
+//            
+//        }
+//        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('Actualizacion de toda la información', ?, ?, 2)", standardization.getDateTime(), nickname));
+//        return status;
+//    }
+    
+//</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Update">
     public static boolean updateImage(){
+        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+nickname+" cambio su foto de perfil', ?, ?, 3)", standardization.getDateTime(), nickname));
         return methodsSQL.execute("UPDATE users SET imagen = ? WHERE nickname = ?",image, nickname);
     }
     
     public static boolean updateFirstName(){
+        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+nickname+" cambio su nombre de *#*#"+previousFirstName+"#*#* a *#*#"+firstName+"#*#*', ?, ?, 4)", standardization.getDateTime(), nickname));
         return methodsSQL.execute("UPDATE usersInformation SET firstName = ? WHERE nickname = ?",firstName, nickname);
     }
     
     public static boolean updateLastName(){
+        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+nickname+" cambio su apellido de *#*#"+previousLastName+"#*#* a *#*#"+lastName+"#*#*', ?, ?, 5)", standardization.getDateTime(), nickname));
         return methodsSQL.execute("UPDATE usersInformation SET lastName = ? WHERE nickname = ?",lastName, nickname);
     }
     
     public static boolean updateMail(){
+        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+nickname+" cambio su correo de *#*#"+previousMail+"#*#* a *#*#"+mail+"#*#*', ?, ?, 6)", standardization.getDateTime(), nickname));
         return methodsSQL.execute("UPDATE users SET mail = ? WHERE nickname = ?",mail, nickname);
     }
     
     public static boolean updateBirthdate(){
+        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+nickname+" cambio su fecha de nacimiento de *#*#"+previousBirthdate+"#*#* a *#*#"+birthdate+"#*#*', ?, ?, 7)", standardization.getDateTime(), nickname));
         return methodsSQL.execute("UPDATE usersInformation SET birthdate = ? WHERE nickname = ?",birthdate, nickname);
     }
     
     public static boolean updateGender(){
+        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+nickname+" cambio su género de *#*#"+previousId_gender+"#*#* a *#*#"+id_gender+"#*#*', ?, ?, 8)", standardization.getDateTime(), nickname));
         return methodsSQL.execute("UPDATE usersInformation SET id_gender = ? WHERE nickname = ?",id_gender, nickname);
     }
     
     public static boolean updateCondition(){
+        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+nickname+" cambio su condicion de *#*#"+previousCondition+"#*#* a *#*#"+condition+"#*#*', ?, ?, 9)", standardization.getDateTime(), nickname));
         return methodsSQL.execute("UPDATE users SET condition = ? WHERE nickname = ?",condition, nickname);
     }
     //</editor-fold>
     
     public static boolean changePassword(){
         boolean status = false;
+        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+nickname+" cambio su contraseña', ?, ?, 11)", standardization.getDateTime(), nickname));
         status = methodsSQL.execute("UPDATE users SET password = ? WHERE nickname = ?", password, nickname);
         return status;
     }
     
     public static boolean insertKeygen(){
         boolean status = false;
+        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+nickname+" agrego la verificación de dos pasos ', ?, ?, 12)", standardization.getDateTime(), nickname));
         status = methodsSQL.execute("UPDATE users SET keygen = ?, checkKeygen = 1 WHERE nickname = ?", keygen, nickname);
         return status;
     }
     
     public static boolean changeCheckKeygen(int i){
         boolean status = false;
+        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+nickname+" cambio la verificación de dos pasos ', ?, ?, 13)", standardization.getDateTime(), nickname));
         status = methodsSQL.execute("UPDATE users SET checkKeygen = "+i+" WHERE nickname = ?", nickname);
         classUsuario.setCheckKeygen(i);
         return status;
@@ -444,6 +528,7 @@ public class classUsuario {
     
     public static boolean deleteKeygen(){
         boolean status = false;
+        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+nickname+" elimino la verificación de dos pasos ', ?, ?, 14)", standardization.getDateTime(), nickname));
         status = methodsSQL.execute("UPDATE users SET checkKeygen = 0, keygen = 'null' WHERE nickname = ?", nickname);
         checkKeygen = 0;
         keygen = "null";

@@ -299,6 +299,9 @@ public class jpPassword extends javax.swing.JPanel {
                     
                 }else{
                     standardization.showMessage("error", "La contraseña no coinsiden.");
+                    new Thread(()->{
+                        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+classUsuario.getNickname()+" se equivoco al ingresar la contraseña ', ?, ?, 15)", standardization.getDateTime(), classUsuario.getNickname()));
+                    }).start();
                     enable();
                 }
             }).start();
@@ -319,6 +322,9 @@ public class jpPassword extends javax.swing.JPanel {
             controller.rootPane.add(controller.jpRP,BorderLayout.CENTER);
             controller.rootPane.revalidate();
             controller.rootPane.repaint();
+            new Thread(()->{
+                System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+classUsuario.getNickname()+" intento restablecer la contraseña', ?, ?, 16)", standardization.getDateTime(), classUsuario.getNickname()));
+            }).start();
         }
         else
             standardization.showMessage("error", "Error al establecer una conexion de red.");

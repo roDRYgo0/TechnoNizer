@@ -864,7 +864,7 @@ public class home extends javax.swing.JFrame {
         controller.jpE.setLocation(0,0);
 
         int x = controller.jpE.getPreferredSize().width;
-        int y = controller.jpE.getPreferredSize().height + (155*standardization.getRow());
+        int y = controller.jpE.getPreferredSize().height;
 
         controller.jpE.setPreferredSize(new Dimension(x, y));
 
