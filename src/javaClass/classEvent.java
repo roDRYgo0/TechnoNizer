@@ -126,12 +126,13 @@ public class classEvent {
     }
     
     public static int spaceEvent(int num){
-        num /=4;
-        if(num<3)
+        int row = (num+1)/4;
+        if((num+1)%4!=0)
+            row++;
+        if(row<=3)
             return 0;
-        else{
-            return num-2;
-        }
+        else
+            return row - 3;
     }
     
     public static boolean select(){

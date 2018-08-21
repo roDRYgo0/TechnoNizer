@@ -24,7 +24,7 @@ public class home extends javax.swing.JFrame {
         
         new Thread(()->{
             classContact.select();
-          }).start();
+        }).start();
         
         imageUserTop = lblImageUserTop;
         imageUserLeft = lblImageUserLeft;
@@ -70,7 +70,7 @@ public class home extends javax.swing.JFrame {
         if(classUsuario.getCondition()==1){
             lblImageUserTop.setIcon(new controller().changeImage("/imagenes/alert.png", 24, 24));
             lblImageUserTop.setText("Activa tu cuenta");
-            pnEve.setBackground(new Color(64, 64, 64));
+            pnEvents.setBackground(new Color(64, 64, 64));
             pnProj.setBackground(new Color(64, 64, 64));
             pnAgenda.setBackground(new Color(64, 64, 64));
         }else{
@@ -109,7 +109,7 @@ public class home extends javax.swing.JFrame {
         leftPanel = new javax.swing.JPanel();
         pnGeneral = new javax.swing.JPanel();
         lblStart = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblGral = new javax.swing.JLabel();
         pnUser = new javax.swing.JPanel();
         lblUser = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -119,7 +119,7 @@ public class home extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         lblImageUserLeft = new javax.swing.JLabel();
-        pnEve = new javax.swing.JPanel();
+        pnEvents = new javax.swing.JPanel();
         lblEvent = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         pnProj = new javax.swing.JPanel();
@@ -325,15 +325,7 @@ public class home extends javax.swing.JFrame {
 
         leftPanel.setBackground(new java.awt.Color(42, 42, 42));
 
-        pnGeneral.setBackground(new java.awt.Color(34, 34, 34));
-        pnGeneral.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                pnGeneralFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                pnGeneralFocusLost(evt);
-            }
-        });
+        pnGeneral.setBackground(new java.awt.Color(52, 52, 52));
         pnGeneral.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 pnGeneralMouseReleased(evt);
@@ -344,9 +336,9 @@ public class home extends javax.swing.JFrame {
         lblStart.setMinimumSize(new java.awt.Dimension(28, 28));
         lblStart.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("General");
+        lblGral.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblGral.setForeground(new java.awt.Color(255, 255, 255));
+        lblGral.setText("General");
 
         javax.swing.GroupLayout pnGeneralLayout = new javax.swing.GroupLayout(pnGeneral);
         pnGeneral.setLayout(pnGeneralLayout);
@@ -356,7 +348,7 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblGral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnGeneralLayout.setVerticalGroup(
@@ -365,19 +357,11 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblGral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pnUser.setBackground(new java.awt.Color(34, 34, 34));
-        pnUser.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                pnUserFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                pnUserFocusLost(evt);
-            }
-        });
         pnUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 pnUserMouseReleased(evt);
@@ -414,14 +398,6 @@ public class home extends javax.swing.JFrame {
         );
 
         pnMem.setBackground(new java.awt.Color(34, 34, 34));
-        pnMem.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                pnMemFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                pnMemFocusLost(evt);
-            }
-        });
         pnMem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 pnMemMouseReleased(evt);
@@ -479,18 +455,10 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnEve.setBackground(new java.awt.Color(34, 34, 34));
-        pnEve.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                pnEveFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                pnEveFocusLost(evt);
-            }
-        });
-        pnEve.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnEvents.setBackground(new java.awt.Color(34, 34, 34));
+        pnEvents.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                pnEveMouseReleased(evt);
+                pnEventsMouseReleased(evt);
             }
         });
 
@@ -502,36 +470,28 @@ public class home extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Eventos");
 
-        javax.swing.GroupLayout pnEveLayout = new javax.swing.GroupLayout(pnEve);
-        pnEve.setLayout(pnEveLayout);
-        pnEveLayout.setHorizontalGroup(
-            pnEveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnEveLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnEventsLayout = new javax.swing.GroupLayout(pnEvents);
+        pnEvents.setLayout(pnEventsLayout);
+        pnEventsLayout.setHorizontalGroup(
+            pnEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnEventsLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        pnEveLayout.setVerticalGroup(
-            pnEveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnEveLayout.createSequentialGroup()
+        pnEventsLayout.setVerticalGroup(
+            pnEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnEventsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnEveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEvent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pnProj.setBackground(new java.awt.Color(34, 34, 34));
-        pnProj.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                pnProjFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                pnProjFocusLost(evt);
-            }
-        });
         pnProj.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 pnProjMouseReleased(evt);
@@ -568,14 +528,6 @@ public class home extends javax.swing.JFrame {
         );
 
         pnAgenda.setBackground(new java.awt.Color(34, 34, 34));
-        pnAgenda.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                pnAgendaFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                pnAgendaFocusLost(evt);
-            }
-        });
         pnAgenda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 pnAgendaMouseReleased(evt);
@@ -612,14 +564,6 @@ public class home extends javax.swing.JFrame {
         );
 
         pnSecurity.setBackground(new java.awt.Color(34, 34, 34));
-        pnSecurity.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                pnSecurityFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                pnSecurityFocusLost(evt);
-            }
-        });
         pnSecurity.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 pnSecurityMouseReleased(evt);
@@ -670,7 +614,7 @@ public class home extends javax.swing.JFrame {
             .addComponent(pnUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnMem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnEve, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnEvents, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnProj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnAgenda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator1)
@@ -691,7 +635,7 @@ public class home extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(pnEve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnEvents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(pnProj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
@@ -786,6 +730,8 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnUserMouseReleased
 
     public void showEditUser(){
+        disable();
+        pnUser.setBackground(new Color(52, 52, 52));
         controller.jpU = new jpEditUser();
         controller.jpU.setPreferredSize(new Dimension(980,601));
         controller.jpU.setLocation(0,0);
@@ -796,6 +742,8 @@ public class home extends javax.swing.JFrame {
     }
     
     public void membershipChange(){
+        disable();
+        pnMem.setBackground(new Color(52, 52, 52));
         controller.jpMC = new jpMembershipChange(this);
         controller.jpMC.setLocation(0,0);
 
@@ -805,6 +753,8 @@ public class home extends javax.swing.JFrame {
     }
     
     private void pnGeneralMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnGeneralMouseReleased
+        disable();
+        pnGeneral.setBackground(new Color(52, 52, 52));
         jpH = new jpHome(true, this);
         jpH.setLocation(0,0);
 
@@ -815,6 +765,7 @@ public class home extends javax.swing.JFrame {
 
     private void pnProjMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnProjMouseReleased
         if(classUsuario.getCondition()==1){
+            disable();
             controller.jpDis = new jpDisable();
             controller.jpDis.setLocation(0,0);
 
@@ -822,6 +773,8 @@ public class home extends javax.swing.JFrame {
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }else{
+            disable();
+            pnProj.setBackground(new Color(52, 52, 52));
             controller.jpPJ = new jpProjects();
             controller.jpPJ.setLocation(0,0);
 
@@ -843,58 +796,9 @@ public class home extends javax.swing.JFrame {
         standardization.invokeLogin();
     }//GEN-LAST:event_itemSettingsMouseReleased
 
-    //<editor-fold defaultstate="collapsed" desc="fail">
-        
-    private void pnGeneralFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnGeneralFocusGained
-        pnGeneral.setBackground(new Color(54,54,54));
-    }//GEN-LAST:event_pnGeneralFocusGained
-
-    private void pnGeneralFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnGeneralFocusLost
-        pnGeneral.setBackground(new Color(34,34,34));
-    }//GEN-LAST:event_pnGeneralFocusLost
-
-    private void pnUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnUserFocusGained
-        pnUser.setBackground(new Color(54,54,54));
-    }//GEN-LAST:event_pnUserFocusGained
-
-    private void pnUserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnUserFocusLost
-        pnUser.setBackground(new Color(34,34,34));
-    }//GEN-LAST:event_pnUserFocusLost
-
-    private void pnMemFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnMemFocusGained
-        pnMem.setBackground(new Color(54,54,54));
-    }//GEN-LAST:event_pnMemFocusGained
-
-    private void pnMemFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnMemFocusLost
-        pnMem.setBackground(new Color(34,34,34));
-    }//GEN-LAST:event_pnMemFocusLost
-
-    private void pnEveFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnEveFocusGained
-        pnEve.setBackground(new Color(54,54,54));
-    }//GEN-LAST:event_pnEveFocusGained
-
-    private void pnEveFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnEveFocusLost
-        pnEve.setBackground(new Color(34,34,34));
-    }//GEN-LAST:event_pnEveFocusLost
-
-    private void pnProjFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnProjFocusGained
-        pnProj.setBackground(new Color(54,54,54));
-    }//GEN-LAST:event_pnProjFocusGained
-
-    private void pnProjFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnProjFocusLost
-        pnProj.setBackground(new Color(34,34,34));
-    }//GEN-LAST:event_pnProjFocusLost
-
-    private void pnAgendaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnAgendaFocusGained
-        pnAgenda.setBackground(new Color(54,54,54));
-    }//GEN-LAST:event_pnAgendaFocusGained
-
-    private void pnAgendaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnAgendaFocusLost
-        pnAgenda.setBackground(new Color(34,34,34));
-    }//GEN-LAST:event_pnAgendaFocusLost
-
-    private void pnEveMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnEveMouseReleased
+    private void pnEventsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnEventsMouseReleased
         if(classUsuario.getCondition()==1){
+            disable();
             controller.jpDis = new jpDisable();
             controller.jpDis.setLocation(0,0);
 
@@ -902,12 +806,15 @@ public class home extends javax.swing.JFrame {
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }else{
+            disable();
+            pnEvents.setBackground(new Color(52, 52, 52));
             pnEvent(true);
         }
-    }//GEN-LAST:event_pnEveMouseReleased
+    }//GEN-LAST:event_pnEventsMouseReleased
 
     private void pnAgendaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnAgendaMouseReleased
         if(classUsuario.getCondition()==1){
+            disable();
             controller.jpDis = new jpDisable();
             controller.jpDis.setLocation(0,0);
 
@@ -915,6 +822,8 @@ public class home extends javax.swing.JFrame {
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }else{
+            disable();
+            pnAgenda.setBackground(new Color(52, 52, 52));
             controller.jpREM = new jpReminder();
             controller.jpREM.setLocation(0,0);
 
@@ -924,14 +833,6 @@ public class home extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_pnAgendaMouseReleased
-
-    private void pnSecurityFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnSecurityFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnSecurityFocusGained
-
-    private void pnSecurityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pnSecurityFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pnSecurityFocusLost
 
     private void pnSecurityMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSecurityMouseReleased
         pnSecurity();
@@ -945,12 +846,25 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_lblImageUserTopMouseReleased
     //</editor-fold>
     
+    public void disable (){
+        pnGeneral.setBackground(new Color(34, 34, 34));
+        pnUser.setBackground(new Color(34, 34, 34));
+        pnMem.setBackground(new Color(34, 34, 34));
+        pnSecurity.setBackground(new Color(34, 34, 34));
+        if(classUsuario.getCondition()!=1)
+        {
+            pnEvents.setBackground(new Color(34, 34, 34));
+            pnProj.setBackground(new Color(34, 34, 34));
+            pnAgenda.setBackground(new Color(34, 34, 34));
+        }
+    }
+    
     public void pnEvent(boolean start){
         controller.jpE = new jpEvent(start);
         controller.jpE.setLocation(0,0);
 
         int x = controller.jpE.getPreferredSize().width;
-        int y = controller.jpE.getPreferredSize().height + (155*standardization.getRow());
+        int y = controller.jpE.getPreferredSize().height;
 
         controller.jpE.setPreferredSize(new Dimension(x, y));
 
@@ -960,6 +874,8 @@ public class home extends javax.swing.JFrame {
     }
     
     public void pnSecurity(){
+        disable();
+        pnSecurity.setBackground(new Color(52, 52, 52));
         controller.jpSe = new jpSecurity();
         controller.jpSe.setLocation(0, 0);
         
@@ -986,7 +902,6 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemSettings;
     private javax.swing.JMenuItem itemSpanish;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -999,6 +914,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JLabel lblAgenda;
     private javax.swing.JLabel lblAlert;
     private javax.swing.JLabel lblEvent;
+    private javax.swing.JLabel lblGral;
     private javax.swing.JLabel lblImageUserLeft;
     private javax.swing.JLabel lblImageUserTop;
     private javax.swing.JLabel lblLenguage;
@@ -1010,7 +926,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JLabel lblUser;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JPanel pnAgenda;
-    private javax.swing.JPanel pnEve;
+    private javax.swing.JPanel pnEvents;
     private javax.swing.JPanel pnGeneral;
     private javax.swing.JPanel pnMem;
     private javax.swing.JPanel pnProj;

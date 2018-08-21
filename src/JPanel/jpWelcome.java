@@ -1,14 +1,18 @@
 package JPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javaClass.classUsuario;
 import javaClass.controller;
 import static javaClass.standardization.invokeHome;
 
 public class jpWelcome extends javax.swing.JPanel {
 
+    boolean start;
+    
     public jpWelcome() {
         initComponents();
+        start = true;
     }
 
     @SuppressWarnings("unchecked")
@@ -22,6 +26,7 @@ public class jpWelcome extends javax.swing.JPanel {
         btnNext = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnNext1 = new javax.swing.JButton();
+        progress = new rojerusan.componentes.RSProgressMaterial();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -69,6 +74,10 @@ public class jpWelcome extends javax.swing.JPanel {
             }
         });
 
+        progress.setForeground(new java.awt.Color(255, 255, 255));
+        progress.setAnchoProgress(6);
+        progress.setPreferredSize(new java.awt.Dimension(34, 34));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,7 +102,9 @@ public class jpWelcome extends javax.swing.JPanel {
                         .addGap(71, 71, 71)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -116,7 +127,9 @@ public class jpWelcome extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 115, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -133,8 +146,16 @@ public class jpWelcome extends javax.swing.JPanel {
     }//GEN-LAST:event_lblTNMouseClicked
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        classUsuario.select();
-        invokeHome(false);
+        if(start){
+            progress.setForeground(new Color(33,150,243));
+            new Thread(()->{
+                classUsuario.select();
+                invokeHome(false);
+            }).start();
+            start = false;
+            btnNext.setEnabled(false);
+            btnNext1.setEnabled(false);
+        }
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
@@ -157,6 +178,7 @@ public class jpWelcome extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblTN;
+    private rojerusan.componentes.RSProgressMaterial progress;
     private javax.swing.JSeparator spTop;
     // End of variables declaration//GEN-END:variables
 }

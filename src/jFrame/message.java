@@ -2,9 +2,6 @@ package jFrame;
 
 import javaClass.standardization;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import technonizer.TechnoNizer;
-
 
 public class message extends javax.swing.JFrame {
 
@@ -65,7 +62,6 @@ public class message extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         standardization.hideMessage();
-
     }//GEN-LAST:event_jButton1ActionPerformed
    
     public void changeImage(String image)
@@ -77,8 +73,7 @@ public class message extends javax.swing.JFrame {
     public void changeMessage(String message)
     {
         lblImage.setText(message);
-    }
-    
+    }    
 
     //<editor-fold defaultstate="collapsed" desc="compiled code">
     

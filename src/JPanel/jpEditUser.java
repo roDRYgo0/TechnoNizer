@@ -58,7 +58,6 @@ public final class jpEditUser extends javax.swing.JPanel {
         txtDia.setEnabled(true);
         cmbMes.setEnabled(true);
         txtAnio.setEnabled(true);
-        txtPassword.setEnabled(true);
     }
     
     public void disable(){
@@ -71,7 +70,6 @@ public final class jpEditUser extends javax.swing.JPanel {
         txtDia.setEnabled(false);
         cmbMes.setEnabled(false);
         txtAnio.setEnabled(false);
-        txtPassword.setEnabled(false);
     }
     
     public void loadPanel(boolean load){
@@ -214,7 +212,6 @@ public final class jpEditUser extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         scrollContact = new javax.swing.JScrollPane();
         checkContact = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(980, 601));
@@ -465,13 +462,6 @@ public final class jpEditUser extends javax.swing.JPanel {
         checkContact.setMinimumSize(new java.awt.Dimension(25, 25));
         checkContact.setPreferredSize(new java.awt.Dimension(25, 25));
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -560,7 +550,7 @@ public final class jpEditUser extends javax.swing.JPanel {
                                         .addGap(0, 0, 0)
                                         .addComponent(checkEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel12))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(57, 57, 57)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -569,8 +559,6 @@ public final class jpEditUser extends javax.swing.JPanel {
                                         .addComponent(jLabel11)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(checkContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton2)
                                         .addGap(82, 82, 82))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -630,8 +618,7 @@ public final class jpEditUser extends javax.swing.JPanel {
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel11)
-                            .addComponent(checkContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2))
+                            .addComponent(checkContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -795,7 +782,7 @@ public final class jpEditUser extends javax.swing.JPanel {
         disable();
         if(!camposVacios() && standardization.validateDate(Integer.parseInt(txtAnio.getText()), (cmbMes.getSelectedIndex()+1), Integer.parseInt(txtDia.getText()))){
             result = true;
-            String pass = standardization.sha1(standardization.md5(Arrays.toString(txtPassword.getPassword())));
+            String pass = standardization.sha1(standardization.md5(standardization.convertPassword(txtPassword.getPassword())));
              if(pass.equals(classUsuario.getPassword())){
                  
                  checkUpdate.setIcon(standardization.checkImage(2));
@@ -803,41 +790,37 @@ public final class jpEditUser extends javax.swing.JPanel {
                  new Thread(()->{
                      while(result){
                         if(!txtName.getText().trim().equals(classUsuario.getFirstName())){
-                            System.out.println("Nombre "+txtName.getText().trim()+" = "+classUsuario.getFirstName());
+                            classUsuario.setPreviousFirstName(classUsuario.getFirstName());
                             classUsuario.setFirstName(txtName.getText().trim());
                             result = classUsuario.updateFirstName();
                             if(result==false)break;
                         }
                         if(!txtLastName.getText().trim().equals(classUsuario.getLastName())){
-                            System.out.println("Apellido");
+                            classUsuario.setPreviousLastName(classUsuario.getLastName());
                             classUsuario.setLastName(txtLastName.getText().trim());
                             result = classUsuario.updateLastName();
                             if(result==false)break;
                         }
                         if(!txtMail.getText().trim().equals(classUsuario.getMail())){
-                            System.out.println("Mail");
+                            classUsuario.setPreviousMail(classUsuario.getMail());
                             classUsuario.setMail(txtMail.getText().trim());
                             result = classUsuario.updateMail();
                             if(result==false)break;
                         }
                         if(cmbGender.getSelectedIndex()!=classUsuario.getId_gender()){
-                            System.out.println("gender");
+                            classUsuario.setPreviousId_gender(classUsuario.getId_gender());
                             classUsuario.setId_gender(cmbGender.getSelectedIndex());
                             result = classUsuario.updateGender();
                             if(result==false)break;
                         }
                         
-                         System.out.println(txtAnio.getText()+"-"+standardization.month(cmbMes.getSelectedIndex())+"-"+txtDia.getText());
-                         System.out.println(classUsuario.getBirthdate());
-                        
                         if(!(txtAnio.getText()+"-"+standardization.month(cmbMes.getSelectedIndex())+"-"+txtDia.getText()).equals(classUsuario.getBirthdate())){
-                            System.out.println("cumple");
+                            classUsuario.setPreviousBirthdate(classUsuario.getBirthdate());
                             classUsuario.setBirthdate(txtAnio.getText()+"-"+standardization.month(cmbMes.getSelectedIndex())+"-"+txtDia.getText());
                             result = classUsuario.updateBirthdate();
                             if(result==false)break;
                         }
                         if(!Arrays.equals(image, classUsuario.getImage())){
-                            System.out.println("imagen");
                             classUsuario.setImage(image);
                             result = classUsuario.updateImage();
                             if(result==false)break;
@@ -845,12 +828,15 @@ public final class jpEditUser extends javax.swing.JPanel {
                         break;
                      }
                      if(result){
+                        checkUpdate.setIcon(standardization.checkImage(1));
                         classUsuario.select();
                         standardization.showMessage("ok", "Exito al actualizar.");
                         enable();
                         home.imageUserLeft.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
                         home.imageUserTop.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 24, 24));
                         load();
+                        checkUpdate.setIcon(null);
+                        txtPassword.setText("");
                         loadImagenes();
                      }
                      else{
@@ -901,10 +887,6 @@ public final class jpEditUser extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_lblEyeMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        disable();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
 
     boolean camposVacios(){
         if(standardization.campoVacio(txtName.getText()) || standardization.campoVacio(txtLastName.getText()) ||
@@ -952,7 +934,6 @@ public final class jpEditUser extends javax.swing.JPanel {
     private javax.swing.JLabel iconGender;
     private javax.swing.JLabel iconUsername;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

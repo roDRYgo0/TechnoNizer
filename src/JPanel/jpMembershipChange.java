@@ -17,13 +17,15 @@ public class jpMembershipChange extends javax.swing.JPanel {
     int numberGuests;
     float price;
     int yourMembership;
+    int newMembership;
     home house;
     
     public jpMembershipChange(home house) {
         initComponents();
         this.house = house;
         yourMembership = classUsuario.getIdMemberships();
-         name = "";
+        newMembership = -1;
+        name = "";
         description = "";
         condition = -1;
         numberEvents = -2;
@@ -502,6 +504,8 @@ public class jpMembershipChange extends javax.swing.JPanel {
     }//GEN-LAST:event_pnPremiumMouseClicked
 
     private void btnChangeMembershipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeMembershipActionPerformed
+        classUsuario.setPreviousIdMemberships(classUsuario.getIdMemberships());
+        classUsuario.setIdMemberships(newMembership);
         if(classUsuario.updateMembership()){
             classUsuario.select();
             standardization.showMessage("ok","Tu membresia fue actualizada");
@@ -516,41 +520,40 @@ public class jpMembershipChange extends javax.swing.JPanel {
         }else{
             if(yourMembership == m){
                 btnChangeMembership.setEnabled(false);
-            btnChangeMembership.setBackground(new Color(255,123,123));
+                btnChangeMembership.setBackground(new Color(255,123,123));
             } 
             else{
                 btnChangeMembership.setEnabled(true);
                 btnChangeMembership.setBackground(new Color(255,0,0));
             }
-        }
             
-        switch(m){
-            case 1:
-                limpiar();
-                pnFree.setBackground(new Color(33,150,243));
-                sortFree.setIcon(new controller().changeImage("/imagenes/sortDown.png", 36, 36));
-                capturarDatos(0);
-                classUsuario.setIdMemberships(1);
-                mostrarDatos();
-                break;
-            case 2:
-                limpiar();
-                pnVip.setBackground(new Color(33,150,243));
-                sortVip.setIcon(new controller().changeImage("/imagenes/sortDown.png", 36, 36));
-                capturarDatos(1);
-                classUsuario.setIdMemberships(2);
-                mostrarDatos();
-                break;
-            case 3:
-                limpiar();
-                pnPremium.setBackground(new Color(33,150,243));
-                sortPremium.setIcon(new controller().changeImage("/imagenes/sortDown.png", 36, 36));
-                capturarDatos(2);
-                classUsuario.setIdMemberships(3);
-                mostrarDatos();
-                break;
+            switch(m){
+                case 1:
+                    limpiar();
+                    pnFree.setBackground(new Color(33,150,243));
+                    sortFree.setIcon(new controller().changeImage("/imagenes/sortDown.png", 36, 36));
+                    capturarDatos(0);
+                    newMembership = 1;
+                    mostrarDatos();
+                    break;
+                case 2:
+                    limpiar();
+                    pnVip.setBackground(new Color(33,150,243));
+                    sortVip.setIcon(new controller().changeImage("/imagenes/sortDown.png", 36, 36));
+                    capturarDatos(1);
+                    newMembership = 2;
+                    mostrarDatos();
+                    break;
+                case 3:
+                    limpiar();
+                    pnPremium.setBackground(new Color(33,150,243));
+                    sortPremium.setIcon(new controller().changeImage("/imagenes/sortDown.png", 36, 36));
+                    capturarDatos(2);
+                    newMembership = 3;
+                    mostrarDatos();
+                    break;
+            }
         }
-        System.out.println(name+" "+description+" "+condition+" "+numberEvents+" "+numberAdmins+" "+numberGuests+" "+price);
     }
     
     void capturarDatos(int m){

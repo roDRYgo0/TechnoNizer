@@ -56,6 +56,7 @@ public class addEvent extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(405, 585));
         setMinimumSize(new java.awt.Dimension(405, 585));
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -210,6 +211,7 @@ public class addEvent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        controller.rootFrame = technonizer.TechnoNizer.home;
         standardization.hide(controller.addEvents);
     }//GEN-LAST:event_btnNextActionPerformed
 

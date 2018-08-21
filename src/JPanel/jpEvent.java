@@ -14,14 +14,10 @@ public class jpEvent extends javax.swing.JPanel {
     int paneles;
     
     public jpEvent(boolean start) {
-
-
         initComponents();
         insertarPaneles(classUsuario.getMyNumberEventUse(), start);
         txtSearch.requestFocus();
         load();
-        
-        System.out.println("");
     }
     
     void load(){
@@ -33,9 +29,6 @@ public class jpEvent extends javax.swing.JPanel {
         controller.allE.setLocation(0,0);
 
         controller.allE.setPreferredSize(new Dimension(960, 488+(155 * classEvent.spaceEvent(paneles))));
-
-        if(controller.allE == null)
-            System.out.println("que pedo");
         
         scrollEvent.setViewportView(controller.allE);
         scrollEvent.revalidate();

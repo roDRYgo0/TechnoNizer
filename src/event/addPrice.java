@@ -6,12 +6,12 @@ import javaClass.classPrice;
 import javaClass.controller;
 import javaClass.standardization;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /** @author rodri */
 
 public class addPrice extends javax.swing.JPanel {
-  JFrame event;
+    JFrame event; 
+    
     public addPrice(JFrame event) {
         initComponents();
         this.event=event;
@@ -46,9 +46,6 @@ public class addPrice extends javax.swing.JPanel {
             }
         });
         txtNamePrice.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNamePriceKeyPressed(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNamePriceKeyTyped(evt);
             }
@@ -69,9 +66,6 @@ public class addPrice extends javax.swing.JPanel {
             }
         });
         txtPrice.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtPriceKeyPressed(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPriceKeyTyped(evt);
             }
@@ -122,9 +116,7 @@ public class addPrice extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, 0)))
+                    .addComponent(jLabel5))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(txtNamePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,14 +140,10 @@ public class addPrice extends javax.swing.JPanel {
         spNamePrice.setBackground(Color.white);
     }//GEN-LAST:event_txtNamePriceFocusLost
 
-    private void txtNamePriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamePriceKeyPressed
-
-    }//GEN-LAST:event_txtNamePriceKeyPressed
-
     private void txtNamePriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamePriceKeyTyped
-        char c = evt.getKeyChar();
-        if(c == ' ')
-        evt.consume();
+//        char c = evt.getKeyChar();
+//        if(c == ' ')
+//        evt.consume();
     }//GEN-LAST:event_txtNamePriceKeyTyped
 
     private void txtPriceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPriceFocusGained
@@ -166,25 +154,29 @@ public class addPrice extends javax.swing.JPanel {
         spPrice.setBackground(Color.white);
     }//GEN-LAST:event_txtPriceFocusLost
 
-    private void txtPriceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPriceKeyPressed
-
     private void txtPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyTyped
-        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isDigit(c) || c == '.'){}
+        else
+            evt.consume();
+            
     }//GEN-LAST:event_txtPriceKeyTyped
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-       if(txtNamePrice.getText().isEmpty()||txtPrice.getText().isEmpty())
-       {
-           standardization.showMessage("warning","Hay campos vacios!",event);
-       }
-       else{
-        classPrice cp = new classPrice();
-        cp.setName(txtNamePrice.getText());
-        cp.setPrice(Double.parseDouble(txtPrice.getText()));
-        classEvent.prices.add(cp);
-        controller.addEvents.load();
+       try{
+            if(txtNamePrice.getText().trim().isEmpty() || txtPrice.getText().isEmpty())
+            {
+             standardization.showMessage("warning","Hay campos vacios!",controller.addEvents);
+            }
+            else{
+                classPrice cp = new classPrice();
+                cp.setName(txtNamePrice.getText().trim());
+                cp.setPrice(Double.parseDouble(txtPrice.getText()));
+                classEvent.prices.add(cp);
+                controller.addEvents.load();
+            }
+       }catch(NumberFormatException e){
+           standardization.showMessage("warning","Precio invalido!",controller.addEvents);
        }
     }//GEN-LAST:event_btnNextActionPerformed
 
