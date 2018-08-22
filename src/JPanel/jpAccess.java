@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Locale;
 import javaClass.*;
 import static javaClass.standardization.invokeHome;
 import javax.swing.Timer;
@@ -248,7 +249,7 @@ public class jpAccess extends javax.swing.JPanel {
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         if(logIn.internet && !standardization.campoVacio(txtUsername.getText()))
         {
-            String username = txtUsername.getText();
+            String username = txtUsername.getText().trim().toLowerCase();
             new Thread(()->{
                 disable();
                 if(methodsSQL.exists("SELECT mail FROM users WHERE nickname = ?", username)){
@@ -304,7 +305,14 @@ public class jpAccess extends javax.swing.JPanel {
 
     private void txtUsernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsernameKeyTyped
         char c = evt.getKeyChar();
-        if(c == ' ')
+        if(txtUsername.getText().length()<41){
+            if(Character.isLetter(c) || Character.isDigit(c)){}
+            else{
+                if(c != '.')
+                    evt.consume();
+            }
+            
+        }else
             evt.consume();
     }//GEN-LAST:event_txtUsernameKeyTyped
 
@@ -323,9 +331,17 @@ public class jpAccess extends javax.swing.JPanel {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        classUsuario.select();
-        classContact.select();
-        invokeHome(true);
+
+        jpChoose choose = new jpChoose();
+
+        choose.setSize(420,603);
+        choose.setLocation(0,0);
+
+        controller.rootPane.removeAll();
+        controller.rootPane.add(choose,BorderLayout.CENTER);
+        controller.rootPane.revalidate();
+        controller.rootPane.repaint();
+
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

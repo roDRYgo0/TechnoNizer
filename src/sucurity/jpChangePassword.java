@@ -385,7 +385,7 @@ public class jpChangePassword extends javax.swing.JPanel {
                     classUsuario.setPassword(standardization.sha1(standardization.md5(standardization.convertPassword(txtPassword.getPassword()))));
 
                     if(!Arrays.equals(txtPasswordOld.getPassword(),txtPassword.getPassword())){
-                        if(classUsuario.changePassword() && continueP){
+                        if(classUsuario.changePassword(false) && continueP){
                             standardization.showMessage("ok", "Contraseña actualizada.");
                         }
                         else

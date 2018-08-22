@@ -35,6 +35,7 @@ public class controller {
     public static securityAccount secAcc;
     public static jpMembershipChange jpMC;
     public static jpEditUser jpU;
+    public static admin.jpUsers jpUs;
     public static jpEvent jpE;
     public static showEvent jpEv;
     public static addEvent jpAE;
@@ -54,6 +55,9 @@ public class controller {
     public static jpSecurityQuestions jpSeQue;
     
     public static allEvents allE;
+    
+    public static admin.userGrid userGrid;
+    public static admin.userList userList;
     
     public static addPrice addP;
     public static price pric;

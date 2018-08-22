@@ -34,7 +34,7 @@ public class itemContact extends javax.swing.JPanel {
         lblContact = new javax.swing.JLabel();
         txtContact = new javax.swing.JTextField();
         spMail = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(254, 254, 254));
         setMaximumSize(new java.awt.Dimension(450, 55));
@@ -67,15 +67,15 @@ public class itemContact extends javax.swing.JPanel {
 
         spMail.setForeground(new java.awt.Color(204, 204, 204));
 
-        jButton2.setBackground(java.awt.Color.red);
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Eliminar");
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setBackground(java.awt.Color.red);
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setText("Eliminar");
+        btnDelete.setBorder(null);
+        btnDelete.setBorderPainted(false);
+        btnDelete.setFocusPainted(false);
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -90,7 +90,7 @@ public class itemContact extends javax.swing.JPanel {
                     .addComponent(spMail, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                     .addComponent(txtContact))
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -101,7 +101,7 @@ public class itemContact extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtContact, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, 0)
                         .addComponent(spMail, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -126,13 +126,13 @@ public class itemContact extends javax.swing.JPanel {
 
     }//GEN-LAST:event_txtContactKeyPressed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         if(controller.jpU.changeAction){
             classContact.setId(controller.contac[id].getId());
             controller.jpU.changeAction = false;
             controller.jpU.checkContact(2);
             new Thread(()->{
-               if(classContact.delete()){
+               if(classContact.delete(id)){
                     standardization.showMessage("ok", "Se elimino correctamente");
                     controller.jpU.loadPanel(true);
                 }
@@ -140,11 +140,11 @@ public class itemContact extends javax.swing.JPanel {
                     standardization.showMessage("cancel", "No se logro eliminar"); 
             }).start();
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JLabel lblContact;
     private javax.swing.JSeparator spMail;
     private javax.swing.JTextField txtContact;

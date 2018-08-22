@@ -7,7 +7,6 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javaClass.*;
@@ -291,16 +290,29 @@ public class jpPassword extends javax.swing.JPanel {
                             controller.rootPane.revalidate();
                             controller.rootPane.repaint();
                         }else{
-                            classUsuario.select();
-                            classContact.select();
-                            invokeHome(true);
+                            
+                            if(classUsuario.getCondition()==3){
+                                jpChoose choose = new jpChoose();
+
+                                choose.setSize(420,603);
+                                choose.setLocation(0,0);
+
+                                controller.rootPane.removeAll();
+                                controller.rootPane.add(choose,BorderLayout.CENTER);
+                                controller.rootPane.revalidate();
+                                controller.rootPane.repaint();
+                            }else{
+                                classUsuario.select();
+                                classContact.select();
+                                invokeHome(true);
+                            }                                
                         }
                     }).start();
                     
                 }else{
                     standardization.showMessage("error", "La contraseña no coinsiden.");
                     new Thread(()->{
-                        System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+classUsuario.getNickname()+" se equivoco al ingresar la contraseña ', ?, ?, 15)", standardization.getDateTime(), classUsuario.getNickname()));
+                        usersBinnacle.binnacle(15);
                     }).start();
                     enable();
                 }
@@ -323,7 +335,7 @@ public class jpPassword extends javax.swing.JPanel {
             controller.rootPane.revalidate();
             controller.rootPane.repaint();
             new Thread(()->{
-                System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+classUsuario.getNickname()+" intento restablecer la contraseña', ?, ?, 16)", standardization.getDateTime(), classUsuario.getNickname()));
+                usersBinnacle.binnacle(16);
             }).start();
         }
         else

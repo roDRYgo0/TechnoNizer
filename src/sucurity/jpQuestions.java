@@ -264,9 +264,10 @@ public class jpQuestions extends javax.swing.JPanel {
     }//GEN-LAST:event_lblEyeMouseClicked
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        String pass = standardization.sha1(standardization.md5(Arrays.toString(txtPassword.getPassword())));
+        String pass = standardization.sha1(standardization.md5(standardization.convertPassword(txtPassword.getPassword())));
         if(pass.equals(classUsuario.getPassword())){
             progress.setForeground(new Color(33, 150, 243));
+            disable();
             new Thread(()->{
                 if(classSecurityQuestions.delete()){
                     technonizer.TechnoNizer.home.pnSecurity();
@@ -277,7 +278,7 @@ public class jpQuestions extends javax.swing.JPanel {
                 else
                     standardization.showMessage("cancel", "No se logro eliminar");
                 progress.setForeground(new Color(33, 150, 243));
-
+                enable();
             }).start();
         }else
             standardization.showMessage("error", "La contraseña no coinsiden.");
@@ -286,14 +287,29 @@ public class jpQuestions extends javax.swing.JPanel {
 
     private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
         String pass = standardization.sha1(standardization.md5(standardization.convertPassword(txtPassword.getPassword())));
+        disable();
         if(pass.equals(classUsuario.getPassword())){
             controller.jpSeQue.loadConfQuestion(1);
             classSecurityQuestions.change = true;
         }else{
             standardization.showMessage("error", "La contraseña no coinsiden.");
         }
+        enable();
     }//GEN-LAST:event_btnChangeActionPerformed
 
+    public void disable(){
+        btnDelete.setEnabled(false);
+        btnChange.setEnabled(false);
+        txtPassword.setEnabled(false);
+    }
+    
+    public void enable(){
+        btnDelete.setEnabled(true);
+        btnChange.setEnabled(true);
+        txtPassword.setEnabled(true);
+
+    }
+    
     //<editor-fold defaultstate="collapsed" desc="compiled code eye">
         
     void loadEye()

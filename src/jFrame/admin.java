@@ -1,16 +1,17 @@
 package jFrame;
 
 import JPanel.*;
+import admin.jpEditUserAdmin;
+import admin.jpUsers;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import javaClass.*;
-import static javaClass.controller.jpH;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class home extends javax.swing.JFrame {
+public class admin extends javax.swing.JFrame {
 
     private boolean internet;
     boolean cambio=true;
@@ -19,11 +20,11 @@ public class home extends javax.swing.JFrame {
     public static JLabel imageUserTop;
     public static JLabel imageUserLeft;
     
-    public home(boolean load) {
+    public admin(boolean load) {
         initComponents();
         
         new Thread(()->{
-            classContact.select();
+            
         }).start();
         
         imageUserTop = lblImageUserTop;
@@ -32,54 +33,35 @@ public class home extends javax.swing.JFrame {
         if(load){
             System.out.println("listo");
         }
-        else
-            classUsuario.selectAlter();
+        else{
+            
+        }
         controller.rootFrame = this;
         this.internet = logIn.internet;
         load();
     }
     
     void load(){        
-        
-        if(classUsuario.getCondition()==1)
-            lblAlert.setIcon(new controller().changeImage("/imagenes/alert.png", 28, 28));
-        
-        jpH = new jpHome(true, this);
-        jpH.setLocation(0,0);
-
-        scrollContainer.setViewportView(jpH);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
 
         
         loadImage();
     }
     
     void loadImage(){
+        lblAdmin.setIcon(new controller().changeImage("/imagenes/statistics.png", 24, 24));
+        lblImageUserLeft.setIcon(new controller().changeImage("/imagenes/services.png", 97, 97));
+        lblImageUserTop.setIcon(new controller().changeImage("/imagenes/services.png", 24, 24));
+        lblImageUserTop.setText("Administración");
+        
         lblStart.setIcon(new controller().changeImage("/imagenes/home.png", 24, 24));
         lblUser.setIcon(new controller().changeImage("/imagenes/username.png", 24, 24));
-        if(classUsuario.getImage()==null)
-            lblImageUserLeft.setIcon(new controller().changeImage("/imagenes/user.png", 97, 97));
-        else
-            lblImageUserLeft.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
         lblMembership.setIcon(new controller().changeImage("/imagenes/membership.png", 24, 24));
         lblSecurity.setIcon(new controller().changeImage("/imagenes/shield.png", 24, 24));
         lblEvent.setIcon(new controller().changeImage("/imagenes/event.png", 24, 24));
         lblProject.setIcon(new controller().changeImage("/imagenes/project.png", 24, 24));
         lblAgenda.setIcon(new controller().changeImage("/imagenes/agenda.png", 24, 24));
-        if(classUsuario.getCondition()==1){
-            lblImageUserTop.setIcon(new controller().changeImage("/imagenes/alert.png", 24, 24));
-            lblImageUserTop.setText("Activa tu cuenta");
-            pnEvents.setBackground(new Color(64, 64, 64));
-            pnProj.setBackground(new Color(64, 64, 64));
-            pnAgenda.setBackground(new Color(64, 64, 64));
-        }else{
-            if(classUsuario.getImage()==null)
-                lblImageUserTop.setIcon(new controller().changeImage("/imagenes/user.png", 24, 24));
-            else
-                lblImageUserTop.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 24, 24));
-            lblImageUserTop.setText(classUsuario.getNickname());
-        }
+
+
         loadData("settings","", lblSettings);
         
     }
@@ -106,6 +88,7 @@ public class home extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblSettings = new javax.swing.JLabel();
         lblImageUserTop = new javax.swing.JLabel();
+        lblAdmin = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
         pnGeneral = new javax.swing.JPanel();
         lblStart = new javax.swing.JLabel();
@@ -156,7 +139,6 @@ public class home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(1150, 680));
         setMinimumSize(new java.awt.Dimension(1150, 680));
         setUndecorated(true);
 
@@ -273,7 +255,7 @@ public class home extends javax.swing.JFrame {
 
         rootpane.setBackground(new java.awt.Color(0, 153, 0));
 
-        jPanel2.setBackground(new java.awt.Color(33, 150, 243));
+        jPanel2.setBackground(new java.awt.Color(153, 102, 255));
         jPanel2.setMaximumSize(new java.awt.Dimension(1150, 46));
         jPanel2.setMinimumSize(new java.awt.Dimension(1150, 46));
         jPanel2.setPreferredSize(new java.awt.Dimension(1150, 46));
@@ -301,6 +283,10 @@ public class home extends javax.swing.JFrame {
             }
         });
 
+        lblAdmin.setMaximumSize(new java.awt.Dimension(28, 28));
+        lblAdmin.setMinimumSize(new java.awt.Dimension(28, 28));
+        lblAdmin.setPreferredSize(new java.awt.Dimension(28, 28));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -308,19 +294,25 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 793, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 759, Short.MAX_VALUE)
                 .addComponent(lblImageUserTop, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(13, Short.MAX_VALUE))
             .addComponent(lblImageUserTop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         leftPanel.setBackground(new java.awt.Color(42, 42, 42));
@@ -374,7 +366,7 @@ public class home extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Usuario");
+        jLabel4.setText("Usuarios");
 
         javax.swing.GroupLayout pnUserLayout = new javax.swing.GroupLayout(pnUser);
         pnUser.setLayout(pnUserLayout);
@@ -410,7 +402,7 @@ public class home extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Membresia");
+        jLabel5.setText("Membresias");
 
         javax.swing.GroupLayout pnMemLayout = new javax.swing.GroupLayout(pnMem);
         pnMem.setLayout(pnMemLayout);
@@ -726,41 +718,59 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_lblImageUserTopMouseClicked
 
     private void pnUserMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnUserMouseReleased
-        showEditUser();
+        showUsers();
     }//GEN-LAST:event_pnUserMouseReleased
 
-    public void showEditUser(){
+    public void showUsers(){
         disable();
         pnUser.setBackground(new Color(52, 52, 52));
-        controller.jpU = new jpEditUser();
-        controller.jpU.setPreferredSize(new Dimension(980,601));
-        controller.jpU.setLocation(0,0);
+        classUsuario.restartUser();
+        classContact.reset();
+        
+        controller.jpUs = new jpUsers();
+        controller.jpUs.setPreferredSize(new Dimension(980,601));
+        controller.jpUs.setLocation(0,0);
 
-        scrollContainer.setViewportView(controller.jpU);
+        scrollContainer.setViewportView(controller.jpUs);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
+    public void showUser(int user, boolean search){
+
+        jpEditUserAdmin editUser = new jpEditUserAdmin(user, search);
+        editUser.setPreferredSize(new Dimension(980,601));
+        editUser.setLocation(0,0);
+
+        scrollContainer.setViewportView(editUser);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
+    public void loading(){
+
+        jpLoad load = new jpLoad();
+        load.setPreferredSize(new Dimension(980,601));
+        load.setLocation(0,0);
+
+        scrollContainer.setViewportView(load);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
     
     public void membershipChange(){
-        disable();
-        pnMem.setBackground(new Color(52, 52, 52));
-        controller.jpMC = new jpMembershipChange(this);
-        controller.jpMC.setLocation(0,0);
-
-        scrollContainer.setViewportView(controller.jpMC);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
+//        disable();
+//        pnMem.setBackground(new Color(52, 52, 52));
+//        controller.jpMC = new jpMembershipChange(this);
+//        controller.jpMC.setLocation(0,0);
+//
+//        scrollContainer.setViewportView(controller.jpMC);
+//        scrollContainer.revalidate();
+//        scrollContainer.repaint();
     }
     
     private void pnGeneralMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnGeneralMouseReleased
-        disable();
-        pnGeneral.setBackground(new Color(52, 52, 52));
-        jpH = new jpHome(true, this);
-        jpH.setLocation(0,0);
-
-        scrollContainer.setViewportView(jpH);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
+        
     }//GEN-LAST:event_pnGeneralMouseReleased
 
     private void pnProjMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnProjMouseReleased
@@ -842,7 +852,7 @@ public class home extends javax.swing.JFrame {
         if(classUsuario.getCondition()==1){
             pnSecurity();
         }else
-            showEditUser();
+            showUsers();
     }//GEN-LAST:event_lblImageUserTopMouseReleased
     //</editor-fold>
     
@@ -911,6 +921,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblAdmin;
     private javax.swing.JLabel lblAgenda;
     private javax.swing.JLabel lblAlert;
     private javax.swing.JLabel lblEvent;

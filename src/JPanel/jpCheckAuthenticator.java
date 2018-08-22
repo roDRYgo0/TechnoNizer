@@ -200,7 +200,7 @@ public class jpCheckAuthenticator extends javax.swing.JPanel {
             int myCode = Integer.parseInt(txtCode.getText());
             if(myCode == authenticator.returnCode(keygen)){
                 classUsuario.setKeygen(keygen);
-                if(classUsuario.insertKeygen()){
+                if(classUsuario.insertKeygen(false)){
                     standardization.showMessage("ok", "Authenticador configurado");
                     classUsuario.setCheckKeygen(1);
                     technonizer.TechnoNizer.home.pnSecurity();

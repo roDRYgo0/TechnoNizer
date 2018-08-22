@@ -1,5 +1,6 @@
 package JPanel;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javaClass.authenticator;
@@ -188,9 +189,33 @@ public class jpAuthenticator extends javax.swing.JPanel {
             int myCode = Integer.parseInt(txtCode.getText());
             if(myCode == authenticator.returnCode(classUsuario.getKeygen())){
                 checkCode.setIcon(standardization.checkImage(1));
-                classUsuario.select();
-                classContact.select();
-                invokeHome(true);
+                if(classUsuario.getCondition()==3){
+                    jpChoose choose = new jpChoose();
+
+                    choose.setSize(420,603);
+                    choose.setLocation(0,0);
+
+                    controller.rootPane.removeAll();
+                    controller.rootPane.add(choose,BorderLayout.CENTER);
+                    controller.rootPane.revalidate();
+                    controller.rootPane.repaint();
+                }else{
+                    if(classUsuario.getCondition()==3){
+                        jpChoose choose = new jpChoose();
+
+                        choose.setSize(420,603);
+                        choose.setLocation(0,0);
+
+                        controller.rootPane.removeAll();
+                        controller.rootPane.add(choose,BorderLayout.CENTER);
+                        controller.rootPane.revalidate();
+                        controller.rootPane.repaint();
+                    }else{
+                        classUsuario.select();
+                        classContact.select();
+                        invokeHome(true);
+                    } 
+                } 
             }
             else{
                 standardization.showMessage("cancel", "Los codigo no coinciden");

@@ -190,6 +190,7 @@ public class questionsConf extends javax.swing.JPanel {
                 controller.questions[numQues-1]=cmbQuestion.getSelectedItem().toString();
                 classSecurityQuestions.setAswers(controller.answers);
                 classSecurityQuestions.setQuestions(controller.questions);
+                disable();
                 progress.setForeground(new Color(33, 150, 243));
                 new Thread(()->{
                     if(classSecurityQuestions.change){
@@ -204,6 +205,7 @@ public class questionsConf extends javax.swing.JPanel {
                     else
                         standardization.showMessage("cancel", "Error pegro");
                     progress.setForeground(new Color(255, 255, 255));
+                    enable();
                 }).start();
             }else{
                 controller.answers[numQues-1]=txtAnswer.getText().trim();
@@ -213,6 +215,18 @@ public class questionsConf extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnNextActionPerformed
 
+    public void disable(){
+        cmbQuestion.setEnabled(false);
+        txtAnswer.setEnabled(false);
+        btnNext.setEnabled(false);
+    }
+    
+    public void enable(){
+        cmbQuestion.setEnabled(true);
+        txtAnswer.setEnabled(true);
+        btnNext.setEnabled(true);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
