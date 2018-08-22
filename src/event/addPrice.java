@@ -15,6 +15,7 @@ public class addPrice extends javax.swing.JPanel {
     public addPrice(JFrame event) {
         initComponents();
         this.event=event;
+      
     }
 
     @SuppressWarnings("unchecked")

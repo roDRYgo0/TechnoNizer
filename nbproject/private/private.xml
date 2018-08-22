@@ -3,6 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Alexg/Desktop/Git/TechnoNizer/src/event/addPrice.java</file>
+            <file>file:/C:/Users/Alexg/Desktop/Git/TechnoNizer/src/event/allPrice.java</file>
+            <file>file:/C:/Users/Alexg/Desktop/Git/TechnoNizer/src/event/price.java</file>
+=======
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpConfAuthenticator.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpNewPassword.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpProjectsView.java</file>
@@ -61,6 +66,12 @@
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpEditUser.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/classEvent.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpAccess.java</file>
+<<<<<<< HEAD
+=======
+            <file>file:/C:/Users/rodri/git/TechnoNizer/src/event/allPrice.java</file>
+            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/addReminder.java</file>
+>>>>>>> 8f712e3f27955850f89afca1ef1033cab453fc77
+>>>>>>> 7fef6ad080318302989412a16df926ffc4f41170
         </group>
     </open-files>
 </project-private>

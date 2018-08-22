@@ -15,6 +15,7 @@ public class price extends javax.swing.JPanel {
         this.id = id;
         txtNamePrice.setText(classEvent.prices.get(id).getName());
         txtPrice.setText(classEvent.prices.get(id).getPrice()+"");
+        
     }
 
     @SuppressWarnings("unchecked")
