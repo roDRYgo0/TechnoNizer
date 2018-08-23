@@ -465,15 +465,17 @@ public class addReminderGral extends javax.swing.JFrame {
             } else {
 
                 classReminder.setReminder((txtReminder1.getText()));
-                classReminder.setDatetime((txtYearStart.getText() + "/" + cmbMonthStart.getSelectedIndex() + 1)+ "/" + txtDayStart.getText() );
+                classReminder.setDatetime((txtDayStart.getText()) + "/" + (cmbMonthStart.getSelectedIndex() + 1)+ "/" +txtYearStart.getText() );
                 classReminder.setRepeat((Integer.parseInt(txtHora.getText())));
 
                 if (classReminder.insert()) {
                     JOptionPane.showMessageDialog(this, "Recordatorio Guardado");
                     standardization.hide(controller.gralReminder);
+                      classReminder.select();
                 } else {
                     JOptionPane.showMessageDialog(this, "Error al guardar recordatorio");
                     standardization.hide(controller.gralReminder);
+                      
                 }
 }
             }

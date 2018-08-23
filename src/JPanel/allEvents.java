@@ -10,6 +10,7 @@ public class allEvents extends javax.swing.JPanel {
     public allEvents(int paneles, boolean search) {
         initComponents();
         load(paneles, search);
+        
     }
 
     public void load(int paneles, boolean search){

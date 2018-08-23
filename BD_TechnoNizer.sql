@@ -260,6 +260,7 @@ idCheckList int not null references checkList(id)
  repeat int not null,
  nickname nvarchar(50) not null references users(nickname)
  )
+ alter table reminders alter column alarmDateTime nvarchar(30)
 
  create table horary(
  id int identity(1,1) primary key not null,

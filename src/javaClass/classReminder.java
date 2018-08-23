@@ -126,24 +126,22 @@ public static boolean updatereminder(){
  public static boolean select(){
         boolean status = false;
         reminder recordatorio;
-        ResultSet rs = methodsSQL.getExecute("SELECT u.nickname, ui.firstName, ui.lastName,  u.imagen, re.condition, re.reminder, re.alarmDateTime  FROM users u,"
-                + " usersInformation ui, reminders re WHERE u.nickname = ui.nickname and u.nickname= re.nickname");
+        ResultSet rs = methodsSQL.getExecute("SELECT re.condition, re.reminder, re.alarmDateTime  FROM reminders re WHERE re.nickname =?", classUsuario.getNickname());
         
         try {
             while(rs.next()){
                 recordatorio = new reminder();
-                recordatorio.setNickname(rs.getString(1));
-                recordatorio.setFirstName(rs.getString(2));
-                recordatorio.setLastName(rs.getString(3));
-                recordatorio.setImage(rs.getBytes(4));
-                recordatorio.setCondition(rs.getInt(5));
+
+                recordatorio.setCondition(rs.getInt(1));
+                recordatorio.setReminder(rs.getString(2));
+                recordatorio.setDate(rs.getString(3));
    
                 
-                if(methodsSQL.exists("SELECT count(*) FROM reminders WHERE nickname= ?", recordatorio.getNickname()))
-                    recordatorio.setMyNumberRemUse(methodsSQL.getExecuteInt("SELECT count(*) FROM reminders WHERE nickname = ?", recordatorio.getNickname()));
+                if(methodsSQL.exists("SELECT count(*) FROM reminders WHERE nickname= ?", classUsuario.getNickname()))
+                    recordatorio.setMyNumberRemUse(methodsSQL.getExecuteInt("SELECT count(*) FROM reminders WHERE nickname = ?", classUsuario.getNickname()));
   
-                
-                classReminder.reminders.add(recordatorio);
+                System.out.println("Los recordatorios son "+recordatorio.getMyNumberRemUse());
+                reminders.add(recordatorio);
             }
             status = true;
         } catch (SQLException ex) {

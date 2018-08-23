@@ -4,6 +4,7 @@ import admin.*;
 import java.awt.Color;
 import javaClass.classAdmin;
 import javaClass.classReminder;
+import javaClass.classUsuario;
 
 public class reminderList extends javax.swing.JPanel {
 
@@ -19,11 +20,12 @@ public class reminderList extends javax.swing.JPanel {
     
     void load(int n, boolean search){
         if(search){
-            String[] firstName = classReminder.remindersSearch.get(n).getFirstName().split(" ");
-            String[] lastName = classReminder.remindersSearch.get(n).getLastName().split(" ");
+            String[] firstName = classUsuario.getFirstName().split(" ");
+            String[] lastName = classUsuario.getLastName().split(" ");
             lblName.setText(firstName[0]+" "+lastName[0]);
-            lblNickname.setText(classReminder.remindersSearch.get(n).getNickname());
+            lblNickname.setText(classUsuario.getNickname());
             lblReminder.setText(classReminder.remindersSearch.get(n).getReminder());
+             
             
             switch(classReminder.remindersSearch.get(n).getCondition()){
                  case 0:
@@ -41,10 +43,10 @@ public class reminderList extends javax.swing.JPanel {
             }
 
         }else{
-           String[] firstName = classReminder.reminders.get(n).getFirstName().split(" ");
-            String[] lastName = classReminder.reminders.get(n).getLastName().split(" ");
+           String[] firstName = classUsuario.getFirstName().split(" ");
+            String[] lastName = classUsuario.getLastName().split(" ");
             lblName.setText(firstName[0]+" "+lastName[0]);
-            lblNickname.setText(classReminder.reminders.get(n).getNickname());
+            lblNickname.setText(classUsuario.getNickname());
             lblReminder.setText(classReminder.reminders.get(n).getReminder());
             
             switch(classReminder.reminders.get(n).getCondition()){

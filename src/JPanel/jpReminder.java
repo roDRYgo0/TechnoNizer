@@ -233,9 +233,9 @@ public class jpReminder extends javax.swing.JPanel {
                             .addComponent(iconSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(scrollReminders, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollReminders, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -269,7 +269,7 @@ public class jpReminder extends javax.swing.JPanel {
     void search(){
         classReminder.remindersSearch.clear();
         for(javaClass.reminder e : classReminder.reminders){
-            if(e.getNickname().toLowerCase().contains(txtSearch.getText().toLowerCase())){
+            if(e.getReminder().toLowerCase().contains(txtSearch.getText().toLowerCase())){
                 classReminder.remindersSearch.add(e);
             }else{
 
