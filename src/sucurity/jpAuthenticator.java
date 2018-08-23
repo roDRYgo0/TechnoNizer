@@ -214,7 +214,7 @@ public class jpAuthenticator extends javax.swing.JPanel {
        checkDelete.setIcon(standardization.checkImage(2));
        disable();
        new Thread(()->{
-           if(classUsuario.deleteKeygen()){
+           if(classUsuario.deleteKeygen(false)){
                standardization.showMessage("ok", "Se elimino correctamente");
                home.pnSecurity();
                controller.jpSe.newAuthenticator();
@@ -231,13 +231,13 @@ public class jpAuthenticator extends javax.swing.JPanel {
         new Thread(()->{
             switch(classUsuario.getCheckKeygen()){
                 case 0:
-                    classUsuario.changeCheckKeygen(1);
+                    classUsuario.changeCheckKeygen(1, false);
                     home.pnSecurity();
                     controller.jpSe.authenticator();
                     controller.jpSe.changeColorAuthen();
                     break;
                 case 1:
-                    classUsuario.changeCheckKeygen(0);
+                    classUsuario.changeCheckKeygen(0, false);
                     home.pnSecurity();
                     controller.jpSe.authenticator();
                     controller.jpSe.changeColorAuthen();

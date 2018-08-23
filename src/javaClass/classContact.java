@@ -62,6 +62,15 @@ public class classContact {
     }
     //</editor-fold>
     
+    public static void reset(){
+        id = -1;
+        contact = "";
+        condition = -1;
+        numContact = -1;
+        idContactType = -1;
+        controller.contac = new contactUsers[3];
+    }
+    
     public static int getSpaceContact(){
         int numberContact = numContact + 1;
         int space = 0;
@@ -72,19 +81,23 @@ public class classContact {
     }
     
     public static boolean insert(){
-        boolean status = false;
+        boolean status;
         status = methodsSQL.execute("INSERT INTO contactUsers VALUES(?, ?, ?, 1)", contact, idContactType, classUsuario.getIdUsersInf());
+        if(status)
+            usersBinnacle.binnacle(20);
         return status;
     }
     
-    public static boolean delete(){
-        boolean status = false;
+    public static boolean delete(int d){
+        boolean status;
         status = methodsSQL.execute("DELETE FROM contactUsers WHERE id = ?", id);
+        if(status)
+            usersBinnacle.binnacle(21, d);
         return status;
     }
     
     public static boolean select(){
-        boolean status= false;
+        boolean status;
         
         ResultSet rs=methodsSQL.getExecute("SELECT COUNT(*) FROM contactUsers WHERE idUsersInf = ?", classUsuario.getIdUsersInf());
         try {
@@ -96,7 +109,7 @@ public class classContact {
             System.out.println(ex.getMessage());
             status = false;
         }
-        if(numContact!=0){
+        if(numContact>0){
             controller.contac = new contactUsers[numContact];
             rs = methodsSQL.getExecute("SELECT id FROM contactUsers WHERE idUsersInf = ?", classUsuario.getIdUsersInf());
             try {

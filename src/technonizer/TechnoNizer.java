@@ -9,6 +9,7 @@ public class TechnoNizer {
 
     public static logIn log;
     public static home home;
+    public static admin admin;
     public static message mess;
     public static load sLoad;    
     public static AddProject aProj;

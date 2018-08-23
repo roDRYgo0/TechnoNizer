@@ -86,6 +86,24 @@ public class standardization {
         return res;
     }
     
+    public static int returnAge(Date date, Date compareTo){
+        int dateDay = date.getDate();
+        int day = compareTo.getDate();
+        int dateMonth = date.getMonth();
+        int month = compareTo.getMonth();
+        int dateYear = date.getYear();
+        int year = compareTo.getYear();
+        
+        int age = year - dateYear;
+        
+        if(month <= dateMonth){
+            if(day < dateDay)
+                age--;
+        }
+        
+        return age;
+    }
+    
     public static boolean validateDate(int year, int month, int dayOfMonth){
         try{
             if (year < 1900 || year > cal.get(Calendar.YEAR) - 15)
@@ -311,7 +329,19 @@ public class standardization {
         log.setVisible(false);
         home.setVisible(true);
         new Thread(()->{
-            System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+classUsuario.getNickname()+" inicio sesión', ?, ?, 1)", standardization.getDateTime(), classUsuario.getNickname()));
+            usersBinnacle.binnacle(1);
+        }).start();
+    }
+    
+    public static void invokeAdmin(boolean load)
+    {
+        admin = new admin(load);
+        admin.setLocationRelativeTo(null);
+        log.setVisible(false);
+        admin.setVisible(true);
+        new Thread(()->{
+            classAdmin.nickname = classUsuario.getNickname();
+            usersBinnacle.binnacle(22);
         }).start();
     }
     

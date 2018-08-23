@@ -9,11 +9,21 @@ import javaClass.standardization;
 public class questionsConf extends javax.swing.JPanel {
 
     int numQues, pos;
-    boolean va;
+    boolean va, admin;
     
     public questionsConf(int i) {
         initComponents();
         va = false;
+        admin = false;
+        this.numQues = i;
+        lblQuestion.setText(lblQuestion.getText()+" "+i);
+        load();
+    }
+    
+    public questionsConf(int i, boolean admin) {
+        initComponents();
+        va = false;
+        this.admin = admin;
         this.numQues = i;
         lblQuestion.setText(lblQuestion.getText()+" "+i);
         load();
@@ -188,31 +198,61 @@ public class questionsConf extends javax.swing.JPanel {
             if(numQues==3){
                 controller.answers[numQues-1]=txtAnswer.getText().trim();
                 controller.questions[numQues-1]=cmbQuestion.getSelectedItem().toString();
-                classSecurityQuestions.setAswers(controller.answers);
-                classSecurityQuestions.setQuestions(controller.questions);
+
+                disable();
                 progress.setForeground(new Color(33, 150, 243));
                 new Thread(()->{
                     if(classSecurityQuestions.change){
                         classSecurityQuestions.delete();
                         classSecurityQuestions.change = false;
-                    }                    
-                    if(classSecurityQuestions.insert()){
-                        technonizer.TechnoNizer.home.pnSecurity();
-                        controller.jpSe.questions();
-                        standardization.showMessage("ok", "Exito al ingresar");
+                    }   
+                    classSecurityQuestions.setAswers(controller.answers);
+                    classSecurityQuestions.setQuestions(controller.questions);
+                    if(admin){
+                        if(classSecurityQuestions.insert(true)){
+                            technonizer.TechnoNizer.admin.jpSeUs();
+                            controller.jpSeUs.questions();
+                            standardization.showMessage("ok", "Exito al ingresar");
+                        }
+                        else
+                            standardization.showMessage("cancel", "Error pegro?"); 
+                    }else{
+                        if(classSecurityQuestions.insert()){
+                            technonizer.TechnoNizer.home.pnSecurity();
+                            controller.jpSe.questions();
+                            standardization.showMessage("ok", "Exito al ingresar");
+                        }
+                        else
+                            standardization.showMessage("cancel", "Error pegro"); 
                     }
-                    else
-                        standardization.showMessage("cancel", "Error pegro");
+                    
+                   
                     progress.setForeground(new Color(255, 255, 255));
+                    enable();
                 }).start();
             }else{
                 controller.answers[numQues-1]=txtAnswer.getText().trim();
                 controller.questions[numQues-1]=cmbQuestion.getSelectedItem().toString();
-                controller.jpSeQue.loadConfQuestion(numQues+1);
+                if(admin)
+                    controller.jpSeQuAdm.loadConfQuestion(numQues+1);
+                else
+                    controller.jpSeQue.loadConfQuestion(numQues+1);
             }
         }
     }//GEN-LAST:event_btnNextActionPerformed
 
+    public void disable(){
+        cmbQuestion.setEnabled(false);
+        txtAnswer.setEnabled(false);
+        btnNext.setEnabled(false);
+    }
+    
+    public void enable(){
+        cmbQuestion.setEnabled(true);
+        txtAnswer.setEnabled(true);
+        btnNext.setEnabled(true);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;

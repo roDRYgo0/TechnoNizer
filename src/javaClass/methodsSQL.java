@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 public class methodsSQL {
@@ -49,6 +51,22 @@ public class methodsSQL {
             rs = prepStmt.executeQuery();
             if(rs.next())
                 i=rs.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(classAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return i;
+    }
+    
+    public static String getExecuteString(String query, Object... values){
+        ResultSet rs;
+        String i = "";
+        try {
+            Connection con = connection.getConnection();
+            PreparedStatement prepStmt = con.prepareStatement(query);
+            prepare(prepStmt,values);
+            rs = prepStmt.executeQuery();
+            if(rs.next())
+                i=rs.getString(1);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
