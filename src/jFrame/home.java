@@ -24,6 +24,9 @@ public class home extends javax.swing.JFrame {
         
         new Thread(()->{
             classContact.select();
+            classProjects.select();
+            System.out.println("JHDHSHKGGUDKHGKDGHKDGJKD");
+            System.out.println(classProjects.projects.size()+" ES ESTO");
         }).start();
         
         imageUserTop = lblImageUserTop;
@@ -775,10 +778,10 @@ public class home extends javax.swing.JFrame {
         }else{
             disable();
             pnProj.setBackground(new Color(52, 52, 52));
-            controller.jpPJ = new jpProjects();
-            controller.jpPJ.setLocation(0,0);
+            controller.jpPM= new jpProjectsMenu();
+            controller.jpPM.setLocation(0,0);
 
-            scrollContainer.setViewportView(controller.jpPJ);
+            scrollContainer.setViewportView(controller.jpPM);
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }
