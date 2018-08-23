@@ -863,15 +863,15 @@ public class home extends javax.swing.JFrame {
     }
     
     public void pnEvent(boolean start){
-        controller.jpE = new jpEvent(start);
-        controller.jpE.setLocation(0,0);
+        MenuEvent eve = new MenuEvent();
+        eve.setLocation(0,0);
 
-        int x = controller.jpE.getPreferredSize().width;
-        int y = controller.jpE.getPreferredSize().height;
+        int x = eve.getPreferredSize().width;
+        int y = eve.getPreferredSize().height;
 
-        controller.jpE.setPreferredSize(new Dimension(x, y));
+        eve.setPreferredSize(new Dimension(x, y));
 
-        scrollContainer.setViewportView(controller.jpE);
+        scrollContainer.setViewportView(eve);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }

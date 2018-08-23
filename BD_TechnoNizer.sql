@@ -260,6 +260,7 @@ idCheckList int not null references checkList(id)
  repeat int not null,
  nickname nvarchar(50) not null references users(nickname)
  )
+ alter table reminders alter column alarmDateTime nvarchar(30)
 
  create table horary(
  id int identity(1,1) primary key not null,
@@ -303,7 +304,7 @@ insert into memberships values('Free','free', 1, 40, 1, 0, 50, 0)
 insert into memberships values('Vip','vip', 1, -1, 10, 50, 500, 49.90)
 insert into memberships values('Premium','premium', 1, -1, -1, -1, -1, 179.90)
 
-update users set condition = 3 
+update users set condition = 3 where nickname = 'ElianFran'
 
 SELECT u.nickname, ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender, u.condition, u.idMemberships, u.durationMem, u.imagen, u.keygen, u.checkKeygen, ui.id FROM users u, usersInformation ui WHERE u.nickname = ui.nickname
 
@@ -321,20 +322,33 @@ SELECT m.name FROM memberships m WHERE m.id = 1
 
 SELECT * FROM memberships
 
-select * from usersBinnacle
+select *from usersBinnacle where nickname = 'cerritosluis123'
+	
+
+
 select * from users
+update users set condition = 3 where nickname = 'dev.rodrig'
 select * from usersInformation
 select * from security
 
 delete from usersBinnacle
-delete from contactUsers
-delete from tickets
-delete from events
-delete from reminders
-delete from security
-delete from projects
-delete from usersInformation
-delete from users 
+delete from homework where idClass = class.id and class.idHorary =  horary.id and horary.nickname = 'Alexgve7'
+delete from class where class.idHorary =  horary.id and horary.nickname = 'Alexgve7'
+delete from horary where nickname = 'Alexgve7'
+delete from reminders where reminders.nickname = 'Alexgve7'
+delete from personalEvents where personalEvents.nickname = 'Alexgve7'
+delete from calendars where calendars.nickname = 'Alexgve7'
+delete from contactUsers where nickname = 'Alexgve7'
+delete from tickets where nickname = 'Alexgve7'
+delete from events where nickname = 'Alexgve7' 
+delete from reminders where nickname = 'Alexgve7'
+
+delete from usersBinnacle  where nickname = 'Alexgve7'
+delete from events where nicknameCreator = 'Alexgve7' 
+delete from security where nickname = 'Alexgve7'
+delete from projects where nickname = 'Alexgve7'
+delete from usersInformation where nickname = 'Alexgve7'
+delete from users  where nickname = 'Alexgve7'
 
 
 select * from security

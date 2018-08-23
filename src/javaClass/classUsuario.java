@@ -38,8 +38,8 @@ public class classUsuario {
     private static int myNumberEventDisp;
     private static int myNumberEventUse;
 
+    
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
-
     public static Integer getPreviousIdMemberships() {
         return previousIdMemberships;
     }
@@ -271,6 +271,10 @@ public class classUsuario {
         checkKeygen = -1;
         idUsersInf = -1;
         condition = -1;
+        System.out.println("Adios toda inf");
+        classSecurityQuestions.restart();
+        controller.answers = new String[3];
+        controller.questions = new String[3];
     }
     
     public static boolean select(boolean search, int user){
@@ -395,6 +399,8 @@ public class classUsuario {
         }
         return status;
     }
+  
+
 
     //<editor-fold defaultstate="collapsed" desc="Load final">
     public static void loadAllFinal(){
@@ -501,59 +507,118 @@ public class classUsuario {
 
     //<editor-fold defaultstate="collapsed" desc="Update">
     public static boolean updateImage(boolean admin){
-        if(admin)
-            usersBinnacle.binnacle(23);
-        else
-            usersBinnacle.binnacle(3);
-        return methodsSQL.execute("UPDATE users SET imagen = ? WHERE nickname = ?",image, nickname);
+        boolean status =  methodsSQL.execute("UPDATE users SET imagen = ? WHERE nickname = ?",image, nickname);
+        if(status){
+            if(admin){
+                usersBinnacle.binnacle(23);
+                for(user u: classAdmin.users){
+                    if(u.getNickname().equals(nickname))
+                        u.setImage(image);
+                }
+            }else{
+                usersBinnacle.binnacle(3);
+            }
+        }
+        return status;
     }
     
     public static boolean updateFirstName(boolean admin){
-        if(admin)
-            usersBinnacle.binnacle(24);
-        else
-            usersBinnacle.binnacle(4);
-        return methodsSQL.execute("UPDATE usersInformation SET firstName = ? WHERE nickname = ?",firstName, nickname);
+        boolean status = methodsSQL.execute("UPDATE usersInformation SET firstName = ? WHERE nickname = ?",firstName, nickname);
+        if(status){
+            if(admin){
+                usersBinnacle.binnacle(24);
+                for(user u: classAdmin.users){
+                    if(u.getNickname().equals(nickname))
+                        u.setFirstName(firstName);
+                }
+            }
+            else
+                usersBinnacle.binnacle(4);
+        }            
+        return status;
     }
     
     public static boolean updateLastName(boolean admin){
-        if(admin)
-            usersBinnacle.binnacle(25);
-        else
-            usersBinnacle.binnacle(5);
-        return methodsSQL.execute("UPDATE usersInformation SET lastName = ? WHERE nickname = ?",lastName, nickname);
+        boolean status = methodsSQL.execute("UPDATE usersInformation SET lastName = ? WHERE nickname = ?",lastName, nickname);
+        
+        if(status){
+            if(admin){
+                usersBinnacle.binnacle(25);
+                for(user u: classAdmin.users){
+                    if(u.getNickname().equals(nickname))
+                        u.setLastName(lastName);
+                }
+            }
+            else
+                usersBinnacle.binnacle(5);
+        }            
+        return status; 
     }
     
     public static boolean updateMail(boolean admin){
-        if(admin)
-            usersBinnacle.binnacle(26);
-        else
-            usersBinnacle.binnacle(6);   
-        return methodsSQL.execute("UPDATE users SET mail = ? WHERE nickname = ?",mail, nickname);
+        boolean status = methodsSQL.execute("UPDATE users SET mail = ? WHERE nickname = ?",mail, nickname);
+        
+        if(status){
+            if(admin){
+                usersBinnacle.binnacle(26);
+                for(user u: classAdmin.users){
+                    if(u.getNickname().equals(nickname))
+                        u.setMail(mail);
+                }
+            }
+            else
+                usersBinnacle.binnacle(6);   
+        }            
+        return status;
     }
     
     public static boolean updateBirthdate(boolean admin){
-        if(admin)
-            usersBinnacle.binnacle(27);
-        else
-            usersBinnacle.binnacle(7);
-        return methodsSQL.execute("UPDATE usersInformation SET birthdate = ? WHERE nickname = ?",birthdate, nickname);
+        boolean status = methodsSQL.execute("UPDATE usersInformation SET birthdate = ? WHERE nickname = ?",birthdate, nickname);
+        if(status){
+            if(admin){
+                usersBinnacle.binnacle(27);
+                for(user u: classAdmin.users){
+                    if(u.getNickname().equals(nickname))
+                        u.setBirthdate(birthdate);
+                }
+            }
+            else
+                usersBinnacle.binnacle(7);
+        }            
+        return status; 
     }
     
     public static boolean updateGender(boolean admin){
-        if(admin)
-            usersBinnacle.binnacle(28);
-        else
-            usersBinnacle.binnacle(8);
-        return methodsSQL.execute("UPDATE usersInformation SET id_gender = ? WHERE nickname = ?",id_gender, nickname);
+        boolean status = methodsSQL.execute("UPDATE usersInformation SET id_gender = ? WHERE nickname = ?",id_gender, nickname);
+        if(status){
+            if(admin){
+                usersBinnacle.binnacle(28);
+                for(user u: classAdmin.users){
+                    if(u.getNickname().equals(nickname))
+                        u.setId_gender(id_gender);
+                }
+            }
+            else
+                usersBinnacle.binnacle(8);
+        }            
+        return status; 
     }
     
     public static boolean updateCondition(boolean admin){
-        if(admin)
-            usersBinnacle.binnacle(29);
-        else
-            usersBinnacle.binnacle(9);
-        return methodsSQL.execute("UPDATE users SET condition = ? WHERE nickname = ?",condition, nickname);
+        boolean status = methodsSQL.execute("UPDATE users SET condition = ? WHERE nickname = ?",condition, nickname);
+        
+        if(status){
+            if(admin){
+                usersBinnacle.binnacle(29);
+                for(user u: classAdmin.users){
+                    if(u.getNickname().equals(nickname))
+                        u.setCondition(condition);
+                }
+            }
+            else
+                usersBinnacle.binnacle(9);
+        }            
+        return status; 
     }
     //</editor-fold>
     
@@ -566,31 +631,58 @@ public class classUsuario {
     }
     
     public static boolean insertKeygen(boolean admin){
-        if(admin)
-            usersBinnacle.binnacle(31);
-        else
-            usersBinnacle.binnacle(12);
-        return methodsSQL.execute("UPDATE users SET keygen = ?, checkKeygen = 1 WHERE nickname = ?", keygen, nickname);
+        boolean status = methodsSQL.execute("UPDATE users SET keygen = ?, checkKeygen = 1 WHERE nickname = ?", keygen, nickname);
+        if(status){
+            if(admin){
+                usersBinnacle.binnacle(31);
+                for(user u: classAdmin.users){
+                    if(u.getNickname().equals(nickname))
+                        u.setKeygen(keygen);
+                }
+            }
+            else
+                usersBinnacle.binnacle(12);
+            
+        }            
+        return status; 
     }
     
     public static boolean changeCheckKeygen(int i, boolean admin){
         boolean status;
-        if(admin)
-            usersBinnacle.binnacle(32);
-        else
-            usersBinnacle.binnacle(13, i);
         status = methodsSQL.execute("UPDATE users SET checkKeygen = "+i+" WHERE nickname = ?", nickname);
-        classUsuario.setCheckKeygen(i);
+        if(status){
+            if(admin){
+                usersBinnacle.binnacle(32);
+                setCheckKeygen(i);
+                for(user u: classAdmin.users){
+                    if(u.getNickname().equals(nickname))
+                        u.setCheckKeygen(i);
+                }
+            }
+            else
+                usersBinnacle.binnacle(13, i);
+            
+        }
         return status;
     }
     
     public static boolean deleteKeygen(boolean admin){
         boolean status;
-        if(admin)
-            usersBinnacle.binnacle(33);
-        else
-            usersBinnacle.binnacle(14);
         status = methodsSQL.execute("UPDATE users SET checkKeygen = 0, keygen = 'null' WHERE nickname = ?", nickname);
+        if(status){
+            if(admin){
+                usersBinnacle.binnacle(33);
+                for(user u: classAdmin.users){
+                    if(u.getNickname().equals(nickname)){
+                        u.setCheckKeygen(0);
+                        u.setKeygen("null");
+                    }
+
+                }
+            }
+            else
+                usersBinnacle.binnacle(14);
+        }      
         checkKeygen = 0;
         keygen = "null";
         return status;
