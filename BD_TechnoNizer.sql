@@ -321,26 +321,33 @@ SELECT m.name FROM memberships m WHERE m.id = 1
 
 SELECT * FROM memberships
 
-select * from usersBinnacle
+select *from usersBinnacle where nickname = 'cerritosluis123'
+	
+
+
 select * from users
+update users set condition = 3 where nickname = 'dev.rodrig'
 select * from usersInformation
 select * from security
 
 delete from usersBinnacle
-delete from homework where idClass = class.id and class.idHorary =  horary.id and horary.nickname = 'd'
-delete from class where class.idHorary =  horary.id and horary.nickname = 'd'
-delete from horary where nickname = 'd'
-delete from reminders where reminders.nickname = ''
-delete from personalEvents where personalEvents.nickname = ''
-delete from calendars where calendars.nickname = ''
-delete from contactUsers
-delete from tickets
-delete from events
-delete from reminders
-delete from security
-delete from projects
-delete from usersInformation
-delete from users 
+delete from homework where idClass = class.id and class.idHorary =  horary.id and horary.nickname = 'Alexgve7'
+delete from class where class.idHorary =  horary.id and horary.nickname = 'Alexgve7'
+delete from horary where nickname = 'Alexgve7'
+delete from reminders where reminders.nickname = 'Alexgve7'
+delete from personalEvents where personalEvents.nickname = 'Alexgve7'
+delete from calendars where calendars.nickname = 'Alexgve7'
+delete from contactUsers where nickname = 'Alexgve7'
+delete from tickets where nickname = 'Alexgve7'
+delete from events where nickname = 'Alexgve7' 
+delete from reminders where nickname = 'Alexgve7'
+
+delete from usersBinnacle  where nickname = 'Alexgve7'
+delete from events where nicknameCreator = 'Alexgve7' 
+delete from security where nickname = 'Alexgve7'
+delete from projects where nickname = 'Alexgve7'
+delete from usersInformation where nickname = 'Alexgve7'
+delete from users  where nickname = 'Alexgve7'
 
 
 select * from security

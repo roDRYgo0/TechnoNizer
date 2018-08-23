@@ -1,5 +1,8 @@
 package javaClass;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class classMembership {
     private int membership;
     private String name;
@@ -83,5 +86,9 @@ public class classMembership {
         this.price = price;
     }
 
+   
+        
+        
+    
     
 }

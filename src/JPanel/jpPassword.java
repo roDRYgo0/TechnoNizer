@@ -289,9 +289,18 @@ public class jpPassword extends javax.swing.JPanel {
                             controller.rootPane.add(controller.jpCheck,BorderLayout.CENTER);
                             controller.rootPane.revalidate();
                             controller.rootPane.repaint();
-                        }else{
                             
-                            if(classUsuario.getCondition()==3){
+                        }else{
+                            if(classUsuario.getCondition() == 0){
+                                jpBanned ban = new jpBanned();
+
+                                ban.setSize(420,603);
+                                ban.setLocation(0,0);
+                                controller.rootPane.removeAll();
+                                controller.rootPane.add(ban,BorderLayout.CENTER);
+                                controller.rootPane.revalidate();
+                                controller.rootPane.repaint();
+                            }else if(classUsuario.getCondition()==3){
                                 jpChoose choose = new jpChoose();
 
                                 choose.setSize(420,603);

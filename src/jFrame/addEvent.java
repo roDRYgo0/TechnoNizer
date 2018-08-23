@@ -8,9 +8,11 @@ import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.event;
 import javaClass.standardization;
-import javax.swing.JOptionPane;
 
-/** @author rodri */
+/**
+ * 
+ * @author rodri
+ */
 
 public class addEvent extends javax.swing.JFrame {
 

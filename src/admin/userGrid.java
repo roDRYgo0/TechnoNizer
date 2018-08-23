@@ -2,6 +2,7 @@ package admin;
 
 import java.awt.Color;
 import javaClass.classAdmin;
+import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
 

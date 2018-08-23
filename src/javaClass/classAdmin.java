@@ -1,5 +1,6 @@
 package javaClass;
 
+import admin.jpEditUserAdmin;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,9 +17,36 @@ public class classAdmin {
     
     public static List<user> users = new ArrayList<user>();
     public static List<user> usersSearch = new ArrayList<user>();
+    public static List<javaClass.log> logs = new ArrayList<javaClass.log>();
     
     static String[] birthdate;
     static String birth;
+    
+    public static int getSpaceLog(){
+        if(jpEditUserAdmin.logs.size()>4){
+            return jpEditUserAdmin.logs.size() - 4;
+        }else
+            return 0;
+    }
+    
+    public static boolean selectLog(){
+        boolean status = false;
+        javaClass.log log;
+        ResultSet rs = methodsSQL.getExecute("select idType, description, dateTime, nickname from usersBinnacle");
+        try {
+            while(rs.next()){
+                log = new javaClass.log();
+                log.setIdLog(rs.getInt(1));
+                log.setLog(rs.getString(2));
+                log.setDateTime(rs.getString(3));
+                log.setNickname(rs.getString(4));
+                logs.add(log);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(classAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return status;
+    }
     
     public static boolean select(){
         boolean status = false;

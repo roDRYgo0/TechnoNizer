@@ -1,2 +1,0 @@
-com.warrenstrange.googleauth.GoogleAuthenticatorKey
-com.warrenstrange.googleauth.GoogleAuthenticatorKey$Builder

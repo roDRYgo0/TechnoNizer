@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import javaClass.classAdmin;
 import javaClass.classContact;
 import javaClass.classUsuario;
@@ -29,9 +31,11 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
     String birth;
     byte[] image;
     
+    public static List<javaClass.log> logs = new ArrayList<javaClass.log>();
+    
     public boolean changeAction;
     
-    
+     
     public jpEditUserAdmin(int user, boolean search) {
         initComponents();
         classUsuario.setNickname(classAdmin.users.get(user).getNickname());
@@ -136,6 +140,13 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
             lblImage.setIcon(new controller().changeImage("/imagenes/user.png", 130, 130));
         else
             lblImage.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 130, 130));
+        
+        logs = new ArrayList<javaClass.log>();
+        for(javaClass.log l : classAdmin.logs){
+            if(l.getNickname().equals(classUsuario.getNickname()))
+                logs.add(l);
+        } 
+        System.out.println("mis logs son "+logs.size());
     }
     
     void loadImagenes(){
