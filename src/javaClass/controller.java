@@ -12,6 +12,7 @@ import event.addPrice;
 import event.allPrice;
 import event.price;
 import jFrame.addEventGral;
+import jFrame.addReminderGral;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -57,6 +58,7 @@ public class controller {
     public static jpSecurityQuestions jpSeQue;
     
     public static allEvents allE;
+    public static allReminders allR;
     
     public static admin.userGrid userGrid;
     public static admin.userList userList;
@@ -77,6 +79,7 @@ public class controller {
     
     //<editor-fold defaultstate="collapsed" desc="jFrame">
     public static addEventGral gralEvent;
+    public static addReminderGral gralReminder;
     public static jFrame.addEvent addEvents;
 //</editor-fold>
     
