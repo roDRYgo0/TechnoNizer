@@ -157,6 +157,7 @@ public class jpChoose extends javax.swing.JPanel {
         progress.setForeground(new Color(33,150,243));
         new Thread(()->{
             classAdmin.select();
+            classAdmin.selectLog();
             invokeAdmin(true);
         }).start();
         btnNext.setEnabled(false);

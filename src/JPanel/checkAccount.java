@@ -221,7 +221,7 @@ public class checkAccount extends javax.swing.JPanel {
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         btnNext.setEnabled(false);
-        progress.setForeground(new Color(33,150,243));
+        progress.setForeground(new Color(33,150,243));        
         new Thread(()->{
             switch(step){
                 case 0:

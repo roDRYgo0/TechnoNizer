@@ -1,2 +1,0 @@
-com.warrenstrange.googleauth.GoogleAuthenticatorConfig$GoogleAuthenticatorConfigBuilder
-com.warrenstrange.googleauth.GoogleAuthenticatorConfig
