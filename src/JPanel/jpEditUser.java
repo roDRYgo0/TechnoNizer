@@ -141,9 +141,9 @@ public final class jpEditUser extends javax.swing.JPanel {
         txtAnio.setText(birthdate[0]);
         cargarComboBox();
         if(classUsuario.getImage()==null)
-            lblImage.setIcon(new controller().changeImage("/imagenes/user.png", 97, 97));
+            lblImage.setIcon(new controller().changeImage("/imagenes/user.png", 130, 130));
         else
-            lblImage.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 97, 97));
+            lblImage.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classUsuario.getImage()), 130, 130));
         if(classUsuario.getCondition()==1){
             disable();
             txtMail.setEnabled(true);
@@ -770,7 +770,7 @@ public final class jpEditUser extends javax.swing.JPanel {
                     InputStream input = new FileInputStream(ruta);
                     input.read(icono);
                     image = icono;
-                    lblImage.setIcon(standardization.getImgIcon(icono));
+                    lblImage.setIcon(new controller().changeSizeImage(standardization.getImgIcon(icono), 130, 130));
                 }catch(IOException ex){
                     image = null;
                 }
@@ -792,37 +792,37 @@ public final class jpEditUser extends javax.swing.JPanel {
                         if(!txtName.getText().trim().equals(classUsuario.getFirstName())){
                             classUsuario.setPreviousFirstName(classUsuario.getFirstName());
                             classUsuario.setFirstName(txtName.getText().trim());
-                            result = classUsuario.updateFirstName();
+                            result = classUsuario.updateFirstName(false);
                             if(result==false)break;
                         }
                         if(!txtLastName.getText().trim().equals(classUsuario.getLastName())){
                             classUsuario.setPreviousLastName(classUsuario.getLastName());
                             classUsuario.setLastName(txtLastName.getText().trim());
-                            result = classUsuario.updateLastName();
+                            result = classUsuario.updateLastName(false);
                             if(result==false)break;
                         }
                         if(!txtMail.getText().trim().equals(classUsuario.getMail())){
                             classUsuario.setPreviousMail(classUsuario.getMail());
                             classUsuario.setMail(txtMail.getText().trim());
-                            result = classUsuario.updateMail();
+                            result = classUsuario.updateMail(false);
                             if(result==false)break;
                         }
                         if(cmbGender.getSelectedIndex()!=classUsuario.getId_gender()){
                             classUsuario.setPreviousId_gender(classUsuario.getId_gender());
                             classUsuario.setId_gender(cmbGender.getSelectedIndex());
-                            result = classUsuario.updateGender();
+                            result = classUsuario.updateGender(false);
                             if(result==false)break;
                         }
                         
                         if(!(txtAnio.getText()+"-"+standardization.month(cmbMes.getSelectedIndex())+"-"+txtDia.getText()).equals(classUsuario.getBirthdate())){
                             classUsuario.setPreviousBirthdate(classUsuario.getBirthdate());
                             classUsuario.setBirthdate(txtAnio.getText()+"-"+standardization.month(cmbMes.getSelectedIndex())+"-"+txtDia.getText());
-                            result = classUsuario.updateBirthdate();
+                            result = classUsuario.updateBirthdate(false);
                             if(result==false)break;
                         }
                         if(!Arrays.equals(image, classUsuario.getImage())){
                             classUsuario.setImage(image);
-                            result = classUsuario.updateImage();
+                            result = classUsuario.updateImage(false);
                             if(result==false)break;
                         }
                         break;

@@ -1,4 +1,3 @@
-
 use BD_TechnoNizer
 
 /*Users administration and memberships*/
@@ -304,17 +303,38 @@ insert into memberships values('Free','free', 1, 40, 1, 0, 50, 0)
 insert into memberships values('Vip','vip', 1, -1, 10, 50, 500, 49.90)
 insert into memberships values('Premium','premium', 1, -1, -1, -1, -1, 179.90)
 
+update users set condition = 3 
+
+SELECT u.nickname, ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender, u.condition, u.idMemberships, u.durationMem, u.imagen, u.keygen, u.checkKeygen, ui.id FROM users u, usersInformation ui WHERE u.nickname = ui.nickname
+
+SELECT count(*) FROM events WHERE nicknameCreator = 1
+
+select m.numberEvents from memberships m where m.id = 1
+
+
+SELECT count(*) FROM staff s, events e WHERE s.idEvent = e.id and s.nickname = 'dev.rodriga'
+
+SELECT u.nickname, ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender, u.condition, u.idMemberships, u.durationMem, u.imagen, u.keygen, u.checkKeygen, ui.id FROM users u,usersInformation ui WHERE u.nickname = ui.nickname
+
+select gender from genders where id = 1
+SELECT m.name FROM memberships m WHERE m.id = 1
+
+SELECT * FROM memberships
+
 select * from usersBinnacle
 select * from users
+select * from usersInformation
+select * from security
 
+delete from usersBinnacle
 delete from contactUsers
 delete from tickets
 delete from events
 delete from reminders
 delete from security
 delete from projects
-delete from usersInformation where nickname = 'dev.rodrig'
-delete from users where nickname = 'dev.rodrig'
+delete from usersInformation
+delete from users 
 
 
 select * from security

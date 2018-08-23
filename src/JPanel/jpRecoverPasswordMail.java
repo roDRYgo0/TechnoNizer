@@ -29,7 +29,9 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
                 Logger.getLogger(jpAccess.class.getName()).log(Level.SEVERE, null, ex);
             }
         }).start();
-        System.out.println(classUsuario.getMail());
+        if(classSecurityQuestions.getQuestions()[0]==null){
+            btnRecoverPassword.setVisible(false);
+        }
         lblResetPassword.setIcon(new controller().changeImage("/imagenes/resetPassword.png", 40, 40));
         lblThinking.setIcon(new controller().changeImage("/imagenes/thinking.png", 96, 96));
         lblImageMail.setIcon(new controller().changeImage("/imagenes/email.png", 35, 35));
@@ -217,7 +219,7 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
                         .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblImageMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(checkMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(btnRecoverPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -272,12 +274,12 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
     private void btnRecoverPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecoverPasswordActionPerformed
         if(logIn.internet)
         {
-            controller.jpRP = new jpRecoverPasswordMail();
+            jpQuestions question = new jpQuestions(0);
+            question.setSize(420, 603);
+            question.setLocation(0,0);
 
-            controller.jpRP.setSize(420,603);
-            controller.jpRP.setLocation(0,0);
             controller.rootPane.removeAll();
-            controller.rootPane.add(controller.jpRP,BorderLayout.CENTER);
+            controller.rootPane.add(question,BorderLayout.CENTER);
             controller.rootPane.revalidate();
             controller.rootPane.repaint();
         }

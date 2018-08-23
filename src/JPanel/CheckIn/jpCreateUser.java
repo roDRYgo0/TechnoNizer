@@ -529,7 +529,14 @@ public class jpCreateUser extends javax.swing.JPanel {
 
     private void txtNickNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNickNameKeyTyped
         char c = evt.getKeyChar();
-        if(c == ' ')
+        if(txtNickName.getText().length()<41){
+            if(Character.isLetter(c) || Character.isDigit(c)){}
+            else{
+                if(c != '.')
+                    evt.consume();
+            }
+            
+        }else
             evt.consume();
     }//GEN-LAST:event_txtNickNameKeyTyped
 

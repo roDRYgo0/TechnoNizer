@@ -14,6 +14,8 @@ public class classSecurityQuestions {
     public static int allNumQuestion;
     public static boolean change = false;
     
+    public static int answ = 0;
+    
     
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
     public static String[] getAllQuestions() {
@@ -54,6 +56,7 @@ public class classSecurityQuestions {
         if(status){
             questions = new String[3];
             answers = new String[3];
+            usersBinnacle.binnacle(19);
         }
         return status;
     }
@@ -70,6 +73,8 @@ public class classSecurityQuestions {
                 status = methodsSQL.execute("INSERT INTO security VALUES (?, ?, ?)",answers[i], ids, classUsuario.getNickname());
             }
         }
+        if(status)
+            usersBinnacle.binnacle(18);
         return status;
     }
     
