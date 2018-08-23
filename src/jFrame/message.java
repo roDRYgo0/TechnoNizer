@@ -1,5 +1,6 @@
 package jFrame;
 
+import javaClass.controller;
 import javaClass.standardization;
 import javax.swing.ImageIcon;
 
@@ -66,8 +67,7 @@ public class message extends javax.swing.JFrame {
    
     public void changeImage(String image)
     {
-        ImageIcon original = new ImageIcon(getClass().getResource("/imagenes/"+image+".png"));
-        lblImage.setIcon(original);
+        lblImage.setIcon(new controller().changeImage("/imagenes/"+image+".png", 48, 48));
     }
     
     public void changeMessage(String message)
