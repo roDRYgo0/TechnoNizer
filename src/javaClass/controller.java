@@ -6,6 +6,8 @@ import JPanel.CheckIn.*;
 import JPanel.contact.addContact;
 import JPanel.contact.itemContact;
 import JPanel.contact.jpContact;
+import admin.jpSecurityQuestionsAdmin;
+import admin.jpSecurityUser;
 import event.addPrice;
 import event.allPrice;
 import event.price;
@@ -58,6 +60,9 @@ public class controller {
     
     public static admin.userGrid userGrid;
     public static admin.userList userList;
+    
+    public static jpSecurityQuestionsAdmin jpSeQuAdm;
+    public static jpSecurityUser jpSeUs;
     
     public static addPrice addP;
     public static price pric;

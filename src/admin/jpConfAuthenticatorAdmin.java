@@ -1,4 +1,4 @@
-package JPanel;
+package admin;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,17 +6,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import javaClass.authenticator;
 import javaClass.controller;
-import static javaClass.controller.jpSe;
+import static javaClass.controller.jpSeUs;
 import javaClass.standardization;
 
-public class jpConfAuthenticator extends javax.swing.JPanel {
+public class jpConfAuthenticatorAdmin extends javax.swing.JPanel {
 
     String keygen;
     
     int udm = 0, resol = 72, rot = 0;
     float mi=0.000f, md = 0.000f, ms = 0.00f, min = 0.000f, tam = 5.000f;
 
-    public jpConfAuthenticator() {
+    public jpConfAuthenticatorAdmin() {
         initComponents();
         loadImage();
         loadQR();
@@ -176,7 +176,7 @@ public class jpConfAuthenticator extends javax.swing.JPanel {
     //</editor-fold>
     
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        jpSe.endAuthenticator(keygen);
+        jpSeUs.endAuthenticator(keygen);
     }//GEN-LAST:event_btnNextActionPerformed
 
 

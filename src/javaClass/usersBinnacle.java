@@ -122,8 +122,10 @@ public class usersBinnacle {
                 System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+classAdmin.nickname+" elimino keygen a "+classUsuario.getNickname()+" en modo administrativo ', ?, ?, 33)", standardization.getDateTime(), classAdmin.nickname));
                 break;
             case 34:
+                System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+classAdmin.nickname+" agregó preguntas de seguridad a "+classUsuario.getNickname()+" en modo administrativo ', ?, ?, 34)", standardization.getDateTime(), classAdmin.nickname));
                 break;
             case 35:
+                System.out.println(methodsSQL.execute("insert into usersBinnacle values ('"+classAdmin.nickname+" elimino preguntas de seguridad a "+classUsuario.getNickname()+" en modo administrativo ', ?, ?, 35)", standardization.getDateTime(), classAdmin.nickname));
                 break;
             case 36:
                 break;

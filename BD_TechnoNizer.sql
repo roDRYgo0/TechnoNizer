@@ -303,7 +303,7 @@ insert into memberships values('Free','free', 1, 40, 1, 0, 50, 0)
 insert into memberships values('Vip','vip', 1, -1, 10, 50, 500, 49.90)
 insert into memberships values('Premium','premium', 1, -1, -1, -1, -1, 179.90)
 
-update users set condition = 3 
+update users set condition = 3 where nickname = 'ElianFran'
 
 SELECT u.nickname, ui.firstName, ui.lastName, ui.birthdate, u.mail, ui.id_gender, u.condition, u.idMemberships, u.durationMem, u.imagen, u.keygen, u.checkKeygen, ui.id FROM users u, usersInformation ui WHERE u.nickname = ui.nickname
 
@@ -327,6 +327,12 @@ select * from usersInformation
 select * from security
 
 delete from usersBinnacle
+delete from homework where idClass = class.id and class.idHorary =  horary.id and horary.nickname = 'd'
+delete from class where class.idHorary =  horary.id and horary.nickname = 'd'
+delete from horary where nickname = 'd'
+delete from reminders where reminders.nickname = ''
+delete from personalEvents where personalEvents.nickname = ''
+delete from calendars where calendars.nickname = ''
 delete from contactUsers
 delete from tickets
 delete from events

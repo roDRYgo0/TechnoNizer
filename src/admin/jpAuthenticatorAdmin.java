@@ -4,11 +4,10 @@ import java.awt.Color;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
-import static technonizer.TechnoNizer.home;
 
-public class jpAuthenticator extends javax.swing.JPanel {
+public class jpAuthenticatorAdmin extends javax.swing.JPanel {
 
-    public jpAuthenticator() {
+    public jpAuthenticatorAdmin() {
         initComponents();
         load();
         loadImage();
@@ -54,6 +53,7 @@ public class jpAuthenticator extends javax.swing.JPanel {
         lblStatus = new javax.swing.JLabel();
         lblToggle = new javax.swing.JLabel();
         checkStatus = new javax.swing.JLabel();
+        txtkeygen = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(245, 245, 245));
         setMaximumSize(new java.awt.Dimension(445, 465));
@@ -117,6 +117,9 @@ public class jpAuthenticator extends javax.swing.JPanel {
         checkStatus.setMinimumSize(new java.awt.Dimension(25, 25));
         checkStatus.setPreferredSize(new java.awt.Dimension(25, 25));
 
+        txtkeygen.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtkeygen.setText("Not found");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -126,13 +129,15 @@ public class jpAuthenticator extends javax.swing.JPanel {
                 .addComponent(lblAuthenticator, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblStatus)
                         .addGap(18, 18, 18)
                         .addComponent(lblToggle, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(checkStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(checkStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtkeygen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,13 +149,15 @@ public class jpAuthenticator extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtkeygen)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblStatus)
-                                .addComponent(lblToggle, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(checkStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                                .addComponent(lblToggle, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -207,17 +214,17 @@ public class jpAuthenticator extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
-        controller.jpSe.newAuthenticator();
+        controller.jpSeUs.newAuthenticator();
     }//GEN-LAST:event_btnChangeActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
        checkDelete.setIcon(standardization.checkImage(2));
        disable();
        new Thread(()->{
-           if(classUsuario.deleteKeygen(false)){
+           if(classUsuario.deleteKeygen(true)){
                standardization.showMessage("ok", "Se elimino correctamente");
-               home.pnSecurity();
-               controller.jpSe.newAuthenticator();
+               technonizer.TechnoNizer.admin.jpSeUs();
+               controller.jpSeUs.newAuthenticator();
            }else{
                standardization.showMessage("cancle", "No se pudo eliminar");
                enable();
@@ -231,16 +238,16 @@ public class jpAuthenticator extends javax.swing.JPanel {
         new Thread(()->{
             switch(classUsuario.getCheckKeygen()){
                 case 0:
-                    classUsuario.changeCheckKeygen(1, false);
-                    home.pnSecurity();
-                    controller.jpSe.authenticator();
-                    controller.jpSe.changeColorAuthen();
+                    classUsuario.changeCheckKeygen(1, true);
+                    technonizer.TechnoNizer.admin.jpSeUs();
+                    controller.jpSeUs.authenticator();
+                    controller.jpSeUs.changeColorAuthen();
                     break;
                 case 1:
-                    classUsuario.changeCheckKeygen(0, false);
-                    home.pnSecurity();
-                    controller.jpSe.authenticator();
-                    controller.jpSe.changeColorAuthen();
+                    classUsuario.changeCheckKeygen(0, true);
+                    technonizer.TechnoNizer.admin.jpSeUs();
+                    controller.jpSeUs.authenticator();
+                    controller.jpSeUs.changeColorAuthen();
 
                     break;
             }
@@ -276,5 +283,6 @@ public class jpAuthenticator extends javax.swing.JPanel {
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblToggle;
     private javax.swing.JLabel lblTrash;
+    private javax.swing.JLabel txtkeygen;
     // End of variables declaration//GEN-END:variables
 }

@@ -155,7 +155,7 @@ public class classEvent {
                 evento.setStaff(rs.getInt(8));
                 evento.setCondition(rs.getInt(9));
                 evento.setNicknameCreator(rs.getString(10));
-                eventos.add(evento);//aqui...... tambien ya esta.... 
+                eventos.add(evento);//aqui...... tambien ya esta.... d
                 //y los voy agregando a una lista...
             }
         } catch (SQLException ex) {

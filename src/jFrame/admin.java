@@ -2,6 +2,7 @@ package jFrame;
 
 import JPanel.*;
 import admin.jpEditUserAdmin;
+import admin.jpSecurityUser;
 import admin.jpUsers;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -754,6 +755,17 @@ public class admin extends javax.swing.JFrame {
         load.setLocation(0,0);
 
         scrollContainer.setViewportView(load);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
+    public void jpSeUs(){
+
+        controller.jpSeUs = new jpSecurityUser();
+        controller.jpSeUs.setPreferredSize(new Dimension(980,601));
+        controller.jpSeUs.setLocation(0,0);
+
+        scrollContainer.setViewportView(controller.jpSeUs);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }

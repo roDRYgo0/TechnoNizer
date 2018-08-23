@@ -2,7 +2,6 @@ package sucurity;
 
 import java.awt.Color;
 import java.awt.Image;
-import java.util.Arrays;
 import javaClass.classSecurityQuestions;
 import javaClass.classUsuario;
 import javaClass.controller;

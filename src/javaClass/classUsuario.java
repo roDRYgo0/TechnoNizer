@@ -271,6 +271,10 @@ public class classUsuario {
         checkKeygen = -1;
         idUsersInf = -1;
         condition = -1;
+        System.out.println("Adios toda inf");
+        classSecurityQuestions.restart();
+        controller.answers = new String[3];
+        controller.questions = new String[3];
     }
     
     public static boolean select(boolean search, int user){
@@ -395,6 +399,8 @@ public class classUsuario {
         }
         return status;
     }
+  
+
 
     //<editor-fold defaultstate="collapsed" desc="Load final">
     public static void loadAllFinal(){
