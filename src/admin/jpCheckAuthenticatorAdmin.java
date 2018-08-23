@@ -1,4 +1,4 @@
-package JPanel;
+package admin;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -7,11 +7,11 @@ import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
 
-public class jpCheckAuthenticator extends javax.swing.JPanel {
+public class jpCheckAuthenticatorAdmin extends javax.swing.JPanel {
 
     String keygen;
     
-    public jpCheckAuthenticator(String keygen) {
+    public jpCheckAuthenticatorAdmin(String keygen) {
         initComponents();
         this.keygen = keygen;
         loadImage();
@@ -200,10 +200,10 @@ public class jpCheckAuthenticator extends javax.swing.JPanel {
             int myCode = Integer.parseInt(txtCode.getText());
             if(myCode == authenticator.returnCode(keygen)){
                 classUsuario.setKeygen(keygen);
-                if(classUsuario.insertKeygen(false)){
+                if(classUsuario.insertKeygen(true)){
                     standardization.showMessage("ok", "Authenticador configurado");
                     classUsuario.setCheckKeygen(1);
-                    technonizer.TechnoNizer.home.pnSecurity();
+                    technonizer.TechnoNizer.admin.jpSeUs();
                  }else{
                     standardization.showMessage("calcel", "El authenticador no se configurado");
                     enable();

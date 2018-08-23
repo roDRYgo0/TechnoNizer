@@ -1,11 +1,12 @@
-package sucurity;
+package admin;
 
+import sucurity.*;
 import java.awt.BorderLayout;
 import javaClass.classSecurityQuestions;
 
-public class jpSecurityQuestions extends javax.swing.JPanel {
+public class jpSecurityQuestionsAdmin extends javax.swing.JPanel {
 
-    public jpSecurityQuestions() {
+    public jpSecurityQuestionsAdmin() {
         initComponents();
         load();
     }
@@ -18,7 +19,7 @@ public class jpSecurityQuestions extends javax.swing.JPanel {
     }
     
     public void loadConfQuestion(int i){
-        questionsConf question = new questionsConf(i);
+        questionsConf question = new questionsConf(i, true);
         question.setSize(425, 379);
         question.setLocation(0,0);
 
@@ -29,7 +30,7 @@ public class jpSecurityQuestions extends javax.swing.JPanel {
     }
     
     public void loadQuestions(){
-        jpQuestions question = new jpQuestions();
+        jpQuestionsAdmin question = new jpQuestionsAdmin();
         question.setSize(425, 379);
         question.setLocation(0,0);
 

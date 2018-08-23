@@ -50,6 +50,11 @@ public class classSecurityQuestions {
 //</editor-fold>
     
     
+    public static void restart(){
+        questions = new String[3];
+        answers = new String[3];   
+    }
+    
     public static boolean delete(){
         boolean status = false;
         status = methodsSQL.execute("DELETE FROM security WHERE nickname = ?", classUsuario.getNickname());
@@ -61,7 +66,35 @@ public class classSecurityQuestions {
         return status;
     }
     
+    public static boolean delete(boolean admin){
+        boolean status = false;
+        status = methodsSQL.execute("DELETE FROM security WHERE nickname = ?", classUsuario.getNickname());
+        if(status){
+            questions = new String[3];
+            answers = new String[3];
+            usersBinnacle.binnacle(35);
+        }
+        return status;
+    }
+    
     public static boolean insert(){
+        boolean status = true;
+        int ids;
+        for(int i = 0; i < 3; i++){
+            if(status){
+                System.out.println("la pregunta "+questions[i]);
+                System.out.println("la respusta "+answers[i]);
+                ids = methodsSQL.getExecuteInt("SELECT id FROM questionBank WHERE question = ?", questions[i]);
+                System.out.println("El id "+ids);
+                status = methodsSQL.execute("INSERT INTO security VALUES (?, ?, ?)",answers[i], ids, classUsuario.getNickname());
+            }
+        }
+        if(status)
+            usersBinnacle.binnacle(18);
+        return status;
+    }
+    
+    public static boolean insert(boolean admin){
         boolean status = true;
         int ids;
         for(int i = 0; i < 3; i++){
@@ -74,7 +107,7 @@ public class classSecurityQuestions {
             }
         }
         if(status)
-            usersBinnacle.binnacle(18);
+            usersBinnacle.binnacle(34);
         return status;
     }
     
