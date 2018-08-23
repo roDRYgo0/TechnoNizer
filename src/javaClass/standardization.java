@@ -29,11 +29,13 @@ import javax.swing.JTable;
 import technonizer.*;
 import static technonizer.TechnoNizer.*;
 
+/**
+ * 
+ * @author rodri
+ */
+
 public class standardization {
 
-
-    
-    
     controller control = new controller();
     public static byte[] image;
     static Calendar cal= Calendar.getInstance();

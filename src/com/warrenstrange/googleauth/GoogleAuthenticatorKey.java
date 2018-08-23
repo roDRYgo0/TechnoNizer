@@ -36,9 +36,7 @@ import java.util.List;
 /**
  * This class is a JavaBean used by the GoogleAuthenticator library to represent
  * a secret key.
- * <p/>
  * This class is immutable.
- * <p/>
  * Instance of this class should only be constructed by the GoogleAuthenticator
  * library.
  *
@@ -179,6 +177,7 @@ public final class GoogleAuthenticatorKey
          * Sets the config of the TOTP algorithm for this key.
          *
          * @param config the config of the TOTP algorithm for this key.
+         * @return config
          * @see GoogleAuthenticatorKey#GoogleAuthenticatorKey(GoogleAuthenticatorConfig, String, int, List)
          */
         public Builder setConfig(GoogleAuthenticatorConfig config)
@@ -191,6 +190,7 @@ public final class GoogleAuthenticatorKey
          * Sets the secret key.
          *
          * @param key the secret key.
+         * @return key
          * @see GoogleAuthenticatorKey#GoogleAuthenticatorKey(GoogleAuthenticatorConfig, String, int, List)
          */
         public Builder setKey(String key)
@@ -203,6 +203,7 @@ public final class GoogleAuthenticatorKey
          * Sets the verification code.
          *
          * @param verificationCode the verification code.
+         * @return verificationCode
          * @see GoogleAuthenticatorKey#GoogleAuthenticatorKey(GoogleAuthenticatorConfig, String, int, List)
          */
         public Builder setVerificationCode(int verificationCode)
@@ -215,6 +216,7 @@ public final class GoogleAuthenticatorKey
          * Sets the scratch codes.
          *
          * @param scratchCodes the scratch codes.
+         * @return scratchCodes
          * @see GoogleAuthenticatorKey#GoogleAuthenticatorKey(GoogleAuthenticatorConfig, String, int, List)
          */
         public Builder setScratchCodes(List<Integer> scratchCodes)

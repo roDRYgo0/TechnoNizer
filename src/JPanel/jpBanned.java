@@ -3,7 +3,10 @@ package JPanel;
 import java.awt.BorderLayout;
 import javaClass.controller;
 
-/** @author rodri */
+/**
+ * 
+ * @author rodri
+ */
 
 public class jpBanned extends javax.swing.JPanel {
 
