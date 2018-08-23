@@ -136,6 +136,7 @@ public class classEvent {
     }
     
     public static boolean select(){
+        //este es... aqui selecciono todos los eventos de yo... con todos su datos...
         boolean status = false;
         event evento;
         ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator FROM events e WHERE e.nicknameCreator = ? ",
@@ -154,7 +155,8 @@ public class classEvent {
                 evento.setStaff(rs.getInt(8));
                 evento.setCondition(rs.getInt(9));
                 evento.setNicknameCreator(rs.getString(10));
-                eventos.add(evento);
+                eventos.add(evento);//aqui...... tambien ya esta.... 
+                //y los voy agregando a una lista...
             }
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);

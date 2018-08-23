@@ -18,9 +18,11 @@ public class MenuEvent extends javax.swing.JPanel {
      */
     public MenuEvent() {
         initComponents();
-        int n = classUsuario.getMyNumberEventUse();
-        EventsCount.setText(Integer.toString(n));
-        
+        int n=classUsuario.getMyNumberEventUse();
+        int ne=classUsuario.getMyNumberEventDisp();
+        int rest=ne-n;
+        EventsCount.setText(Integer.toString(classUsuario.getMyNumberEventUse()));
+        Countrest.setText(Integer.toString(rest));
          
     }
 
@@ -42,7 +44,7 @@ public class MenuEvent extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         spName = new javax.swing.JSeparator();
-        txtLastName = new javax.swing.JTextField();
+        Countrest = new javax.swing.JTextField();
         spLastName = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -117,19 +119,19 @@ public class MenuEvent extends javax.swing.JPanel {
 
         spName.setForeground(new java.awt.Color(204, 204, 204));
 
-        txtLastName.setAutoscrolls(false);
-        txtLastName.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtLastName.addFocusListener(new java.awt.event.FocusAdapter() {
+        Countrest.setAutoscrolls(false);
+        Countrest.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Countrest.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtLastNameFocusGained(evt);
+                CountrestFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtLastNameFocusLost(evt);
+                CountrestFocusLost(evt);
             }
         });
-        txtLastName.addKeyListener(new java.awt.event.KeyAdapter() {
+        Countrest.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtLastNameKeyTyped(evt);
+                CountrestKeyTyped(evt);
             }
         });
 
@@ -184,7 +186,7 @@ public class MenuEvent extends javax.swing.JPanel {
                                 .addComponent(EventsCount)
                                 .addComponent(spName, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtLastName)
+                                .addComponent(Countrest)
                                 .addComponent(spLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -214,26 +216,26 @@ public class MenuEvent extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Countrest, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(spLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 357, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtLastNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLastNameFocusGained
+    private void CountrestFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CountrestFocusGained
         
-    }//GEN-LAST:event_txtLastNameFocusGained
+    }//GEN-LAST:event_CountrestFocusGained
 
-    private void txtLastNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLastNameFocusLost
+    private void CountrestFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_CountrestFocusLost
  
-    }//GEN-LAST:event_txtLastNameFocusLost
+    }//GEN-LAST:event_CountrestFocusLost
 
-    private void txtLastNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameKeyTyped
+    private void CountrestKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CountrestKeyTyped
         char c = evt.getKeyChar();
-        if(txtLastName.getText().contains(" ") && c==' ')
+        if(Countrest.getText().contains(" ") && c==' ')
         evt.consume();
-    }//GEN-LAST:event_txtLastNameKeyTyped
+    }//GEN-LAST:event_CountrestKeyTyped
 
     private void EventsCountFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EventsCountFocusGained
 
@@ -251,6 +253,7 @@ public class MenuEvent extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Countrest;
     private javax.swing.JTextField EventsCount;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -264,6 +267,5 @@ public class MenuEvent extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator spLastName;
     private javax.swing.JSeparator spName;
-    private javax.swing.JTextField txtLastName;
     // End of variables declaration//GEN-END:variables
 }
