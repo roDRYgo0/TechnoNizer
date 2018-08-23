@@ -4,108 +4,98 @@ package javaClass;
 
 public class reminder {
     
-    private Integer id;
-    private String eventName;
-    private String nicknameCreator;
-    private byte[] profilePicture;
-    private byte[] coverPicture;
-    private Integer price;
-    private Integer visibility;
-    private String startDateTime;
-    private String endDateTime;
-    private Integer staff;
+    private String nickname;
+    private String firstName;
     private Integer condition;
-
-    //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
-    
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getEventName() {
-        return eventName;
-    }
-
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
-    }
-
-    public String getNicknameCreator() {
-        return nicknameCreator;
-    }
-
-    public void setNicknameCreator(String nicknameCreator) {
-        this.nicknameCreator = nicknameCreator;
-    }
-
-    public byte[] getProfilePicture() {
-        return profilePicture;
-    }
-
-    public void setProfilePicture(byte[] profilePicture) {
-        this.profilePicture = profilePicture;
-    }
-
-    public byte[] getCoverPicture() {
-        return coverPicture;
-    }
-
-    public void setCoverPicture(byte[] coverPicture) {
-        this.coverPicture = coverPicture;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    public Integer getVisibility() {
-        return visibility;
-    }
-
-    public void setVisibility(Integer visibility) {
-        this.visibility = visibility;
-    }
-
-    public String getStartDateTime() {
-        return startDateTime;
-    }
-
-    public void setStartDateTime(String startDateTime) {
-        this.startDateTime = startDateTime;
-    }
-
-    public String getEndDateTime() {
-        return endDateTime;
-    }
-
-    public void setEndDateTime(String endDateTime) {
-        this.endDateTime = endDateTime;
-    }
-
-    public Integer getStaff() {
-        return staff;
-    }
-
-    public void setStaff(Integer staff) {
-        this.staff = staff;
-    }
-
-    public Integer getCondition() {
-        return condition;
-    }
+    private String lastName;
+    private byte[] image;
+    private String reminder;
+    private String date;
+      private Integer myNumberRemDisp;
+    private Integer myNumberRemUse;
 
     public void setCondition(Integer condition) {
         this.condition = condition;
     }
+   
+    
+    public Integer getCondition() {
+        return condition;
+    }
+    public void setMyNumberRemDisp(Integer myNumberRemDisp) {
+        this.myNumberRemDisp = myNumberRemDisp;
+    }
 
+    public void setMyNumberRemUse(Integer myNumberRemUse) {
+        this.myNumberRemUse = myNumberRemUse;
+    }
+
+    public void setIdMemberships(Integer idMemberships) {
+        this.idMemberships = idMemberships;
+    }
+    private Integer idMemberships; 
+
+    public Integer getMyNumberRemDisp() {
+        return myNumberRemDisp;
+    }
+
+    public Integer getMyNumberRemUse() {
+        return myNumberRemUse;
+    }
+
+    public Integer getIdMemberships() {
+        return idMemberships;
+    }
+    
+    
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public void setReminder(String reminder) {
+        this.reminder = reminder;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+    
 //</editor-fold>
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public String getReminder() {
+        return reminder;
+    }
+
+    public String getDate() {
+        return date;
+    }
     
 }

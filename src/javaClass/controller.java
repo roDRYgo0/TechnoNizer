@@ -58,10 +58,12 @@ public class controller {
     public static jpSecurityQuestions jpSeQue;
     
     public static allEvents allE;
-    public static allReminders allR;
+  
     
     public static admin.userGrid userGrid;
     public static admin.userList userList;
+    public static reminderGrid reminderGrid;
+    public static reminderList reminderList;
     
     public static jpSecurityQuestionsAdmin jpSeQuAdm;
     public static jpSecurityUser jpSeUs;

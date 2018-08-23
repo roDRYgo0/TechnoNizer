@@ -9,9 +9,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javaClass.classAdmin.birth;
+import static javaClass.classAdmin.usersSearch;
 import static javaClass.classEvent.eventos;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,8 +31,9 @@ public class classReminder {
     private static Integer repeat;
     private static String nickname;
     
-    public static List<event> reminders = new ArrayList<event>();
-    public static List<event> remindersSearch = new ArrayList<event>();
+    
+    public static List<reminder> reminders = new ArrayList<reminder>();
+    public static List<reminder> remindersSearch = new ArrayList<reminder>();
 
     public static void setId(Integer id) {
         classReminder.id = id;
@@ -96,33 +100,7 @@ public class classReminder {
                 1, reminder, datetime, repeat, classUsuario.getNickname());
         return status;
     }
-    public static boolean select(){
-        boolean status = false;
-        event evento;
-        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator FROM events e WHERE e.nicknameCreator = ? ",
-                classUsuario.getNickname());
-        
-        try {
-            while(rs.next()){
-                evento = new event();
-                evento.setId(rs.getInt(1));
-                evento.setEventName(rs.getString(2));
-                evento.setProfilePicture(rs.getBytes(3));
-                evento.setCoverPicture(rs.getBytes(4));
-                evento.setVisibility(rs.getInt(5));
-                evento.setStartDateTime(rs.getString(6));
-                evento.setEndDateTime(rs.getString(7));
-                evento.setStaff(rs.getInt(8));
-                evento.setCondition(rs.getInt(9));
-                evento.setNicknameCreator(rs.getString(10));
-                eventos.add(evento);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return status;
-    }
+    
 public static DefaultTableModel cargarReminder() {
 
            
@@ -143,4 +121,76 @@ public static boolean updatereminder(){
                 1, reminder, datetime, repeat, "asd", id);
         return status;
     }
-}
+
+
+ public static boolean select(){
+        boolean status = false;
+        reminder recordatorio;
+        ResultSet rs = methodsSQL.getExecute("SELECT u.nickname, ui.firstName, ui.lastName,  u.imagen, re.condition, re.reminder, re.alarmDateTime  FROM users u,"
+                + " usersInformation ui, reminders re WHERE u.nickname = ui.nickname and u.nickname= re.nickname");
+        
+        try {
+            while(rs.next()){
+                recordatorio = new reminder();
+                recordatorio.setNickname(rs.getString(1));
+                recordatorio.setFirstName(rs.getString(2));
+                recordatorio.setLastName(rs.getString(3));
+                recordatorio.setImage(rs.getBytes(4));
+                recordatorio.setCondition(rs.getInt(5));
+   
+                
+                if(methodsSQL.exists("SELECT count(*) FROM reminders WHERE nickname= ?", recordatorio.getNickname()))
+                    recordatorio.setMyNumberRemUse(methodsSQL.getExecuteInt("SELECT count(*) FROM reminders WHERE nickname = ?", recordatorio.getNickname()));
+  
+                
+                classReminder.reminders.add(recordatorio);
+            }
+            status = true;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            Logger.getLogger(classReminder.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return status;
+    }
+  public static int getSpaceSearchGrid(){
+        int row = (remindersSearch.size())/2;
+        if((remindersSearch.size())%2!=0)
+            row++;
+        if(row <= 2)
+            return 0;
+        else
+            return row - 2;
+    }
+    
+    public static int getSpaceAllGrid(){
+        int row = (reminders.size())/2;
+        if((reminders.size())%2!=0)
+            row++;
+        if(row <= 2)
+            return 0;
+        else
+            return row - 2;
+    }
+    
+    public static int getSpaceSearchList(){
+        int row = (remindersSearch.size())/5;
+        if((remindersSearch.size())%5!=0)
+            row++;
+        if(row <= 5)
+            return 0;
+        else
+            return row - 15;
+    }
+    
+    public static int getSpaceAllList(){
+        int row = (reminders.size())/5;
+        if((reminders.size())%5!=0)
+            row++;
+        if(row <= 5)
+            return 0;
+        else
+            return row - 15;
+    }
+
+ }

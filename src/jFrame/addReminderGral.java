@@ -465,7 +465,7 @@ public class addReminderGral extends javax.swing.JFrame {
             } else {
 
                 classReminder.setReminder((txtReminder1.getText()));
-                classReminder.setDatetime((cmbMonthStart.getSelectedIndex() + 1) + "/" + txtDayStart.getText() + "/" + txtYearStart.getText());
+                classReminder.setDatetime((txtYearStart.getText() + "/" + cmbMonthStart.getSelectedIndex() + 1)+ "/" + txtDayStart.getText() );
                 classReminder.setRepeat((Integer.parseInt(txtHora.getText())));
 
                 if (classReminder.insert()) {
@@ -473,6 +473,7 @@ public class addReminderGral extends javax.swing.JFrame {
                     standardization.hide(controller.gralReminder);
                 } else {
                     JOptionPane.showMessageDialog(this, "Error al guardar recordatorio");
+                    standardization.hide(controller.gralReminder);
                 }
 }
             }
