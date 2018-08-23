@@ -1,6 +1,6 @@
 package JPanel;
 
-import jFrame.addEventGral;
+import jFrame.addReminderGral;
 import javaClass.controller;
 import javaClass.standardization;
 
@@ -58,8 +58,9 @@ public class addReminder extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-        controller.gralEvent = new addEventGral();
-        standardization.show(controller.gralEvent);
+        controller.gralReminder = new addReminderGral();
+        standardization.show(controller.gralReminder);
+        controller.rootFrame = controller.gralReminder;
     }//GEN-LAST:event_formMouseReleased
 
 
