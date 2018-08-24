@@ -121,6 +121,14 @@ public static boolean updatereminder(){
                 1, reminder, datetime, repeat, "asd", id);
         return status;
     }
+ public static void restartUser(){
+        condition=(String.valueOf(-1));
+        reminder=null;
+        datetime=null;
+        System.out.println("Adios toda inf reminders");
+    
+       
+    }
 
 
  public static boolean select(){

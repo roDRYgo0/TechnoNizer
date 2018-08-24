@@ -27,6 +27,7 @@ public class admin extends javax.swing.JFrame {
         
         imageUserTop = lblImageUserTop;
         imageUserLeft = lblImageUserLeft;
+          classReminder.select();
  
         controller.rootFrame = this;
         this.internet = logIn.internet;
@@ -722,7 +723,6 @@ public class admin extends javax.swing.JFrame {
             classContact.reset();
 
             classAdmin.select();
-            classReminder.select();
             classAdmin.selectLog();
             
             controller.jpUs = new jpUsers();
@@ -833,6 +833,7 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_pnEventsMouseReleased
 
     private void pnAgendaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnAgendaMouseReleased
+         
         if(classUsuario.getCondition()==1){
             disable();
             controller.jpDis = new jpDisable();

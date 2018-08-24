@@ -49,6 +49,10 @@ public class reminder {
     public void setMyNumberRemUse(Integer myNumberRemUse) {
         this.myNumberRemUse = myNumberRemUse;
     }
-
-
+    public  void restartUser(){
+        myNumberRemUse=null;
+        System.out.println("Adios toda inf reminders");
+    
+       
+    }
 }
