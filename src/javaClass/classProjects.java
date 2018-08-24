@@ -85,23 +85,38 @@ public static Integer getId() {
     }
     //</editor-fold>
     
+    public static int spaceProject(int num){
+        int row = (num+1)/4;
+        if((num+1)%4!=0)
+            row++;
+        if(row<=3)
+            return 0;
+        else
+            return row - 3;
+    }
+    
+    public static boolean insert(){        
+        return methodsSQL.execute("insert into projects values (?, ?, ?,1,0, ?)", name, description, standardization.getDateTime(), classUsuario.getNickname());
+    }
+    
     public static boolean select(){
         boolean status = false;
         Project project;
-        ResultSet rs = methodsSQL.getExecute("SELECT p.name, p.description, p.datetime, p.condition, p.teams, p.nickname FROM projects p");
+        projects = new ArrayList<>(); 
+        projectsSearch = new ArrayList<>();
+        ResultSet rs = methodsSQL.getExecute("SELECT p.id,  p.name, p.description, p.datetime, p.condition, p.teams, p.nickname FROM projects p");
         
         try {
             while(rs.next()){
                 project = new Project();
-                project.setName(rs.getString(1));
-                project.setDescription(rs.getString(2));
-                project.setDatetime(rs.getString(3));
-                project.setCondition(rs.getInt(4));
-                project.setTeams(rs.getString(5));
-                project.setNickname(rs.getString(6));
-                
-                
-                
+                project.setId(rs.getInt(1));
+                project.setName(rs.getString(2));
+                project.setDescription(rs.getString(3));
+                project.setDatetime(rs.getString(4));
+                project.setCondition(rs.getInt(5));
+                project.setTeams(rs.getString(6));
+                project.setNickname(rs.getString(7));
+
                 projects.add(project);
             }    
         } catch (SQLException ex) {

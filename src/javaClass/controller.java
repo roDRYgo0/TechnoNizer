@@ -12,8 +12,10 @@ import event.addPrice;
 import event.allPrice;
 import event.price;
 import jFrame.addEventGral;
+import jFrame.addProject;
 import jFrame.addReminderGral;
 import java.awt.Image;
+import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -60,6 +62,7 @@ public class controller {
     
     public static allEvents allE;
   
+    public static addProject addPj;
     
     public static admin.userGrid userGrid;
     public static admin.userList userList;
@@ -75,7 +78,7 @@ public class controller {
     
     public static classMembership[] member = new classMembership[3];
     public static contactUsers[] contac = new contactUsers[10];
-    public static String[] genders = new String[2];
+    public static List<gender> genders;
     public static String[] questions;
     public static String[] answers;
     public static boolean actionCompleted = false;

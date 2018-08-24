@@ -161,9 +161,9 @@ public final class jpEditUser extends javax.swing.JPanel {
     
     void cargarComboBox(){
         cmbGender.removeAllItems();
-        for(int i = 0; i<2; i++)
-            cmbGender.addItem(controller.genders[i]);
-        cmbGender.setSelectedIndex(classUsuario.getId_gender());
+        for(int i = 0; i<controller.genders.size(); i++){
+            cmbGender.addItem(controller.genders.get(i).getGender());
+        }
     }
 
     @SuppressWarnings("unchecked")

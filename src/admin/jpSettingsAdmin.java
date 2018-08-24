@@ -2,6 +2,9 @@ package admin;
 
 import jFrame.admin;
 import java.awt.Color;
+import java.awt.Dimension;
+import javaClass.classAdmin;
+import javaClass.classMembership;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
@@ -39,6 +42,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         sortFree.setIcon(new controller().changeImage("/imagenes/sortDown.png", 36, 36));
         pnFree.setBackground(new Color(33,150,243));
         seleccionarMembership(membership);
+        loadGender();
     }
 
     @SuppressWarnings("unchecked")
@@ -79,6 +83,8 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         txtPrice = new javax.swing.JTextField();
         iconPrice = new javax.swing.JLabel();
         spPrice = new javax.swing.JSeparator();
+        scrollGender = new javax.swing.JScrollPane();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(254, 254, 254));
         setMaximumSize(new java.awt.Dimension(980, 601));
@@ -97,7 +103,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         jPanel1.setMinimumSize(new java.awt.Dimension(420, 603));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Selecciona tu membresia");
+        jLabel1.setText("Configura las membresias");
 
         pnFree.setBackground(new java.awt.Color(33, 150, 243));
         pnFree.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
@@ -498,6 +504,16 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                 .addContainerGap(82, Short.MAX_VALUE))
         );
 
+        scrollGender.setBackground(new java.awt.Color(255, 255, 255));
+        scrollGender.setBorder(null);
+        scrollGender.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollGender.setMaximumSize(new java.awt.Dimension(341, 250));
+        scrollGender.setMinimumSize(new java.awt.Dimension(341, 250));
+        scrollGender.setPreferredSize(new java.awt.Dimension(341, 250));
+
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel7.setText("Géneros");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -507,7 +523,12 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(jLabel2))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scrollGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(103, 103, 103))
@@ -521,7 +542,11 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(scrollGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -554,14 +579,30 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_pnPremiumMouseClicked
 
     private void btnChangeMembershipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeMembershipActionPerformed
-        classUsuario.setPreviousIdMemberships(classUsuario.getIdMemberships());
-        classUsuario.setIdMemberships(newMembership);
-        if(classUsuario.updateMembership()){
-            classUsuario.select();
-            standardization.showMessage("ok","Tu membresia fue actualizada");
-            house.settings();
+        if(standardization.campoVacio(txtDescription.getText()) || standardization.campoVacio(txtNumEvents.getText()) ||
+                standardization.campoVacio(txtAdmin.getText()) || standardization.campoVacio(txtMod.getText()) || 
+                standardization.campoVacio(txtPrice.getText())){
+            standardization.showMessage("warning", "Campos vacios");
+        }else{
+            classMembership member = new classMembership();
+            member.setDescription(txtDescription.getText());
+            member.setNumberEvents(Integer.parseInt(txtNumEvents.getText()));
+            member.setNumberAdmins(Integer.parseInt(txtAdmin.getText()));
+            member.setNumberModerators(Integer.parseInt(txtMod.getText()));
+            member.setNumberGuests(Integer.parseInt(txtMod.getText()));
+            member.setPrice(Float.parseFloat(txtPrice.getText()));
+            if(classAdmin.updateMemberShip(member, membership)){
+                standardization.showMessage("ok", "Actualizado correctamente");
+                controller.member[membership-1].setDescription(txtDescription.getText());
+                controller.member[membership-1].setNumberEvents(Integer.parseInt(txtAdmin.getText()));
+                controller.member[membership-1].setNumberAdmins(Integer.parseInt(txtAdmin.getText()));
+                controller.member[membership-1].setNumberModerators(Integer.parseInt(txtMod.getText()));
+                controller.member[membership-1].setNumberGuests(Integer.parseInt(txtMod.getText()));
+                controller.member[membership-1].setPrice(Float.parseFloat(txtPrice.getText()));
+                technonizer.TechnoNizer.admin.settings();
+            }else
+                standardization.showMessage("cancel", "No se logro actualizar");
         }
-            
     }//GEN-LAST:event_btnChangeMembershipActionPerformed
 
     private void txtDescriptionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescriptionFocusGained
@@ -582,7 +623,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNumEventsFocusGained
 
     private void txtNumEventsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumEventsFocusLost
-        spDescription.setBackground(Color.white);
+        spNumEvents.setBackground(Color.white);
     }//GEN-LAST:event_txtNumEventsFocusLost
 
     private void txtNumEventsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumEventsKeyTyped
@@ -721,6 +762,25 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
             iconPrice.setIcon(new controller().changeImage("/imagenes/dollar.png", 49, 49));
     }
     
+    public void loadGender(){
+        loadGender loadG = new loadGender();
+        loadG.setLocation(0, 0);
+        scrollGender.setViewportView(loadG);
+        scrollGender.revalidate();
+        scrollGender.repaint();
+        new Thread(()->{
+            classUsuario.loadGenders();
+            allGender g = new allGender();
+            g.setLocation(0,0);
+
+            g.setPreferredSize(new Dimension(341, 250+(61*classAdmin.getSpaceGender())));
+
+            scrollGender.setViewportView(g);
+            scrollGender.revalidate();
+            scrollGender.repaint();
+        }).start();
+    }
+    
     void limpiar(){
         pnFree.setBackground(new Color(180,225,255));
         pnVip.setBackground(new Color(180,225,255));
@@ -729,36 +789,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         sortVip.setIcon(null);
         sortPremium.setIcon(null);
     }
-    
-    
-    
-//    public void loadMyMember(){
-//        lblNameMember.setText(classUsuario.getMyMembership());
-//        lblDuration.setText(classUsuario.getDurationMem()+"");
-//        lblNumEvents.setText(classUsuario.getMyNumEvent()+"");
-//        switch(lblNameMember.getText()){
-//            case "Free":
-//                lblTypeMember.setIcon(new controller().changeImage("/imagenes/free.png", 40, 40));
-//                break;
-//            case "Vip":
-//                lblTypeMember.setIcon(new controller().changeImage("/imagenes/vip.png", 40, 40));
-//                break;
-//            case "Premium":
-//                lblTypeMember.setIcon(new controller().changeImage("/imagenes/premium.png", 40, 40));
-//                break;
-//        }
-//
-//        switch(lblNumEvents.getText()){
-//            case "-1":
-//                lblNumEvents.setText("Ilimitados");
-//                lblImageEvent.setIcon(new controller().changeImage("/imagenes/infinity.png", 40, 40));
-//                break;
-//            default:
-//                lblImageEvent.setIcon(new controller().changeImage("/imagenes/hashtag.png", 40, 40));
-//                break;
-//        }
-//    }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChangeMembership;
     private javax.swing.JLabel iconAdmin;
@@ -776,11 +807,13 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel pnFree;
     private javax.swing.JPanel pnPremium;
     private javax.swing.JPanel pnVip;
+    private javax.swing.JScrollPane scrollGender;
     private javax.swing.JLabel sortFree;
     private javax.swing.JLabel sortPremium;
     private javax.swing.JLabel sortVip;

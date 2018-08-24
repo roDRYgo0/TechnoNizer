@@ -16,6 +16,9 @@ numberGuests numeric(4),
 price smallmoney not null
 )
 
+select * from memberships
+
+/*UPDATE memberships SET name = ?, description = ?, condition = ?, numberEvents = ?, numberAdmins = ?, numberModerators = ?, numberGuests = ?, price = ? WHERE id = ?*/
 
 create table genders(
 id int not null primary key,
@@ -83,6 +86,10 @@ condition int not null,
 teams int not null,
 nickname nvarchar(50) not null references users(nickname)
 )
+
+alter table projects alter column datetime nvarchar(30)
+
+insert into projects values ('Expo','La expo para technonizer 2018','2018-08-23 10:25:13:031',1,0,'dev.rodrig')
 
 create table teams(
 id int identity(1,1) primary key not null,
@@ -284,6 +291,8 @@ dateTime nvarchar(360) not null,
 nickname nvarchar(50) not null references users(nickname),
 idType int not null
 )
+
+select * from genders
 
 insert into genders values (0, 'Femenino')
 insert into genders values (1, 'Masculino')

@@ -856,7 +856,7 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_pnAgendaMouseReleased
 
     private void pnSecurityMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSecurityMouseReleased
-        pnSecurity();
+//        pnSecurity();
     }//GEN-LAST:event_pnSecurityMouseReleased
 
     private void lblImageUserTopMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageUserTopMouseReleased
