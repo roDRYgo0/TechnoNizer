@@ -2,6 +2,8 @@ package javaClass;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class classUsuario {
     
@@ -276,6 +278,7 @@ public class classUsuario {
         controller.answers = new String[3];
         controller.questions = new String[3];
         classAdmin.restart();
+        loadGenders();
     }
     
     public static boolean select(boolean search, int user){
@@ -354,6 +357,8 @@ public class classUsuario {
         }
         if(status)
             status = classSecurityQuestions.select();
+        if(status)
+            status = classProjects.select();
         return status;
     }
     
@@ -409,16 +414,23 @@ public class classUsuario {
         for(int i=0; i < 3; i++){
             controller.member[i] = asignarDatos(i+1);
         }
+        loadGenders();
+    }
+    
+    public static void loadGenders(){
         controller.genders = capturarGeneros();
     }
     
-    static String[] capturarGeneros(){
-        String[] genders = new String[2];
-        
-        ResultSet rs = methodsSQL.getExecute("SELECT gender FROM genders");
+    static List<gender> capturarGeneros(){
+        List<gender>  genders = new ArrayList<>();
+        gender g;
+        ResultSet rs = methodsSQL.getExecute("SELECT id, gender FROM genders");
         try {
-            for(int i = 0; rs.next(); i++){
-                genders[i]= rs.getString(1);
+            while(rs.next()){
+                g = new gender();
+                g.setId(rs.getInt(1));
+                g.setGender(rs.getString(2));
+                genders.add(g);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

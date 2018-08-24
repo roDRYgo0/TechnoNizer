@@ -9,7 +9,7 @@ public class loadCreateAccount extends Thread {
         for(int i=0; i < 3; i++){
             controller.member[i] = capturarDatos(i+1);
         }
-        controller.genders = capturarGeneros();
+        classUsuario.loadGenders();
         controller.actionCompleted = true;
         System.out.println("hello");
     }

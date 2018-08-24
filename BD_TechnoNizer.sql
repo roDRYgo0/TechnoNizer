@@ -87,6 +87,13 @@ teams int not null,
 nickname nvarchar(50) not null references users(nickname)
 )
 
+alter table projects alter column datetime nvarchar(30)
+
+insert into projects values ('Expo','La expo para technonizer 2018','2018-08-23 10:25:13:031',1,0,'dev.rodrig')
+select * from projects
+
+SELECT p.id,  p.name, p.description, p.datetime, p.condition, p.teams, p.nickname FROM projects p
+
 create table teams(
 id int identity(1,1) primary key not null,
 nicknameGuest nvarchar(50) not null references users(nickname),
@@ -287,6 +294,8 @@ dateTime nvarchar(360) not null,
 nickname nvarchar(50) not null references users(nickname),
 idType int not null
 )
+
+select * from genders
 
 insert into genders values (0, 'Femenino')
 insert into genders values (1, 'Masculino')

@@ -270,7 +270,7 @@ public class standardization {
     public static void showMessage(String Image, String Message){
         if(!Image.equals(""))
             mess.changeImage(Image);
-        
+        mess.setFram(null);
         mess.changeMessage(Message);
         mess.setVisible(true);
         mess.setLocationRelativeTo(TechnoNizer.log);
@@ -289,7 +289,8 @@ public class standardization {
             mess.changeImage(Image);
         mess.changeMessage(Message);
         mess.setVisible(true);
-        mess.setLocationRelativeTo(TechnoNizer.log);
+        mess.setFram(frame);
+        mess.setLocationRelativeTo(frame);
         frame.setEnabled(false);
         frame.setOpacity(0.85f);
     }

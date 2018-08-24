@@ -10,6 +10,7 @@ import static javaClass.controller.jpH;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import projects.jpProjects;
 
 public class home extends javax.swing.JFrame {
 
@@ -25,7 +26,6 @@ public class home extends javax.swing.JFrame {
         
         new Thread(()->{
             classContact.select();
-            classProjects.select();
         }).start();
         
         imageUserTop = lblImageUserTop;
@@ -778,24 +778,7 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnGeneralMouseReleased
 
     private void pnProjMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnProjMouseReleased
-        if(classUsuario.getCondition()==1){
-            disable();
-            controller.jpDis = new jpDisable();
-            controller.jpDis.setLocation(0,0);
-
-            scrollContainer.setViewportView(controller.jpDis);
-            scrollContainer.revalidate();
-            scrollContainer.repaint();
-        }else{
-            disable();
-            pnProj.setBackground(new Color(52, 52, 52));
-            controller.jpPM= new jpProjectsMenu();
-            controller.jpPM.setLocation(0,0);
-
-            scrollContainer.setViewportView(controller.jpPM);
-            scrollContainer.revalidate();
-            scrollContainer.repaint();
-        }
+        pnProjects();
     }//GEN-LAST:event_pnProjMouseReleased
 
     private void pnMemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnMemMouseReleased
@@ -892,12 +875,44 @@ public class home extends javax.swing.JFrame {
     }
     
     public void pnEvent(){
-        MenuEvent eve = new MenuEvent();
-        eve.setLocation(0,0);
+        if(classUsuario.getCondition()==1){
+            disable();
+            controller.jpDis = new jpDisable();
+            controller.jpDis.setLocation(0,0);
 
-        scrollContainer.setViewportView(eve);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
+            scrollContainer.setViewportView(controller.jpDis);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+        }else{
+            disable();
+            MenuEvent eve = new MenuEvent();
+            eve.setLocation(0,0);
+
+            scrollContainer.setViewportView(eve);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+        }
+    }
+    
+    public void pnProjects(){
+        if(classUsuario.getCondition()==1){
+            disable();
+            controller.jpDis = new jpDisable();
+            controller.jpDis.setLocation(0,0);
+
+            scrollContainer.setViewportView(controller.jpDis);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+        }else{
+            disable();
+            pnProj.setBackground(new Color(52, 52, 52));
+            controller.jpPM= new jpProjectsMenu();
+            controller.jpPM.setLocation(0,0);
+
+            scrollContainer.setViewportView(controller.jpPM);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+        }
     }
     
     public void pnSecurity(){
@@ -907,6 +922,18 @@ public class home extends javax.swing.JFrame {
         controller.jpSe.setLocation(0, 0);
         
         scrollContainer.setViewportView(controller.jpSe);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
+    public void showYourProjects(boolean search){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        jpProjects jpP = new jpProjects(search);
+        jpP.setPreferredSize(new Dimension(980,601));
+        jpP.setLocation(0,0);
+
+        scrollContainer.setViewportView(jpP);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
