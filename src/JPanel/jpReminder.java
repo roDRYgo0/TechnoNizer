@@ -279,7 +279,7 @@ public class jpReminder extends javax.swing.JPanel {
 
     void search(){
         classReminder.remindersSearch.clear();
-        for(javaClass.reminder e : classReminder.reminders){
+        for(javaClass.classReminder1 e : classReminder.reminders){
             if(e.getReminder().toLowerCase().contains(txtSearch.getText().toLowerCase())){
                 classReminder.remindersSearch.add(e);
             }else{

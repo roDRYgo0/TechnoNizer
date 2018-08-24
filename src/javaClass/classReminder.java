@@ -32,8 +32,8 @@ public class classReminder {
     private static String nickname;
     
     
-    public static List<reminder> reminders = new ArrayList<reminder>();
-    public static List<reminder> remindersSearch = new ArrayList<reminder>();
+    public static List<classReminder1> reminders = new ArrayList<classReminder1>();
+    public static List<classReminder1> remindersSearch = new ArrayList<classReminder1>();
 
     public static void setId(Integer id) {
         classReminder.id = id;
@@ -134,12 +134,12 @@ public static boolean updatereminder(){
 
  public static boolean select(){
         boolean status = false;
-        reminder recordatorio;
+        classReminder1 recordatorio;
         ResultSet rs = methodsSQL.getExecute("SELECT re.id, re.condition, re.reminder, re.alarmDateTime  FROM reminders re WHERE re.nickname =?", classUsuario.getNickname());
         
         try {
             while(rs.next()){
-                recordatorio = new reminder();
+                recordatorio = new classReminder1();
                 recordatorio.setId(rs.getInt(1));
                 recordatorio.setCondition(rs.getInt(2));
                 recordatorio.setReminder(rs.getString(3));

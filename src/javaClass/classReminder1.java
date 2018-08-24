@@ -2,7 +2,7 @@ package javaClass;
 
 /** @author rodri */
 
-public class reminder {
+public class classReminder1 {
     private Integer id; 
     private Integer condition;
     private String reminder;
@@ -58,6 +58,7 @@ public class reminder {
     public void setMyNumberRemUse(Integer myNumberRemUse) {
         this.myNumberRemUse = myNumberRemUse;
     }
+    
     private void restartReminder(){
         id=null;
         reminder=null;
