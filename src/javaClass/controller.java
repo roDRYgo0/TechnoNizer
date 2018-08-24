@@ -34,7 +34,7 @@ public class controller {
     public static jpWelcome jpW;
     public static jpNewPassword jpNP;
     public static jpHome jpH;
-    public static jpProjects jpPJ;
+    public static jpProjectsMenu jpPM;
     public static securityAccount secAcc;
     public static jpMembershipChange jpMC;
     public static jpEditUser jpU;

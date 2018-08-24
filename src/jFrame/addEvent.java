@@ -238,7 +238,7 @@ public class addEvent extends javax.swing.JFrame {
         standardization.hide(controller.addEvents);
         
         if(classEvent.insert()){
-            standardization.showMessage("ok", "Exito al crear evento");
+            
             classUsuario.setMyNumberEventUse(classUsuario.getMyNumberEventUse()+1);
             event evento = new event();
             evento.setId(classEvent.getId());
@@ -252,7 +252,9 @@ public class addEvent extends javax.swing.JFrame {
             evento.setCondition(classEvent.getCondition());
             evento.setNicknameCreator(classUsuario.getNickname());
             classEvent.eventos.add(evento);
-            technonizer.TechnoNizer.home.pnEvent(true);
+            technonizer.TechnoNizer.home.showYourEvents(false);
+            controller.rootFrame = technonizer.TechnoNizer.home;
+            standardization.showMessage("ok", "Exito al crear evento");
         }
         else
             standardization.showMessage("cancel", "No se pudo crear el evento");

@@ -25,6 +25,7 @@ public class home extends javax.swing.JFrame {
         
         new Thread(()->{
             classContact.select();
+            classProjects.select();
         }).start();
         
         imageUserTop = lblImageUserTop;
@@ -742,6 +743,18 @@ public class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
+    public void showYourEvents(boolean search){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        controller.jpE = new jpEvent(search);
+        controller.jpE.setPreferredSize(new Dimension(980,601));
+        controller.jpE.setLocation(0,0);
+
+        scrollContainer.setViewportView(controller.jpE);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
     public void membershipChange(){
         disable();
         pnMem.setBackground(new Color(52, 52, 52));
@@ -776,10 +789,10 @@ public class home extends javax.swing.JFrame {
         }else{
             disable();
             pnProj.setBackground(new Color(52, 52, 52));
-            controller.jpPJ = new jpProjects();
-            controller.jpPJ.setLocation(0,0);
+            controller.jpPM= new jpProjectsMenu();
+            controller.jpPM.setLocation(0,0);
 
-            scrollContainer.setViewportView(controller.jpPJ);
+            scrollContainer.setViewportView(controller.jpPM);
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }
@@ -809,7 +822,7 @@ public class home extends javax.swing.JFrame {
         }else{
             disable();
             pnEvents.setBackground(new Color(52, 52, 52));
-            pnEvent(true);
+            pnEvent();
         }
     }//GEN-LAST:event_pnEventsMouseReleased
 
@@ -878,14 +891,9 @@ public class home extends javax.swing.JFrame {
         }
     }
     
-    public void pnEvent(boolean start){
+    public void pnEvent(){
         MenuEvent eve = new MenuEvent();
         eve.setLocation(0,0);
-
-        int x = eve.getPreferredSize().width;
-        int y = eve.getPreferredSize().height;
-
-        eve.setPreferredSize(new Dimension(x, y));
 
         scrollContainer.setViewportView(eve);
         scrollContainer.revalidate();

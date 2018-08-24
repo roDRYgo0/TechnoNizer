@@ -27,7 +27,7 @@ public class jpUsers extends javax.swing.JPanel {
     
     void loadImage(){
         iconSearch.setIcon(new controller().changeImage("/imagenes/search.png", 35, 35));
-        iconView.setIcon(new controller().changeImage("/imagenes/viewGrid.png", 50, 50));
+        iconView.setIcon(new controller().changeImage("/imagenes/viewList.png", 50, 50));
     }
     
     @SuppressWarnings("unchecked")
@@ -237,14 +237,14 @@ public class jpUsers extends javax.swing.JPanel {
     private void iconViewMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconViewMouseReleased
         if(view == 0){
             view = 1;
-            iconView.setIcon(new controller().changeImage("/imagenes/viewList.png", 50, 50));
+            iconView.setIcon(new controller().changeImage("/imagenes/viewGrid.png", 50, 50));
             if(txtSearch.getText().trim().isEmpty())
                 insertarPaneles(classAdmin.users.size(), false);
             else
                 search();
         }else{
             view = 0;
-            iconView.setIcon(new controller().changeImage("/imagenes/viewGrid.png", 50, 50));
+            iconView.setIcon(new controller().changeImage("/imagenes/viewList.png", 50, 50));
             if(txtSearch.getText().trim().isEmpty())
                 insertarPaneles(classAdmin.users.size(), false);
             else
