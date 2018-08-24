@@ -78,6 +78,7 @@ public class reminder {
     public void setMyNumberRemUse(Integer myNumberRemUse) {
         this.myNumberRemUse = myNumberRemUse;
     }
+    
     private void restartReminder(){
         id=null;
         reminder=null;

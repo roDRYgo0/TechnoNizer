@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
+import javaClass.classUsuario;
 import javaClass.connection;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -285,10 +286,10 @@ public class jpUsers extends javax.swing.JPanel {
     private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
        String path="";
         try{
-            File file = new File("src/Reportes/AgrupadoPrueba.jasper");
+            File file = new File("Usuarios.jasper");
             Map parametros = new HashMap();
-                
-            InputStream reportStream = new FileInputStream("C:\\Users\\Lenovo\\Documents\\EXPO 2018\\iReport-5.6.0\\iReport-5.6.0\\Reportes.jrxml");
+
+            InputStream reportStream = new FileInputStream("Usuarios.jasper");
             JasperReport jr=(JasperReport)JRLoader.loadObject(file);
             Connection cn= connection.getConnection();
             JasperPrint print =JasperFillManager.fillReport(jr,parametros,cn);

@@ -12,7 +12,8 @@ public class connection {
 
         Connection on = null;
         try{
-            String url = "jdbc:sqlserver://DESKTOP-GFICF12:1433;databaseName=BD_TechnoNizer";
+            String url = "jdbc:sqlserver://192.168.1.103:1433;databaseName=BD_TechnoNizer";
+
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             on = DriverManager.getConnection(url,"technonizerdb","Masupial.48");
               }catch(ClassNotFoundException | SQLException e){

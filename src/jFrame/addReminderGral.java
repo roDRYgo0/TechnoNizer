@@ -189,7 +189,7 @@ public class addReminderGral extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtReminder);
 
         txtYearEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtYearEnd.setText("2000");
+        txtYearEnd.setText("2018");
         txtYearEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtYearEnd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -209,7 +209,7 @@ public class addReminderGral extends javax.swing.JFrame {
         cmbMonthEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         txtDayEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtDayEnd.setText("12");
+        txtDayEnd.setText("24");
         txtDayEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtDayEnd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
