@@ -210,13 +210,7 @@ public class standardization {
         return icono;
     }
     
-     public static void showaddProject(JFrame over, JTable tabla){
-        aProj = new AddProject(tabla);
-        aProj.setVisible(true);
-        aProj.setLocationRelativeTo(over);
-        over.setEnabled(false);
-        over.setOpacity(0.85f);
-    }
+    
      
       public static void showupdateProject(JFrame over){
         uProj = new UpdateProject();
@@ -226,12 +220,7 @@ public class standardization {
         over.setOpacity(0.85f);
     }
     
-    public static void hideaddProject(JFrame over){
-        over.setVisible(true);
-        over.setEnabled(true);
-        over.setOpacity(1);
-        aProj.setVisible(false);
-    }
+   
     public static void showaddReminder(JFrame over, JTable tabla){
         aRem = new AddReminder(tabla);
          aRem.setVisible(true);
@@ -248,20 +237,7 @@ public class standardization {
     }
     
     
-    public static void showdeleteProject(JFrame over, JTable tabla){
-        dProj = new DeleteProject(tabla);
-        dProj.setVisible(true);
-        dProj.setLocationRelativeTo(over);
-        over.setEnabled(false);
-        over.setOpacity(0.85f);
-    }
-    
-    public static void hidedeleteProject(JFrame over){
-        over.setVisible(true);
-        over.setEnabled(true);
-        over.setOpacity(1);
-        dProj.setVisible(false);
-    }
+   
      public static void showdeleteReminder(JFrame over, JTable tabla){
         dRem = new DeleteReminder(tabla);
         dRem.setVisible(true);
@@ -335,9 +311,9 @@ public class standardization {
         }).start();
     }
     
-    public static void invokeAdmin(boolean load)
+    public static void invokeAdmin()
     {
-        admin = new admin(load);
+        admin = new admin();
         admin.setLocationRelativeTo(null);
         log.setVisible(false);
         admin.setVisible(true);
@@ -352,6 +328,14 @@ public class standardization {
         log = new logIn();
         log.setLocationRelativeTo(null);
         home.setVisible(false);
+        log.setVisible(true);
+    }
+    
+    public static void invokeLogin(boolean admi)
+    {
+        log = new logIn();
+        log.setLocationRelativeTo(null);
+        admin.setVisible(false);
         log.setVisible(true);
     }
     

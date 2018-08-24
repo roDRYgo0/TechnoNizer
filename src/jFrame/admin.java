@@ -3,6 +3,7 @@ package jFrame;
 import JPanel.*;
 import admin.jpEditUserAdmin;
 import admin.jpSecurityUser;
+import admin.jpSettingsAdmin;
 import admin.jpUsers;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -21,22 +22,12 @@ public class admin extends javax.swing.JFrame {
     public static JLabel imageUserTop;
     public static JLabel imageUserLeft;
     
-    public admin(boolean load) {
+    public admin() {
         initComponents();
-        
-        new Thread(()->{
-            
-        }).start();
         
         imageUserTop = lblImageUserTop;
         imageUserLeft = lblImageUserLeft;
-        
-        if(load){
-            System.out.println("listo");
-        }
-        else{
-            
-        }
+ 
         controller.rootFrame = this;
         this.internet = logIn.internet;
         load();
@@ -54,13 +45,13 @@ public class admin extends javax.swing.JFrame {
         lblImageUserTop.setIcon(new controller().changeImage("/imagenes/services.png", 24, 24));
         lblImageUserTop.setText("Administración");
         
-        lblStart.setIcon(new controller().changeImage("/imagenes/home.png", 24, 24));
-        lblUser.setIcon(new controller().changeImage("/imagenes/username.png", 24, 24));
-        lblMembership.setIcon(new controller().changeImage("/imagenes/membership.png", 24, 24));
-        lblSecurity.setIcon(new controller().changeImage("/imagenes/shield.png", 24, 24));
-        lblEvent.setIcon(new controller().changeImage("/imagenes/event.png", 24, 24));
-        lblProject.setIcon(new controller().changeImage("/imagenes/project.png", 24, 24));
-        lblAgenda.setIcon(new controller().changeImage("/imagenes/agenda.png", 24, 24));
+        iconStart.setIcon(new controller().changeImage("/imagenes/home.png", 24, 24));
+        iconUser.setIcon(new controller().changeImage("/imagenes/username.png", 24, 24));
+        iconSettings.setIcon(new controller().changeImage("/imagenes/setting.png", 24, 24));
+        iconSecurity.setIcon(new controller().changeImage("/imagenes/shield.png", 24, 24));
+        iconEvents.setIcon(new controller().changeImage("/imagenes/event.png", 24, 24));
+        iconProjects.setIcon(new controller().changeImage("/imagenes/project.png", 24, 24));
+        iconAgenda.setIcon(new controller().changeImage("/imagenes/agenda.png", 24, 24));
 
 
         loadData("settings","", lblSettings);
@@ -92,28 +83,28 @@ public class admin extends javax.swing.JFrame {
         lblAdmin = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
         pnGeneral = new javax.swing.JPanel();
-        lblStart = new javax.swing.JLabel();
+        iconStart = new javax.swing.JLabel();
         lblGral = new javax.swing.JLabel();
         pnUser = new javax.swing.JPanel();
-        lblUser = new javax.swing.JLabel();
+        iconUser = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        pnMem = new javax.swing.JPanel();
-        lblMembership = new javax.swing.JLabel();
+        pnSettings = new javax.swing.JPanel();
+        iconSettings = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         lblImageUserLeft = new javax.swing.JLabel();
         pnEvents = new javax.swing.JPanel();
-        lblEvent = new javax.swing.JLabel();
+        iconEvents = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         pnProj = new javax.swing.JPanel();
-        lblProject = new javax.swing.JLabel();
+        iconProjects = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         pnAgenda = new javax.swing.JPanel();
-        lblAgenda = new javax.swing.JLabel();
+        iconAgenda = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         pnSecurity = new javax.swing.JPanel();
-        lblSecurity = new javax.swing.JLabel();
+        iconSecurity = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         lblAlert = new javax.swing.JLabel();
         scrollContainer = new javax.swing.JScrollPane();
@@ -325,9 +316,9 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        lblStart.setMaximumSize(new java.awt.Dimension(28, 28));
-        lblStart.setMinimumSize(new java.awt.Dimension(28, 28));
-        lblStart.setPreferredSize(new java.awt.Dimension(28, 28));
+        iconStart.setMaximumSize(new java.awt.Dimension(28, 28));
+        iconStart.setMinimumSize(new java.awt.Dimension(28, 28));
+        iconStart.setPreferredSize(new java.awt.Dimension(28, 28));
 
         lblGral.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblGral.setForeground(new java.awt.Color(255, 255, 255));
@@ -339,7 +330,7 @@ public class admin extends javax.swing.JFrame {
             pnGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnGeneralLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(lblStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblGral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -349,7 +340,7 @@ public class admin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGeneralLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(iconStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblGral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -361,9 +352,9 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        lblUser.setMaximumSize(new java.awt.Dimension(28, 28));
-        lblUser.setMinimumSize(new java.awt.Dimension(28, 28));
-        lblUser.setPreferredSize(new java.awt.Dimension(28, 28));
+        iconUser.setMaximumSize(new java.awt.Dimension(28, 28));
+        iconUser.setMinimumSize(new java.awt.Dimension(28, 28));
+        iconUser.setPreferredSize(new java.awt.Dimension(28, 28));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -375,7 +366,7 @@ public class admin extends javax.swing.JFrame {
             pnUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnUserLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(iconUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -385,43 +376,43 @@ public class admin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUserLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(iconUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        pnMem.setBackground(new java.awt.Color(34, 34, 34));
-        pnMem.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnSettings.setBackground(new java.awt.Color(34, 34, 34));
+        pnSettings.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                pnMemMouseReleased(evt);
+                pnSettingsMouseReleased(evt);
             }
         });
 
-        lblMembership.setMaximumSize(new java.awt.Dimension(28, 28));
-        lblMembership.setMinimumSize(new java.awt.Dimension(28, 28));
-        lblMembership.setPreferredSize(new java.awt.Dimension(28, 28));
+        iconSettings.setMaximumSize(new java.awt.Dimension(28, 28));
+        iconSettings.setMinimumSize(new java.awt.Dimension(28, 28));
+        iconSettings.setPreferredSize(new java.awt.Dimension(28, 28));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Membresias");
+        jLabel5.setText("Configuraciones");
 
-        javax.swing.GroupLayout pnMemLayout = new javax.swing.GroupLayout(pnMem);
-        pnMem.setLayout(pnMemLayout);
-        pnMemLayout.setHorizontalGroup(
-            pnMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnMemLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnSettingsLayout = new javax.swing.GroupLayout(pnSettings);
+        pnSettings.setLayout(pnSettingsLayout);
+        pnSettingsLayout.setHorizontalGroup(
+            pnSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnSettingsLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(lblMembership, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(iconSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        pnMemLayout.setVerticalGroup(
-            pnMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMemLayout.createSequentialGroup()
+        pnSettingsLayout.setVerticalGroup(
+            pnSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSettingsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMembership, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(iconSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -455,9 +446,9 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        lblEvent.setMaximumSize(new java.awt.Dimension(28, 28));
-        lblEvent.setMinimumSize(new java.awt.Dimension(28, 28));
-        lblEvent.setPreferredSize(new java.awt.Dimension(28, 28));
+        iconEvents.setMaximumSize(new java.awt.Dimension(28, 28));
+        iconEvents.setMinimumSize(new java.awt.Dimension(28, 28));
+        iconEvents.setPreferredSize(new java.awt.Dimension(28, 28));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -469,7 +460,7 @@ public class admin extends javax.swing.JFrame {
             pnEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnEventsLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(iconEvents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -479,7 +470,7 @@ public class admin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnEventsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEvent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(iconEvents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -491,9 +482,9 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        lblProject.setMaximumSize(new java.awt.Dimension(28, 28));
-        lblProject.setMinimumSize(new java.awt.Dimension(28, 28));
-        lblProject.setPreferredSize(new java.awt.Dimension(28, 28));
+        iconProjects.setMaximumSize(new java.awt.Dimension(28, 28));
+        iconProjects.setMinimumSize(new java.awt.Dimension(28, 28));
+        iconProjects.setPreferredSize(new java.awt.Dimension(28, 28));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -505,7 +496,7 @@ public class admin extends javax.swing.JFrame {
             pnProjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnProjLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(lblProject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(iconProjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -516,7 +507,7 @@ public class admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnProjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(iconProjects, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -527,9 +518,9 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        lblAgenda.setMaximumSize(new java.awt.Dimension(28, 28));
-        lblAgenda.setMinimumSize(new java.awt.Dimension(28, 28));
-        lblAgenda.setPreferredSize(new java.awt.Dimension(28, 28));
+        iconAgenda.setMaximumSize(new java.awt.Dimension(28, 28));
+        iconAgenda.setMinimumSize(new java.awt.Dimension(28, 28));
+        iconAgenda.setPreferredSize(new java.awt.Dimension(28, 28));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -541,7 +532,7 @@ public class admin extends javax.swing.JFrame {
             pnAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnAgendaLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(lblAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(iconAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -552,7 +543,7 @@ public class admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(iconAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -563,9 +554,9 @@ public class admin extends javax.swing.JFrame {
             }
         });
 
-        lblSecurity.setMaximumSize(new java.awt.Dimension(28, 28));
-        lblSecurity.setMinimumSize(new java.awt.Dimension(28, 28));
-        lblSecurity.setPreferredSize(new java.awt.Dimension(28, 28));
+        iconSecurity.setMaximumSize(new java.awt.Dimension(28, 28));
+        iconSecurity.setMinimumSize(new java.awt.Dimension(28, 28));
+        iconSecurity.setPreferredSize(new java.awt.Dimension(28, 28));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -581,7 +572,7 @@ public class admin extends javax.swing.JFrame {
             pnSecurityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnSecurityLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
-                .addComponent(lblSecurity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(iconSecurity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -593,7 +584,7 @@ public class admin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSecurityLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnSecurityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblSecurity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(iconSecurity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -605,7 +596,7 @@ public class admin extends javax.swing.JFrame {
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnMem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnEvents, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnProj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -622,7 +613,7 @@ public class admin extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(pnUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(pnMem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(pnSecurity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -723,18 +714,25 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_pnUserMouseReleased
 
     public void showUsers(){
-        disable();
-        pnUser.setBackground(new Color(52, 52, 52));
-        classUsuario.restartUser();
-        classContact.reset();
-        
-        controller.jpUs = new jpUsers();
-        controller.jpUs.setPreferredSize(new Dimension(980,601));
-        controller.jpUs.setLocation(0,0);
+        loading();
+       new Thread(()->{
+            disable();
+            pnUser.setBackground(new Color(52, 52, 52));
+            classUsuario.restartUser();
+            classContact.reset();
 
-        scrollContainer.setViewportView(controller.jpUs);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
+            classAdmin.select();
+            classReminder.select();
+            classAdmin.selectLog();
+            
+            controller.jpUs = new jpUsers();
+            controller.jpUs.setPreferredSize(new Dimension(980,601));
+            controller.jpUs.setLocation(0,0);
+
+            scrollContainer.setViewportView(controller.jpUs);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+       }) .start();
     }
     
     public void showUser(int user, boolean search){
@@ -770,15 +768,15 @@ public class admin extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
-    public void membershipChange(){
-//        disable();
-//        pnMem.setBackground(new Color(52, 52, 52));
-//        controller.jpMC = new jpMembershipChange(this);
-//        controller.jpMC.setLocation(0,0);
-//
-//        scrollContainer.setViewportView(controller.jpMC);
-//        scrollContainer.revalidate();
-//        scrollContainer.repaint();
+    public void settings(){
+        disable();
+        pnSettings.setBackground(new Color(52, 52, 52));
+        jpSettingsAdmin jpSe = new jpSettingsAdmin(this);
+        jpSe.setLocation(0,0);
+
+        scrollContainer.setViewportView(jpSe);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
     }
     
     private void pnGeneralMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnGeneralMouseReleased
@@ -797,25 +795,25 @@ public class admin extends javax.swing.JFrame {
         }else{
             disable();
             pnProj.setBackground(new Color(52, 52, 52));
-            controller.jpPJ = new jpProjects();
-            controller.jpPJ.setLocation(0,0);
+            controller.jpPM = new jpProjectsMenu();
+            controller.jpPM.setLocation(0,0);
 
-            scrollContainer.setViewportView(controller.jpPJ);
+            scrollContainer.setViewportView(controller.jpPM);
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }
     }//GEN-LAST:event_pnProjMouseReleased
 
-    private void pnMemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnMemMouseReleased
-        membershipChange();
-    }//GEN-LAST:event_pnMemMouseReleased
+    private void pnSettingsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSettingsMouseReleased
+        settings();
+    }//GEN-LAST:event_pnSettingsMouseReleased
 
     private void lblSettingsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettingsMouseReleased
         popupSettings.show(this,lblSettings.getX()-45,lblSettings.getY()+70);
     }//GEN-LAST:event_lblSettingsMouseReleased
 
     private void itemSettingsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemSettingsMouseReleased
-        standardization.invokeLogin();
+        standardization.invokeLogin(true);
     }//GEN-LAST:event_itemSettingsMouseReleased
 
     private void pnEventsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnEventsMouseReleased
@@ -871,7 +869,7 @@ public class admin extends javax.swing.JFrame {
     public void disable (){
         pnGeneral.setBackground(new Color(34, 34, 34));
         pnUser.setBackground(new Color(34, 34, 34));
-        pnMem.setBackground(new Color(34, 34, 34));
+        pnSettings.setBackground(new Color(34, 34, 34));
         pnSecurity.setBackground(new Color(34, 34, 34));
         if(classUsuario.getCondition()!=1)
         {
@@ -920,6 +918,13 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnMax;
     private javax.swing.JButton btnMin;
+    private javax.swing.JLabel iconAgenda;
+    private javax.swing.JLabel iconEvents;
+    private javax.swing.JLabel iconProjects;
+    private javax.swing.JLabel iconSecurity;
+    private javax.swing.JLabel iconSettings;
+    private javax.swing.JLabel iconStart;
+    private javax.swing.JLabel iconUser;
     private javax.swing.JMenuItem itemEnglish;
     private javax.swing.JMenuItem itemSettings;
     private javax.swing.JMenuItem itemSpanish;
@@ -934,26 +939,19 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAdmin;
-    private javax.swing.JLabel lblAgenda;
     private javax.swing.JLabel lblAlert;
-    private javax.swing.JLabel lblEvent;
     private javax.swing.JLabel lblGral;
     private javax.swing.JLabel lblImageUserLeft;
     private javax.swing.JLabel lblImageUserTop;
     private javax.swing.JLabel lblLenguage;
-    private javax.swing.JLabel lblMembership;
-    private javax.swing.JLabel lblProject;
-    private javax.swing.JLabel lblSecurity;
     private javax.swing.JLabel lblSettings;
-    private javax.swing.JLabel lblStart;
-    private javax.swing.JLabel lblUser;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JPanel pnAgenda;
     private javax.swing.JPanel pnEvents;
     private javax.swing.JPanel pnGeneral;
-    private javax.swing.JPanel pnMem;
     private javax.swing.JPanel pnProj;
     private javax.swing.JPanel pnSecurity;
+    private javax.swing.JPanel pnSettings;
     private javax.swing.JPanel pnUser;
     private javax.swing.JPopupMenu popupLenguage;
     private javax.swing.JPopupMenu popupSettings;

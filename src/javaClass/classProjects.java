@@ -1,17 +1,27 @@
 package javaClass;
 
-import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class classProjects {
 
-    
+    private static Integer id;
     private static String name;
     private static String description;
     private static String datetime; 
     private static Integer condition;
     private static String teams;
     private static String nickname;
- private static Integer id;
+ 
+    
+     public static List<Project> projects = new ArrayList<Project>();
+    public static List<Project> projectsSearch = new ArrayList<Project>();
+    
     
     //<editor-fold defaultstate="collapsed" desc="Getter y Setter">
     
@@ -75,33 +85,39 @@ public static Integer getId() {
     }
     //</editor-fold>
     
-    public static boolean insert(){
+    public static boolean select(){
         boolean status = false;
-        status = methodsSQL.execute("INSERT INTO projects (name, description, datetime, condition, teams, nickname) VALUES ( ?, ?, ?, ?, ?, ?)",
-                name, description, datetime, 1, 0, "asd");
-        return status;
+        Project project;
+        ResultSet rs = methodsSQL.getExecute("SELECT p.name, p.description, p.datetime, p.condition, p.teams, p.nickname FROM projects p");
+        
+        try {
+            while(rs.next()){
+                project = new Project();
+                project.setName(rs.getString(1));
+                project.setDescription(rs.getString(2));
+                project.setDatetime(rs.getString(3));
+                project.setCondition(rs.getInt(4));
+                project.setTeams(rs.getString(5));
+                project.setNickname(rs.getString(6));
+                
+                
+                
+                projects.add(project);
+            }    
+        } catch (SQLException ex) {
+            Logger.getLogger(classProjects.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
-public static DefaultTableModel cargarInte() {
-
-           
-           DefaultTableModel model = methodsSQL.getTableModel("SELECT id, name , description , datetime  from projects", "ID", "Nombre", "Descripción", "Fecha");
-       return model;
-   }
-
-public static boolean deleteProj(){
-    boolean status = false;
-    status = methodsSQL.execute("DELETE FROM projects where id = ?", id);
-    return status;
-  
+   
+    
+    
     }
 
-public static boolean updateProj(){
-    boolean status = false;
-        status = methodsSQL.execute("UPDATE projects SET name=? , description=? , datetime=?, condition=?, teams=? where id=?)",
-                name, description, datetime, 1, 0, id);
-        return status;
-    }
-}
+
+
+
+
 
    
     

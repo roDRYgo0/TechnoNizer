@@ -22,6 +22,14 @@ public class classAdmin {
     static String[] birthdate;
     static String birth;
     
+    
+    
+    public static void restart(){
+        users = new ArrayList<>();
+        usersSearch = new ArrayList<>();
+        logs = new ArrayList<>();
+    }
+    
     public static int getSpaceLog(){
         if(jpEditUserAdmin.logs.size()>4){
             return jpEditUserAdmin.logs.size() - 4;
@@ -83,7 +91,7 @@ public class classAdmin {
                     usuario.setEneventMember( methodsSQL.getExecuteInt("SELECT count(*) FROM staff s, events e WHERE s.idEvent = e.id and s.nickname = ?", usuario.getNickname()));
                 usuario.setEneventGuest(696);
                 
-                classAdmin.users.add(usuario); 
+                users.add(usuario); 
             }
             status = true;
         } catch (SQLException ex) {
