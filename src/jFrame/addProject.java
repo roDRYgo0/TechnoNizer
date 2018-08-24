@@ -243,19 +243,22 @@ public class addProject extends javax.swing.JFrame {
             classProjects.setName(txtProject.getText());
             classProjects.setDescription(txtDescription.getText());
 
-            if(classProjects.insert()){
-                
-                new Thread(()->{
-                    classProjects.select();
-                    
-                    technonizer.TechnoNizer.home.showYourProjects(false);
-                    controller.rootFrame = technonizer.TechnoNizer.home;
-                    standardization.hide(controller.addPj);
-                    standardization.showMessage("ok","Ingresado correctamente");
-                }).start();
+            if(methodsSQL.exists("SELECT name FROM projects WHERE name = ?", txtProject.getText()))
+                standardization.showMessage("cancel","Ya existe este proyecto",this);
+            else{
+                if(classProjects.insert()){
+                    new Thread(()->{
+                        classProjects.select();
+
+                        technonizer.TechnoNizer.home.showYourProjects(false);
+                        controller.rootFrame = technonizer.TechnoNizer.home;
+                        standardization.hide(controller.addPj);
+                        standardization.showMessage("ok","Ingresado correctamente");
+                    }).start();
+                }
+                else
+                    standardization.showMessage("cancel","No se logro ingresae",this);
             }
-            else
-                standardization.showMessage("cancel","No se logro ingresae",this);
             
            
 

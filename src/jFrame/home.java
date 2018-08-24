@@ -26,10 +26,16 @@ public class home extends javax.swing.JFrame {
         
         new Thread(()->{
             classContact.select();
+<<<<<<< HEAD
 
               classReminder.select();
             classProjects.select();
  
+=======
+            classReminder.select();
+            classProjects.select();
+
+>>>>>>> 2320cc5a7c31b5b0b7d1b3c21cf52741c386c0d5
         }).start();
         
         imageUserTop = lblImageUserTop;
