@@ -135,15 +135,15 @@ public static boolean updatereminder(){
  public static boolean select(){
         boolean status = false;
         reminder recordatorio;
-        ResultSet rs = methodsSQL.getExecute("SELECT re.condition, re.reminder, re.alarmDateTime  FROM reminders re WHERE re.nickname =?", classUsuario.getNickname());
+        ResultSet rs = methodsSQL.getExecute("SELECT re.id, re.condition, re.reminder, re.alarmDateTime  FROM reminders re WHERE re.nickname =?", classUsuario.getNickname());
         
         try {
             while(rs.next()){
                 recordatorio = new reminder();
-
-                recordatorio.setCondition(rs.getInt(1));
-                recordatorio.setReminder(rs.getString(2));
-                recordatorio.setDate(rs.getString(3));
+                recordatorio.setId(rs.getInt(1));
+                recordatorio.setCondition(rs.getInt(2));
+                recordatorio.setReminder(rs.getString(3));
+                recordatorio.setDate(rs.getString(4));
    
                 
                 if(methodsSQL.exists("SELECT count(*) FROM reminders WHERE nickname= ?", classUsuario.getNickname()))

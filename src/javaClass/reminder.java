@@ -3,12 +3,21 @@ package javaClass;
 /** @author rodri */
 
 public class reminder {
-    
+    private Integer id; 
     private Integer condition;
     private String reminder;
     private String date;
-      private Integer myNumberRemDisp;
+    private Integer myNumberRemDisp;
     private Integer myNumberRemUse;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
 
     public Integer getCondition() {
         return condition;
@@ -50,6 +59,7 @@ public class reminder {
         this.myNumberRemUse = myNumberRemUse;
     }
     private void restartReminder(){
+        id=null;
         reminder=null;
         condition=-1;
         date=null;
