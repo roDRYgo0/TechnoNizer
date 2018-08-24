@@ -191,7 +191,7 @@ public class classEvent {
         }
         
         if(status && prices.size() > 0){
-            id = methodsSQL.getExecuteInt("SELECT id FROM events WHERE eventName = ?", eventName);
+            id = methodsSQL.getExecuteInt("SELECT id FROM events WHERE eventName = ? and nicknameCreator = ?", eventName, classUsuario.getNickname());
             for (classPrice price : prices) {
                 status = methodsSQL.execute("INSERT INTO tickets VALUES (?, ?, ?)", price.getName(), price.getPrice(), id);
             }

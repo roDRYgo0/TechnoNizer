@@ -66,6 +66,11 @@ public class jpProjectsMenu extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153))));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel3MouseReleased(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(33, 150, 243));
@@ -157,7 +162,6 @@ public class jpProjectsMenu extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Número de proyectos creados:");
 
-        txtCreated.setBackground(new java.awt.Color(255, 255, 255));
         txtCreated.setAutoscrolls(false);
         txtCreated.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtCreated.setFocusable(false);
@@ -318,7 +322,7 @@ public class jpProjectsMenu extends javax.swing.JPanel {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jLabel5)
@@ -398,6 +402,10 @@ public class jpProjectsMenu extends javax.swing.JPanel {
     private void txtInactiveKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInactiveKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txtInactiveKeyTyped
+
+    private void jPanel3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseReleased
+        technonizer.TechnoNizer.home.showYourProjects(false);
+    }//GEN-LAST:event_jPanel3MouseReleased
 
      void load(){
     
