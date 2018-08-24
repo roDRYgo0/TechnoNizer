@@ -196,10 +196,7 @@ public class reminderGrid extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-        technonizer.TechnoNizer.admin.loading();
-        new Thread(()->{
-            technonizer.TechnoNizer.admin.showUser(reminder, search);
-        }).start();
+       
     }//GEN-LAST:event_formMouseReleased
 
 
