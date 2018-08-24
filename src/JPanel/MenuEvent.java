@@ -495,7 +495,7 @@ public class MenuEvent extends javax.swing.JPanel {
     }//GEN-LAST:event_EventsCountKeyTyped
 
     private void EventsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EventsMouseReleased
-        technonizer.TechnoNizer.home.showYourEvents(true);
+        technonizer.TechnoNizer.home.showYourEvents(false);
     }//GEN-LAST:event_EventsMouseReleased
 
     private void SharesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SharesMouseReleased
