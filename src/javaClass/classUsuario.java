@@ -275,6 +275,7 @@ public class classUsuario {
         classSecurityQuestions.restart();
         controller.answers = new String[3];
         controller.questions = new String[3];
+        classAdmin.restart();
     }
     
     public static boolean select(boolean search, int user){
@@ -357,6 +358,7 @@ public class classUsuario {
     }
     
     public static void numEvents(){
+        classEvent.restart();
         classEvent.select();
         myNumberEventUse = classEvent.eventos.size();
         myNumberEventDisp = myNumEvent-myNumberEventUse;

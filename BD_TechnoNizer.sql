@@ -1,3 +1,5 @@
+create database BD_TechnoNizer
+
 use BD_TechnoNizer
 
 /*Users administration and memberships*/
@@ -13,20 +15,12 @@ numberModerators numeric(4),
 numberGuests numeric(4),
 price smallmoney not null
 )
- select * from .users
+
 
 create table genders(
 id int not null primary key,
 gender nvarchar(25) not null
 )
-
-select * from users
-delete from reminders
-delete from projects
-delete from ticketType
-delete from events
-delete from usersInformation
-delete from users
 
 create table users(
 nickname nvarchar(50) primary key not null,
@@ -135,20 +129,12 @@ idCardas int not null references cards(id)
  nicknameCreator nvarchar(50)not null references users(nickname),
  profilePicture image,
  coverPicture image,
- /*price smallmoney,*/
  visibility int not null,
- startDateTime datetime not null,
- endDateTime datetime not null,
+ startDateTime nvarchar(30) not null,
+ endDateTime nvarchar(30) not null,
  staff int,
  condition int not null,
  )
-
-
- select * from events
- select * from tickets
-
- alter table events drop column price
- drop table tickets
 
  create table tickets(
  id int identity(1,1) not null,
@@ -260,6 +246,7 @@ idCheckList int not null references checkList(id)
  repeat int not null,
  nickname nvarchar(50) not null references users(nickname)
  )
+ alter table reminders alter column alarmDateTime nvarchar(30)
 
  create table horary(
  id int identity(1,1) primary key not null,
@@ -287,10 +274,13 @@ idCheckList int not null references checkList(id)
  idClass int not null references class(id)
  )
 
+ 
+ drop table usersBinnacle
+
  create table usersBinnacle(
 id int identity(1,1) primary key not null,
 description nvarchar(200) not null,
-dateTime datetime not null,
+dateTime nvarchar(360) not null,
 nickname nvarchar(50) not null references users(nickname),
 idType int not null
 )
@@ -355,6 +345,8 @@ select * from security
 delete from security
 
 delete from questionBank
+
+select * from questionBank
 
 insert into questionBank values
 ('¿Cuál es la pieza que más amas de tu clóset?'),

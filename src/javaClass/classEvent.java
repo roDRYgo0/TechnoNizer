@@ -117,6 +117,12 @@ public class classEvent {
     }
 //</editor-fold>
     
+    public static void restart(){
+        prices= new ArrayList<>();
+        eventosSearch = new ArrayList<>();
+        eventos = new ArrayList<>();
+    }
+    
     public static int spacePrice(){
         if(prices.size()<3)
             return 0;

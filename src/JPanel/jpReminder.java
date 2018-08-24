@@ -1,9 +1,10 @@
 package JPanel;
 
+
 import jFrame.addReminderGral;
 import java.awt.Color;
 import java.awt.Dimension;
-import javaClass.classEvent;
+import java.awt.event.KeyEvent;
 import javaClass.classReminder;
 import javaClass.classUsuario;
 import javaClass.controller;
@@ -13,18 +14,55 @@ import technonizer.TechnoNizer;
 
 public class jpReminder extends javax.swing.JPanel {
 
-     int position[][] = new int[50][50];
-    int paneles;
+     
+    
+    
+     int view;
+    
     public jpReminder() {
         initComponents();
-       
+        view = 0;
         
-   
+        load();
+    }
+
+    void load(){
+        insertarPaneles(classReminder.reminders.size(), false);
+        
+        loadImage();
+    }
+    
+    void loadImage(){
+        iconSearch.setIcon(new controller().changeImage("/imagenes/search.png", 35, 35));
+        iconView.setIcon(new controller().changeImage("/imagenes/viewGrid.png", 50, 50));
     }
 
 
     public void insertarPaneles(int paneles, boolean search){
-       
+       if(search){
+            allReminder allReminder = new allReminder(paneles, search, view);
+            allReminder.setLocation(0,0);
+            if(view == 0)
+                allReminder.setPreferredSize(new Dimension(960, 348+(168*classReminder.getSpaceSearchGrid())));
+            else
+                allReminder.setPreferredSize(new Dimension(960, 348+(168*classReminder.getSpaceSearchList())));
+
+            scrollReminders.setViewportView(allReminder);
+            scrollReminders.revalidate();
+            scrollReminders.repaint();
+        }else{
+            allReminder allReminder = new allReminder(paneles, search, view);
+            allReminder.setLocation(0,0);
+
+            if(view == 0)
+                allReminder.setPreferredSize(new Dimension(960, 348+(168*classReminder.getSpaceAllGrid())));
+            else
+                allReminder.setPreferredSize(new Dimension(960, 348+(168*classReminder.getSpaceAllList())));
+
+            scrollReminders.setViewportView(allReminder);
+            scrollReminders.revalidate();
+            scrollReminders.repaint();
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -39,6 +77,8 @@ public class jpReminder extends javax.swing.JPanel {
         iconSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         spSearch = new javax.swing.JSeparator();
+        iconView = new javax.swing.JLabel();
+        scrollReminders = new javax.swing.JScrollPane();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(980, 601));
@@ -121,6 +161,19 @@ public class jpReminder extends javax.swing.JPanel {
 
         spSearch.setForeground(new java.awt.Color(204, 204, 204));
 
+        iconView.setMaximumSize(new java.awt.Dimension(50, 50));
+        iconView.setMinimumSize(new java.awt.Dimension(50, 50));
+        iconView.setPreferredSize(new java.awt.Dimension(50, 50));
+        iconView.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                iconViewMouseReleased(evt);
+            }
+        });
+
+        scrollReminders.setBackground(new java.awt.Color(255, 255, 255));
+        scrollReminders.setBorder(null);
+        scrollReminders.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,28 +181,34 @@ public class jpReminder extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(iconSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtSearch)
-                                    .addComponent(spSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(67, 67, 67)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(iconView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(iconSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtSearch)
+                                            .addComponent(spSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(0, 15, Short.MAX_VALUE))
+                    .addComponent(scrollReminders, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,7 +216,9 @@ public class jpReminder extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(iconView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -172,7 +233,9 @@ public class jpReminder extends javax.swing.JPanel {
                             .addComponent(iconSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(388, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollReminders, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -195,41 +258,67 @@ public class jpReminder extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSearchKeyPressed
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-        //if(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE && txtSearch.getText().trim().isEmpty() || evt.getKeyCode() == KeyEvent.VK_DELETE && txtSearch.getText().trim().isEmpty())
-        //insertarPaneles(classEvent.eventos.size(), true);
-        //else if(evt.getKeyCode() == KeyEvent.VK_DELETE && txtSearch.getText().length() == 1 || evt.getKeyCode() == KeyEvent.VK_BACK_SPACE && txtSearch.getText().length() == 1)
-        //insertarPaneles(classEvent.eventos.size(), true);
-        //else{
-          //  classEvent.eventosSearch.clear();
-            //for(event e:classEvent.eventos){
-              //  if(e.getEventName().toLowerCase().contains(txtSearch.getText().toLowerCase())){
-                //    classEvent.eventosSearch.add(e);
-              //  }else{
-            //    }
-          //  }
-           // insertarPaneles(classEvent.eventosSearch.size(), false);
-        //}
+      if(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE && txtSearch.getText().trim().isEmpty() || evt.getKeyCode() == KeyEvent.VK_DELETE && txtSearch.getText().trim().isEmpty())
+            insertarPaneles(classReminder.reminders.size(), false);
+        else if(evt.getKeyCode() == KeyEvent.VK_DELETE && txtSearch.getText().length() == 0 || evt.getKeyCode() == KeyEvent.VK_BACK_SPACE && txtSearch.getText().length() == 0)
+            insertarPaneles(classReminder.reminders.size(), false);
+        else
+            search();
+    }                                     
+
+    void search(){
+        classReminder.remindersSearch.clear();
+        for(javaClass.reminder e : classReminder.reminders){
+            if(e.getReminder().toLowerCase().contains(txtSearch.getText().toLowerCase())){
+                classReminder.remindersSearch.add(e);
+            }else{
+
+            }
+        }
+        insertarPaneles(classReminder.remindersSearch.size(), true);
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
         char c = evt.getKeyChar();
         if(txtSearch.getText().length()<41){
-            if(Character.isLetter(c) || Character.isSpaceChar(c) || Character.isDigit(c)){}
-            else
-            evt.consume();
+            if(Character.isLetter(c) || Character.isDigit(c)){}
+            else{
+                if(c != '.')
+                    evt.consume();
+            }
         }else
-        evt.consume();
+            evt.consume();
     }//GEN-LAST:event_txtSearchKeyTyped
 
+    private void iconViewMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconViewMouseReleased
+       if(view == 0){
+            view = 1;
+            iconView.setIcon(new controller().changeImage("/imagenes/viewList.png", 50, 50));
+            if(txtSearch.getText().trim().isEmpty())
+                insertarPaneles(classReminder.reminders.size(), false);
+            else
+                search();
+        }else{
+            view = 0;
+            iconView.setIcon(new controller().changeImage("/imagenes/viewGrid.png", 50, 50));
+            if(txtSearch.getText().trim().isEmpty())
+                insertarPaneles(classReminder.reminders.size(), false);
+            else
+                search();
+        }
+    }//GEN-LAST:event_iconViewMouseReleased
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel iconSearch;
+    private javax.swing.JLabel iconView;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JScrollPane scrollReminders;
     private javax.swing.JSeparator spSearch;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
