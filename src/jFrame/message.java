@@ -3,11 +3,15 @@ package jFrame;
 import javaClass.controller;
 import javaClass.standardization;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 public class message extends javax.swing.JFrame {
 
+    JFrame fr;
+    
     public message() {
         initComponents();
+        fr = null;
     }
     //<editor-fold defaultstate="collapsed" desc="compiled code">
 
@@ -62,9 +66,17 @@ public class message extends javax.swing.JFrame {
     //</editor-fold>
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        standardization.hideMessage();
+        if(fr==null)
+            standardization.hideMessage();
+        else
+            standardization.hideMessage(fr);
+
     }//GEN-LAST:event_jButton1ActionPerformed
    
+    public void setFram(JFrame fr){
+        this.fr = fr;
+    }
+    
     public void changeImage(String image)
     {
         lblImage.setIcon(new controller().changeImage("/imagenes/"+image+".png", 48, 48));

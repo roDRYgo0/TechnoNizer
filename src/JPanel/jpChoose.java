@@ -12,6 +12,7 @@ public class jpChoose extends javax.swing.JPanel {
     
     public jpChoose() {
         initComponents();
+  
     }
 
     @SuppressWarnings("unchecked")
@@ -146,7 +147,6 @@ public class jpChoose extends javax.swing.JPanel {
         progress.setForeground(new Color(33,150,243));
         new Thread(()->{
             classUsuario.select();
-            classReminder.select();
             classContact.select();
             invokeHome(true);
         }).start();
@@ -159,7 +159,6 @@ public class jpChoose extends javax.swing.JPanel {
         progress.setForeground(new Color(33,150,243));
         new Thread(()->{
             classAdmin.select();
-            classReminder.select();
             classAdmin.selectLog();
             invokeAdmin();
         }).start();

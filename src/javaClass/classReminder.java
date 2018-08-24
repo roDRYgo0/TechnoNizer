@@ -96,6 +96,7 @@ public class classReminder {
     
     public static boolean insert(){
         boolean status = false;
+        
         status = methodsSQL.execute("INSERT INTO reminders (condition, reminder, alarmDateTime, repeat, nickname) VALUES ( ?, ?, ?, ?, ?)",
                 1, reminder, datetime, repeat, classUsuario.getNickname());
         return status;
@@ -120,6 +121,14 @@ public static boolean updatereminder(){
         status = methodsSQL.execute("UPDATE reminders SET condition=? , reminder=? , alarmDateTime=?, repeat=?, nickname=? where id=?",
                 1, reminder, datetime, repeat, "asd", id);
         return status;
+    }
+ public static void restartUser(){
+        condition=(String.valueOf(-1));
+        reminder=null;
+        datetime=null;
+        System.out.println("Adios toda inf reminders");
+    
+       
     }
 
 
