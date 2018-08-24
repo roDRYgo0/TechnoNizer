@@ -9,14 +9,10 @@ import javaClass.classReminder;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
-import javax.swing.JOptionPane;
-import technonizer.TechnoNizer;
+
 
 public class jpReminder extends javax.swing.JPanel {
 
-     
-    
-    
      int view;
     
     public jpReminder() {
@@ -26,7 +22,7 @@ public class jpReminder extends javax.swing.JPanel {
         load();
     }
 
-    void load(){
+    public void load(){
         insertarPaneles(classReminder.reminders.size(), false);
         
         loadImage();

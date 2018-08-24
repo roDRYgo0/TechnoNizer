@@ -93,7 +93,12 @@ public class classReminder {
             return row - 3;
     }
    
-    
+    public static void restart(){
+        remindersSearch = new ArrayList<>();
+        reminders = new ArrayList<>();
+    }
+      
+      
     public static boolean insert(){
         boolean status = false;
         
@@ -135,24 +140,22 @@ public static boolean updatereminder(){
  public static boolean select(){
         boolean status = false;
         reminder recordatorio;
-        ResultSet rs = methodsSQL.getExecute("SELECT re.condition, re.reminder, re.alarmDateTime  FROM reminders re WHERE re.nickname =?", classUsuario.getNickname());
-        
+        ResultSet rs = methodsSQL.getExecute("SELECT re.id, re.condition, re.reminder, re.alarmDateTime  FROM reminders re WHERE re.nickname =?", classUsuario.getNickname());
+        restart();
         try {
             while(rs.next()){
                 recordatorio = new reminder();
-
-                recordatorio.setCondition(rs.getInt(1));
-                recordatorio.setReminder(rs.getString(2));
-                recordatorio.setDate(rs.getString(3));
-   
-                
-                if(methodsSQL.exists("SELECT count(*) FROM reminders WHERE nickname= ?", classUsuario.getNickname()))
-                    recordatorio.setMyNumberRemUse(methodsSQL.getExecuteInt("SELECT count(*) FROM reminders WHERE nickname = ?", classUsuario.getNickname()));
+                recordatorio.setId(rs.getInt(1));
+                recordatorio.setCondition(rs.getInt(2));
+                recordatorio.setReminder(rs.getString(3));
+                recordatorio.setDate(rs.getString(4));
   
                 System.out.println("Los recordatorios son "+recordatorio.getMyNumberRemUse());
                 reminders.add(recordatorio);
-            }
             status = true;
+                if(methodsSQL.exists("SELECT count(*) FROM reminders WHERE nickname= ?", classUsuario.getNickname()))
+                    recordatorio.setMyNumberRemUse(methodsSQL.getExecuteInt("SELECT count(*) FROM reminders WHERE nickname = ?", classUsuario.getNickname()));
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             Logger.getLogger(classReminder.class.getName()).log(Level.SEVERE, null, ex);

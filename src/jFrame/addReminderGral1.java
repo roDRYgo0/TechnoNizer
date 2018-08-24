@@ -14,15 +14,24 @@ import javax.swing.JOptionPane;
 /**
  * @author Alexg
  */
-public class addReminderGral extends javax.swing.JFrame {
+public class addReminderGral1 extends javax.swing.JFrame {
 
     byte[] cover;
     byte[] profil;
+     int reminder;
+     boolean search;
+    
 
-    public addReminderGral() {
+    public addReminderGral1() {
         initComponents();
+        int n = 0;
+        reminder = n;
         loadImage();
+        jtId.setText((classReminder.reminders.get(n).getReminder()));
+        
     }
+
+
 
     void loadImage() {
         iconStart.setIcon(new controller().changeImage("/imagenes/calendarPlus.png", 35, 35));
@@ -62,6 +71,7 @@ public class addReminderGral extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jtId = new javax.swing.JTextField();
 
         jButton1.setText("jButton1");
 
@@ -185,7 +195,7 @@ public class addReminderGral extends javax.swing.JFrame {
         txtReminder.setColumns(20);
         txtReminder.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         txtReminder.setRows(5);
-        txtReminder.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtReminder.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jScrollPane1.setViewportView(txtReminder);
 
         txtYearEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -231,6 +241,8 @@ public class addReminderGral extends javax.swing.JFrame {
 
         jLabel15.setText("Año");
 
+        jtId.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -245,7 +257,8 @@ public class addReminderGral extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(249, 249, 249)
+                                .addComponent(spReminder, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(checkEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -281,8 +294,6 @@ public class addReminderGral extends javax.swing.JFrame {
                                         .addGap(53, 53, 53)))
                                 .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel4)
-                            .addComponent(spReminder)
-                            .addComponent(jScrollPane1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(113, 113, 113)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -298,28 +309,36 @@ public class addReminderGral extends javax.swing.JFrame {
                                         .addGap(73, 73, 73)))))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
+                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(spReminder, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(checkEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(checkEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spReminder, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(93, Short.MAX_VALUE))
+                        .addContainerGap(96, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -395,18 +414,14 @@ public class addReminderGral extends javax.swing.JFrame {
                 classReminder.setDatetime((txtDayEnd.getText()) + "/" + (cmbMonthEnd.getSelectedIndex() + 1)+ "/" +txtYearEnd.getText() );
                 classReminder.setRepeat((Integer.parseInt(txtHora.getText())));
                 classReminder.setNickname(classUsuario.getNickname());
-                
-                
-                if (classReminder.insert()) {
-                    classReminder.select();
-                    standardization.hide(controller.gralReminder);               
-                    technonizer.TechnoNizer.home.pnAgenda();
-                    controller.jpAA.load();
-                    controller.rootFrame = technonizer.TechnoNizer.home;
-                    standardization.showMessage("ok", "Recordatorio ingresado");
-                } else {
-                    standardization.showMessage("cancel", "Error ingresado");
 
+                if (classReminder.insert()) {
+                    JOptionPane.showMessageDialog(this, "Recordatorio Guardado");
+                    standardization.hide(controller.gralReminder);
+               
+                   
+                } else {
+                    JOptionPane.showMessageDialog(this, "Error al guardar recordatorio");
                     standardization.hide(controller.gralReminder);
                       
                 }
@@ -465,6 +480,7 @@ public class addReminderGral extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField jtId;
     private javax.swing.JLabel lblEvent;
     private javax.swing.JSeparator spDayEnd;
     private javax.swing.JSeparator spDayStart;
