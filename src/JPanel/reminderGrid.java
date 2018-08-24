@@ -235,8 +235,14 @@ public class reminderGrid extends javax.swing.JPanel {
         int eliminar = JOptionPane.showConfirmDialog(this, "Esta seguro que desea e1iminar?",
             "Atencion" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) ;
         if(eliminar == 0) {
-            if (classReminder.deleteReminder()) {
+            if (classReminder.deleteReminder()) {{
+                classReminder.deleteReminder();
+                controller.jpAA.load();
+                classReminder.select();
+                controller.rootFrame = technonizer.TechnoNizer.home;
+                technonizer.TechnoNizer.home.pnAgenda();
                 JOptionPane.showMessageDialog(this, "Datos eliminados");
+            }
             }else{
                 JOptionPane.showMessageDialog(this, "Error al eliminar");
             }
