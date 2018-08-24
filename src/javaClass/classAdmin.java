@@ -22,6 +22,14 @@ public class classAdmin {
     static String[] birthdate;
     static String birth;
     
+    
+    
+    public static void restart(){
+        users = new ArrayList<>();
+        usersSearch = new ArrayList<>();
+        logs = new ArrayList<>();
+    }
+    
     public static int getSpaceLog(){
         if(jpEditUserAdmin.logs.size()>4){
             return jpEditUserAdmin.logs.size() - 4;

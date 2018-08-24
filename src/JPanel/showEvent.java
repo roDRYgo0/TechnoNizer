@@ -11,7 +11,7 @@ public class showEvent extends javax.swing.JPanel {
     }
 
     void load(int e, boolean search){
-        if(search){
+        if(!search){
             lblEventName.setText(classEvent.eventos.get(e).getEventName());
             lblNickname.setText(classEvent.eventos.get(e).getNicknameCreator());
         }else{

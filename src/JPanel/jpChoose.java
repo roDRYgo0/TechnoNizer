@@ -161,7 +161,7 @@ public class jpChoose extends javax.swing.JPanel {
             classAdmin.select();
             classReminder.select();
             classAdmin.selectLog();
-            invokeAdmin(true);
+            invokeAdmin();
         }).start();
         btnNext.setEnabled(false);
         btnNext1.setEnabled(false);

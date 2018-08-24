@@ -311,9 +311,9 @@ public class standardization {
         }).start();
     }
     
-    public static void invokeAdmin(boolean load)
+    public static void invokeAdmin()
     {
-        admin = new admin(load);
+        admin = new admin();
         admin.setLocationRelativeTo(null);
         log.setVisible(false);
         admin.setVisible(true);
@@ -328,6 +328,14 @@ public class standardization {
         log = new logIn();
         log.setLocationRelativeTo(null);
         home.setVisible(false);
+        log.setVisible(true);
+    }
+    
+    public static void invokeLogin(boolean admi)
+    {
+        log = new logIn();
+        log.setLocationRelativeTo(null);
+        admin.setVisible(false);
         log.setVisible(true);
     }
     

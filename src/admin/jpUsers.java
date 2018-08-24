@@ -3,8 +3,27 @@ package admin;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
 import javaClass.classAdmin;
 import javaClass.controller;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import javaClass.connection;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
 
 /**@author rodri */
 
@@ -27,7 +46,7 @@ public class jpUsers extends javax.swing.JPanel {
     
     void loadImage(){
         iconSearch.setIcon(new controller().changeImage("/imagenes/search.png", 35, 35));
-        iconView.setIcon(new controller().changeImage("/imagenes/viewGrid.png", 50, 50));
+        iconView.setIcon(new controller().changeImage("/imagenes/viewList.png", 50, 50));
     }
     
     @SuppressWarnings("unchecked")
@@ -44,6 +63,7 @@ public class jpUsers extends javax.swing.JPanel {
         spSearch = new javax.swing.JSeparator();
         iconSearch = new javax.swing.JLabel();
         iconView = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(980, 601));
@@ -145,6 +165,13 @@ public class jpUsers extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/report.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel2MouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,7 +189,9 @@ public class jpUsers extends javax.swing.JPanel {
                                         .addGap(24, 24, 24)
                                         .addComponent(jLabel1)
                                         .addGap(53, 53, 53)
-                                        .addComponent(iconView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(iconView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
@@ -178,7 +207,8 @@ public class jpUsers extends javax.swing.JPanel {
                         .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(iconView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(iconView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -237,20 +267,39 @@ public class jpUsers extends javax.swing.JPanel {
     private void iconViewMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconViewMouseReleased
         if(view == 0){
             view = 1;
-            iconView.setIcon(new controller().changeImage("/imagenes/viewList.png", 50, 50));
+            iconView.setIcon(new controller().changeImage("/imagenes/viewGrid.png", 50, 50));
             if(txtSearch.getText().trim().isEmpty())
                 insertarPaneles(classAdmin.users.size(), false);
             else
                 search();
         }else{
             view = 0;
-            iconView.setIcon(new controller().changeImage("/imagenes/viewGrid.png", 50, 50));
+            iconView.setIcon(new controller().changeImage("/imagenes/viewList.png", 50, 50));
             if(txtSearch.getText().trim().isEmpty())
                 insertarPaneles(classAdmin.users.size(), false);
             else
                 search();
         }
     }//GEN-LAST:event_iconViewMouseReleased
+
+    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+       String path="";
+        try{
+            File file = new File("src/Reportes/AgrupadoPrueba.jasper");
+            Map parametros = new HashMap();
+                
+            InputStream reportStream = new FileInputStream("C:\\Users\\Lenovo\\Documents\\EXPO 2018\\iReport-5.6.0\\iReport-5.6.0\\Reportes.jrxml");
+            JasperReport jr=(JasperReport)JRLoader.loadObject(file);
+            Connection cn= connection.getConnection();
+            JasperPrint print =JasperFillManager.fillReport(jr,parametros,cn);
+            JasperViewer view = new JasperViewer(print);
+            view.setTitle("Reporte");
+            view.setVisible(true);
+            
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }//GEN-LAST:event_jLabel2MouseReleased
 
     public void insertarPaneles(int paneles, boolean search){
         if(search){
@@ -285,6 +334,7 @@ public class jpUsers extends javax.swing.JPanel {
     private javax.swing.JLabel iconSearch;
     private javax.swing.JLabel iconView;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

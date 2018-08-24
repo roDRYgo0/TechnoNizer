@@ -409,7 +409,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="pnGeneral" alignment="0" max="32767" attributes="0"/>
                   <Component id="pnUser" alignment="0" max="32767" attributes="0"/>
-                  <Component id="pnMem" alignment="0" max="32767" attributes="0"/>
+                  <Component id="pnSettings" alignment="0" max="32767" attributes="0"/>
                   <Component id="jPanel6" alignment="0" max="32767" attributes="0"/>
                   <Component id="pnEvents" alignment="1" max="32767" attributes="0"/>
                   <Component id="pnProj" alignment="1" max="32767" attributes="0"/>
@@ -427,7 +427,7 @@
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Component id="pnUser" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                      <Component id="pnMem" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnSettings" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Component id="pnSecurity" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -459,7 +459,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          <Component id="lblStart" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconStart" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblGral" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -471,7 +471,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblStart" max="32767" attributes="0"/>
+                              <Component id="iconStart" max="32767" attributes="0"/>
                               <Component id="lblGral" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -480,7 +480,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblStart">
+                <Component class="javax.swing.JLabel" name="iconStart">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[28, 28]"/>
@@ -521,7 +521,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          <Component id="lblUser" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconUser" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel4" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -533,7 +533,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblUser" alignment="0" max="32767" attributes="0"/>
+                              <Component id="iconUser" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -542,7 +542,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblUser">
+                <Component class="javax.swing.JLabel" name="iconUser">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[28, 28]"/>
@@ -568,14 +568,14 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="pnMem">
+            <Container class="javax.swing.JPanel" name="pnSettings">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="22" green="22" red="22" type="rgb"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnMemMouseReleased"/>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnSettingsMouseReleased"/>
               </Events>
 
               <Layout>
@@ -583,7 +583,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          <Component id="lblMembership" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconSettings" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel5" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -595,7 +595,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblMembership" alignment="0" max="32767" attributes="0"/>
+                              <Component id="iconSettings" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -604,7 +604,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblMembership">
+                <Component class="javax.swing.JLabel" name="iconSettings">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[28, 28]"/>
@@ -625,7 +625,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Membresias"/>
+                    <Property name="text" type="java.lang.String" value="Configuraciones"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -687,7 +687,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          <Component id="lblEvent" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconEvents" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel7" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -699,7 +699,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblEvent" alignment="0" max="32767" attributes="0"/>
+                              <Component id="iconEvents" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -708,7 +708,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblEvent">
+                <Component class="javax.swing.JLabel" name="iconEvents">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[28, 28]"/>
@@ -749,7 +749,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          <Component id="lblProject" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconProjects" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel9" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -762,7 +762,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel9" max="32767" attributes="0"/>
-                              <Component id="lblProject" max="32767" attributes="0"/>
+                              <Component id="iconProjects" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -770,7 +770,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblProject">
+                <Component class="javax.swing.JLabel" name="iconProjects">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[28, 28]"/>
@@ -811,7 +811,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          <Component id="lblAgenda" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconAgenda" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel6" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -824,7 +824,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel6" max="32767" attributes="0"/>
-                              <Component id="lblAgenda" max="32767" attributes="0"/>
+                              <Component id="iconAgenda" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -832,7 +832,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblAgenda">
+                <Component class="javax.swing.JLabel" name="iconAgenda">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[28, 28]"/>
@@ -873,7 +873,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          <Component id="lblSecurity" min="-2" max="-2" attributes="0"/>
+                          <Component id="iconSecurity" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" pref="69" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -887,7 +887,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblSecurity" alignment="0" max="32767" attributes="0"/>
+                              <Component id="iconSecurity" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
                               <Component id="lblAlert" alignment="1" max="32767" attributes="0"/>
                           </Group>
@@ -897,7 +897,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblSecurity">
+                <Component class="javax.swing.JLabel" name="iconSecurity">
                   <Properties>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[28, 28]"/>

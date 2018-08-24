@@ -1,6 +1,5 @@
 package admin;
 
-import JPanel.*;
 import JPanel.contact.jpContact;
 import JPanel.contact.loadContact;
 import java.awt.Color;
