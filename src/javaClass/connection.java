@@ -12,17 +12,13 @@ public class connection {
 
         Connection on = null;
         try{
-<<<<<<< HEAD
+
  
             String url = "jdbc:sqlserver://192.168.1.103:1433;databaseName=BD_TechnoNizer";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             on = DriverManager.getConnection(url,"technonizerdb","Masupial.48");
 
-=======
-            String url = "jdbc:sqlserver://rodrigo;databaseName=BD_TechnoNizer";
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            on = DriverManager.getConnection(url,"technonizerdb","Papaya");
->>>>>>> 57b73706285e77d9952e20a3a0982df72b5c7881
+
         }catch(ClassNotFoundException | SQLException e){
             System.out.println(e.getMessage());
         }

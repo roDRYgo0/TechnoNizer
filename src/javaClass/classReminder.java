@@ -96,6 +96,7 @@ public class classReminder {
     
     public static boolean insert(){
         boolean status = false;
+        
         status = methodsSQL.execute("INSERT INTO reminders (condition, reminder, alarmDateTime, repeat, nickname) VALUES ( ?, ?, ?, ?, ?)",
                 1, reminder, datetime, repeat, classUsuario.getNickname());
         return status;

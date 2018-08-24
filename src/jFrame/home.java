@@ -26,12 +26,10 @@ public class home extends javax.swing.JFrame {
         
         new Thread(()->{
             classContact.select();
-<<<<<<< HEAD
+
               classReminder.select();
             classProjects.select();
  
-=======
->>>>>>> 57b73706285e77d9952e20a3a0982df72b5c7881
         }).start();
         
         imageUserTop = lblImageUserTop;
@@ -815,8 +813,9 @@ public class home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pnEventsMouseReleased
 
+    
     private void pnAgendaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnAgendaMouseReleased
-
+        
         if(classUsuario.getCondition()==1){
             disable();
        
@@ -835,7 +834,7 @@ public class home extends javax.swing.JFrame {
         controller.jpAA = new jpReminder();
         controller.jpAA.setPreferredSize(new Dimension(980,601));
         controller.jpAA.setLocation(0,0);
-
+        
         scrollContainer.setViewportView(controller.jpAA);
         scrollContainer.revalidate();
         scrollContainer.repaint();
