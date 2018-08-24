@@ -28,7 +28,7 @@ public class addReminder extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Cantarell", 1, 16)); // NOI18N
-        jLabel1.setText("Agregar nuevo evento");
+        jLabel1.setText("Agregar nuevo Recordatorio");
 
         jLabel2.setFont(new java.awt.Font("Cantarell", 1, 48)); // NOI18N
         jLabel2.setText("+");
@@ -42,14 +42,14 @@ public class addReminder extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(99, 99, 99)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)

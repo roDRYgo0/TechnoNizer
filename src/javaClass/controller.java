@@ -14,6 +14,7 @@ import event.price;
 import jFrame.addEventGral;
 import jFrame.addProject;
 import jFrame.addReminderGral;
+import jFrame.addReminderGral1;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.Icon;
@@ -86,6 +87,7 @@ public class controller {
     //<editor-fold defaultstate="collapsed" desc="jFrame">
     public static addEventGral gralEvent;
     public static addReminderGral gralReminder;
+    public static addReminderGral1 gralReminder1;
     public static jFrame.addEvent addEvents;
 //</editor-fold>
     

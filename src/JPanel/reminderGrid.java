@@ -1,6 +1,8 @@
 package JPanel;
 
 import admin.*;
+import jFrame.addReminderGral;
+import jFrame.addReminderGral1;
 import java.awt.Color;
 import javaClass.classAdmin;
 import javaClass.classReminder;
@@ -25,7 +27,7 @@ public class reminderGrid extends javax.swing.JPanel {
     void load(int n, boolean search){
         if(search){
 
-                lblImage.setIcon(new controller().changeImage("/imagenes/user.png", 60, 60));
+            lblImage.setIcon(new controller().changeImage("/imagenes/user.png", 60, 60));
             lblNickname.setText(classUsuario.getNickname());
             lblReminder.setText(classReminder.remindersSearch.get(n).getReminder());
             lblDate.setText(classReminder.remindersSearch.get(n).getDate());
@@ -48,6 +50,7 @@ public class reminderGrid extends javax.swing.JPanel {
         }else{
             
                 lblImage.setIcon(new controller().changeImage("/imagenes/user.png", 60, 60));
+                lblId.setText(classReminder.reminders.get(n).getId().toString());
             lblNickname.setText(classUsuario.getNickname());
             lblReminder.setText(classReminder.reminders.get(n).getReminder());
             lblDate.setText(classReminder.reminders.get(n).getDate());
@@ -83,10 +86,11 @@ public class reminderGrid extends javax.swing.JPanel {
         lblNickname = new javax.swing.JLabel();
         lblReminder = new javax.swing.JLabel();
         lblFirstName = new javax.swing.JLabel();
-        lblLastName = new javax.swing.JLabel();
+        lblId = new javax.swing.JLabel();
         iconMail = new javax.swing.JLabel();
         iconMem = new javax.swing.JLabel();
         iconDuration = new javax.swing.JLabel();
+        lblLastName1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(253, 199, 199));
         setMaximumSize(new java.awt.Dimension(465, 140));
@@ -114,8 +118,8 @@ public class reminderGrid extends javax.swing.JPanel {
         lblFirstName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblFirstName.setText("    Usuario");
 
-        lblLastName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblLastName.setText("Recordatorio");
+        lblId.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblId.setText("Not Found");
 
         iconMail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         iconMail.setMaximumSize(new java.awt.Dimension(25, 25));
@@ -131,6 +135,9 @@ public class reminderGrid extends javax.swing.JPanel {
         iconDuration.setMaximumSize(new java.awt.Dimension(25, 25));
         iconDuration.setMinimumSize(new java.awt.Dimension(25, 25));
         iconDuration.setPreferredSize(new java.awt.Dimension(25, 25));
+
+        lblLastName1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblLastName1.setText("Recordatorio");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -153,10 +160,12 @@ public class reminderGrid extends javax.swing.JPanel {
                         .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblLastName1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -176,9 +185,11 @@ public class reminderGrid extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblNickname))
                             .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblLastName1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -196,10 +207,9 @@ public class reminderGrid extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-        technonizer.TechnoNizer.admin.loading();
-        new Thread(()->{
-            technonizer.TechnoNizer.admin.showUser(reminder, search);
-        }).start();
+        controller.gralReminder1 = new addReminderGral1();
+        standardization.show(controller.gralReminder1);
+        controller.rootFrame = controller.gralReminder1;
     }//GEN-LAST:event_formMouseReleased
 
 
@@ -209,8 +219,9 @@ public class reminderGrid extends javax.swing.JPanel {
     private javax.swing.JLabel iconMem;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblFirstName;
+    private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblImage;
-    private javax.swing.JLabel lblLastName;
+    private javax.swing.JLabel lblLastName1;
     private javax.swing.JLabel lblNickname;
     private javax.swing.JLabel lblReminder;
     // End of variables declaration//GEN-END:variables
