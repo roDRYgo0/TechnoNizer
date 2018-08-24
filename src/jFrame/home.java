@@ -1,6 +1,7 @@
 package jFrame;
 
 import JPanel.*;
+import admin.jpUsers;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -813,8 +814,10 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_pnEventsMouseReleased
 
     private void pnAgendaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnAgendaMouseReleased
+
         if(classUsuario.getCondition()==1){
             disable();
+       
             controller.jpDis = new jpDisable();
             controller.jpDis.setLocation(0,0);
 
@@ -823,17 +826,33 @@ public class home extends javax.swing.JFrame {
             scrollContainer.repaint();
         }else{
             disable();
+            
             pnAgenda.setBackground(new Color(52, 52, 52));
-            controller.jpREM = new jpReminder();
-            controller.jpREM.setLocation(0,0);
+        
+        controller.jpAA = new jpReminder();
+        controller.jpAA.setPreferredSize(new Dimension(980,601));
+        controller.jpAA.setLocation(0,0);
 
-            scrollContainer.setViewportView(controller.jpREM);
-            scrollContainer.revalidate();
-            scrollContainer.repaint();
+        scrollContainer.setViewportView(controller.jpAA);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
         }
         
     }//GEN-LAST:event_pnAgendaMouseReleased
+ public void showReminder(){
+       /*disable();
+        pnAgenda.setBackground(new Color(52, 52, 52));
+        classUsuario.restartUser();
+        classContact.reset();
+        
+        controller.jpAA = new jpReminder();
+        controller.jpAA.setPreferredSize(new Dimension(980,601));
+        controller.jpAA.setLocation(0,0);
 
+        scrollContainer.setViewportView(controller.jpAA);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();*/
+    }
     private void pnSecurityMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSecurityMouseReleased
         pnSecurity();
     }//GEN-LAST:event_pnSecurityMouseReleased
