@@ -450,3 +450,8 @@ insert into questionBank values
 ('¿Cuál es la emoción que menos te gusta sentir?'),
 ('¿Qué hiciste en tu último cumpleaños?'),
 ('¿Cuál es la cosa que más amas en todo el mundo?')
+select * from usersInformation
+
+select ub.description, ub.dateTime from usersBinnacle ub, users u where ub.nickname = u.nickname and u.nickname like 
+
+select u.nickname, ui.firstName, ui.lastName, ui.birthdate, g.gender, COUNT(p.name) from users u, usersInformation ui, genders g, projects p, events e where g.id = ui.id_gender and u.nickname = ui.nickname and p.nickname = u.nickname and e.nicknameCreator = u.nickname 

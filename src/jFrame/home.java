@@ -26,10 +26,8 @@ public class home extends javax.swing.JFrame {
         
         new Thread(()->{
             classContact.select();
-
-              classReminder.select();
+            classReminder.select();
             classProjects.select();
- 
 
         }).start();
         
