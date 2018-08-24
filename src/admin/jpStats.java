@@ -1,9 +1,21 @@
 package admin;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
 import javaClass.classUsuario;
+import javaClass.connection;
 import javaClass.controller;
 import javaClass.standardization;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**@author rodri */
 
@@ -185,6 +197,11 @@ public class jpStats extends javax.swing.JPanel {
         spDateTime2.setForeground(new java.awt.Color(204, 204, 204));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/report.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel1MouseReleased(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(33, 150, 243));
@@ -377,6 +394,29 @@ public class jpStats extends javax.swing.JPanel {
             action = false;
         }
     }//GEN-LAST:event_lblAdmMouseReleased
+
+    private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
+      String path="";
+      
+      Map para1= new HashMap();
+      para1.put("Nickname", classUsuario.getNickname());
+      
+        try{
+            File file = new File("UsersBinacle.jasper");
+            Map parametros = new HashMap();
+            parametros.put("Nickname", classUsuario.getNickname());
+            InputStream reportStream = new FileInputStream("UsersBinacle.jasper");
+            JasperReport jr=(JasperReport)JRLoader.loadObject(file);
+            Connection cn= connection.getConnection();
+            JasperPrint print =JasperFillManager.fillReport(jr,parametros,cn);
+            JasperViewer view = new JasperViewer(print);
+            view.setTitle("Reporte");
+            view.setVisible(true);
+            
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }//GEN-LAST:event_jLabel1MouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
