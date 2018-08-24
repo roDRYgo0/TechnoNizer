@@ -6,6 +6,7 @@ import javaClass.classEvent;
 import javaClass.classReminder;
 import javaClass.classUsuario;
 import javaClass.controller;
+import javaClass.reminder;
 import javaClass.standardization;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -188,7 +189,7 @@ public class addReminderGral extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtReminder);
 
         txtYearEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtYearEnd.setText("2000");
+        txtYearEnd.setText("2018");
         txtYearEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtYearEnd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -208,7 +209,7 @@ public class addReminderGral extends javax.swing.JFrame {
         cmbMonthEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         txtDayEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtDayEnd.setText("12");
+        txtDayEnd.setText("24");
         txtDayEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtDayEnd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -394,14 +395,18 @@ public class addReminderGral extends javax.swing.JFrame {
                 classReminder.setDatetime((txtDayEnd.getText()) + "/" + (cmbMonthEnd.getSelectedIndex() + 1)+ "/" +txtYearEnd.getText() );
                 classReminder.setRepeat((Integer.parseInt(txtHora.getText())));
                 classReminder.setNickname(classUsuario.getNickname());
-
+                
+                
                 if (classReminder.insert()) {
-                    JOptionPane.showMessageDialog(this, "Recordatorio Guardado");
-                    standardization.hide(controller.gralReminder);
-               
-                   
+                    classReminder.select();
+                    standardization.hide(controller.gralReminder);               
+                    technonizer.TechnoNizer.home.pnAgenda();
+                    controller.jpAA.load();
+                    controller.rootFrame = technonizer.TechnoNizer.home;
+                    standardization.showMessage("ok", "Recordatorio ingresado");
                 } else {
-                    JOptionPane.showMessageDialog(this, "Error al guardar recordatorio");
+                    standardization.showMessage("cancel", "Error ingresado");
+
                     standardization.hide(controller.gralReminder);
                       
                 }

@@ -2,14 +2,34 @@ package javaClass;
 
 /** @author rodri */
 
-public class classReminder1 {
+public class reminder {
     private Integer id; 
     private Integer condition;
     private String reminder;
     private String date;
+    private Integer repeat;
     private Integer myNumberRemDisp;
     private Integer myNumberRemUse;
+    private String nickname;
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+    
+    public Integer getRepeat() {
+        return repeat;
+    }
+
+    public void setRepeat(Integer repeat) {
+        this.repeat = repeat;
+    }
+
+    
+    
     public Integer getId() {
         return id;
     }

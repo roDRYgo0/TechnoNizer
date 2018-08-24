@@ -80,7 +80,7 @@ public class reminderGrid extends javax.swing.JPanel {
    
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         lblDate = new javax.swing.JLabel();
@@ -220,13 +220,13 @@ public class reminderGrid extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(iconMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {                                   
         controller.gralReminder1 = new addReminderGral1();
         standardization.show(controller.gralReminder1);
         controller.rootFrame = controller.gralReminder1;
-    }//GEN-LAST:event_formMouseReleased
+    }                                  
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
@@ -244,7 +244,7 @@ public class reminderGrid extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JLabel iconDuration;
     private javax.swing.JLabel iconMail;
     private javax.swing.JLabel iconMem;
@@ -256,5 +256,5 @@ public class reminderGrid extends javax.swing.JPanel {
     private javax.swing.JLabel lblLastName1;
     private javax.swing.JLabel lblNickname;
     private javax.swing.JLabel lblReminder;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }
