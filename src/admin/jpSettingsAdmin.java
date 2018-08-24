@@ -2,6 +2,8 @@ package admin;
 
 import jFrame.admin;
 import java.awt.Color;
+import javaClass.classAdmin;
+import javaClass.classMembership;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
@@ -554,14 +556,30 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_pnPremiumMouseClicked
 
     private void btnChangeMembershipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeMembershipActionPerformed
-        classUsuario.setPreviousIdMemberships(classUsuario.getIdMemberships());
-        classUsuario.setIdMemberships(newMembership);
-        if(classUsuario.updateMembership()){
-            classUsuario.select();
-            standardization.showMessage("ok","Tu membresia fue actualizada");
-            house.settings();
+        if(standardization.campoVacio(txtDescription.getText()) || standardization.campoVacio(txtNumEvents.getText()) ||
+                standardization.campoVacio(txtAdmin.getText()) || standardization.campoVacio(txtMod.getText()) || 
+                standardization.campoVacio(txtPrice.getText())){
+            standardization.showMessage("warning", "Campos vacios");
+        }else{
+            classMembership member = new classMembership();
+            member.setDescription(txtDescription.getText());
+            member.setNumberEvents(Integer.parseInt(txtNumEvents.getText()));
+            member.setNumberAdmins(Integer.parseInt(txtAdmin.getText()));
+            member.setNumberModerators(Integer.parseInt(txtMod.getText()));
+            member.setNumberGuests(Integer.parseInt(txtMod.getText()));
+            member.setPrice(Float.parseFloat(txtPrice.getText()));
+            if(classAdmin.updateMemberShip(member, membership)){
+                standardization.showMessage("ok", "Actualizado correctamente");
+                controller.member[membership-1].setDescription(txtDescription.getText());
+                controller.member[membership-1].setNumberEvents(Integer.parseInt(txtAdmin.getText()));
+                controller.member[membership-1].setNumberAdmins(Integer.parseInt(txtAdmin.getText()));
+                controller.member[membership-1].setNumberModerators(Integer.parseInt(txtMod.getText()));
+                controller.member[membership-1].setNumberGuests(Integer.parseInt(txtMod.getText()));
+                controller.member[membership-1].setPrice(Float.parseFloat(txtPrice.getText()));
+                technonizer.TechnoNizer.admin.settings();
+            }else
+                standardization.showMessage("cancel", "No se logro actualizar");
         }
-            
     }//GEN-LAST:event_btnChangeMembershipActionPerformed
 
     private void txtDescriptionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescriptionFocusGained
@@ -582,7 +600,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNumEventsFocusGained
 
     private void txtNumEventsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumEventsFocusLost
-        spDescription.setBackground(Color.white);
+        spNumEvents.setBackground(Color.white);
     }//GEN-LAST:event_txtNumEventsFocusLost
 
     private void txtNumEventsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumEventsKeyTyped

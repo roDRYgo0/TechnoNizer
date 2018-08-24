@@ -22,7 +22,10 @@ public class classAdmin {
     static String[] birthdate;
     static String birth;
     
-    
+    public static boolean updateMemberShip(classMembership m, int id){ 
+        return methodsSQL.execute("UPDATE memberships SET description = ?, condition = ?, numberEvents = ?, numberAdmins = ?, numberModerators = ?, numberGuests = ?, price = ? WHERE id = ?", 
+                m.getDescription(), 1, m.getNumberEvents(), m.getNumberAdmins(), m.getNumberModerators(), m.getNumberGuests(), m.getPrice(), id);
+    }
     
     public static void restart(){
         users = new ArrayList<>();

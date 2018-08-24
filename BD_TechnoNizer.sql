@@ -16,6 +16,9 @@ numberGuests numeric(4),
 price smallmoney not null
 )
 
+select * from memberships
+
+/*UPDATE memberships SET name = ?, description = ?, condition = ?, numberEvents = ?, numberAdmins = ?, numberModerators = ?, numberGuests = ?, price = ? WHERE id = ?*/
 
 create table genders(
 id int not null primary key,
