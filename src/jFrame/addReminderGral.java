@@ -167,7 +167,7 @@ public class addReminderGral extends javax.swing.JFrame {
         btnNext.setBackground(new java.awt.Color(0, 153, 255));
         btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext.setText("Siguiente");
+        btnNext.setText("Guardar");
         btnNext.setBorderPainted(false);
         btnNext.setFocusable(false);
         btnNext.addActionListener(new java.awt.event.ActionListener() {
@@ -255,7 +255,6 @@ public class addReminderGral extends javax.swing.JFrame {
                                                 .addGap(35, 35, 35)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                                 .addGap(10, 10, 10)
@@ -281,9 +280,8 @@ public class addReminderGral extends javax.swing.JFrame {
                                         .addGap(53, 53, 53)))
                                 .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel4)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(spReminder, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
+                            .addComponent(spReminder)
+                            .addComponent(jScrollPane1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(113, 113, 113)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -400,6 +398,8 @@ public class addReminderGral extends javax.swing.JFrame {
                 if (classReminder.insert()) {
                     JOptionPane.showMessageDialog(this, "Recordatorio Guardado");
                     standardization.hide(controller.gralReminder);
+               
+                   
                 } else {
                     JOptionPane.showMessageDialog(this, "Error al guardar recordatorio");
                     standardization.hide(controller.gralReminder);

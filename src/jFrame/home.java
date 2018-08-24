@@ -25,7 +25,9 @@ public class home extends javax.swing.JFrame {
         
         new Thread(()->{
             classContact.select();
+              classReminder.select();
             classProjects.select();
+ 
         }).start();
         
         imageUserTop = lblImageUserTop;
@@ -35,7 +37,7 @@ public class home extends javax.swing.JFrame {
             System.out.println("listo");
         }
         else
-            classUsuario.selectAlter();
+            classUsuario.select();
         controller.rootFrame = this;
         this.internet = logIn.internet;
         load();
@@ -838,24 +840,9 @@ public class home extends javax.swing.JFrame {
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }else{
-            disable();
-            
-            pnAgenda.setBackground(new Color(52, 52, 52));
-        
-        controller.jpAA = new jpReminder();
-        controller.jpAA.setPreferredSize(new Dimension(980,601));
-        controller.jpAA.setLocation(0,0);
-
-        scrollContainer.setViewportView(controller.jpAA);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
-        }
-        
-    }//GEN-LAST:event_pnAgendaMouseReleased
- public void showReminder(){
-       /*disable();
+ 
+       disable();
         pnAgenda.setBackground(new Color(52, 52, 52));
-        classUsuario.restartUser();
         classContact.reset();
         
         controller.jpAA = new jpReminder();
@@ -864,8 +851,11 @@ public class home extends javax.swing.JFrame {
 
         scrollContainer.setViewportView(controller.jpAA);
         scrollContainer.revalidate();
-        scrollContainer.repaint();*/
+        scrollContainer.repaint();
     }
+      
+    }//GEN-LAST:event_pnAgendaMouseReleased
+
     private void pnSecurityMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSecurityMouseReleased
         pnSecurity();
     }//GEN-LAST:event_pnSecurityMouseReleased
