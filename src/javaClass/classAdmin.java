@@ -22,9 +22,35 @@ public class classAdmin {
     static String[] birthdate;
     static String birth;
     
+    public static int getSpaceGender(){
+        if(controller.genders.size() > 3)
+            return controller.genders.size()-3;
+        else
+            return 0;
+    }
+    
     public static boolean updateMemberShip(classMembership m, int id){ 
         return methodsSQL.execute("UPDATE memberships SET description = ?, condition = ?, numberEvents = ?, numberAdmins = ?, numberModerators = ?, numberGuests = ?, price = ? WHERE id = ?", 
                 m.getDescription(), 1, m.getNumberEvents(), m.getNumberAdmins(), m.getNumberModerators(), m.getNumberGuests(), m.getPrice(), id);
+    }
+    
+    public static boolean insertGender(String gender){
+        return methodsSQL.execute("insert into genders values (?, ?)",getIdGender(), gender);
+    }
+    
+    public static boolean deleteGender(int id){
+        return methodsSQL.execute("DELETE FROM genders WHERE id = ?",id);
+    }
+    
+    static int getIdGender(){
+        int d = 0;
+        for(int i = 0; true; i++ ){
+            if(!methodsSQL.exists("SELECT id FROM genders WHERE id = ?", i)){
+                d = i;
+                break;
+            }
+        }
+        return d;
     }
     
     public static void restart(){

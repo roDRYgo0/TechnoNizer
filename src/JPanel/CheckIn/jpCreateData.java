@@ -470,8 +470,8 @@ public class jpCreateData extends javax.swing.JPanel {
     }
     
     public void cargarComboBox(){
-        for(int i = 0; i<2; i++)
-            cmbGender.addItem(controller.genders[i]);
+        for(int i = 0; i<controller.genders.size(); i++)
+            cmbGender.addItem(controller.genders.get(i).getGender());
         cmbGender.setSelectedIndex(-1);
     }
     
