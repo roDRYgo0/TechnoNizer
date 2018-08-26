@@ -3,12 +3,41 @@ package javaClass;
 /** @author rodri */
 
 public class reminder {
-    
+    private Integer id; 
     private Integer condition;
     private String reminder;
     private String date;
-      private Integer myNumberRemDisp;
+    private Integer repeat;
+    private Integer myNumberRemDisp;
     private Integer myNumberRemUse;
+    private String nickname;
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+    
+    public Integer getRepeat() {
+        return repeat;
+    }
+
+    public void setRepeat(Integer repeat) {
+        this.repeat = repeat;
+    }
+
+    
+    
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
 
     public Integer getCondition() {
         return condition;
@@ -49,6 +78,14 @@ public class reminder {
     public void setMyNumberRemUse(Integer myNumberRemUse) {
         this.myNumberRemUse = myNumberRemUse;
     }
-
-
+    
+    private void restartReminder(){
+        id=null;
+        reminder=null;
+        condition=-1;
+        date=null;
+        System.out.println("Adios toda inf reminders");
+    
+       
+    }
 }

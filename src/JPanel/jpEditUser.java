@@ -164,6 +164,7 @@ public final class jpEditUser extends javax.swing.JPanel {
         for(int i = 0; i<controller.genders.size(); i++){
             cmbGender.addItem(controller.genders.get(i).getGender());
         }
+        cmbGender.setSelectedIndex(classUsuario.getId_gender());
     }
 
     @SuppressWarnings("unchecked")

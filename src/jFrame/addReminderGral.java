@@ -6,6 +6,7 @@ import javaClass.classEvent;
 import javaClass.classReminder;
 import javaClass.classUsuario;
 import javaClass.controller;
+import javaClass.reminder;
 import javaClass.standardization;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -167,7 +168,7 @@ public class addReminderGral extends javax.swing.JFrame {
         btnNext.setBackground(new java.awt.Color(0, 153, 255));
         btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext.setText("Siguiente");
+        btnNext.setText("Guardar");
         btnNext.setBorderPainted(false);
         btnNext.setFocusable(false);
         btnNext.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +189,7 @@ public class addReminderGral extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtReminder);
 
         txtYearEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtYearEnd.setText("2000");
+        txtYearEnd.setText("2018");
         txtYearEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtYearEnd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -208,7 +209,7 @@ public class addReminderGral extends javax.swing.JFrame {
         cmbMonthEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         txtDayEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtDayEnd.setText("12");
+        txtDayEnd.setText("24");
         txtDayEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtDayEnd.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -255,7 +256,6 @@ public class addReminderGral extends javax.swing.JFrame {
                                                 .addGap(35, 35, 35)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                                 .addGap(10, 10, 10)
@@ -281,9 +281,8 @@ public class addReminderGral extends javax.swing.JFrame {
                                         .addGap(53, 53, 53)))
                                 .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel4)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(spReminder, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
+                            .addComponent(spReminder)
+                            .addComponent(jScrollPane1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(113, 113, 113)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -396,12 +395,18 @@ public class addReminderGral extends javax.swing.JFrame {
                 classReminder.setDatetime((txtDayEnd.getText()) + "/" + (cmbMonthEnd.getSelectedIndex() + 1)+ "/" +txtYearEnd.getText() );
                 classReminder.setRepeat((Integer.parseInt(txtHora.getText())));
                 classReminder.setNickname(classUsuario.getNickname());
-
+                
+                
                 if (classReminder.insert()) {
-                    JOptionPane.showMessageDialog(this, "Recordatorio Guardado");
-                    standardization.hide(controller.gralReminder);
+                    classReminder.select();
+                    standardization.hide(controller.gralReminder);               
+                    technonizer.TechnoNizer.home.pnAgenda();
+                    controller.jpAA.load();
+                    controller.rootFrame = technonizer.TechnoNizer.home;
+                    standardization.showMessage("ok", "Recordatorio ingresado");
                 } else {
-                    JOptionPane.showMessageDialog(this, "Error al guardar recordatorio");
+                    standardization.showMessage("cancel", "Error ingresado");
+
                     standardization.hide(controller.gralReminder);
                       
                 }

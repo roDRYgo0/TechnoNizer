@@ -30,11 +30,10 @@ public class allReminder extends javax.swing.JPanel {
                     y+=168;
                     linea=0;   
                 }
+                
                 controller.reminderGrid = new reminderGrid(count, search);
-
                 controller.reminderGrid.setSize(465, 140);
                 controller.reminderGrid.setLocation(x,y);
-                controller.reminderGrid.removeAll();
                 this.add(controller.reminderGrid,BorderLayout.CENTER);
                 this.revalidate();
                 this.repaint();

@@ -9,14 +9,10 @@ import javaClass.classReminder;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
-import javax.swing.JOptionPane;
-import technonizer.TechnoNizer;
+
 
 public class jpReminder extends javax.swing.JPanel {
 
-     
-    
-    
      int view;
     
     public jpReminder() {
@@ -26,7 +22,7 @@ public class jpReminder extends javax.swing.JPanel {
         load();
     }
 
-    void load(){
+    public void load(){
         insertarPaneles(classReminder.reminders.size(), false);
         
         loadImage();
@@ -101,7 +97,7 @@ public class jpReminder extends javax.swing.JPanel {
         });
 
         jLabel2.setFont(new java.awt.Font("Cantarell", 1, 16)); // NOI18N
-        jLabel2.setText("Agregar nuevo evento");
+        jLabel2.setText("Agregar nuevo recordatorio");
 
         jLabel3.setFont(new java.awt.Font("Cantarell", 1, 48)); // NOI18N
         jLabel3.setText("+");
@@ -115,7 +111,7 @@ public class jpReminder extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addGap(21, 21, 21))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(100, 100, 100)
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -180,11 +176,9 @@ public class jpReminder extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollReminders, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -205,9 +199,11 @@ public class jpReminder extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtSearch)
-                                            .addComponent(spSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGap(0, 15, Short.MAX_VALUE))
-                    .addComponent(scrollReminders, javax.swing.GroupLayout.Alignment.TRAILING))
+                                            .addComponent(spSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 15, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
