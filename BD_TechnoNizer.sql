@@ -452,7 +452,7 @@ insert into questionBank values
 ('¿Cuál es la cosa que más amas en todo el mundo?')
 select * from reminders where nickname = 'dev.rodrig'
 
-select * from contactUsers
+select * from memberships
 
 select ui.firstName, ui.lastName, ui.birthdate, g.gender, u.mail, ub.description, ub.dateTime, cu.contact, ct.type from usersBinnacle ub, users u, usersInformation ui, genders g, contactUsers cu, contactType ct where ct.id = cu.idContactType and cu.idUsersInf = ui.id and ub.nickname = u.nickname and ui.nickname = u.nickname and ui.id_gender = g.id and u.nickname like 'dev.rodrig'
 

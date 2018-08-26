@@ -712,27 +712,31 @@ public class admin extends javax.swing.JFrame {
 
     private void pnUserMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnUserMouseReleased
         showUsers();
+        cambio = false;
     }//GEN-LAST:event_pnUserMouseReleased
 
     public void showUsers(){
-        loading();
-       new Thread(()->{
-            disable();
-            pnUser.setBackground(new Color(52, 52, 52));
-            classUsuario.restartUser();
-            classContact.reset();
+        if(cambio){
+            loading();
+            new Thread(()->{
+                disable();
+                pnUser.setBackground(new Color(52, 52, 52));
+                classUsuario.restartUser();
+                classContact.reset();
 
-            classAdmin.select();
-            classAdmin.selectLog();
-            
-            controller.jpUs = new jpUsers();
-            controller.jpUs.setPreferredSize(new Dimension(980,601));
-            controller.jpUs.setLocation(0,0);
+                classAdmin.select();
+                classAdmin.selectLog();
 
-            scrollContainer.setViewportView(controller.jpUs);
-            scrollContainer.revalidate();
-            scrollContainer.repaint();
-       }) .start();
+                controller.jpUs = new jpUsers();
+                controller.jpUs.setPreferredSize(new Dimension(980,601));
+                controller.jpUs.setLocation(0,0);
+
+                scrollContainer.setViewportView(controller.jpUs);
+                scrollContainer.revalidate();
+                scrollContainer.repaint();
+                cambio = true;
+           }) .start();
+        }
     }
     
     public void showUser(int user, boolean search){

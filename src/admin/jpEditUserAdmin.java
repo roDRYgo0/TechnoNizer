@@ -159,8 +159,8 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
         cmbGender.removeAllItems();
         for(int i = 0; i<controller.genders.size(); i++){
             cmbGender.addItem(controller.genders.get(i).getGender());
-            cmbGender.setSelectedIndex(i);
         }
+            cmbGender.setSelectedIndex(classUsuario.getId_gender());
         
     }
 
