@@ -411,10 +411,14 @@ public class classUsuario {
 
     //<editor-fold defaultstate="collapsed" desc="Load final">
     public static void loadAllFinal(){
+        loadGenders();
+        loadMemberships();
+    }
+    
+    public static void loadMemberships(){
         for(int i=0; i < 3; i++){
             controller.member[i] = asignarDatos(i+1);
-        }
-        loadGenders();
+        } 
     }
     
     public static void loadGenders(){

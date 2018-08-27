@@ -554,7 +554,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                             .addComponent(btnChangeMembership, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, 0)
                         .addComponent(spPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         scrollGender.setBackground(new java.awt.Color(255, 255, 255));
@@ -582,9 +582,9 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(scrollGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103))
+                .addGap(73, 73, 73))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -600,7 +600,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(scrollGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -634,7 +634,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
     private void btnChangeMembershipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeMembershipActionPerformed
         if(standardization.campoVacio(txtDescription.getText()) || standardization.campoVacio(txtNumEvents.getText()) ||
                 standardization.campoVacio(txtAdmin.getText()) || standardization.campoVacio(txtMod.getText()) || 
-                standardization.campoVacio(txtPrice.getText())){
+                standardization.campoVacio(txtPrice.getText()) || standardization.campoVacio(txtGuest.getText())){
             standardization.showMessage("warning", "Campos vacios");
         }else{
             classMembership member = new classMembership();
@@ -642,7 +642,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
             member.setNumberEvents(Integer.parseInt(txtNumEvents.getText()));
             member.setNumberAdmins(Integer.parseInt(txtAdmin.getText()));
             member.setNumberModerators(Integer.parseInt(txtMod.getText()));
-            member.setNumberGuests(Integer.parseInt(txtMod.getText()));
+            member.setNumberGuests(Integer.parseInt(txtGuest.getText()));
             member.setPrice(Float.parseFloat(txtPrice.getText()));
             if(classAdmin.updateMemberShip(member, membership)){
                 standardization.showMessage("ok", "Actualizado correctamente");
@@ -650,7 +650,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                 controller.member[membership-1].setNumberEvents(Integer.parseInt(txtAdmin.getText()));
                 controller.member[membership-1].setNumberAdmins(Integer.parseInt(txtAdmin.getText()));
                 controller.member[membership-1].setNumberModerators(Integer.parseInt(txtMod.getText()));
-                controller.member[membership-1].setNumberGuests(Integer.parseInt(txtMod.getText()));
+                controller.member[membership-1].setNumberGuests(Integer.parseInt(txtGuest.getText()));
                 controller.member[membership-1].setPrice(Float.parseFloat(txtPrice.getText()));
                 technonizer.TechnoNizer.admin.settings();
             }else
@@ -729,15 +729,18 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPriceKeyTyped
 
     private void txtGuestFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGuestFocusGained
-        // TODO add your handling code here:
+        spGuest.setBackground(Color.red);
     }//GEN-LAST:event_txtGuestFocusGained
 
     private void txtGuestFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGuestFocusLost
-        // TODO add your handling code here:
+        spGuest.setBackground(Color.white);
     }//GEN-LAST:event_txtGuestFocusLost
 
     private void txtGuestKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGuestKeyTyped
-        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(Character.isDigit(c) || c == '.'){}
+        else
+            evt.consume();
     }//GEN-LAST:event_txtGuestKeyTyped
 
     void seleccionarMembership(int m){
@@ -825,6 +828,13 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
             iconPrice.setIcon(new controller().changeImage("/imagenes/free.png", 49, 49));
         else
             iconPrice.setIcon(new controller().changeImage("/imagenes/dollar.png", 49, 49));
+        
+        txtGuest.setText(numberGuests+"");
+        if(numberGuests==-1){
+            iconGuest.setIcon(new controller().changeImage("/imagenes/infinity.png", 25, 25));
+        }
+        else
+            iconGuest.setIcon(new controller().changeImage("/imagenes/hashtag.png", 25, 25));
     }
     
     public void loadGender(){

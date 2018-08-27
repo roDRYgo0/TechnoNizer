@@ -682,8 +682,12 @@ public final class jpEditUser extends javax.swing.JPanel {
 
     private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
         char c = evt.getKeyChar();
-        if(txtName.getText().contains(" ") && c==' ')
-        evt.consume();
+        if(txtName.getText().length()<41){
+            if(Character.isLetter(c) || Character.isSpaceChar(c)){}
+            else
+                evt.consume();
+        }else
+            evt.consume();
     }//GEN-LAST:event_txtNameKeyTyped
 
     private void txtLastNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLastNameFocusGained
@@ -696,8 +700,12 @@ public final class jpEditUser extends javax.swing.JPanel {
 
     private void txtLastNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameKeyTyped
         char c = evt.getKeyChar();
-        if(txtLastName.getText().contains(" ") && c==' ')
-        evt.consume();
+        if(txtName.getText().length()<41){
+            if(Character.isLetter(c) || Character.isSpaceChar(c)){}
+            else
+                evt.consume();
+        }else
+            evt.consume();
     }//GEN-LAST:event_txtLastNameKeyTyped
 
     private void txtMailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMailFocusGained

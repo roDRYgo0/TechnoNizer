@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Calendar;
 import java.util.Date;
 import javaClass.classEvent;
 import javaClass.classUsuario;
@@ -32,7 +31,6 @@ public class addEventGral extends javax.swing.JFrame {
     }
     public addEventGral() {
         initComponents();
-        this.event=event;
         loadImage();
     }
     
@@ -546,7 +544,9 @@ public class addEventGral extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDayEndFocusLost
 
     private void txtDayEndKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDayEndKeyTyped
-        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(txtDayEnd.getText().length()>1 || c < '0' || c >'9')
+            evt.consume();
     }//GEN-LAST:event_txtDayEndKeyTyped
 
     private void txtYearEndFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearEndFocusGained
@@ -554,7 +554,9 @@ public class addEventGral extends javax.swing.JFrame {
     }//GEN-LAST:event_txtYearEndFocusGained
 
     private void txtYearEndKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtYearEndKeyTyped
-        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(txtYearEnd.getText().length()>3 || c < '0' || c >'9')
+        evt.consume();
     }//GEN-LAST:event_txtYearEndKeyTyped
 
     private void txtYearStartFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearStartFocusLost

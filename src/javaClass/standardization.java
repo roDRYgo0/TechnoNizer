@@ -24,8 +24,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import technonizer.*;
 import static technonizer.TechnoNizer.*;
 
@@ -39,6 +41,13 @@ public class standardization {
     controller control = new controller();
     public static byte[] image;
     static Calendar cal= Calendar.getInstance();
+    
+    public static void setNowDate(JTextField day, JComboBox month, JTextField year){
+        day.setText(standardization.currentDateTime().getDate()+"");
+        month.setSelectedIndex(standardization.currentDateTime().getMonth()-1);
+        year.setText(standardization.currentDateTime().getYear()+"");
+    }
+    
     
     public static Date currentDateTime(){
         cal= Calendar.getInstance();
