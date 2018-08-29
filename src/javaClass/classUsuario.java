@@ -365,7 +365,10 @@ public class classUsuario {
     public static void numEvents(){
         classEvent.restart();
         classEvent.select();
-        myNumberEventUse = classEvent.eventos.size();
+        for(event e : classEvent.eventos){
+            if(e.getNicknameCreator().equals(classUsuario.getNickname()))
+                myNumberEventUse++;
+        }
         myNumberEventDisp = myNumEvent-myNumberEventUse;
     }
     

@@ -141,12 +141,21 @@ public class classEvent {
             return row - 3;
     }
     
+    public static int spaceAllEvent(int num){
+        int row = (num)/4;
+        if((num)%4!=0)
+            row++;
+        if(row<=3)
+            return 0;
+        else
+            return row - 3;
+    }
+    
     public static boolean select(){
         //este es... aqui selecciono todos los eventos de yo... con todos su datos...
         boolean status = false;
         event evento;
-        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator FROM events e WHERE e.nicknameCreator = ? ",
-                classUsuario.getNickname());
+        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator FROM events e");
         
         try {
             while(rs.next()){
@@ -173,8 +182,6 @@ public class classEvent {
     
     public static boolean insert(){
         boolean status = false;
-        System.out.println(profilePicture);
-        System.out.println(coverPicture);
         if(profilePicture == null && profilePicture == null){
             status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+profilePicture+", "+coverPicture+", ?, ?, ?, ?, ?)",
                     eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition);
@@ -190,12 +197,15 @@ public class classEvent {
                     eventName, nicknameCreator, profilePicture, coverPicture, visibility, startDateTime, endDateTime, staff, condition);
         }
         
-        if(status && prices.size() > 0){
-            id = methodsSQL.getExecuteInt("SELECT id FROM events WHERE eventName = ? and nicknameCreator = ?", eventName, classUsuario.getNickname());
-            for (classPrice price : prices) {
-                status = methodsSQL.execute("INSERT INTO tickets VALUES (?, ?, ?)", price.getName(), price.getPrice(), id);
+        if(status && prices.size() >= 0){
+            if(status && prices.isEmpty()){
+                prices.add(0, new classPrice("Gratis",0.0));
             }
-        }
+            id = methodsSQL.getExecuteInt("SELECT id FROM events WHERE eventName = ? and nicknameCreator = ?", eventName, classUsuario.getNickname());
+            for (classPrice pric : prices) {
+                status = methodsSQL.execute("INSERT INTO tickets VALUES (?, ?, ?)", pric.getName(), pric.getPrice(), id);
+            }
+        } 
         
         return status;
     }

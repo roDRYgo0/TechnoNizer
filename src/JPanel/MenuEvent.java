@@ -76,6 +76,11 @@ public class MenuEvent extends javax.swing.JPanel {
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
         jPanel1.setBackground(new java.awt.Color(33, 150, 243));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel1MouseReleased(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -199,6 +204,10 @@ public class MenuEvent extends javax.swing.JPanel {
     private void jPanel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseReleased
         technonizer.TechnoNizer.home.showYourEvents(false);
     }//GEN-LAST:event_jPanel2MouseReleased
+
+    private void jPanel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseReleased
+        technonizer.TechnoNizer.home.showAllEvents(false);
+    }//GEN-LAST:event_jPanel1MouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

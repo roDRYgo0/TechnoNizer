@@ -93,6 +93,9 @@
           <Color blue="f3" green="96" red="21" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel1MouseReleased"/>
+      </Events>
 
       <Layout>
         <DimensionLayout dim="0">

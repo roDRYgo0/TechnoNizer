@@ -1,7 +1,6 @@
 package allEvent;
 
 import java.awt.BorderLayout;
-import javaClass.controller;
 
 /** @author rodri*/
 
@@ -24,31 +23,17 @@ public class allEvents extends javax.swing.JPanel {
                 y+=155;
                 linea=0;   
             }
-            controller.jpEv = new JPanel.showEvent(count, search);
+            showEvent jpEv = new showEvent(count, search);
 
-            controller.jpEv.setSize(190,120);
-            controller.jpEv.setLocation(x,y);
-            controller.jpEv.removeAll();
-            this.add(controller.jpEv,BorderLayout.CENTER);
+            jpEv.setSize(190,120);
+            jpEv.setLocation(x,y);
+            jpEv.removeAll();
+            this.add(jpEv,BorderLayout.CENTER);
             this.revalidate();
             this.repaint();
             x+=235;
             linea++;
         }
-        if(linea>3){
-            x=30;
-            y+=155;
-            row++;
-            linea=0;
-        }
-        addEvent jpAE = new addEvent();
-
-        jpAE.setSize(190,120);
-        jpAE.setLocation(x,y);
-        jpAE.removeAll();
-        this.add(jpAE,BorderLayout.CENTER);
-        this.revalidate();
-        this.repaint();
     }
     
     @SuppressWarnings("unchecked")

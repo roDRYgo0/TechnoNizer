@@ -12,24 +12,24 @@ public class jpEvent extends javax.swing.JPanel {
 
     int position[][] = new int[50][50];
     int paneles;
-    
+
     public jpEvent(boolean start) {
         initComponents();
-        insertarPaneles(classUsuario.getMyNumberEventUse(), start);
+        insertarPaneles(classEvent.eventos.size(), start);
         txtSearch.requestFocus();
         load();
     }
-    
-    void load(){
+
+    void load() {
         iconSearch.setIcon(new controller().changeImage("/imagenes/search.png", 35, 35));
     }
-    
-    public void insertarPaneles(int paneles, boolean search){
-        allEvents allE = new allEvents(paneles, search);
-        allE.setLocation(0,0);
 
-        allE.setPreferredSize(new Dimension(960, 488+(155 * classEvent.spaceEvent(paneles))));
-        
+    public void insertarPaneles(int paneles, boolean search) {
+        allEvents allE = new allEvents(paneles, search);
+        allE.setLocation(0, 0);
+
+        allE.setPreferredSize(new Dimension(960, 488 + (155 * classEvent.spaceAllEvent(paneles))));
+
         scrollEvent.setViewportView(allE);
         scrollEvent.revalidate();
         scrollEvent.repaint();
@@ -175,31 +175,33 @@ public class jpEvent extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSearchFocusLost
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
-        
+
     }//GEN-LAST:event_txtSearchKeyPressed
     int num = 0;
-    
+
     private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
         char c = evt.getKeyChar();
-        if(txtSearch.getText().length()<41){
-            if(Character.isLetter(c) || Character.isSpaceChar(c) || Character.isDigit(c)){}
-            else
+        if (txtSearch.getText().length() < 41) {
+            if (Character.isLetter(c) || Character.isSpaceChar(c) || Character.isDigit(c)) {
+            } else {
+                evt.consume();
+            }
+        } else {
             evt.consume();
-        }else
-            evt.consume();
+        }
     }//GEN-LAST:event_txtSearchKeyTyped
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-        if(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE && txtSearch.getText().trim().isEmpty() || evt.getKeyCode() == KeyEvent.VK_DELETE && txtSearch.getText().trim().isEmpty())
+        if (evt.getKeyCode() == KeyEvent.VK_BACK_SPACE && txtSearch.getText().trim().isEmpty() || evt.getKeyCode() == KeyEvent.VK_DELETE && txtSearch.getText().trim().isEmpty()) {
             insertarPaneles(classEvent.eventos.size(), false);
-        else if(evt.getKeyCode() == KeyEvent.VK_DELETE && txtSearch.getText().length() == 1 || evt.getKeyCode() == KeyEvent.VK_BACK_SPACE && txtSearch.getText().length() == 1)
+        } else if (evt.getKeyCode() == KeyEvent.VK_DELETE && txtSearch.getText().length() == 1 || evt.getKeyCode() == KeyEvent.VK_BACK_SPACE && txtSearch.getText().length() == 1) {
             insertarPaneles(classEvent.eventos.size(), false);
-        else{
+        } else {
             classEvent.eventosSearch.clear();
-            for(event e:classEvent.eventos){
-                if(e.getEventName().toLowerCase().contains(txtSearch.getText().toLowerCase())){
+            for (event e : classEvent.eventos) {
+                if (e.getEventName().toLowerCase().contains(txtSearch.getText().toLowerCase())) {
                     classEvent.eventosSearch.add(e);
-                }else{
+                } else {
                 }
             }
             insertarPaneles(classEvent.eventosSearch.size(), true);

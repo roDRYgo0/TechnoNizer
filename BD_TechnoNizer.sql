@@ -132,12 +132,14 @@ idCardas int not null references cards(id)
  startDateTime nvarchar(30) not null,
  endDateTime nvarchar(30) not null,
  staff int,
+ quantityTicket int not null,
  condition int not null,
  )
 
  create table tickets(
  id int identity(1,1) not null,
  nameTicket nvarchar(35) not null,
+ quantityTicket int not null,
  priceTicket smallmoney not null,
  idEvetn int not null references events(id)
  )
