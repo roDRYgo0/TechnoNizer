@@ -64,8 +64,6 @@ public class addEventGral extends javax.swing.JFrame {
         txtEvent = new javax.swing.JTextField();
         spEvent = new javax.swing.JSeparator();
         checkEvent = new javax.swing.JLabel();
-        lblCover = new javax.swing.JLabel();
-        lblProfil = new javax.swing.JLabel();
         spDayStart = new javax.swing.JSeparator();
         cmbMonthStart = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
@@ -86,6 +84,12 @@ public class addEventGral extends javax.swing.JFrame {
         spYearEnd = new javax.swing.JSeparator();
         btnNext1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        txtplace = new javax.swing.JTextField();
+        spPlace = new javax.swing.JSeparator();
+        jLabel14 = new javax.swing.JLabel();
+        TxtNumberPerson = new javax.swing.JTextField();
+        spNumber = new javax.swing.JSeparator();
 
         jButton1.setText("jButton1");
 
@@ -182,26 +186,6 @@ public class addEventGral extends javax.swing.JFrame {
         checkEvent.setMaximumSize(new java.awt.Dimension(25, 25));
         checkEvent.setMinimumSize(new java.awt.Dimension(25, 25));
         checkEvent.setPreferredSize(new java.awt.Dimension(25, 25));
-
-        lblCover.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCover.setText("Fondo");
-        lblCover.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                lblCoverMouseReleased(evt);
-            }
-        });
-
-        lblProfil.setBackground(new java.awt.Color(255, 255, 204));
-        lblProfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblProfil.setText("Perfil");
-        lblProfil.setMaximumSize(new java.awt.Dimension(80, 80));
-        lblProfil.setMinimumSize(new java.awt.Dimension(80, 80));
-        lblProfil.setPreferredSize(new java.awt.Dimension(80, 80));
-        lblProfil.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                lblProfilMouseReleased(evt);
-            }
-        });
 
         spDayStart.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -324,6 +308,55 @@ public class addEventGral extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel7.setText("Lugar del evento");
+
+        txtplace.setAutoscrolls(false);
+        txtplace.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtplace.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtplaceFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtplaceFocusLost(evt);
+            }
+        });
+        txtplace.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtplaceKeyTyped(evt);
+            }
+        });
+
+        spPlace.setForeground(new java.awt.Color(204, 204, 204));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel14.setText("Numero de Invitados");
+
+        TxtNumberPerson.setAutoscrolls(false);
+        TxtNumberPerson.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        TxtNumberPerson.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TxtNumberPersonFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TxtNumberPersonFocusLost(evt);
+            }
+        });
+        TxtNumberPerson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtNumberPersonActionPerformed(evt);
+            }
+        });
+        TxtNumberPerson.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtNumberPersonKeyTyped(evt);
+            }
+        });
+
+        spNumber.setForeground(new java.awt.Color(204, 204, 204));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -334,17 +367,19 @@ public class addEventGral extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addContainerGap(302, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(spEvent)
-                                        .addComponent(txtEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel4))
-                                .addComponent(checkEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(spNumber)
+                                        .addComponent(TxtNumberPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel14))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblProfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(checkEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,15 +419,16 @@ public class addEventGral extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton2))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(0, 292, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                    .addComponent(jButton2)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(spPlace)
+                                .addComponent(txtplace, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel7)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(spEvent)
+                                .addComponent(txtEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,22 +436,31 @@ public class addEventGral extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblCover, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(spEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtplace, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(spPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(checkEvent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addComponent(checkEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtNumberPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(spEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblProfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(spNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addGap(32, 32, 32)
@@ -614,57 +659,39 @@ public class addEventGral extends javax.swing.JFrame {
             System.out.println("estas muy mall");
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void lblCoverMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCoverMouseReleased
-        JFileChooser j = new JFileChooser();
-        FileNameExtensionFilter fil = new FileNameExtensionFilter("JPG, PNG & GIF","jpg","png","gif");
-        j.setFileFilter(fil);
+    private void txtplaceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtplaceFocusGained
+        spPlace.setBackground(Color.RED);
+        
+    }//GEN-LAST:event_txtplaceFocusGained
+    private void txtplaceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtplaceFocusLost
+        spPlace.setBackground(Color.white);
 
-        int s = j.showOpenDialog(this);
-        if(s == JFileChooser.APPROVE_OPTION){
-            String path = j.getSelectedFile().getAbsolutePath();
-            File ruta = new File(path);
-            try{
-                byte[] icono = new byte[(int) ruta.length()];
-                InputStream input = new FileInputStream(ruta);
-                input.read(icono);
-                cover = icono;
-//                lblCover.setIcon(new controller().changeSizeImage(standardization.getImgIcon(icono), 385, 119));
-                lblCover.setIcon(standardization.getImgIcon(icono, 235, 119));
-                lblCover.setText(null);
-            }catch(IOException ex){
-                cover = null;
-                lblCover.setText("Fondo");
+    }//GEN-LAST:event_txtplaceFocusLost
 
-            }
-        }
-    }//GEN-LAST:event_lblCoverMouseReleased
+    private void txtplaceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtplaceKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtplaceKeyTyped
 
-    private void lblProfilMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblProfilMouseReleased
-        JFileChooser j = new JFileChooser();
-        FileNameExtensionFilter fil = new FileNameExtensionFilter("JPG, PNG & GIF","jpg","png","gif");
-        j.setFileFilter(fil);
+    private void TxtNumberPersonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtNumberPersonFocusGained
+        spNumber.setBackground(Color.red);
+    }//GEN-LAST:event_TxtNumberPersonFocusGained
 
-        int s = j.showOpenDialog(this);
-        if(s == JFileChooser.APPROVE_OPTION){
-            String path = j.getSelectedFile().getAbsolutePath();
-            File ruta = new File(path);
-            try{
-                byte[] icono = new byte[(int) ruta.length()];
-                InputStream input = new FileInputStream(ruta);
-                input.read(icono);
-                profil = icono;
-                lblProfil.setIcon(standardization.getImgIcon(icono, 80, 80));
-                lblProfil.setText(null);
-            }catch(IOException ex){
-                profil = null;                
-                lblProfil.setText("Perfil");
+    private void TxtNumberPersonFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtNumberPersonFocusLost
+        spNumber.setBackground(Color.white);
 
-            }
-        }
-    }//GEN-LAST:event_lblProfilMouseReleased
+    }//GEN-LAST:event_TxtNumberPersonFocusLost
+
+    private void TxtNumberPersonKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtNumberPersonKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtNumberPersonKeyTyped
+
+    private void TxtNumberPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNumberPersonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtNumberPersonActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TxtNumberPerson;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
     private javax.swing.JLabel checkEvent;
@@ -679,21 +706,23 @@ public class addEventGral extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lblCover;
     private javax.swing.JLabel lblEvent;
-    private javax.swing.JLabel lblProfil;
     private javax.swing.JSeparator spDayEnd;
     private javax.swing.JSeparator spDayStart;
     private javax.swing.JSeparator spEvent;
+    private javax.swing.JSeparator spNumber;
+    private javax.swing.JSeparator spPlace;
     private javax.swing.JSeparator spYearEnd;
     private javax.swing.JSeparator spYearStart;
     private javax.swing.JTextField txtDayEnd;
@@ -701,6 +730,7 @@ public class addEventGral extends javax.swing.JFrame {
     private javax.swing.JTextField txtEvent;
     private javax.swing.JTextField txtYearEnd;
     private javax.swing.JTextField txtYearStart;
+    private javax.swing.JTextField txtplace;
     // End of variables declaration//GEN-END:variables
 
 }

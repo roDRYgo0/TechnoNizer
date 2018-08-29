@@ -60,6 +60,8 @@ public class controller {
     public static itemContact itemCont;
     public static jpContact jpCont;
     public static jpSecurityQuestions jpSeQue;
+    public static Event jpEvent;
+    
     
     public static allEvents allE;
   

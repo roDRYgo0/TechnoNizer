@@ -136,12 +136,13 @@ idCardas int not null references cards(id)
  condition int not null,
  )
 
+
  create table tickets(
  id int identity(1,1) not null,
  nameTicket nvarchar(35) not null,
  quantityTicket int not null,
  priceTicket smallmoney not null,
- idEvetn int not null references events(id)
+ idEvent int not null references events(id)
  )
  
 
@@ -383,10 +384,36 @@ insert into questionBank values
 ('¿Cuál es la emoción que menos te gusta sentir?'),
 ('¿Qué hiciste en tu último cumpleaños?'),
 ('¿Cuál es la cosa que más amas en todo el mundo?')
-select * from reminders where nickname = 'dev.rodrig'
 
+
+select * from activities
+select * from announcements
+select * from calendars
+select * from cards
+select * from checkList
+select * from checks
+select * from class
+select * from contactType
+select * from contactUsers
+select * from events
+select * from genders
+select * from homework
+select * from horary
+select * from lists
+select * from members
 select * from memberships
-
-select ui.firstName, ui.lastName, ui.birthdate, g.gender, u.mail, ub.description, ub.dateTime, cu.contact, ct.type from usersBinnacle ub, users u, usersInformation ui, genders g, contactUsers cu, contactType ct where ct.id = cu.idContactType and cu.idUsersInf = ui.id and ub.nickname = u.nickname and ui.nickname = u.nickname and ui.id_gender = g.id and u.nickname like 'dev.rodrig'
-
-select u.nickname, ui.firstName, ui.lastName, ui.birthdate, g.gender, COUNT(p.name) from users u, usersInformation ui, genders g, projects p, events e where g.id = ui.id_gender and u.nickname = ui.nickname and p.nickname = u.nickname and e.nicknameCreator = u.nickname 
+select * from personalEvents
+select * from problems
+select * from projects
+select * from questionBank
+select * from reminders
+select * from security
+select * from staff
+select * from tags 
+select * from tasks
+select * from tasksList
+select * from teams
+select * from tickets
+select * from users
+select * from usersBinnacle
+select * from usersInformation

@@ -170,6 +170,15 @@ public class classEvent {
                 evento.setStaff(rs.getInt(8));
                 evento.setCondition(rs.getInt(9));
                 evento.setNicknameCreator(rs.getString(10));
+                
+//                List<classPrice> price = new ArrayList<>();
+//                classPrice p;
+//                ResultSet rsP = methodsSQL.getExecute("SELECT nameTicket FROM tickets WHERE idEvent = ?", id);
+//                while(rsP.next()){
+//                    p = new classPrice();
+//                    p.setPrice(rs);
+//                }
+//                
                 eventos.add(evento);//aqui...... tambien ya esta.... d
                 //y los voy agregando a una lista...
             }
@@ -183,17 +192,17 @@ public class classEvent {
     public static boolean insert(){
         boolean status = false;
         if(profilePicture == null && profilePicture == null){
-            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+profilePicture+", "+coverPicture+", ?, ?, ?, ?, ?)",
-                    eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition);
+            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+profilePicture+", "+coverPicture+", ?, ?, ?, ?, ?, ?)",
+                    eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, 1, condition);
             System.out.println("aqui");
         }else if(coverPicture == null){
-            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, ?, "+coverPicture+", ?, ?, ?, ?, ?)",
+            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, ?, "+coverPicture+", ?, ?, ?, ?, 1, ?)",
                     eventName, nicknameCreator, profilePicture, visibility, startDateTime, endDateTime, staff, condition);
         }else if(coverPicture == null ){
-            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+profilePicture+", ?, ?, ?, ?, ?, ?)",
+            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+profilePicture+", ?, ?, ?, ?, ?, 1, ?)",
                     eventName, nicknameCreator, coverPicture, visibility, startDateTime, endDateTime, staff, condition);
         }else{
-            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, ?)",
                     eventName, nicknameCreator, profilePicture, coverPicture, visibility, startDateTime, endDateTime, staff, condition);
         }
         

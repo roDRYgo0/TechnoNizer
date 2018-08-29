@@ -4,13 +4,16 @@ import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.event;
 
+
 public class showEvent extends javax.swing.JPanel {
 
     int count;
+    int evento;
     
     public showEvent(int e, boolean search) {
         initComponents();
         count = 0;
+        evento = e;
         load(e, search);
     }
 
@@ -48,6 +51,12 @@ public class showEvent extends javax.swing.JPanel {
         lblNickname = new javax.swing.JLabel();
         lblPos = new javax.swing.JLabel();
 
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
+            }
+        });
+
         lblEventName.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblEventName.setText("Not Found");
         lblEventName.setToolTipText("");
@@ -68,9 +77,7 @@ public class showEvent extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNickname, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                     .addComponent(lblEventName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(lblPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblPos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -84,6 +91,10 @@ public class showEvent extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        technonizer.TechnoNizer.home.showEvent(evento);
+    }//GEN-LAST:event_formMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

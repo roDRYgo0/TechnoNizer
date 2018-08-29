@@ -780,6 +780,17 @@ public class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
+    public void showEvent(int e){
+        disable();
+        pnMem.setBackground(new Color(52, 52, 52));
+        Event event = new Event(e);
+        event.setLocation(0,0);
+
+        scrollContainer.setViewportView(event);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
     private void pnGeneralMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnGeneralMouseReleased
         disable();
         pnGeneral.setBackground(new Color(52, 52, 52));
@@ -878,6 +889,7 @@ public class home extends javax.swing.JFrame {
             scrollContainer.repaint();
         }else{
             disable();
+            
             pnEvents.setBackground(new Color(52, 52, 52));
             MenuEvent eve = new MenuEvent();
             eve.setLocation(0,0);

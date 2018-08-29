@@ -5,6 +5,8 @@
  */
 package JPanel;
 
+import javaClass.classEvent;
+
 /**
  *
  * @author Alexg
@@ -14,8 +16,10 @@ public class Event extends javax.swing.JPanel {
     /**
      * Creates new form Event
      */
-    public Event() {
+    public Event(int e) {
         initComponents();
+        nameEvent.setText(classEvent.eventos.get(e).getEventName());
+        nickname.setText(classEvent.eventos.get(e).getNicknameCreator());
     }
 
     /**
@@ -30,8 +34,8 @@ public class Event extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        nameEvent = new javax.swing.JLabel();
+        nickname = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -64,9 +68,9 @@ public class Event extends javax.swing.JPanel {
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
-        jLabel1.setText("Name Event");
+        nameEvent.setText("Name Event");
 
-        jLabel2.setText("UserName");
+        nickname.setText("UserName");
 
         jLabel4.setText("Date Created");
 
@@ -83,8 +87,8 @@ public class Event extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(nameEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nickname))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 559, Short.MAX_VALUE)
@@ -104,9 +108,9 @@ public class Event extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
+                        .addComponent(nameEvent)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
+                        .addComponent(nickname)
                         .addGap(5, 5, 5)
                         .addComponent(jLabel4))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -139,13 +143,13 @@ public class Event extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel nameEvent;
+    private javax.swing.JLabel nickname;
     // End of variables declaration//GEN-END:variables
 }

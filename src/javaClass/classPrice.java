@@ -5,11 +5,24 @@ package javaClass;
 public class classPrice {
     private String name;
     private double price;
+    private int count;
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     public classPrice(String name, double price) {
         this.name = name;
         this.price = price;
     }    
+    
+    public classPrice(){
+        
+    }
     
     public String getName() {
         return name;

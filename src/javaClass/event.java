@@ -1,5 +1,7 @@
 package javaClass;
 
+import java.util.List;
+
 /** @author rodri */
 
 public class event {
@@ -15,6 +17,7 @@ public class event {
     private String endDateTime;
     private Integer staff;
     private Integer condition;
+    private List<classPrice> prices;
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
     
