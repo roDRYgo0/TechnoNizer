@@ -1,7 +1,6 @@
 package jFrame;
 
 import JPanel.*;
-import admin.jpUsers;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -746,6 +745,18 @@ public class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
+    public void showAllEvents(boolean search){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        allEvent.jpEvent event = new allEvent.jpEvent(search);
+        event.setPreferredSize(new Dimension(980,601));
+        event.setLocation(0,0);
+
+        scrollContainer.setViewportView(event);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
     public void showYourEvents(boolean search){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
@@ -797,28 +808,15 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_itemSettingsMouseReleased
 
     private void pnEventsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnEventsMouseReleased
-        if(classUsuario.getCondition()==1){
-            disable();
-            controller.jpDis = new jpDisable();
-            controller.jpDis.setLocation(0,0);
-
-            scrollContainer.setViewportView(controller.jpDis);
-            scrollContainer.revalidate();
-            scrollContainer.repaint();
-        }else{
-            disable();
-            pnEvents.setBackground(new Color(52, 52, 52));
-            pnEvent();
-        }
+        pnEvent();
     }//GEN-LAST:event_pnEventsMouseReleased
 
     
     private void pnAgendaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnAgendaMouseReleased
-        
-        pnAgenda();
-      
+ 
+        pnAgenda();      
     }//GEN-LAST:event_pnAgendaMouseReleased
-
+    
     public void pnAgenda(){
         if(classUsuario.getCondition()==1){
             disable();
@@ -880,6 +878,7 @@ public class home extends javax.swing.JFrame {
             scrollContainer.repaint();
         }else{
             disable();
+            pnEvents.setBackground(new Color(52, 52, 52));
             MenuEvent eve = new MenuEvent();
             eve.setLocation(0,0);
 
