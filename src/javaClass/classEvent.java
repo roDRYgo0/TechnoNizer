@@ -21,13 +21,33 @@ public class classEvent {
     private static String startDateTime;
     private static String endDateTime;
     private static Integer staff;
+    private static String place;
+    private static Integer quantityTicket;
     private static Integer condition;
     public static List<classPrice> prices= new ArrayList<classPrice>();
     
     public static List<event> eventos = new ArrayList<event>();
     public static List<event> eventosSearch = new ArrayList<event>();
+
+
     
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static Integer getQuantityTicket() {
+        return quantityTicket;
+    }
+
+    public static void setQuantityTicket(Integer quantityTicket) {
+        classEvent.quantityTicket = quantityTicket;
+    }
+    public static String getPlace() {
+        return place;
+    }
+
+    public static void setPlace(String place) {
+        classEvent.place = place;
+    }
+    
+    
     public static Integer getId() {
         return id;
     }
@@ -155,7 +175,7 @@ public class classEvent {
         //este es... aqui selecciono todos los eventos de yo... con todos su datos...
         boolean status = false;
         event evento;
-        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator FROM events e");
+        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket FROM events e");
         
         try {
             while(rs.next()){
@@ -170,15 +190,20 @@ public class classEvent {
                 evento.setStaff(rs.getInt(8));
                 evento.setCondition(rs.getInt(9));
                 evento.setNicknameCreator(rs.getString(10));
+                evento.setPlace(rs.getString(11));
+                evento.setQuantityTicket(rs.getInt(12));
                 
-//                List<classPrice> price = new ArrayList<>();
-//                classPrice p;
-//                ResultSet rsP = methodsSQL.getExecute("SELECT nameTicket FROM tickets WHERE idEvent = ?", id);
-//                while(rsP.next()){
-//                    p = new classPrice();
-//                    p.setPrice(rs);
-//                }
-//                
+                List<classPrice> price = new ArrayList<>();
+                classPrice p;
+                ResultSet rsP = methodsSQL.getExecute("SELECT nameTicket, quantityTicket, priceTicket FROM tickets WHERE idEvent = ?", id);
+                while(rsP.next()){
+                    p = new classPrice();
+                    p.setName(rs.getString(1));
+                    p.setCount(rs.getInt(2));
+                    p.setPrice(rs.getDouble(3));
+                    price.add(p);
+                }
+                evento.setPrices(prices);
                 eventos.add(evento);//aqui...... tambien ya esta.... d
                 //y los voy agregando a una lista...
             }
@@ -191,28 +216,17 @@ public class classEvent {
     
     public static boolean insert(){
         boolean status = false;
-        if(profilePicture == null && profilePicture == null){
-            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+profilePicture+", "+coverPicture+", ?, ?, ?, ?, ?, ?)",
-                    eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, 1, condition);
-            System.out.println("aqui");
-        }else if(coverPicture == null){
-            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, ?, "+coverPicture+", ?, ?, ?, ?, 1, ?)",
-                    eventName, nicknameCreator, profilePicture, visibility, startDateTime, endDateTime, staff, condition);
-        }else if(coverPicture == null ){
-            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+profilePicture+", ?, ?, ?, ?, ?, 1, ?)",
-                    eventName, nicknameCreator, coverPicture, visibility, startDateTime, endDateTime, staff, condition);
-        }else{
-            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, ?)",
-                    eventName, nicknameCreator, profilePicture, coverPicture, visibility, startDateTime, endDateTime, staff, condition);
-        }
+        status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?)",
+                eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition, quantityTicket, place);
+
         
-        if(status && prices.size() >= 0){
+        if(status){
             if(status && prices.isEmpty()){
-                prices.add(0, new classPrice("Gratis",0.0));
+                prices.add(0, new classPrice("Gratis", 0.0, quantityTicket));
             }
             id = methodsSQL.getExecuteInt("SELECT id FROM events WHERE eventName = ? and nicknameCreator = ?", eventName, classUsuario.getNickname());
             for (classPrice pric : prices) {
-                status = methodsSQL.execute("INSERT INTO tickets VALUES (?, ?, ?)", pric.getName(), pric.getPrice(), id);
+                status = methodsSQL.execute("INSERT INTO tickets VALUES (?, ?, ?, ?)", pric.getName(), pric.getCount(), pric.getPrice(), id);
             }
         } 
         

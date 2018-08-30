@@ -15,10 +15,11 @@ public class classPrice {
         this.count = count;
     }
 
-    public classPrice(String name, double price) {
+    public classPrice(String name, double price, int count) {
         this.name = name;
         this.price = price;
-    }    
+        this.count = count;
+    }   
     
     public classPrice(){
         

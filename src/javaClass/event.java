@@ -12,14 +12,41 @@ public class event {
     private byte[] profilePicture;
     private byte[] coverPicture;
     private Integer price;
+    private Integer quantityTicket;
     private Integer visibility;
     private String startDateTime;
     private String endDateTime;
     private Integer staff;
+    private String place;
     private Integer condition;
     private List<classPrice> prices;
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    
+    public Integer getQuantityTicket() {
+        return quantityTicket;
+    }
+
+    public void setQuantityTicket(Integer quantityTicket) {
+        this.quantityTicket = quantityTicket;
+    }
+
+    
+    public List<classPrice> getPrices() {
+        return prices;
+    }
+
+    public void setPrices(List<classPrice> prices) {
+        this.prices = prices;
+    }
     
     public Integer getId() {
         return id;
