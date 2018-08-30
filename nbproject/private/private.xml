@@ -7,22 +7,29 @@
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/allEvent/allEvents.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/admin/jpStats.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/javaClass/classAdmin.java</file>
+            <file>file:/C:/Users/kali/Git/TechnoNizer/src/javaClass/classPrice.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/JPanel/jpEvent.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/jFrame/addEvent.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/javaClass/standardization.java</file>
+            <file>file:/C:/Users/kali/Git/TechnoNizer/src/JPanel/MenuEvent.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/JPanel/addEvent.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/jFrame/addEventGral.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/allEvent/jpEvent.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/javaClass/classReminder.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/javaClass/usersBinnacle.java</file>
+            <file>file:/C:/Users/kali/Git/TechnoNizer/src/JPanel/jpDisable.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/JPanel/jpPassword.java</file>
+            <file>file:/C:/Users/kali/Git/TechnoNizer/src/javaClass/event.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/javaClass/controller.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/JPanel/jpReminder.java</file>
+            <file>file:/C:/Users/kali/Git/TechnoNizer/src/JPanel/showEvent.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/admin/jpSecurityUser.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/javaClass/classProjects.java</file>
+            <file>file:/C:/Users/kali/Git/TechnoNizer/src/JPanel/Event.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/javaClass/classUsuario.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/JPanel/allEvents.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/javaClass/classEvent.java</file>
+            <file>file:/C:/Users/kali/Git/TechnoNizer/src/event/addPrice.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/jFrame/home.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/jFrame/admin.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/imagenes/settings.png</file>
@@ -31,8 +38,10 @@
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/com/warrenstrange/googleauth/GoogleAuthenticator.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/admin/jpAuthenticatorAdmin.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/admin/jpEditUserAdmin.java</file>
+            <file>file:/C:/Users/kali/Git/TechnoNizer/src/technonizer/TechnoNizer.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/JPanel/jpAccess.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/admin/userGrid.java</file>
+            <file>file:/C:/Users/kali/Git/TechnoNizer/src/JPanel/jpEditUser.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/JPanel/jpMembershipChange.java</file>
             <file>file:/C:/Users/kali/Git/TechnoNizer/src/JPanel/jpChoose.java</file>
         </group>
