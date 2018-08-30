@@ -122,6 +122,7 @@ idCardas int not null references cards(id)
 )
 
 /*Event manager*/
+
  create table events(
  id int identity(1,1) primary key not null,
  eventName nvarchar(60) not null,
@@ -133,10 +134,13 @@ idCardas int not null references cards(id)
  endDateTime nvarchar(30) not null,
  staff int,
  quantityTicket int not null,
+ place nvarchar(200) not null,
  condition int not null,
  )
 
-
+ select * from events
+ select * from tickets
+ 
  create table tickets(
  id int identity(1,1) not null,
  nameTicket nvarchar(35) not null,

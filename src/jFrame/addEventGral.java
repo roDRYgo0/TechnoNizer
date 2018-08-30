@@ -1,19 +1,13 @@
 package jFrame;
 
 import java.awt.Color;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Date;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.methodsSQL;
 import javaClass.standardization;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 /** @author Alexg */
 
@@ -37,6 +31,8 @@ public class addEventGral extends javax.swing.JFrame {
     void loadImage(){
         iconStart.setIcon(new controller().changeImage("/imagenes/calendarPlus.png", 35, 35));
         iconEnd.setIcon(new controller().changeImage("/imagenes/calendarMinus.png", 35, 35));
+        iconGuest.setIcon(new controller().changeImage("/imagenes/hashtag.png", 35, 35));
+        iconPlace.setIcon(new controller().changeImage("/imagenes/place.png", 35, 35));
         txtDayStart.setText(standardization.currentDateTime().getDate()+"");
         txtDayEnd.setText(standardization.currentDateTime().getDate()+"");
         cmbMonthStart.setSelectedIndex(standardization.currentDateTime().getMonth()-1);
@@ -83,13 +79,14 @@ public class addEventGral extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         spYearEnd = new javax.swing.JSeparator();
         btnNext1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        txtplace = new javax.swing.JTextField();
+        txtPlace = new javax.swing.JTextField();
         spPlace = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
-        TxtNumberPerson = new javax.swing.JTextField();
+        txtGuest = new javax.swing.JTextField();
         spNumber = new javax.swing.JSeparator();
+        iconGuest = new javax.swing.JLabel();
+        iconPlace = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -301,30 +298,23 @@ public class addEventGral extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Lugar del evento");
 
-        txtplace.setAutoscrolls(false);
-        txtplace.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtplace.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtPlace.setAutoscrolls(false);
+        txtPlace.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtPlace.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtplaceFocusGained(evt);
+                txtPlaceFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtplaceFocusLost(evt);
+                txtPlaceFocusLost(evt);
             }
         });
-        txtplace.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtPlace.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtplaceKeyTyped(evt);
+                txtPlaceKeyTyped(evt);
             }
         });
 
@@ -332,30 +322,38 @@ public class addEventGral extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel14.setText("Numero de Invitados");
+        jLabel14.setText("Numero de invitados");
 
-        TxtNumberPerson.setAutoscrolls(false);
-        TxtNumberPerson.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        TxtNumberPerson.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtGuest.setAutoscrolls(false);
+        txtGuest.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtGuest.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TxtNumberPersonFocusGained(evt);
+                txtGuestFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TxtNumberPersonFocusLost(evt);
+                txtGuestFocusLost(evt);
             }
         });
-        TxtNumberPerson.addActionListener(new java.awt.event.ActionListener() {
+        txtGuest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtNumberPersonActionPerformed(evt);
+                txtGuestActionPerformed(evt);
             }
         });
-        TxtNumberPerson.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtGuest.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                TxtNumberPersonKeyTyped(evt);
+                txtGuestKeyTyped(evt);
             }
         });
 
         spNumber.setForeground(new java.awt.Color(204, 204, 204));
+
+        iconGuest.setMaximumSize(new java.awt.Dimension(35, 35));
+        iconGuest.setMinimumSize(new java.awt.Dimension(35, 35));
+        iconGuest.setPreferredSize(new java.awt.Dimension(35, 35));
+
+        iconPlace.setMaximumSize(new java.awt.Dimension(35, 35));
+        iconPlace.setMinimumSize(new java.awt.Dimension(35, 35));
+        iconPlace.setPreferredSize(new java.awt.Dimension(35, 35));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -367,19 +365,16 @@ public class addEventGral extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addContainerGap(302, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(spEvent)
+                                .addComponent(txtEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(spNumber)
-                                        .addComponent(TxtNumberPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel14))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(checkEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -417,18 +412,26 @@ public class addEventGral extends javax.swing.JFrame {
                                     .addComponent(jLabel13)
                                     .addComponent(spYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton2)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(spPlace)
-                                .addComponent(txtplace, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel7)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(spEvent)
-                                .addComponent(txtEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(iconGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, 0)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtGuest, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                            .addComponent(spNumber))))
+                                .addGap(124, 124, 124)
+                                .addComponent(checkEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(iconPlace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(spPlace)
+                                    .addComponent(txtPlace, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE))))
+                        .addGap(0, 17, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -436,27 +439,33 @@ public class addEventGral extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(13, 13, 13)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(spEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel7)
+                        .addGap(9, 9, 9)
+                        .addComponent(iconPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(spPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(16, 16, 16)
+                .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtplace, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(spPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(checkEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)
+                        .addComponent(iconGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtNumberPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(spNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(33, 33, 33)
@@ -487,7 +496,7 @@ public class addEventGral extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbMonthStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -510,10 +519,8 @@ public class addEventGral extends javax.swing.JFrame {
                         .addGap(52, 52, 52))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2))
+                        .addGap(12, 12, 12)
+                        .addComponent(txtYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -544,6 +551,10 @@ public class addEventGral extends javax.swing.JFrame {
 
     private void txtEventFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEventFocusLost
         spEvent.setBackground(Color.white);
+        if(txtEvent.getText().trim().length() < 4 && txtEvent.getText().trim().length() > 0){
+            standardization.showMessage("cancel", "Evento invalido");
+            txtEvent.setText("");
+        } 
     }//GEN-LAST:event_txtEventFocusLost
 
     private void txtEventKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEventKeyTyped
@@ -613,7 +624,9 @@ public class addEventGral extends javax.swing.JFrame {
     }//GEN-LAST:event_txtYearEndFocusLost
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-        if(txtEvent.getText().isEmpty()||txtYearStart.getText().isEmpty()||txtYearEnd.getText().isEmpty()||txtDayStart.getText().isEmpty()||txtDayEnd.getText().isEmpty())
+        if(txtEvent.getText().trim().isEmpty() || txtYearStart.getText().trim().isEmpty() || txtYearEnd.getText().trim().isEmpty() ||
+                txtDayStart.getText().trim().isEmpty() || txtDayEnd.getText().trim().isEmpty() || txtGuest.getText().trim().isEmpty() ||
+                txtPlace.getText().trim().isEmpty())
         {
             standardization.showMessage("warning","Hay campos vacios!",this);
         }
@@ -635,8 +648,10 @@ public class addEventGral extends javax.swing.JFrame {
             }
             else{
 
-                classEvent.setEventName(txtEvent.getText());
+                classEvent.setEventName(txtEvent.getText().trim());
                 classEvent.setNicknameCreator(classUsuario.getNickname());
+                classEvent.setQuantityTicket(Integer.parseInt(txtGuest.getText().trim()));
+                classEvent.setPlace(txtPlace.getText().trim());
                 classEvent.setProfilePicture(profil);
                 classEvent.setCoverPicture(cover);
                 classEvent.setStartDateTime(txtYearStart.getText()+"-"+(cmbMonthStart.getSelectedIndex()+1)+"-"+txtDayStart.getText());
@@ -650,57 +665,64 @@ public class addEventGral extends javax.swing.JFrame {
            }
     }//GEN-LAST:event_btnNext1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Date dateStart = new Date(Integer.parseInt(txtYearStart.getText()), (cmbMonthStart.getSelectedIndex()+1), Integer.parseInt(txtDayStart.getText()));
-        Date dateEnd = new Date(Integer.parseInt(txtYearEnd.getText()), (cmbMonthEnd.getSelectedIndex()+1), Integer.parseInt(txtDayEnd.getText()));
-        if(standardization.compareDate(dateEnd, dateStart) == 1)
-            System.out.println("tu muy bien");
-        else
-            System.out.println("estas muy mall");
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void txtplaceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtplaceFocusGained
+    private void txtPlaceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPlaceFocusGained
         spPlace.setBackground(Color.RED);
         
-    }//GEN-LAST:event_txtplaceFocusGained
-    private void txtplaceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtplaceFocusLost
+    }//GEN-LAST:event_txtPlaceFocusGained
+    private void txtPlaceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPlaceFocusLost
         spPlace.setBackground(Color.white);
+        if(txtPlace.getText().trim().length() < 15 && txtPlace.getText().trim().length() > 0){
+            standardization.showMessage("cancel", "Dirección invalida");
+            txtPlace.setText("");
+        }            
+    }//GEN-LAST:event_txtPlaceFocusLost
 
-    }//GEN-LAST:event_txtplaceFocusLost
+    private void txtPlaceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPlaceKeyTyped
+        char c = evt.getKeyChar();
+        if(txtPlace.getText().length()<41){
+            if(Character.isLetter(c) || Character.isSpaceChar(c) || Character.isDigit(c)){}
+            else
+                evt.consume();
+        }else
+            evt.consume();
+    }//GEN-LAST:event_txtPlaceKeyTyped
 
-    private void txtplaceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtplaceKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtplaceKeyTyped
-
-    private void TxtNumberPersonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtNumberPersonFocusGained
+    private void txtGuestFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGuestFocusGained
         spNumber.setBackground(Color.red);
-    }//GEN-LAST:event_TxtNumberPersonFocusGained
+    }//GEN-LAST:event_txtGuestFocusGained
 
-    private void TxtNumberPersonFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtNumberPersonFocusLost
+    private void txtGuestFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGuestFocusLost
         spNumber.setBackground(Color.white);
+        if(txtGuest.getText().trim().length() > 0){
+            if(Integer.parseInt(txtGuest.getText()) > controller.member[classUsuario.getIdMemberships()-1].getNumberGuests()){
+                standardization.showMessage("cancel", "Has sobrepasas el límite de invitados", this);
+                txtGuest.setText("");
+            }
+        }
+    }//GEN-LAST:event_txtGuestFocusLost
 
-    }//GEN-LAST:event_TxtNumberPersonFocusLost
+    private void txtGuestKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGuestKeyTyped
+        char c = evt.getKeyChar();
+        if(c < '0' || c >'9')
+            evt.consume();
+    }//GEN-LAST:event_txtGuestKeyTyped
 
-    private void TxtNumberPersonKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtNumberPersonKeyTyped
+    private void txtGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGuestActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtNumberPersonKeyTyped
-
-    private void TxtNumberPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNumberPersonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtNumberPersonActionPerformed
+    }//GEN-LAST:event_txtGuestActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TxtNumberPerson;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
     private javax.swing.JLabel checkEvent;
     private javax.swing.JComboBox<String> cmbMonthEnd;
     private javax.swing.JComboBox<String> cmbMonthStart;
     private javax.swing.JLabel iconEnd;
+    private javax.swing.JLabel iconGuest;
+    private javax.swing.JLabel iconPlace;
     private javax.swing.JLabel iconStart;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -728,9 +750,10 @@ public class addEventGral extends javax.swing.JFrame {
     private javax.swing.JTextField txtDayEnd;
     private javax.swing.JTextField txtDayStart;
     private javax.swing.JTextField txtEvent;
+    private javax.swing.JTextField txtGuest;
+    private javax.swing.JTextField txtPlace;
     private javax.swing.JTextField txtYearEnd;
     private javax.swing.JTextField txtYearStart;
-    private javax.swing.JTextField txtplace;
     // End of variables declaration//GEN-END:variables
 
 }
