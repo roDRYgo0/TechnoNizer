@@ -702,6 +702,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
         if(classUsuario.updateMembership()){
             classUsuario.select();
             standardization.showMessage("ok","Tu membresia fue actualizada");
+            house.loadImage();
             house.membershipChange();
         }
             

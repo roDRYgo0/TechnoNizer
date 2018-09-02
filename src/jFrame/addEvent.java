@@ -24,8 +24,17 @@ public class addEvent extends javax.swing.JFrame {
         classEvent.setVisibility(visibility);
         switchVisibility();
         load();
+        setTickects(classEvent.getQuantityTicket());
     }
 
+    public void setTickects(int n){
+        lblTickets.setText(n+"");
+    }
+    
+    public int getAfterTickets(int n){
+        return (Integer.parseInt(lblTickets.getText())+n);
+    }
+    
     public void load(){
         System.out.println(classEvent.prices.size());
         controller.allP = new allPrice(this);
@@ -54,6 +63,8 @@ public class addEvent extends javax.swing.JFrame {
         lblVisibility = new javax.swing.JLabel();
         lblSwitch = new javax.swing.JLabel();
         btnNext1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        lblTickets = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(405, 585));
@@ -151,6 +162,12 @@ public class addEvent extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Tickets disponibles");
+
+        lblTickets.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblTickets.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTickets.setText("0");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -165,12 +182,18 @@ public class addEvent extends javax.swing.JFrame {
                         .addComponent(lblSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(202, 202, 202))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(scrollPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(186, 186, 186)
+                                        .addComponent(lblTickets, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(scrollPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -181,8 +204,12 @@ public class addEvent extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(lblTickets))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -254,6 +281,7 @@ public class addEvent extends javax.swing.JFrame {
             classEvent.eventos.add(evento);
             technonizer.TechnoNizer.home.showYourEvents(false);
             controller.rootFrame = technonizer.TechnoNizer.home;
+            classEvent.prices.clear();
             standardization.showMessage("ok", "Exito al crear evento");
         }
         else
@@ -281,12 +309,14 @@ public class addEvent extends javax.swing.JFrame {
     private javax.swing.JButton btnNext1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblEvent;
     private javax.swing.JLabel lblSwitch;
+    private javax.swing.JLabel lblTickets;
     private javax.swing.JLabel lblVisibility;
     private javax.swing.JScrollPane scrollPrice;
     // End of variables declaration//GEN-END:variables

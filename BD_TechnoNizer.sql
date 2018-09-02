@@ -134,8 +134,8 @@ idCardas int not null references cards(id)
  endDateTime nvarchar(30) not null,
  staff int,
  quantityTicket int not null,
- place nvarchar(200) not null,
  condition int not null,
+ place nvarchar(200) not null
  )
 
  select * from events

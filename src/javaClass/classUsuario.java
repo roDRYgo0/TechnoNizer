@@ -347,7 +347,6 @@ public class classUsuario {
             }
             status = true;
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
             status = false;
         }
         myMembership = controller.member[idMemberships-1].getName();
@@ -365,6 +364,7 @@ public class classUsuario {
     public static void numEvents(){
         classEvent.restart();
         classEvent.select();
+        myNumberEventUse = 0;
         for(event e : classEvent.eventos){
             if(e.getNicknameCreator().equals(classUsuario.getNickname()))
                 myNumberEventUse++;
@@ -491,6 +491,7 @@ public class classUsuario {
                         firstName, lastName, birthdate, id_gender, nickname);
         }else{
             status = methodsSQL.execute("INSERT INTO users (nickname, mail, password, condition, imagen, durationMem, idMemberships, checkKeygen, keygen) VALUES ( ?, ?, ?, ?, ?, ?, ?, 0, 'null')",
+   
                     nickname, mail, password, 1, image, durationMem, idMemberships);
             if(status)
                 status= methodsSQL.execute("INSERT INTO usersInformation VALUES (?, ?, ? ,?, ?)",

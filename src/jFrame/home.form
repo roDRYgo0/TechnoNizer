@@ -323,9 +323,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="793" max="32767" attributes="0"/>
-                      <Component id="lblImageUserTop" min="-2" pref="137" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace pref="737" max="32767" attributes="0"/>
+                      <Component id="lblImageUserTop" min="-2" pref="141" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="iconMem" min="-2" pref="50" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblSettings" min="-2" pref="90" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -337,8 +339,12 @@
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="13" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="lblImageUserTop" alignment="1" max="32767" attributes="0"/>
-                  <Component id="lblSettings" alignment="0" max="32767" attributes="0"/>
+                  <Component id="iconMem" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="lblSettings" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="lblImageUserTop" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -367,12 +373,15 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="Not found"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImageUserTopMouseClicked"/>
                 <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImageUserTopMouseReleased"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="iconMem">
             </Component>
           </SubComponents>
         </Container>

@@ -16,15 +16,18 @@ public class addEventGral extends javax.swing.JFrame {
     JFrame event;
     byte[] cover;
     byte[] profil;
+    boolean guest;
     
     public addEventGral(JFrame event) {
         initComponents();
         this.event=event;
+        guest = false;
         loadImage();
       
     }
     public addEventGral() {
         initComponents();
+        guest = false;        
         loadImage();
     }
     
@@ -624,54 +627,63 @@ public class addEventGral extends javax.swing.JFrame {
     }//GEN-LAST:event_txtYearEndFocusLost
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-        if(txtEvent.getText().trim().isEmpty() || txtYearStart.getText().trim().isEmpty() || txtYearEnd.getText().trim().isEmpty() ||
+        if(true){
+            if(txtEvent.getText().trim().isEmpty() || txtYearStart.getText().trim().isEmpty() || txtYearEnd.getText().trim().isEmpty() ||
                 txtDayStart.getText().trim().isEmpty() || txtDayEnd.getText().trim().isEmpty() || txtGuest.getText().trim().isEmpty() ||
-                txtPlace.getText().trim().isEmpty())
-        {
-            standardization.showMessage("warning","Hay campos vacios!",this);
-        }
-        else if(methodsSQL.exists("SELECT eventName FROM events WHERE eventName = ? and nicknameCreator = ?", txtEvent.getText(), classUsuario.getNickname())){
-            standardization.showMessage("warning","Ya hay un evento con ese nombre",this);
-        }
-        else 
-        {
-            Date dateStart = new Date(Integer.parseInt(txtYearStart.getText()), (cmbMonthStart.getSelectedIndex()+1), Integer.parseInt(txtDayStart.getText()));
-            Date dateEnd = new Date(Integer.parseInt(txtYearEnd.getText()), (cmbMonthEnd.getSelectedIndex()+1), Integer.parseInt(txtDayEnd.getText()));
-            
-            if(standardization.validateDate(Integer.parseInt(txtYearStart.getText()), (cmbMonthStart.getSelectedIndex()+1), Integer.parseInt(txtDayStart.getText()))&&
-            standardization.validateDate(Integer.parseInt(txtYearEnd.getText()), (cmbMonthEnd.getSelectedIndex()+1), Integer.parseInt(txtDayEnd.getText())
-            ))
-                standardization.showMessage("warning","Fechas invalidas",this);
-            else if(standardization.compareDate(dateEnd, dateStart) == -1 || standardization.compareDate(dateStart, standardization.currentDateTime()) == -1)
+                txtPlace.getText().trim().isEmpty() || txtPlace.getText().trim().length() < 15)
             {
-                standardization.showMessage("warning","Fechas invalidas",this);
+                standardization.showMessage("warning","Hay campos vacios!",this);            
+            }else if(methodsSQL.exists("SELECT eventName FROM events WHERE eventName = ? and nicknameCreator = ?", txtEvent.getText(), classUsuario.getNickname())){
+                standardization.showMessage("warning","Ya hay un evento con ese nombre",this);
             }
-            else{
-
-                classEvent.setEventName(txtEvent.getText().trim());
-                classEvent.setNicknameCreator(classUsuario.getNickname());
-                classEvent.setQuantityTicket(Integer.parseInt(txtGuest.getText().trim()));
-                classEvent.setPlace(txtPlace.getText().trim());
-                classEvent.setProfilePicture(profil);
-                classEvent.setCoverPicture(cover);
-                classEvent.setStartDateTime(txtYearStart.getText()+"-"+(cmbMonthStart.getSelectedIndex()+1)+"-"+txtDayStart.getText());
-                classEvent.setEndDateTime(txtYearEnd.getText()+"-"+(cmbMonthEnd.getSelectedIndex()+1)+"-"+txtDayEnd.getText());
-
-                standardization.hide(controller.gralEvent);
-                controller.addEvents = new addEvent();
-                standardization.show(controller.addEvents);
-                controller.rootFrame = controller.addEvents;
-    }
-           }
+            else 
+            {
+                if(controller.member[classUsuario.getIdMemberships()-1].getNumberGuests() == -1){
+                    next();
+                }else if(Integer.parseInt(txtGuest.getText()) > controller.member[classUsuario.getIdMemberships()-1].getNumberGuests()){
+                    standardization.showMessage("warning", "Sobrepasas el limite de invitados", this);
+                }   
+            }
+        }
     }//GEN-LAST:event_btnNext1ActionPerformed
 
+    void next(){
+        Date dateStart = new Date(Integer.parseInt(txtYearStart.getText()), (cmbMonthStart.getSelectedIndex()+1), Integer.parseInt(txtDayStart.getText()));
+        Date dateEnd = new Date(Integer.parseInt(txtYearEnd.getText()), (cmbMonthEnd.getSelectedIndex()+1), Integer.parseInt(txtDayEnd.getText()));
+
+        if(standardization.validateDate(Integer.parseInt(txtYearStart.getText()), (cmbMonthStart.getSelectedIndex()+1), Integer.parseInt(txtDayStart.getText()))&&
+        standardization.validateDate(Integer.parseInt(txtYearEnd.getText()), (cmbMonthEnd.getSelectedIndex()+1), Integer.parseInt(txtDayEnd.getText())
+        ))
+            standardization.showMessage("warning","Fechas invalidas",this);
+        else if(standardization.compareDate(dateEnd, dateStart) == -1 || standardization.compareDate(dateStart, standardization.currentDateTime()) == -1)
+        {
+            standardization.showMessage("warning","Fechas invalidas",this);
+        }
+        else{
+
+            classEvent.setEventName(txtEvent.getText().trim());
+            classEvent.setNicknameCreator(classUsuario.getNickname());
+            classEvent.setQuantityTicket(Integer.parseInt(txtGuest.getText().trim()));
+            classEvent.setPlace(txtPlace.getText().trim());
+            classEvent.setProfilePicture(profil);
+            classEvent.setCoverPicture(cover);
+            classEvent.setStartDateTime(txtYearStart.getText()+"-"+(cmbMonthStart.getSelectedIndex()+1)+"-"+txtDayStart.getText());
+            classEvent.setEndDateTime(txtYearEnd.getText()+"-"+(cmbMonthEnd.getSelectedIndex()+1)+"-"+txtDayEnd.getText());
+
+            standardization.hide(controller.gralEvent);
+            controller.addEvents = new addEvent();
+            standardization.show(controller.addEvents);
+            controller.rootFrame = controller.addEvents;
+        }
+    }
+    
     private void txtPlaceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPlaceFocusGained
         spPlace.setBackground(Color.RED);
         
     }//GEN-LAST:event_txtPlaceFocusGained
     private void txtPlaceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPlaceFocusLost
         spPlace.setBackground(Color.white);
-        if(txtPlace.getText().trim().length() < 15 && txtPlace.getText().trim().length() > 0){
+        if(txtPlace.getText().trim().length() < 15 && !txtPlace.getText().trim().isEmpty()){
             standardization.showMessage("cancel", "Dirección invalida");
             txtPlace.setText("");
         }            
@@ -693,10 +705,12 @@ public class addEventGral extends javax.swing.JFrame {
 
     private void txtGuestFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGuestFocusLost
         spNumber.setBackground(Color.white);
-        if(txtGuest.getText().trim().length() > 0){
-            if(Integer.parseInt(txtGuest.getText()) > controller.member[classUsuario.getIdMemberships()-1].getNumberGuests()){
-                standardization.showMessage("cancel", "Has sobrepasas el límite de invitados", this);
-                txtGuest.setText("");
+        if(controller.member[classUsuario.getIdMemberships()-1].getNumberGuests() != -1){
+            if(txtGuest.getText().trim().length() > 0){
+                if(Integer.parseInt(txtGuest.getText()) > controller.member[classUsuario.getIdMemberships()-1].getNumberGuests()){
+                    standardization.showMessage("cancel", "Has sobrepasas el límite de invitados", this);
+                    txtGuest.setText("");
+                }
             }
         }
     }//GEN-LAST:event_txtGuestFocusLost

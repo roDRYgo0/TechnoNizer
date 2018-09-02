@@ -59,7 +59,7 @@ public class home extends javax.swing.JFrame {
         loadImage();
     }
     
-    void loadImage(){
+    public void loadImage(){
         lblStart.setIcon(new controller().changeImage("/imagenes/home.png", 24, 24));
         lblUser.setIcon(new controller().changeImage("/imagenes/username.png", 24, 24));
         if(classUsuario.getImage()==null)
@@ -85,6 +85,17 @@ public class home extends javax.swing.JFrame {
             lblImageUserTop.setText(classUsuario.getNickname());
         }
         loadData("settings","", lblSettings);
+        switch(classUsuario.getIdMemberships()){
+            case 1:
+                iconMem.setIcon(new controller().changeImage("/imagenes/free.png", 26, 26));
+                break;
+            case 2:
+                iconMem.setIcon(new controller().changeImage("/imagenes/vip.png", 26, 26));
+                break;
+            case 3:
+                iconMem.setIcon(new controller().changeImage("/imagenes/premium.png", 26, 26));
+                break;
+        }
         
     }
 
@@ -110,6 +121,7 @@ public class home extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblSettings = new javax.swing.JLabel();
         lblImageUserTop = new javax.swing.JLabel();
+        iconMem = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
         pnGeneral = new javax.swing.JPanel();
         lblStart = new javax.swing.JLabel();
@@ -160,7 +172,6 @@ public class home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(1150, 680));
         setMinimumSize(new java.awt.Dimension(1150, 680));
         setUndecorated(true);
 
@@ -295,6 +306,7 @@ public class home extends javax.swing.JFrame {
         });
 
         lblImageUserTop.setForeground(new java.awt.Color(255, 255, 255));
+        lblImageUserTop.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblImageUserTop.setText("Not found");
         lblImageUserTop.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -312,9 +324,11 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 793, Short.MAX_VALUE)
-                .addComponent(lblImageUserTop, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 737, Short.MAX_VALUE)
+                .addComponent(lblImageUserTop, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(iconMem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -323,8 +337,11 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addContainerGap(13, Short.MAX_VALUE))
-            .addComponent(lblImageUserTop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(iconMem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(lblSettings)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(lblImageUserTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         leftPanel.setBackground(new java.awt.Color(42, 42, 42));
@@ -958,6 +975,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnMax;
     private javax.swing.JButton btnMin;
+    private javax.swing.JLabel iconMem;
     private javax.swing.JMenuItem itemEnglish;
     private javax.swing.JMenuItem itemSettings;
     private javax.swing.JMenuItem itemSpanish;
