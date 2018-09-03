@@ -3,6 +3,9 @@ package javaClass;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +28,7 @@ public class classEvent {
     private static Integer quantityTicket;
     private static Integer condition;
     public static List<classPrice> prices= new ArrayList<classPrice>();
+
     
     public static List<event> eventos = new ArrayList<event>();
     public static List<event> eventosSearch = new ArrayList<event>();
@@ -32,6 +36,13 @@ public class classEvent {
 
     
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static List<classPrice> getPrices() {
+        return prices;
+    }
+
+    public static void setPrices(List<classPrice> prices) {
+        classEvent.prices = prices;
+    }
     public static Integer getQuantityTicket() {
         return quantityTicket;
     }
@@ -195,15 +206,22 @@ public class classEvent {
                 
                 List<classPrice> price = new ArrayList<>();
                 classPrice p;
-                ResultSet rsP = methodsSQL.getExecute("SELECT nameTicket, quantityTicket, priceTicket FROM tickets WHERE idEvent = ?", id);
+                ResultSet rsP = methodsSQL.getExecute("SELECT nameTicket, quantityTicket, priceTicket FROM tickets WHERE idEvent = ?", evento.getId());
                 while(rsP.next()){
                     p = new classPrice();
-                    p.setName(rs.getString(1));
-                    p.setCount(rs.getInt(2));
-                    p.setPrice(rs.getDouble(3));
+                    p.setName(rsP.getString(1));
+                    p.setCount(rsP.getInt(2));
+                    p.setPrice(rsP.getDouble(3));
                     price.add(p);
                 }
-                evento.setPrices(prices);
+
+                Collections.sort(price, new Comparator<classPrice>(){
+                    @Override
+                    public int compare(classPrice o1, classPrice o2) {
+                        return (o2.getPrice() > o1.getPrice())?-1:(o2.getPrice() < o1.getPrice())?1:0;
+                    }
+                });
+                evento.setPrices(price);
                 eventos.add(evento);//aqui...... tambien ya esta.... d
                 //y los voy agregando a una lista...
             }

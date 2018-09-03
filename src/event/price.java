@@ -15,7 +15,10 @@ public class price extends javax.swing.JPanel {
         this.id = id;
         txtNamePrice.setText(classEvent.prices.get(id).getName());
         txtPrice.setText(classEvent.prices.get(id).getPrice()+"");
-        txtCount.setText(classEvent.prices.get(id).getCount()+"");
+        if(classEvent.prices.get(id).getCount() == -1)
+            txtCount.setText("Ilimitados");
+        else
+            txtCount.setText(classEvent.prices.get(id).getCount()+"");
         
     }
 
@@ -35,9 +38,9 @@ public class price extends javax.swing.JPanel {
         spCount = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(306, 45));
-        setMinimumSize(new java.awt.Dimension(306, 45));
-        setPreferredSize(new java.awt.Dimension(306, 45));
+        setMaximumSize(new java.awt.Dimension(365, 45));
+        setMinimumSize(new java.awt.Dimension(365, 45));
+        setPreferredSize(new java.awt.Dimension(365, 45));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
@@ -97,6 +100,9 @@ public class price extends javax.swing.JPanel {
         btnNext.setText("Eliminar");
         btnNext.setBorderPainted(false);
         btnNext.setFocusable(false);
+        btnNext.setMaximumSize(new java.awt.Dimension(79, 28));
+        btnNext.setMinimumSize(new java.awt.Dimension(79, 28));
+        btnNext.setPreferredSize(new java.awt.Dimension(79, 28));
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
@@ -135,30 +141,32 @@ public class price extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 102, Short.MAX_VALUE))
                     .addComponent(spNamePrice)
-                    .addComponent(txtNamePrice, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
+                    .addComponent(txtNamePrice, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtPrice)
-                    .addComponent(spPrice))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                    .addComponent(spPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
-                    .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spCount))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNext)
-                .addGap(19, 19, 19))
+                    .addComponent(spCount)
+                    .addComponent(txtCount))
+                .addGap(17, 17, 17)
+                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(txtNamePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -1,6 +1,7 @@
 package jFrame;
 
 import event.allPrice;
+import event.lockedPrices;
 import java.awt.Color;
 import java.awt.Dimension;
 import javaClass.classEvent;
@@ -20,13 +21,25 @@ public class addEvent extends javax.swing.JFrame {
     
     public addEvent() {
         initComponents();
+        classEvent.prices.clear();
         visibility = 1;
         classEvent.setVisibility(visibility);
         switchVisibility();
         load();
-        setTickects(classEvent.getQuantityTicket());
+        if(classEvent.getQuantityTicket() == -1)
+            lblTickets.setText("Ilimitados");
+        else
+            setTickects(classEvent.getQuantityTicket());
     }
 
+    public String getGuest(){
+        return lblTickets.getText();
+    }
+    
+    public void setGuest(int p){
+        lblTickets.setText(p+"");
+    }
+    
     public void setTickects(int n){
         lblTickets.setText(n+"");
     }
@@ -36,15 +49,25 @@ public class addEvent extends javax.swing.JFrame {
     }
     
     public void load(){
-        System.out.println(classEvent.prices.size());
-        controller.allP = new allPrice(this);
-        controller.allP.setLocation(0,0);
+        if(classUsuario.getIdMemberships() == 1){
+            lockedPrices lPric = new lockedPrices();
+            lPric.setLocation(0,0);
 
-        controller.allP.setPreferredSize(new Dimension(316, 235+(56 * classEvent.spacePrice())));
+            lPric.setPreferredSize(new Dimension(378, 235));
 
-        scrollPrice.setViewportView(controller.allP);
-        scrollPrice.revalidate();
-        scrollPrice.repaint();
+            scrollPrice.setViewportView(lPric);
+            scrollPrice.revalidate();
+            scrollPrice.repaint();
+        }else{
+            allPrice allP = new allPrice(this);
+            allP.setLocation(0,0);
+
+            allP.setPreferredSize(new Dimension(316, 235+(56 * classEvent.spacePrice())));
+
+            scrollPrice.setViewportView(allP);
+            scrollPrice.revalidate();
+            scrollPrice.repaint();
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -133,6 +156,7 @@ public class addEvent extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Precios");
 
+        scrollPrice.setBorder(null);
         scrollPrice.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPrice.setMaximumSize(new java.awt.Dimension(283, 240));
         scrollPrice.setMinimumSize(new java.awt.Dimension(283, 240));
@@ -186,18 +210,17 @@ public class addEvent extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel6)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(186, 186, 186)
-                                        .addComponent(lblTickets, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(scrollPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addGap(186, 186, 186)
+                                    .addComponent(lblTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(scrollPrice, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(281, Short.MAX_VALUE)
+                        .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(17, 17, 17))
         );
         jPanel1Layout.setVerticalGroup(
@@ -257,8 +280,6 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSwitchMouseReleased
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-
-  
         classEvent.setStaff(0);
         classEvent.setCondition(1);
         
@@ -268,20 +289,9 @@ public class addEvent extends javax.swing.JFrame {
             
             classUsuario.setMyNumberEventUse(classUsuario.getMyNumberEventUse()+1);
             event evento = new event();
-            evento.setId(classEvent.getId());
-            evento.setEventName(classEvent.getEventName());
-            evento.setProfilePicture(classEvent.getProfilePicture());
-            evento.setCoverPicture(classEvent.getCoverPicture());
-            evento.setVisibility(classEvent.getVisibility());
-            evento.setStartDateTime(classEvent.getStartDateTime());
-            evento.setEndDateTime(classEvent.getEndDateTime());
-            evento.setStaff(classEvent.getStaff());
-            evento.setCondition(classEvent.getCondition());
-            evento.setNicknameCreator(classUsuario.getNickname());
-            classEvent.eventos.add(evento);
+            classUsuario.numEvents();
             technonizer.TechnoNizer.home.showYourEvents(false);
             controller.rootFrame = technonizer.TechnoNizer.home;
-            classEvent.prices.clear();
             standardization.showMessage("ok", "Exito al crear evento");
         }
         else

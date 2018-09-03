@@ -18,13 +18,13 @@ public class allPrice extends javax.swing.JPanel {
     
     void load(){
         int numPrice = classEvent.prices.size();
-        int x = 11;
+        int x = 3;
         int y = 11;
         if(numPrice != 0){
             for(int i = 0; i < numPrice; i++){
                 controller.pric = new price(i);
 
-                controller.pric.setSize(306, 45);
+                controller.pric.setSize(365, 45);
                 controller.pric.setLocation(x,y);
                 controller.pric.removeAll();
                 this.add(controller.pric,BorderLayout.CENTER);
@@ -35,7 +35,7 @@ public class allPrice extends javax.swing.JPanel {
         }
         controller.addP = new addPrice(event);
 
-        controller.addP.setSize(306, 45);
+        controller.addP.setSize(365, 45);
         controller.addP.setLocation(x,y);
         controller.addP.removeAll();
         this.add(controller.addP,BorderLayout.CENTER);
@@ -56,7 +56,7 @@ public class allPrice extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 316, Short.MAX_VALUE)
+            .addGap(0, 283, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

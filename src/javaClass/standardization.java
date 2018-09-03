@@ -13,6 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
@@ -54,10 +55,16 @@ public class standardization {
         return new Date(cal.get(Calendar.YEAR) , cal.get(Calendar.MONTH)+1, cal.get(Calendar.DATE), cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND));
     }
     
+    public static Date currentDate(){
+        cal= Calendar.getInstance();
+        return new Date(cal.get(Calendar.YEAR) , cal.get(Calendar.MONTH)+1, cal.get(Calendar.DATE));
+    }
+    
     public static String getDateTime(){
         cal= Calendar.getInstance();
         return cal.get(Calendar.YEAR) +"-"+ (cal.get(Calendar.MONTH)+1) +"-"+ cal.get(Calendar.DATE) +" "+ cal.get(Calendar.HOUR) +":"+ cal.get(Calendar.MINUTE) +":"+ cal.get(Calendar.SECOND)+"."+cal.get(Calendar.MILLISECOND);
     }
+    
     
     public static void show(JFrame show){
         show.setVisible(true);
@@ -450,4 +457,15 @@ public class standardization {
         return password;
     }
     
+    public static int numberDays(Date fecha1, Date fecha2){
+        long startTime = fecha1.getTime();
+        long endTime = fecha2.getTime();
+        long diffTime = endTime - startTime;
+        return (int)TimeUnit.DAYS.convert(diffTime, TimeUnit.MILLISECONDS);
+    }
+    
+    public static Date getDate(String date){
+        String[] days = date.split("-");
+        return new Date(Integer.parseInt(days[0]), Integer.parseInt(days[1]), Integer.parseInt(days[2]));
+    }
 }

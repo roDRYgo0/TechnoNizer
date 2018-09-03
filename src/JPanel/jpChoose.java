@@ -3,7 +3,6 @@ package JPanel;
 import java.awt.Color;
 import javaClass.classAdmin;
 import javaClass.classContact;
-import javaClass.classReminder;
 import javaClass.classUsuario;
 import static javaClass.standardization.invokeAdmin;
 import static javaClass.standardization.invokeHome;

@@ -642,7 +642,8 @@ public class addEventGral extends javax.swing.JFrame {
                     next();
                 }else if(Integer.parseInt(txtGuest.getText()) > controller.member[classUsuario.getIdMemberships()-1].getNumberGuests()){
                     standardization.showMessage("warning", "Sobrepasas el limite de invitados", this);
-                }   
+                }else
+                    next();
             }
         }
     }//GEN-LAST:event_btnNext1ActionPerformed
@@ -663,7 +664,10 @@ public class addEventGral extends javax.swing.JFrame {
 
             classEvent.setEventName(txtEvent.getText().trim());
             classEvent.setNicknameCreator(classUsuario.getNickname());
-            classEvent.setQuantityTicket(Integer.parseInt(txtGuest.getText().trim()));
+            if(txtGuest.getText().trim().length()>=10)
+                classEvent.setQuantityTicket(-1);
+            else
+                classEvent.setQuantityTicket(Integer.parseInt(txtGuest.getText().trim()));
             classEvent.setPlace(txtPlace.getText().trim());
             classEvent.setProfilePicture(profil);
             classEvent.setCoverPicture(cover);

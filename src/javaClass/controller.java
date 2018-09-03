@@ -1,5 +1,6 @@
 package javaClass;
 
+import allEvent.eventAdmin;
 import JPanel.CheckIn.jpMembership;
 import JPanel.*;
 import JPanel.CheckIn.*;
@@ -60,7 +61,7 @@ public class controller {
     public static itemContact itemCont;
     public static jpContact jpCont;
     public static jpSecurityQuestions jpSeQue;
-    public static Event jpEvent;
+    public static eventAdmin jpEvent;
     
     
     public static allEvents allE;
@@ -77,7 +78,6 @@ public class controller {
     
     public static addPrice addP;
     public static price pric;
-    public static allPrice allP;
     
     public static classMembership[] member = new classMembership[3];
     public static contactUsers[] contac = new contactUsers[10];

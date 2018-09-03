@@ -1,8 +1,10 @@
 package jFrame;
 
+import allEvent.eventAdmin;
 import JPanel.*;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Image;
 import javaClass.*;
 import static javaClass.controller.jpH;
@@ -26,7 +28,6 @@ public class home extends javax.swing.JFrame {
         new Thread(()->{
             classContact.select();
             classReminder.select();
-            classProjects.select();
 
         }).start();
         
@@ -104,6 +105,7 @@ public class home extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         popupLenguage = new javax.swing.JPopupMenu();
         itemSpanish = new javax.swing.JMenuItem();
@@ -111,11 +113,11 @@ public class home extends javax.swing.JFrame {
         popupSettings = new javax.swing.JPopupMenu();
         itemSettings = new javax.swing.JMenuItem();
         topBar = new javax.swing.JPanel();
-        btnExit = new javax.swing.JButton();
+        tbtnInternet = new javax.swing.JToggleButton();
+        lblLenguage = new javax.swing.JLabel();
         btnMin = new javax.swing.JButton();
         btnMax = new javax.swing.JButton();
-        lblLenguage = new javax.swing.JLabel();
-        tbtnInternet = new javax.swing.JToggleButton();
+        btnExit = new javax.swing.JButton();
         rootpane = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -178,6 +180,7 @@ public class home extends javax.swing.JFrame {
         topBar.setBackground(new java.awt.Color(255, 255, 255));
         topBar.setMaximumSize(new java.awt.Dimension(420, 30));
         topBar.setMinimumSize(new java.awt.Dimension(420, 30));
+        topBar.setPreferredSize(new java.awt.Dimension(420, 30));
         topBar.setRequestFocusEnabled(false);
         topBar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -190,18 +193,28 @@ public class home extends javax.swing.JFrame {
             }
         });
 
-        btnExit.setBackground(new java.awt.Color(255, 255, 255));
-        btnExit.setText("X");
-        btnExit.setAlignmentY(0.0F);
-        btnExit.setBorder(null);
-        btnExit.setBorderPainted(false);
-        btnExit.setFocusable(false);
-        btnExit.setMaximumSize(new java.awt.Dimension(30, 30));
-        btnExit.setMinimumSize(new java.awt.Dimension(30, 30));
-        btnExit.setPreferredSize(new java.awt.Dimension(30, 30));
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
+        tbtnInternet.setBackground(new java.awt.Color(255, 255, 255));
+        tbtnInternet.setText("Internet");
+        tbtnInternet.setBorderPainted(false);
+        tbtnInternet.setEnabled(false);
+        tbtnInternet.setFocusPainted(false);
+        tbtnInternet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
+                tbtnInternetActionPerformed(evt);
+            }
+        });
+
+        lblLenguage.setBackground(new java.awt.Color(255, 255, 255));
+        lblLenguage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/globe.png"))); // NOI18N
+        lblLenguage.setAlignmentY(0.0F);
+        lblLenguage.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        lblLenguage.setMaximumSize(new java.awt.Dimension(30, 30));
+        lblLenguage.setMinimumSize(new java.awt.Dimension(30, 30));
+        lblLenguage.setOpaque(true);
+        lblLenguage.setPreferredSize(new java.awt.Dimension(30, 30));
+        lblLenguage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLenguageMouseClicked(evt);
             }
         });
 
@@ -235,28 +248,18 @@ public class home extends javax.swing.JFrame {
             }
         });
 
-        lblLenguage.setBackground(new java.awt.Color(255, 255, 255));
-        lblLenguage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/globe.png"))); // NOI18N
-        lblLenguage.setAlignmentY(0.0F);
-        lblLenguage.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        lblLenguage.setMaximumSize(new java.awt.Dimension(30, 30));
-        lblLenguage.setMinimumSize(new java.awt.Dimension(30, 30));
-        lblLenguage.setOpaque(true);
-        lblLenguage.setPreferredSize(new java.awt.Dimension(30, 30));
-        lblLenguage.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblLenguageMouseClicked(evt);
-            }
-        });
-
-        tbtnInternet.setBackground(new java.awt.Color(255, 255, 255));
-        tbtnInternet.setText("Internet");
-        tbtnInternet.setBorderPainted(false);
-        tbtnInternet.setEnabled(false);
-        tbtnInternet.setFocusPainted(false);
-        tbtnInternet.addActionListener(new java.awt.event.ActionListener() {
+        btnExit.setBackground(new java.awt.Color(255, 255, 255));
+        btnExit.setText("X");
+        btnExit.setAlignmentY(0.0F);
+        btnExit.setBorder(null);
+        btnExit.setBorderPainted(false);
+        btnExit.setFocusable(false);
+        btnExit.setMaximumSize(new java.awt.Dimension(30, 30));
+        btnExit.setMinimumSize(new java.awt.Dimension(30, 30));
+        btnExit.setPreferredSize(new java.awt.Dimension(30, 30));
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tbtnInternetActionPerformed(evt);
+                btnExitActionPerformed(evt);
             }
         });
 
@@ -267,9 +270,9 @@ public class home extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBarLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(tbtnInternet)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblLenguage, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
+                .addComponent(lblLenguage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(btnMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btnMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,12 +281,23 @@ public class home extends javax.swing.JFrame {
         );
         topBarLayout.setVerticalGroup(
             topBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tbtnInternet, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(lblLenguage, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(topBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(topBarLayout.createSequentialGroup()
+                .addGroup(topBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(topBarLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(tbtnInternet))
+                    .addGroup(topBarLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(lblLenguage, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(topBarLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(btnMin, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(topBarLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(topBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnMax, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(2, 2, 2))
         );
 
         rootpane.setBackground(new java.awt.Color(0, 153, 0));
@@ -293,21 +307,33 @@ public class home extends javax.swing.JFrame {
         jPanel2.setMinimumSize(new java.awt.Dimension(1150, 46));
         jPanel2.setPreferredSize(new java.awt.Dimension(1150, 46));
         jPanel2.setRequestFocusEnabled(false);
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("TechnoNizer");
+        jLabel2.setMaximumSize(new java.awt.Dimension(110, 46));
+        jLabel2.setMinimumSize(new java.awt.Dimension(110, 46));
+        jLabel2.setPreferredSize(new java.awt.Dimension(110, 46));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         lblSettings.setText("settings");
+        lblSettings.setMaximumSize(new java.awt.Dimension(83, 14));
+        lblSettings.setMinimumSize(new java.awt.Dimension(83, 14));
+        lblSettings.setPreferredSize(new java.awt.Dimension(83, 14));
         lblSettings.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 lblSettingsMouseReleased(evt);
             }
         });
+        jPanel2.add(lblSettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(1067, 0, -1, 46));
 
         lblImageUserTop.setForeground(new java.awt.Color(255, 255, 255));
         lblImageUserTop.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblImageUserTop.setText("Not found");
+        lblImageUserTop.setMaximumSize(new java.awt.Dimension(141, 46));
+        lblImageUserTop.setMinimumSize(new java.awt.Dimension(141, 46));
+        lblImageUserTop.setPreferredSize(new java.awt.Dimension(141, 46));
         lblImageUserTop.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblImageUserTopMouseClicked(evt);
@@ -316,33 +342,12 @@ public class home extends javax.swing.JFrame {
                 lblImageUserTopMouseReleased(evt);
             }
         });
+        jPanel2.add(lblImageUserTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(864, 0, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 737, Short.MAX_VALUE)
-                .addComponent(lblImageUserTop, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(iconMem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(13, Short.MAX_VALUE))
-            .addComponent(iconMem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(lblSettings)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(lblImageUserTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        iconMem.setMaximumSize(new java.awt.Dimension(50, 46));
+        iconMem.setMinimumSize(new java.awt.Dimension(50, 46));
+        iconMem.setPreferredSize(new java.awt.Dimension(50, 46));
+        jPanel2.add(iconMem, new org.netbeans.lib.awtextra.AbsoluteConstraints(1011, 0, -1, -1));
 
         leftPanel.setBackground(new java.awt.Color(42, 42, 42));
 
@@ -694,7 +699,7 @@ public class home extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(topBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(topBar, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
             .addComponent(rootpane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -800,8 +805,9 @@ public class home extends javax.swing.JFrame {
     public void showEvent(int e){
         disable();
         pnMem.setBackground(new Color(52, 52, 52));
-        Event event = new Event(e);
+        eventAdmin event = new eventAdmin(e);
         event.setLocation(0,0);
+        event.setPreferredSize(new Dimension(980,621));
 
         scrollContainer.setViewportView(event);
         scrollContainer.revalidate();

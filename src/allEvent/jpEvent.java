@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import javaClass.classEvent;
-import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.event;
 
@@ -15,9 +14,19 @@ public class jpEvent extends javax.swing.JPanel {
 
     public jpEvent(boolean start) {
         initComponents();
+        
         insertarPaneles(classEvent.eventos.size(), start);
         txtSearch.requestFocus();
         load();
+    }
+    
+    int obtenerPaneles(){
+        int rs= 0;
+        for(event e : classEvent.eventos) {
+            if(e.getVisibility() == 1)
+                rs++;
+       }
+       return rs;
     }
 
     void load() {
@@ -28,7 +37,7 @@ public class jpEvent extends javax.swing.JPanel {
         allEvents allE = new allEvents(paneles, search);
         allE.setLocation(0, 0);
 
-        allE.setPreferredSize(new Dimension(960, 488 + (155 * classEvent.spaceAllEvent(paneles))));
+        allE.setPreferredSize(new Dimension(960, 488 + (155 * classEvent.spaceAllEvent(obtenerPaneles()))));
 
         scrollEvent.setViewportView(allE);
         scrollEvent.revalidate();

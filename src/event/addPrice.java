@@ -44,6 +44,9 @@ public class addPrice extends javax.swing.JPanel {
         btnNext.setText("Agregar");
         btnNext.setBorderPainted(false);
         btnNext.setFocusable(false);
+        btnNext.setMaximumSize(new java.awt.Dimension(79, 28));
+        btnNext.setMinimumSize(new java.awt.Dimension(79, 28));
+        btnNext.setPreferredSize(new java.awt.Dimension(79, 28));
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
@@ -131,31 +134,30 @@ public class addPrice extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4)
-                    .addComponent(spNamePrice, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                    .addComponent(txtNamePrice))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 102, Short.MAX_VALUE))
+                    .addComponent(txtNamePrice)
+                    .addComponent(spNamePrice))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(spPrice)
-                    .addComponent(txtPrice))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtCount)
                     .addComponent(spCount)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNext)
-                .addGap(17, 17, 17))
+                .addGap(17, 17, 17)
+                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -170,9 +172,14 @@ public class addPrice extends javax.swing.JPanel {
                                 .addGap(0, 0, 0)
                                 .addComponent(spPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(0, 0, 0)
-                        .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(0, 0, 0)
+                                .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, 0)
                         .addComponent(spCount, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -184,14 +191,36 @@ public class addPrice extends javax.swing.JPanel {
             if(txtNamePrice.getText().trim().isEmpty() || txtPrice.getText().isEmpty() || txtCount.getText().isEmpty())
             {
              standardization.showMessage("warning","Hay campos vacios!",controller.addEvents);
-            }
+            }else if(Double.parseDouble(txtPrice.getText()) > 9999)
+                standardization.showMessage("warning","Precio invalido",controller.addEvents);
             else{
-                classPrice cp = new classPrice();
-                cp.setName(txtNamePrice.getText().trim());
-                cp.setPrice(Double.parseDouble(txtPrice.getText()));
-                cp.setCount(Integer.parseInt(txtCount.getText()));
-                classEvent.prices.add(cp);
-                controller.addEvents.load();
+                if(controller.addEvents.getGuest().equals("Ilimitados")){
+                    if(Integer.parseInt(txtCount.getText())>9999){
+                        classPrice cp = new classPrice();
+                        cp.setName(txtNamePrice.getText().trim());
+                        cp.setPrice(Double.parseDouble(txtPrice.getText()));
+                        cp.setCount(-1);
+                        classEvent.prices.add(cp);
+                        controller.addEvents.load();
+                    }else{
+                        classPrice cp = new classPrice();
+                        cp.setName(txtNamePrice.getText().trim());
+                        cp.setPrice(Double.parseDouble(txtPrice.getText()));
+                        cp.setCount(Integer.parseInt(txtCount.getText()));
+                        classEvent.prices.add(cp);
+                        controller.addEvents.load();
+                    }
+                }else if( (Integer.parseInt(controller.addEvents.getGuest())-Integer.parseInt(txtCount.getText())) < 0 ){
+                    standardization.showMessage("warning","Cantidad invalido",controller.addEvents);
+                }else{
+                    classPrice cp = new classPrice();
+                    cp.setName(txtNamePrice.getText().trim());
+                    cp.setPrice(Double.parseDouble(txtPrice.getText()));
+                    cp.setCount(Integer.parseInt(txtCount.getText()));
+                    controller.addEvents.setTickects(Integer.parseInt(controller.addEvents.getGuest())-Integer.parseInt(txtCount.getText()));
+                    classEvent.prices.add(cp);
+                    controller.addEvents.load();
+                }
             }
        }catch(NumberFormatException e){
            standardization.showMessage("warning","Precio invalido!",controller.addEvents);
@@ -212,7 +241,9 @@ public class addPrice extends javax.swing.JPanel {
 
     private void txtCountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCountKeyTyped
         char c = evt.getKeyChar();
-        if(c < '0' || c >'9')
+        if(txtCount.getText().length() >= 5)
+            evt.consume();
+        else if(c < '0' || c >'9')
             evt.consume();
     }//GEN-LAST:event_txtCountKeyTyped
 
