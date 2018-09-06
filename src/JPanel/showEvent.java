@@ -13,11 +13,13 @@ public class showEvent extends javax.swing.JPanel {
 
     int count;
     int evento;
+    boolean search;
     
     public showEvent(int e, boolean search) {
         initComponents();
         count = 0;
         evento = e;
+        this.search = search;
         load(e, search);
     }
 
@@ -203,11 +205,11 @@ public class showEvent extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-        technonizer.TechnoNizer.home.showEvent(evento);
+        technonizer.TechnoNizer.home.showEvent(evento, search);
     }//GEN-LAST:event_formMouseReleased
 
     private void lblEventNameMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEventNameMouseReleased
-        technonizer.TechnoNizer.home.showEvent(evento);
+        technonizer.TechnoNizer.home.showEvent(evento, search);
     }//GEN-LAST:event_lblEventNameMouseReleased
 
 
