@@ -3,7 +3,6 @@ package javaClass;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -235,7 +234,7 @@ public class classEvent {
     public static boolean insert(){
         boolean status = false;
         status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?)",
-                eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition, quantityTicket, place);
+                eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, quantityTicket, condition, place);
 
         
         if(status){

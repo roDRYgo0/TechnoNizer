@@ -105,7 +105,6 @@ public class home extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         popupLenguage = new javax.swing.JPopupMenu();
         itemSpanish = new javax.swing.JMenuItem();
@@ -807,7 +806,7 @@ public class home extends javax.swing.JFrame {
         pnMem.setBackground(new Color(52, 52, 52));
         eventAdmin event = new eventAdmin(e, search);
         event.setLocation(0,0);
-        event.setPreferredSize(new Dimension(980,621));
+        event.setPreferredSize(new Dimension(980,1203));
 
         scrollContainer.setViewportView(event);
         scrollContainer.revalidate();

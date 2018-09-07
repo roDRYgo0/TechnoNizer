@@ -279,6 +279,9 @@ idCheckList int not null references checkList(id)
  idClass int not null references class(id)
  )
 
+
+ select * from users
+
  create table usersBinnacle(
 id int identity(1,1) primary key not null,
 description nvarchar(200) not null,

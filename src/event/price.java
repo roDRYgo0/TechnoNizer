@@ -225,9 +225,9 @@ public class price extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPriceKeyTyped
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        controller.addEvents.setTickects(controller.addEvents.getAfterTickets(classEvent.prices.get(id).getCount()));
         classEvent.prices.remove(id);
         controller.addEvents.load();
-        controller.addEvents.setTickects(controller.addEvents.getAfterTickets(classEvent.prices.get(id).getCount()));
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtCountFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCountFocusGained

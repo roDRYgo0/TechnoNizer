@@ -55,7 +55,7 @@ public class showEvent extends javax.swing.JPanel {
         lblEventName.setText(ev.getEventName());
         
         if(ev.getVisibility()==0)
-            lblVis.setIcon(new controller().changeImage("/imagenes/visibility.png", 25, 25));
+            lblVis.setIcon(new controller().changeImage("/imagenes/eyeCLose.png", 25, 25));
         
         lblNickname.setText(ev.getNicknameCreator());
         if(!ev.getPrices().isEmpty()){
@@ -91,13 +91,14 @@ public class showEvent extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblEventName = new javax.swing.JLabel();
         lblNickname = new javax.swing.JLabel();
-        lblPos = new javax.swing.JLabel();
         lblPrice = new javax.swing.JLabel();
         lblNumGuest = new javax.swing.JLabel();
         lblEventName1 = new javax.swing.JLabel();
         lblDays = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lblEventName = new javax.swing.JLabel();
+        lblPos = new javax.swing.JLabel();
         lblVis = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -120,21 +121,8 @@ public class showEvent extends javax.swing.JPanel {
             }
         });
 
-        lblEventName.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblEventName.setText("Not Found");
-        lblEventName.setToolTipText("");
-        lblEventName.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                lblEventNameMouseReleased(evt);
-            }
-        });
-
         lblNickname.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNickname.setText("nickName");
-
-        lblPos.setMaximumSize(new java.awt.Dimension(25, 25));
-        lblPos.setMinimumSize(new java.awt.Dimension(25, 25));
-        lblPos.setPreferredSize(new java.awt.Dimension(25, 25));
 
         lblPrice.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblPrice.setForeground(new java.awt.Color(255, 153, 0));
@@ -148,12 +136,42 @@ public class showEvent extends javax.swing.JPanel {
 
         lblEventName1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblEventName1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblEventName1.setText("Entradas disponibles");
+        lblEventName1.setText("Entradas");
         lblEventName1.setToolTipText("");
 
         lblDays.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         lblDays.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblDays.setText("3 dias");
+
+        jPanel2.setBackground(new java.awt.Color(33, 150, 243));
+
+        lblEventName.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblEventName.setForeground(new java.awt.Color(255, 255, 255));
+        lblEventName.setText("Not Found");
+        lblEventName.setToolTipText("");
+        lblEventName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblEventNameMouseReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblEventName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblEventName, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+        );
+
+        lblPos.setMaximumSize(new java.awt.Dimension(25, 25));
+        lblPos.setMinimumSize(new java.awt.Dimension(25, 25));
+        lblPos.setPreferredSize(new java.awt.Dimension(25, 25));
 
         lblVis.setMaximumSize(new java.awt.Dimension(25, 25));
         lblVis.setMinimumSize(new java.awt.Dimension(25, 25));
@@ -163,44 +181,44 @@ public class showEvent extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblVis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNickname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblEventName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 1, Short.MAX_VALUE)
                         .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblEventName1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                            .addComponent(lblNumGuest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(lblDays, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblEventName1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNumGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblDays, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblVis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPos, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVis, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addComponent(lblEventName)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblEventName1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNumGuest)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblEventName1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblNumGuest))
                     .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addComponent(lblNickname, javax.swing.GroupLayout.DEFAULT_SIZE, 15, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(lblDays, javax.swing.GroupLayout.DEFAULT_SIZE, 15, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblDays, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPos, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblVis, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -215,6 +233,7 @@ public class showEvent extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblDays;
     private javax.swing.JLabel lblEventName;
     private javax.swing.JLabel lblEventName1;

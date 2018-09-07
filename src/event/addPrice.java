@@ -44,6 +44,7 @@ public class addPrice extends javax.swing.JPanel {
         btnNext.setText("Agregar");
         btnNext.setBorderPainted(false);
         btnNext.setFocusable(false);
+        btnNext.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnNext.setMaximumSize(new java.awt.Dimension(79, 28));
         btnNext.setMinimumSize(new java.awt.Dimension(79, 28));
         btnNext.setPreferredSize(new java.awt.Dimension(79, 28));

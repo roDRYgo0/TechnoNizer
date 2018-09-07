@@ -77,14 +77,14 @@
                   </Group>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="scrollPrice" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="281" max="32767" attributes="0"/>
-                          <Component id="btnNext1" min="-2" pref="107" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace pref="281" max="32767" attributes="0"/>
+                  <Component id="btnNext1" min="-2" pref="107" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="scrollPrice" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

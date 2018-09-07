@@ -196,6 +196,11 @@ public class jpCreateUser extends javax.swing.JPanel {
                 txtNickNameFocusLost(evt);
             }
         });
+        txtNickName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNickNameActionPerformed(evt);
+            }
+        });
         txtNickName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNickNameKeyTyped(evt);
@@ -529,7 +534,7 @@ public class jpCreateUser extends javax.swing.JPanel {
 
     private void txtNickNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNickNameKeyTyped
         char c = evt.getKeyChar();
-        if(txtNickName.getText().length()<41){
+        if(txtNickName.getText().length()<20){
             if(Character.isLetter(c) || Character.isDigit(c)){}
             else{
                 if(c != '.')
@@ -549,6 +554,10 @@ public class jpCreateUser extends javax.swing.JPanel {
     private void txtMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMailActionPerformed
+
+    private void txtNickNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNickNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNickNameActionPerformed
     
     public boolean camposVacios(){
         if(standardization.campoVacio(txtNickName.getText()) || standardization.campoVacio(txtMail.getText()) )
