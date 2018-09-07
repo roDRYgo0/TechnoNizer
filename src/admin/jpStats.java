@@ -3,6 +3,7 @@ package admin;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.util.HashMap;
@@ -11,6 +12,7 @@ import javaClass.classUsuario;
 import javaClass.connection;
 import javaClass.controller;
 import javaClass.standardization;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -396,11 +398,6 @@ public class jpStats extends javax.swing.JPanel {
     }//GEN-LAST:event_lblAdmMouseReleased
 
     private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
-      String path="";
-      
-      Map para1= new HashMap();
-      para1.put("Nickname", classUsuario.getNickname());
-      
         try{
             File file = new File("UsersBinacle.jasper");
             Map parametros = new HashMap();
@@ -413,7 +410,7 @@ public class jpStats extends javax.swing.JPanel {
             view.setTitle("Reporte");
             view.setVisible(true);
             
-        }catch(Exception e){
+        }catch(FileNotFoundException | JRException e){
             System.out.println(e.toString());
         }
     }//GEN-LAST:event_jLabel1MouseReleased

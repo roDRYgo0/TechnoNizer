@@ -293,6 +293,9 @@ idType int not null
 insert into genders values (0, 'Femenino')
 insert into genders values (1, 'Masculino')
 
+select u.nickname, ui.firstName, ui.lastName, g.gender from users u, usersInformation ui, genders g where g.id = ui.id_gender and u.nickname = ui.nickname
+
+select u.nickname, ui.firstName, ui.lastName, g.gender, ui.id_gender, g.id from users u, usersInformation ui, genders g where g.id = ui.id_gender and u.nickname = ui.nickname ORDER BY g.gender DESC
 
 insert into memberships values('Free','free', 1, 40, 1, 0, 50, 0)
 insert into memberships values('Vip','vip', 1, -1, 10, 50, 500, 49.90)
