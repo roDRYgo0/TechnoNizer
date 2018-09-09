@@ -13,38 +13,17 @@ public class showEvent extends javax.swing.JPanel {
 
     int count;
     int evento;
-    boolean search;
     
-    public showEvent(int e, boolean search) {
+    public showEvent(int e) {
         initComponents();
         count = 0;
         evento = e;
-        this.search = search;
-        load(e, search);
+        load(e);
     }
 
-    void load(int e, boolean search){
-        if(!search){
-            for(event ev : classEvent.eventos){
-                if(ev.getNicknameCreator().equals(classUsuario.getNickname()) ){
-                    if(count == e){
-                        loadEvent(ev);
-                        lblPos.setIcon(new controller().changeImage("/imagenes/owner.png", 25, 25));
-                    }
-                    count++;
-                }
-            }
-        }else{
-            for(event ev : classEvent.eventosSearch){
-                if(ev.getNicknameCreator().equals(classUsuario.getNickname()) ){
-                    if(count == e){
-                        loadEvent(ev);
-                        lblPos.setIcon(new controller().changeImage("/imagenes/owner.png", 25, 25));
-                    }
-                    count++;
-                }
-            }
-        }
+    void load(int e){
+        loadEvent(classEvent.eventosShow.get(e));
+        lblPos.setIcon(new controller().changeImage("/imagenes/owner.png", 25, 25));
         if(lblEventName.getText().length() >= 22){
             lblEventName.setToolTipText(lblEventName.getText());
             lblEventName.setText(lblEventName.getText().substring(0, 22)+"...");       
@@ -53,7 +32,12 @@ public class showEvent extends javax.swing.JPanel {
     
     void loadEvent(event ev){
         lblEventName.setText(ev.getEventName());
-        
+        if(ev.getColor() != null){
+            String[] color = ev.getColor().split(" ");
+            pnColor.setBackground(new Color(Integer.parseInt(color[0]), Integer.parseInt(color[1]), Integer.parseInt(color[2])));
+        }
+        else
+            pnColor.setBackground(new Color(35, 150, 243));
         if(ev.getVisibility()==0)
             lblVis.setIcon(new controller().changeImage("/imagenes/eyeCLose.png", 25, 25));
         
@@ -96,7 +80,7 @@ public class showEvent extends javax.swing.JPanel {
         lblNumGuest = new javax.swing.JLabel();
         lblEventName1 = new javax.swing.JLabel();
         lblDays = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        pnColor = new javax.swing.JPanel();
         lblEventName = new javax.swing.JLabel();
         lblPos = new javax.swing.JLabel();
         lblVis = new javax.swing.JLabel();
@@ -143,7 +127,7 @@ public class showEvent extends javax.swing.JPanel {
         lblDays.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblDays.setText("3 dias");
 
-        jPanel2.setBackground(new java.awt.Color(33, 150, 243));
+        pnColor.setBackground(new java.awt.Color(33, 150, 243));
 
         lblEventName.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblEventName.setForeground(new java.awt.Color(255, 255, 255));
@@ -155,17 +139,17 @@ public class showEvent extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnColorLayout = new javax.swing.GroupLayout(pnColor);
+        pnColor.setLayout(pnColorLayout);
+        pnColorLayout.setHorizontalGroup(
+            pnColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnColorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblEventName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnColorLayout.setVerticalGroup(
+            pnColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblEventName, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
         );
 
@@ -181,7 +165,7 @@ public class showEvent extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnColor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,7 +188,7 @@ public class showEvent extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -223,17 +207,16 @@ public class showEvent extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-        technonizer.TechnoNizer.home.showEvent(evento, search);
+        technonizer.TechnoNizer.home.showEvent(evento);
     }//GEN-LAST:event_formMouseReleased
 
     private void lblEventNameMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEventNameMouseReleased
-        technonizer.TechnoNizer.home.showEvent(evento, search);
+        technonizer.TechnoNizer.home.showEvent(evento);
     }//GEN-LAST:event_lblEventNameMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblDays;
     private javax.swing.JLabel lblEventName;
     private javax.swing.JLabel lblEventName1;
@@ -242,5 +225,6 @@ public class showEvent extends javax.swing.JPanel {
     private javax.swing.JLabel lblPos;
     private javax.swing.JLabel lblPrice;
     private javax.swing.JLabel lblVis;
+    private javax.swing.JPanel pnColor;
     // End of variables declaration//GEN-END:variables
 }

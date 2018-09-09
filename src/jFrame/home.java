@@ -801,10 +801,10 @@ public class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
-    public void showEvent(int e, boolean search){
+    public void showEvent(int e){
         disable();
         pnMem.setBackground(new Color(52, 52, 52));
-        eventAdmin event = new eventAdmin(e, search);
+        eventAdmin event = new eventAdmin(e);
         event.setLocation(0,0);
         event.setPreferredSize(new Dimension(980,1203));
 

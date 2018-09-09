@@ -10,7 +10,6 @@ import JPanel.contact.jpContact;
 import admin.jpSecurityQuestionsAdmin;
 import admin.jpSecurityUser;
 import event.addPrice;
-import event.allPrice;
 import event.price;
 import jFrame.addEventGral;
 import jFrame.addProject;
@@ -63,9 +62,7 @@ public class controller {
     public static jpSecurityQuestions jpSeQue;
     public static eventAdmin jpEvent;
     
-    
-    public static allEvents allE;
-  
+      
     public static addProject addPj;
     
     public static admin.userGrid userGrid;

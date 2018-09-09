@@ -1,13 +1,13 @@
 package allEvent;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.event;
 
-public class jpEvent extends javax.swing.JPanel {
+public final class jpEvent extends javax.swing.JPanel {
 
     int position[][] = new int[50][50];
     int paneles;
@@ -15,7 +15,7 @@ public class jpEvent extends javax.swing.JPanel {
     public jpEvent(boolean start) {
         initComponents();
         
-        insertarPaneles(classEvent.eventos.size(), start);
+        insertarPaneles(classEvent.eventos.size(), false);
         txtSearch.requestFocus();
         load();
     }
@@ -33,15 +33,24 @@ public class jpEvent extends javax.swing.JPanel {
         iconSearch.setIcon(new controller().changeImage("/imagenes/search.png", 35, 35));
     }
 
-    public void insertarPaneles(int paneles, boolean search) {
-        allEvents allE = new allEvents(paneles, search);
-        allE.setLocation(0, 0);
+    public void insertarPaneles(int el, boolean search){
+        pnEvent.removeAll();
+        if(!search){
+            classEvent.eventosShow.clear();
+            for(event e : classEvent.eventos){
+                if(e.getVisibility() == 1)
+                    classEvent.eventosShow.add(e);
+            }
+        }
+        for(int i = 0; i < classEvent.eventosShow.size(); i++){
+            showEvent show = new showEvent(i);
+            show.setSize(190, 120);
 
-        allE.setPreferredSize(new Dimension(960, 488 + (155 * classEvent.spaceAllEvent(obtenerPaneles()))));
-
-        scrollEvent.setViewportView(allE);
-        scrollEvent.revalidate();
-        scrollEvent.repaint();
+            pnEvent.add(show, BorderLayout.CENTER);
+            pnEvent.revalidate();
+            pnEvent.repaint();
+        }
+        
 
     }
 
@@ -57,6 +66,7 @@ public class jpEvent extends javax.swing.JPanel {
         spSearch = new javax.swing.JSeparator();
         iconSearch = new javax.swing.JLabel();
         scrollEvent = new javax.swing.JScrollPane();
+        pnEvent = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(99999, 99999));
@@ -142,6 +152,15 @@ public class jpEvent extends javax.swing.JPanel {
 
         scrollEvent.setBorder(null);
         scrollEvent.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollEvent.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        pnEvent.setBackground(new java.awt.Color(255, 255, 255));
+        momo.ModifiedFlowLayout modifiedFlowLayout1 = new momo.ModifiedFlowLayout();
+        modifiedFlowLayout1.setAlignment(java.awt.FlowLayout.LEFT);
+        modifiedFlowLayout1.setHgap(40);
+        modifiedFlowLayout1.setVgap(30);
+        pnEvent.setLayout(modifiedFlowLayout1);
+        scrollEvent.setViewportView(pnEvent);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -154,7 +173,7 @@ public class jpEvent extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(scrollEvent))
                 .addContainerGap())
@@ -170,7 +189,7 @@ public class jpEvent extends javax.swing.JPanel {
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollEvent, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                .addComponent(scrollEvent)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -203,17 +222,20 @@ public class jpEvent extends javax.swing.JPanel {
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_BACK_SPACE && txtSearch.getText().trim().isEmpty() || evt.getKeyCode() == KeyEvent.VK_DELETE && txtSearch.getText().trim().isEmpty()) {
             insertarPaneles(classEvent.eventos.size(), false);
-        } else if (evt.getKeyCode() == KeyEvent.VK_DELETE && txtSearch.getText().length() == 1 || evt.getKeyCode() == KeyEvent.VK_BACK_SPACE && txtSearch.getText().length() == 1) {
-            insertarPaneles(classEvent.eventos.size(), false);
-        } else {
-            classEvent.eventosSearch.clear();
-            for (event e : classEvent.eventos) {
-                if (e.getEventName().toLowerCase().contains(txtSearch.getText().toLowerCase())) {
-                    classEvent.eventosSearch.add(e);
-                } else {
+        } else{
+            classEvent.eventosShow.clear();
+            for(event e : classEvent.eventos) {
+                if(e.getEventName().toLowerCase().contains(txtSearch.getText().toLowerCase()) && e.getVisibility() == 1) {
+                    classEvent.eventosShow.add(e);
+                }else {
                 }
-            }
-            insertarPaneles(classEvent.eventosSearch.size(), true);
+            }            
+            insertarPaneles(classEvent.eventosShow.size(), true);
+        }
+        if(classEvent.eventosShow.isEmpty()){
+            pnEvent.removeAll();
+            pnEvent.revalidate();
+            pnEvent.repaint();
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 
@@ -228,6 +250,7 @@ public class jpEvent extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel pnEvent;
     private javax.swing.JScrollPane scrollEvent;
     private javax.swing.JSeparator spSearch;
     private javax.swing.JTextField txtSearch;

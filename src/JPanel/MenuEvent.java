@@ -13,43 +13,7 @@ public class MenuEvent extends javax.swing.JPanel {
 
     public MenuEvent() {
         initComponents();
-//             
-//             int nAdmin = methodsSQL.getExecuteInt("SELECT memberships.numberAdmins FROM memberships, users WHERE users.nickname = ? AND memberships.id=users.idMemberships",classUsuario.getNickname());
-//             int nEvents=methodsSQL.getExecuteInt("SELECT memberships.numberEvents FROM memberships, users WHERE users.nickname=? AND memberships.id=users.idMemberships", classUsuario.getNickname());
-//             int nEventAvaible=methodsSQL.getExecuteInt("SELECT memberships.numberEvents FROM memberships, users WHERE users.nickname=? AND memberships.id=users.idMemberships", classUsuario.getNickname());
-//             int nModer=methodsSQL.getExecuteInt("SELECT memberships.numberModerators FROM memberships, users WHERE users.nickname=? AND memberships.id=users.idMemberships", classUsuario.getNickname());
-//             int nGuest=methodsSQL.getExecuteInt("SELECT memberships.numberGuests FROM memberships, users WHERE users.nickname=? AND memberships.id=users.idMemberships", classUsuario.getNickname());
-//            
-//             if(nEvents<0&&nEventAvaible<0)
-//             {
-//                     EventsCount.setText("Eventos Ilimitados");
-//                     Countrest.setText("Eventos Ilimitados");
-//                     EventAvaibles.setText("Eventos Ilimitados");
-//             }
-//             else{  
-//                  int n = methodsSQL.getExecuteInt("SELECT count(*) FROM staff WHERE nickname = ? ",classUsuario.getNickname());
-//    if(n>0)
-//    {
-//      EventsCount.setText(Integer.toString(n));
-//    }
-//    else
-//    {
-//              EventsCount.setText("0");
-//    }
-//    }
-//          
-//             NumberAdmnis.setText(Integer.toString(nAdmin));
-//             NumberModeradors.setText(Integer.toString(nModer));
-//             Guest.setText(Integer.toString(nGuest));
-//             Number.setIcon(new controller().changeImage("/imagenes/membership.png", 30, 30));
-//             EventsE.setIcon(new controller().changeImage("/imagenes/membership.png", 30, 30));
-//             EventDis.setIcon(new controller().changeImage("/imagenes/membership.png", 30, 30));
-//             Admins.setIcon(new controller().changeImage("/imagenes/hashtag.png", 30, 30));
-//           Mods.setIcon(new controller().changeImage("/imagenes/hashtag.png", 30, 30));
-//           Invites.setIcon(new controller().changeImage("/imagenes/hashtag.png", 30, 30));
-//         
-//             
-//        
+        
         imagen.setIcon(new controller().changeImage("/imagenes/user.png", 30, 30));
         iconEmail.setIcon(new controller().changeImage("/imagenes/email.png", 30, 30));
          

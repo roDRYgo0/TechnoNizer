@@ -8,18 +8,16 @@ import javaClass.standardization;
 
 public class showEvent extends javax.swing.JPanel {
 
-    public showEvent(int event, boolean search) {
+    public showEvent(int event) {
         initComponents();
         
-        load(event, search);
+        load(event);
     }
 
-    void load(int e, boolean search){
-        if(!search){
-            loadEvent(classEvent.eventos.get(e));
-        }else{
-            loadEvent(classEvent.eventosSearch.get(e));
-        }
+    void load(int e){
+        
+        loadEvent(classEvent.eventosShow.get(e));
+        
         if(lblEventName.getText().length() >= 22){
             lblEventName.setToolTipText(lblEventName.getText());
             lblEventName.setText(lblEventName.getText().substring(0, 22)+"...");       
@@ -27,6 +25,12 @@ public class showEvent extends javax.swing.JPanel {
     }
     
     void loadEvent(event ev){
+        if(ev.getColor() != null){
+            String[] color = ev.getColor().split(" ");
+            pnColor.setBackground(new Color(Integer.parseInt(color[0]), Integer.parseInt(color[1]), Integer.parseInt(color[2])));
+        }
+        else
+            pnColor.setBackground(new Color(35, 150, 243));
         lblEventName.setText(ev.getEventName());
 
         lblNickname.setText(ev.getNicknameCreator());
@@ -68,7 +72,7 @@ public class showEvent extends javax.swing.JPanel {
         lblPrice = new javax.swing.JLabel();
         lblNumGuest = new javax.swing.JLabel();
         lblDays = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        pnColor = new javax.swing.JPanel();
         lblEventName = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -111,24 +115,24 @@ public class showEvent extends javax.swing.JPanel {
         lblDays.setMinimumSize(new java.awt.Dimension(29, 16));
         lblDays.setPreferredSize(new java.awt.Dimension(29, 16));
 
-        jPanel7.setBackground(new java.awt.Color(33, 150, 243));
+        pnColor.setBackground(new java.awt.Color(33, 150, 243));
 
         lblEventName.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblEventName.setForeground(new java.awt.Color(255, 255, 255));
         lblEventName.setText("Not Found");
         lblEventName.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnColorLayout = new javax.swing.GroupLayout(pnColor);
+        pnColor.setLayout(pnColorLayout);
+        pnColorLayout.setHorizontalGroup(
+            pnColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnColorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblEventName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnColorLayout.setVerticalGroup(
+            pnColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblEventName, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
@@ -136,7 +140,7 @@ public class showEvent extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnColor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblNickname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -156,7 +160,7 @@ public class showEvent extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -175,12 +179,12 @@ public class showEvent extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel lblDays;
     private javax.swing.JLabel lblEventName;
     private javax.swing.JLabel lblEventName1;
     private javax.swing.JLabel lblNickname;
     private javax.swing.JLabel lblNumGuest;
     private javax.swing.JLabel lblPrice;
+    private javax.swing.JPanel pnColor;
     // End of variables declaration//GEN-END:variables
 }

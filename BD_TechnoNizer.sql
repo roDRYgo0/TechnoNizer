@@ -135,8 +135,10 @@ idCardas int not null references cards(id)
  staff int,
  quantityTicket int not null,
  condition int not null,
- place nvarchar(200) not null
+ place nvarchar(200) not null,
+ color nvarchar(15)
  )
+
 
  select * from events
  select * from tickets

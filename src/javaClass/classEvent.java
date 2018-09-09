@@ -24,17 +24,27 @@ public class classEvent {
     private static String endDateTime;
     private static Integer staff;
     private static String place;
+    private static String color;
     private static Integer quantityTicket;
     private static Integer condition;
     public static List<classPrice> prices= new ArrayList<classPrice>();
 
     
     public static List<event> eventos = new ArrayList<event>();
+    public static List<event> eventosShow = new ArrayList<event>();
     public static List<event> eventosSearch = new ArrayList<event>();
+
 
 
     
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static String getColor() {
+        return color;
+    }
+
+    public static void setColor(String color) {
+        classEvent.color = color;
+    }
     public static List<classPrice> getPrices() {
         return prices;
     }
@@ -185,7 +195,7 @@ public class classEvent {
         //este es... aqui selecciono todos los eventos de yo... con todos su datos...
         boolean status = false;
         event evento;
-        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket FROM events e");
+        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket, e.color FROM events e");
         
         try {
             while(rs.next()){
@@ -202,6 +212,7 @@ public class classEvent {
                 evento.setNicknameCreator(rs.getString(10));
                 evento.setPlace(rs.getString(11));
                 evento.setQuantityTicket(rs.getInt(12));
+                evento.setColor(rs.getString(13));
                 
                 List<classPrice> price = new ArrayList<>();
                 classPrice p;
@@ -233,8 +244,8 @@ public class classEvent {
     
     public static boolean insert(){
         boolean status = false;
-        status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?)",
-                eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, quantityTicket, condition, place);
+        status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?)",
+                eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, quantityTicket, condition, place, color);
 
         
         if(status){

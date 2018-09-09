@@ -18,10 +18,20 @@ public class event {
     private String endDateTime;
     private Integer staff;
     private String place;
+    private String color;
     private Integer condition;
     private List<classPrice> prices;
 
+
+    
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
     public String getPlace() {
         return place;
     }
