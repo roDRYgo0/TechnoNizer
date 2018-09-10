@@ -83,6 +83,8 @@ public class controller {
     public static String[] answers;
     public static boolean actionCompleted = false;
     
+    public static List<users> usuarios;
+    
     //<editor-fold defaultstate="collapsed" desc="jFrame">
     public static addEventGral gralEvent;
     public static addReminderGral gralReminder;

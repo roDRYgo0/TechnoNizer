@@ -24,6 +24,8 @@ public class TechnoNizer {
             System.out.println("Carga de constantes");
             classSecurityQuestions.loadAllQuestions();
             System.out.println("Carga de preguntas");
+            classUsuario.selectAllUser();
+            System.out.println("Usuarios cargados");
         }).start();
         
         mess = new message();

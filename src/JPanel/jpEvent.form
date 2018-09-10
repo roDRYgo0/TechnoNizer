@@ -203,59 +203,7 @@
           </Properties>
           <LayoutCode>
             <CodeStatement>
-              <CodeExpression id="1_modifiedFlowLayout1">
-                <CodeVariable name="modifiedFlowLayout1" type="4096" declaredType="momo.ModifiedFlowLayout"/>
-                <ExpressionOrigin>
-                  <ExpressionProvider type="CodeConstructor">
-                    <CodeConstructor class="momo.ModifiedFlowLayout" parameterTypes=""/>
-                  </ExpressionProvider>
-                </ExpressionOrigin>
-              </CodeExpression>
-              <StatementProvider type="CodeExpression">
-                <CodeExpression id="1_modifiedFlowLayout1"/>
-              </StatementProvider>
-            </CodeStatement>
-            <CodeStatement>
-              <CodeExpression id="1_modifiedFlowLayout1"/>
-              <StatementProvider type="CodeMethod">
-                <CodeMethod name="setAlignment" class="java.awt.FlowLayout" parameterTypes="int"/>
-              </StatementProvider>
-              <Parameters>
-                <CodeExpression id="2">
-                  <ExpressionOrigin>
-                    <Value type="int" value="0"/>
-                  </ExpressionOrigin>
-                </CodeExpression>
-              </Parameters>
-            </CodeStatement>
-            <CodeStatement>
-              <CodeExpression id="1_modifiedFlowLayout1"/>
-              <StatementProvider type="CodeMethod">
-                <CodeMethod name="setHgap" class="java.awt.FlowLayout" parameterTypes="int"/>
-              </StatementProvider>
-              <Parameters>
-                <CodeExpression id="3">
-                  <ExpressionOrigin>
-                    <Value type="int" value="40"/>
-                  </ExpressionOrigin>
-                </CodeExpression>
-              </Parameters>
-            </CodeStatement>
-            <CodeStatement>
-              <CodeExpression id="1_modifiedFlowLayout1"/>
-              <StatementProvider type="CodeMethod">
-                <CodeMethod name="setVgap" class="java.awt.FlowLayout" parameterTypes="int"/>
-              </StatementProvider>
-              <Parameters>
-                <CodeExpression id="4">
-                  <ExpressionOrigin>
-                    <Value type="int" value="30"/>
-                  </ExpressionOrigin>
-                </CodeExpression>
-              </Parameters>
-            </CodeStatement>
-            <CodeStatement>
-              <CodeExpression id="5_pnEvent">
+              <CodeExpression id="1_pnEvent">
                 <CodeVariable name="pnEvent" type="8194" declaredType="javax.swing.JPanel"/>
                 <ExpressionOrigin>
                   <ExpressionProvider type="ComponentRef">
@@ -267,7 +215,13 @@
                 <CodeMethod name="setLayout" class="java.awt.Container" parameterTypes="java.awt.LayoutManager"/>
               </StatementProvider>
               <Parameters>
-                <CodeExpression id="1_modifiedFlowLayout1"/>
+                <CodeExpression id="2">
+                  <ExpressionOrigin>
+                    <ExpressionProvider type="CodeConstructor">
+                      <CodeConstructor class="javaClass.ModifiedFlowLayout" parameterTypes=""/>
+                    </ExpressionProvider>
+                  </ExpressionOrigin>
+                </CodeExpression>
               </Parameters>
             </CodeStatement>
           </LayoutCode>

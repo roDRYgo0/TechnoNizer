@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -192,7 +193,6 @@ public class classEvent {
     }
     
     public static boolean select(){
-        //este es... aqui selecciono todos los eventos de yo... con todos su datos...
         boolean status = false;
         event evento;
         ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket, e.color FROM events e");
@@ -213,6 +213,19 @@ public class classEvent {
                 evento.setPlace(rs.getString(11));
                 evento.setQuantityTicket(rs.getInt(12));
                 evento.setColor(rs.getString(13));
+                System.out.println(evento.getStaff()+" que graro");
+                if(evento.getStaff() == 1){
+                    List<staff> staffs = new ArrayList<>();
+                    staff s;
+                    ResultSet rsS = methodsSQL.getExecute("select s.nickname, s.position from staff s where s.idEvent = ?", evento.getId());
+                    while(rsS.next()){
+                        s = new staff();
+                        s.setNickname(rsS.getString(1));
+                        s.setPosition(rsS.getInt(2));
+                        staffs.add(s);
+                    }
+                    evento.setStaffs(staffs);
+                }
                 
                 List<classPrice> price = new ArrayList<>();
                 classPrice p;
@@ -242,10 +255,29 @@ public class classEvent {
         return status;
     }
     
+    public static boolean insetStaff(int idEvent, int pos, String nickname){
+        boolean status = false;
+        for(event e : eventos){
+            if(Objects.equals(e.getId(), eventosShow.get(idEvent).getId())){
+                if(methodsSQL.execute("INSERT INTO staff VALUES (?, ?, ?) ", pos, nickname, eventosShow.get(idEvent).getId())){
+                    e.setStaff(1);
+                    staff s = new staff();
+                    s.setIdEvent(eventosShow.get(idEvent).getId());
+                    s.setNickname(nickname);
+                    s.setPosition(pos);
+                    status = true;
+                }
+                if(status)
+                    status = methodsSQL.execute("update events set staff = ? where id = ? ", 1, eventosShow.get(idEvent).getId());
+            }
+        }
+        return status;
+    }
+    
     public static boolean insert(){
         boolean status = false;
         status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?)",
-                eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, quantityTicket, condition, place, color);
+                eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition, quantityTicket, place, color);
 
         
         if(status){

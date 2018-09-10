@@ -155,11 +155,7 @@ public final class jpEvent extends javax.swing.JPanel {
         scrollEvent.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         pnEvent.setBackground(new java.awt.Color(255, 255, 255));
-        momo.ModifiedFlowLayout modifiedFlowLayout1 = new momo.ModifiedFlowLayout();
-        modifiedFlowLayout1.setAlignment(java.awt.FlowLayout.LEFT);
-        modifiedFlowLayout1.setHgap(40);
-        modifiedFlowLayout1.setVgap(30);
-        pnEvent.setLayout(modifiedFlowLayout1);
+        pnEvent.setLayout(new javaClass.ModifiedFlowLayout());
         scrollEvent.setViewportView(pnEvent);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

@@ -151,11 +151,7 @@ public final class jpEvent extends javax.swing.JPanel {
         scrollEvent.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         pnEvent.setBackground(new java.awt.Color(255, 255, 255));
-        momo.ModifiedFlowLayout modifiedFlowLayout1 = new momo.ModifiedFlowLayout();
-        modifiedFlowLayout1.setAlignment(java.awt.FlowLayout.LEFT);
-        modifiedFlowLayout1.setHgap(40);
-        modifiedFlowLayout1.setVgap(30);
-        pnEvent.setLayout(modifiedFlowLayout1);
+        pnEvent.setLayout(new javaClass.ModifiedFlowLayout());
         scrollEvent.setViewportView(pnEvent);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

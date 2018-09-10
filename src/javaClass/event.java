@@ -21,10 +21,16 @@ public class event {
     private String color;
     private Integer condition;
     private List<classPrice> prices;
+    private List<staff> staffs;
 
-
-    
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public List<staff> getStaffs() {
+        return staffs;
+    }
+
+    public void setStaffs(List<staff> staffs) {
+        this.staffs = staffs;
+    }
     public String getColor() {
         return color;
     }

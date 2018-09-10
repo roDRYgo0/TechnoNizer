@@ -3,7 +3,6 @@ package JPanel;
 import java.awt.Color;
 import java.awt.Font;
 import javaClass.classEvent;
-import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.event;
 import javaClass.standardization;
