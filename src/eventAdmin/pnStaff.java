@@ -14,9 +14,16 @@ public class pnStaff extends javax.swing.JPanel {
     }
 
     void load(){
+        showStaff owner = new showStaff(true, idEvent);
+        owner.setSize(370, 45);
+
+        this.add(owner, BorderLayout.CENTER);
+        this.revalidate();
+        this.repaint();
+        
         if(classEvent.eventosShow.get(idEvent).getStaffs() != null){
             for(int i = 0; i < classEvent.eventosShow.get(idEvent).getStaffs().size(); i++){
-                showStaff sS = new showStaff();
+                showStaff sS = new showStaff(false, idEvent, i);
                 sS.setSize(370, 45);
                 this.add(sS, BorderLayout.CENTER);
                 this.revalidate();

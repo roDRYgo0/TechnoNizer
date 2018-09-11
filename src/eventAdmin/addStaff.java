@@ -13,6 +13,7 @@ import java.util.List;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.event;
+import javaClass.staff;
 import javaClass.standardization;
 import javaClass.users;
 import javax.swing.JMenuItem;
@@ -177,11 +178,22 @@ public class addStaff extends javax.swing.JPanel {
         items = new ArrayList<>();
         items.clear();
         popupNickname.removeAll();
-        
+        boolean st = true;
         for(users u : controller.usuarios){
             if(u.getNickname().contains(txtNickname.getText().trim())){
-                usuarios.add(u);
-                items.add(new JMenuItem(u.getNickname()));
+                if(!u.getNickname().equals(classEvent.eventosShow.get(idEvent).getNicknameCreator())){
+                    for(staff s : classEvent.eventosShow.get(idEvent).getStaffs()){
+                        if(s.getNickname().equals(u.getNickname())){
+                            st=false;
+                            break;
+                        }
+                    }
+                    if(st){
+                        usuarios.add(u);
+                        items.add(new JMenuItem(u.getNickname()));
+                    }
+                    st = true;
+                }
             }
         }
         
@@ -218,11 +230,32 @@ public class addStaff extends javax.swing.JPanel {
                 user = true;
         }
         if(user){
-            if(classEvent.insetStaff(idEvent, cmbPos.getSelectedIndex()+1, txtNickname.getText())){
-                for(int e = 0; e < classEvent.eventosShow.size(); e ++){
-                    if(classEvent.eventosShow.get(e).getId() == idEvent)
-                        technonizer.TechnoNizer.home.showEvent(e);
+            if(!txtNickname.getText().equals(classEvent.eventosShow.get(idEvent).getNicknameCreator())){
+                for(staff s : classEvent.eventosShow.get(idEvent).getStaffs()){
+                    if(s.getNickname().equals(txtNickname.getText())){
+                        user = false;
+                        break;
+                    }
                 }
+            }else
+                user = false;
+        }
+        if(user){
+            if(classEvent.insetStaff(idEvent, cmbPos.getSelectedIndex()+1, txtNickname.getText())){
+                staff s = new staff();
+                s.setNickname(txtNickname.getText());
+                s.setPosition(cmbPos.getSelectedIndex()+1);
+                s.setIdEvent(classEvent.eventosShow.get(idEvent).getId());
+                
+                for(int i = 0; i < classEvent.eventos.size(); i++){
+                    if(classEvent.eventos.get(i).getId() == classEvent.eventosShow.get(idEvent).getId()){
+                        List<staff> st = classEvent.eventos.get(i).getStaffs();
+                        st.add(s);
+                        classEvent.eventos.get(i).setStaffs(st);
+                    }
+                }
+                technonizer.TechnoNizer.home.showEvent(idEvent);
+                
                 standardization.showMessage("ok", "Agregado corectamente");
             }else
                 standardization.showMessage("cancel", "No se puede agregar");

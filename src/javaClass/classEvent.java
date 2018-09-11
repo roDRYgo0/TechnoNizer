@@ -213,7 +213,6 @@ public class classEvent {
                 evento.setPlace(rs.getString(11));
                 evento.setQuantityTicket(rs.getInt(12));
                 evento.setColor(rs.getString(13));
-                System.out.println(evento.getStaff()+" que graro");
                 if(evento.getStaff() == 1){
                     List<staff> staffs = new ArrayList<>();
                     staff s;
@@ -270,6 +269,30 @@ public class classEvent {
                 if(status)
                     status = methodsSQL.execute("update events set staff = ? where id = ? ", 1, eventosShow.get(idEvent).getId());
             }
+        }
+        return status;
+    }
+    
+    public static boolean deleteStaff(String nickname, int idEvent){
+        boolean status = false;
+        status = methodsSQL.execute("delete from staff where nickname = ? and idEvent = ?", nickname, idEvent);
+        return status;
+    }
+    
+    public static List<staff> selectStaff(int idEvent){
+        List<staff> status = new ArrayList<>();
+        staff s;
+        ResultSet rs = methodsSQL.getExecute("select nickname, position from staff where idEvent = ?", idEvent);
+        try {
+            while(rs.next()){
+                s = new staff();
+                s.setIdEvent(idEvent);
+                s.setNickname(rs.getString(1));
+                s.setPosition(rs.getInt(2));
+                status.add(s);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
         }
         return status;
     }

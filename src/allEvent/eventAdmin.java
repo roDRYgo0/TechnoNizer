@@ -35,11 +35,11 @@ public class eventAdmin extends javax.swing.JPanel {
         pnContainer.repaint();
     }
     
-    void loadStaff(event event){       
+    void loadStaff(event event){     
         pnStaff pS = new pnStaff(idEvent);
         int size = 0;
         if(event.getStaffs() != null)
-            size = (event.getStaffs().size() <= 2) ? 1 : (event.getStaffs().size() -2) * 50;
+            size = (event.getStaffs().size() <= 1) ? 1 : (event.getStaffs().size() -1) * 50;
 
         pS.setPreferredSize(new Dimension(405,226+size));
         pnContainer.add(pS);
@@ -194,7 +194,7 @@ public class eventAdmin extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(scrollContainer)
+            .addComponent(scrollContainer, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
