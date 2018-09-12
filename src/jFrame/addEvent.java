@@ -23,11 +23,12 @@ public class addEvent extends javax.swing.JFrame {
         initComponents();
         classEvent.prices.clear();
         visibility = 1;
+        member();
         classEvent.setVisibility(visibility);
         switchVisibility();
         load();
         icon1.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("0 153 0");
+        classEvent.setColor("35 150 243");
         if(classEvent.getQuantityTicket() == -1)
             lblTickets.setText("Ilimitados");
         else
@@ -55,7 +56,7 @@ public class addEvent extends javax.swing.JFrame {
             lockedPrices lPric = new lockedPrices();
             lPric.setLocation(0,0);
 
-            lPric.setPreferredSize(new Dimension(378, 235));
+            lPric.setPreferredSize(new Dimension(440, 235));
 
             scrollPrice.setViewportView(lPric);
             scrollPrice.revalidate();
@@ -69,6 +70,40 @@ public class addEvent extends javax.swing.JFrame {
             scrollPrice.setViewportView(allP);
             scrollPrice.revalidate();
             scrollPrice.repaint();
+        }
+    }
+    
+    void member(){
+        switch(classUsuario.getIdMemberships()){
+            case 1:
+                jPanel4.setBackground(Color.white);
+                jPanel5.setBackground(Color.white);
+                jPanel6.setBackground(Color.white);
+                jPanel7.setBackground(Color.white);
+                jPanel8.setBackground(Color.white);
+                jPanel9.setBackground(Color.white);
+                jPanel10.setBackground(Color.white);
+                jPanel11.setBackground(Color.white);
+                jPanel12.setBackground(Color.white);
+                jPanel18.setBackground(Color.white);
+                jPanel19.setBackground(Color.white);
+                jPanel20.setBackground(Color.white);
+                jPanel21.setBackground(Color.white);
+                jPanel22.setBackground(Color.white);
+                break;
+            case 2:
+                jPanel8.setBackground(Color.white);
+                jPanel9.setBackground(Color.white);
+                jPanel10.setBackground(Color.white);
+                jPanel11.setBackground(Color.white);
+                jPanel12.setBackground(Color.white);
+                jPanel18.setBackground(Color.white);
+                jPanel19.setBackground(Color.white);
+                jPanel20.setBackground(Color.white);
+                jPanel21.setBackground(Color.white);
+                jPanel22.setBackground(Color.white);
+                break;
+                
         }
     }
     
@@ -353,7 +388,7 @@ public class addEvent extends javax.swing.JFrame {
         lblTickets.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTickets.setText("0");
 
-        jPanel3.setBackground(new java.awt.Color(0, 153, 0));
+        jPanel3.setBackground(new java.awt.Color(35, 150, 243));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jPanel3MouseReleased(evt);
@@ -378,7 +413,7 @@ public class addEvent extends javax.swing.JFrame {
             .addComponent(icon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanel4.setBackground(new java.awt.Color(179, 19, 179));
+        jPanel4.setBackground(new java.awt.Color(0, 153, 0));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jPanel4MouseReleased(evt);
@@ -503,7 +538,7 @@ public class addEvent extends javax.swing.JFrame {
             .addComponent(icon6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanel9.setBackground(new java.awt.Color(35, 150, 243));
+        jPanel9.setBackground(new java.awt.Color(179, 19, 179));
         jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jPanel9MouseReleased(evt);
@@ -903,91 +938,119 @@ public class addEvent extends javax.swing.JFrame {
     private void jPanel3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseReleased
         disable();
         icon1.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("0 153 0");
+        classEvent.setColor("35 150 243");
     }//GEN-LAST:event_jPanel3MouseReleased
 
     private void jPanel4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseReleased
-        disable();
-        icon2.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("179 19 179");
+        if(classUsuario.getIdMemberships() == 2){
+            disable();
+            icon2.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
+            classEvent.setColor("0 153 0");
+        }
     }//GEN-LAST:event_jPanel4MouseReleased
 
     private void jPanel5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseReleased
-        disable();
-        icon3.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("239 110 239");
+        if(classUsuario.getIdMemberships() == 2){   
+            disable();
+            icon3.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
+            classEvent.setColor("239 110 239");
+        }
     }//GEN-LAST:event_jPanel5MouseReleased
 
     private void jPanel6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseReleased
-        disable();
-        icon4.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("24 78 186");
+        if(classUsuario.getIdMemberships() == 2){   
+            disable();
+            icon4.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
+            classEvent.setColor("24 78 186");
+        }
     }//GEN-LAST:event_jPanel6MouseReleased
 
     private void jPanel7MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseReleased
-        disable();
-        icon5.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("166 166 29");
+        if(classUsuario.getIdMemberships() == 2){   
+            disable();
+            icon5.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
+            classEvent.setColor("166 166 29");
+        }
     }//GEN-LAST:event_jPanel7MouseReleased
 
     private void jPanel8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseReleased
-        disable();
-        icon6.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("204 0 0");
+        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+            disable();
+            icon6.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
+            classEvent.setColor("204 0 0");
+        }
     }//GEN-LAST:event_jPanel8MouseReleased
 
     private void jPanel9MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseReleased
-        disable();
-        icon7.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("35 150 243");
+        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+            disable();
+            icon7.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
+            classEvent.setColor("179 19 179");
+        }
     }//GEN-LAST:event_jPanel9MouseReleased
 
     private void jPanel10MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseReleased
-        disable();
-        icon8.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("217 99 23");
+        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+            disable();
+            icon8.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
+            classEvent.setColor("217 99 23");
+        }
     }//GEN-LAST:event_jPanel10MouseReleased
 
     private void jPanel11MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseReleased
-        disable();
-        icon9.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("102 102 102");
+        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+            disable();
+            icon9.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
+            classEvent.setColor("102 102 102");
+        }
     }//GEN-LAST:event_jPanel11MouseReleased
 
     private void jPanel12MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseReleased
-        disable();
-        icon10.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("102 0 255");
+        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+            disable();
+            icon10.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
+            classEvent.setColor("102 0 255");
+        }
     }//GEN-LAST:event_jPanel12MouseReleased
 
     private void jPanel18MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel18MouseReleased
-        disable();
-        icon11.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("153 0 51");
+        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+            disable();
+            icon11.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
+            classEvent.setColor("153 0 51");
+        }
     }//GEN-LAST:event_jPanel18MouseReleased
 
     private void jPanel19MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel19MouseReleased
-        disable();
-        icon12.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("129 61 0");
+        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+            disable();
+            icon12.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
+            classEvent.setColor("129 61 0");
+        }
     }//GEN-LAST:event_jPanel19MouseReleased
 
     private void jPanel20MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel20MouseReleased
-        disable();
-        icon13.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("102 102 255");
+        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+            disable();
+            icon13.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
+            classEvent.setColor("102 102 255");
+        }
     }//GEN-LAST:event_jPanel20MouseReleased
 
     private void jPanel21MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel21MouseReleased
-        disable();
-        icon14.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("0 204 204");
+        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+            disable();
+            icon14.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
+            classEvent.setColor("0 204 204");
+        }
     }//GEN-LAST:event_jPanel21MouseReleased
 
     private void jPanel22MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel22MouseReleased
-        disable();
-        icon15.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
-        classEvent.setColor("0 102 0");
+        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+            disable();
+            icon15.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
+            classEvent.setColor("0 102 0");
+        }
     }//GEN-LAST:event_jPanel22MouseReleased
 
     void switchVisibility(){

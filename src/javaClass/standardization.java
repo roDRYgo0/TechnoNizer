@@ -289,8 +289,8 @@ public class standardization {
         mess.setFram(null);
         mess.changeMessage(Message);
         mess.setVisible(true);
-        mess.setLocationRelativeTo(TechnoNizer.log);
-        controller.rootFrame.setEnabled(false);
+        mess.setLocationRelativeTo(controller.rootFrame);
+        controller.rootFrame.setFocusable(false);
         controller.rootFrame.setOpacity(0.85f);
     }
     

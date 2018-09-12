@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javaClass.classEvent;
+import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.event;
 import javaClass.staff;
@@ -29,10 +30,14 @@ public class addStaff extends javax.swing.JPanel {
     List<JMenuItem> items;
     
     int idEvent;
+    int admin;
+    int mod;
     
     public addStaff(int idEvent) {
         initComponents();
         this.idEvent = idEvent;
+        admin = 0;
+        mod = 0;
     }
 
     /**
@@ -56,6 +61,9 @@ public class addStaff extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         cmbPos = new javax.swing.JComboBox<>();
         btnNext = new javax.swing.JButton();
+
+        popupNickname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        popupNickname.setBorderPainted(false);
 
         menuItem1.setText("jMenuItem1");
         popupNickname.add(menuItem1);
@@ -182,10 +190,13 @@ public class addStaff extends javax.swing.JPanel {
         for(users u : controller.usuarios){
             if(u.getNickname().contains(txtNickname.getText().trim())){
                 if(!u.getNickname().equals(classEvent.eventosShow.get(idEvent).getNicknameCreator())){
-                    for(staff s : classEvent.eventosShow.get(idEvent).getStaffs()){
-                        if(s.getNickname().equals(u.getNickname())){
-                            st=false;
-                            break;
+                    if(!classEvent.eventosShow.get(idEvent).getStaffs().isEmpty())
+                    {
+                        for(staff s : classEvent.eventosShow.get(idEvent).getStaffs()){
+                            if(s.getNickname().equals(u.getNickname())){
+                                st=false;
+                                break;
+                            }
                         }
                     }
                     if(st){
@@ -234,35 +245,57 @@ public class addStaff extends javax.swing.JPanel {
                 for(staff s : classEvent.eventosShow.get(idEvent).getStaffs()){
                     if(s.getNickname().equals(txtNickname.getText())){
                         user = false;
-                        break;
                     }
+                    if(s.getPosition()==1)
+                        admin++;
+                    else
+                        mod++;
                 }
             }else
                 user = false;
         }
         if(user){
-            if(classEvent.insetStaff(idEvent, cmbPos.getSelectedIndex()+1, txtNickname.getText())){
-                staff s = new staff();
-                s.setNickname(txtNickname.getText());
-                s.setPosition(cmbPos.getSelectedIndex()+1);
-                s.setIdEvent(classEvent.eventosShow.get(idEvent).getId());
-                
-                for(int i = 0; i < classEvent.eventos.size(); i++){
-                    if(classEvent.eventos.get(i).getId() == classEvent.eventosShow.get(idEvent).getId()){
-                        List<staff> st = classEvent.eventos.get(i).getStaffs();
-                        st.add(s);
-                        classEvent.eventos.get(i).setStaffs(st);
-                    }
-                }
-                technonizer.TechnoNizer.home.showEvent(idEvent);
-                
-                standardization.showMessage("ok", "Agregado corectamente");
-            }else
-                standardization.showMessage("cancel", "No se puede agregar");
+            if(cmbPos.getSelectedIndex() == 0){
+                if(controller.member[classUsuario.getIdMemberships()-1].getNumberAdmins() > admin){
+                    add();
+                }else if(controller.member[classUsuario.getIdMemberships()-1].getNumberAdmins() == -1)
+                    add();
+                else
+                    standardization.showMessage("warning", "No se pueden agregar más administradores");
+                    
+            }else{
+                if(controller.member[classUsuario.getIdMemberships()-1].getNumberModerators() > mod){
+                    add();
+                }else if(controller.member[classUsuario.getIdMemberships()-1].getNumberModerators() == -1)
+                    add();
+                else
+                    standardization.showMessage("warning", "No se pueden agregar más administradores");
+            }
         }else
             standardization.showMessage("warning", "El usuario no se encuentra");
     }//GEN-LAST:event_btnNextActionPerformed
 
+    void add(){
+        if(classEvent.insetStaff(idEvent, cmbPos.getSelectedIndex()+1, txtNickname.getText())){
+            staff s = new staff();
+            s.setNickname(txtNickname.getText());
+            s.setPosition(cmbPos.getSelectedIndex()+1);
+            s.setIdEvent(classEvent.eventosShow.get(idEvent).getId());
+
+            for(int i = 0; i < classEvent.eventos.size(); i++){
+                if(classEvent.eventos.get(i).getId() == classEvent.eventosShow.get(idEvent).getId()){
+                    List<staff> st = classEvent.eventos.get(i).getStaffs();
+                    st.add(s);
+                    classEvent.eventos.get(i).setStaffs(st);
+                }
+            }
+            technonizer.TechnoNizer.home.showEvent(idEvent);
+
+            standardization.showMessage("ok", "Agregado corectamente");
+        }else
+            standardization.showMessage("cancel", "No se puede agregar");
+    }
+    
     void setVisible(){
         menuItem1.setVisible(true);
         menuItem2.setVisible(true);

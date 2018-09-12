@@ -1,5 +1,6 @@
 package javaClass;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /** @author rodri */
@@ -21,7 +22,7 @@ public class event {
     private String color;
     private Integer condition;
     private List<classPrice> prices;
-    private List<staff> staffs;
+    private List<staff> staffs = new ArrayList<>();
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
     public List<staff> getStaffs() {
