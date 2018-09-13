@@ -4,7 +4,6 @@ import allEvent.eventAdmin;
 import JPanel.*;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Image;
 import javaClass.*;
 import static javaClass.controller.jpH;
@@ -306,7 +305,6 @@ public class home extends javax.swing.JFrame {
         jPanel2.setMinimumSize(new java.awt.Dimension(1150, 46));
         jPanel2.setPreferredSize(new java.awt.Dimension(1150, 46));
         jPanel2.setRequestFocusEnabled(false);
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -314,7 +312,6 @@ public class home extends javax.swing.JFrame {
         jLabel2.setMaximumSize(new java.awt.Dimension(110, 46));
         jLabel2.setMinimumSize(new java.awt.Dimension(110, 46));
         jLabel2.setPreferredSize(new java.awt.Dimension(110, 46));
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         lblSettings.setText("settings");
         lblSettings.setMaximumSize(new java.awt.Dimension(83, 14));
@@ -325,7 +322,6 @@ public class home extends javax.swing.JFrame {
                 lblSettingsMouseReleased(evt);
             }
         });
-        jPanel2.add(lblSettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(1067, 0, -1, 46));
 
         lblImageUserTop.setForeground(new java.awt.Color(255, 255, 255));
         lblImageUserTop.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -341,12 +337,32 @@ public class home extends javax.swing.JFrame {
                 lblImageUserTopMouseReleased(evt);
             }
         });
-        jPanel2.add(lblImageUserTop, new org.netbeans.lib.awtextra.AbsoluteConstraints(864, 0, -1, -1));
 
         iconMem.setMaximumSize(new java.awt.Dimension(50, 46));
         iconMem.setMinimumSize(new java.awt.Dimension(50, 46));
         iconMem.setPreferredSize(new java.awt.Dimension(50, 46));
-        jPanel2.add(iconMem, new org.netbeans.lib.awtextra.AbsoluteConstraints(1011, 0, -1, -1));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(744, 744, 744)
+                .addComponent(lblImageUserTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(iconMem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(lblSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(lblImageUserTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(iconMem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(lblSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         leftPanel.setBackground(new java.awt.Color(42, 42, 42));
 
