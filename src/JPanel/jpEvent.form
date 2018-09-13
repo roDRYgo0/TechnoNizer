@@ -204,10 +204,10 @@
           <LayoutCode>
             <CodeStatement>
               <CodeExpression id="1_modifiedFlowLayout1">
-                <CodeVariable name="modifiedFlowLayout1" type="4096" declaredType="momo.ModifiedFlowLayout"/>
+                <CodeVariable name="modifiedFlowLayout1" type="4096" declaredType="javaClass.ModifiedFlowLayout"/>
                 <ExpressionOrigin>
                   <ExpressionProvider type="CodeConstructor">
-                    <CodeConstructor class="momo.ModifiedFlowLayout" parameterTypes=""/>
+                    <CodeConstructor class="javaClass.ModifiedFlowLayout" parameterTypes=""/>
                   </ExpressionProvider>
                 </ExpressionOrigin>
               </CodeExpression>
@@ -236,7 +236,7 @@
               <Parameters>
                 <CodeExpression id="3">
                   <ExpressionOrigin>
-                    <Value type="int" value="40"/>
+                    <Value type="int" value="37"/>
                   </ExpressionOrigin>
                 </CodeExpression>
               </Parameters>
@@ -249,7 +249,7 @@
               <Parameters>
                 <CodeExpression id="4">
                   <ExpressionOrigin>
-                    <Value type="int" value="30"/>
+                    <Value type="int" value="10"/>
                   </ExpressionOrigin>
                 </CodeExpression>
               </Parameters>

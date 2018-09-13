@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class classUsuario {
     
@@ -39,7 +41,6 @@ public class classUsuario {
     private static int myNumEvent;
     private static int myNumberEventDisp;
     private static int myNumberEventUse;
-
     
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
     public static Integer getPreviousIdMemberships() {
@@ -322,6 +323,29 @@ public class classUsuario {
             myNumberEventDisp = classAdmin.users.get(user).getMyNumberEventDisp();
             status = classSecurityQuestions.select();
         }
+        return status;
+    }
+    
+    public static boolean selectAllUser(){
+        boolean status = false;
+        controller.usuarios = new ArrayList<>();
+        users us;
+        ResultSet rs = methodsSQL.getExecute("select u.nickname, ui.firstName, ui.lastName, u.idMemberships from users u, usersInformation ui where u.nickname = ui.nickname");
+        
+        try {
+            while(rs.next()){
+                us = new users();
+                us.setNickname(rs.getString(1));
+                us.setFirstName(rs.getString(2));
+                us.setLastName(rs.getString(3));
+                us.setIdMemberships(rs.getInt(4));
+                
+                controller.usuarios.add(us);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(classUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         return status;
     }
     

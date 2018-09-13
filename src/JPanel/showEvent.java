@@ -6,6 +6,7 @@ import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.event;
+import javaClass.staff;
 import javaClass.standardization;
 
 
@@ -23,7 +24,6 @@ public class showEvent extends javax.swing.JPanel {
 
     void load(int e){
         loadEvent(classEvent.eventosShow.get(e));
-        lblPos.setIcon(new controller().changeImage("/imagenes/owner.png", 25, 25));
         if(lblEventName.getText().length() >= 22){
             lblEventName.setToolTipText(lblEventName.getText());
             lblEventName.setText(lblEventName.getText().substring(0, 22)+"...");       
@@ -32,6 +32,7 @@ public class showEvent extends javax.swing.JPanel {
     
     void loadEvent(event ev){
         lblEventName.setText(ev.getEventName());
+        
         if(ev.getColor() != null){
             String[] color = ev.getColor().split(" ");
             pnColor.setBackground(new Color(Integer.parseInt(color[0]), Integer.parseInt(color[1]), Integer.parseInt(color[2])));
@@ -42,6 +43,20 @@ public class showEvent extends javax.swing.JPanel {
             lblVis.setIcon(new controller().changeImage("/imagenes/eyeCLose.png", 25, 25));
         
         lblNickname.setText(ev.getNicknameCreator());
+        
+        if(ev.getNicknameCreator().equals(classUsuario.getNickname()))
+            lblPos.setIcon(new controller().changeImage("/imagenes/owner.png", 25, 25));
+        else{
+            for(staff s : ev.getStaffs()){
+                if(s.getNickname().equals(classUsuario.getNickname())){
+                    if(s.getPosition() == 1)
+                        lblPos.setIcon(new controller().changeImage("/imagenes/admin.png", 25, 25));
+                    else
+                        lblPos.setIcon(new controller().changeImage("/imagenes/mod.png", 25, 25));
+                }
+            }
+        }
+        
         if(!ev.getPrices().isEmpty()){
             if(ev.getPrices().get(0).getPrice() == 0){
                 lblPrice.setText("Gratis");

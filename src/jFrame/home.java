@@ -203,6 +203,7 @@ public class home extends javax.swing.JFrame {
         });
 
         lblLenguage.setBackground(new java.awt.Color(255, 255, 255));
+        lblLenguage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLenguage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/globe.png"))); // NOI18N
         lblLenguage.setAlignmentY(0.0F);
         lblLenguage.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -213,6 +214,9 @@ public class home extends javax.swing.JFrame {
         lblLenguage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblLenguageMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblLenguageMouseReleased(evt);
             }
         });
 
@@ -742,7 +746,7 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMaxActionPerformed
 
     private void lblLenguageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLenguageMouseClicked
-        popupLenguage.show(this,lblLenguage.getX()-30,lblLenguage.getY()+28);
+        
     }//GEN-LAST:event_lblLenguageMouseClicked
 
     private void tbtnInternetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnInternetActionPerformed
@@ -822,7 +826,6 @@ public class home extends javax.swing.JFrame {
         pnMem.setBackground(new Color(52, 52, 52));
         eventAdmin event = new eventAdmin(e);
         event.setLocation(0,0);
-        event.setPreferredSize(new Dimension(980,1203));
 
         scrollContainer.setViewportView(event);
         scrollContainer.revalidate();
@@ -901,6 +904,10 @@ public class home extends javax.swing.JFrame {
         }else
             showEditUser();
     }//GEN-LAST:event_lblImageUserTopMouseReleased
+
+    private void lblLenguageMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLenguageMouseReleased
+        popupLenguage.show(this,lblLenguage.getX()-30,lblLenguage.getY()+28);
+    }//GEN-LAST:event_lblLenguageMouseReleased
     //</editor-fold>
     
     public void disable (){

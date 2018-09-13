@@ -7,6 +7,7 @@ import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.event;
+import javaClass.staff;
 
 public final class jpEvent extends javax.swing.JPanel {
 
@@ -27,13 +28,39 @@ public final class jpEvent extends javax.swing.JPanel {
     public void insertarPaneles(int paneles, boolean search){
         
         pnEvent.removeAll();
+        
         if(!search){
             classEvent.eventosShow.clear();
             for(event e : classEvent.eventos){
                 if(e.getNicknameCreator().equals(classUsuario.getNickname()))
                     classEvent.eventosShow.add(e);
             }
+            for(event e : classEvent.eventos){
+                if(!e.getStaffs().isEmpty()){
+                    for(staff s : e.getStaffs()){
+                        if(s.getNickname().equals(classUsuario.getNickname())){
+                            classEvent.eventosShow.add(e);
+                        }
+                    }
+                }
+            }
+        }else{
+            classEvent.eventosShow.clear();
+            for(event e : classEvent.eventosSearch){
+                if(e.getNicknameCreator().equals(classUsuario.getNickname()))
+                    classEvent.eventosShow.add(e);
+            }
+            for(event e : classEvent.eventosSearch){
+                if(!e.getStaffs().isEmpty()){
+                    for(staff s : e.getStaffs()){
+                        if(s.getNickname().equals(classUsuario.getNickname())){
+                            classEvent.eventosShow.add(e);
+                        }
+                    }
+                }
+            }
         }
+        
         for(int i = 0; i < classEvent.eventosShow.size(); i++){
             JPanel.showEvent show = new JPanel.showEvent(i);
             show.setSize(190, 120);
@@ -151,10 +178,10 @@ public final class jpEvent extends javax.swing.JPanel {
         scrollEvent.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         pnEvent.setBackground(new java.awt.Color(255, 255, 255));
-        momo.ModifiedFlowLayout modifiedFlowLayout1 = new momo.ModifiedFlowLayout();
+        javaClass.ModifiedFlowLayout modifiedFlowLayout1 = new javaClass.ModifiedFlowLayout();
         modifiedFlowLayout1.setAlignment(java.awt.FlowLayout.LEFT);
-        modifiedFlowLayout1.setHgap(40);
-        modifiedFlowLayout1.setVgap(30);
+        modifiedFlowLayout1.setHgap(37);
+        modifiedFlowLayout1.setVgap(10);
         pnEvent.setLayout(modifiedFlowLayout1);
         scrollEvent.setViewportView(pnEvent);
 
@@ -217,6 +244,7 @@ public final class jpEvent extends javax.swing.JPanel {
         if(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE && txtSearch.getText().trim().isEmpty() || evt.getKeyCode() == KeyEvent.VK_DELETE && txtSearch.getText().trim().isEmpty())
             insertarPaneles(classUsuario.getMyNumberEventUse(), false);
         else{
+            
             classEvent.eventosSearch.clear();
             for(event e:classEvent.eventos){
                 if(e.getEventName().toLowerCase().contains(txtSearch.getText().toLowerCase())){

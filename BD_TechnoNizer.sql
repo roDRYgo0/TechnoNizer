@@ -133,16 +133,19 @@ idCardas int not null references cards(id)
  startDateTime nvarchar(30) not null,
  endDateTime nvarchar(30) not null,
  staff int,
- quantityTicket int not null,
  condition int not null,
+ quantityTicket int not null,
  place nvarchar(200) not null,
  color nvarchar(15)
  )
 
-
  select * from events
  select * from tickets
+ select * from staff
+ select nickname, position from staff where idEvent 
  
+ delete from staff 
+
  create table tickets(
  id int identity(1,1) not null,
  nameTicket nvarchar(35) not null,
@@ -158,6 +161,8 @@ idCardas int not null references cards(id)
  nickname nvarchar(50) not null references users(nickname),
  idEvent int not null references events(id)
  )
+
+ 
 
  create table announcements(
  id int identity(1,1) primary key not null,
