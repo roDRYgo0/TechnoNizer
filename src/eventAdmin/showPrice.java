@@ -21,6 +21,8 @@ public class showPrice extends javax.swing.JPanel {
         else
             txtCount.setText(classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getCount()+"");
         
+        if(classEvent.eventosShow.get(idEvent).getPrices().size() == 1)
+            btnNext.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -106,6 +108,7 @@ public class showPrice extends javax.swing.JPanel {
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
         btnNext.setText("Eliminar");
         btnNext.setBorderPainted(false);
+        btnNext.setEnabled(false);
         btnNext.setFocusable(false);
         btnNext.setMaximumSize(new java.awt.Dimension(79, 28));
         btnNext.setMinimumSize(new java.awt.Dimension(79, 28));
@@ -305,9 +308,7 @@ public class showPrice extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPriceKeyTyped
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-//        classEvent.prices.remove(id);
-//        controller.addEvents.load();
-//        controller.addEvents.setTickects(controller.addEvents.getAfterTickets(classEvent.prices.get(id).getCount()));
+
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtCountFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCountFocusGained

@@ -36,8 +36,8 @@ public class addEventGral extends javax.swing.JFrame {
         iconEnd.setIcon(new controller().changeImage("/imagenes/calendarMinus.png", 35, 35));
         iconGuest.setIcon(new controller().changeImage("/imagenes/hashtag.png", 35, 35));
         iconPlace.setIcon(new controller().changeImage("/imagenes/place.png", 35, 35));
-        txtDayStart.setText(standardization.currentDateTime().getDate()+"");
-        txtDayEnd.setText(standardization.currentDateTime().getDate()+"");
+        txtDayStart.setText((standardization.currentDateTime().getDate()+1)+"");
+        txtDayEnd.setText((standardization.currentDateTime().getDate()+1)+"");
         cmbMonthStart.setSelectedIndex(standardization.currentDateTime().getMonth()-1);
         cmbMonthEnd.setSelectedIndex(standardization.currentDateTime().getMonth()-1);
         txtYearStart.setText(standardization.currentDateTime().getYear()+"");
@@ -656,7 +656,7 @@ public class addEventGral extends javax.swing.JFrame {
         standardization.validateDate(Integer.parseInt(txtYearEnd.getText()), (cmbMonthEnd.getSelectedIndex()+1), Integer.parseInt(txtDayEnd.getText())
         ))
             standardization.showMessage("warning","Fechas invalidas",this);
-        else if(standardization.compareDate(dateEnd, dateStart) == -1 || standardization.compareDate(dateStart, standardization.currentDateTime()) == -1)
+        else if(standardization.compareDate(dateEnd, dateStart, standardization.currentDateTime()) < 0)
         {
             standardization.showMessage("warning","Fechas invalidas",this);
         }
