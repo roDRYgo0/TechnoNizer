@@ -139,12 +139,6 @@ idCardas int not null references cards(id)
  color nvarchar(15)
  )
 
- select * from events
- select * from tickets
- select * from staff
- select nickname, position from staff where idEvent 
- 
- delete from staff 
 
  create table tickets(
  id int identity(1,1) not null,
