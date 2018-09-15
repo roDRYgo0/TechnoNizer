@@ -1,9 +1,8 @@
-package allEvent;
+package eventAdmin;
 
 import java.awt.Dimension;
 import javaClass.classEvent;
 import javaClass.event;
-import eventAdmin.*;
 
 public class eventAdmin extends javax.swing.JPanel {
 
@@ -12,6 +11,8 @@ public class eventAdmin extends javax.swing.JPanel {
     public eventAdmin(int idEvent) {
         initComponents();
         this.idEvent = idEvent;
+        scrollContainer.getVerticalScrollBar().setUnitIncrement(16);
+        
         load(classEvent.eventosShow.get(idEvent));
         
     }
@@ -19,9 +20,16 @@ public class eventAdmin extends javax.swing.JPanel {
     void load(event event){
         lblEventName.setText(event.getEventName());     
         
+        loadMenu();
         loadPrice(event);
         loadStaff(event);
         loadFooter();
+    }
+    
+    void loadMenu(){
+        pnContainer.add(new pnMenu(idEvent));
+        pnContainer.revalidate();
+        pnContainer.repaint();
     }
     
     void loadPrice(event event){
@@ -49,10 +57,7 @@ public class eventAdmin extends javax.swing.JPanel {
     }
     
     void loadFooter(){       
-        pnFooter pF = new pnFooter();
-
-        pF.setPreferredSize(new Dimension(945, 70));
-        pnContainer.add(pF);
+        pnContainer.add(new pnFooter());
 
         pnContainer.revalidate();
         pnContainer.repaint();
@@ -69,7 +74,6 @@ public class eventAdmin extends javax.swing.JPanel {
         lblNickname = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
 
         scrollContainer.setBorder(null);
 
@@ -83,6 +87,11 @@ public class eventAdmin extends javax.swing.JPanel {
         jPanel8.setMaximumSize(new java.awt.Dimension(945, 131));
         jPanel8.setMinimumSize(new java.awt.Dimension(945, 131));
         jPanel8.setPreferredSize(new java.awt.Dimension(945, 118));
+        jPanel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel8MouseReleased(evt);
+            }
+        });
 
         lblEventName.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblEventName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/forgotPassword.png"))); // NOI18N
@@ -139,23 +148,6 @@ public class eventAdmin extends javax.swing.JPanel {
         jLabel1.setPreferredSize(new java.awt.Dimension(631, 189));
         pnContainer.add(jLabel1);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setMaximumSize(new java.awt.Dimension(945, 56));
-        jPanel4.setMinimumSize(new java.awt.Dimension(945, 56));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 945, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 56, Short.MAX_VALUE)
-        );
-
-        pnContainer.add(jPanel4);
-
         scrollContainer.setViewportView(pnContainer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -172,10 +164,13 @@ public class eventAdmin extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jPanel8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseReleased
+        technonizer.TechnoNizer.home.showYourEvents();
+    }//GEN-LAST:event_jPanel8MouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JLabel lblEventName;

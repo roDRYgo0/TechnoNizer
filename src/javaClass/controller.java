@@ -1,6 +1,7 @@
 package javaClass;
 
-import allEvent.eventAdmin;
+import eventAdmin.showEvent;
+import eventAdmin.eventAdmin;
 import JPanel.CheckIn.jpMembership;
 import JPanel.*;
 import JPanel.CheckIn.*;
@@ -34,9 +35,7 @@ public class controller {
     public static jpCreateData jpCD;
     public static jpRecoverPasswordMailCode jpRC;
     public static jpMembership jpM;
-    public static jpWelcome jpW;
     public static jpNewPassword jpNP;
-    public static jpHome jpH;
     public static jpProjectsMenu jpPM;
     public static securityAccount secAcc;
     public static jpMembershipChange jpMC;
@@ -62,7 +61,6 @@ public class controller {
     public static jpSecurityQuestions jpSeQue;
     public static eventAdmin jpEvent;
     
-    public static String idioma;
     
       
     public static addProject addPj;
@@ -78,6 +76,8 @@ public class controller {
     public static addPrice addP;
     public static price pric;
     
+    public static eventAdmin event;
+    
     public static classMembership[] member = new classMembership[3];
     public static contactUsers[] contac = new contactUsers[10];
     public static List<gender> genders;
@@ -86,6 +86,8 @@ public class controller {
     public static boolean actionCompleted = false;
     
     public static List<users> usuarios;
+    
+    public static String idioma;
     
     //<editor-fold defaultstate="collapsed" desc="jFrame">
     public static addEventGral gralEvent;

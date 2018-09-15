@@ -575,13 +575,13 @@ public class jpMembership extends javax.swing.JPanel {
             new Thread(()->{
                 if(classUsuario.insert()){
                     standardization.showMessage("ok", "Se registro correctamente."); 
-                    controller.jpW = new jpWelcome();
+                    jpWelcome jpW = new jpWelcome();
 
-                    controller.jpW.setSize(420,603);
-                    controller.jpW.setLocation(0,0);
+                    jpW.setSize(420,603);
+                    jpW.setLocation(0,0);
 
                     controller.rootPane.removeAll();
-                    controller.rootPane.add(controller.jpW,BorderLayout.CENTER);
+                    controller.rootPane.add(jpW,BorderLayout.CENTER);
                     controller.rootPane.revalidate();
                     controller.rootPane.repaint();
                 }

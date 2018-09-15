@@ -942,7 +942,7 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel3MouseReleased
 
     private void jPanel4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseReleased
-        if(classUsuario.getIdMemberships() == 2){
+        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){
             disable();
             icon2.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
             classEvent.setColor("0 153 0");
@@ -950,7 +950,7 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel4MouseReleased
 
     private void jPanel5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseReleased
-        if(classUsuario.getIdMemberships() == 2){   
+        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
             disable();
             icon3.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
             classEvent.setColor("239 110 239");
@@ -958,7 +958,7 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel5MouseReleased
 
     private void jPanel6MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseReleased
-        if(classUsuario.getIdMemberships() == 2){   
+        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
             disable();
             icon4.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
             classEvent.setColor("24 78 186");
@@ -966,7 +966,7 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel6MouseReleased
 
     private void jPanel7MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MouseReleased
-        if(classUsuario.getIdMemberships() == 2){   
+        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
             disable();
             icon5.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
             classEvent.setColor("166 166 29");
@@ -974,7 +974,7 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel7MouseReleased
 
     private void jPanel8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseReleased
-        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+        if(classUsuario.getIdMemberships() == 3){   
             disable();
             icon6.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
             classEvent.setColor("204 0 0");
@@ -982,7 +982,7 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel8MouseReleased
 
     private void jPanel9MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseReleased
-        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+        if(classUsuario.getIdMemberships() == 3){   
             disable();
             icon7.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
             classEvent.setColor("179 19 179");
@@ -990,7 +990,7 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel9MouseReleased
 
     private void jPanel10MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseReleased
-        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+        if(classUsuario.getIdMemberships() == 3){   
             disable();
             icon8.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
             classEvent.setColor("217 99 23");
@@ -998,7 +998,7 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel10MouseReleased
 
     private void jPanel11MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseReleased
-        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+        if(classUsuario.getIdMemberships() == 3){   
             disable();
             icon9.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
             classEvent.setColor("102 102 102");
@@ -1006,7 +1006,7 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel11MouseReleased
 
     private void jPanel12MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel12MouseReleased
-        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+        if(classUsuario.getIdMemberships() == 3){   
             disable();
             icon10.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
             classEvent.setColor("102 0 255");
@@ -1014,7 +1014,7 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel12MouseReleased
 
     private void jPanel18MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel18MouseReleased
-        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+        if(classUsuario.getIdMemberships() == 3){   
             disable();
             icon11.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
             classEvent.setColor("153 0 51");
@@ -1022,7 +1022,7 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel18MouseReleased
 
     private void jPanel19MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel19MouseReleased
-        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+        if(classUsuario.getIdMemberships() == 3){   
             disable();
             icon12.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
             classEvent.setColor("129 61 0");
@@ -1030,7 +1030,7 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel19MouseReleased
 
     private void jPanel20MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel20MouseReleased
-        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+        if(classUsuario.getIdMemberships() == 3){   
             disable();
             icon13.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
             classEvent.setColor("102 102 255");
@@ -1038,7 +1038,7 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel20MouseReleased
 
     private void jPanel21MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel21MouseReleased
-        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+        if(classUsuario.getIdMemberships() == 3){   
             disable();
             icon14.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
             classEvent.setColor("0 204 204");
@@ -1046,7 +1046,7 @@ public class addEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel21MouseReleased
 
     private void jPanel22MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel22MouseReleased
-        if(classUsuario.getIdMemberships() == 2 || classUsuario.getIdMemberships() == 3){   
+        if(classUsuario.getIdMemberships() == 3){   
             disable();
             icon15.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
             classEvent.setColor("0 102 0");

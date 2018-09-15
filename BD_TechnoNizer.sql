@@ -156,7 +156,9 @@ idCardas int not null references cards(id)
  idEvent int not null references events(id)
  )
 
- 
+ delete from staff
+ delete from tickets
+ delete from events
 
  create table announcements(
  id int identity(1,1) primary key not null,
