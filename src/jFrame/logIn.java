@@ -2,11 +2,16 @@ package jFrame;
 
 import JPanel.jpAccess;
 import java.awt.BorderLayout;
+import java.util.Properties;
 import javaClass.controller;
+import properties.propiedades;
+
 
 public class logIn extends javax.swing.JFrame {
 
     public static boolean internet = true;
+    
+   
     
     int x, y;
     
@@ -52,10 +57,20 @@ public class logIn extends javax.swing.JFrame {
 
         itemSpanish.setText("Español");
         itemSpanish.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        itemSpanish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSpanishActionPerformed(evt);
+            }
+        });
         popupLenguage.add(itemSpanish);
 
         itemEnglish.setText("Ingles");
         itemEnglish.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        itemEnglish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEnglishActionPerformed(evt);
+            }
+        });
         popupLenguage.add(itemEnglish);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -248,6 +263,19 @@ public class logIn extends javax.swing.JFrame {
     private void tbtnInternetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnInternetActionPerformed
 
     }//GEN-LAST:event_tbtnInternetActionPerformed
+
+    private void itemSpanishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSpanishActionPerformed
+       //Espanol
+       controller.idioma="ESPANOL";
+       
+      
+    }//GEN-LAST:event_itemSpanishActionPerformed
+
+    private void itemEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEnglishActionPerformed
+       //Ingles
+        controller.idioma="INGLES";
+         
+    }//GEN-LAST:event_itemEnglishActionPerformed
 //</editor-fold>
         
     

@@ -279,6 +279,12 @@ public class classEvent {
         return status;
     }
     
+    public static boolean deletePrice(String nickname, int idEvent){
+        boolean status = false;
+        status = methodsSQL.execute("delete from staff where nickname = ? and idEvent = ?", nickname, idEvent);
+        return status;
+    }
+    
     public static List<staff> selectStaff(int idEvent){
         List<staff> status = new ArrayList<>();
         staff s;

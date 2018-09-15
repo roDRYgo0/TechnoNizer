@@ -4,6 +4,7 @@ import jFrame.*;
 import javaClass.classContact;
 import javaClass.classSecurityQuestions;
 import javaClass.classUsuario;
+import javaClass.controller;
 
 public class TechnoNizer {
 
@@ -19,6 +20,8 @@ public class TechnoNizer {
     
     public static void main(String[] args) {
         new Thread(()->{
+            controller.idioma="INGLES";
+            
             classUsuario.loadAllFinal();
             classContact.loadCopntactType();
             System.out.println("Carga de constantes");

@@ -122,16 +122,31 @@ public class showEvent extends javax.swing.JPanel {
 
         lblNickname.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNickname.setText("nickName");
+        lblNickname.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblNicknameMouseReleased(evt);
+            }
+        });
 
         lblPrice.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblPrice.setForeground(new java.awt.Color(255, 153, 0));
         lblPrice.setText("$0.00");
+        lblPrice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblPriceMouseReleased(evt);
+            }
+        });
 
         lblNumGuest.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblNumGuest.setForeground(new java.awt.Color(51, 51, 255));
         lblNumGuest.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNumGuest.setText("Not found");
         lblNumGuest.setToolTipText("Entradas");
+        lblNumGuest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblNumGuestMouseReleased(evt);
+            }
+        });
 
         lblEventName1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblEventName1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -141,8 +156,18 @@ public class showEvent extends javax.swing.JPanel {
         lblDays.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         lblDays.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblDays.setText("3 dias");
+        lblDays.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblDaysMouseReleased(evt);
+            }
+        });
 
         pnColor.setBackground(new java.awt.Color(33, 150, 243));
+        pnColor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                pnColorMouseReleased(evt);
+            }
+        });
 
         lblEventName.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblEventName.setForeground(new java.awt.Color(255, 255, 255));
@@ -228,6 +253,26 @@ public class showEvent extends javax.swing.JPanel {
     private void lblEventNameMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEventNameMouseReleased
         technonizer.TechnoNizer.home.showEvent(evento);
     }//GEN-LAST:event_lblEventNameMouseReleased
+
+    private void lblPriceMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPriceMouseReleased
+        technonizer.TechnoNizer.home.showEvent(evento);
+    }//GEN-LAST:event_lblPriceMouseReleased
+
+    private void lblNicknameMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNicknameMouseReleased
+        technonizer.TechnoNizer.home.showEvent(evento);
+    }//GEN-LAST:event_lblNicknameMouseReleased
+
+    private void lblDaysMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDaysMouseReleased
+        technonizer.TechnoNizer.home.showEvent(evento);
+    }//GEN-LAST:event_lblDaysMouseReleased
+
+    private void pnColorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnColorMouseReleased
+        technonizer.TechnoNizer.home.showEvent(evento);
+    }//GEN-LAST:event_pnColorMouseReleased
+
+    private void lblNumGuestMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNumGuestMouseReleased
+        technonizer.TechnoNizer.home.showEvent(evento);
+    }//GEN-LAST:event_lblNumGuestMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

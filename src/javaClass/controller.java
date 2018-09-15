@@ -62,6 +62,8 @@ public class controller {
     public static jpSecurityQuestions jpSeQue;
     public static eventAdmin jpEvent;
     
+    public static String idioma;
+    
       
     public static addProject addPj;
     
@@ -111,6 +113,8 @@ public class controller {
         Icon icono = new ImageIcon(d.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
         return icono;
     }
+    
+    
     
     
 

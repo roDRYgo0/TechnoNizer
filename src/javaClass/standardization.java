@@ -80,6 +80,18 @@ public class standardization {
         show.setVisible(false);
     }
     
+    public static int compareDate(Date dateEnd, Date dateStart, Date dateCurrent){
+        int res= 0;
+        System.out.println(dateCurrent.compareTo(dateStart)+" actual");
+        if(dateCurrent.compareTo(dateStart) > 0)
+            res = -1;
+        else{
+            if(dateEnd.compareTo(dateStart) < 0)
+            res = -1;
+        }
+        return res;
+    }
+    
     public static int compareDate(Date date, Date compareTo){
         int res= 0;
         int dateDay = date.getDate();
