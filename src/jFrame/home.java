@@ -3,6 +3,7 @@ package jFrame;
 import eventAdmin.eventAdmin;
 import JPanel.*;
 import eventAdmin.*;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -51,7 +52,7 @@ public class home extends javax.swing.JFrame {
         jpHome jpH = new jpHome(true, this);
         jpH.setLocation(0,0);
 
-        scrollContainer.setViewportView(jpH);
+        scrollContainer.add(jpH, BorderLayout.CENTER);
         scrollContainer.revalidate();
         scrollContainer.repaint();
 
@@ -148,7 +149,7 @@ public class home extends javax.swing.JFrame {
         lblSecurity = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         lblAlert = new javax.swing.JLabel();
-        scrollContainer = new javax.swing.JScrollPane();
+        scrollContainer = new javax.swing.JPanel();
 
         popupLenguage.setBorderPainted(false);
         popupLenguage.setFocusable(false);
@@ -688,12 +689,16 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap(107, Short.MAX_VALUE))
         );
 
-        scrollContainer.setBackground(new java.awt.Color(255, 51, 255));
-        scrollContainer.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollContainer.setMaximumSize(new java.awt.Dimension(456000, 456000));
-        scrollContainer.setMinimumSize(new java.awt.Dimension(0, 0));
-        scrollContainer.setPreferredSize(new java.awt.Dimension(1, 1));
-        scrollContainer.setWheelScrollingEnabled(false);
+        javax.swing.GroupLayout scrollContainerLayout = new javax.swing.GroupLayout(scrollContainer);
+        scrollContainer.setLayout(scrollContainerLayout);
+        scrollContainerLayout.setHorizontalGroup(
+            scrollContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        scrollContainerLayout.setVerticalGroup(
+            scrollContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout rootpaneLayout = new javax.swing.GroupLayout(rootpane);
         rootpane.setLayout(rootpaneLayout);
@@ -703,7 +708,8 @@ public class home extends javax.swing.JFrame {
             .addGroup(rootpaneLayout.createSequentialGroup()
                 .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(scrollContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(scrollContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         rootpaneLayout.setVerticalGroup(
             rootpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -711,7 +717,10 @@ public class home extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(rootpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(scrollContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(rootpaneLayout.createSequentialGroup()
+                        .addGap(0, 0, 0)
+                        .addComponent(scrollContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, 0))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -781,7 +790,7 @@ public class home extends javax.swing.JFrame {
         controller.jpU.setPreferredSize(new Dimension(980,601));
         controller.jpU.setLocation(0,0);
 
-        scrollContainer.setViewportView(controller.jpU);
+        scrollContainer.add(controller.jpU, BorderLayout.CENTER);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
@@ -793,7 +802,7 @@ public class home extends javax.swing.JFrame {
         event.setPreferredSize(new Dimension(980,601));
         event.setLocation(0,0);
 
-        scrollContainer.setViewportView(event);
+        scrollContainer.add(event, BorderLayout.CENTER);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
@@ -805,7 +814,7 @@ public class home extends javax.swing.JFrame {
         controller.jpE.setPreferredSize(new Dimension(980,601));
         controller.jpE.setLocation(0,0);
 
-        scrollContainer.setViewportView(controller.jpE);
+        scrollContainer.add(controller.jpE, BorderLayout.CENTER);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
@@ -814,7 +823,7 @@ public class home extends javax.swing.JFrame {
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
  
-        scrollContainer.setViewportView(controller.jpE);
+        scrollContainer.add(controller.jpE, BorderLayout.CENTER);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
@@ -825,7 +834,7 @@ public class home extends javax.swing.JFrame {
         controller.jpMC = new jpMembershipChange(this);
         controller.jpMC.setLocation(0,0);
 
-        scrollContainer.setViewportView(controller.jpMC);
+        scrollContainer.add(controller.jpMC, BorderLayout.CENTER);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
@@ -836,7 +845,7 @@ public class home extends javax.swing.JFrame {
         pnSettings setting = new pnSettings(e);
         setting.setLocation(0,0);
         
-        scrollContainer.setViewportView(setting);
+        scrollContainer.add(setting, BorderLayout.CENTER);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
@@ -846,7 +855,7 @@ public class home extends javax.swing.JFrame {
         controller.event = new eventAdmin(e);
         controller.event.setLocation(0,0);
 
-        scrollContainer.setViewportView(controller.event);
+        scrollContainer.add(controller.event, BorderLayout.CENTER);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
@@ -856,7 +865,7 @@ public class home extends javax.swing.JFrame {
         pnEvents.setBackground(new Color(52, 52, 52));
         controller.event.setLocation(0,0);
 
-        scrollContainer.setViewportView(controller.event);
+        scrollContainer.add(controller.event, BorderLayout.CENTER);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
@@ -867,7 +876,7 @@ public class home extends javax.swing.JFrame {
         jpHome jpH = new jpHome(true, this);
         jpH.setLocation(0,0);
 
-        scrollContainer.setViewportView(jpH);
+        scrollContainer.add(jpH, BorderLayout.CENTER);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }//GEN-LAST:event_pnGeneralMouseReleased
@@ -905,7 +914,7 @@ public class home extends javax.swing.JFrame {
             controller.jpDis = new jpDisable();
             controller.jpDis.setLocation(0,0);
 
-            scrollContainer.setViewportView(controller.jpDis);
+            scrollContainer.add(controller.jpDis, BorderLayout.CENTER);
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }else{
@@ -917,7 +926,7 @@ public class home extends javax.swing.JFrame {
             controller.jpAA.setPreferredSize(new Dimension(980,601));
             controller.jpAA.setLocation(0,0);
 
-            scrollContainer.setViewportView(controller.jpAA);
+            scrollContainer.add(controller.jpAA, BorderLayout.CENTER);
             scrollContainer.revalidate();
             scrollContainer.repaint();
     }
@@ -958,7 +967,7 @@ public class home extends javax.swing.JFrame {
             controller.jpDis = new jpDisable();
             controller.jpDis.setLocation(0,0);
 
-            scrollContainer.setViewportView(controller.jpDis);
+            scrollContainer.add(controller.jpDis, BorderLayout.CENTER);
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }else{
@@ -968,7 +977,7 @@ public class home extends javax.swing.JFrame {
             MenuEvent eve = new MenuEvent();
             eve.setLocation(0,0);
 
-            scrollContainer.setViewportView(eve);
+            scrollContainer.add(eve, BorderLayout.CENTER);
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }
@@ -980,7 +989,7 @@ public class home extends javax.swing.JFrame {
             controller.jpDis = new jpDisable();
             controller.jpDis.setLocation(0,0);
 
-            scrollContainer.setViewportView(controller.jpDis);
+            scrollContainer.add(controller.jpDis, BorderLayout.CENTER);
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }else{
@@ -989,7 +998,7 @@ public class home extends javax.swing.JFrame {
             controller.jpPM= new jpProjectsMenu();
             controller.jpPM.setLocation(0,0);
 
-            scrollContainer.setViewportView(controller.jpPM);
+            scrollContainer.add(controller.jpPM, BorderLayout.CENTER);
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }
@@ -1001,7 +1010,7 @@ public class home extends javax.swing.JFrame {
         controller.jpSe = new jpSecurity();
         controller.jpSe.setLocation(0, 0);
         
-        scrollContainer.setViewportView(controller.jpSe);
+        scrollContainer.add(controller.jpSe, BorderLayout.CENTER);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
@@ -1013,7 +1022,7 @@ public class home extends javax.swing.JFrame {
         jpP.setPreferredSize(new Dimension(980,601));
         jpP.setLocation(0,0);
 
-        scrollContainer.setViewportView(jpP);
+        scrollContainer.add(jpP, BorderLayout.CENTER);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
@@ -1070,7 +1079,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JPopupMenu popupLenguage;
     private javax.swing.JPopupMenu popupSettings;
     private javax.swing.JPanel rootpane;
-    private javax.swing.JScrollPane scrollContainer;
+    private javax.swing.JPanel scrollContainer;
     private javax.swing.JToggleButton tbtnInternet;
     private javax.swing.JPanel topBar;
     // End of variables declaration//GEN-END:variables
