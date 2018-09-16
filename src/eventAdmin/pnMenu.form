@@ -57,23 +57,10 @@
     <CodeStatement>
       <CodeExpression id="1_modifiedFlowLayout1"/>
       <StatementProvider type="CodeMethod">
-        <CodeMethod name="setAlignment" class="java.awt.FlowLayout" parameterTypes="int"/>
-      </StatementProvider>
-      <Parameters>
-        <CodeExpression id="3">
-          <ExpressionOrigin>
-            <Value type="int" value="0"/>
-          </ExpressionOrigin>
-        </CodeExpression>
-      </Parameters>
-    </CodeStatement>
-    <CodeStatement>
-      <CodeExpression id="1_modifiedFlowLayout1"/>
-      <StatementProvider type="CodeMethod">
         <CodeMethod name="setVgap" class="java.awt.FlowLayout" parameterTypes="int"/>
       </StatementProvider>
       <Parameters>
-        <CodeExpression id="4">
+        <CodeExpression id="3">
           <ExpressionOrigin>
             <Value type="int" value="2"/>
           </ExpressionOrigin>
@@ -81,7 +68,7 @@
       </Parameters>
     </CodeStatement>
     <CodeStatement>
-      <CodeExpression id="5">
+      <CodeExpression id="4">
         <ExpressionOrigin>
           <ExpressionProvider type="ComponentRef">
             <ComponentRef name="."/>

@@ -29,7 +29,6 @@ public class pnMenu extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(945, 70));
         javaClass.ModifiedFlowLayout modifiedFlowLayout1 = new javaClass.ModifiedFlowLayout();
         modifiedFlowLayout1.setHgap(25);
-        modifiedFlowLayout1.setAlignment(java.awt.FlowLayout.LEFT);
         modifiedFlowLayout1.setVgap(2);
         setLayout(modifiedFlowLayout1);
     }// </editor-fold>//GEN-END:initComponents

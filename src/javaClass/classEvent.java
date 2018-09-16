@@ -21,6 +21,7 @@ public class classEvent {
     private static byte[] coverPicture;
     private static Integer price;
     private static Integer visibility;
+    private static Integer invitation;
     private static String startDateTime;
     private static String endDateTime;
     private static Integer staff;
@@ -36,9 +37,14 @@ public class classEvent {
     public static List<event> eventosSearch = new ArrayList<event>();
 
 
-
-    
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static Integer getInvitation() {
+        return invitation;
+    }
+
+    public static void setInvitation(Integer invitation) {
+        classEvent.invitation = invitation;
+    }
     public static String getColor() {
         return color;
     }
@@ -195,7 +201,7 @@ public class classEvent {
     public static boolean select(){
         boolean status = false;
         event evento;
-        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket, e.color FROM events e");
+        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket, e.color, e.invitation FROM events e");
         
         try {
             while(rs.next()){
@@ -213,6 +219,7 @@ public class classEvent {
                 evento.setPlace(rs.getString(11));
                 evento.setQuantityTicket(rs.getInt(12));
                 evento.setColor(rs.getString(13));
+                evento.setInvitation(rs.getInt(14));
                 if(evento.getStaff() == 1){
                     List<staff> staffs = new ArrayList<>();
                     staff s;
@@ -333,10 +340,16 @@ public class classEvent {
         return status;
     }
     
+    public static boolean updateInvitation(int idEvent, int invitation){
+        boolean status = false;
+        status = methodsSQL.execute("update events set invitation = ? where id = ?", invitation, idEvent);
+        return status;
+    }
+    
     
     public static boolean insert(){
         boolean status = false;
-        status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?)",
+        status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?, 1)",
                 eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition, quantityTicket, place, color);
 
         

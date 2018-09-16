@@ -840,6 +840,48 @@ public class home extends javax.swing.JFrame {
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
+    
+    public void showEventActivities(int e){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        pnActivities activities = new pnActivities(e);
+        activities.setLocation(0,0);
+        
+        scrollContainer.setViewportView(activities);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    public void showEventTask(int e){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        pnTasks tasks = new pnTasks(e);
+        tasks.setLocation(0,0);
+        
+        scrollContainer.setViewportView(tasks);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    public void showEventProblems(int e){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        pnSettings setting = new pnSettings(e);
+        setting.setLocation(0,0);
+        
+        scrollContainer.setViewportView(setting);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    public void showEventAnnoucements(int e){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        pnSettings setting = new pnSettings(e);
+        setting.setLocation(0,0);
+        
+        scrollContainer.setViewportView(setting);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
     public void showEvent(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));

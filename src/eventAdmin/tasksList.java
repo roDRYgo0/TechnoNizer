@@ -49,7 +49,7 @@ public class tasksList extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-        technonizer.TechnoNizer.home.showEventSettings(idEvent);
+        technonizer.TechnoNizer.home.showEventTask(idEvent);
     }//GEN-LAST:event_formMouseReleased
 
 

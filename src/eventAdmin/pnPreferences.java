@@ -18,7 +18,22 @@ public class pnPreferences extends javax.swing.JPanel {
         visibility = classEvent.eventosShow.get(idEvent).getVisibility();
         switchVisibility();     
         member();
+        invitation();
         
+    }
+    
+    void invitation(){
+        switch(classEvent.eventosShow.get(idEvent).getInvitation()){
+            case 1:
+                rbtnPublico.setSelected(true);
+                break;
+            case 2:
+                rbtnSolicitud.setSelected(true);
+                break;
+            case 3:
+                rbtnInvitacion.setSelected(true);
+                break;
+        }
     }
     
     void member(){
@@ -63,6 +78,19 @@ public class pnPreferences extends javax.swing.JPanel {
                 e.setColor(color);
                 if(classEvent.updateColor(e.getId(), color))
                     standardization.showMessage("ok", "Color cambiado");
+                else
+                    standardization.showMessage("cancel", "No se logro cambiar el color");
+            }
+        }
+    }
+    
+    void changeInvitation(int invitation){
+        classEvent.eventosShow.get(idEvent).setInvitation(invitation);
+        for(event e : classEvent.eventos){
+            if(e.getId() == classEvent.eventosShow.get(idEvent).getId()){
+                e.setInvitation(invitation);
+                if(classEvent.updateInvitation(e.getId(), invitation))
+                    standardization.showMessage("ok", "Invitación cambiada");
                 else
                     standardization.showMessage("cancel", "No se logro cambiar el color");
             }
@@ -120,6 +148,7 @@ public class pnPreferences extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        groupInvitation = new javax.swing.ButtonGroup();
         jPanel6 = new javax.swing.JPanel();
         icon4 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
@@ -156,6 +185,10 @@ public class pnPreferences extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         lblVisibility = new javax.swing.JLabel();
         lblSwitch = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        rbtnPublico = new javax.swing.JRadioButton();
+        rbtnSolicitud = new javax.swing.JRadioButton();
+        rbtnInvitacion = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(470, 400));
@@ -558,6 +591,45 @@ public class pnPreferences extends javax.swing.JPanel {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel9.setText("Tipo de assistencia");
+
+        rbtnPublico.setBackground(new java.awt.Color(255, 255, 255));
+        groupInvitation.add(rbtnPublico);
+        rbtnPublico.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbtnPublico.setText("Público");
+        rbtnPublico.setToolTipText("");
+        rbtnPublico.setFocusPainted(false);
+        rbtnPublico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnPublicoActionPerformed(evt);
+            }
+        });
+
+        rbtnSolicitud.setBackground(new java.awt.Color(255, 255, 255));
+        groupInvitation.add(rbtnSolicitud);
+        rbtnSolicitud.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbtnSolicitud.setText("Solicitud");
+        rbtnSolicitud.setToolTipText("");
+        rbtnSolicitud.setFocusPainted(false);
+        rbtnSolicitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnSolicitudActionPerformed(evt);
+            }
+        });
+
+        rbtnInvitacion.setBackground(new java.awt.Color(255, 255, 255));
+        groupInvitation.add(rbtnInvitacion);
+        rbtnInvitacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbtnInvitacion.setText("Por invitación");
+        rbtnInvitacion.setToolTipText("");
+        rbtnInvitacion.setFocusPainted(false);
+        rbtnInvitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnInvitacionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -608,9 +680,16 @@ public class pnPreferences extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(rbtnPublico, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbtnSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbtnInvitacion))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
-                                    .addComponent(lblVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -645,7 +724,7 @@ public class pnPreferences extends javax.swing.JPanel {
                     .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -653,7 +732,14 @@ public class pnPreferences extends javax.swing.JPanel {
                         .addComponent(lblVisibility)
                         .addGap(11, 11, 11))
                     .addComponent(lblSwitch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(198, 198, 198))
+                .addGap(27, 27, 27)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtnPublico)
+                    .addComponent(rbtnSolicitud)
+                    .addComponent(rbtnInvitacion))
+                .addGap(25, 25, 25))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -788,8 +874,21 @@ public class pnPreferences extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_lblSwitchMouseReleased
 
+    private void rbtnPublicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnPublicoActionPerformed
+        changeInvitation(1);
+    }//GEN-LAST:event_rbtnPublicoActionPerformed
+
+    private void rbtnSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnSolicitudActionPerformed
+        changeInvitation(2);
+    }//GEN-LAST:event_rbtnSolicitudActionPerformed
+
+    private void rbtnInvitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnInvitacionActionPerformed
+        changeInvitation(3);
+    }//GEN-LAST:event_rbtnInvitacionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup groupInvitation;
     private javax.swing.JLabel icon1;
     private javax.swing.JLabel icon10;
     private javax.swing.JLabel icon11;
@@ -808,6 +907,7 @@ public class pnPreferences extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
@@ -826,5 +926,8 @@ public class pnPreferences extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel lblSwitch;
     private javax.swing.JLabel lblVisibility;
+    private javax.swing.JRadioButton rbtnInvitacion;
+    private javax.swing.JRadioButton rbtnPublico;
+    private javax.swing.JRadioButton rbtnSolicitud;
     // End of variables declaration//GEN-END:variables
 }

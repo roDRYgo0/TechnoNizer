@@ -136,9 +136,11 @@ idCardas int not null references cards(id)
  condition int not null,
  quantityTicket int not null,
  place nvarchar(200) not null,
- color nvarchar(15)
+ color nvarchar(15),
+ invitation int  not null
  )
 
+ select * from events
 
  create table tickets(
  id int identity(1,1) not null,
@@ -156,9 +158,7 @@ idCardas int not null references cards(id)
  idEvent int not null references events(id)
  )
 
- delete from staff
- delete from tickets
- delete from events
+ 
 
  create table announcements(
  id int identity(1,1) primary key not null,
@@ -177,8 +177,10 @@ idCardas int not null references cards(id)
  place nvarchar(80) not null,
  condition int not null,
  description nvarchar(200),
- idEvent int not null references events(id)
+ idEvent int not null references events(id),
+ nickname nvarchar(50) not null
  )
+
 
  create table problems(
  id int identity(1,1) primary key not null,
@@ -198,6 +200,9 @@ idCardas int not null references cards(id)
  condition int not null,
  idEvent int not null references events(id)
  )
+
+ select * from memberships
+
 
  create table tasks(
  id int identity(1,1) primary key not null,
