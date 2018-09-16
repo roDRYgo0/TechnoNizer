@@ -384,7 +384,6 @@ public class jpPassword extends javax.swing.JPanel {
         
         try {
             while(rs.next()){
-                System.out.println(classUsuario.getNickname());
                 classUsuario.setFirstName(rs.getString(1));
                 classUsuario.setLastName(rs.getString(2));
             }

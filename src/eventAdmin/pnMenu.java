@@ -11,6 +11,10 @@ public class pnMenu extends javax.swing.JPanel {
     }
 
     void load(){
+        this.add(new activities(idEvent));
+        this.add(new tasksList(idEvent));
+        this.add(new problems(idEvent));
+        this.add(new announcements(idEvent));
         this.add(new settings(idEvent));
         this.revalidate();
         this.repaint();
@@ -24,7 +28,7 @@ public class pnMenu extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(945, 70));
         setPreferredSize(new java.awt.Dimension(945, 70));
         javaClass.ModifiedFlowLayout modifiedFlowLayout1 = new javaClass.ModifiedFlowLayout();
-        modifiedFlowLayout1.setHgap(20);
+        modifiedFlowLayout1.setHgap(25);
         modifiedFlowLayout1.setAlignment(java.awt.FlowLayout.LEFT);
         modifiedFlowLayout1.setVgap(2);
         setLayout(modifiedFlowLayout1);

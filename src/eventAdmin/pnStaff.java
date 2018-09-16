@@ -48,12 +48,12 @@ public class pnStaff extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(415, 226));
-        setMinimumSize(new java.awt.Dimension(415, 226));
-        setPreferredSize(new java.awt.Dimension(415, 226));
+        setMaximumSize(new java.awt.Dimension(475, 226));
+        setMinimumSize(new java.awt.Dimension(475, 226));
+        setPreferredSize(new java.awt.Dimension(475, 226));
         javaClass.ModifiedFlowLayout modifiedFlowLayout1 = new javaClass.ModifiedFlowLayout();
-        modifiedFlowLayout1.setAlignment(java.awt.FlowLayout.LEFT);
         modifiedFlowLayout1.setHgap(15);
+        modifiedFlowLayout1.setAlignment(java.awt.FlowLayout.LEFT);
         setLayout(modifiedFlowLayout1);
 
         jPanel4.setMaximumSize(new java.awt.Dimension(390, 62));

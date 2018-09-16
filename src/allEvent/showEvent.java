@@ -48,6 +48,7 @@ public class showEvent extends javax.swing.JPanel {
             lblNumGuest.setText("Ilimitadas");
         else
             lblNumGuest.setText(ev.getQuantityTicket()+"");
+        
         if(standardization.currentDate().compareTo(standardization.getDate(ev.getStartDateTime())) == 0){
             lblDays.setText("Hoy");
             lblDays.setForeground(Color.red);

@@ -38,8 +38,8 @@ public class addEventGral extends javax.swing.JFrame {
         iconPlace.setIcon(new controller().changeImage("/imagenes/place.png", 35, 35));
         txtDayStart.setText((standardization.currentDateTime().getDate()+1)+"");
         txtDayEnd.setText((standardization.currentDateTime().getDate()+1)+"");
-        cmbMonthStart.setSelectedIndex(standardization.currentDateTime().getMonth()-1);
-        cmbMonthEnd.setSelectedIndex(standardization.currentDateTime().getMonth()-1);
+        cmbMonthStart.setSelectedIndex(standardization.currentDateTime().getMonth());
+        cmbMonthEnd.setSelectedIndex(standardization.currentDateTime().getMonth());
         txtYearStart.setText(standardization.currentDateTime().getYear()+"");
         txtYearEnd.setText(standardization.currentDateTime().getYear()+"");
         
@@ -630,7 +630,7 @@ public class addEventGral extends javax.swing.JFrame {
         if(true){
             if(txtEvent.getText().trim().isEmpty() || txtYearStart.getText().trim().isEmpty() || txtYearEnd.getText().trim().isEmpty() ||
                 txtDayStart.getText().trim().isEmpty() || txtDayEnd.getText().trim().isEmpty() || txtGuest.getText().trim().isEmpty() ||
-                txtPlace.getText().trim().isEmpty() || txtPlace.getText().trim().length() < 15)
+                txtPlace.getText().trim().isEmpty() || txtPlace.getText().trim().length() < 4)
             {
                 standardization.showMessage("warning","Hay campos vacios!",this);            
             }else if(methodsSQL.exists("SELECT eventName FROM events WHERE eventName = ? and nicknameCreator = ?", txtEvent.getText(), classUsuario.getNickname())){

@@ -1,8 +1,12 @@
 package eventAdmin;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import javaClass.classEvent;
+import javaClass.controller;
 import javaClass.event;
+import javaClass.standardization;
 
 public class eventAdmin extends javax.swing.JPanel {
 
@@ -19,10 +23,33 @@ public class eventAdmin extends javax.swing.JPanel {
 
     void load(event event){
         lblEventName.setText(event.getEventName());     
+        lblNickname.setText(event.getNicknameCreator());
+        if(event.getProfilePicture() != null)
+            lblEventName.setIcon(new controller().changeSizeImage(standardization.getImgIcon(event.getProfilePicture()), 90, 90));
+        
+        if(event.getCoverPicture()!= null)
+            iconCover.setIcon(standardization.getImgIcon(event.getCoverPicture()));
+        
+        lblDays.setText(standardization.getDateToString(event.getStartDateTime(), standardization.getDate(event.getStartDateTime())));
+        
+        
+//        if(standardization.currentDate().compareTo(standardization.getDate(event.getStartDateTime())) == 0){
+//            lblDays.setText("Hoy");
+//            lblDays.setForeground(Color.red);
+//            Font f= new Font("Arial", Font.BOLD, 11);
+//            lblDays.setFont(f);
+//        }                            
+//        else{
+//            if(standardization.numberDays(standardization.currentDate(), standardization.getDate(event.getStartDateTime())) < 0)
+//                lblDays.setText("Hace "+(-1*standardization.numberDays(standardization.currentDate(), standardization.getDate(event.getStartDateTime())))+" días");
+//            else
+//                lblDays.setText(standardization.numberDays(standardization.currentDate(), standardization.getDate(event.getStartDateTime()))+" días");
+//        }
         
         loadMenu();
         loadPrice(event);
         loadStaff(event);
+        loadPlace();
         loadFooter();
     }
     
@@ -44,12 +71,12 @@ public class eventAdmin extends javax.swing.JPanel {
     }
     
     void loadStaff(event event){     
-        pnStaff pS = new pnStaff(idEvent);
+        pnStaffs pS = new pnStaffs(idEvent);
         int size = 0;
         if(event.getStaffs() != null)
             size = (event.getStaffs().size() <= 1) ? 1 : (event.getStaffs().size() -1) * 50;
 
-        pS.setPreferredSize(new Dimension(405,226+size));
+        pS.setPreferredSize(new Dimension(405,226));
         pnContainer.add(pS);
 
         pnContainer.revalidate();
@@ -58,6 +85,13 @@ public class eventAdmin extends javax.swing.JPanel {
     
     void loadFooter(){       
         pnContainer.add(new pnFooter());
+
+        pnContainer.revalidate();
+        pnContainer.repaint();
+    }
+    
+    void loadPlace(){       
+        pnContainer.add(new pnPlace(idEvent));
 
         pnContainer.revalidate();
         pnContainer.repaint();
@@ -72,12 +106,13 @@ public class eventAdmin extends javax.swing.JPanel {
         jPanel8 = new javax.swing.JPanel();
         lblEventName = new javax.swing.JLabel();
         lblNickname = new javax.swing.JLabel();
+        lblDays = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        iconCover = new javax.swing.JLabel();
 
         scrollContainer.setBorder(null);
 
-        pnContainer.setBackground(new java.awt.Color(153, 204, 255));
+        pnContainer.setBackground(new java.awt.Color(170, 218, 255));
         javaClass.ModifiedFlowLayout modifiedFlowLayout1 = new javaClass.ModifiedFlowLayout();
         modifiedFlowLayout1.setAlignment(java.awt.FlowLayout.LEFT);
         modifiedFlowLayout1.setHgap(10);
@@ -94,32 +129,41 @@ public class eventAdmin extends javax.swing.JPanel {
         });
 
         lblEventName.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblEventName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/forgotPassword.png"))); // NOI18N
+        lblEventName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/profile.png"))); // NOI18N
         lblEventName.setText("not found");
 
         lblNickname.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNickname.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNickname.setText("not found");
 
+        lblDays.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblDays.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblDays.setText("not found");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(lblEventName, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(156, 156, 156)
-                .addComponent(lblNickname, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(lblEventName, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNickname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDays, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(lblEventName, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblDays, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         pnContainer.add(jPanel8);
@@ -142,11 +186,12 @@ public class eventAdmin extends javax.swing.JPanel {
 
         pnContainer.add(jPanel6);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/escritorio.jpg"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(631, 189));
-        jLabel1.setMinimumSize(new java.awt.Dimension(631, 189));
-        jLabel1.setPreferredSize(new java.awt.Dimension(631, 189));
-        pnContainer.add(jLabel1);
+        iconCover.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/escritorio.jpg"))); // NOI18N
+        iconCover.setMaximumSize(new java.awt.Dimension(631, 189));
+        iconCover.setMinimumSize(new java.awt.Dimension(631, 189));
+        iconCover.setPreferredSize(new java.awt.Dimension(631, 189));
+        pnContainer.add(iconCover);
 
         scrollContainer.setViewportView(pnContainer);
 
@@ -170,9 +215,10 @@ public class eventAdmin extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel iconCover;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JLabel lblDays;
     private javax.swing.JLabel lblEventName;
     private javax.swing.JLabel lblNickname;
     private javax.swing.JPanel pnContainer;

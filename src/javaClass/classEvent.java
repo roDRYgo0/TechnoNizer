@@ -303,6 +303,37 @@ public class classEvent {
         return status;
     }
     
+    public static boolean updateColor(int idEvent, String color){
+        boolean status = false;
+        status = methodsSQL.execute("update events set color = ? where id = ?", color, idEvent);
+        return status;
+    }
+    
+    public static boolean updateVisibility(int idEvent, int visibility){
+        boolean status = false;
+        status = methodsSQL.execute("update events set visibility = ? where id = ?", visibility, idEvent);
+        return status;
+    }
+    
+    public static boolean updatePlace(int idEvent, String place){
+        boolean status = false;
+        status = methodsSQL.execute("update events set place = ? where id = ?", place, idEvent);
+        return status;
+    }
+    
+    public static boolean updateProfile(int idEvent, byte[] image){
+        boolean status = false;
+        status = methodsSQL.execute("update events set profilePicture = ? where id = ?", image, idEvent);
+        return status;
+    }
+    
+    public static boolean updateCover(int idEvent, byte[] image){
+        boolean status = false;
+        status = methodsSQL.execute("update events set coverPicture = ? where id = ?", image, idEvent);
+        return status;
+    }
+    
+    
     public static boolean insert(){
         boolean status = false;
         status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?)",

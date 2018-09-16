@@ -18,8 +18,10 @@ public class settings extends javax.swing.JPanel {
 
         lblSettings = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(200, 65));
-        setMinimumSize(new java.awt.Dimension(200, 65));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(145, 65));
+        setMinimumSize(new java.awt.Dimension(145, 65));
+        setPreferredSize(new java.awt.Dimension(145, 65));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 formMouseReleased(evt);
@@ -34,7 +36,7 @@ public class settings extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

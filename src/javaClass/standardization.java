@@ -1,12 +1,18 @@
 package javaClass;
 
 import jFrame.*;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -14,6 +20,8 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
@@ -29,7 +37,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import technonizer.*;
 import static technonizer.TechnoNizer.*;
 
 /**
@@ -42,27 +49,28 @@ public class standardization {
     controller control = new controller();
     public static byte[] image;
     static Calendar cal= Calendar.getInstance();
+    private final String URLRoot="http://maps.googleapis.com/maps/api/staticmap";
     
     public static void setNowDate(JTextField day, JComboBox month, JTextField year){
-        day.setText(standardization.currentDateTime().getDate()+"");
-        month.setSelectedIndex(standardization.currentDateTime().getMonth()-1);
-        year.setText(standardization.currentDateTime().getYear()+"");
+        day.setText(currentDateTime().getDate()+"");
+        month.setSelectedIndex(currentDateTime().getMonth());
+        year.setText(currentDateTime().getYear()+"");
     }
     
     
     public static Date currentDateTime(){
         cal= Calendar.getInstance();
-        return new Date(cal.get(Calendar.YEAR) , cal.get(Calendar.MONTH)+1, cal.get(Calendar.DATE), cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND));
+        return new Date(cal.get(Calendar.YEAR) , cal.get(Calendar.MONTH), cal.get(Calendar.DATE), cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND));
     }
     
     public static Date currentDate(){
         cal= Calendar.getInstance();
-        return new Date(cal.get(Calendar.YEAR) , cal.get(Calendar.MONTH)+1, cal.get(Calendar.DATE));
+        return new Date(cal.get(Calendar.YEAR) , cal.get(Calendar.MONTH), cal.get(Calendar.DATE));
     }
     
     public static String getDateTime(){
         cal= Calendar.getInstance();
-        return cal.get(Calendar.YEAR) +"-"+ (cal.get(Calendar.MONTH)+1) +"-"+ cal.get(Calendar.DATE) +" "+ cal.get(Calendar.HOUR) +":"+ cal.get(Calendar.MINUTE) +":"+ cal.get(Calendar.SECOND)+"."+cal.get(Calendar.MILLISECOND);
+        return cal.get(Calendar.YEAR) +"-"+ (cal.get(Calendar.MONTH)) +"-"+ cal.get(Calendar.DATE) +" "+ cal.get(Calendar.HOUR) +":"+ cal.get(Calendar.MINUTE) +":"+ cal.get(Calendar.SECOND)+"."+cal.get(Calendar.MILLISECOND);
     }
     
     
@@ -210,7 +218,7 @@ public class standardization {
             BufferedImage image = null;
             InputStream in = new ByteArrayInputStream(bi);
             image = ImageIO.read(in);
-            imgi = new ImageIcon(image.getScaledInstance(150, 150, 0));
+            imgi = new ImageIcon(image);
             
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -478,6 +486,95 @@ public class standardization {
     
     public static Date getDate(String date){
         String[] days = date.split("-");
-        return new Date(Integer.parseInt(days[0]), Integer.parseInt(days[1]), Integer.parseInt(days[2]));
+        
+        return new Date(Integer.parseInt(days[0]), Integer.parseInt(days[1])-1, Integer.parseInt(days[2]));
     }
+
+    public static void goToURL(String URL){
+              if (java.awt.Desktop.isDesktopSupported()) {
+               java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+
+               if (desktop.isSupported(java.awt.Desktop.Action.BROWSE)) {
+
+                   try {
+                       java.net.URI uri = new java.net.URI(URL);
+                       desktop.browse(uri);
+                   } catch (URISyntaxException | IOException ex) {
+                       Logger.getLogger(standardization.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+
+               }
+           }
+       }
+    
+    public static String getDateToString(String date, Date d){
+        String[] days = date.split("-");
+        String dat = "";
+        switch(d.getDay()){
+            case 0:
+                dat+="Sábado, ";
+                break;
+            case 1:
+                dat+="Domingo, ";
+                break;
+            case 2:
+                dat+="Lunes, ";
+                break;
+            case 3:
+                dat+="Martes, ";
+                break;
+            case 4:
+                dat+="Miércoles, ";
+                break;
+            case 5:
+                dat+="Jueves, ";
+                break;
+            case 6:
+                dat+="Viernes, ";
+                break;
+            
+        }
+        dat += days[2]+" ";
+        switch(days[1]){
+            case "1":
+                dat += "de enero";
+                break;
+            case "2":
+                dat += "de febrero";
+                break;
+            case "3":
+                dat += "de marzo";
+                break;
+            case "4":
+                dat += "de abril";
+                break;
+            case "5":
+                dat += "de mayo";
+                break;
+            case "6":
+                dat += "de junio";
+                break;
+            case "7":
+                dat += "de julio";
+                break;
+            case "8":
+                dat += "de agosto";
+                break;
+            case "9":
+                dat += "de septiembre";
+                break;
+            case "10":
+                dat += "de octubre";
+                break;
+            case "11":
+                dat += "de noviembre";
+                break;
+            case "12":
+                dat += "de diciembre";
+                break;
+        }
+        dat +=" de "+days[0];
+        return dat;
+    }
+    
 }
