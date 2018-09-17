@@ -35,6 +35,7 @@ public class classEvent {
     public static List<event> eventos = new ArrayList<event>();
     public static List<event> eventosShow = new ArrayList<event>();
     public static List<event> eventosSearch = new ArrayList<event>();
+    public static List<activity> activities = new ArrayList<>();
 
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
@@ -310,6 +311,35 @@ public class classEvent {
         return status;
     }
     
+    public static boolean selectActivity(int idEvent){
+        boolean status = false;
+        List<activity> activiti = new ArrayList<>();
+        activity ac;
+        ResultSet rs = methodsSQL.getExecute("select a.dateTime, a.activity, a.place, a.condition, a.description, a.nickname from activities a where a.idEvent = ?", idEvent);
+        
+        try {
+            while(rs.next()){
+                ac = new activity();
+                ac.setDateTime(rs.getString(1));
+                ac.setActivity(rs.getString(2));
+                ac.setPlace(rs.getString(3));
+                ac.setCondition(rs.getInt(4));
+                ac.setDescription(rs.getString(5));
+                ac.setNickname(rs.getString(6));
+                String[] dateTime = ac.getDateTime().split(" ");
+                ac.setDate(dateTime[0]);
+                ac.setTime(dateTime[1]);
+                activiti.add(ac);
+            }
+            activities.addAll(activiti);
+            status = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return status;
+    }
+    
     public static boolean updateColor(int idEvent, String color){
         boolean status = false;
         status = methodsSQL.execute("update events set color = ? where id = ?", color, idEvent);
@@ -346,6 +376,12 @@ public class classEvent {
         return status;
     }
     
+    
+    public static boolean insertActivitie(String dateTime, String activity, String place, int condition, String description, int idEvent, String nickname){
+        boolean status = false;
+        status = methodsSQL.execute("insert into activities values(?, ?, ?, ?, ?, ?, ?)", dateTime, activity, place, condition, description, idEvent, nickname);
+        return status;
+    }
     
     public static boolean insert(){
         boolean status = false;

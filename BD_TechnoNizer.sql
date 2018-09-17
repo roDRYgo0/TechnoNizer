@@ -182,6 +182,9 @@ idCardas int not null references cards(id)
  )
 
 
+
+ select * from activities
+
  create table problems(
  id int identity(1,1) primary key not null,
  problem nvarchar(190) not null,

@@ -71,7 +71,6 @@ public class StaticMaps extends MapsJava {
                 "&size=" + size.width + "x" + size.height + "&scale=" + scale +
                 "&format=" + format.toString() + "&maptype=" + maptype.toString() + 
                 "&markers=" + URLEncoder.encode(centerAddress, "utf-8") + super.getSelectPropertiesRequest());
-        System.out.println(url);
         try {
             Image imageReturn;
             imageReturn=ImageIO.read(url);

@@ -1,6 +1,6 @@
 package projects;
 
-import jFrame.addEventGral;
+import jFrame.AddEventInfo;
 import javaClass.controller;
 import javaClass.standardization;
 

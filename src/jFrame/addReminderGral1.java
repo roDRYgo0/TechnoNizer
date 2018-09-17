@@ -406,7 +406,7 @@ public class addReminderGral1 extends javax.swing.JFrame {
 
             if (standardization.validateDate(Integer.parseInt(txtYearEnd.getText()), (cmbMonthEnd.getSelectedIndex() + 1), Integer.parseInt(txtDayEnd.getText()))) {
                 standardization.showMessage("warning", "Fechas invalidas", this);
-            } else if (standardization.compareDate(dateEnd, standardization.currentDateTime()) == -1) {
+            } else if (standardization.compareDateBefore(dateEnd, standardization.currentDateTime()) == -1) {
                 standardization.showMessage("warning", "Fechas invalidas", this);
             } else {
 

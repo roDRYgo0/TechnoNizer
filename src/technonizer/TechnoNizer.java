@@ -33,9 +33,9 @@ public class TechnoNizer {
         
         mess = new message();
         log = new logIn();
+        controller.rootFrame = log;
         sLoad = new load();
         log.setDefaultCloseOperation(3);
-        
         log.setVisible(true);
     }
     

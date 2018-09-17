@@ -387,7 +387,7 @@ public class addReminderGral extends javax.swing.JFrame {
 
             if (standardization.validateDate(Integer.parseInt(txtYearEnd.getText()), (cmbMonthEnd.getSelectedIndex() + 1), Integer.parseInt(txtDayEnd.getText()))) {
                 standardization.showMessage("warning", "Fechas invalidas", this);
-            } else if (standardization.compareDate(dateEnd, standardization.currentDateTime()) == -1) {
+            } else if (standardization.compareDateBefore(dateEnd, standardization.currentDateTime()) == -1) {
                 standardization.showMessage("warning", "Fechas invalidas", this);
             } else {
 
@@ -403,9 +403,9 @@ public class addReminderGral extends javax.swing.JFrame {
                     technonizer.TechnoNizer.home.pnAgenda();
                     controller.jpAA.load();
                     controller.rootFrame = technonizer.TechnoNizer.home;
-                    standardization.showMessage("ok", "Recordatorio ingresado");
+                    standardization.showMessage("ok", "Recordatorio ingresado", technonizer.TechnoNizer.home);
                 } else {
-                    standardization.showMessage("cancel", "Error ingresado");
+                    standardization.showMessage("cancel", "Error ingresado", technonizer.TechnoNizer.home);
 
                     standardization.hide(controller.gralReminder);
                       

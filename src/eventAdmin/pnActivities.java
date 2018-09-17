@@ -1,5 +1,9 @@
 package eventAdmin;
 
+import javaClass.classEvent;
+import javaClass.controller;
+import javaClass.standardization;
+
 public class pnActivities extends javax.swing.JPanel {
 
     int idEvent;
@@ -9,11 +13,14 @@ public class pnActivities extends javax.swing.JPanel {
         initComponents();
         this.idEvent = idEvent;  
         scrollContainer.getVerticalScrollBar().setUnitIncrement(16);
+        
         load();
     }
 
     void load(){
-        pnContainer.add(new showActivitie());
+        for(int i = 0; i < classEvent.activities.size(); i++){
+            pnContainer.add(new showActivitie(i));
+        }
         
         pnContainer.revalidate();
         pnContainer.repaint();
@@ -28,6 +35,7 @@ public class pnActivities extends javax.swing.JPanel {
         jPanel8 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        btnNext1 = new javax.swing.JButton();
 
         scrollContainer.setBorder(null);
         scrollContainer.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -56,6 +64,18 @@ public class pnActivities extends javax.swing.JPanel {
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
+        btnNext1.setBackground(new java.awt.Color(0, 153, 255));
+        btnNext1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnNext1.setForeground(new java.awt.Color(255, 255, 255));
+        btnNext1.setText("Agregar");
+        btnNext1.setBorderPainted(false);
+        btnNext1.setFocusable(false);
+        btnNext1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNext1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -67,16 +87,22 @@ public class pnActivities extends javax.swing.JPanel {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jLabel2)))
-                .addContainerGap(537, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 409, Short.MAX_VALUE)
+                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         pnContainer.add(jPanel8);
@@ -101,8 +127,15 @@ public class pnActivities extends javax.swing.JPanel {
         technonizer.TechnoNizer.home.showEvent();
     }//GEN-LAST:event_jPanel8MouseReleased
 
+    private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
+        AddActivitie activitie = new AddActivitie(idEvent);
+        standardization.show(activitie);
+        controller.rootFrame = activitie;
+    }//GEN-LAST:event_btnNext1ActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnNext1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JSeparator jSeparator1;

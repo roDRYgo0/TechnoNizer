@@ -16,13 +16,17 @@ public class eventAdmin extends javax.swing.JPanel {
         initComponents();
         this.idEvent = idEvent;
         scrollContainer.getVerticalScrollBar().setUnitIncrement(16);
-        
         load(classEvent.eventosShow.get(idEvent));
         
         
     }
     
     void load(event event){
+        classEvent.activities.clear();
+        if(classEvent.selectActivity(event.getId()))
+            standardization.showMessage("ok","Exito");
+        else
+            standardization.showMessage("cancel","nell pegro");
         lblEventName.setText(event.getEventName());     
         lblNickname.setText(event.getNicknameCreator());
         if(event.getProfilePicture() != null)

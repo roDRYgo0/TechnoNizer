@@ -12,7 +12,7 @@ import admin.jpSecurityQuestionsAdmin;
 import admin.jpSecurityUser;
 import event.addPrice;
 import event.price;
-import jFrame.addEventGral;
+import jFrame.AddEventInfo;
 import jFrame.addProject;
 import jFrame.addReminderGral;
 import jFrame.addReminderGral1;
@@ -90,10 +90,10 @@ public class controller {
     public static String idioma;
     
     //<editor-fold defaultstate="collapsed" desc="jFrame">
-    public static addEventGral gralEvent;
+    public static AddEventInfo gralEvent;
     public static addReminderGral gralReminder;
     public static addReminderGral1 gralReminder1;
-    public static jFrame.addEvent addEvents;
+    public static jFrame.AddEventDetails addEvents;
 //</editor-fold>
     
     public static JFrame rootFrame;
