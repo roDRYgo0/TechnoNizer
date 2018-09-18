@@ -4,12 +4,30 @@ import jFrame.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Arrays;
+import java.util.Properties;
 import javaClass.*;
+import properties.propiedades;
 
 public class jpCreateUser extends javax.swing.JPanel {
     
     boolean sw, continueM, continueN, continueP;
     char echoChar;
+    
+    void verificaridioma()
+    {
+    Properties pr = new propiedades (controller.idioma);
+    TituloCreateData.setText(pr.getProperty("Titulo"));
+    SubtituloCreateData.setText(pr.getProperty("Subtitulo"));
+    St1.setText(pr.getProperty("SubEmail"));
+    st2.setText(pr.getProperty("st2"));
+    st3.setText(pr.getProperty("st3"));
+    st4.setText(pr.getProperty("st4"));
+    st5.setText(pr.getProperty("st5"));
+    Bback.setText(pr.getProperty("Bback"));
+    btnNext.setText(pr.getProperty("btnNext"));
+            
+    
+    }
     
     public jpCreateUser() {
         initComponents();
@@ -18,6 +36,7 @@ public class jpCreateUser extends javax.swing.JPanel {
         continueN = false;
         
         loadIcons();
+        verificaridioma();
     }
     
     void loadIcons(){
@@ -34,32 +53,32 @@ public class jpCreateUser extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        TituloCreateData = new javax.swing.JLabel();
+        Bback = new javax.swing.JButton();
+        St1 = new javax.swing.JLabel();
         txtMail = new javax.swing.JTextField();
         spMail = new javax.swing.JSeparator();
         txtPassword = new javax.swing.JPasswordField();
         spPassword = new javax.swing.JSeparator();
         lblEye = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        st4 = new javax.swing.JLabel();
         spPasswordConfirm = new javax.swing.JSeparator();
         txtPasswordConfirm = new javax.swing.JPasswordField();
         lblEyeConfirm = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        st5 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        st2 = new javax.swing.JLabel();
         checkUsername = new javax.swing.JLabel();
         iconUsername = new javax.swing.JLabel();
         txtNickName = new javax.swing.JTextField();
         spNickName = new javax.swing.JSeparator();
         iconEmail = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        st3 = new javax.swing.JLabel();
         checkEmail = new javax.swing.JLabel();
         iconPass = new javax.swing.JLabel();
         iconPass2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
+        SubtituloCreateData = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         checkPass = new javax.swing.JLabel();
 
@@ -70,23 +89,23 @@ public class jpCreateUser extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(420, 603));
         setRequestFocusEnabled(false);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Crea tu cuenta en TechnoNizer");
+        TituloCreateData.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        TituloCreateData.setText("Crea tu cuenta en TechnoNizer");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jButton1.setText("Atras");
-        jButton1.setBorderPainted(false);
-        jButton1.setFocusable(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Bback.setBackground(new java.awt.Color(255, 255, 255));
+        Bback.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        Bback.setText("Atras");
+        Bback.setBorderPainted(false);
+        Bback.setFocusable(false);
+        Bback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BbackActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Crea tu nombre de usuario");
+        St1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        St1.setForeground(new java.awt.Color(102, 102, 102));
+        St1.setText("Crea tu nombre de usuario");
 
         txtMail.setAutoscrolls(false);
         txtMail.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -133,9 +152,9 @@ public class jpCreateUser extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("Ingrese la contraseña");
+        st4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        st4.setForeground(new java.awt.Color(102, 102, 102));
+        st4.setText("Ingrese la contraseña");
 
         spPasswordConfirm.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -159,9 +178,9 @@ public class jpCreateUser extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("Confirme la contraseña");
+        st5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        st5.setForeground(new java.awt.Color(102, 102, 102));
+        st5.setText("Confirme la contraseña");
 
         btnNext.setBackground(new java.awt.Color(0, 153, 255));
         btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -175,8 +194,8 @@ public class jpCreateUser extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel2.setText("Necesitamos validar tu identidad");
+        st2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        st2.setText("Necesitamos validar tu identidad");
 
         checkUsername.setMaximumSize(new java.awt.Dimension(25, 25));
         checkUsername.setMinimumSize(new java.awt.Dimension(25, 25));
@@ -213,9 +232,9 @@ public class jpCreateUser extends javax.swing.JPanel {
         iconEmail.setMinimumSize(new java.awt.Dimension(35, 35));
         iconEmail.setPreferredSize(new java.awt.Dimension(35, 35));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Ingresa tu correo");
+        st3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        st3.setForeground(new java.awt.Color(102, 102, 102));
+        st3.setText("Ingresa tu correo");
 
         checkEmail.setMaximumSize(new java.awt.Dimension(25, 25));
         checkEmail.setMinimumSize(new java.awt.Dimension(25, 25));
@@ -232,8 +251,8 @@ public class jpCreateUser extends javax.swing.JPanel {
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
         jSeparator1.setEnabled(false);
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel3.setText("Recuerda que tu usuario debe ser unico");
+        SubtituloCreateData.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        SubtituloCreateData.setText("Recuerda que tu usuario debe ser unico");
 
         jSeparator2.setForeground(new java.awt.Color(204, 204, 204));
         jSeparator2.setEnabled(false);
@@ -250,7 +269,7 @@ public class jpCreateUser extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Bback, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(189, 189, 189)
                         .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -260,7 +279,7 @@ public class jpCreateUser extends javax.swing.JPanel {
                                 .addComponent(iconPass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
+                                    .addComponent(st5)
                                     .addComponent(spPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(txtPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -270,7 +289,7 @@ public class jpCreateUser extends javax.swing.JPanel {
                                 .addComponent(iconPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
+                                    .addComponent(st4)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(spPassword)
@@ -284,9 +303,12 @@ public class jpCreateUser extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(SubtituloCreateData))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
+                            .addComponent(st3)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(iconEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
@@ -296,12 +318,12 @@ public class jpCreateUser extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(checkEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
+                            .addComponent(st2)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
+                            .addComponent(St1)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
                                 .addComponent(iconUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -312,23 +334,19 @@ public class jpCreateUser extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(checkUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(85, 85, 85))
-                            .addComponent(jLabel1))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addGap(54, 54, 54)
+                        .addComponent(TituloCreateData)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+                .addGap(22, 22, 22)
+                .addComponent(TituloCreateData)
+                .addGap(31, 31, 31)
+                .addComponent(SubtituloCreateData)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(St1)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(iconUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,9 +360,9 @@ public class jpCreateUser extends javax.swing.JPanel {
                 .addGap(1, 1, 1)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(st2)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addComponent(st3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -364,7 +382,7 @@ public class jpCreateUser extends javax.swing.JPanel {
                                 .addGap(37, 37, 37)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
+                                        .addComponent(st5)
                                         .addGap(0, 0, 0)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -377,26 +395,26 @@ public class jpCreateUser extends javax.swing.JPanel {
                         .addComponent(spPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(77, 77, 77))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(st4)
                         .addGap(0, 0, 0)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(170, 170, 170)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Bback, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
     //</editor-fold>
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbackActionPerformed
         controller.rootPane.removeAll();
         controller.rootPane.add(controller.jpA,BorderLayout.CENTER);
         controller.rootPane.revalidate();
         controller.rootPane.repaint();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BbackActionPerformed
 
     private void txtMailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMailFocusGained
         spMail.setBackground(Color.red);
@@ -593,6 +611,10 @@ public class jpCreateUser extends javax.swing.JPanel {
     //<editor-fold defaultstate="collapsed" desc="compiled code">
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Bback;
+    private javax.swing.JLabel St1;
+    private javax.swing.JLabel SubtituloCreateData;
+    private javax.swing.JLabel TituloCreateData;
     private javax.swing.JButton btnNext;
     private javax.swing.JLabel checkEmail;
     private javax.swing.JLabel checkPass;
@@ -601,14 +623,6 @@ public class jpCreateUser extends javax.swing.JPanel {
     private javax.swing.JLabel iconPass;
     private javax.swing.JLabel iconPass2;
     private javax.swing.JLabel iconUsername;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblEye;
@@ -617,6 +631,10 @@ public class jpCreateUser extends javax.swing.JPanel {
     private javax.swing.JSeparator spNickName;
     private javax.swing.JSeparator spPassword;
     private javax.swing.JSeparator spPasswordConfirm;
+    private javax.swing.JLabel st2;
+    private javax.swing.JLabel st3;
+    private javax.swing.JLabel st4;
+    private javax.swing.JLabel st5;
     private javax.swing.JTextField txtMail;
     private javax.swing.JTextField txtNickName;
     private javax.swing.JPasswordField txtPassword;

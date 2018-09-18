@@ -7,12 +7,14 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javaClass.*;
 import static javaClass.standardization.*;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import properties.propiedades;
 
 public class jpPassword extends javax.swing.JPanel {
     
@@ -20,10 +22,21 @@ public class jpPassword extends javax.swing.JPanel {
     ResultSet rs;
     char echoChar;
     
+    void verificaridioma()
+    {
+    Properties pr = new propiedades (controller.idioma);
+    ContinuejpPasswordlbl.setText(pr.getProperty("ContinuejpPasswordlbl"));
+    btnRecoverPassword.setText(pr.getProperty("btnRecoverPasswordBut"));
+    btnBack.setText(pr.getProperty("btnBackPasswordButBack"));
+    btnNext.setText(pr.getProperty("btnNextPasswordNext"));
+    
+    }
+    
     public jpPassword(){
         initComponents();
         txtPassword.requestFocus();
         loadData(); 
+        verificaridioma();
     }
     
     //<editor-fold defaultstate="collapsed" desc="compiled code">
@@ -36,7 +49,7 @@ public class jpPassword extends javax.swing.JPanel {
         lblImage = new javax.swing.JLabel();
         txtName = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
+        ContinuejpPasswordlbl = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         lblEye = new javax.swing.JLabel();
@@ -83,9 +96,9 @@ public class jpPassword extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("Ingrese la contraseña para continuar");
+        ContinuejpPasswordlbl.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        ContinuejpPasswordlbl.setForeground(new java.awt.Color(102, 102, 102));
+        ContinuejpPasswordlbl.setText("Ingrese la contraseña para continuar");
 
         btnBack.setBackground(new java.awt.Color(255, 255, 255));
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -189,7 +202,7 @@ public class jpPassword extends javax.swing.JPanel {
                                                 .addComponent(lblEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(checkPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel2)
+                                    .addComponent(ContinuejpPasswordlbl)
                                     .addComponent(btnRecoverPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(3, 3, 3)))
                         .addGap(0, 32, Short.MAX_VALUE)))
@@ -206,7 +219,7 @@ public class jpPassword extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
-                .addComponent(jLabel2)
+                .addComponent(ContinuejpPasswordlbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -438,12 +451,12 @@ public class jpPassword extends javax.swing.JPanel {
     //<editor-fold defaultstate="collapsed" desc="compiled code">
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ContinuejpPasswordlbl;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnRecoverPassword;
     private javax.swing.JLabel checkImage;
     private javax.swing.JLabel checkPass;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblEye;
     private javax.swing.JLabel lblImage;

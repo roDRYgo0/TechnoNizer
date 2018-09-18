@@ -5,14 +5,16 @@ import JPanel.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.util.Properties;
 import javaClass.*;
 import static javaClass.controller.jpH;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import projects.jpProjects;
+import properties.propiedades;
 
-public class home extends javax.swing.JFrame {
+public final class home extends javax.swing.JFrame {
 
     private boolean internet;
     boolean cambio=true;
@@ -21,9 +23,23 @@ public class home extends javax.swing.JFrame {
     public static JLabel imageUserTop;
     public static JLabel imageUserLeft;
     
+    void verificaridioma()
+    {
+    Properties pr = new propiedades (controller.idioma);
+    lblGral.setText(pr.getProperty("lblGral"));
+    HomeUser.setText(pr.getProperty("HomeUser"));
+    Homemembership.setText(pr.getProperty("Homemembership"));
+    SecurityHome.setText(pr.getProperty("SecurityHome"));
+    EventsHome.setText(pr.getProperty("EventsHome"));
+    ProjectsHome.setText(pr.getProperty("ProjectsHome"));
+    DiaryHome.setText(pr.getProperty("DiaryHome"));
+    lblImageUserTop.setText(pr.getProperty("lblImageUserTop"));
+    
+    
+    }
+    
     public home(boolean load) {
         initComponents();
-        
         new Thread(()->{
             classContact.select();
             classReminder.select();
@@ -41,6 +57,7 @@ public class home extends javax.swing.JFrame {
         controller.rootFrame = this;
         this.internet = logIn.internet;
         load();
+        verificaridioma();
     }
     
     void load(){        
@@ -73,7 +90,7 @@ public class home extends javax.swing.JFrame {
         lblAgenda.setIcon(new controller().changeImage("/imagenes/agenda.png", 24, 24));
         if(classUsuario.getCondition()==1){
             lblImageUserTop.setIcon(new controller().changeImage("/imagenes/alert.png", 24, 24));
-            lblImageUserTop.setText("Activa tu cuenta");
+            lblImageUserTop.setText("mejor si afuera");
             pnEvents.setBackground(new Color(64, 64, 64));
             pnProj.setBackground(new Color(64, 64, 64));
             pnAgenda.setBackground(new Color(64, 64, 64));
@@ -128,25 +145,25 @@ public class home extends javax.swing.JFrame {
         lblGral = new javax.swing.JLabel();
         pnUser = new javax.swing.JPanel();
         lblUser = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        HomeUser = new javax.swing.JLabel();
         pnMem = new javax.swing.JPanel();
         lblMembership = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        Homemembership = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         lblImageUserLeft = new javax.swing.JLabel();
         pnEvents = new javax.swing.JPanel();
         lblEvent = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        EventsHome = new javax.swing.JLabel();
         pnProj = new javax.swing.JPanel();
         lblProject = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        ProjectsHome = new javax.swing.JLabel();
         pnAgenda = new javax.swing.JPanel();
         lblAgenda = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        DiaryHome = new javax.swing.JLabel();
         pnSecurity = new javax.swing.JPanel();
         lblSecurity = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        SecurityHome = new javax.swing.JLabel();
         lblAlert = new javax.swing.JLabel();
         scrollContainer = new javax.swing.JScrollPane();
 
@@ -353,9 +370,9 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(744, 744, 744)
-                .addComponent(lblImageUserTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
+                .addGap(712, 712, 712)
+                .addComponent(lblImageUserTop, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(iconMem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
                 .addComponent(lblSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -417,9 +434,9 @@ public class home extends javax.swing.JFrame {
         lblUser.setMinimumSize(new java.awt.Dimension(28, 28));
         lblUser.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Usuario");
+        HomeUser.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        HomeUser.setForeground(new java.awt.Color(255, 255, 255));
+        HomeUser.setText("Usuario");
 
         javax.swing.GroupLayout pnUserLayout = new javax.swing.GroupLayout(pnUser);
         pnUser.setLayout(pnUserLayout);
@@ -429,7 +446,7 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(HomeUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnUserLayout.setVerticalGroup(
@@ -438,7 +455,7 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(HomeUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -453,9 +470,9 @@ public class home extends javax.swing.JFrame {
         lblMembership.setMinimumSize(new java.awt.Dimension(28, 28));
         lblMembership.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Membresia");
+        Homemembership.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Homemembership.setForeground(new java.awt.Color(255, 255, 255));
+        Homemembership.setText("Membresia");
 
         javax.swing.GroupLayout pnMemLayout = new javax.swing.GroupLayout(pnMem);
         pnMem.setLayout(pnMemLayout);
@@ -465,7 +482,7 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblMembership, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Homemembership, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnMemLayout.setVerticalGroup(
@@ -474,7 +491,7 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnMemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMembership, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Homemembership, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -511,9 +528,9 @@ public class home extends javax.swing.JFrame {
         lblEvent.setMinimumSize(new java.awt.Dimension(28, 28));
         lblEvent.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Eventos");
+        EventsHome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        EventsHome.setForeground(new java.awt.Color(255, 255, 255));
+        EventsHome.setText("Eventos");
 
         javax.swing.GroupLayout pnEventsLayout = new javax.swing.GroupLayout(pnEvents);
         pnEvents.setLayout(pnEventsLayout);
@@ -523,7 +540,7 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(EventsHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnEventsLayout.setVerticalGroup(
@@ -532,7 +549,7 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEvent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(EventsHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -547,9 +564,9 @@ public class home extends javax.swing.JFrame {
         lblProject.setMinimumSize(new java.awt.Dimension(28, 28));
         lblProject.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Proyectos");
+        ProjectsHome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ProjectsHome.setForeground(new java.awt.Color(255, 255, 255));
+        ProjectsHome.setText("Proyectos");
 
         javax.swing.GroupLayout pnProjLayout = new javax.swing.GroupLayout(pnProj);
         pnProj.setLayout(pnProjLayout);
@@ -559,7 +576,7 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblProject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ProjectsHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnProjLayout.setVerticalGroup(
@@ -567,7 +584,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(pnProjLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnProjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ProjectsHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -583,9 +600,9 @@ public class home extends javax.swing.JFrame {
         lblAgenda.setMinimumSize(new java.awt.Dimension(28, 28));
         lblAgenda.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Agenda");
+        DiaryHome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        DiaryHome.setForeground(new java.awt.Color(255, 255, 255));
+        DiaryHome.setText("Agenda");
 
         javax.swing.GroupLayout pnAgendaLayout = new javax.swing.GroupLayout(pnAgenda);
         pnAgenda.setLayout(pnAgendaLayout);
@@ -595,7 +612,7 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(DiaryHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnAgendaLayout.setVerticalGroup(
@@ -603,7 +620,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnAgendaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DiaryHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -619,9 +636,9 @@ public class home extends javax.swing.JFrame {
         lblSecurity.setMinimumSize(new java.awt.Dimension(28, 28));
         lblSecurity.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Seguridad");
+        SecurityHome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        SecurityHome.setForeground(new java.awt.Color(255, 255, 255));
+        SecurityHome.setText("Seguridad");
 
         lblAlert.setMaximumSize(new java.awt.Dimension(28, 28));
         lblAlert.setMinimumSize(new java.awt.Dimension(28, 28));
@@ -635,7 +652,7 @@ public class home extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(lblSecurity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SecurityHome, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblAlert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -646,7 +663,7 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnSecurityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblSecurity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SecurityHome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1000,6 +1017,12 @@ public class home extends javax.swing.JFrame {
     //<editor-fold defaultstate="collapsed" desc="compiled code">
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DiaryHome;
+    private javax.swing.JLabel EventsHome;
+    private javax.swing.JLabel HomeUser;
+    private javax.swing.JLabel Homemembership;
+    private javax.swing.JLabel ProjectsHome;
+    private javax.swing.JLabel SecurityHome;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnMax;
     private javax.swing.JButton btnMin;
@@ -1008,12 +1031,6 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemSettings;
     private javax.swing.JMenuItem itemSpanish;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator1;

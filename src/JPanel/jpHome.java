@@ -1,18 +1,40 @@
 package JPanel;
 
 import jFrame.home;
+import java.util.Properties;
 import javaClass.classUsuario;
 import javaClass.controller;
+import properties.propiedades;
 
 
 public class jpHome extends javax.swing.JPanel {
 
     home hom;
     
+    void verificaridioma()
+    {
+    Properties pr = new propiedades (controller.idioma);
+    StartJpHome.setText(pr.getProperty("StartJpHome"));
+    ProfilejpHome.setText(pr.getProperty("ProfilejpHome"));
+    NameUserjpHome.setText(pr.getProperty("NameUserjpHome"));
+    Namesjphome.setText(pr.getProperty("Namesjphome"));
+    LastNamesjpHome.setText(pr.getProperty("LastNamesjpHome"));
+    EmailjpHome.setText(pr.getProperty("EmailjpHome"));
+    BirthDayjpHome.setText(pr.getProperty("BirthDayjpHome"));
+    GenerjpHome.setText(pr.getProperty("GenerjpHome"));
+    btnEdit.setText(pr.getProperty("btnEditjpHome"));
+   MembershiptitlejpHome.setText(pr.getProperty("MembershiptitlejpHome"));
+   TypeMembershipjpHome.setText(pr.getProperty("TypeMembershipjpHome"));
+   DurationjpHome.setText(pr.getProperty("DurationjpHome"));
+   AvaibleeventsjpHome.setText(pr.getProperty("AvaibleeventsjpHome"));
+
+    }
+    
     public jpHome(boolean load, home hom) {
         initComponents();
         load(load);
         this.hom = hom;
+        verificaridioma();
     }
     
     void load(boolean load){
@@ -56,31 +78,31 @@ public class jpHome extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        StartJpHome = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        ProfilejpHome = new javax.swing.JLabel();
+        NameUserjpHome = new javax.swing.JLabel();
         lblNickname = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        Namesjphome = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        LastNamesjpHome = new javax.swing.JLabel();
         lblLastName = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        EmailjpHome = new javax.swing.JLabel();
         lblMail = new javax.swing.JLabel();
         lblBirthday = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        BirthDayjpHome = new javax.swing.JLabel();
+        GenerjpHome = new javax.swing.JLabel();
         lblGender = new javax.swing.JLabel();
         btnEdit = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        MembershiptitlejpHome = new javax.swing.JLabel();
+        TypeMembershipjpHome = new javax.swing.JLabel();
         lblNameMember = new javax.swing.JLabel();
         lblTypeMember = new javax.swing.JLabel();
         lblDuration = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        DurationjpHome = new javax.swing.JLabel();
+        AvaibleeventsjpHome = new javax.swing.JLabel();
         lblNumEvents = new javax.swing.JLabel();
         lblImageEvent = new javax.swing.JLabel();
 
@@ -89,43 +111,43 @@ public class jpHome extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(0, 0));
         setPreferredSize(new java.awt.Dimension(980, 601));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Inicio");
+        StartJpHome.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        StartJpHome.setForeground(new java.awt.Color(255, 0, 0));
+        StartJpHome.setText("Inicio");
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153))));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel2.setText("Perfil");
+        ProfilejpHome.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        ProfilejpHome.setForeground(new java.awt.Color(33, 150, 243));
+        ProfilejpHome.setText("Perfil");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Nombre de usuario");
+        NameUserjpHome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        NameUserjpHome.setForeground(new java.awt.Color(102, 102, 102));
+        NameUserjpHome.setText("Nombre de usuario");
 
         lblNickname.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblNickname.setText("Not found");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("Nombres");
+        Namesjphome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Namesjphome.setForeground(new java.awt.Color(102, 102, 102));
+        Namesjphome.setText("Nombres");
 
         lblName.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblName.setText("Not found");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Apellidos");
+        LastNamesjpHome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LastNamesjpHome.setForeground(new java.awt.Color(102, 102, 102));
+        LastNamesjpHome.setText("Apellidos");
 
         lblLastName.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblLastName.setText("Not found");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("Email");
+        EmailjpHome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        EmailjpHome.setForeground(new java.awt.Color(102, 102, 102));
+        EmailjpHome.setText("Email");
 
         lblMail.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblMail.setText("Not found");
@@ -133,13 +155,13 @@ public class jpHome extends javax.swing.JPanel {
         lblBirthday.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblBirthday.setText("Not found");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel12.setText("Fecha de nacimiento");
+        BirthDayjpHome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        BirthDayjpHome.setForeground(new java.awt.Color(102, 102, 102));
+        BirthDayjpHome.setText("Fecha de nacimiento");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel13.setText("Género");
+        GenerjpHome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        GenerjpHome.setForeground(new java.awt.Color(102, 102, 102));
+        GenerjpHome.setText("Género");
 
         lblGender.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblGender.setText("Not found");
@@ -164,18 +186,18 @@ public class jpHome extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2)
+                            .addComponent(NameUserjpHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ProfilejpHome)
                             .addComponent(lblNickname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Namesjphome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(LastNamesjpHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblLastName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EmailjpHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BirthDayjpHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(GenerjpHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(98, 98, 98)
@@ -186,29 +208,29 @@ public class jpHome extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(ProfilejpHome)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(NameUserjpHome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNickname)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addComponent(Namesjphome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblName)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addComponent(LastNamesjpHome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblLastName)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel9)
+                .addComponent(EmailjpHome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblMail)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel12)
+                .addComponent(BirthDayjpHome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblBirthday)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel13)
+                .addComponent(GenerjpHome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblGender)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
@@ -219,13 +241,13 @@ public class jpHome extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153))));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel4.setText("Membresias");
+        MembershiptitlejpHome.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        MembershiptitlejpHome.setForeground(new java.awt.Color(33, 150, 243));
+        MembershiptitlejpHome.setText("Membresias");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("Tipo de membresia");
+        TypeMembershipjpHome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        TypeMembershipjpHome.setForeground(new java.awt.Color(102, 102, 102));
+        TypeMembershipjpHome.setText("Tipo de membresia");
 
         lblNameMember.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblNameMember.setText("Not found");
@@ -237,13 +259,13 @@ public class jpHome extends javax.swing.JPanel {
         lblDuration.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblDuration.setText("Not found");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("Duracion");
+        DurationjpHome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DurationjpHome.setForeground(new java.awt.Color(102, 102, 102));
+        DurationjpHome.setText("Duracion");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel10.setText("Número de eventos disponibles");
+        AvaibleeventsjpHome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        AvaibleeventsjpHome.setForeground(new java.awt.Color(102, 102, 102));
+        AvaibleeventsjpHome.setText("Número de eventos disponibles");
 
         lblNumEvents.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblNumEvents.setText("Not found");
@@ -265,12 +287,12 @@ public class jpHome extends javax.swing.JPanel {
                                 .addComponent(lblTypeMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblNameMember, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
+                            .addComponent(TypeMembershipjpHome, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MembershiptitlejpHome)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DurationjpHome, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,16 +300,16 @@ public class jpHome extends javax.swing.JPanel {
                                 .addComponent(lblImageEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblNumEvents))
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(AvaibleeventsjpHome, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(MembershiptitlejpHome)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addComponent(TypeMembershipjpHome)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -298,11 +320,11 @@ public class jpHome extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(DurationjpHome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblDuration))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
+                        .addComponent(AvaibleeventsjpHome)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblImageEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -324,7 +346,7 @@ public class jpHome extends javax.swing.JPanel {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jLabel1))
+                        .addComponent(StartJpHome))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -334,7 +356,7 @@ public class jpHome extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(jLabel1)
+                .addComponent(StartJpHome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -351,19 +373,19 @@ public class jpHome extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AvaibleeventsjpHome;
+    private javax.swing.JLabel BirthDayjpHome;
+    private javax.swing.JLabel DurationjpHome;
+    private javax.swing.JLabel EmailjpHome;
+    private javax.swing.JLabel GenerjpHome;
+    private javax.swing.JLabel LastNamesjpHome;
+    private javax.swing.JLabel MembershiptitlejpHome;
+    private javax.swing.JLabel NameUserjpHome;
+    private javax.swing.JLabel Namesjphome;
+    private javax.swing.JLabel ProfilejpHome;
+    private javax.swing.JLabel StartJpHome;
+    private javax.swing.JLabel TypeMembershipjpHome;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;

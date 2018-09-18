@@ -2,17 +2,29 @@ package JPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classUsuario;
 import javaClass.controller;
 import static javaClass.standardization.invokeHome;
+import properties.propiedades;
 
 public class jpWelcome extends javax.swing.JPanel {
 
     boolean start;
     
+    void verificaridioma()
+    {
+     Properties pr = new propiedades (controller.idioma);
+     Titlewelcome.setText(pr.getProperty("Titlewelcome"));
+     btnNext.setText(pr.getProperty("btnNextWelcome"));
+     btnNext1.setText(pr.getProperty("btnNextLogin"));
+
+    }
+    
     public jpWelcome() {
         initComponents();
         start = true;
+        verificaridioma();
     }
 
     @SuppressWarnings("unchecked")
@@ -21,7 +33,7 @@ public class jpWelcome extends javax.swing.JPanel {
 
         lblTN = new javax.swing.JLabel();
         spTop = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
+        Titlewelcome = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -42,9 +54,9 @@ public class jpWelcome extends javax.swing.JPanel {
 
         spTop.setForeground(new java.awt.Color(153, 153, 153));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel1.setText("Bienvenido!!");
+        Titlewelcome.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        Titlewelcome.setForeground(new java.awt.Color(33, 150, 243));
+        Titlewelcome.setText("Bienvenido!!");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/rocket.png"))); // NOI18N
 
@@ -89,7 +101,7 @@ public class jpWelcome extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(87, 87, 87)
-                        .addComponent(jLabel1))
+                        .addComponent(Titlewelcome))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(lblTN))
@@ -114,7 +126,7 @@ public class jpWelcome extends javax.swing.JPanel {
                 .addGap(50, 50, 50)
                 .addComponent(lblTN)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(Titlewelcome)
                 .addGap(95, 95, 95)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -172,9 +184,9 @@ public class jpWelcome extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Titlewelcome;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblTN;
