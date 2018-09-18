@@ -12,6 +12,8 @@ import javaClass.*;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import projectAdmin.pnProjSettings;
+import projectAdmin.projectAdmin;
 import projects.jpProjects;
 import properties.propiedades;
 
@@ -920,6 +922,38 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
+    public void showProject(){
+        disable();
+        pnProj.setBackground(new Color(52, 52, 52));
+        controller.project.setLocation(0,0);
+
+        scrollContainer.setViewportView(controller.project);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
+    public void showProject(int p){
+        disable();
+        pnProj.setBackground(new Color(52, 52, 52));
+        controller.project = new projectAdmin(p);
+        controller.project.setLocation(0,0);
+
+        scrollContainer.setViewportView(controller.project);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
+    public void showProjectSettings(int e){
+        disable();
+        pnProj.setBackground(new Color(52, 52, 52));
+        pnProjSettings setting = new pnProjSettings(e);
+        setting.setLocation(0,0);
+        
+        scrollContainer.setViewportView(setting);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
     private void pnGeneralMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnGeneralMouseReleased
         disable();
         pnGeneral.setBackground(new Color(52, 52, 52));
@@ -1065,9 +1099,21 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
+    public void showYourProjects(boolean search, boolean personal){
+        disable();
+        pnProj.setBackground(new Color(52, 52, 52));
+        jpProjects jpP = new jpProjects(search, personal);
+        jpP.setPreferredSize(new Dimension(980,601));
+        jpP.setLocation(0,0);
+
+        scrollContainer.setViewportView(jpP);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
     public void showYourProjects(boolean search){
         disable();
-        pnEvents.setBackground(new Color(52, 52, 52));
+        pnProj.setBackground(new Color(52, 52, 52));
         jpProjects jpP = new jpProjects(search);
         jpP.setPreferredSize(new Dimension(980,601));
         jpP.setLocation(0,0);

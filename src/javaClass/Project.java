@@ -5,6 +5,9 @@
  */
 package javaClass;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Lenovo
@@ -16,8 +19,11 @@ public class Project {
     private String description;
     private String datetime; 
     private Integer condition;
-    private String teams;
+    private Integer teams;
+    private String color;
+    private byte[] coverImage;
     private String nickname;
+    private List<team> members = new ArrayList<>();
     
       //<editor-fold defaultstate="collapsed" desc="Getter y Setter">
     
@@ -64,11 +70,11 @@ public class Project {
         this.condition = condition;
     }
 
-    public String getTeams() {
+    public Integer getTeams() {
         return teams;
     }
 
-    public void setTeams(String teams) {
+    public void setTeams(Integer teams) {
         this.teams = teams;
     }
 
@@ -79,6 +85,31 @@ public class Project {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public byte[] getCoverImage() {
+        return coverImage;
+    }
+
+    public void setCoverImage(byte[] coverImage) {
+        this.coverImage = coverImage;
+    }
+
+    public List<team> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<team> members) {
+        this.members = members;
+    }
+
     
     
 }
