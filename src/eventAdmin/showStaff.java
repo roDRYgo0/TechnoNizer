@@ -58,9 +58,9 @@ public class showStaff extends javax.swing.JPanel {
         btnAction = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(370, 45));
-        setMinimumSize(new java.awt.Dimension(370, 45));
-        setPreferredSize(new java.awt.Dimension(370, 45));
+        setMaximumSize(new java.awt.Dimension(420, 45));
+        setMinimumSize(new java.awt.Dimension(420, 45));
+        setPreferredSize(new java.awt.Dimension(420, 45));
 
         txtNickname.setAutoscrolls(false);
         txtNickname.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -86,6 +86,7 @@ public class showStaff extends javax.swing.JPanel {
         jLabel4.setText("Nombre de usuario");
 
         iconPos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        iconPos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         iconPos.setText("Administrador");
         iconPos.setMaximumSize(new java.awt.Dimension(35, 35));
         iconPos.setMinimumSize(new java.awt.Dimension(35, 35));
@@ -117,11 +118,13 @@ public class showStaff extends javax.swing.JPanel {
                     .addComponent(spNickname)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(15, 15, 15)
-                        .addComponent(iconPos, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(0, 92, Short.MAX_VALUE))
+                            .addComponent(txtNickname))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(iconPos, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
@@ -134,11 +137,11 @@ public class showStaff extends javax.swing.JPanel {
                         .addGap(0, 0, 0)
                         .addComponent(txtNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(iconPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(iconPos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnAction, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(spNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -166,7 +169,7 @@ public class showStaff extends javax.swing.JPanel {
                     break;
                 }
             }
-            technonizer.TechnoNizer.home.showEvent(idEvent);
+            technonizer.TechnoNizer.home.showEventSettings(idEvent);
         }else{
             standardization.showMessage("cancel", "Imposible eliminar");
         }

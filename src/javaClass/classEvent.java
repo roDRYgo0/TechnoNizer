@@ -21,6 +21,7 @@ public class classEvent {
     private static byte[] coverPicture;
     private static Integer price;
     private static Integer visibility;
+    private static Integer invitation;
     private static String startDateTime;
     private static String endDateTime;
     private static Integer staff;
@@ -34,11 +35,17 @@ public class classEvent {
     public static List<event> eventos = new ArrayList<event>();
     public static List<event> eventosShow = new ArrayList<event>();
     public static List<event> eventosSearch = new ArrayList<event>();
+    public static List<activity> activities = new ArrayList<>();
 
 
-
-    
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static Integer getInvitation() {
+        return invitation;
+    }
+
+    public static void setInvitation(Integer invitation) {
+        classEvent.invitation = invitation;
+    }
     public static String getColor() {
         return color;
     }
@@ -195,7 +202,7 @@ public class classEvent {
     public static boolean select(){
         boolean status = false;
         event evento;
-        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket, e.color FROM events e");
+        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket, e.color, e.invitation FROM events e");
         
         try {
             while(rs.next()){
@@ -213,6 +220,7 @@ public class classEvent {
                 evento.setPlace(rs.getString(11));
                 evento.setQuantityTicket(rs.getInt(12));
                 evento.setColor(rs.getString(13));
+                evento.setInvitation(rs.getInt(14));
                 if(evento.getStaff() == 1){
                     List<staff> staffs = new ArrayList<>();
                     staff s;
@@ -303,9 +311,81 @@ public class classEvent {
         return status;
     }
     
+    public static boolean selectActivity(int idEvent){
+        boolean status = false;
+        List<activity> activiti = new ArrayList<>();
+        activity ac;
+        ResultSet rs = methodsSQL.getExecute("select a.dateTime, a.activity, a.place, a.condition, a.description, a.nickname from activities a where a.idEvent = ?", idEvent);
+        
+        try {
+            while(rs.next()){
+                ac = new activity();
+                ac.setDateTime(rs.getString(1));
+                ac.setActivity(rs.getString(2));
+                ac.setPlace(rs.getString(3));
+                ac.setCondition(rs.getInt(4));
+                ac.setDescription(rs.getString(5));
+                ac.setNickname(rs.getString(6));
+                String[] dateTime = ac.getDateTime().split(" ");
+                ac.setDate(dateTime[0]);
+                ac.setTime(dateTime[1]);
+                activiti.add(ac);
+            }
+            activities.addAll(activiti);
+            status = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return status;
+    }
+    
+    public static boolean updateColor(int idEvent, String color){
+        boolean status = false;
+        status = methodsSQL.execute("update events set color = ? where id = ?", color, idEvent);
+        return status;
+    }
+    
+    public static boolean updateVisibility(int idEvent, int visibility){
+        boolean status = false;
+        status = methodsSQL.execute("update events set visibility = ? where id = ?", visibility, idEvent);
+        return status;
+    }
+    
+    public static boolean updatePlace(int idEvent, String place){
+        boolean status = false;
+        status = methodsSQL.execute("update events set place = ? where id = ?", place, idEvent);
+        return status;
+    }
+    
+    public static boolean updateProfile(int idEvent, byte[] image){
+        boolean status = false;
+        status = methodsSQL.execute("update events set profilePicture = ? where id = ?", image, idEvent);
+        return status;
+    }
+    
+    public static boolean updateCover(int idEvent, byte[] image){
+        boolean status = false;
+        status = methodsSQL.execute("update events set coverPicture = ? where id = ?", image, idEvent);
+        return status;
+    }
+    
+    public static boolean updateInvitation(int idEvent, int invitation){
+        boolean status = false;
+        status = methodsSQL.execute("update events set invitation = ? where id = ?", invitation, idEvent);
+        return status;
+    }
+    
+    
+    public static boolean insertActivitie(String dateTime, String activity, String place, int condition, String description, int idEvent, String nickname){
+        boolean status = false;
+        status = methodsSQL.execute("insert into activities values(?, ?, ?, ?, ?, ?, ?)", dateTime, activity, place, condition, description, idEvent, nickname);
+        return status;
+    }
+    
     public static boolean insert(){
         boolean status = false;
-        status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?)",
+        status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?, 1)",
                 eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition, quantityTicket, place, color);
 
         

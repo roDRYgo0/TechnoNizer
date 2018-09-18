@@ -18,13 +18,21 @@ public class event {
     private String startDateTime;
     private String endDateTime;
     private Integer staff;
+    private Integer invitation;
     private String place;
     private String color;
     private Integer condition;
     private List<classPrice> prices;
     private List<staff> staffs = new ArrayList<>();
-
+    
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public Integer getInvitation() {
+        return invitation;
+    }
+
+    public void setInvitation(Integer invitation) {
+        this.invitation = invitation;
+    }
     public List<staff> getStaffs() {
         return staffs;
     }

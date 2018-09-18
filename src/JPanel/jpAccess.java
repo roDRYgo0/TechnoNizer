@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 import javaClass.*;
-import javafx.scene.input.KeyCode;
 import javax.swing.Timer;
 import properties.propiedades;
 
@@ -322,7 +321,7 @@ public class jpAccess extends javax.swing.JPanel {
     }//GEN-LAST:event_txtUsernameKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        classUsuario.setNickname("ElianFran");
+        classUsuario.setNickname("dev.rodrig");
         ResultSet rs = methodsSQL.getExecute("SELECT password FROM users WHERE nickname = ?",classUsuario.getNickname() );
 
         try {

@@ -1,12 +1,20 @@
 package javaClass;
 
 import jFrame.*;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -14,6 +22,8 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
@@ -29,7 +39,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import technonizer.*;
 import static technonizer.TechnoNizer.*;
 
 /**
@@ -42,27 +51,35 @@ public class standardization {
     controller control = new controller();
     public static byte[] image;
     static Calendar cal= Calendar.getInstance();
+    private final String URLRoot="http://maps.googleapis.com/maps/api/staticmap";
     
     public static void setNowDate(JTextField day, JComboBox month, JTextField year){
-        day.setText(standardization.currentDateTime().getDate()+"");
-        month.setSelectedIndex(standardization.currentDateTime().getMonth()-1);
-        year.setText(standardization.currentDateTime().getYear()+"");
+        day.setText(currentDateTime().getDate()+"");
+        month.setSelectedIndex(currentDateTime().getMonth());
+        year.setText(currentDateTime().getYear()+"");
     }
     
     
     public static Date currentDateTime(){
         cal= Calendar.getInstance();
-        return new Date(cal.get(Calendar.YEAR) , cal.get(Calendar.MONTH)+1, cal.get(Calendar.DATE), cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND));
+        return new Date(cal.get(Calendar.YEAR) , cal.get(Calendar.MONTH), cal.get(Calendar.DATE), cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND));
     }
     
     public static Date currentDate(){
-        cal= Calendar.getInstance();
-        return new Date(cal.get(Calendar.YEAR) , cal.get(Calendar.MONTH)+1, cal.get(Calendar.DATE));
+       Date date1 = null;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            cal= Calendar.getInstance();
+            date1 = sdf.parse(cal.get(Calendar.YEAR)+"-"+(cal.get(Calendar.MONTH)+1)+"-"+cal.get(Calendar.DATE));
+        } catch (ParseException ex) {
+            Logger.getLogger(standardization.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return date1;
     }
     
     public static String getDateTime(){
         cal= Calendar.getInstance();
-        return cal.get(Calendar.YEAR) +"-"+ (cal.get(Calendar.MONTH)+1) +"-"+ cal.get(Calendar.DATE) +" "+ cal.get(Calendar.HOUR) +":"+ cal.get(Calendar.MINUTE) +":"+ cal.get(Calendar.SECOND)+"."+cal.get(Calendar.MILLISECOND);
+        return cal.get(Calendar.YEAR) +"-"+ (cal.get(Calendar.MONTH)) +"-"+ cal.get(Calendar.DATE) +" "+ cal.get(Calendar.HOUR) +":"+ cal.get(Calendar.MINUTE) +":"+ cal.get(Calendar.SECOND)+"."+cal.get(Calendar.MILLISECOND);
     }
     
     
@@ -82,37 +99,30 @@ public class standardization {
     
     public static int compareDate(Date dateEnd, Date dateStart, Date dateCurrent){
         int res= 0;
-        System.out.println(dateCurrent.compareTo(dateStart)+" actual");
-        if(dateCurrent.compareTo(dateStart) > 0)
-            res = -1;
-        else{
-            if(dateEnd.compareTo(dateStart) < 0)
+        if(dateCurrent.before(dateStart)){
+            if(dateEnd.before(dateStart))
+                res = -1;
+        }else{
             res = -1;
         }
         return res;
     }
     
-    public static int compareDate(Date date, Date compareTo){
-        int res= 0;
-        int dateDay = date.getDate();
-        int day = compareTo.getDate();
-        int dateMonth = date.getMonth();
-        int month = compareTo.getMonth();
-        int dateYear = date.getYear();
-        int year = compareTo.getYear();
-        if(dateYear < year)
+    public static int compareDateBefore(Date dateMenor, Date dateMayor){
+        int res;
+        if(dateMenor.before(dateMayor) || dateMenor.equals(dateMayor)){
             res = -1;
-        else
-        {
-            if(dateMonth < month)
-                res = -1;
-            else{
-                if(dateDay < day)
-                    res=-1;
-                else
-                    res = 1;
-            }
-        }
+        }else
+            res = 1;
+        return res;
+    }
+    
+    public static int compareDateAfer(Date dateMenor, Date dateMayor){
+        int res;
+        if(dateMenor.after(dateMayor) || dateMenor.equals(dateMayor)){
+            res = -1;
+        }else
+            res = 1;
         return res;
     }
     
@@ -134,19 +144,40 @@ public class standardization {
         return age;
     }
     
-    public static boolean validateDate(int year, int month, int dayOfMonth){
+    public static boolean validateDate(int year, int month, int dayOfMonth, boolean birthdate){
+        try{
+            if(birthdate){
+                if (year < 1900 || year > cal.get(Calendar.YEAR) - 15)
+                    throw new IllegalArgumentException("Año inválido.");
+                else{
+                    LocalDate today = LocalDate.of(year, month, dayOfMonth);
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    return true;
+                }
+            }else{
+                LocalDate today = LocalDate.of(year, month, dayOfMonth);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                return true;
+            }
+            
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+            return false;
+        }
+    }
+    
+     public static boolean validateDate(int year, int month, int dayOfMonth){
         try{
             if (year < 1900 || year > cal.get(Calendar.YEAR) - 15)
                 throw new IllegalArgumentException("Año inválido.");
             else{
                 LocalDate today = LocalDate.of(year, month, dayOfMonth);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                System.out.println(formatter.format(today));
                 return true;
             }
             
         }catch(Exception ex){
-            System.out.println("Malo");
+            System.out.println(ex.getMessage());
             return false;
         }
     }
@@ -210,7 +241,7 @@ public class standardization {
             BufferedImage image = null;
             InputStream in = new ByteArrayInputStream(bi);
             image = ImageIO.read(in);
-            imgi = new ImageIcon(image.getScaledInstance(150, 150, 0));
+            imgi = new ImageIcon(image);
             
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -294,7 +325,7 @@ public class standardization {
         over.setOpacity(1);
         sLoad.setVisible(false);
     }
-//    
+    
     public static void showMessage(String Image, String Message){
         if(!Image.equals(""))
             mess.changeImage(Image);
@@ -477,7 +508,103 @@ public class standardization {
     }
     
     public static Date getDate(String date){
-        String[] days = date.split("-");
-        return new Date(Integer.parseInt(days[0]), Integer.parseInt(days[1]), Integer.parseInt(days[2]));
+        Date date1 = null;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); //Para declarar valores en nuevos objetos date, usa el mismo formato date que usaste al crear las fechas 
+        try {
+            date1 = sdf.parse(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(standardization.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return date1;
     }
+
+    public static void goToURL(String URL){
+              if (java.awt.Desktop.isDesktopSupported()) {
+               java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
+
+               if (desktop.isSupported(java.awt.Desktop.Action.BROWSE)) {
+
+                   try {
+                       java.net.URI uri = new java.net.URI(URL);
+                       desktop.browse(uri);
+                   } catch (URISyntaxException | IOException ex) {
+                       Logger.getLogger(standardization.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+
+               }
+           }
+       }
+    
+    public static String getDateToString(String date, Date d){
+        String[] days = date.split("-");
+        String dat = "";
+        switch(d.getDay()){
+            case 0:
+                dat+="Domingo, ";
+                break;
+            case 1:
+                dat+="Lunes, ";
+                break;
+            case 2:
+                dat+="Martes, ";
+                break;
+            case 3:
+                dat+="Miércoles, ";
+                break;
+            case 4:
+                dat+="Jueves, ";
+                break;
+            case 5:
+                dat+="Viernes, ";
+                break;
+            case 6:
+                dat+="Sábado, ";
+                break;
+            
+        }
+        dat += days[2]+" ";
+        System.out.println(days[1]+"el mes");
+        switch(days[1]){
+            case "01":
+                dat += "de enero";
+                break;
+            case "02":
+                dat += "de febrero";
+                break;
+            case "03":
+                dat += "de marzo";
+                break;
+            case "04":
+                dat += "de abril";
+                break;
+            case "05":
+                dat += "de mayo";
+                break;
+            case "06":
+                dat += "de junio";
+                break;
+            case "07":
+                dat += "de julio";
+                break;
+            case "08":
+                dat += "de agosto";
+                break;
+            case "09":
+                dat += "de septiembre";
+                break;
+            case "10":
+                dat += "de octubre";
+                break;
+            case "11":
+                dat += "de noviembre";
+                break;
+            case "12":
+                dat += "de diciembre";
+                break;
+        }
+        dat +=" de "+days[0];
+        return dat;
+    }
+    
 }

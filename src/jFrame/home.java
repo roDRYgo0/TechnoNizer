@@ -1,13 +1,14 @@
 package jFrame;
 
-import allEvent.eventAdmin;
+import eventAdmin.eventAdmin;
 import JPanel.*;
+import eventAdmin.*;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.util.Properties;
 import javaClass.*;
-import static javaClass.controller.jpH;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -65,7 +66,7 @@ public final class home extends javax.swing.JFrame {
         if(classUsuario.getCondition()==1)
             lblAlert.setIcon(new controller().changeImage("/imagenes/alert.png", 28, 28));
         
-        jpH = new jpHome(true, this);
+        jpHome jpH = new jpHome(true, this);
         jpH.setLocation(0,0);
 
         scrollContainer.setViewportView(jpH);
@@ -705,12 +706,7 @@ public final class home extends javax.swing.JFrame {
                 .addContainerGap(107, Short.MAX_VALUE))
         );
 
-        scrollContainer.setBackground(new java.awt.Color(255, 51, 255));
         scrollContainer.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollContainer.setMaximumSize(new java.awt.Dimension(456000, 456000));
-        scrollContainer.setMinimumSize(new java.awt.Dimension(0, 0));
-        scrollContainer.setPreferredSize(new java.awt.Dimension(1, 1));
-        scrollContainer.setWheelScrollingEnabled(false);
 
         javax.swing.GroupLayout rootpaneLayout = new javax.swing.GroupLayout(rootpane);
         rootpane.setLayout(rootpaneLayout);
@@ -720,7 +716,8 @@ public final class home extends javax.swing.JFrame {
             .addGroup(rootpaneLayout.createSequentialGroup()
                 .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(scrollContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(scrollContainer)
+                .addGap(0, 0, 0))
         );
         rootpaneLayout.setVerticalGroup(
             rootpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -728,7 +725,10 @@ public final class home extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(rootpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(scrollContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(rootpaneLayout.createSequentialGroup()
+                        .addGap(0, 0, 0)
+                        .addComponent(scrollContainer)
+                        .addGap(0, 0, 0))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -815,13 +815,22 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
-    public void showYourEvents(boolean search){
+    public void showYourEvents(boolean search){       
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
         controller.jpE = new jpEvent(search);
         controller.jpE.setPreferredSize(new Dimension(980,601));
         controller.jpE.setLocation(0,0);
 
+        scrollContainer.setViewportView(controller.jpE);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
+    public void showYourEvents(){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+ 
         scrollContainer.setViewportView(controller.jpE);
         scrollContainer.revalidate();
         scrollContainer.repaint();
@@ -838,13 +847,75 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
+    public void showEventSettings(int e){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        pnSettings setting = new pnSettings(e);
+        setting.setLocation(0,0);
+        
+        scrollContainer.setViewportView(setting);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
+    public void showEventActivities(int e){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        pnActivities activities = new pnActivities(e);
+        activities.setLocation(0,0);
+        
+        scrollContainer.setViewportView(activities);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    public void showEventTask(int e){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        pnTasks tasks = new pnTasks(e);
+        tasks.setLocation(0,0);
+        
+        scrollContainer.setViewportView(tasks);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    public void showEventProblems(int e){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        pnSettings setting = new pnSettings(e);
+        setting.setLocation(0,0);
+        
+        scrollContainer.setViewportView(setting);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    public void showEventAnnoucements(int e){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        pnSettings setting = new pnSettings(e);
+        setting.setLocation(0,0);
+        
+        scrollContainer.setViewportView(setting);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
     public void showEvent(int e){
         disable();
-        pnMem.setBackground(new Color(52, 52, 52));
-        eventAdmin event = new eventAdmin(e);
-        event.setLocation(0,0);
+        pnEvents.setBackground(new Color(52, 52, 52));
+        controller.event = new eventAdmin(e);
+        controller.event.setLocation(0,0);
 
-        scrollContainer.setViewportView(event);
+        scrollContainer.setViewportView(controller.event);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
+    public void showEvent(){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        controller.event.setLocation(0,0);
+
+        scrollContainer.setViewportView(controller.event);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
@@ -852,7 +923,7 @@ public final class home extends javax.swing.JFrame {
     private void pnGeneralMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnGeneralMouseReleased
         disable();
         pnGeneral.setBackground(new Color(52, 52, 52));
-        jpH = new jpHome(true, this);
+        jpHome jpH = new jpHome(true, this);
         jpH.setLocation(0,0);
 
         scrollContainer.setViewportView(jpH);
