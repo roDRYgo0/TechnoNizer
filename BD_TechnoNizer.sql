@@ -81,8 +81,12 @@ description nvarchar(200),
 datetime nvarchar(30) not null,
 condition int not null,
 teams int not null,
+color nvarchar(15),
+coverImage image,
 nickname nvarchar(50) not null references users(nickname)
 )
+
+select * from projects
 
 create table teams(
 id int identity(1,1) primary key not null,
@@ -181,7 +185,7 @@ idCardas int not null references cards(id)
  nickname nvarchar(50) not null
  )
 
-
+ delete from activities
 
  select * from activities
 
