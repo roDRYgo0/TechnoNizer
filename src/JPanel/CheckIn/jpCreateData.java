@@ -9,22 +9,68 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import properties.propiedades;
 
 public class jpCreateData extends javax.swing.JPanel {
     
-    
+    void verificaridioma()
+    {
+            Properties pr = new propiedades (controller.idioma);
+            Title.setText(pr.getProperty("Title"));
+            NameCreate.setText(pr.getProperty("NameCreate"));
+            LastnameCreate.setText(pr.getProperty("LastnameCreate"));
+            BornCreate.setText(pr.getProperty("BornCreate"));
+            DayCreate.setText(pr.getProperty("DayCreate"));
+            MonthCreate.setText(pr.getProperty("MonthCreate"));
+            YearCreate.setText(pr.getProperty("YearCreate"));
+            GenderCreate.setText(pr.getProperty("GenderCreate"));
+            btnBack.setText(pr.getProperty("btnBack"));
+            btnNext.setText(pr.getProperty("BtnNext"));
+            cmbMes.removeAllItems();
+            cmbGender.removeAllItems();
+            String meses[]={
+            pr.getProperty("firstmonth"),
+            pr.getProperty("secondmonth"),
+            pr.getProperty("thirdmonth"),
+            pr.getProperty("fourmonth"),
+            pr.getProperty("fivemonth"),
+            pr.getProperty("sixmonth"),
+            pr.getProperty("sevenmonth"),
+            pr.getProperty("eightmonth"),
+            pr.getProperty("ninemonth"),
+            pr.getProperty("tenmonth"),
+            pr.getProperty("elevenmonth"),
+            pr.getProperty("twelvemonth")
+            };
+            for(int i=0;i<meses.length;i++)
+            {
+                cmbMes.addItem(meses[i]);
+            }
+            
+            String generos[]={
+            pr.getProperty("Mascu"),
+            pr.getProperty("Feme")
+            };
+            
+           for(int x=0; x<generos.length;x++)
+           {
+           cmbGender.addItem(generos[x]);
+           }
+    }    
     public jpCreateData() {
         initComponents();
-        
+       
         iconBirthday.setIcon(new controller().changeImage("/imagenes/birthday.png", 35, 35));
         iconGender.setIcon(new controller().changeImage("/imagenes/gender.png", 35, 35));
         
         loadData();
         cargarComboBox();
+        verificaridioma();
         cmbMes.setSelectedIndex(-1);
     }
 
@@ -34,7 +80,7 @@ public class jpCreateData extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        Title = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         cmbGender = new javax.swing.JComboBox<>();
@@ -43,17 +89,17 @@ public class jpCreateData extends javax.swing.JPanel {
         spName = new javax.swing.JSeparator();
         txtLastName = new javax.swing.JTextField();
         spLastName = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        NameCreate = new javax.swing.JLabel();
+        LastnameCreate = new javax.swing.JLabel();
+        BornCreate = new javax.swing.JLabel();
+        GenderCreate = new javax.swing.JLabel();
         txtDia = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        DayCreate = new javax.swing.JLabel();
         spDay = new javax.swing.JSeparator();
         cmbMes = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
+        MonthCreate = new javax.swing.JLabel();
         txtAnio = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        YearCreate = new javax.swing.JLabel();
         spYear = new javax.swing.JSeparator();
         iconBirthday = new javax.swing.JLabel();
         iconGender = new javax.swing.JLabel();
@@ -64,8 +110,8 @@ public class jpCreateData extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(420, 603));
         setPreferredSize(new java.awt.Dimension(420, 603));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("¡Háblanos más sobre ti!");
+        Title.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        Title.setText("¡Háblanos más sobre ti!");
 
         btnBack.setBackground(new java.awt.Color(255, 255, 255));
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -139,13 +185,13 @@ public class jpCreateData extends javax.swing.JPanel {
 
         spLastName.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel2.setText("Nombres");
+        NameCreate.setText("Nombres");
 
-        jLabel3.setText("Apellidos");
+        LastnameCreate.setText("Apellidos");
 
-        jLabel4.setText("Fecha de nacimiento");
+        BornCreate.setText("Fecha de nacimiento");
 
-        jLabel7.setText("Género");
+        GenderCreate.setText("Género");
 
         txtDia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtDia.setText("12");
@@ -164,14 +210,14 @@ public class jpCreateData extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setText("Día");
+        DayCreate.setText("Día");
 
         spDay.setForeground(new java.awt.Color(204, 204, 204));
 
         cmbMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         cmbMes.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        jLabel6.setText("Mes");
+        MonthCreate.setText("Mes");
 
         txtAnio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtAnio.setText("2000");
@@ -187,7 +233,7 @@ public class jpCreateData extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setText("Año");
+        YearCreate.setText("Año");
 
         spYear.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -220,11 +266,11 @@ public class jpCreateData extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7)
+                                    .addComponent(GenderCreate)
                                     .addComponent(iconBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, 0)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
+                                    .addComponent(DayCreate)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,12 +278,12 @@ public class jpCreateData extends javax.swing.JPanel {
                                             .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
+                                    .addComponent(MonthCreate)
                                     .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtAnio)
-                                    .addComponent(jLabel8)
+                                    .addComponent(YearCreate)
                                     .addComponent(spYear, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(iconGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -262,42 +308,42 @@ public class jpCreateData extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtName)
                                 .addComponent(spName, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                            .addComponent(BornCreate)
+                            .addComponent(LastnameCreate)
+                            .addComponent(NameCreate)
+                            .addComponent(Title))
                         .addGap(0, 57, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel1)
+                .addComponent(Title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(NameCreate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(spName, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)
+                        .addComponent(LastnameCreate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(spLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
+                        .addComponent(BornCreate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
+                                            .addComponent(DayCreate)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(iconBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -305,18 +351,18 @@ public class jpCreateData extends javax.swing.JPanel {
                                     .addComponent(spDay, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
+                                        .addComponent(YearCreate)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(10, 10, 10))
                                     .addComponent(spYear, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(MonthCreate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
+                        .addComponent(GenderCreate)
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -487,6 +533,14 @@ public class jpCreateData extends javax.swing.JPanel {
     //<editor-fold defaultstate="collapsed" desc="compiled code">
         
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BornCreate;
+    private javax.swing.JLabel DayCreate;
+    private javax.swing.JLabel GenderCreate;
+    private javax.swing.JLabel LastnameCreate;
+    private javax.swing.JLabel MonthCreate;
+    private javax.swing.JLabel NameCreate;
+    private javax.swing.JLabel Title;
+    private javax.swing.JLabel YearCreate;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnNext;
     private javax.swing.JComboBox<String> cmbGender;
@@ -494,14 +548,6 @@ public class jpCreateData extends javax.swing.JPanel {
     private javax.swing.JLabel iconBirthday;
     private javax.swing.JLabel iconGender;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblImage;
     private javax.swing.JSeparator spDay;
     private javax.swing.JSeparator spLastName;

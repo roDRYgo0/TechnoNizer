@@ -1,16 +1,32 @@
 package JPanel;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classAdmin;
 import javaClass.classContact;
 import javaClass.classUsuario;
+import javaClass.controller;
 import static javaClass.standardization.invokeAdmin;
 import static javaClass.standardization.invokeHome;
+import properties.propiedades;
 
 public class jpChoose extends javax.swing.JPanel {
     
+    void verificaridioma()
+    {
+    Properties pr = new propiedades (controller.idioma);
+    AccesLbl.setText(pr.getProperty("AccesLbl"));
+    UserChoose.setText(pr.getProperty("UserChoose"));
+    ChoosePAdmin.setText(pr.getProperty("ChoosePAdmin"));
+    btnNext.setText(pr.getProperty("btnNextChoose"));
+    btnNext1.setText(pr.getProperty("btnNext1Choose"));
+
+    
+    }
+    
     public jpChoose() {
         initComponents();
+        verificaridioma();
   
     }
 
@@ -20,14 +36,14 @@ public class jpChoose extends javax.swing.JPanel {
 
         lblTN = new javax.swing.JLabel();
         spTop = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
+        AccesLbl = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnNext1 = new javax.swing.JButton();
         progress = new rojerusan.componentes.RSProgressMaterial();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        UserChoose = new javax.swing.JLabel();
+        ChoosePAdmin = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -38,9 +54,9 @@ public class jpChoose extends javax.swing.JPanel {
 
         spTop.setForeground(new java.awt.Color(153, 153, 153));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 29)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel1.setText("Como quieres acceder");
+        AccesLbl.setFont(new java.awt.Font("Tahoma", 1, 25)); // NOI18N
+        AccesLbl.setForeground(new java.awt.Color(33, 150, 243));
+        AccesLbl.setText("Como quieres acceder");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/username.png"))); // NOI18N
 
@@ -74,13 +90,13 @@ public class jpChoose extends javax.swing.JPanel {
         progress.setAnchoProgress(6);
         progress.setPreferredSize(new java.awt.Dimension(34, 34));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel3.setText("Usuario");
+        UserChoose.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        UserChoose.setForeground(new java.awt.Color(33, 150, 243));
+        UserChoose.setText("Usuario");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel5.setText("Panel administrativo");
+        ChoosePAdmin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ChoosePAdmin.setForeground(new java.awt.Color(33, 150, 243));
+        ChoosePAdmin.setText("Panel administrativo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -92,7 +108,7 @@ public class jpChoose extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(AccesLbl)
                     .addComponent(lblTN)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(106, 106, 106)
@@ -100,12 +116,12 @@ public class jpChoose extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
+                            .addComponent(ChoosePAdmin)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3)
+                            .addComponent(UserChoose)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -118,10 +134,10 @@ public class jpChoose extends javax.swing.JPanel {
                 .addComponent(spTop, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(lblTN)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(AccesLbl)
                 .addGap(41, 41, 41)
-                .addComponent(jLabel3)
+                .addComponent(UserChoose)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -129,7 +145,7 @@ public class jpChoose extends javax.swing.JPanel {
                         .addGap(26, 26, 26)
                         .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(52, 52, 52)
-                .addComponent(jLabel5)
+                .addComponent(ChoosePAdmin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
@@ -167,13 +183,13 @@ public class jpChoose extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AccesLbl;
+    private javax.swing.JLabel ChoosePAdmin;
+    private javax.swing.JLabel UserChoose;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblTN;
     private rojerusan.componentes.RSProgressMaterial progress;
     private javax.swing.JSeparator spTop;
