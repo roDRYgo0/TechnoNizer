@@ -4,17 +4,25 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import javaClass.Project;
-import javaClass.classEvent;
 import javaClass.classProjects;
 import javaClass.controller;
 
 public class jpProjects extends javax.swing.JPanel {
 
     int paneles;
+    static boolean current_personal_state = false;
     
     public jpProjects(boolean start) {
+        this(start, current_personal_state);
+    }
+    
+    public jpProjects(boolean start, boolean personal) {
+        current_personal_state = personal;
         initComponents();
-        insertarPaneles(classProjects.projects.size(), start);
+        
+        classProjects.onlyPersonal(personal);
+        
+        insertarPaneles(classProjects.projectsShow.size(), start);
         load();
     }
     
@@ -202,12 +210,12 @@ public class jpProjects extends javax.swing.JPanel {
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
         if(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE && txtSearch.getText().trim().isEmpty() || evt.getKeyCode() == KeyEvent.VK_DELETE && txtSearch.getText().trim().isEmpty())
-            insertarPaneles(classProjects.projects.size(), false);
+            insertarPaneles(classProjects.projectsShow.size(), false);
         else if(evt.getKeyCode() == KeyEvent.VK_DELETE && txtSearch.getText().length() == 1 || evt.getKeyCode() == KeyEvent.VK_BACK_SPACE && txtSearch.getText().length() == 1)
-            insertarPaneles(classProjects.projects.size(), false);
+            insertarPaneles(classProjects.projectsShow.size(), false);
         else{
             classProjects.projectsSearch.clear();
-            for(Project e:classProjects.projects){
+            for(Project e:classProjects.projectsShow){
                 if(e.getName().toLowerCase().contains(txtSearch.getText().toLowerCase())){
                     classProjects.projectsSearch.add(e);
                 }else{

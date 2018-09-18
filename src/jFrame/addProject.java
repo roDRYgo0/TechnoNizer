@@ -1,8 +1,6 @@
 package jFrame;
 
 import java.awt.Color;
-import java.util.Date;
-import javaClass.classEvent;
 import javaClass.classProjects;
 import javaClass.classUsuario;
 import javaClass.controller;
@@ -16,11 +14,11 @@ import javaClass.standardization;
 
 public class addProject extends javax.swing.JFrame {
 
+    byte[] cover;
 
     public addProject() {
         initComponents();
     }
-    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -242,27 +240,16 @@ public class addProject extends javax.swing.JFrame {
         {
             classProjects.setName(txtProject.getText());
             classProjects.setDescription(txtDescription.getText());
+            classProjects.setCoverImage(cover);
 
             if(methodsSQL.exists("SELECT name FROM projects WHERE name = ?", txtProject.getText()))
                 standardization.showMessage("cancel","Ya existe este proyecto",this);
             else{
-                if(classProjects.insert()){
-                    new Thread(()->{
-                        classProjects.select();
-
-                        technonizer.TechnoNizer.home.showYourProjects(false);
-                        controller.rootFrame = technonizer.TechnoNizer.home;
-                        standardization.hide(controller.addPj);
-                        standardization.showMessage("ok","Ingresado correctamente");
-                    }).start();
-                }
-                else
-                    standardization.showMessage("cancel","No se logro ingresae",this);
+                standardization.hide(controller.addPj);
+                controller.addPjDetails = new AddProjectDetails();
+                standardization.show(controller.addPjDetails);
+                controller.rootFrame = controller.addPjDetails;
             }
-            
-           
-
-
         }
     }//GEN-LAST:event_btnNext1ActionPerformed
 

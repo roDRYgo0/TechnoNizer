@@ -2,6 +2,7 @@ package javaClass;
 
 import eventAdmin.showEvent;
 import eventAdmin.eventAdmin;
+import projectAdmin.projectAdmin;
 import JPanel.CheckIn.jpMembership;
 import JPanel.*;
 import JPanel.CheckIn.*;
@@ -13,6 +14,7 @@ import admin.jpSecurityUser;
 import event.addPrice;
 import event.price;
 import jFrame.AddEventInfo;
+import jFrame.AddProjectDetails;
 import jFrame.addProject;
 import jFrame.addReminderGral;
 import jFrame.addReminderGral1;
@@ -64,6 +66,8 @@ public class controller {
     
       
     public static addProject addPj;
+    public static AddProjectDetails addPjDetails;
+    public static projectAdmin project;
     
     public static admin.userGrid userGrid;
     public static admin.userList userList;
