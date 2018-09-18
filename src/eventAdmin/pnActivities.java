@@ -1,29 +1,84 @@
 package eventAdmin;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import javaClass.activity;
 import javaClass.classEvent;
 import javaClass.controller;
+import javaClass.event;
 import javaClass.standardization;
 
 public class pnActivities extends javax.swing.JPanel {
 
     int idEvent;
     byte[] image, imageCover;
+    int days;
     
     public pnActivities(int idEvent) {
         initComponents();
         this.idEvent = idEvent;  
         scrollContainer.getVerticalScrollBar().setUnitIncrement(16);
         
-        load();
+        load(classEvent.eventosShow.get(idEvent));
     }
 
-    void load(){
+    void load(event event){            
+        
+        
+        Collections.sort(classEvent.activities, new Comparator<activity>(){
+            @Override
+            public int compare(activity o1, activity o2) {
+                return ( (o1.getDateTime().compareTo(o2.getDateTime()) > 0)? 1: (o1.getDateTime().compareTo(o2.getDateTime()) < 0) ? -1 : 0 );
+            }
+        });
+
         for(int i = 0; i < classEvent.activities.size(); i++){
-            pnContainer.add(new showActivitie(i));
+            if(i == 0){
+                days = getDays(classEvent.activities.get(i));
+                asignar(i);
+                pnContainer.add(new showActivitie(i));
+            }else{
+                if(days == getDays(classEvent.activities.get(i))){
+                    pnContainer.add(new showActivitie(i));
+                }else{
+                    days = getDays(classEvent.activities.get(i));
+                    asignar(i);
+                    pnContainer.add(new showActivitie(i));
+                }
+            }
         }
         
         pnContainer.revalidate();
         pnContainer.repaint();
+    }
+    
+    void asignar(int i){
+        switch(days){
+            case -2:
+                pnContainer.add(new date("Antier"));
+                break;
+            case -1:
+                pnContainer.add(new date("Ayer"));
+                break;
+            case 0:
+                pnContainer.add(new date("Hoy"));
+                break;
+            case 1:
+                pnContainer.add(new date("Mañana"));
+                break;
+            case 2:
+                pnContainer.add(new date("Pasado mañana"));
+                break;
+            default:
+                pnContainer.add(new date(standardization.getDateToString(classEvent.activities.get(i).getDate(),  standardization.getDate(classEvent.activities.get(i).getDate()))));
+                break;
+        }
+    }
+    
+    int getDays(activity ac){
+            return standardization.numberDays(standardization.currentDate(), standardization.getDate(ac.getDate()));
     }
 
     @SuppressWarnings("unchecked")

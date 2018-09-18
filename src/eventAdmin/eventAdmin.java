@@ -71,12 +71,19 @@ public class eventAdmin extends javax.swing.JPanel {
         loadMenu();
         loadPrice(event);
         loadStaff(event);
+        loadActivity();
         loadPlace();
         loadFooter();
     }
     
     void loadMenu(){
         pnContainer.add(new pnMenu(idEvent));
+        pnContainer.revalidate();
+        pnContainer.repaint();
+    }
+    
+    void loadActivity(){
+        pnContainer.add(new pnActivity(idEvent));
         pnContainer.revalidate();
         pnContainer.repaint();
     }

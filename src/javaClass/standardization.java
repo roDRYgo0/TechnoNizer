@@ -593,6 +593,33 @@ public class standardization {
             case "09":
                 dat += "de septiembre";
                 break;
+            case "1":
+                dat += "de enero";
+                break;
+            case "2":
+                dat += "de febrero";
+                break;
+            case "3":
+                dat += "de marzo";
+                break;
+            case "4":
+                dat += "de abril";
+                break;
+            case "5":
+                dat += "de mayo";
+                break;
+            case "6":
+                dat += "de junio";
+                break;
+            case "7":
+                dat += "de julio";
+                break;
+            case "8":
+                dat += "de agosto";
+                break;
+            case "9":
+                dat += "de septiembre";
+                break;
             case "10":
                 dat += "de octubre";
                 break;
@@ -605,6 +632,14 @@ public class standardization {
         }
         dat +=" de "+days[0];
         return dat;
+    }
+    
+    public static String getTime(String time){
+        String[] Time = time.split(":");
+        if(Integer.parseInt(Time[0]) > 12)
+            return ( Integer.parseInt(Time[0])-12 )+":"+Time[1]+ " PM";
+        else
+            return Time[0]+":"+Time[1]+" AM";
     }
     
 }

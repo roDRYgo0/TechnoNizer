@@ -285,6 +285,7 @@ public class AddActivitie extends javax.swing.JFrame {
         txtDayStart2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDayStart2.setText(":");
         txtDayStart2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtDayStart2.setFocusable(false);
 
         txtMinute.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtMinute.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -381,7 +382,7 @@ public class AddActivitie extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel16.setText("Fecha y hora del evento");
+        jLabel16.setText("Fecha del evento");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -456,10 +457,14 @@ public class AddActivitie extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(end, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel16))
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(end, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -552,7 +557,7 @@ public class AddActivitie extends javax.swing.JFrame {
                                         .addGap(1, 1, 1)
                                         .addComponent(spMinute, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(iconClock, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(start)
@@ -601,7 +606,7 @@ public class AddActivitie extends javax.swing.JFrame {
 
     private void txtPlaceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPlaceFocusLost
         spPlace.setBackground(Color.white);
-        if(txtPlace.getText().trim().length() < 15 && !txtPlace.getText().trim().isEmpty()){
+        if(txtPlace.getText().trim().length() < 4 && !txtPlace.getText().trim().isEmpty()){
             standardization.showMessage("cancel", "Dirección invalida", this);
             txtPlace.setText("");
         }
@@ -638,16 +643,8 @@ public class AddActivitie extends javax.swing.JFrame {
                             String description = txtDescription.getText();
                             int id = classEvent.eventosShow.get(idEvent).getId();
                             if(classEvent.insertActivitie(dateTime, activity, place, visibility, description, id, classUsuario.getNickname())){
-                                activity ac = new activity();
-                                ac.setDateTime(dateTime);
-                                ac.setActivity(activity);
-                                ac.setPlace(place);
-                                ac.setCondition(visibility);
-                                ac.setDescription(description);
-                                ac.setNickname(classUsuario.getNickname());
-                                ac.setDate(txtYearStart.getText()+"-"+( ((cmbMonthStart.getSelectedIndex()+1)<10)?"0"+(cmbMonthStart.getSelectedIndex()+1):(cmbMonthStart.getSelectedIndex()+1) )+"-"+txtDayStart.getText());
-                                ac.setTime(((horary == 0)?txtHour.getText():(Integer.parseInt(txtHour.getText())+12)+":")+txtMinute.getText()+":00");
-                                classEvent.activities.add(ac);
+                                classEvent.activities.clear();
+                                classEvent.selectActivity(classEvent.eventosShow.get(idEvent).getId());
                                 technonizer.TechnoNizer.home.showEventActivities(idEvent);
                                 controller.rootFrame = technonizer.TechnoNizer.home;
                                 standardization.hide(this);
@@ -774,7 +771,8 @@ public class AddActivitie extends javax.swing.JFrame {
     boolean camposVacios(){
         if(txtActivitie.getText().trim().isEmpty() || txtPlace.getText().trim().isEmpty() || txtDescription.getText().trim().isEmpty()
                 || txtDayStart.getText().trim().isEmpty() || txtYearStart.getText().trim().isEmpty() || txtHour.getText().trim().isEmpty()
-                || txtMinute.getText().trim().isEmpty())
+                || txtMinute.getText().trim().isEmpty() || Integer.parseInt(txtHour.getText())>12 || Integer.parseInt(txtHour.getText()) == 0
+                || Integer.parseInt(txtMinute.getText()) == 0 || Integer.parseInt(txtMinute.getText()) > 59)
             return true;
         else
             return false;
