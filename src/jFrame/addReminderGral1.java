@@ -28,6 +28,7 @@ public class addReminderGral1 extends javax.swing.JFrame {
         reminder = n;
         loadImage();
         jtId.setText((classReminder.reminders.get(n).getReminder()));
+        txtReminder.setText(classReminder.getReminder());
         
     }
 
@@ -195,7 +196,7 @@ public class addReminderGral1 extends javax.swing.JFrame {
         txtReminder.setColumns(20);
         txtReminder.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         txtReminder.setRows(5);
-        txtReminder.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        txtReminder.setBorder(null);
         jScrollPane1.setViewportView(txtReminder);
 
         txtYearEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -395,7 +396,7 @@ public class addReminderGral1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-      
+       
     }//GEN-LAST:event_btnNext1ActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
@@ -454,7 +455,9 @@ public class addReminderGral1 extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDayEndKeyTyped
 
     private void btnNext1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNext1MouseReleased
-         standardization.hide(controller.gralReminder);
+         standardization.hide(controller.gralReminder1);
+         
+        
     }//GEN-LAST:event_btnNext1MouseReleased
 
 

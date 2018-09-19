@@ -2,14 +2,10 @@ package jFrame;
 
 import java.awt.Color;
 import java.util.Date;
-import javaClass.classEvent;
 import javaClass.classReminder;
 import javaClass.classUsuario;
 import javaClass.controller;
-import javaClass.reminder;
 import javaClass.standardization;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  * @author Alexg

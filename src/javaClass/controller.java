@@ -72,6 +72,7 @@ public class controller {
     public static admin.userGrid userGrid;
     public static admin.userList userList;
     public static reminderGrid reminderGrid;
+    public static remmindersGridds remmindersGridds;
     public static reminderList reminderList;
     
     public static jpSecurityQuestionsAdmin jpSeQuAdm;
