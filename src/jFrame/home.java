@@ -37,12 +37,11 @@ public final class home extends javax.swing.JFrame {
     ProjectsHome.setText(pr.getProperty("ProjectsHome"));
     DiaryHome.setText(pr.getProperty("DiaryHome"));
     lblImageUserTop.setText(pr.getProperty("lblImageUserTop"));
-    
-    
     }
     
     public home(boolean load) {
         initComponents();
+        verificaridioma();
         new Thread(()->{
             classContact.select();
             classReminder.select();
@@ -55,12 +54,14 @@ public final class home extends javax.swing.JFrame {
         if(load){
             System.out.println("listo");
         }
-        else
+        else 
+           
             classUsuario.select();
         controller.rootFrame = this;
-        this.internet = logIn.internet;
-        load();
+        this.internet = logIn.internet; 
         verificaridioma();
+        load();
+       
     }
     
     void load(){        
@@ -93,7 +94,7 @@ public final class home extends javax.swing.JFrame {
         lblAgenda.setIcon(new controller().changeImage("/imagenes/agenda.png", 24, 24));
         if(classUsuario.getCondition()==1){
             lblImageUserTop.setIcon(new controller().changeImage("/imagenes/alert.png", 24, 24));
-            lblImageUserTop.setText("mejor si afuera");
+            lblImageUserTop.setText("Activa tu cuenta");
             pnEvents.setBackground(new Color(64, 64, 64));
             pnProj.setBackground(new Color(64, 64, 64));
             pnAgenda.setBackground(new Color(64, 64, 64));
@@ -176,10 +177,20 @@ public final class home extends javax.swing.JFrame {
 
         itemSpanish.setText("Español");
         itemSpanish.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        itemSpanish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSpanishActionPerformed(evt);
+            }
+        });
         popupLenguage.add(itemSpanish);
 
         itemEnglish.setText("Ingles");
         itemEnglish.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        itemEnglish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEnglishActionPerformed(evt);
+            }
+        });
         popupLenguage.add(itemEnglish);
 
         itemSettings.setText("Cerrar sesión");
@@ -718,8 +729,7 @@ public final class home extends javax.swing.JFrame {
             .addGroup(rootpaneLayout.createSequentialGroup()
                 .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(scrollContainer)
-                .addGap(0, 0, 0))
+                .addComponent(scrollContainer))
         );
         rootpaneLayout.setVerticalGroup(
             rootpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -727,10 +737,7 @@ public final class home extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(rootpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(rootpaneLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(scrollContainer)
-                        .addGap(0, 0, 0))))
+                    .addComponent(scrollContainer)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1030,6 +1037,18 @@ public final class home extends javax.swing.JFrame {
     private void lblLenguageMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLenguageMouseReleased
         popupLenguage.show(this,lblLenguage.getX()-30,lblLenguage.getY()+28);
     }//GEN-LAST:event_lblLenguageMouseReleased
+
+    private void itemSpanishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSpanishActionPerformed
+       controller.idioma="ESPANOL";
+       standardization.invokeHome(true);
+       standardization.showMessage("ok", "IdiomaCambiado");
+    }//GEN-LAST:event_itemSpanishActionPerformed
+
+    private void itemEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEnglishActionPerformed
+         controller.idioma="INGLES";
+       standardization.invokeHome(true);
+       standardization.showMessage("ok", "IdiomaCambiado");
+    }//GEN-LAST:event_itemEnglishActionPerformed
     //</editor-fold>
     
     public void disable (){

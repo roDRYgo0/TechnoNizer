@@ -4,6 +4,7 @@ import JPanel.jpAccess;
 import java.awt.BorderLayout;
 import java.util.Properties;
 import javaClass.controller;
+import javaClass.standardization;
 import properties.propiedades;
 
 
@@ -267,14 +268,17 @@ public class logIn extends javax.swing.JFrame {
     private void itemSpanishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSpanishActionPerformed
        //Espanol
        controller.idioma="ESPANOL";
-       
-      
+       standardization.invokeLogin(true);
+     standardization.showMessage("ok", "IdiomaCambiado");
+
     }//GEN-LAST:event_itemSpanishActionPerformed
 
     private void itemEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEnglishActionPerformed
        //Ingles
         controller.idioma="INGLES";
-         
+        standardization.invokeLogin(true); 
+        standardization.showMessage("ok", "IdiomaCambiado");
+
     }//GEN-LAST:event_itemEnglishActionPerformed
 //</editor-fold>
         

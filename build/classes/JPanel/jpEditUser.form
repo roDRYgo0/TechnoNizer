@@ -112,7 +112,6 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Component id="Lastnamesjpedituser" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="txtLastName" alignment="0" max="32767" attributes="0"/>
                                       <Component id="spLastName" alignment="0" min="-2" pref="345" max="-2" attributes="0"/>
@@ -129,6 +128,7 @@
                                       <Component id="checkEmail" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="birthdayjpedituser" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Lastnamesjpedituser" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>

@@ -46,7 +46,7 @@ public class jpProjects extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        titlejpProjects = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
@@ -61,12 +61,12 @@ public class jpProjects extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(0, 0));
         setPreferredSize(new java.awt.Dimension(980, 601));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Projectos");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        titlejpProjects.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        titlejpProjects.setForeground(new java.awt.Color(255, 0, 0));
+        titlejpProjects.setText("Projectos");
+        titlejpProjects.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabel2MouseReleased(evt);
+                titlejpProjectsMouseReleased(evt);
             }
         });
 
@@ -159,7 +159,7 @@ public class jpProjects extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(titlejpProjects, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(93, 93, 93)
                                 .addComponent(jButton1)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
@@ -174,7 +174,7 @@ public class jpProjects extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(titlejpProjects, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -225,9 +225,9 @@ public class jpProjects extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 
-    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+    private void titlejpProjectsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_titlejpProjectsMouseReleased
         technonizer.TechnoNizer.home.pnProjects();
-    }//GEN-LAST:event_jLabel2MouseReleased
+    }//GEN-LAST:event_titlejpProjectsMouseReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.out.println("tus projectos son..."+classProjects.projects.size());
@@ -237,12 +237,12 @@ public class jpProjects extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel iconSearch;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JScrollPane scrollProjects;
     private javax.swing.JSeparator spSearch;
+    private javax.swing.JLabel titlejpProjects;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

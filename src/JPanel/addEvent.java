@@ -1,22 +1,32 @@
 package JPanel;
 
 import jFrame.AddEventInfo;
+import java.util.Properties;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 /** @author rodri*/
 
 public class addEvent extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr = new propiedades (controller.idioma);
+    addEventLbl.setText(pr.getProperty("addEventLbl"));
+    
+    }
+    
     public addEvent() {
         initComponents();
+        verificaridioma();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        addEventLbl = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(230, 230, 230));
@@ -27,8 +37,8 @@ public class addEvent extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Cantarell", 1, 16)); // NOI18N
-        jLabel1.setText("Agregar nuevo evento");
+        addEventLbl.setFont(new java.awt.Font("Cantarell", 1, 16)); // NOI18N
+        addEventLbl.setText("Agregar nuevo evento");
 
         jLabel2.setFont(new java.awt.Font("Cantarell", 1, 48)); // NOI18N
         jLabel2.setText("+");
@@ -39,7 +49,7 @@ public class addEvent extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(addEventLbl)
                 .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
                 .addGap(72, 72, 72)
@@ -50,7 +60,7 @@ public class addEvent extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(addEventLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -65,7 +75,7 @@ public class addEvent extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel addEventLbl;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

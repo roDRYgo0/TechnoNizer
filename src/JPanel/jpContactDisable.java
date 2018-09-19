@@ -1,9 +1,19 @@
 package JPanel;
 
-public class jpContactDisable extends javax.swing.JPanel {
+import java.util.Properties;
+import javaClass.controller;
+import properties.propiedades;
 
+public class jpContactDisable extends javax.swing.JPanel {
+    void verificaridioma()
+    {
+    Properties pr = new propiedades (controller.idioma);
+    jLabel1.setText(pr.getProperty("jLabel1"));
+
+    }
     public jpContactDisable() {
         initComponents();
+        verificaridioma();
     }
 
     @SuppressWarnings("unchecked")
@@ -27,8 +37,8 @@ public class jpContactDisable extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(83, 83, 83)
-                .addComponent(jLabel1)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

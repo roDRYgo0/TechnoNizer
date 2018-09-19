@@ -1,7 +1,9 @@
 package JPanel;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.controller;
+import properties.propiedades;
 
 
 /**
@@ -10,28 +12,38 @@ import javaClass.controller;
  */
 
 public class MenuEvent extends javax.swing.JPanel {
-
+    
+    void verificaridioma()
+    {
+     Properties pr = new propiedades (controller.idioma);
+     Evenlbl.setText(pr.getProperty("Evenlbl"));
+     lbleventsall.setText(pr.getProperty("lbleventsall"));
+     adminlblevents1.setText(pr.getProperty("adminlblevents1"));
+     adminlblevents2.setText(pr.getProperty("adminlblevents2"));
+     lblmyevents.setText(pr.getProperty("lblmyevents"));
+    }
+    
     public MenuEvent() {
         initComponents();
         
         imagen.setIcon(new controller().changeImage("/imagenes/user.png", 30, 30));
         iconEmail.setIcon(new controller().changeImage("/imagenes/email.png", 30, 30));
-         
+        verificaridioma();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        Evenlbl = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lbleventsall = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        adminlblevents1 = new javax.swing.JLabel();
+        adminlblevents2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        lblmyevents = new javax.swing.JLabel();
         imagen = new javax.swing.JLabel();
         txtMail = new javax.swing.JTextField();
         spMail = new javax.swing.JSeparator();
@@ -42,9 +54,9 @@ public class MenuEvent extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(980, 601));
         setMinimumSize(new java.awt.Dimension(980, 601));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Eventos");
+        Evenlbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        Evenlbl.setForeground(new java.awt.Color(255, 0, 0));
+        Evenlbl.setText("Eventos");
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -55,9 +67,9 @@ public class MenuEvent extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Todos los eventos");
+        lbleventsall.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbleventsall.setForeground(new java.awt.Color(255, 255, 255));
+        lbleventsall.setText("Todos los eventos");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -65,14 +77,14 @@ public class MenuEvent extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel2)
+                .addComponent(lbleventsall)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(jLabel2)
+                .addComponent(lbleventsall)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -83,13 +95,13 @@ public class MenuEvent extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Administar");
+        adminlblevents1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        adminlblevents1.setForeground(new java.awt.Color(255, 255, 255));
+        adminlblevents1.setText("Administar");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("eventos");
+        adminlblevents2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        adminlblevents2.setForeground(new java.awt.Color(255, 255, 255));
+        adminlblevents2.setText("eventos");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -98,27 +110,27 @@ public class MenuEvent extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(adminlblevents1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel5)))
+                        .addComponent(adminlblevents2)))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jLabel3)
+                .addComponent(adminlblevents1)
                 .addGap(0, 0, 0)
-                .addComponent(jLabel5)
+                .addComponent(adminlblevents2)
                 .addGap(61, 61, 61))
         );
 
         jPanel3.setBackground(new java.awt.Color(33, 150, 243));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Mis eventos");
+        lblmyevents.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblmyevents.setForeground(new java.awt.Color(255, 255, 255));
+        lblmyevents.setText("Mis eventos");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -126,14 +138,14 @@ public class MenuEvent extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(jLabel4)
+                .addComponent(lblmyevents)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(jLabel4)
+                .addComponent(lblmyevents)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -173,7 +185,7 @@ public class MenuEvent extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jLabel1))
+                        .addComponent(Evenlbl))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -204,7 +216,7 @@ public class MenuEvent extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(jLabel1)
+                .addComponent(Evenlbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -252,18 +264,18 @@ public class MenuEvent extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Evenlbl;
+    private javax.swing.JLabel adminlblevents1;
+    private javax.swing.JLabel adminlblevents2;
     private javax.swing.JLabel iconEmail;
     private javax.swing.JLabel imagen;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbleventsall;
+    private javax.swing.JLabel lblmyevents;
     private javax.swing.JSeparator spMail;
     private javax.swing.JTextField txtMail;
     // End of variables declaration//GEN-END:variables

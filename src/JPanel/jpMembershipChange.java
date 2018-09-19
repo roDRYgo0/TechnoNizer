@@ -2,9 +2,11 @@ package JPanel;
 
 import jFrame.home;
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class jpMembershipChange extends javax.swing.JPanel {
 
@@ -20,8 +22,27 @@ public class jpMembershipChange extends javax.swing.JPanel {
     int newMembership;
     home house;
     
+    void verificaridioma()
+    {
+   Properties pr = new propiedades (controller.idioma);
+    MembershipChangelbltitle.setText(pr.getProperty("MembershipChangelbltitle"));
+    YourmembershipJpMembershipChange.setText(pr.getProperty("YourmembershipJpMembershipChange"));
+    typeMemberSChange.setText(pr.getProperty("typeMemberSChange"));
+    DurationMemberSChange.setText(pr.getProperty("DurationMemberSChange"));
+    NumberEvenMemberSChange.setText(pr.getProperty("NumberEvenMemberSChange"));
+    btnChangeMembership.setText(pr.getProperty("btnChangeMembershipjpMemberChange"));
+    ConfigMemberships.setText(pr.getProperty("ConfigMemberships"));
+    FreeMembershipJpMC.setText(pr.getProperty("FreeMembershipJpMC"));
+    NumberEvenMembershipJpMC.setText(pr.getProperty("NumberEvenMembershipJpMC"));
+    NumberAdminMembershipJpMC.setText(pr.getProperty("NumberAdminMembershipJpMC"));
+    NumberModsMembershipJpMC.setText(pr.getProperty("NumberModsMembershipJpMC"));
+    NumberInvitesMembershipJpMC.setText(pr.getProperty("NumberInvitesMembershipJpMC"));
+    PriceMembershipJpMC.setText(pr.getProperty("PriceMembershipJpMC"));
+    }
+    
     public jpMembershipChange(home house) {
         initComponents();
+        verificaridioma();
         this.house = house;
         yourMembership = classUsuario.getIdMemberships();
         newMembership = -1;
@@ -43,44 +64,44 @@ public class jpMembershipChange extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        MembershipChangelbltitle = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        YourmembershipJpMembershipChange = new javax.swing.JLabel();
+        typeMemberSChange = new javax.swing.JLabel();
         lblNameMember = new javax.swing.JLabel();
         lblTypeMember = new javax.swing.JLabel();
         lblDuration = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        DurationMemberSChange = new javax.swing.JLabel();
+        NumberEvenMemberSChange = new javax.swing.JLabel();
         lblNumEvents = new javax.swing.JLabel();
         lblImageEvent = new javax.swing.JLabel();
         btnChangeMembership = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        ConfigMemberships = new javax.swing.JLabel();
         pnFree = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        FreeMembershipJpMC = new javax.swing.JLabel();
         pnVip = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        VIPMembershipJpMC = new javax.swing.JLabel();
         pnPremium = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         sortFree = new javax.swing.JLabel();
         sortVip = new javax.swing.JLabel();
         sortPremium = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        DescriptionMembershipJpMC = new javax.swing.JLabel();
+        PriceMembershipJpMC = new javax.swing.JLabel();
         txtDescription = new javax.swing.JTextField();
         spDescription = new javax.swing.JSeparator();
         iconDescription = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        NumberEvenMembershipJpMC = new javax.swing.JLabel();
         iconEvents = new javax.swing.JLabel();
         spNumEvents = new javax.swing.JSeparator();
         txtEvents = new javax.swing.JTextField();
         txtAdmin = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
+        NumberAdminMembershipJpMC = new javax.swing.JLabel();
         iconAdmin = new javax.swing.JLabel();
         spAdmin = new javax.swing.JSeparator();
-        jLabel17 = new javax.swing.JLabel();
+        NumberModsMembershipJpMC = new javax.swing.JLabel();
         iconModer = new javax.swing.JLabel();
         txtModer = new javax.swing.JTextField();
         spMod = new javax.swing.JSeparator();
@@ -89,29 +110,29 @@ public class jpMembershipChange extends javax.swing.JPanel {
         spPrice = new javax.swing.JSeparator();
         spGuest = new javax.swing.JSeparator();
         txtGuest = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
+        NumberInvitesMembershipJpMC = new javax.swing.JLabel();
         iconGuest = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(254, 254, 254));
         setPreferredSize(new java.awt.Dimension(980, 601));
         setRequestFocusEnabled(false);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Membresias");
+        MembershipChangelbltitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        MembershipChangelbltitle.setForeground(new java.awt.Color(255, 0, 0));
+        MembershipChangelbltitle.setText("Membresias");
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153))));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel11.setText("Tu membresia");
+        YourmembershipJpMembershipChange.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        YourmembershipJpMembershipChange.setForeground(new java.awt.Color(33, 150, 243));
+        YourmembershipJpMembershipChange.setText("Tu membresia");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel12.setText("Tipo de membresia");
+        typeMemberSChange.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        typeMemberSChange.setForeground(new java.awt.Color(102, 102, 102));
+        typeMemberSChange.setText("Tipo de membresia");
 
         lblNameMember.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblNameMember.setText("Not found");
@@ -124,13 +145,13 @@ public class jpMembershipChange extends javax.swing.JPanel {
         lblDuration.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblDuration.setText("Not found");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel13.setText("Duracion");
+        DurationMemberSChange.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DurationMemberSChange.setForeground(new java.awt.Color(102, 102, 102));
+        DurationMemberSChange.setText("Duracion");
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel14.setText("Número de eventos disponibles");
+        NumberEvenMemberSChange.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        NumberEvenMemberSChange.setForeground(new java.awt.Color(102, 102, 102));
+        NumberEvenMemberSChange.setText("Número de eventos disponibles");
 
         lblNumEvents.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblNumEvents.setText("Not found");
@@ -148,12 +169,12 @@ public class jpMembershipChange extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DurationMemberSChange, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(37, 37, 37)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(NumberEvenMemberSChange, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addComponent(lblImageEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,17 +184,17 @@ public class jpMembershipChange extends javax.swing.JPanel {
                         .addComponent(lblTypeMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblNameMember, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
+                    .addComponent(typeMemberSChange, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(YourmembershipJpMembershipChange))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11)
+                .addComponent(YourmembershipJpMembershipChange)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel12)
+                .addComponent(typeMemberSChange)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -184,11 +205,11 @@ public class jpMembershipChange extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
+                        .addComponent(DurationMemberSChange)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblDuration))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
+                        .addComponent(NumberEvenMemberSChange)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblImageEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -213,8 +234,8 @@ public class jpMembershipChange extends javax.swing.JPanel {
         jPanel1.setMaximumSize(new java.awt.Dimension(420, 603));
         jPanel1.setMinimumSize(new java.awt.Dimension(420, 603));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Configura las membresias");
+        ConfigMemberships.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        ConfigMemberships.setText("Configura las membresias");
 
         pnFree.setBackground(new java.awt.Color(33, 150, 243));
         pnFree.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
@@ -229,9 +250,9 @@ public class jpMembershipChange extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Gratis");
+        FreeMembershipJpMC.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        FreeMembershipJpMC.setForeground(new java.awt.Color(255, 255, 255));
+        FreeMembershipJpMC.setText("Gratis");
 
         javax.swing.GroupLayout pnFreeLayout = new javax.swing.GroupLayout(pnFree);
         pnFree.setLayout(pnFreeLayout);
@@ -239,14 +260,14 @@ public class jpMembershipChange extends javax.swing.JPanel {
             pnFreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnFreeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addComponent(FreeMembershipJpMC)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         pnFreeLayout.setVerticalGroup(
             pnFreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnFreeLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel3)
+                .addComponent(FreeMembershipJpMC)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -263,9 +284,9 @@ public class jpMembershipChange extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Vip");
+        VIPMembershipJpMC.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        VIPMembershipJpMC.setForeground(new java.awt.Color(255, 255, 255));
+        VIPMembershipJpMC.setText("Vip");
 
         javax.swing.GroupLayout pnVipLayout = new javax.swing.GroupLayout(pnVip);
         pnVip.setLayout(pnVipLayout);
@@ -273,14 +294,14 @@ public class jpMembershipChange extends javax.swing.JPanel {
             pnVipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnVipLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jLabel4)
+                .addComponent(VIPMembershipJpMC)
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         pnVipLayout.setVerticalGroup(
             pnVipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnVipLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel4)
+                .addComponent(VIPMembershipJpMC)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -330,13 +351,13 @@ public class jpMembershipChange extends javax.swing.JPanel {
         sortPremium.setMinimumSize(new java.awt.Dimension(36, 36));
         sortPremium.setPreferredSize(new java.awt.Dimension(36, 36));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel6.setText("Descripcion");
+        DescriptionMembershipJpMC.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        DescriptionMembershipJpMC.setForeground(new java.awt.Color(33, 150, 243));
+        DescriptionMembershipJpMC.setText("Descripcion");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel10.setText("Precio");
+        PriceMembershipJpMC.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        PriceMembershipJpMC.setForeground(new java.awt.Color(33, 150, 243));
+        PriceMembershipJpMC.setText("Precio");
 
         txtDescription.setEditable(false);
         txtDescription.setBackground(new java.awt.Color(255, 255, 255));
@@ -363,9 +384,9 @@ public class jpMembershipChange extends javax.swing.JPanel {
         iconDescription.setMinimumSize(new java.awt.Dimension(25, 25));
         iconDescription.setPreferredSize(new java.awt.Dimension(25, 25));
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel15.setText("Número de eventos");
+        NumberEvenMembershipJpMC.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        NumberEvenMembershipJpMC.setForeground(new java.awt.Color(33, 150, 243));
+        NumberEvenMembershipJpMC.setText("Número de eventos");
 
         iconEvents.setMaximumSize(new java.awt.Dimension(25, 25));
         iconEvents.setMinimumSize(new java.awt.Dimension(25, 25));
@@ -411,9 +432,9 @@ public class jpMembershipChange extends javax.swing.JPanel {
             }
         });
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel16.setText("Número de administradores");
+        NumberAdminMembershipJpMC.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        NumberAdminMembershipJpMC.setForeground(new java.awt.Color(33, 150, 243));
+        NumberAdminMembershipJpMC.setText("Número de administradores");
 
         iconAdmin.setMaximumSize(new java.awt.Dimension(25, 25));
         iconAdmin.setMinimumSize(new java.awt.Dimension(25, 25));
@@ -421,9 +442,9 @@ public class jpMembershipChange extends javax.swing.JPanel {
 
         spAdmin.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel17.setText("Número de moderadores");
+        NumberModsMembershipJpMC.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        NumberModsMembershipJpMC.setForeground(new java.awt.Color(33, 150, 243));
+        NumberModsMembershipJpMC.setText("Número de moderadores");
 
         iconModer.setMaximumSize(new java.awt.Dimension(25, 25));
         iconModer.setMinimumSize(new java.awt.Dimension(25, 25));
@@ -496,9 +517,9 @@ public class jpMembershipChange extends javax.swing.JPanel {
             }
         });
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel18.setText("Número de invitados");
+        NumberInvitesMembershipJpMC.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        NumberInvitesMembershipJpMC.setForeground(new java.awt.Color(33, 150, 243));
+        NumberInvitesMembershipJpMC.setText("Número de invitados");
 
         iconGuest.setMaximumSize(new java.awt.Dimension(25, 25));
         iconGuest.setMinimumSize(new java.awt.Dimension(25, 25));
@@ -510,7 +531,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(96, 96, 96)
-                .addComponent(jLabel1)
+                .addComponent(ConfigMemberships)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
@@ -532,11 +553,11 @@ public class jpMembershipChange extends javax.swing.JPanel {
                                     .addComponent(pnVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(pnPremium, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(DescriptionMembershipJpMC, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel10)
+                                            .addComponent(PriceMembershipJpMC)
                                             .addGap(160, 160, 160))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                             .addComponent(iconPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -554,14 +575,14 @@ public class jpMembershipChange extends javax.swing.JPanel {
                         .addContainerGap(48, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
+                            .addComponent(NumberAdminMembershipJpMC)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(iconAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtAdmin)
                                     .addComponent(spAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel15)
+                            .addComponent(NumberEvenMembershipJpMC)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(iconEvents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
@@ -570,7 +591,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
                                     .addComponent(spNumEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
+                                    .addComponent(NumberModsMembershipJpMC)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(iconModer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, 0)
@@ -579,7 +600,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
                                             .addComponent(spMod))))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel18)
+                                    .addComponent(NumberInvitesMembershipJpMC)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(iconGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, 0)
@@ -592,7 +613,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(ConfigMemberships)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(pnFree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -604,7 +625,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
                     .addComponent(sortVip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sortPremium, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
+                .addComponent(DescriptionMembershipJpMC)
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(iconDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -612,7 +633,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(spDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel15)
+                .addComponent(NumberEvenMembershipJpMC)
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(iconEvents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -620,7 +641,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(spNumEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel16)
+                .addComponent(NumberAdminMembershipJpMC)
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -630,7 +651,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
                         .addGap(0, 0, 0)
                         .addComponent(spAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel17)
+                        .addComponent(NumberModsMembershipJpMC)
                         .addGap(1, 1, 1)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(iconModer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -638,7 +659,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
                         .addGap(0, 0, 0)
                         .addComponent(spMod, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
+                        .addComponent(NumberInvitesMembershipJpMC)
                         .addGap(1, 1, 1)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(iconGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -653,7 +674,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
                         .addComponent(spPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(jLabel10)
+                        .addComponent(PriceMembershipJpMC)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(iconPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -667,7 +688,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jLabel2))
+                        .addComponent(MembershipChangelbltitle))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
@@ -683,9 +704,9 @@ public class jpMembershipChange extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(MembershipChangelbltitle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -962,6 +983,19 @@ public class jpMembershipChange extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ConfigMemberships;
+    private javax.swing.JLabel DescriptionMembershipJpMC;
+    private javax.swing.JLabel DurationMemberSChange;
+    private javax.swing.JLabel FreeMembershipJpMC;
+    private javax.swing.JLabel MembershipChangelbltitle;
+    private javax.swing.JLabel NumberAdminMembershipJpMC;
+    private javax.swing.JLabel NumberEvenMemberSChange;
+    private javax.swing.JLabel NumberEvenMembershipJpMC;
+    private javax.swing.JLabel NumberInvitesMembershipJpMC;
+    private javax.swing.JLabel NumberModsMembershipJpMC;
+    private javax.swing.JLabel PriceMembershipJpMC;
+    private javax.swing.JLabel VIPMembershipJpMC;
+    private javax.swing.JLabel YourmembershipJpMembershipChange;
     private javax.swing.JButton btnChangeMembership;
     private javax.swing.JLabel iconAdmin;
     private javax.swing.JLabel iconDescription;
@@ -969,21 +1003,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
     private javax.swing.JLabel iconGuest;
     private javax.swing.JLabel iconModer;
     private javax.swing.JLabel iconPrice;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
@@ -1010,5 +1030,6 @@ public class jpMembershipChange extends javax.swing.JPanel {
     private javax.swing.JTextField txtGuest;
     private javax.swing.JTextField txtModer;
     private javax.swing.JTextField txtPrice;
+    private javax.swing.JLabel typeMemberSChange;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,12 +6,14 @@
 package JPanel;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.Project;
 import javaClass.classProjects;
 import static javaClass.classProjects.projects;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 /**
  *
@@ -19,12 +21,23 @@ import javaClass.standardization;
  */
 public class jpProjectsMenu extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+  Properties pr = new propiedades (controller.idioma);
+    TitlejpProjectMenu.setText(pr.getProperty("TitlejpProjectMenu"));
+    lbljpPM1.setText(pr.getProperty("lbljpPM1"));
+    lbljpPM2.setText(pr.getProperty("lbljpPM2"));
+    lbl3jpPM.setText(pr.getProperty("lbl3jpPM"));
+    lbljpPM4.setText(pr.getProperty("lbljpPM4"));
+    lbl5jpPM.setText(pr.getProperty("lbl5jpPM"));
+    }
     /**
      * Creates new form jpProjectsMenu
      */
     public jpProjectsMenu() {
         initComponents();
         load();
+        verificaridioma();
     }
 
     /**
@@ -37,24 +50,24 @@ public class jpProjectsMenu extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        lbljpPM1 = new javax.swing.JLabel();
         lblTypeMember = new javax.swing.JLabel();
         lblImageEvent = new javax.swing.JLabel();
         lblPP = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        lbljpPM2 = new javax.swing.JLabel();
         lblTypeMember1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lbl3jpPM = new javax.swing.JLabel();
         txtCreated = new javax.swing.JTextField();
         spName = new javax.swing.JSeparator();
-        jLabel6 = new javax.swing.JLabel();
+        lbljpPM4 = new javax.swing.JLabel();
         txtActive = new javax.swing.JTextField();
         spName1 = new javax.swing.JSeparator();
         iconCreated = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        TitlejpProjectMenu = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         lblActive = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lbl5jpPM = new javax.swing.JLabel();
         txtInactive = new javax.swing.JTextField();
         spName2 = new javax.swing.JSeparator();
         lblInactive = new javax.swing.JLabel();
@@ -72,9 +85,9 @@ public class jpProjectsMenu extends javax.swing.JPanel {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel11.setText("Tus proyectos personales");
+        lbljpPM1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lbljpPM1.setForeground(new java.awt.Color(33, 150, 243));
+        lbljpPM1.setText("Tus proyectos personales");
 
         lblTypeMember.setMaximumSize(new java.awt.Dimension(40, 40));
         lblTypeMember.setMinimumSize(new java.awt.Dimension(40, 40));
@@ -93,15 +106,14 @@ public class jpProjectsMenu extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(14, 14, 14)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
                         .addComponent(lblImageEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPP, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel11)
+                        .addComponent(lbljpPM1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTypeMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, 0))
@@ -116,7 +128,7 @@ public class jpProjectsMenu extends javax.swing.JPanel {
                         .addGap(37, 37, 37)
                         .addComponent(lblImageEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
+                        .addComponent(lbljpPM1)
                         .addGap(18, 18, 18)
                         .addComponent(lblPP, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, 0))
@@ -126,9 +138,9 @@ public class jpProjectsMenu extends javax.swing.JPanel {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153))));
         jPanel4.setForeground(new java.awt.Color(153, 153, 153));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel12.setText("Tus proyectos Grupales");
+        lbljpPM2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lbljpPM2.setForeground(new java.awt.Color(33, 150, 243));
+        lbljpPM2.setText("Tus proyectos Grupales");
 
         lblTypeMember1.setMaximumSize(new java.awt.Dimension(40, 40));
         lblTypeMember1.setMinimumSize(new java.awt.Dimension(40, 40));
@@ -140,7 +152,7 @@ public class jpProjectsMenu extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jLabel12)
+                .addComponent(lbljpPM2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTypeMember1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(243, 243, 243))
@@ -154,13 +166,13 @@ public class jpProjectsMenu extends javax.swing.JPanel {
                         .addComponent(lblTypeMember1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(66, 66, 66))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
+                        .addComponent(lbljpPM2)
                         .addGap(56, 56, 56))))
         );
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("Número de proyectos creados:");
+        lbl3jpPM.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl3jpPM.setForeground(new java.awt.Color(102, 102, 102));
+        lbl3jpPM.setText("Número de proyectos creados:");
 
         txtCreated.setAutoscrolls(false);
         txtCreated.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -186,9 +198,9 @@ public class jpProjectsMenu extends javax.swing.JPanel {
 
         spName.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("Número de proyectos activos:");
+        lbljpPM4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbljpPM4.setForeground(new java.awt.Color(102, 102, 102));
+        lbljpPM4.setText("Número de proyectos activos:");
 
         txtActive.setEditable(false);
         txtActive.setBackground(new java.awt.Color(255, 255, 255));
@@ -220,9 +232,9 @@ public class jpProjectsMenu extends javax.swing.JPanel {
         iconCreated.setMinimumSize(new java.awt.Dimension(35, 35));
         iconCreated.setPreferredSize(new java.awt.Dimension(35, 35));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Proyectos");
+        TitlejpProjectMenu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        TitlejpProjectMenu.setForeground(new java.awt.Color(255, 0, 0));
+        TitlejpProjectMenu.setText("Proyectos");
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -230,9 +242,9 @@ public class jpProjectsMenu extends javax.swing.JPanel {
         lblActive.setMinimumSize(new java.awt.Dimension(40, 40));
         lblActive.setPreferredSize(new java.awt.Dimension(40, 40));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Número de proyectos inactivos:");
+        lbl5jpPM.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl5jpPM.setForeground(new java.awt.Color(102, 102, 102));
+        lbl5jpPM.setText("Número de proyectos inactivos:");
 
         txtInactive.setEditable(false);
         txtInactive.setBackground(new java.awt.Color(255, 255, 255));
@@ -273,7 +285,7 @@ public class jpProjectsMenu extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(TitlejpProjectMenu)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(572, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -287,11 +299,11 @@ public class jpProjectsMenu extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
+                            .addComponent(lbljpPM4)
+                            .addComponent(lbl3jpPM)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
+                                    .addComponent(lbl5jpPM)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblInactive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -317,7 +329,7 @@ public class jpProjectsMenu extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel2)
+                .addComponent(TitlejpProjectMenu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
@@ -325,7 +337,7 @@ public class jpProjectsMenu extends javax.swing.JPanel {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addComponent(lbl3jpPM)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(iconCreated, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -333,7 +345,7 @@ public class jpProjectsMenu extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spName, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
+                .addComponent(lbljpPM4)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblActive, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -341,7 +353,7 @@ public class jpProjectsMenu extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spName1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(lbl5jpPM)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -430,22 +442,22 @@ public class jpProjectsMenu extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel TitlejpProjectMenu;
     private javax.swing.JLabel iconCreated;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbl3jpPM;
+    private javax.swing.JLabel lbl5jpPM;
     private javax.swing.JLabel lblActive;
     private javax.swing.JLabel lblImageEvent;
     private javax.swing.JLabel lblInactive;
     private javax.swing.JLabel lblPP;
     private javax.swing.JLabel lblTypeMember;
     private javax.swing.JLabel lblTypeMember1;
+    private javax.swing.JLabel lbljpPM1;
+    private javax.swing.JLabel lbljpPM2;
+    private javax.swing.JLabel lbljpPM4;
     private javax.swing.JSeparator spName;
     private javax.swing.JSeparator spName1;
     private javax.swing.JSeparator spName2;
