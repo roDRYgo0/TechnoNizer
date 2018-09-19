@@ -38,14 +38,14 @@ public class pnActivities extends javax.swing.JPanel {
             if(i == 0){
                 days = getDays(classEvent.activities.get(i));
                 asignar(i);
-                pnContainer.add(new showActivitie(i));
+                pnContainer.add(new showActivitie(i, idEvent));
             }else{
                 if(days == getDays(classEvent.activities.get(i))){
-                    pnContainer.add(new showActivitie(i));
+                    pnContainer.add(new showActivitie(i, idEvent));
                 }else{
                     days = getDays(classEvent.activities.get(i));
                     asignar(i);
-                    pnContainer.add(new showActivitie(i));
+                    pnContainer.add(new showActivitie(i, idEvent));
                 }
             }
         }
@@ -57,22 +57,22 @@ public class pnActivities extends javax.swing.JPanel {
     void asignar(int i){
         switch(days){
             case -2:
-                pnContainer.add(new date("Antier"));
+                pnContainer.add(new Text("Antier"));
                 break;
             case -1:
-                pnContainer.add(new date("Ayer"));
+                pnContainer.add(new Text("Ayer"));
                 break;
             case 0:
-                pnContainer.add(new date("Hoy"));
+                pnContainer.add(new Text("Hoy"));
                 break;
             case 1:
-                pnContainer.add(new date("Mañana"));
+                pnContainer.add(new Text("Mañana"));
                 break;
             case 2:
-                pnContainer.add(new date("Pasado mañana"));
+                pnContainer.add(new Text("Pasado mañana"));
                 break;
             default:
-                pnContainer.add(new date(standardization.getDateToString(classEvent.activities.get(i).getDate(),  standardization.getDate(classEvent.activities.get(i).getDate()))));
+                pnContainer.add(new Text(standardization.getDateToString(classEvent.activities.get(i).getDate(),  standardization.getDate(classEvent.activities.get(i).getDate()))));
                 break;
         }
     }
@@ -179,7 +179,10 @@ public class pnActivities extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseReleased
-        technonizer.TechnoNizer.home.showEvent();
+        new Thread(()->{
+            technonizer.TechnoNizer.home.showLoad();
+            technonizer.TechnoNizer.home.showEvent(idEvent);
+        }).start();
     }//GEN-LAST:event_jPanel8MouseReleased
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed

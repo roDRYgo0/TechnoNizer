@@ -8,9 +8,12 @@ import javaClass.standardization;
 public class showActivitie extends javax.swing.JPanel {
 
     int visibility;
+    int idActivity, idEvent;
     
-    public showActivitie(int idActivity) {
+    public showActivitie(int idActivity, int idEvent) {
         initComponents();
+        this.idActivity = idActivity;
+        this.idEvent = idEvent;
         txtDescription.setLineWrap(true);
         load(idActivity);
     }
@@ -165,15 +168,30 @@ public class showActivitie extends javax.swing.JPanel {
     private void lblSwitchMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSwitchMouseReleased
         if(visibility == 0){
             visibility = 1;
+            if(classEvent.updateStatus(visibility, classEvent.activities.get(idActivity).getId()))
+                standardization.showMessage("ok", "Actualizado");
+            else
+                standardization.showMessage("cancel", "No se logro actualizar");
             switchVisibility();
         }else{
             visibility = 0;
+            if(classEvent.updateStatus(visibility, classEvent.activities.get(idActivity).getId()))
+                standardization.showMessage("ok", "Actualizado");
+            else
+                standardization.showMessage("cancel", "No se logro actualizar");
             switchVisibility();
         }
     }//GEN-LAST:event_lblSwitchMouseReleased
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-
+        if(classEvent.deleteAct(classEvent.activities.get(idActivity).getId())){
+            classEvent.activities.clear();
+            classEvent.selectActivity(classEvent.eventosShow.get(idEvent).getId());
+            technonizer.TechnoNizer.home.showEventActivities(idEvent);
+            standardization.showMessage("ok", "Eliminado correctamente");
+        }
+        else
+            standardization.showMessage("cancel", "No se logro eliminar");
     }//GEN-LAST:event_btnNext1ActionPerformed
 
     void switchVisibility(){

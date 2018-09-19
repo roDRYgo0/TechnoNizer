@@ -1,6 +1,7 @@
 package javaClass;
 
 public class activity {
+    private Integer id;
     private String dateTime;
     private String date;
     private String time;
@@ -11,8 +12,14 @@ public class activity {
     private Integer idEvent;
     private String nickname;
 
-
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public String getDate() {
         return date;
     }

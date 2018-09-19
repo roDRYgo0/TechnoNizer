@@ -1,8 +1,8 @@
 package eventAdmin;
 
-public class date extends javax.swing.JPanel {
+public class Text extends javax.swing.JPanel {
 
-    public date(String texto) {
+    public Text(String texto) {
         initComponents();
         txtText.setText(texto);
     }
@@ -14,6 +14,7 @@ public class date extends javax.swing.JPanel {
 
         txtText = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(225, 225, 225));
         setMaximumSize(new java.awt.Dimension(945, 60));
         setMinimumSize(new java.awt.Dimension(945, 60));
         setPreferredSize(new java.awt.Dimension(945, 60));
