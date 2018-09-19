@@ -81,9 +81,9 @@ description nvarchar(200),
 datetime nvarchar(30) not null,
 condition int not null,
 teams int not null,
+nickname nvarchar(50) not null references users(nickname),
 color nvarchar(15),
-coverImage image,
-nickname nvarchar(50) not null references users(nickname)
+coverImage image
 )
 
 select * from projects
@@ -148,6 +148,8 @@ idCardas int not null references cards(id)
 
  select * from events
 
+
+ alter table tickets 
  create table tickets(
  id int identity(1,1) not null,
  nameTicket nvarchar(35) not null,
@@ -164,7 +166,12 @@ idCardas int not null references cards(id)
  idEvent int not null references events(id)
  )
 
- 
+ create table guest(
+ id int identity(1,1) primary key not null,
+ idEvent int not null references events(id),
+ idTickets int not null references tickets(id),
+ nickname nvarchar(50) not null references users(nickname)
+ )
 
  create table announcements(
  id int identity(1,1) primary key not null,

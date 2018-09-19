@@ -154,7 +154,7 @@ public class eventAdmin extends javax.swing.JPanel {
 
         scrollContainer.setBorder(null);
 
-        pnContainer.setBackground(new java.awt.Color(170, 218, 255));
+        pnContainer.setBackground(new java.awt.Color(204, 204, 204));
         javaClass.ModifiedFlowLayout modifiedFlowLayout1 = new javaClass.ModifiedFlowLayout();
         modifiedFlowLayout1.setAlignment(java.awt.FlowLayout.LEFT);
         modifiedFlowLayout1.setHgap(10);

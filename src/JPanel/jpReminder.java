@@ -77,7 +77,7 @@ public class jpReminder extends javax.swing.JPanel {
         iconView = new javax.swing.JLabel();
         scrollReminders = new javax.swing.JScrollPane();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(170, 218, 255));
         setMaximumSize(new java.awt.Dimension(980, 601));
         setMinimumSize(new java.awt.Dimension(980, 601));
         setPreferredSize(new java.awt.Dimension(980, 601));
@@ -89,7 +89,7 @@ public class jpReminder extends javax.swing.JPanel {
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
-        jPanel1.setBackground(new java.awt.Color(33, 150, 243));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(190, 120));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -99,11 +99,11 @@ public class jpReminder extends javax.swing.JPanel {
         });
 
         jLabel2.setFont(new java.awt.Font("Cantarell", 1, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(51, 181, 255));
         jLabel2.setText("Agregar recordatorio");
 
         lblAdd.setFont(new java.awt.Font("Cantarell", 1, 48)); // NOI18N
-        lblAdd.setForeground(new java.awt.Color(33, 150, 243));
+        lblAdd.setForeground(new java.awt.Color(255, 255, 255));
         lblAdd.setText(".");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -138,6 +138,7 @@ public class jpReminder extends javax.swing.JPanel {
         iconSearch.setMinimumSize(new java.awt.Dimension(35, 35));
         iconSearch.setPreferredSize(new java.awt.Dimension(35, 35));
 
+        txtSearch.setBackground(new java.awt.Color(170, 218, 255));
         txtSearch.setAutoscrolls(false);
         txtSearch.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtSearch.addFocusListener(new java.awt.event.FocusAdapter() {
