@@ -23,10 +23,7 @@ public class eventAdmin extends javax.swing.JPanel {
     
     void load(event event){
         classEvent.activities.clear();
-        if(classEvent.selectActivity(event.getId()))
-            standardization.showMessage("ok","Exito");
-        else
-            standardization.showMessage("cancel","nell pegro");
+        classEvent.selectActivity(event.getId());
         lblEventName.setText(event.getEventName());     
         lblNickname.setText(event.getNicknameCreator());
         if(event.getProfilePicture() != null)
