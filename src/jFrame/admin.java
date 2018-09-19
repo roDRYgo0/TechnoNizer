@@ -849,10 +849,10 @@ public class admin extends javax.swing.JFrame {
         }else{
             disable();
             pnAgenda.setBackground(new Color(52, 52, 52));
-            controller.jpREM = new jpReminder();
-            controller.jpREM.setLocation(0,0);
+            controller.jpAGE = new jpAgendaMenu();
+            controller.jpAGE.setLocation(0,0);
 
-            scrollContainer.setViewportView(controller.jpREM);
+            scrollContainer.setViewportView(controller.jpAGE);
             scrollContainer.revalidate();
             scrollContainer.repaint();
         }

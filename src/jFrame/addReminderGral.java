@@ -396,8 +396,8 @@ public class addReminderGral extends javax.swing.JFrame {
                 if (classReminder.insert()) {
                     classReminder.select();
                     standardization.hide(controller.gralReminder);               
-                    technonizer.TechnoNizer.home.pnAgenda();
-                    controller.jpAA.load();
+                    technonizer.TechnoNizer.home.pnAgenda1();
+                    controller.jpREM.load();
                     controller.rootFrame = technonizer.TechnoNizer.home;
                     standardization.showMessage("ok", "Recordatorio ingresado", technonizer.TechnoNizer.home);
                 } else {

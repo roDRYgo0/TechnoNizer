@@ -39,6 +39,7 @@ public class controller {
     public static jpMembership jpM;
     public static jpNewPassword jpNP;
     public static jpProjectsMenu jpPM;
+    public static jpAgendaMenu jpAGE;
     public static securityAccount secAcc;
     public static jpMembershipChange jpMC;
     public static jpEditUser jpU;

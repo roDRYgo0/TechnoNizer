@@ -1014,16 +1014,32 @@ public final class home extends javax.swing.JFrame {
             pnAgenda.setBackground(new Color(52, 52, 52));
             classContact.reset();
 
-            controller.jpAA = new jpReminder();
-            controller.jpAA.setPreferredSize(new Dimension(980,601));
-            controller.jpAA.setLocation(0,0);
+            controller.jpAGE = new jpAgendaMenu();
+            controller.jpAGE.setPreferredSize(new Dimension(980,601));
+            controller.jpAGE.setLocation(0,0);
 
-            scrollContainer.setViewportView(controller.jpAA);
+            scrollContainer.setViewportView(controller.jpAGE);
             scrollContainer.revalidate();
             scrollContainer.repaint();
     }
     }
     
+    public void pnAgenda1(){
+       
+            disable();
+            pnAgenda.setBackground(new Color(52, 52, 52));
+            classContact.reset();
+        boolean hi=false;
+ 
+            controller.jpREM = new jpReminder(hi);
+            controller.jpREM.setPreferredSize(new Dimension(980,601));
+            controller.jpREM.setLocation(0,0);
+
+            scrollContainer.setViewportView(controller.jpREM);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+    
+    }
     private void pnSecurityMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSecurityMouseReleased
         pnSecurity();
     }//GEN-LAST:event_pnSecurityMouseReleased
@@ -1101,7 +1117,26 @@ public final class home extends javax.swing.JFrame {
             scrollContainer.repaint();
         }
     }
-    
+   public void pnReminder(){
+        if(classUsuario.getCondition()==1){
+            disable();
+            controller.jpDis = new jpDisable();
+            controller.jpDis.setLocation(0,0);
+
+            scrollContainer.setViewportView(controller.jpDis);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+        }else{
+            disable();
+            pnProj.setBackground(new Color(52, 52, 52));
+            controller.jpAGE= new jpAgendaMenu();
+            controller.jpAGE.setLocation(0,0);
+
+            scrollContainer.setViewportView(controller.jpAGE);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+        }
+    }    
     public void pnSecurity(){
         disable();
         pnSecurity.setBackground(new Color(52, 52, 52));
@@ -1136,6 +1171,21 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
+    public void showYourReminder(boolean i){
+        disable();
+        pnAgenda.setBackground(new Color(52, 52, 52));
+        jpReminder jAA = new jpReminder(i);
+        jAA.setPreferredSize(new Dimension(980,601));
+        jAA.setLocation(0,0);
+
+        scrollContainer.setViewportView(jAA);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
+        
+    
+    
     
     public void loadData(String image, String text, JLabel label)
     {
@@ -1193,5 +1243,7 @@ public final class home extends javax.swing.JFrame {
     private javax.swing.JToggleButton tbtnInternet;
     private javax.swing.JPanel topBar;
     // End of variables declaration//GEN-END:variables
+
+    
     //</editor-fold>
 }
