@@ -247,34 +247,40 @@ public class showEvent extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-        technonizer.TechnoNizer.home.showEvent(evento);
+        showEvent();
     }//GEN-LAST:event_formMouseReleased
 
     private void lblEventNameMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEventNameMouseReleased
-        technonizer.TechnoNizer.home.showEvent(evento);
+        showEvent();
     }//GEN-LAST:event_lblEventNameMouseReleased
 
     private void lblPriceMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPriceMouseReleased
-        technonizer.TechnoNizer.home.showEvent(evento);
+        showEvent();
     }//GEN-LAST:event_lblPriceMouseReleased
 
     private void lblNicknameMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNicknameMouseReleased
-        technonizer.TechnoNizer.home.showEvent(evento);
+        showEvent();
     }//GEN-LAST:event_lblNicknameMouseReleased
 
     private void lblDaysMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDaysMouseReleased
-        technonizer.TechnoNizer.home.showEvent(evento);
+        showEvent();
     }//GEN-LAST:event_lblDaysMouseReleased
 
     private void pnColorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnColorMouseReleased
-        technonizer.TechnoNizer.home.showEvent(evento);
+        showEvent();
     }//GEN-LAST:event_pnColorMouseReleased
 
     private void lblNumGuestMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNumGuestMouseReleased
-        technonizer.TechnoNizer.home.showEvent(evento);
+        showEvent();
+        
     }//GEN-LAST:event_lblNumGuestMouseReleased
 
-
+    void showEvent(){
+        new Thread(()->{
+            technonizer.TechnoNizer.home.showLoad();
+            technonizer.TechnoNizer.home.showEvent(evento);
+        }).start();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDays;

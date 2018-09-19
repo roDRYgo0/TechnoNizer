@@ -86,6 +86,9 @@ coverImage image,
 nickname nvarchar(50) not null references users(nickname)
 )
 
+alter table projects add color nvarchar(15)
+alter table projects add coverImage image
+
 create table teams(
 id int identity(1,1) primary key not null,
 nicknameGuest nvarchar(50) not null references users(nickname),
@@ -142,6 +145,10 @@ idCardas int not null references cards(id)
  invitation int  not null
  )
 
+ delete from tickets
+ delete from events
+ alter table events add invitation int not null
+
  select * from events
 
  create table tickets(
@@ -183,6 +190,7 @@ idCardas int not null references cards(id)
  nickname nvarchar(50) not null
  )
 
+ alter table activities add nickname nvarchar(50) not null
 
 
  select * from activities

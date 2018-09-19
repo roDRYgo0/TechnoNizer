@@ -812,6 +812,13 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
+    public void showLoad(){
+
+        scrollContainer.setViewportView(new jpLoad());
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
     public void showAllEvents(boolean search){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
