@@ -176,6 +176,11 @@ public final class home extends javax.swing.JFrame {
 
         itemSpanish.setText("Español");
         itemSpanish.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        itemSpanish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSpanishActionPerformed(evt);
+            }
+        });
         popupLenguage.add(itemSpanish);
 
         itemEnglish.setText("Ingles");
@@ -718,8 +723,7 @@ public final class home extends javax.swing.JFrame {
             .addGroup(rootpaneLayout.createSequentialGroup()
                 .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(scrollContainer)
-                .addGap(0, 0, 0))
+                .addComponent(scrollContainer))
         );
         rootpaneLayout.setVerticalGroup(
             rootpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -727,10 +731,7 @@ public final class home extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(rootpaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(leftPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(rootpaneLayout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(scrollContainer)
-                        .addGap(0, 0, 0))))
+                    .addComponent(scrollContainer)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -801,6 +802,13 @@ public final class home extends javax.swing.JFrame {
         controller.jpU.setLocation(0,0);
 
         scrollContainer.setViewportView(controller.jpU);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
+    public void showLoad(){
+
+        scrollContainer.setViewportView(new jpLoad());
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
@@ -1030,6 +1038,12 @@ public final class home extends javax.swing.JFrame {
     private void lblLenguageMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLenguageMouseReleased
         popupLenguage.show(this,lblLenguage.getX()-30,lblLenguage.getY()+28);
     }//GEN-LAST:event_lblLenguageMouseReleased
+
+    private void itemSpanishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSpanishActionPerformed
+        controller.idioma = "ESPANOL";
+        standardization.invokeHome(true);
+        standardization.showMessage("ok", "Idioma cambiado");
+    }//GEN-LAST:event_itemSpanishActionPerformed
     //</editor-fold>
     
     public void disable (){

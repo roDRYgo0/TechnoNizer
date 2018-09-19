@@ -32,14 +32,18 @@ public class pnActivity extends javax.swing.JPanel {
 
         for(int i = 0; i < classEvent.activities.size(); i++){
             if(!d && days == getDays(classEvent.activities.get(i))){
-                this.add(new Activity(i));
-                count++;
+                if(classEvent.activities.get(i).getCondition() == 1){
+                    this.add(new Activity(i));
+                    count++;
+                }
             }
             if(getDays(classEvent.activities.get(i)) >= 0 && d){
                 days = getDays(classEvent.activities.get(i));
-                this.add(new Activity(i));
+                if(classEvent.activities.get(i).getCondition() == 1){
+                    this.add(new Activity(i));
+                    count++;
+                }
                 d = false;
-                count++;
                 asignar(i);
             }
             
@@ -82,8 +86,8 @@ public class pnActivity extends javax.swing.JPanel {
         txtText = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(468, 32767));
-        setMinimumSize(new java.awt.Dimension(468, 0));
+        setMaximumSize(new java.awt.Dimension(468, 483));
+        setMinimumSize(new java.awt.Dimension(468, 483));
         setPreferredSize(new java.awt.Dimension(468, 483));
         setLayout(new javaClass.ModifiedFlowLayout());
 
@@ -111,7 +115,7 @@ public class pnActivity extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +135,7 @@ public class pnActivity extends javax.swing.JPanel {
 
         txtText.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txtText.setForeground(new java.awt.Color(153, 153, 153));
-        txtText.setText("Not found");
+        txtText.setText("Sin actividades");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);

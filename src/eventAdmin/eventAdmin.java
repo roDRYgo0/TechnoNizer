@@ -21,12 +21,9 @@ public class eventAdmin extends javax.swing.JPanel {
         
     }
     
-    void load(event event){
+    public void load(event event){
         classEvent.activities.clear();
-        if(classEvent.selectActivity(event.getId()))
-            standardization.showMessage("ok","Exito");
-        else
-            standardization.showMessage("cancel","nell pegro");
+        classEvent.selectActivity(event.getId());
         lblEventName.setText(event.getEventName());     
         lblNickname.setText(event.getNicknameCreator());
         if(event.getProfilePicture() != null)
@@ -72,6 +69,7 @@ public class eventAdmin extends javax.swing.JPanel {
         loadPrice(event);
         loadStaff(event);
         loadActivity();
+        loadTask();
         loadPlace();
         loadFooter();
     }
@@ -84,6 +82,12 @@ public class eventAdmin extends javax.swing.JPanel {
     
     void loadActivity(){
         pnContainer.add(new pnActivity(idEvent));
+        pnContainer.revalidate();
+        pnContainer.repaint();
+    }
+    
+    void loadTask(){
+        pnContainer.add(new pnTask(idEvent));
         pnContainer.revalidate();
         pnContainer.repaint();
     }

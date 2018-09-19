@@ -772,7 +772,7 @@ public class AddActivitie extends javax.swing.JFrame {
         if(txtActivitie.getText().trim().isEmpty() || txtPlace.getText().trim().isEmpty() || txtDescription.getText().trim().isEmpty()
                 || txtDayStart.getText().trim().isEmpty() || txtYearStart.getText().trim().isEmpty() || txtHour.getText().trim().isEmpty()
                 || txtMinute.getText().trim().isEmpty() || Integer.parseInt(txtHour.getText())>12 || Integer.parseInt(txtHour.getText()) == 0
-                || Integer.parseInt(txtMinute.getText()) == 0 || Integer.parseInt(txtMinute.getText()) > 59)
+                || Integer.parseInt(txtMinute.getText()) > 59)
             return true;
         else
             return false;

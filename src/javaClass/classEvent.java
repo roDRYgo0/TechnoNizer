@@ -36,6 +36,7 @@ public class classEvent {
     public static List<event> eventosShow = new ArrayList<event>();
     public static List<event> eventosSearch = new ArrayList<event>();
     public static List<activity> activities = new ArrayList<>();
+    public static List<Task> tasks = new ArrayList<>();
 
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
@@ -315,7 +316,7 @@ public class classEvent {
         boolean status = false;
         List<activity> activiti = new ArrayList<>();
         activity ac;
-        ResultSet rs = methodsSQL.getExecute("select a.dateTime, a.activity, a.place, a.condition, a.description, a.nickname from activities a where a.idEvent = ?", idEvent);
+        ResultSet rs = methodsSQL.getExecute("select a.dateTime, a.activity, a.place, a.condition, a.description, a.nickname, a.id from activities a where a.idEvent = ?", idEvent);
         
         try {
             while(rs.next()){
@@ -326,6 +327,7 @@ public class classEvent {
                 ac.setCondition(rs.getInt(4));
                 ac.setDescription(rs.getString(5));
                 ac.setNickname(rs.getString(6));
+                ac.setId(rs.getInt(7));
                 String[] dateTime = ac.getDateTime().split(" ");
                 ac.setDate(dateTime[0]);
                 ac.setTime(dateTime[1]);
@@ -398,6 +400,50 @@ public class classEvent {
                 status = methodsSQL.execute("INSERT INTO tickets VALUES (?, ?, ?, ?)", pric.getName(), pric.getCount(), pric.getPrice(), id);
             }
         } 
+        
+        return status;
+    }
+
+    public static boolean updateStatus(int cond, int id) {
+        boolean status = false;
+        status = methodsSQL.execute(" update activities set  condition = ? where id = ?", cond, id);
+        return status;
+    }
+
+    public static boolean deleteAct(int id) {
+        boolean status = false;
+        status = methodsSQL.execute("delete from activities where id = ?", id);
+        return status;
+    }
+    
+    public static boolean inserttask(String task, int condition, int visibility, Double price, int idEvent, String nickname){
+        boolean status = false;
+        status = methodsSQL.execute("insert into tasks values(?, ?, ?, ?, ?, ?)", task, condition, visibility, price, idEvent, nickname);
+        return status;
+    }
+
+    public static boolean selectTasks(int idEvent){
+        boolean status = false;
+        List<Task> task = new ArrayList<>();
+        Task ta;
+        ResultSet rs = methodsSQL.getExecute("select id, task, condition, visible, price, nickname from tasks where idEvent = ?", idEvent);
+        
+        try {
+            while(rs.next()){
+                ta = new Task();
+                ta.setId(rs.getInt(1));
+                ta.setTask(rs.getString(2));
+                ta.setCondition(rs.getInt(3));
+                ta.setVisibility(rs.getInt(4));
+                ta.setPrice(rs.getDouble(5));
+                ta.setNickname(rs.getString(6));
+                task.add(ta);
+            }
+            tasks.addAll(task);
+            status = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         return status;
     }

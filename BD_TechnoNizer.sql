@@ -144,6 +144,8 @@ idCardas int not null references cards(id)
  invitation int  not null
  )
 
+
+
  select * from events
 
  create table tickets(
@@ -185,7 +187,7 @@ idCardas int not null references cards(id)
  nickname nvarchar(50) not null
  )
 
- delete from activities
+
 
  select * from activities
 
@@ -201,24 +203,19 @@ idCardas int not null references cards(id)
  idEvent int not null references events(id)
  )
 
- create table tasksList(
- id int identity(1,1) primary key not null,
- title nvarchar(60) not null,
- condition int not null,
- idEvent int not null references events(id)
- )
-
- select * from memberships
-
-
  create table tasks(
  id int identity(1,1) primary key not null,
  task nvarchar(60) not null,
  condition int not null,
  visible int not null,
  price smallmoney,
- idTasksLists int not null references tasksList(id)
+ idEvent int not null references events(id),
+ nickname nvarchar(50)
  )
+
+ select * from tasks
+
+ select id, task, condition, visible, price, nickname from tasks where idEvent = 3074
 
  create table checkList(
 id int identity(1,1) primary key not null,
@@ -228,6 +225,7 @@ condition int not null,
 foreign key(idBelongs) references cards(id),
 foreign key(idBelongs) references tasks(id)
 )
+
 
 create table checks(
 id int identity(1,1) primary key not null,

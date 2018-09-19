@@ -32,15 +32,15 @@ public class Activity extends javax.swing.JPanel {
 
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
 
-        lblClock.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        lblClock.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         lblClock.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblClock.setText("8:00 AM");
 
-        lblPlace.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        lblPlace.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         lblPlace.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblPlace.setText("Sala de conferencias 2");
 
-        lblActivity.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblActivity.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblActivity.setText("Acto de ignauración");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -60,16 +60,16 @@ public class Activity extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblActivity)
-                .addGap(2, 2, 2)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblClock, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                    .addComponent(lblPlace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(8, 8, 8))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(lblActivity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblPlace)
+                        .addContainerGap())
+                    .addComponent(lblClock, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
