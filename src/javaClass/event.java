@@ -23,9 +23,18 @@ public class event {
     private String color;
     private Integer condition;
     private List<classPrice> prices;
+    private List<guest> guests;
     private List<staff> staffs = new ArrayList<>();
-    
+
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public List<guest> getGuests() {
+        return guests;
+    }
+
+    public void setGuests(List<guest> guests) {
+        this.guests = guests;
+    }
+    
     public Integer getInvitation() {
         return invitation;
     }

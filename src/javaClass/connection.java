@@ -12,9 +12,9 @@ public class connection {
 
         Connection on = null;
         try{
-            String url = "jdbc:sqlserver://DESKTOP-NJNP5CG\\SQLEXPRESS01;databaseName=BD_TechnoNizer";
+            String url = "jdbc:sqlserver://localhost;databaseName=BD_TechnoNizer";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            on = DriverManager.getConnection(url, "meme", "1234");
+            on = DriverManager.getConnection(url,"technonizer","Masupial.48");
         }catch(ClassNotFoundException | SQLException e){
             System.out.println(e.getMessage());
         }

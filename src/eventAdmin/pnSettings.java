@@ -34,8 +34,8 @@ public class pnSettings extends javax.swing.JPanel {
             iconCover.setIcon(standardization.getImgIcon(event.getCoverPicture()));
         
         
-        pnContainer.add(new pnPreferences(idEvent));
-        pnStaff pS = new pnStaff(idEvent);
+        pnContainer.add(new preferences(idEvent));
+        staff pS = new staff(idEvent);
         int size = 0;
         if(event.getStaffs() != null)
             size = (event.getStaffs().size() <= 1) ? 1 : (event.getStaffs().size() -1) * 50;
@@ -43,9 +43,9 @@ public class pnSettings extends javax.swing.JPanel {
         pS.setPreferredSize(new Dimension(465,226+size));
         pnContainer.add(pS);
         
-        pnContainer.add(new pnPlaces(idEvent));
+        pnContainer.add(new place(idEvent));
         
-        pnContainer.add(new pnFooter());        
+        pnContainer.add(new footer());        
         
         pnContainer.revalidate();
         pnContainer.repaint();

@@ -32,8 +32,10 @@ public class classReminder {
     private static String nickname;
     
     
+    
     public static List<reminder> reminders = new ArrayList<reminder>();
     public static List<reminder> remindersSearch = new ArrayList<reminder>();
+
 
     public static void setId(Integer id) {
         classReminder.id = id;
@@ -102,15 +104,22 @@ public class classReminder {
     public static boolean insert(){
         boolean status = false;
         
-        status = methodsSQL.execute("INSERT INTO reminders (condition, reminder, alarmDateTime, repeat, nickname) VALUES ( ?, ?, ?, ?, ?)",
-                1, reminder, datetime, repeat, classUsuario.getNickname());
+        status = methodsSQL.execute("INSERT INTO reminders (condition, reminder, alarmDateTime, nickname) VALUES ( ?, ?, ?, ?)",
+                1, reminder, datetime, classUsuario.getNickname());
+        return status;
+    }
+    public static boolean update(){
+        boolean status = false;
+        
+        status = methodsSQL.execute("UPDATE reminders SET condition=?, reminder=?, alarmDateTime=?, nickname=? where id=?",
+                1, reminder, datetime, classUsuario.getNickname(), id);
         return status;
     }
     
 public static DefaultTableModel cargarReminder() {
 
            
-           DefaultTableModel model = methodsSQL.getTableModel("SELECT id, reminder , alarmDateTime , repeat  from reminders", "ID", "Recordatorio", "Fecha", "Repetir en _ horas");
+           DefaultTableModel model = methodsSQL.getTableModel("SELECT id, reminder , alarmDateTime   from reminders", "ID", "Recordatorio", "Fecha");
        return model;
    }
 
@@ -121,13 +130,9 @@ public static boolean deleteReminder(){
   
     }
 
-public static boolean updatereminder(){
-    boolean status = false;
-        status = methodsSQL.execute("UPDATE reminders SET condition=? , reminder=? , alarmDateTime=?, repeat=?, nickname=? where id=?",
-                1, reminder, datetime, repeat, "asd", id);
-        return status;
-    }
+
  public static void restartUser(){
+        id=null;
         condition=(String.valueOf(-1));
         reminder=null;
         datetime=null;
@@ -140,7 +145,7 @@ public static boolean updatereminder(){
  public static boolean select(){
         boolean status = false;
         reminder recordatorio;
-        ResultSet rs = methodsSQL.getExecute("SELECT re.id, re.condition, re.reminder, re.alarmDateTime  FROM reminders re WHERE re.nickname =?", classUsuario.getNickname());
+        ResultSet rs = methodsSQL.getExecute("SELECT re.id, re.condition, re.reminder, re.alarmDateTime  FROM reminders re WHERE re.nickname =? order by alarmDateTime", classUsuario.getNickname());
         restart();
         try {
             while(rs.next()){
@@ -163,6 +168,17 @@ public static boolean updatereminder(){
         
         return status;
     }
+ public static boolean selectn(){
+        boolean status = false;
+        reminder recordatorio;
+        restart();
+
+                recordatorio = new reminder();
+                recordatorio.setNum(methodsSQL.getExecuteInt("SELECT count(*) FROM reminders WHERE nickname = ?", classUsuario.getNickname()));
+       
+                return status;
+ }
+ 
   public static int getSpaceSearchGrid(){
         int row = (remindersSearch.size())/2;
         if((remindersSearch.size())%2!=0)

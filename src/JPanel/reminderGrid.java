@@ -28,17 +28,17 @@ public class reminderGrid extends javax.swing.JPanel {
     
     void load(int n, boolean search){
         if(search){
-
+                 //carga la informacion hacia los labels y asigna colores//
                 lblImage.setIcon(new controller().changeImage("/imagenes/user.png", 60, 60));
             lblNickname.setText(classUsuario.getNickname());
             lblReminder.setText(classReminder.remindersSearch.get(n).getReminder());
             lblDate.setText(classReminder.remindersSearch.get(n).getDate());
             switch(classReminder.remindersSearch.get(n).getCondition()){
                  case 0:
-                    this.setBackground(new Color(198, 198, 198));
+                    this.setBackground(new Color(33, 150,255));
                     break;
                 case 1:
-                    this.setBackground(new Color(255, 254, 93));
+                    this.setBackground(new Color(51, 181, 255));
                     break;
                 case 2:
                     this.setBackground(new Color(255, 255, 255));
@@ -62,7 +62,7 @@ public class reminderGrid extends javax.swing.JPanel {
                     this.setBackground(new Color(198, 198, 198));
                     break;
                 case 1:
-                    this.setBackground(new Color(255, 254, 93));
+                    this.setBackground(new Color(51, 181, 255));
                     break;
                 case 2:
                     this.setBackground(new Color(255, 255, 255));

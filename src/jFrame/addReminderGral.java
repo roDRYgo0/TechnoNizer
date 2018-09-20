@@ -2,14 +2,10 @@ package jFrame;
 
 import java.awt.Color;
 import java.util.Date;
-import javaClass.classEvent;
 import javaClass.classReminder;
 import javaClass.classUsuario;
 import javaClass.controller;
-import javaClass.reminder;
 import javaClass.standardization;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  * @author Alexg
@@ -400,8 +396,8 @@ public class addReminderGral extends javax.swing.JFrame {
                 if (classReminder.insert()) {
                     classReminder.select();
                     standardization.hide(controller.gralReminder);               
-                    technonizer.TechnoNizer.home.pnAgenda();
-                    controller.jpAA.load();
+                    technonizer.TechnoNizer.home.pnAgenda1();
+                    controller.jpREM.load();
                     controller.rootFrame = technonizer.TechnoNizer.home;
                     standardization.showMessage("ok", "Recordatorio ingresado", technonizer.TechnoNizer.home);
                 } else {

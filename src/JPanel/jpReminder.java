@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.util.Properties;
+import javaClass.classProjects;
 import javaClass.classReminder;
 import javaClass.classUsuario;
 import javaClass.controller;
@@ -24,14 +25,21 @@ public class jpReminder extends javax.swing.JPanel {
 
     }
      int view;
+   static boolean current_personal_state = false;
     
-    public jpReminder() {
-        initComponents();
+   
+    
+    public jpReminder(boolean start) {
+     
+         initComponents();
         view = 0;
         
         load();
         verificaridioma();
     }
+    
+
+   
 
     public void load(){
         insertarPaneles(classReminder.reminders.size(), false);
@@ -41,7 +49,8 @@ public class jpReminder extends javax.swing.JPanel {
     
     void loadImage(){
         iconSearch.setIcon(new controller().changeImage("/imagenes/search.png", 35, 35));
-        iconView.setIcon(new controller().changeImage("/imagenes/viewGrid.png", 50, 50));
+        iconView.setIcon(new controller().changeImage("/imagenes/Copybook.png", 50, 50));
+        lblAdd.setIcon(new controller().changeImage("/imagenes/add_77928.png", 50, 50));
     }
 
 
@@ -87,7 +96,7 @@ public class jpReminder extends javax.swing.JPanel {
         iconView = new javax.swing.JLabel();
         scrollReminders = new javax.swing.JScrollPane();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(170, 218, 255));
         setMaximumSize(new java.awt.Dimension(980, 601));
         setMinimumSize(new java.awt.Dimension(980, 601));
         setPreferredSize(new java.awt.Dimension(980, 601));
@@ -99,7 +108,8 @@ public class jpReminder extends javax.swing.JPanel {
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
-        jPanel1.setBackground(new java.awt.Color(230, 230, 230));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(190, 120));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -110,8 +120,9 @@ public class jpReminder extends javax.swing.JPanel {
         reminderlbljpR.setFont(new java.awt.Font("Cantarell", 1, 16)); // NOI18N
         reminderlbljpR.setText("Agregar nuevo recordatorio");
 
-        jLabel3.setFont(new java.awt.Font("Cantarell", 1, 48)); // NOI18N
-        jLabel3.setText("+");
+        lblAdd.setFont(new java.awt.Font("Cantarell", 1, 48)); // NOI18N
+        lblAdd.setForeground(new java.awt.Color(255, 255, 255));
+        lblAdd.setText(".");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,9 +133,14 @@ public class jpReminder extends javax.swing.JPanel {
                 .addComponent(reminderlbljpR)
                 .addGap(21, 21, 21))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(lblAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,7 +148,7 @@ public class jpReminder extends javax.swing.JPanel {
                 .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(reminderlbljpR)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -144,6 +160,7 @@ public class jpReminder extends javax.swing.JPanel {
         iconSearch.setMinimumSize(new java.awt.Dimension(35, 35));
         iconSearch.setPreferredSize(new java.awt.Dimension(35, 35));
 
+        txtSearch.setBackground(new java.awt.Color(170, 218, 255));
         txtSearch.setAutoscrolls(false);
         txtSearch.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtSearch.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -213,7 +230,7 @@ public class jpReminder extends javax.swing.JPanel {
                                             .addComponent(spSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 15, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -298,21 +315,7 @@ public class jpReminder extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSearchKeyTyped
 
     private void iconViewMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconViewMouseReleased
-       if(view == 0){
-            view = 1;
-            iconView.setIcon(new controller().changeImage("/imagenes/viewList.png", 50, 50));
-            if(txtSearch.getText().trim().isEmpty())
-                insertarPaneles(classReminder.reminders.size(), false);
-            else
-                search();
-        }else{
-            view = 0;
-            iconView.setIcon(new controller().changeImage("/imagenes/viewGrid.png", 50, 50));
-            if(txtSearch.getText().trim().isEmpty())
-                insertarPaneles(classReminder.reminders.size(), false);
-            else
-                search();
-        }
+      
     }//GEN-LAST:event_iconViewMouseReleased
  
 

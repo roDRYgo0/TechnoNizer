@@ -874,10 +874,21 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
+    public void showEventProblems(int e){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        pnProblem setting = new pnProblem(e);
+        setting.setLocation(0,0);
+        
+        scrollContainer.setViewportView(setting);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
     public void showEventActivities(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        pnActivities activities = new pnActivities(e);
+        pnActivity activities = new pnActivity(e);
         activities.setLocation(0,0);
         
         scrollContainer.setViewportView(activities);
@@ -887,23 +898,14 @@ public final class home extends javax.swing.JFrame {
     public void showEventTask(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        pnTasks tasks = new pnTasks(e);
+        pnTask tasks = new pnTask(e);
         tasks.setLocation(0,0);
         
         scrollContainer.setViewportView(tasks);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
-    public void showEventProblems(int e){
-        disable();
-        pnEvents.setBackground(new Color(52, 52, 52));
-        pnSettings setting = new pnSettings(e);
-        setting.setLocation(0,0);
-        
-        scrollContainer.setViewportView(setting);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
-    }
+    
     public void showEventAnnoucements(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
@@ -915,10 +917,16 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
-    public void showEvent(int e){
+    
+    public void colorEvent(){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        controller.event = new eventAdmin(e);
+    }
+    
+    public void showEvent(int e, boolean load){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        controller.event = new eventAdmin(e, load);
         controller.event.setLocation(0,0);
 
         scrollContainer.setViewportView(controller.event);
@@ -1020,16 +1028,32 @@ public final class home extends javax.swing.JFrame {
             pnAgenda.setBackground(new Color(52, 52, 52));
             classContact.reset();
 
-            controller.jpAA = new jpReminder();
-            controller.jpAA.setPreferredSize(new Dimension(980,601));
-            controller.jpAA.setLocation(0,0);
+            controller.jpAGE = new jpAgendaMenu();
+            controller.jpAGE.setPreferredSize(new Dimension(980,601));
+            controller.jpAGE.setLocation(0,0);
 
-            scrollContainer.setViewportView(controller.jpAA);
+            scrollContainer.setViewportView(controller.jpAGE);
             scrollContainer.revalidate();
             scrollContainer.repaint();
     }
     }
     
+    public void pnAgenda1(){
+       
+            disable();
+            pnAgenda.setBackground(new Color(52, 52, 52));
+            classContact.reset();
+        boolean hi=false;
+ 
+            controller.jpREM = new jpReminder(hi);
+            controller.jpREM.setPreferredSize(new Dimension(980,601));
+            controller.jpREM.setLocation(0,0);
+
+            scrollContainer.setViewportView(controller.jpREM);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+    
+    }
     private void pnSecurityMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSecurityMouseReleased
         pnSecurity();
     }//GEN-LAST:event_pnSecurityMouseReleased
@@ -1046,16 +1070,10 @@ public final class home extends javax.swing.JFrame {
     }//GEN-LAST:event_lblLenguageMouseReleased
 
     private void itemSpanishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSpanishActionPerformed
-       controller.idioma="ESPANOL";
-       standardization.invokeHome(true);
-       standardization.showMessage("ok", "IdiomaCambiado");
+        controller.idioma = "ESPANOL";
+        standardization.invokeHome(true);
+        standardization.showMessage("ok", "Idioma cambiado");
     }//GEN-LAST:event_itemSpanishActionPerformed
-
-    private void itemEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEnglishActionPerformed
-         controller.idioma="INGLES";
-       standardization.invokeHome(true);
-       standardization.showMessage("ok", "IdiomaCambiado");
-    }//GEN-LAST:event_itemEnglishActionPerformed
     //</editor-fold>
     
     public void disable (){
@@ -1113,7 +1131,26 @@ public final class home extends javax.swing.JFrame {
             scrollContainer.repaint();
         }
     }
-    
+   public void pnReminder(){
+        if(classUsuario.getCondition()==1){
+            disable();
+            controller.jpDis = new jpDisable();
+            controller.jpDis.setLocation(0,0);
+
+            scrollContainer.setViewportView(controller.jpDis);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+        }else{
+            disable();
+            pnProj.setBackground(new Color(52, 52, 52));
+            controller.jpAGE= new jpAgendaMenu();
+            controller.jpAGE.setLocation(0,0);
+
+            scrollContainer.setViewportView(controller.jpAGE);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+        }
+    }    
     public void pnSecurity(){
         disable();
         pnSecurity.setBackground(new Color(52, 52, 52));
@@ -1148,6 +1185,21 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
+    public void showYourReminder(boolean i){
+        disable();
+        pnAgenda.setBackground(new Color(52, 52, 52));
+        jpReminder jAA = new jpReminder(i);
+        jAA.setPreferredSize(new Dimension(980,601));
+        jAA.setLocation(0,0);
+
+        scrollContainer.setViewportView(jAA);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
+        
+    
+    
     
     public void loadData(String image, String text, JLabel label)
     {
@@ -1205,5 +1257,7 @@ public final class home extends javax.swing.JFrame {
     private javax.swing.JToggleButton tbtnInternet;
     private javax.swing.JPanel topBar;
     // End of variables declaration//GEN-END:variables
+
+    
     //</editor-fold>
 }

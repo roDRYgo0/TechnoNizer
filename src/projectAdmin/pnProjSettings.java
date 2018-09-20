@@ -1,6 +1,6 @@
 package projectAdmin;
 
-import eventAdmin.pnFooter;
+import eventAdmin.footer;
 import java.awt.Dimension;
 import java.io.File;
 import java.io.FileInputStream;
@@ -42,7 +42,7 @@ public class pnProjSettings extends javax.swing.JPanel {
         pS.setPreferredSize(new Dimension(465,226+size));
         pnContainer.add(pS);
         
-        pnContainer.add(new pnFooter());        
+        pnContainer.add(new footer());        
         
         pnContainer.revalidate();
         pnContainer.repaint();

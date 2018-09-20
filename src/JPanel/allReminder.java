@@ -31,10 +31,10 @@ public class allReminder extends javax.swing.JPanel {
                     linea=0;   
                 }
                 
-                controller.reminderGrid = new reminderGrid(count, search);
-                controller.reminderGrid.setSize(465, 140);
-                controller.reminderGrid.setLocation(x,y);
-                this.add(controller.reminderGrid,BorderLayout.CENTER);
+                controller.remmindersGridds = new remmindersGridds(count, search);
+                controller.remmindersGridds.setSize(465, 140);
+                controller.remmindersGridds.setLocation(x,y);
+                this.add(controller.remmindersGridds,BorderLayout.CENTER);
                 this.revalidate();
                 this.repaint();
                 x+=473;
@@ -51,12 +51,12 @@ public class allReminder extends javax.swing.JPanel {
                     y+=168;
                     linea=0;   
                 }
-                controller.reminderGrid = new reminderGrid(count, search);
+                controller.remmindersGridds = new remmindersGridds(count, search);
 
-                controller.reminderGrid.setSize(465, 140);
-                controller.reminderGrid.setLocation(x,y);
-                controller.reminderGrid.removeAll();
-                this.add(controller.reminderGrid,BorderLayout.CENTER);
+                controller.remmindersGridds.setSize(465, 140);
+                controller.remmindersGridds.setLocation(x,y);
+                controller.remmindersGridds.removeAll();
+                this.add(controller.remmindersGridds,BorderLayout.CENTER);
                 this.revalidate();
                 this.repaint();
                 x+=473;

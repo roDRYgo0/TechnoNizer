@@ -1,6 +1,6 @@
 package projectAdmin;
 
-import eventAdmin.pnFooter;
+import eventAdmin.footer;
 import java.awt.Dimension;
 import javaClass.Project;
 import javaClass.classProjects;
@@ -26,7 +26,7 @@ public class projectAdmin extends javax.swing.JPanel {
             iconCover.setIcon(standardization.getImgIcon(project.getCoverImage()));
 
         lblDescription.setText(project.getDescription());
-        lblDays.setText(standardization.getDateToString(project.getDatetime(), standardization.getDate(project.getDatetime())));
+        lblDays.setText(standardization.getDateToString(project.getDatetime(), standardization.getDate(project.getDatetime()), false));
         
         if (classUsuario.getCondition() == 3 || project.getNickname().equals(classUsuario.getNickname()))
             loadMenu();
@@ -55,7 +55,7 @@ public class projectAdmin extends javax.swing.JPanel {
     }
     
     void loadFooter(){       
-        pnContainer.add(new pnFooter());
+        pnContainer.add(new footer());
 
         pnContainer.revalidate();
         pnContainer.repaint();
