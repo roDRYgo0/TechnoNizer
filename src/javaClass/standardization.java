@@ -654,8 +654,9 @@ public class standardization {
         dat +=" de "+days[0];
         
         if(clock){
-            String[] time = days[2].split(" ");
-            dat+=time[1];
+//            String[] t = days[2].split(" ");
+//            String[] time = t[1] 
+//            dat+=time[1];
         }
         
         return dat;

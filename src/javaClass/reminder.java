@@ -11,6 +11,15 @@ public class reminder {
     private Integer myNumberRemDisp;
     private Integer myNumberRemUse;
     private String nickname;
+    private Integer Num;
+
+    public Integer getNum() {
+        return Num;
+    }
+
+    public void setNum(Integer Num) {
+        this.Num = Num;
+    }
 
     public String getNickname() {
         return nickname;
@@ -82,7 +91,6 @@ public class reminder {
     private void restartReminder(){
         id=null;
         reminder=null;
-        condition=-1;
         date=null;
         System.out.println("Adios toda inf reminders");
     

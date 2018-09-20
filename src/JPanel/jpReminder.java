@@ -5,6 +5,7 @@ import jFrame.addReminderGral;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import javaClass.classProjects;
 import javaClass.classReminder;
 import javaClass.classUsuario;
 import javaClass.controller;
@@ -14,13 +15,23 @@ import javaClass.standardization;
 public class jpReminder extends javax.swing.JPanel {
 
      int view;
+   static boolean current_personal_state = false;
     
-    public jpReminder() {
-        initComponents();
+   
+    
+    public jpReminder(boolean start) {
+     
+         initComponents();
         view = 0;
         
         load();
+        
+       
+      
     }
+    
+
+   
 
     public void load(){
         insertarPaneles(classReminder.reminders.size(), false);
@@ -30,7 +41,7 @@ public class jpReminder extends javax.swing.JPanel {
     
     void loadImage(){
         iconSearch.setIcon(new controller().changeImage("/imagenes/search.png", 35, 35));
-        iconView.setIcon(new controller().changeImage("/imagenes/viewGrid.png", 50, 50));
+        iconView.setIcon(new controller().changeImage("/imagenes/Copybook.png", 50, 50));
         lblAdd.setIcon(new controller().changeImage("/imagenes/add_77928.png", 50, 50));
     }
 
@@ -293,21 +304,7 @@ public class jpReminder extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSearchKeyTyped
 
     private void iconViewMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconViewMouseReleased
-       if(view == 0){
-            view = 1;
-            iconView.setIcon(new controller().changeImage("/imagenes/viewList.png", 50, 50));
-            if(txtSearch.getText().trim().isEmpty())
-                insertarPaneles(classReminder.reminders.size(), false);
-            else
-                search();
-        }else{
-            view = 0;
-            iconView.setIcon(new controller().changeImage("/imagenes/viewGrid.png", 50, 50));
-            if(txtSearch.getText().trim().isEmpty())
-                insertarPaneles(classReminder.reminders.size(), false);
-            else
-                search();
-        }
+      
     }//GEN-LAST:event_iconViewMouseReleased
  
 

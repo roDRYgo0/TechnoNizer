@@ -32,6 +32,7 @@ public class classReminder {
     private static String nickname;
     
     
+    
     public static List<reminder> reminders = new ArrayList<reminder>();
     public static List<reminder> remindersSearch = new ArrayList<reminder>();
 
@@ -131,6 +132,7 @@ public static boolean deleteReminder(){
 
 
  public static void restartUser(){
+        id=null;
         condition=(String.valueOf(-1));
         reminder=null;
         datetime=null;
@@ -143,7 +145,7 @@ public static boolean deleteReminder(){
  public static boolean select(){
         boolean status = false;
         reminder recordatorio;
-        ResultSet rs = methodsSQL.getExecute("SELECT re.id, re.condition, re.reminder, re.alarmDateTime  FROM reminders re WHERE re.nickname =?", classUsuario.getNickname());
+        ResultSet rs = methodsSQL.getExecute("SELECT re.id, re.condition, re.reminder, re.alarmDateTime  FROM reminders re WHERE re.nickname =? order by alarmDateTime", classUsuario.getNickname());
         restart();
         try {
             while(rs.next()){
@@ -166,6 +168,17 @@ public static boolean deleteReminder(){
         
         return status;
     }
+ public static boolean selectn(){
+        boolean status = false;
+        reminder recordatorio;
+        restart();
+
+                recordatorio = new reminder();
+                recordatorio.setNum(methodsSQL.getExecuteInt("SELECT count(*) FROM reminders WHERE nickname = ?", classUsuario.getNickname()));
+       
+                return status;
+ }
+ 
   public static int getSpaceSearchGrid(){
         int row = (remindersSearch.size())/2;
         if((remindersSearch.size())%2!=0)

@@ -313,19 +313,25 @@ public class addReminderGral1 extends javax.swing.JFrame {
             
 
             
-
+                classReminder.setId(Integer.parseInt(jtId.getText()));
                 classReminder.setReminder((txtReminder.getText()));
                 classReminder.setDatetime((txtDayEnd.getText()) );
                 classReminder.setNickname(classUsuario.getNickname());
 
                 if (classReminder.update()) {
-                    JOptionPane.showMessageDialog(this, "Recordatorio Actualizado");
-                    standardization.hide(controller.gralReminder);
+                   classReminder.select();
+                    standardization.hide(controller.gralReminder1);               
+                    technonizer.TechnoNizer.home.pnAgenda();
+                    controller.jpAA.load();
+                    controller.rootFrame = technonizer.TechnoNizer.home;
+                    standardization.showMessage("Ok", "Recordatorio Actualizado", technonizer.TechnoNizer.home);
+                    
                
                    
                 } else {
-                    JOptionPane.showMessageDialog(this, "Error al guardar recordatorio");
-                    standardization.hide(controller.gralReminder);
+                    standardization.showMessage("cancel", "Error ingresado", technonizer.TechnoNizer.home);
+
+                    standardization.hide(controller.gralReminder1);
                       
                 }
             }
