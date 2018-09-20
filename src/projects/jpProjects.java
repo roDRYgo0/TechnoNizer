@@ -3,12 +3,20 @@ package projects;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.util.Properties;
 import javaClass.Project;
 import javaClass.classProjects;
 import javaClass.controller;
+import properties.propiedades;
 
 public class jpProjects extends javax.swing.JPanel {
 
+    void verificaridioma(){
+    Properties pr= new propiedades(controller.idioma);
+    titlejpProjects.setText(pr.getProperty("titlejpProjects"));
+    SearchjpProject.setText(pr.getProperty("SearchjpProject"));
+    }
+    
     int paneles;
     static boolean current_personal_state = false;
     
@@ -23,6 +31,7 @@ public class jpProjects extends javax.swing.JPanel {
         classProjects.onlyPersonal(personal);
         
         insertarPaneles(classProjects.projectsShow.size(), start);
+        verificaridioma();
         load();
     }
     
@@ -50,7 +59,7 @@ public class jpProjects extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        SearchjpProject = new javax.swing.JLabel();
         spSearch = new javax.swing.JSeparator();
         iconSearch = new javax.swing.JLabel();
         scrollProjects = new javax.swing.JScrollPane();
@@ -63,7 +72,7 @@ public class jpProjects extends javax.swing.JPanel {
 
         titlejpProjects.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         titlejpProjects.setForeground(new java.awt.Color(255, 0, 0));
-        titlejpProjects.setText("Projectos");
+        titlejpProjects.setText("Proyectos");
         titlejpProjects.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 titlejpProjectsMouseReleased(evt);
@@ -96,9 +105,9 @@ public class jpProjects extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Buscador");
+        SearchjpProject.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        SearchjpProject.setForeground(new java.awt.Color(102, 102, 102));
+        SearchjpProject.setText("Buscador");
 
         spSearch.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -112,7 +121,7 @@ public class jpProjects extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(SearchjpProject)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -127,7 +136,7 @@ public class jpProjects extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(SearchjpProject)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -235,9 +244,9 @@ public class jpProjects extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel SearchjpProject;
     private javax.swing.JLabel iconSearch;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JScrollPane scrollProjects;

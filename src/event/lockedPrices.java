@@ -5,17 +5,28 @@
  */
 package event;
 
+import java.util.Properties;
+import javaClass.controller;
+import properties.propiedades;
+
 /**
  *
  * @author rodri
  */
 public class lockedPrices extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr = new propiedades(controller.idioma);
+    lblNotAvaible.setText(pr.getProperty("lblNotAvaible"));
+    lblupdatememberlocked.setText(pr.getProperty("lblupdatememberlocked"));
+    }
     /**
      * Creates new form lockedPrices
      */
     public lockedPrices() {
         initComponents();
+        verificaridioma();
     }
 
     /**
@@ -28,8 +39,8 @@ public class lockedPrices extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblNotAvaible = new javax.swing.JLabel();
+        lblupdatememberlocked = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(283, 235));
@@ -38,13 +49,13 @@ public class lockedPrices extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/alert.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel2.setText("No disponible");
+        lblNotAvaible.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblNotAvaible.setForeground(new java.awt.Color(255, 51, 51));
+        lblNotAvaible.setText("No disponible");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel3.setText("Actualiza tu membresia");
+        lblupdatememberlocked.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblupdatememberlocked.setForeground(new java.awt.Color(255, 51, 51));
+        lblupdatememberlocked.setText("Actualiza tu membresia");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -57,9 +68,9 @@ public class lockedPrices extends javax.swing.JPanel {
                         .addGap(25, 25, 25)
                         .addComponent(jLabel1))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel3)
+                        .addComponent(lblupdatememberlocked)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
+                            .addComponent(lblNotAvaible)
                             .addGap(29, 29, 29))))
                 .addContainerGap(143, Short.MAX_VALUE))
         );
@@ -69,9 +80,9 @@ public class lockedPrices extends javax.swing.JPanel {
                 .addGap(32, 32, 32)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(lblNotAvaible)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(lblupdatememberlocked)
                 .addContainerGap(51, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -79,7 +90,7 @@ public class lockedPrices extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblNotAvaible;
+    private javax.swing.JLabel lblupdatememberlocked;
     // End of variables declaration//GEN-END:variables
 }

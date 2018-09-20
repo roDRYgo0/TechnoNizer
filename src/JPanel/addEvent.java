@@ -14,10 +14,9 @@ public class addEvent extends javax.swing.JPanel {
     {
     Properties pr = new propiedades (controller.idioma);
     addEventLbl.setText(pr.getProperty("addEventLbl"));
-    
     }
     
-    public addEvent() {
+    public addEvent(){
         initComponents();
         verificaridioma();
     }

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javaClass.classEvent;
@@ -12,6 +13,7 @@ import javaClass.controller;
 import javaClass.methodsSQL;
 import javaClass.standardization;
 import javax.swing.JFrame;
+import properties.propiedades;
 
 /** @author Alexg */
 
@@ -22,17 +24,81 @@ public class AddEventInfo extends javax.swing.JFrame {
     byte[] profil;
     boolean guest;
     
+    void verificaridioma()
+    {
+    Properties pr = new propiedades (controller.idioma);
+    addeventlbl.setText(pr.getProperty("addeventlbl"));
+    DataGenEventInfo.setText(pr.getProperty("DataGenEventInfo"));
+    NameeventlblEventInfo.setText(pr.getProperty("NameeventlblEventInfo"));
+    placeeventEventInfo.setText(pr.getProperty("placeeventEventInfo"));
+    InvitesnumberEventInfo.setText(pr.getProperty("InvitesnumberEventInfo"));
+    SetDatesEventInfo.setText(pr.getProperty("SetDatesEventInfo"));
+    DayEventInfo.setText(pr.getProperty("Dayjpedit"));
+    MonthEventInfo.setText(pr.getProperty("monthjpedit"));
+    YearEventInfo.setText(pr.getProperty("yearjpedit"));
+    Day2EventInfo.setText(pr.getProperty("Dayjpedit"));
+    Month2EventInfo.setText(pr.getProperty("monthjpedit"));
+    Year2EventInfo.setText(pr.getProperty("yearjpedit"));
+    
+            cmbMonthStart.removeAllItems();
+            cmbMonthEnd.removeAllItems();
+            
+            String mesesstart[]={
+            pr.getProperty("firstmonth"),
+            pr.getProperty("secondmonth"),
+            pr.getProperty("thirdmonth"),
+            pr.getProperty("fourmonth"),
+            pr.getProperty("fivemonth"),
+            pr.getProperty("sixmonth"),
+            pr.getProperty("sevenmonth"),
+            pr.getProperty("eightmonth"),
+            pr.getProperty("ninemonth"),
+            pr.getProperty("tenmonth"),
+            pr.getProperty("elevenmonth"),
+            pr.getProperty("twelvemonth")
+            };
+            for(int i=0;i<mesesstart.length;i++)
+            {
+                cmbMonthStart.addItem(mesesstart[i]);
+            }
+            
+            String mesesEnd[]={
+            pr.getProperty("firstmonth"),
+            pr.getProperty("secondmonth"),
+            pr.getProperty("thirdmonth"),
+            pr.getProperty("fourmonth"),
+            pr.getProperty("fivemonth"),
+            pr.getProperty("sixmonth"),
+            pr.getProperty("sevenmonth"),
+            pr.getProperty("eightmonth"),
+            pr.getProperty("ninemonth"),
+            pr.getProperty("tenmonth"),
+            pr.getProperty("elevenmonth"),
+            pr.getProperty("twelvemonth")
+            };
+            for(int i=0;i<mesesEnd.length;i++)
+            {
+                cmbMonthEnd.addItem(mesesEnd[i]);
+            }
+    
+    btnNext1.setText(pr.getProperty("btnNext1EventInfo"));
+    }
+    
     public AddEventInfo(JFrame event) {
         initComponents();
         this.event=event;
         guest = false;
-        loadImage();
+       
+        loadImage(); 
+        verificaridioma();
       
     }
     public AddEventInfo() {
         initComponents();
-        guest = false;        
-        loadImage();
+        guest = false;  
+      
+        loadImage(); 
+        verificaridioma();
     }
     
     void loadImage(){
@@ -56,40 +122,40 @@ public class AddEventInfo extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        addeventlbl = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
         lblEvent = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        DataGenEventInfo = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        SetDatesEventInfo = new javax.swing.JLabel();
+        NameeventlblEventInfo = new javax.swing.JLabel();
         txtEvent = new javax.swing.JTextField();
         spEvent = new javax.swing.JSeparator();
         checkEvent = new javax.swing.JLabel();
         spDayStart = new javax.swing.JSeparator();
         cmbMonthStart = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
+        MonthEventInfo = new javax.swing.JLabel();
         txtYearStart = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        YearEventInfo = new javax.swing.JLabel();
         spYearStart = new javax.swing.JSeparator();
         iconStart = new javax.swing.JLabel();
         txtDayStart = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        DayEventInfo = new javax.swing.JLabel();
         iconEnd = new javax.swing.JLabel();
         txtDayEnd = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
+        Day2EventInfo = new javax.swing.JLabel();
         spDayEnd = new javax.swing.JSeparator();
-        jLabel12 = new javax.swing.JLabel();
+        Month2EventInfo = new javax.swing.JLabel();
         cmbMonthEnd = new javax.swing.JComboBox<>();
         txtYearEnd = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
+        Year2EventInfo = new javax.swing.JLabel();
         spYearEnd = new javax.swing.JSeparator();
         btnNext1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        placeeventEventInfo = new javax.swing.JLabel();
         txtPlace = new javax.swing.JTextField();
         spPlace = new javax.swing.JSeparator();
-        jLabel14 = new javax.swing.JLabel();
+        InvitesnumberEventInfo = new javax.swing.JLabel();
         txtGuest = new javax.swing.JTextField();
         spNumber = new javax.swing.JSeparator();
         iconGuest = new javax.swing.JLabel();
@@ -104,8 +170,8 @@ public class AddEventInfo extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(35, 150, 243));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Agregar Evento");
+        addeventlbl.setForeground(new java.awt.Color(255, 255, 255));
+        addeventlbl.setText("Agregar Evento");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,7 +205,7 @@ public class AddEventInfo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(addeventlbl, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnNext))))
@@ -155,19 +221,19 @@ public class AddEventInfo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(addeventlbl))
                 .addContainerGap())
         );
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Datos Generales");
+        DataGenEventInfo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        DataGenEventInfo.setText("Datos Generales");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel9.setText("Establecer fechas ");
+        SetDatesEventInfo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        SetDatesEventInfo.setText("Establecer fechas ");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Nombre del evento");
+        NameeventlblEventInfo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        NameeventlblEventInfo.setForeground(new java.awt.Color(102, 102, 102));
+        NameeventlblEventInfo.setText("Nombre del evento");
 
         txtEvent.setAutoscrolls(false);
         txtEvent.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -196,7 +262,7 @@ public class AddEventInfo extends javax.swing.JFrame {
         cmbMonthStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         cmbMonthStart.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        jLabel6.setText("Mes");
+        MonthEventInfo.setText("Mes");
 
         txtYearStart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtYearStart.setText("2000");
@@ -215,7 +281,7 @@ public class AddEventInfo extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Año");
+        YearEventInfo.setText("Año");
 
         spYearStart.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -240,7 +306,7 @@ public class AddEventInfo extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setText("Día");
+        DayEventInfo.setText("Día");
 
         iconEnd.setMaximumSize(new java.awt.Dimension(35, 35));
         iconEnd.setMinimumSize(new java.awt.Dimension(35, 35));
@@ -263,11 +329,11 @@ public class AddEventInfo extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setText("Día");
+        Day2EventInfo.setText("Día");
 
         spDayEnd.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel12.setText("Mes");
+        Month2EventInfo.setText("Mes");
 
         cmbMonthEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         cmbMonthEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -289,7 +355,7 @@ public class AddEventInfo extends javax.swing.JFrame {
             }
         });
 
-        jLabel13.setText("Año");
+        Year2EventInfo.setText("Año");
 
         spYearEnd.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -305,9 +371,9 @@ public class AddEventInfo extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Lugar del evento");
+        placeeventEventInfo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        placeeventEventInfo.setForeground(new java.awt.Color(102, 102, 102));
+        placeeventEventInfo.setText("Lugar del evento");
 
         txtPlace.setAutoscrolls(false);
         txtPlace.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -327,9 +393,9 @@ public class AddEventInfo extends javax.swing.JFrame {
 
         spPlace.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel14.setText("Numero de invitados");
+        InvitesnumberEventInfo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        InvitesnumberEventInfo.setForeground(new java.awt.Color(102, 102, 102));
+        InvitesnumberEventInfo.setText("Numero de invitados");
 
         txtGuest.setAutoscrolls(false);
         txtGuest.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -373,19 +439,19 @@ public class AddEventInfo extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7)
+                            .addComponent(DataGenEventInfo)
+                            .addComponent(placeeventEventInfo)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(spEvent)
                                 .addComponent(txtEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
+                            .addComponent(SetDatesEventInfo)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
+                                    .addComponent(DayEventInfo)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,12 +459,12 @@ public class AddEventInfo extends javax.swing.JFrame {
                                             .addComponent(txtDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
+                                    .addComponent(MonthEventInfo)
                                     .addComponent(cmbMonthStart, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtYearStart)
-                                    .addComponent(jLabel8)
+                                    .addComponent(YearEventInfo)
                                     .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(iconEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -408,22 +474,22 @@ public class AddEventInfo extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(spDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jLabel11))
+                                    .addComponent(Day2EventInfo))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
+                                    .addComponent(Month2EventInfo)
                                     .addComponent(cmbMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtYearEnd)
-                                    .addComponent(jLabel13)
+                                    .addComponent(Year2EventInfo)
                                     .addComponent(spYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4)
+                            .addComponent(NameeventlblEventInfo)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14)
+                                    .addComponent(InvitesnumberEventInfo)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(iconGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, 0)
@@ -445,9 +511,9 @@ public class AddEventInfo extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
-                .addComponent(jLabel5)
+                .addComponent(DataGenEventInfo)
                 .addGap(13, 13, 13)
-                .addComponent(jLabel4)
+                .addComponent(NameeventlblEventInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -455,7 +521,7 @@ public class AddEventInfo extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jLabel7)
+                        .addComponent(placeeventEventInfo)
                         .addGap(9, 9, 9)
                         .addComponent(iconPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -464,7 +530,7 @@ public class AddEventInfo extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(spPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(16, 16, 16)
-                .addComponent(jLabel14)
+                .addComponent(InvitesnumberEventInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(checkEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -478,14 +544,14 @@ public class AddEventInfo extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
+                .addComponent(SetDatesEventInfo)
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel10)
+                                    .addComponent(DayEventInfo)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(txtDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -493,13 +559,13 @@ public class AddEventInfo extends javax.swing.JFrame {
                             .addComponent(spDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
+                                .addComponent(YearEventInfo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10))
                             .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(MonthEventInfo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbMonthStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)))
@@ -511,7 +577,7 @@ public class AddEventInfo extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel11)
+                                            .addComponent(Day2EventInfo)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(txtDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(iconEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -519,13 +585,13 @@ public class AddEventInfo extends javax.swing.JFrame {
                                     .addComponent(spDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(spYearEnd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
+                                .addComponent(Month2EventInfo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)))
                         .addGap(52, 52, 52))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
+                        .addComponent(Year2EventInfo)
                         .addGap(12, 12, 12)
                         .addComponent(txtYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
@@ -740,6 +806,17 @@ public class AddEventInfo extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DataGenEventInfo;
+    private javax.swing.JLabel Day2EventInfo;
+    private javax.swing.JLabel DayEventInfo;
+    private javax.swing.JLabel InvitesnumberEventInfo;
+    private javax.swing.JLabel Month2EventInfo;
+    private javax.swing.JLabel MonthEventInfo;
+    private javax.swing.JLabel NameeventlblEventInfo;
+    private javax.swing.JLabel SetDatesEventInfo;
+    private javax.swing.JLabel Year2EventInfo;
+    private javax.swing.JLabel YearEventInfo;
+    private javax.swing.JLabel addeventlbl;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
     private javax.swing.JLabel checkEvent;
@@ -750,23 +827,12 @@ public class AddEventInfo extends javax.swing.JFrame {
     private javax.swing.JLabel iconPlace;
     private javax.swing.JLabel iconStart;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblEvent;
+    private javax.swing.JLabel placeeventEventInfo;
     private javax.swing.JSeparator spDayEnd;
     private javax.swing.JSeparator spDayStart;
     private javax.swing.JSeparator spEvent;
