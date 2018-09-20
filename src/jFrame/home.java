@@ -868,10 +868,21 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
+    public void showEventProblems(int e){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        pnProblem setting = new pnProblem(e);
+        setting.setLocation(0,0);
+        
+        scrollContainer.setViewportView(setting);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
     public void showEventActivities(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        pnActivities activities = new pnActivities(e);
+        pnActivity activities = new pnActivity(e);
         activities.setLocation(0,0);
         
         scrollContainer.setViewportView(activities);
@@ -881,23 +892,14 @@ public final class home extends javax.swing.JFrame {
     public void showEventTask(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        pnTasks tasks = new pnTasks(e);
+        pnTask tasks = new pnTask(e);
         tasks.setLocation(0,0);
         
         scrollContainer.setViewportView(tasks);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
-    public void showEventProblems(int e){
-        disable();
-        pnEvents.setBackground(new Color(52, 52, 52));
-        pnSettings setting = new pnSettings(e);
-        setting.setLocation(0,0);
-        
-        scrollContainer.setViewportView(setting);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
-    }
+    
     public void showEventAnnoucements(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
@@ -909,10 +911,16 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
-    public void showEvent(int e){
+    
+    public void colorEvent(){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        controller.event = new eventAdmin(e);
+    }
+    
+    public void showEvent(int e, boolean load){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        controller.event = new eventAdmin(e, load);
         controller.event.setLocation(0,0);
 
         scrollContainer.setViewportView(controller.event);

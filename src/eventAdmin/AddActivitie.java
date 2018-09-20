@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javaClass.activity;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
@@ -29,8 +28,8 @@ public class AddActivitie extends javax.swing.JFrame {
         switchVisibility();
         load();
         txtDescription.setLineWrap(true);
-        start.setText(standardization.getDateToString(classEvent.eventosShow.get(idEvent).getStartDateTime(), standardization.getDate(classEvent.eventosShow.get(idEvent).getStartDateTime())));
-        end.setText(standardization.getDateToString(classEvent.eventosShow.get(idEvent).getEndDateTime(), standardization.getDate(classEvent.eventosShow.get(idEvent).getEndDateTime())));
+        start.setText(standardization.getDateToString(classEvent.eventosShow.get(idEvent).getStartDateTime(), standardization.getDate(classEvent.eventosShow.get(idEvent).getStartDateTime()), false));
+        end.setText(standardization.getDateToString(classEvent.eventosShow.get(idEvent).getEndDateTime(), standardization.getDate(classEvent.eventosShow.get(idEvent).getEndDateTime()), false));
     }   
 
     void load(){

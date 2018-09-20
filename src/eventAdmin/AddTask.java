@@ -216,6 +216,7 @@ public class AddTask extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTask)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -231,12 +232,9 @@ public class AddTask extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblSwitchS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel5)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(spEvent)
-                                .addComponent(txtTask, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel4)
                             .addComponent(jLabel7))
-                        .addGap(0, 77, Short.MAX_VALUE))
+                        .addGap(0, 99, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(iconPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
@@ -246,7 +244,8 @@ public class AddTask extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spEvent))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -275,7 +274,6 @@ public class AddTask extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblSwitchV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
@@ -347,17 +345,22 @@ public class AddTask extends javax.swing.JFrame {
                 new Thread(()->{
                     technonizer.TechnoNizer.home.showLoad();
                     technonizer.TechnoNizer.home.showEventTask(idEvent);
+                    controller.rootFrame = technonizer.TechnoNizer.home;
+                    standardization.hide(this);
                     standardization.showMessage("ok", "Exito al ingresar");
                 }).start();
             }
-            else
+            else{
+                controller.rootFrame = technonizer.TechnoNizer.home;
+                standardization.hide(this);
                 standardization.showMessage("cancel", "No se logro ingresar");
+            }
         }
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtTaskKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaskKeyTyped
         char c = evt.getKeyChar();
-        if(txtTask.getText().length()<41){
+        if(txtTask.getText().length()<60){
             if(Character.isLetter(c) || Character.isSpaceChar(c) || Character.isDigit(c)){}
             else
             evt.consume();
@@ -368,7 +371,7 @@ public class AddTask extends javax.swing.JFrame {
     private void txtTaskFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTaskFocusLost
         spEvent.setBackground(Color.white);
         if(txtTask.getText().trim().length() < 4 && txtTask.getText().trim().length() > 0){
-            standardization.showMessage("cancel", "Evento invalido");
+            standardization.showMessage("cancel", "Tarea invalida");
             txtTask.setText("");
         }
     }//GEN-LAST:event_txtTaskFocusLost

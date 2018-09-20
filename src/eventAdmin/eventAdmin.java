@@ -1,8 +1,7 @@
 package eventAdmin;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
+import java.util.Objects;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.event;
@@ -12,18 +11,31 @@ public class eventAdmin extends javax.swing.JPanel {
 
     int idEvent;
     
-    public eventAdmin(int idEvent) {
+    public eventAdmin(int idEvent, boolean load) {
         initComponents();
         this.idEvent = idEvent;
         scrollContainer.getVerticalScrollBar().setUnitIncrement(16);
-        load(classEvent.eventosShow.get(idEvent));
+        load(classEvent.eventosShow.get(idEvent), load);
         
         
     }
     
-    public void load(event event){
-        classEvent.activities.clear();
-        classEvent.selectActivity(event.getId());
+    public void load(event event, boolean load){
+        if(load){
+            classEvent.activities.clear();
+            classEvent.selectActivity(event.getId());
+            classEvent.tasks.clear();
+            classEvent.selectTasks(event.getId());
+            classEvent.selectProblems(event.getId());
+        }
+        
+        lblLost.setIcon(new controller().changeImage("/imagenes/decrease.png", 22, 22));
+        lblLost.setText("$"+lost());
+        lblIncome.setIcon(new controller().changeImage("/imagenes/increase.png", 22, 22));
+        lblIncome.setText("$"+income());
+        
+        lblGain.setText("$"+(income()-lost()));
+        
         lblEventName.setText(event.getEventName());     
         lblNickname.setText(event.getNicknameCreator());
         if(event.getProfilePicture() != null)
@@ -32,22 +44,22 @@ public class eventAdmin extends javax.swing.JPanel {
         if(event.getCoverPicture()!= null)
             iconCover.setIcon(standardization.getImgIcon(event.getCoverPicture()));
         
-        lblDays.setText(standardization.getDateToString(event.getStartDateTime(), standardization.getDate(event.getStartDateTime())));
+        lblDays.setText(standardization.getDateToString(event.getStartDateTime(), standardization.getDate(event.getStartDateTime()), false));
         
-        switch(event.getInvitation()){
-            case 1:
-                lblInvitation.setText("Público");
-                lblInvitation.setIcon(new controller().changeImage("/imagenes/public.png", 17, 17));
-                break;
-            case 2:
-                lblInvitation.setText("Solicitud");
-                lblInvitation.setIcon(new controller().changeImage("/imagenes/invite.png", 17, 17));
-                break;
-            case 3:
-                lblInvitation.setText("Por invitación");
-                lblInvitation.setIcon(new controller().changeImage("/imagenes/private.png", 17, 17));
-                break;
-        }
+//        switch(event.getInvitation()){
+//            case 1:
+//                lblInvitation.setText("Público");
+//                lblInvitation.setIcon(new controller().changeImage("/imagenes/public.png", 17, 17));
+//                break;
+//            case 2:
+//                lblInvitation.setText("Solicitud");
+//                lblInvitation.setIcon(new controller().changeImage("/imagenes/invite.png", 17, 17));
+//                break;
+//            case 3:
+//                lblInvitation.setText("Por invitación");
+//                lblInvitation.setIcon(new controller().changeImage("/imagenes/private.png", 17, 17));
+//                break;
+//        }
         
         if(event.getVisibility() == 1){
             lblVisibility.setText("Visible");
@@ -56,15 +68,7 @@ public class eventAdmin extends javax.swing.JPanel {
             lblVisibility.setText("Invisible");
             lblVisibility.setIcon(new controller().changeImage("/imagenes/eyeClose.png", 17, 17));
         }
-        
-        if(event.getQuantityTicket() == -1){
-            lblCount.setText("Ilimitados");
-            lblCount.setIcon(new controller().changeImage("/imagenes/infinity.png", 17, 17));
-        }else{
-            lblCount.setText(event.getQuantityTicket()+"");
-            lblCount.setIcon(new controller().changeImage("/imagenes/hashtag.png", 17, 17));
-        }
-        
+
         loadMenu();
         loadPrice(event);
         loadStaff(event);
@@ -74,20 +78,45 @@ public class eventAdmin extends javax.swing.JPanel {
         loadFooter();
     }
     
+    double lost(){
+        double lost = 0.0;
+        for(int i = 0; i < classEvent.tasks.size(); i++){
+            if(classEvent.tasks.get(i).getCondition()==1){
+                lost+=classEvent.tasks.get(i).getPrice();
+            }
+        }
+        return lost;
+    }
+    
+    double income(){
+        double income = 0.0;
+        for(int i = 0; i < classEvent.eventosShow.get(idEvent).getGuests().size(); i++){
+            
+            for(int e = 0; e < classEvent.eventosShow.get(idEvent).getPrices().size(); e++){
+                if(Objects.equals(classEvent.eventosShow.get(idEvent).getPrices().get(e).getId(), classEvent.eventosShow.get(idEvent).getGuests().get(i).getIdTickets())){
+                    income+=classEvent.eventosShow.get(idEvent).getPrices().get(e).getPrice();
+                }
+                
+            }
+            
+        }
+        return income;
+    }
+    
     void loadMenu(){
-        pnContainer.add(new pnMenu(idEvent));
+        pnContainer.add(new menu(idEvent));
         pnContainer.revalidate();
         pnContainer.repaint();
     }
     
     void loadActivity(){
-        pnContainer.add(new pnActivity(idEvent));
+        pnContainer.add(new activitys(idEvent));
         pnContainer.revalidate();
         pnContainer.repaint();
     }
     
     void loadTask(){
-        pnContainer.add(new pnTask(idEvent));
+        pnContainer.add(new task(idEvent));
         pnContainer.revalidate();
         pnContainer.repaint();
     }
@@ -104,7 +133,7 @@ public class eventAdmin extends javax.swing.JPanel {
     }
     
     void loadStaff(event event){     
-        pnStaffs pS = new pnStaffs(idEvent);
+        staffMenu pS = new staffMenu(idEvent);
         int size = 0;
         if(event.getStaffs() != null)
             size = (event.getStaffs().size() <= 1) ? 1 : (event.getStaffs().size() -1) * 50;
@@ -117,14 +146,14 @@ public class eventAdmin extends javax.swing.JPanel {
     }
     
     void loadFooter(){       
-        pnContainer.add(new pnFooter());
+        pnContainer.add(new footer());
 
         pnContainer.revalidate();
         pnContainer.repaint();
     }
     
     void loadPlace(){       
-        pnContainer.add(new pnPlace(idEvent));
+        pnContainer.add(new placeMenu(idEvent));
 
         pnContainer.revalidate();
         pnContainer.repaint();
@@ -143,13 +172,16 @@ public class eventAdmin extends javax.swing.JPanel {
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
         lblVisibility = new javax.swing.JLabel();
-        lblInvitation = new javax.swing.JLabel();
-        lblCount = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblLost = new javax.swing.JLabel();
+        Gastos = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        lblIncome = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
+        Gastos1 = new javax.swing.JLabel();
+        Gastos2 = new javax.swing.JLabel();
+        lblGain = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
         iconCover = new javax.swing.JLabel();
 
         scrollContainer.setBorder(null);
@@ -224,93 +256,124 @@ public class eventAdmin extends javax.swing.JPanel {
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel8.setText("Tipo de asistencia");
-        jLabel8.setMaximumSize(new java.awt.Dimension(89, 20));
-        jLabel8.setMinimumSize(new java.awt.Dimension(89, 20));
-        jLabel8.setPreferredSize(new java.awt.Dimension(89, 20));
-
-        jSeparator4.setForeground(new java.awt.Color(204, 204, 204));
-
         lblVisibility.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblVisibility.setText("Visible");
 
-        lblInvitation.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblInvitation.setText("Por invitación");
+        lblLost.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        lblLost.setForeground(new java.awt.Color(255, 0, 0));
+        lblLost.setText("$213");
 
-        lblCount.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblCount.setText("Por invitación");
+        Gastos.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        Gastos.setForeground(new java.awt.Color(153, 153, 153));
+        Gastos.setText("Perdida");
+        Gastos.setMaximumSize(new java.awt.Dimension(51, 20));
+        Gastos.setMinimumSize(new java.awt.Dimension(51, 20));
+        Gastos.setPreferredSize(new java.awt.Dimension(51, 20));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel9.setText("Número de entradas disponibles");
-        jLabel9.setMaximumSize(new java.awt.Dimension(89, 20));
-        jLabel9.setMinimumSize(new java.awt.Dimension(89, 20));
-        jLabel9.setPreferredSize(new java.awt.Dimension(89, 20));
+        jSeparator4.setForeground(new java.awt.Color(204, 204, 204));
+
+        lblIncome.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        lblIncome.setForeground(new java.awt.Color(51, 204, 0));
+        lblIncome.setText("$0.0");
+        lblIncome.setMaximumSize(new java.awt.Dimension(36, 22));
+        lblIncome.setMinimumSize(new java.awt.Dimension(36, 22));
+        lblIncome.setPreferredSize(new java.awt.Dimension(36, 22));
 
         jSeparator5.setForeground(new java.awt.Color(204, 204, 204));
+
+        Gastos1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        Gastos1.setForeground(new java.awt.Color(153, 153, 153));
+        Gastos1.setText("Ingresos");
+        Gastos1.setMaximumSize(new java.awt.Dimension(51, 20));
+        Gastos1.setMinimumSize(new java.awt.Dimension(51, 20));
+        Gastos1.setPreferredSize(new java.awt.Dimension(51, 20));
+
+        Gastos2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        Gastos2.setForeground(new java.awt.Color(153, 153, 153));
+        Gastos2.setText("Ganancia");
+        Gastos2.setMaximumSize(new java.awt.Dimension(51, 20));
+        Gastos2.setMinimumSize(new java.awt.Dimension(51, 20));
+        Gastos2.setPreferredSize(new java.awt.Dimension(51, 20));
+
+        lblGain.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        lblGain.setText("$0.0");
+        lblGain.setMaximumSize(new java.awt.Dimension(36, 22));
+        lblGain.setMinimumSize(new java.awt.Dimension(36, 22));
+        lblGain.setPreferredSize(new java.awt.Dimension(36, 22));
+
+        jSeparator6.setForeground(new java.awt.Color(204, 204, 204));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblInvitation, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel6Layout.createSequentialGroup()
-                                    .addGap(8, 8, 8)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel6Layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(lblVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(95, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(lblCount, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(lblVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblLost, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(Gastos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblIncome, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(Gastos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblGain, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(Gastos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(Gastos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(lblIncome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(lblVisibility)
+                        .addGap(18, 18, 18)
+                        .addComponent(Gastos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(lblLost, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Gastos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addComponent(lblVisibility)
-                .addGap(15, 15, 15)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(lblInvitation)
-                .addGap(15, 15, 15)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(lblCount)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lblGain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pnContainer.add(jPanel6);
@@ -344,19 +407,22 @@ public class eventAdmin extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Gastos;
+    private javax.swing.JLabel Gastos1;
+    private javax.swing.JLabel Gastos2;
     private javax.swing.JLabel iconCover;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JLabel lblCount;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JLabel lblDays;
     private javax.swing.JLabel lblEventName;
-    private javax.swing.JLabel lblInvitation;
+    private javax.swing.JLabel lblGain;
+    private javax.swing.JLabel lblIncome;
+    private javax.swing.JLabel lblLost;
     private javax.swing.JLabel lblNickname;
     private javax.swing.JLabel lblVisibility;
     private javax.swing.JPanel pnContainer;

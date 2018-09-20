@@ -2,11 +2,12 @@ package eventAdmin;
 
 public class more extends javax.swing.JPanel {
 
-    int idEvent;
+    int idEvent, num;
     
-    public more(int idEvent) {
+    public more(int idEvent, int num) {
         initComponents();
         this.idEvent = idEvent;
+        this.num = num;
     }
 
 
@@ -44,7 +45,15 @@ public class more extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
-        technonizer.TechnoNizer.home.showEventActivities(idEvent);
+        switch(num){
+            case 1:
+                technonizer.TechnoNizer.home.showEventActivities(idEvent);
+                break;
+            case 2:
+                technonizer.TechnoNizer.home.showEventTask(idEvent);
+                break;
+        }
+     
     }//GEN-LAST:event_jLabel1MouseReleased
 
 

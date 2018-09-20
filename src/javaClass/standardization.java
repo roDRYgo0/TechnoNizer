@@ -13,10 +13,12 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
@@ -63,6 +65,24 @@ public class standardization {
     public static Date currentDateTime(){
         cal= Calendar.getInstance();
         return new Date(cal.get(Calendar.YEAR) , cal.get(Calendar.MONTH), cal.get(Calendar.DATE), cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND));
+    }
+    
+    public static String currentDateTimeString(){
+        cal= Calendar.getInstance();   
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String[] dateTime = df.format(cal.getTime()).split(" ");
+        String[] time = dateTime[1].split(":");
+        String rs = dateTime[0]+" "+ ((Integer.parseInt(time[0])>10)? (Integer.parseInt(time[0])-12)+":" :time[0]+":")+time[1]+":"+time[2]+" "+((Integer.parseInt(time[0])>10)? "PM" :"AM");
+        return rs;
+    }
+    
+    public static String currentDateTimeSQL(){
+        cal= Calendar.getInstance();   
+        DateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+        String[] dateTime = df.format(cal.getTime()).split(" ");
+        String[] time = dateTime[1].split(":");
+        String rs = dateTime[0]+" "+ ((Integer.parseInt(time[0])>10)? (Integer.parseInt(time[0])-12)+":" :time[0]+":")+time[1]+":"+time[2]+" "+((Integer.parseInt(time[0])>10)? "PM" :"AM");
+        return rs;
     }
     
     public static Date currentDate(){
@@ -536,9 +556,10 @@ public class standardization {
            }
        }
     
-    public static String getDateToString(String date, Date d){
+    public static String getDateToString(String date, Date d, boolean clock){
         String[] days = date.split("-");
         String dat = "";
+        
         switch(d.getDay()){
             case 0:
                 dat+="Domingo, ";
@@ -563,7 +584,7 @@ public class standardization {
                 break;
             
         }
-        dat += days[2]+" ";
+        dat += d.getDate()+" ";
         System.out.println(days[1]+"el mes");
         switch(days[1]){
             case "01":
@@ -631,6 +652,12 @@ public class standardization {
                 break;
         }
         dat +=" de "+days[0];
+        
+        if(clock){
+            String[] time = days[2].split(" ");
+            dat+=time[1];
+        }
+        
         return dat;
     }
     

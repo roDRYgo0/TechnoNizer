@@ -53,13 +53,13 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
                   <Component id="spCount1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtCount1" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
+                  <Component id="txtAvailable" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
                   <Component id="spCount2" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtCount2" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
+                  <Component id="txtUse" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="btnNext" min="-2" max="-2" attributes="0"/>
@@ -101,14 +101,14 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="txtCount1" min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="txtAvailable" min="-2" pref="28" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="spCount1" min="-2" pref="10" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="txtCount2" min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="txtUse" min="-2" pref="28" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="spCount2" min="-2" pref="10" max="-2" attributes="0"/>
           </Group>
@@ -228,6 +228,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtCount">
       <Properties>
+        <Property name="text" type="java.lang.String" value="Ilimitados"/>
         <Property name="autoscrolls" type="boolean" value="false"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -261,11 +262,12 @@
         <Property name="text" type="java.lang.String" value="Disponibles"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCount1">
+    <Component class="javax.swing.JTextField" name="txtAvailable">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="99" red="0" type="rgb"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="ilimitados"/>
         <Property name="autoscrolls" type="boolean" value="false"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -275,10 +277,10 @@
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCount1FocusGained"/>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCount1FocusLost"/>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCount1KeyPressed"/>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCount1KeyTyped"/>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtAvailableFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtAvailableFocusLost"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAvailableKeyPressed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAvailableKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="spCount1">
@@ -299,11 +301,12 @@
         <Property name="text" type="java.lang.String" value="En uso"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCount2">
+    <Component class="javax.swing.JTextField" name="txtUse">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="cc" type="rgb"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="Ilimitados"/>
         <Property name="autoscrolls" type="boolean" value="false"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -313,10 +316,10 @@
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCount2FocusGained"/>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCount2FocusLost"/>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCount2KeyPressed"/>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCount2KeyTyped"/>
+        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtUseFocusGained"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtUseFocusLost"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUseKeyPressed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUseKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="spCount2">

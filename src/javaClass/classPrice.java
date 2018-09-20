@@ -3,10 +3,22 @@ package javaClass;
 /** @author rodri */
 
 public class classPrice {
+    
+    private Integer id;
     private String name;
     private double price;
     private int count;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    
+    
     public int getCount() {
         return count;
     }

@@ -16,15 +16,35 @@ public class showPrice extends javax.swing.JPanel {
         this.idEvent = idEvent;
         txtNamePrice.setText(classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getName());
         txtPrice.setText(classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getPrice()+"");
-        if(classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getCount() == -1)
+        if(classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getCount() == -1){
             txtCount.setText("Ilimitados");
-        else
+            txtUse.setText("Ilimitados");
+            txtAvailable.setText("Ilimitados");
+        }
+        else{
             txtCount.setText(classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getCount()+"");
+            txtUse.setText(use()+"");
+            txtAvailable.setText(available()+"");
+        }
         
         if(classEvent.eventosShow.get(idEvent).getPrices().size() == 1)
             btnNext.setVisible(false);
+        btnNext.setVisible(false);
+        
     }
 
+    int use(){
+        int use = 0;
+        use = classEvent.selectGuestTickets(classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getId());
+        return use;
+    }
+    
+    int available(){
+        int available = 0;
+        available = classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getCount() - classEvent.selectGuestTickets(classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getId());
+        return available;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -40,10 +60,10 @@ public class showPrice extends javax.swing.JPanel {
         txtCount = new javax.swing.JTextField();
         spCount = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
-        txtCount1 = new javax.swing.JTextField();
+        txtAvailable = new javax.swing.JTextField();
         spCount1 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
-        txtCount2 = new javax.swing.JTextField();
+        txtUse = new javax.swing.JTextField();
         spCount2 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -123,6 +143,7 @@ public class showPrice extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Cantidad");
 
+        txtCount.setText("Ilimitados");
         txtCount.setAutoscrolls(false);
         txtCount.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         txtCount.setFocusable(false);
@@ -149,24 +170,25 @@ public class showPrice extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Disponibles");
 
-        txtCount1.setForeground(new java.awt.Color(0, 153, 0));
-        txtCount1.setAutoscrolls(false);
-        txtCount1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtCount1.setFocusable(false);
-        txtCount1.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtAvailable.setForeground(new java.awt.Color(0, 153, 0));
+        txtAvailable.setText("ilimitados");
+        txtAvailable.setAutoscrolls(false);
+        txtAvailable.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtAvailable.setFocusable(false);
+        txtAvailable.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCount1FocusGained(evt);
+                txtAvailableFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCount1FocusLost(evt);
+                txtAvailableFocusLost(evt);
             }
         });
-        txtCount1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtAvailable.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtCount1KeyPressed(evt);
+                txtAvailableKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCount1KeyTyped(evt);
+                txtAvailableKeyTyped(evt);
             }
         });
 
@@ -176,24 +198,25 @@ public class showPrice extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
         jLabel8.setText("En uso");
 
-        txtCount2.setForeground(new java.awt.Color(204, 0, 0));
-        txtCount2.setAutoscrolls(false);
-        txtCount2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtCount2.setFocusable(false);
-        txtCount2.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtUse.setForeground(new java.awt.Color(204, 0, 0));
+        txtUse.setText("Ilimitados");
+        txtUse.setAutoscrolls(false);
+        txtUse.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtUse.setFocusable(false);
+        txtUse.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCount2FocusGained(evt);
+                txtUseFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCount2FocusLost(evt);
+                txtUseFocusLost(evt);
             }
         });
-        txtCount2.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtUse.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtCount2KeyPressed(evt);
+                txtUseKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCount2KeyTyped(evt);
+                txtUseKeyTyped(evt);
             }
         });
 
@@ -223,12 +246,12 @@ public class showPrice extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(spCount1)
-                    .addComponent(txtCount1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAvailable, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(spCount2)
-                    .addComponent(txtCount2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUse, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11))
@@ -261,13 +284,13 @@ public class showPrice extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel7)
                 .addGap(0, 0, 0)
-                .addComponent(txtCount1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtAvailable, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(spCount1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel8)
                 .addGap(0, 0, 0)
-                .addComponent(txtCount2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUse, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(spCount2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -327,37 +350,37 @@ public class showPrice extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCountKeyTyped
 
-    private void txtCount1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCount1FocusGained
+    private void txtAvailableFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAvailableFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCount1FocusGained
+    }//GEN-LAST:event_txtAvailableFocusGained
 
-    private void txtCount1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCount1FocusLost
+    private void txtAvailableFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAvailableFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCount1FocusLost
+    }//GEN-LAST:event_txtAvailableFocusLost
 
-    private void txtCount1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCount1KeyPressed
+    private void txtAvailableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAvailableKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCount1KeyPressed
+    }//GEN-LAST:event_txtAvailableKeyPressed
 
-    private void txtCount1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCount1KeyTyped
+    private void txtAvailableKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAvailableKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCount1KeyTyped
+    }//GEN-LAST:event_txtAvailableKeyTyped
 
-    private void txtCount2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCount2FocusGained
+    private void txtUseFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUseFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCount2FocusGained
+    }//GEN-LAST:event_txtUseFocusGained
 
-    private void txtCount2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCount2FocusLost
+    private void txtUseFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUseFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCount2FocusLost
+    }//GEN-LAST:event_txtUseFocusLost
 
-    private void txtCount2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCount2KeyPressed
+    private void txtUseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUseKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCount2KeyPressed
+    }//GEN-LAST:event_txtUseKeyPressed
 
-    private void txtCount2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCount2KeyTyped
+    private void txtUseKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUseKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCount2KeyTyped
+    }//GEN-LAST:event_txtUseKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -372,10 +395,10 @@ public class showPrice extends javax.swing.JPanel {
     private javax.swing.JSeparator spCount2;
     private javax.swing.JSeparator spNamePrice;
     private javax.swing.JSeparator spPrice;
+    private javax.swing.JTextField txtAvailable;
     private javax.swing.JTextField txtCount;
-    private javax.swing.JTextField txtCount1;
-    private javax.swing.JTextField txtCount2;
     private javax.swing.JTextField txtNamePrice;
     private javax.swing.JTextField txtPrice;
+    private javax.swing.JTextField txtUse;
     // End of variables declaration//GEN-END:variables
 }
