@@ -2,17 +2,30 @@ package JPanel;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.util.Properties;
 import javaClass.authenticator;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class jpCheckAuthenticator extends javax.swing.JPanel {
 
+    void verificaridioma(){
+    Properties pr=new propiedades(controller.idioma);
+    
+    lbltitleChAuthen.setText(pr.getProperty("lbltitleChAuthen"));
+    indicationlblCheAuthen.setText(pr.getProperty("indicationlblCheAuthen"));
+    btnNext.setText(pr.getProperty("btnNextCheckAuthen"));
+    
+    
+    }
+    
     String keygen;
     
     public jpCheckAuthenticator(String keygen) {
         initComponents();
+        verificaridioma();
         this.keygen = keygen;
         loadImage();
         enable();
@@ -31,8 +44,8 @@ public class jpCheckAuthenticator extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         lblAuthenticator = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbltitleChAuthen = new javax.swing.JLabel();
+        indicationlblCheAuthen = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
         spCode = new javax.swing.JSeparator();
         btnNext = new javax.swing.JButton();
@@ -63,11 +76,11 @@ public class jpCheckAuthenticator extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/confAuthenticaor.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Verificación de dos pasos");
+        lbltitleChAuthen.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbltitleChAuthen.setText("Verificación de dos pasos");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("Ingrese el codigo de verificación generado por su aplicación móvil");
+        indicationlblCheAuthen.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        indicationlblCheAuthen.setText("Ingrese el codigo de verificación generado por su aplicación móvil");
 
         txtCode.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtCode.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -127,8 +140,8 @@ public class jpCheckAuthenticator extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)))
+                                    .addComponent(indicationlblCheAuthen)
+                                    .addComponent(lbltitleChAuthen)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(62, 62, 62)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -154,11 +167,11 @@ public class jpCheckAuthenticator extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(lbltitleChAuthen)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(indicationlblCheAuthen)
                         .addGap(18, 18, 18)
                         .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(checkCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -231,11 +244,11 @@ public class jpCheckAuthenticator extends javax.swing.JPanel {
     private javax.swing.JButton btnNext;
     private javax.swing.JLabel checkCode;
     private javax.swing.JLabel checkMail;
+    private javax.swing.JLabel indicationlblCheAuthen;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAuthenticator;
+    private javax.swing.JLabel lbltitleChAuthen;
     private javax.swing.JSeparator spCode;
     private javax.swing.JTextField txtCode;
     // End of variables declaration//GEN-END:variables

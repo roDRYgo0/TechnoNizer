@@ -4,14 +4,28 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 import javaClass.authenticator;
 import javaClass.controller;
 import static javaClass.controller.jpSe;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class jpConfAuthenticator extends javax.swing.JPanel {
 
     String keygen;
+    
+    void verificaridioma()
+    {
+    Properties pr = new propiedades (controller.idioma);
+    lblConfigAuthenticator.setText(pr.getProperty("lblConfigAuthenticator"));
+    indication1Authenticator.setText(pr.getProperty("indication1Authenticator"));
+    indicator2Authenticator.setText(pr.getProperty("indicator2Authenticator"));
+    option1Authenticator.setText(pr.getProperty("option1Authenticator"));
+    indication3Authenticator.setText(pr.getProperty("indication3Authenticator"));
+    Option2Authenticator.setText(pr.getProperty("Option2Authenticator"));
+    btnNext.setText(pr.getProperty("btnNextAuthenticator"));
+    }
     
     int udm = 0, resol = 72, rot = 0;
     float mi=0.000f, md = 0.000f, ms = 0.00f, min = 0.000f, tam = 5.000f;
@@ -20,6 +34,7 @@ public class jpConfAuthenticator extends javax.swing.JPanel {
         initComponents();
         loadImage();
         loadQR();
+        verificaridioma();
     }
     
     void loadImage(){
@@ -50,13 +65,13 @@ public class jpConfAuthenticator extends javax.swing.JPanel {
         lblQR = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblAuthenticator = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblConfigAuthenticator = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        indication1Authenticator = new javax.swing.JLabel();
+        indicator2Authenticator = new javax.swing.JLabel();
+        option1Authenticator = new javax.swing.JLabel();
+        indication3Authenticator = new javax.swing.JLabel();
+        Option2Authenticator = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(245, 245, 245));
@@ -83,23 +98,23 @@ public class jpConfAuthenticator extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Configura el Authenticador");
+        lblConfigAuthenticator.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblConfigAuthenticator.setText("Configura el Authenticador");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("• Descarga la app del Authenticador en tu celular");
+        indication1Authenticator.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        indication1Authenticator.setText("• Descarga la app del Authenticador en tu celular");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("• En la app, selecciona");
+        indicator2Authenticator.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        indicator2Authenticator.setText("• En la app, selecciona");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setText("Configurar cuenta");
+        option1Authenticator.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        option1Authenticator.setText("Configurar cuenta");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setText("• Selecciona ");
+        indication3Authenticator.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        indication3Authenticator.setText("• Selecciona ");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setText("Escanar código de barras");
+        Option2Authenticator.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Option2Authenticator.setText("Escanear código QR");
 
         btnNext.setBackground(new java.awt.Color(0, 153, 255));
         btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -126,16 +141,16 @@ public class jpConfAuthenticator extends javax.swing.JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(10, 10, 10)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
+                                        .addComponent(indication1Authenticator)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel4)
+                                            .addComponent(indicator2Authenticator)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel5))
+                                            .addComponent(option1Authenticator))
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel6)
-                                            .addGap(1, 1, 1)
-                                            .addComponent(jLabel7))))
-                                .addComponent(jLabel1))
+                                            .addComponent(indication3Authenticator)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(Option2Authenticator))))
+                                .addComponent(lblConfigAuthenticator))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(305, 305, 305)
@@ -156,17 +171,17 @@ public class jpConfAuthenticator extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(lblQR, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(jLabel1)
+                .addComponent(lblConfigAuthenticator)
                 .addGap(11, 11, 11)
-                .addComponent(jLabel3)
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                .addComponent(indication1Authenticator)
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(indicator2Authenticator)
+                    .addComponent(option1Authenticator))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(indication3Authenticator)
+                    .addComponent(Option2Authenticator))
                 .addGap(32, 32, 32)
                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -181,16 +196,16 @@ public class jpConfAuthenticator extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Option2Authenticator;
     private javax.swing.JButton btnNext;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel indication1Authenticator;
+    private javax.swing.JLabel indication3Authenticator;
+    private javax.swing.JLabel indicator2Authenticator;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAuthenticator;
+    private javax.swing.JLabel lblConfigAuthenticator;
     private javax.swing.JLabel lblQR;
+    private javax.swing.JLabel option1Authenticator;
     // End of variables declaration//GEN-END:variables
 }

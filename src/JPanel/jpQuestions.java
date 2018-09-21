@@ -16,6 +16,7 @@ public class jpQuestions extends javax.swing.JPanel {
 
     int numQues;
     
+    
     public jpQuestions(int i) {
         initComponents();
         this.numQues = i;

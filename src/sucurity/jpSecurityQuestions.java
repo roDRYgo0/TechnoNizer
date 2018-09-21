@@ -1,12 +1,22 @@
 package sucurity;
 
 import java.awt.BorderLayout;
+import java.util.Properties;
 import javaClass.classSecurityQuestions;
+import javaClass.controller;
+import properties.propiedades;
 
 public class jpSecurityQuestions extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+  Properties pr = new propiedades (controller.idioma);
+    lblQuestionBankTitle.setText(pr.getProperty("lblQuestionBankTitle"));
+    }
+    
     public jpSecurityQuestions() {
         initComponents();
+        verificaridioma();
         load();
     }
 
@@ -43,16 +53,16 @@ public class jpSecurityQuestions extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblQuestionBankTitle = new javax.swing.JLabel();
         rootPaneSecurity = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(445, 465));
         setMinimumSize(new java.awt.Dimension(445, 465));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Banco de preguntas");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblQuestionBankTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblQuestionBankTitle.setText("Banco de preguntas");
+        lblQuestionBankTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout rootPaneSecurityLayout = new javax.swing.GroupLayout(rootPaneSecurity);
         rootPaneSecurity.setLayout(rootPaneSecurityLayout);
@@ -71,7 +81,7 @@ public class jpSecurityQuestions extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(121, 121, 121)
-                .addComponent(jLabel1)
+                .addComponent(lblQuestionBankTitle)
                 .addContainerGap(144, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -82,7 +92,7 @@ public class jpSecurityQuestions extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jLabel1)
+                .addComponent(lblQuestionBankTitle)
                 .addGap(18, 18, 18)
                 .addComponent(rootPaneSecurity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -91,7 +101,7 @@ public class jpSecurityQuestions extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblQuestionBankTitle;
     private javax.swing.JPanel rootPaneSecurity;
     // End of variables declaration//GEN-END:variables
 }

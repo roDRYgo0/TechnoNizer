@@ -48,11 +48,42 @@ public final class jpEditUser extends javax.swing.JPanel {
     Dayjpedit.setText(pr.getProperty("Dayjpedit"));
     monthjpedit.setText(pr.getProperty("monthjpedit"));
     yearjpedit.setText(pr.getProperty("yearjpedit"));
+    
+//cargar combobox
+            cmbMes.removeAllItems();
+            cmbGender.removeAllItems();
+            String meses[]={
+            pr.getProperty("firstmonth"),
+            pr.getProperty("secondmonth"),
+            pr.getProperty("thirdmonth"),
+            pr.getProperty("fourmonth"),
+            pr.getProperty("fivemonth"),
+            pr.getProperty("sixmonth"),
+            pr.getProperty("sevenmonth"),
+            pr.getProperty("eightmonth"),
+            pr.getProperty("ninemonth"),
+            pr.getProperty("tenmonth"),
+            pr.getProperty("elevenmonth"),
+            pr.getProperty("twelvemonth")
+            };
+            for(int i=0;i<meses.length;i++)
+            {
+                cmbMes.addItem(meses[i]);
+            }
+            
+            String generos[]={
+            pr.getProperty("Mascu"),
+            pr.getProperty("Feme")
+            };
+            
+           for(int x=0; x<generos.length;x++)
+           {
+           cmbGender.addItem(generos[x]);
+           }
+    
     LblContactjpedituser.setText(pr.getProperty("LblContactjpedituser"));
-    
-    
-    
-    
+    lblenterjpedit.setText(pr.getProperty("lblenterjpedit"));
+    jButton1.setText(pr.getProperty("jButton1jpeditbutton"));
     }
     
     public jpEditUser() {
@@ -65,8 +96,9 @@ public final class jpEditUser extends javax.swing.JPanel {
         loadPanel(false);
         image = classUsuario.getImage();
         loadImagenes();
-        
-        load();
+       
+        load(); 
+        verificaridioma();
     }
     
     public void enable(){
@@ -563,7 +595,6 @@ public final class jpEditUser extends javax.swing.JPanel {
                                                 .addComponent(iconGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addComponent(Lastnamesjpedituser, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtLastName)
                                         .addComponent(spLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -576,7 +607,8 @@ public final class jpEditUser extends javax.swing.JPanel {
                                             .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, 0)
                                         .addComponent(checkEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(birthdayjpedituser))))
+                                    .addComponent(birthdayjpedituser)
+                                    .addComponent(Lastnamesjpedituser, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(57, 57, 57)

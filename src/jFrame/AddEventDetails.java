@@ -4,11 +4,13 @@ import event.allPrice;
 import event.lockedPrices;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.event;
 import javaClass.standardization;
+import properties.propiedades;
 
 /**
  * 
@@ -17,6 +19,17 @@ import javaClass.standardization;
 
 public class AddEventDetails extends javax.swing.JFrame {
 
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    addEventDetaillbl1.setText(pr.getProperty("addEventDetaillbl1"));
+    priceslblEventDetail.setText(pr.getProperty("priceslblEventDetail"));
+    pricesavaiblelbldetail.setText(pr.getProperty("pricesavaiblelbldetail"));
+    visibilityeventdetail.setText(pr.getProperty("visibilityeventdetail"));
+    lblVisibility.setText(pr.getProperty("lblVisibilitydetail"));
+    btnNext1.setText(pr.getProperty("btnNext1DetailEvent"));
+    }
+    
     int visibility;
     
     public AddEventDetails() {
@@ -27,6 +40,7 @@ public class AddEventDetails extends javax.swing.JFrame {
         classEvent.setVisibility(visibility);
         switchVisibility();
         load();
+        verificaridioma();
         icon1.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));
         classEvent.setColor("35 150 243");
         if(classEvent.getQuantityTicket() == -1)
@@ -141,17 +155,17 @@ public class AddEventDetails extends javax.swing.JFrame {
         iconGreen14 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        addEventDetaillbl1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
         lblEvent = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        priceslblEventDetail = new javax.swing.JLabel();
         scrollPrice = new javax.swing.JScrollPane();
-        jLabel6 = new javax.swing.JLabel();
+        visibilityeventdetail = new javax.swing.JLabel();
         lblVisibility = new javax.swing.JLabel();
         lblSwitch = new javax.swing.JLabel();
         btnNext1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        pricesavaiblelbldetail = new javax.swing.JLabel();
         lblTickets = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         icon1 = new javax.swing.JLabel();
@@ -294,8 +308,8 @@ public class AddEventDetails extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(35, 150, 243));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Agregar Evento");
+        addEventDetaillbl1.setForeground(new java.awt.Color(255, 255, 255));
+        addEventDetaillbl1.setText("Agregar Evento");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -329,7 +343,7 @@ public class AddEventDetails extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(addEventDetaillbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnNext))))
@@ -345,12 +359,12 @@ public class AddEventDetails extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(addEventDetaillbl1))
                 .addContainerGap())
         );
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("Precios");
+        priceslblEventDetail.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        priceslblEventDetail.setText("Precios");
 
         scrollPrice.setBorder(null);
         scrollPrice.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -358,8 +372,8 @@ public class AddEventDetails extends javax.swing.JFrame {
         scrollPrice.setMinimumSize(new java.awt.Dimension(283, 240));
         scrollPrice.setPreferredSize(new java.awt.Dimension(283, 240));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel6.setText("Visibilidad");
+        visibilityeventdetail.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        visibilityeventdetail.setText("Visibilidad");
 
         lblVisibility.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblVisibility.setText("Visible");
@@ -382,7 +396,7 @@ public class AddEventDetails extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Tickets disponibles");
+        pricesavaiblelbldetail.setText("Tickets disponibles");
 
         lblTickets.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblTickets.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -774,7 +788,7 @@ public class AddEventDetails extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
+                    .addComponent(visibilityeventdetail)
                     .addComponent(lblVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -831,9 +845,9 @@ public class AddEventDetails extends javax.swing.JFrame {
                                         .addGap(352, 352, 352)
                                         .addComponent(lblTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
+                                        .addComponent(priceslblEventDetail)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel3)))
+                                        .addComponent(pricesavaiblelbldetail)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
@@ -843,8 +857,8 @@ public class AddEventDetails extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5))
+                    .addComponent(pricesavaiblelbldetail)
+                    .addComponent(priceslblEventDetail))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTickets)
                 .addGap(2, 2, 2)
@@ -875,7 +889,7 @@ public class AddEventDetails extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(visibilityeventdetail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblVisibility)
                         .addGap(11, 11, 11))
@@ -1071,6 +1085,7 @@ public class AddEventDetails extends javax.swing.JFrame {
     //<editor-fold defaultstate="collapsed" desc="comment">
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel addEventDetaillbl1;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
     private javax.swing.JLabel icon1;
@@ -1093,11 +1108,7 @@ public class AddEventDetails extends javax.swing.JFrame {
     private javax.swing.JLabel iconGreen12;
     private javax.swing.JLabel iconGreen13;
     private javax.swing.JLabel iconGreen14;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -1125,7 +1136,10 @@ public class AddEventDetails extends javax.swing.JFrame {
     private javax.swing.JLabel lblSwitch;
     private javax.swing.JLabel lblTickets;
     private javax.swing.JLabel lblVisibility;
+    private javax.swing.JLabel pricesavaiblelbldetail;
+    private javax.swing.JLabel priceslblEventDetail;
     private javax.swing.JScrollPane scrollPrice;
+    private javax.swing.JLabel visibilityeventdetail;
     // End of variables declaration//GEN-END:variables
 //</editor-fold>
 }

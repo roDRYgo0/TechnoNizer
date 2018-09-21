@@ -1,9 +1,20 @@
 package JPanel;
 
+import java.util.Properties;
+import javaClass.controller;
+import properties.propiedades;
+
 public class jpDisable extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr = new propiedades (controller.idioma);
+    jLabel1.setText(pr.getProperty("jLabel1"));
+
+    }
     public jpDisable() {
         initComponents();
+        verificaridioma();
     }
 
     @SuppressWarnings("unchecked")

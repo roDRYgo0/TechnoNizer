@@ -5,9 +5,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.Properties;
 import javaClass.classSecurityQuestions;
 import javaClass.classUsuario;
 import javaClass.controller;
+import properties.propiedades;
 import sucurity.jpChangePassword;
 import sucurity.jpSecurityQuestions;
 
@@ -15,13 +17,25 @@ public class jpSecurity extends javax.swing.JPanel {
 
     boolean perm;
     
+    void verificaridioma()
+    {
+  Properties pr = new propiedades (controller.idioma);
+lblSecurity.setText(pr.getProperty("lblSecurity"));
+SecondlblSecurity.setText(pr.getProperty("SecondlblSecurity"));
+SecurityQuestionslbl.setText(pr.getProperty("SecurityQuestionslbl"));
+lblStatusAuthen.setText(pr.getProperty("lblStatusAuthen"));
+lblStatusQuestions.setText(pr.getProperty("lblStatusQuestions"));
+    }
+    
     public jpSecurity() {
         initComponents();
         loadImage();
         jpShow.setPreferredSize(new Dimension(445, 465));
         checkAccount();
         perm=true;
+        
         load();
+        verificaridioma();
     }
     
     void load(){
@@ -75,12 +89,12 @@ public class jpSecurity extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblSecurity = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jpBackPass = new javax.swing.JPanel();
         jpFrontPass = new javax.swing.JPanel();
         iconPass = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        SecondlblSecurity = new javax.swing.JLabel();
         jpBackAuthen = new javax.swing.JPanel();
         jpFrontAuthen = new javax.swing.JPanel();
         iconAuthen = new javax.swing.JLabel();
@@ -89,7 +103,7 @@ public class jpSecurity extends javax.swing.JPanel {
         jpBackSecQuestions = new javax.swing.JPanel();
         jpFrontSecQuestions = new javax.swing.JPanel();
         iconSecQuestions = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        SecurityQuestionslbl = new javax.swing.JLabel();
         lblStatusQuestions = new javax.swing.JLabel();
         jpShow = new javax.swing.JPanel();
 
@@ -98,12 +112,12 @@ public class jpSecurity extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(980, 601));
         setPreferredSize(new java.awt.Dimension(980, 601));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Seguridad");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblSecurity.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblSecurity.setForeground(new java.awt.Color(255, 0, 0));
+        lblSecurity.setText("Seguridad");
+        lblSecurity.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabel1MouseReleased(evt);
+                lblSecurityMouseReleased(evt);
             }
         });
 
@@ -122,8 +136,8 @@ public class jpSecurity extends javax.swing.JPanel {
         iconPass.setMinimumSize(new java.awt.Dimension(45, 45));
         iconPass.setPreferredSize(new java.awt.Dimension(45, 45));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Cambiar contraseña");
+        SecondlblSecurity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        SecondlblSecurity.setText("Cambiar contraseña");
 
         javax.swing.GroupLayout jpFrontPassLayout = new javax.swing.GroupLayout(jpFrontPass);
         jpFrontPass.setLayout(jpFrontPassLayout);
@@ -133,7 +147,7 @@ public class jpSecurity extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(iconPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(SecondlblSecurity)
                 .addContainerGap(208, Short.MAX_VALUE))
         );
         jpFrontPassLayout.setVerticalGroup(
@@ -145,7 +159,7 @@ public class jpSecurity extends javax.swing.JPanel {
                         .addComponent(iconPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFrontPassLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(SecondlblSecurity)
                         .addGap(24, 24, 24))))
         );
 
@@ -239,8 +253,8 @@ public class jpSecurity extends javax.swing.JPanel {
         iconSecQuestions.setMinimumSize(new java.awt.Dimension(45, 45));
         iconSecQuestions.setPreferredSize(new java.awt.Dimension(45, 45));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Preguntas de seguridad");
+        SecurityQuestionslbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        SecurityQuestionslbl.setText("Preguntas de seguridad");
 
         lblStatusQuestions.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblStatusQuestions.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -254,7 +268,7 @@ public class jpSecurity extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(iconSecQuestions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                .addComponent(SecurityQuestionslbl, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                 .addGap(42, 42, 42)
                 .addComponent(lblStatusQuestions, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -268,7 +282,7 @@ public class jpSecurity extends javax.swing.JPanel {
                         .addComponent(iconSecQuestions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFrontSecQuestionsLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(SecurityQuestionslbl)
                         .addGap(24, 24, 24))))
             .addComponent(lblStatusQuestions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -311,7 +325,7 @@ public class jpSecurity extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(jLabel1))
+                        .addComponent(lblSecurity))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -328,7 +342,7 @@ public class jpSecurity extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(jLabel1)
+                .addComponent(lblSecurity)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,22 +472,21 @@ public class jpSecurity extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jpFrontSecQuestionsMouseReleased
 
-    private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
+    private void lblSecurityMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSecurityMouseReleased
         checkAccount();
         resetColor();
         jpBackAuthen.setBackground(Color.red);
         jpBackSecQuestions.setBackground(Color.red);
-    }//GEN-LAST:event_jLabel1MouseReleased
+    }//GEN-LAST:event_lblSecurityMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel SecondlblSecurity;
+    private javax.swing.JLabel SecurityQuestionslbl;
     private javax.swing.JLabel iconAuthen;
     private javax.swing.JLabel iconPass;
     private javax.swing.JLabel iconSecQuestions;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel jpBackAuthen;
     private javax.swing.JPanel jpBackPass;
@@ -482,6 +495,7 @@ public class jpSecurity extends javax.swing.JPanel {
     private javax.swing.JPanel jpFrontPass;
     private javax.swing.JPanel jpFrontSecQuestions;
     private javax.swing.JPanel jpShow;
+    private javax.swing.JLabel lblSecurity;
     private javax.swing.JLabel lblStatusAuthen;
     private javax.swing.JLabel lblStatusQuestions;
     // End of variables declaration//GEN-END:variables

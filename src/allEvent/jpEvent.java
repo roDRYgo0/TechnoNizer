@@ -3,12 +3,21 @@ package allEvent;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.event;
+import properties.propiedades;
 
 public final class jpEvent extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+  Properties pr = new propiedades (controller.idioma);
+    EventsjpEvent.setText(pr.getProperty("lblEventjpE"));
+    searchjpEvent.setText(pr.getProperty("SearchjpEvent"));
+    }
+    
     int position[][] = new int[50][50];
     int paneles;
 
@@ -17,6 +26,7 @@ public final class jpEvent extends javax.swing.JPanel {
         
         insertarPaneles(classEvent.eventos.size(), false);
         txtSearch.requestFocus();
+        verificaridioma();
         load();
     }
     
@@ -58,11 +68,11 @@ public final class jpEvent extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        EventsjpEvent = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        searchjpEvent = new javax.swing.JLabel();
         spSearch = new javax.swing.JSeparator();
         iconSearch = new javax.swing.JLabel();
         scrollEvent = new javax.swing.JScrollPane();
@@ -73,12 +83,12 @@ public final class jpEvent extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(0, 0));
         setPreferredSize(new java.awt.Dimension(980, 601));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Eventos");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        EventsjpEvent.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        EventsjpEvent.setForeground(new java.awt.Color(255, 0, 0));
+        EventsjpEvent.setText("Eventos");
+        EventsjpEvent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabel2MouseReleased(evt);
+                EventsjpEventMouseReleased(evt);
             }
         });
 
@@ -108,9 +118,9 @@ public final class jpEvent extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Buscador");
+        searchjpEvent.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        searchjpEvent.setForeground(new java.awt.Color(102, 102, 102));
+        searchjpEvent.setText("Buscador");
 
         spSearch.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -124,7 +134,7 @@ public final class jpEvent extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(searchjpEvent)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -139,7 +149,7 @@ public final class jpEvent extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(searchjpEvent)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -172,7 +182,7 @@ public final class jpEvent extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(EventsjpEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(scrollEvent))
@@ -184,7 +194,7 @@ public final class jpEvent extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EventsjpEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -239,19 +249,19 @@ public final class jpEvent extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 
-    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+    private void EventsjpEventMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EventsjpEventMouseReleased
         technonizer.TechnoNizer.home.pnEvent();
-    }//GEN-LAST:event_jLabel2MouseReleased
+    }//GEN-LAST:event_EventsjpEventMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel EventsjpEvent;
     private javax.swing.JLabel iconSearch;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel pnEvent;
     private javax.swing.JScrollPane scrollEvent;
+    private javax.swing.JLabel searchjpEvent;
     private javax.swing.JSeparator spSearch;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables

@@ -37,12 +37,11 @@ public final class home extends javax.swing.JFrame {
     ProjectsHome.setText(pr.getProperty("ProjectsHome"));
     DiaryHome.setText(pr.getProperty("DiaryHome"));
     lblImageUserTop.setText(pr.getProperty("lblImageUserTop"));
-    
-    
     }
     
     public home(boolean load) {
         initComponents();
+        verificaridioma();
         new Thread(()->{
             classContact.select();
             classReminder.select();
@@ -55,12 +54,14 @@ public final class home extends javax.swing.JFrame {
         if(load){
             System.out.println("listo");
         }
-        else
+        else 
+           
             classUsuario.select();
         controller.rootFrame = this;
-        this.internet = logIn.internet;
-        load();
+        this.internet = logIn.internet; 
         verificaridioma();
+        load();
+       
     }
     
     void load(){        
@@ -93,7 +94,7 @@ public final class home extends javax.swing.JFrame {
         lblAgenda.setIcon(new controller().changeImage("/imagenes/agenda.png", 24, 24));
         if(classUsuario.getCondition()==1){
             lblImageUserTop.setIcon(new controller().changeImage("/imagenes/alert.png", 24, 24));
-            lblImageUserTop.setText("mejor si afuera");
+            lblImageUserTop.setText("Activa tu cuenta");
             pnEvents.setBackground(new Color(64, 64, 64));
             pnProj.setBackground(new Color(64, 64, 64));
             pnAgenda.setBackground(new Color(64, 64, 64));
@@ -185,6 +186,11 @@ public final class home extends javax.swing.JFrame {
 
         itemEnglish.setText("Ingles");
         itemEnglish.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        itemEnglish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEnglishActionPerformed(evt);
+            }
+        });
         popupLenguage.add(itemEnglish);
 
         itemSettings.setText("Cerrar sesión");
@@ -1068,8 +1074,12 @@ public final class home extends javax.swing.JFrame {
         standardization.invokeHome(true);
         standardization.showMessage("ok", "Idioma cambiado");
     }//GEN-LAST:event_itemSpanishActionPerformed
-    //</editor-fold>
-    
+  
+      private void itemEnglishActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        controller.idioma = "ESPANOL";
+        standardization.invokeHome(true);
+        standardization.showMessage("ok", "Idioma cambiado");
+    }         
     public void disable (){
         pnGeneral.setBackground(new Color(34, 34, 34));
         pnUser.setBackground(new Color(34, 34, 34));

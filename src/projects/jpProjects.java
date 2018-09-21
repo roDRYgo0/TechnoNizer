@@ -3,12 +3,20 @@ package projects;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.util.Properties;
 import javaClass.Project;
 import javaClass.classProjects;
 import javaClass.controller;
+import properties.propiedades;
 
 public class jpProjects extends javax.swing.JPanel {
 
+    void verificaridioma(){
+    Properties pr= new propiedades(controller.idioma);
+    titlejpProjects.setText(pr.getProperty("titlejpProjects"));
+    SearchjpProject.setText(pr.getProperty("SearchjpProject"));
+    }
+    
     int paneles;
     static boolean current_personal_state = false;
     
@@ -23,6 +31,7 @@ public class jpProjects extends javax.swing.JPanel {
         classProjects.onlyPersonal(personal);
         
         insertarPaneles(classProjects.projectsShow.size(), start);
+        verificaridioma();
         load();
     }
     
@@ -46,11 +55,11 @@ public class jpProjects extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        titlejpProjects = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        SearchjpProject = new javax.swing.JLabel();
         spSearch = new javax.swing.JSeparator();
         iconSearch = new javax.swing.JLabel();
         scrollProjects = new javax.swing.JScrollPane();
@@ -61,12 +70,12 @@ public class jpProjects extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(0, 0));
         setPreferredSize(new java.awt.Dimension(980, 601));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Projectos");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        titlejpProjects.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        titlejpProjects.setForeground(new java.awt.Color(255, 0, 0));
+        titlejpProjects.setText("Proyectos");
+        titlejpProjects.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabel2MouseReleased(evt);
+                titlejpProjectsMouseReleased(evt);
             }
         });
 
@@ -96,9 +105,9 @@ public class jpProjects extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Buscador");
+        SearchjpProject.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        SearchjpProject.setForeground(new java.awt.Color(102, 102, 102));
+        SearchjpProject.setText("Buscador");
 
         spSearch.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -112,7 +121,7 @@ public class jpProjects extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(SearchjpProject)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -127,7 +136,7 @@ public class jpProjects extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(SearchjpProject)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -159,7 +168,7 @@ public class jpProjects extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(titlejpProjects, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(93, 93, 93)
                                 .addComponent(jButton1)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
@@ -174,7 +183,7 @@ public class jpProjects extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(titlejpProjects, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -225,9 +234,9 @@ public class jpProjects extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 
-    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+    private void titlejpProjectsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_titlejpProjectsMouseReleased
         technonizer.TechnoNizer.home.pnProjects();
-    }//GEN-LAST:event_jLabel2MouseReleased
+    }//GEN-LAST:event_titlejpProjectsMouseReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.out.println("tus projectos son..."+classProjects.projects.size());
@@ -235,14 +244,14 @@ public class jpProjects extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel SearchjpProject;
     private javax.swing.JLabel iconSearch;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JScrollPane scrollProjects;
     private javax.swing.JSeparator spSearch;
+    private javax.swing.JLabel titlejpProjects;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
