@@ -19,7 +19,8 @@ public class pnProblem extends javax.swing.JPanel {
     }
     
     void load(){
-        
+        classEvent.problems.clear();
+        classEvent.selectProblems(classEvent.eventosShow.get(idEvent).getId());
         
         for(int i = 3; i >=1 ; i--){
             for(int a = 0; a < classEvent.problems.size(); a++){

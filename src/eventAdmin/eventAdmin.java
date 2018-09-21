@@ -26,6 +26,7 @@ public class eventAdmin extends javax.swing.JPanel {
             classEvent.selectActivity(event.getId());
             classEvent.tasks.clear();
             classEvent.selectTasks(event.getId());
+            classEvent.problems.clear();
             classEvent.selectProblems(event.getId());
         }
         
