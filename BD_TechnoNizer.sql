@@ -250,6 +250,7 @@ idCheckList int not null references checkList(id)
 
  drop table calendars
 
+
  create table personalEvents(
  id int identity(1,1) primary key not null,
  title nvarchar(60) not null,
