@@ -40,7 +40,7 @@ public class checkAccount extends javax.swing.JPanel {
         lblMail = new javax.swing.JLabel();
         lblImageMail = new javax.swing.JLabel();
         checkMail = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        VerifyAccountLbl = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
         lblInsertCode = new javax.swing.JLabel();
@@ -91,8 +91,8 @@ public class checkAccount extends javax.swing.JPanel {
         checkMail.setMinimumSize(new java.awt.Dimension(25, 25));
         checkMail.setPreferredSize(new java.awt.Dimension(25, 25));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Verifica tu cuenta");
+        VerifyAccountLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        VerifyAccountLbl.setText("Verifica tu cuenta");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel9.setText("primero debes verificar tu cuenta");
@@ -152,7 +152,7 @@ public class checkAccount extends javax.swing.JPanel {
                         .addComponent(lblThinking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(VerifyAccountLbl)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblResetPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,7 +180,7 @@ public class checkAccount extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblThinking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(VerifyAccountLbl)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -266,11 +266,11 @@ public class checkAccount extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel VerifyAccountLbl;
     private javax.swing.JButton btnNext;
     private javax.swing.JLabel checkMail;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblImageMail;

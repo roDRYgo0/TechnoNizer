@@ -2,20 +2,35 @@ package sucurity;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.util.Properties;
 import javaClass.classSecurityQuestions;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import properties.propiedades;
 
 public class jpQuestions extends javax.swing.JPanel {
 
     boolean sw;
     char echoChar;
     
+    void verificaridioma()
+    {
+        Properties pr=new propiedades(controller.idioma);
+        lbl1jpQuestions.setText(pr.getProperty("lbl1jpQuestions"));
+        Q1.setText(pr.getProperty("Q1"));
+        Q2.setText(pr.getProperty("Q2"));
+        Q3.setText(pr.getProperty("Q3"));
+        lblPasswordQuestions.setText(pr.getProperty("lblPasswordQuestions"));
+        btnDelete.setText(pr.getProperty("btnDeleteConfirmQuestion"));
+        btnChange.setText(pr.getProperty("btnChangeConfirmQuestion"));
+    }
+    
     public jpQuestions() {
         initComponents();
+        verificaridioma();
         load();
     }
     void load(){
@@ -34,18 +49,18 @@ public class jpQuestions extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbl1jpQuestions = new javax.swing.JLabel();
+        Q1 = new javax.swing.JLabel();
         txtQuestion1 = new javax.swing.JTextField();
         spQuestion1 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
+        Q2 = new javax.swing.JLabel();
         txtQuestion2 = new javax.swing.JTextField();
         spQuestion2 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
+        Q3 = new javax.swing.JLabel();
         txtQuestion3 = new javax.swing.JTextField();
         spQuestion3 = new javax.swing.JSeparator();
         txtPassword = new javax.swing.JPasswordField();
-        jLabel5 = new javax.swing.JLabel();
+        lblPasswordQuestions = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         lblEye = new javax.swing.JLabel();
         spPassword = new javax.swing.JSeparator();
@@ -57,12 +72,12 @@ public class jpQuestions extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(425, 379));
         setMinimumSize(new java.awt.Dimension(425, 379));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Tus preguntas de seguridad son las siguientes");
+        lbl1jpQuestions.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl1jpQuestions.setText("Tus preguntas de seguridad son las siguientes");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel2.setText("Pregunta 1");
+        Q1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Q1.setForeground(new java.awt.Color(33, 150, 243));
+        Q1.setText("Pregunta 1");
 
         txtQuestion1.setAutoscrolls(false);
         txtQuestion1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -70,9 +85,9 @@ public class jpQuestions extends javax.swing.JPanel {
 
         spQuestion1.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel3.setText("Pregunta 2");
+        Q2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Q2.setForeground(new java.awt.Color(33, 150, 243));
+        Q2.setText("Pregunta 2");
 
         txtQuestion2.setAutoscrolls(false);
         txtQuestion2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -80,9 +95,9 @@ public class jpQuestions extends javax.swing.JPanel {
 
         spQuestion2.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel4.setText("Pregunta 3");
+        Q3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        Q3.setForeground(new java.awt.Color(33, 150, 243));
+        Q3.setText("Pregunta 3");
 
         txtQuestion3.setAutoscrolls(false);
         txtQuestion3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -105,9 +120,9 @@ public class jpQuestions extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("Ingrese la contraseña para continuar");
+        lblPasswordQuestions.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblPasswordQuestions.setForeground(new java.awt.Color(102, 102, 102));
+        lblPasswordQuestions.setText("Ingrese la contraseña para continuar");
 
         lblPassword.setMaximumSize(new java.awt.Dimension(35, 35));
         lblPassword.setMinimumSize(new java.awt.Dimension(35, 35));
@@ -158,20 +173,19 @@ public class jpQuestions extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
+                            .addComponent(lblPasswordQuestions)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2)
+                                .addComponent(Q1)
                                 .addComponent(txtQuestion1)
                                 .addComponent(spQuestion1)
-                                .addComponent(jLabel3)
+                                .addComponent(Q2)
                                 .addComponent(txtQuestion2)
                                 .addComponent(spQuestion2)
-                                .addComponent(jLabel4)
+                                .addComponent(Q3)
                                 .addComponent(txtQuestion3)
                                 .addComponent(spQuestion3, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
@@ -190,28 +204,30 @@ public class jpQuestions extends javax.swing.JPanel {
                                         .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, 0)
                                         .addComponent(lblEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addComponent(jLabel1))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl1jpQuestions, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lbl1jpQuestions)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(Q1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtQuestion1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(spQuestion1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(Q2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtQuestion2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(spQuestion2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(Q3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtQuestion3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -219,7 +235,7 @@ public class jpQuestions extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(lblPasswordQuestions)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -337,15 +353,15 @@ public class jpQuestions extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Q1;
+    private javax.swing.JLabel Q2;
+    private javax.swing.JLabel Q3;
     private javax.swing.JButton btnChange;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lbl1jpQuestions;
     private javax.swing.JLabel lblEye;
     private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPasswordQuestions;
     private rojerusan.componentes.RSProgressMaterial progress;
     private javax.swing.JSeparator spPassword;
     private javax.swing.JSeparator spQuestion1;

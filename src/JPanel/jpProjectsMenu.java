@@ -10,10 +10,21 @@ import javaClass.standardization;
 import properties.propiedades;
 
 public class jpProjectsMenu extends javax.swing.JPanel {
-
+    
+    void verificaridioma()
+    {
+    Properties pr = new propiedades(controller.idioma);
+    TitlejpProjectMenu.setText(pr.getProperty("TitlejpProjectMenu"));
+    lbljpPM1.setText(pr.getProperty("lbljpPM1"));
+    lbljpPM2.setText(pr.getProperty("lbljpPM2"));
+    lbl3jpPM.setText(pr.getProperty("lbl3jpPM"));
+    lbljpPM4.setText(pr.getProperty("lbljpPM4"));
+    lbl5jpPM.setText(pr.getProperty("lbl5jpPM"));
+    }
 
     public jpProjectsMenu() {
         initComponents();
+        verificaridioma();
         load();
     }
 

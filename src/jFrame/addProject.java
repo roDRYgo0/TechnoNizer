@@ -1,11 +1,13 @@
 package jFrame;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classProjects;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.methodsSQL;
 import javaClass.standardization;
+import properties.propiedades;
 
 /**
  * 
@@ -14,10 +16,20 @@ import javaClass.standardization;
 
 public class addProject extends javax.swing.JFrame {
 
+    void verificaridioma()
+    {
+    Properties pr = new propiedades(controller.idioma);
+    addprojectlbl.setText(pr.getProperty("addprojectlbl"));
+    Datageneraladdproject.setText(pr.getProperty("Datageneraladdproject"));
+    Nameprojectlbl.setText(pr.getProperty("Nameprojectlbl"));
+    descriptionproject.setText(pr.getProperty("descriptionproject"));
+    btnNext1Project.setText(pr.getProperty("btnNext1Project"));
+    }
     byte[] cover;
 
     public addProject() {
         initComponents();
+        verificaridioma();
     }
     
     @SuppressWarnings("unchecked")
@@ -35,8 +47,8 @@ public class addProject extends javax.swing.JFrame {
         Nameprojectlbl = new javax.swing.JLabel();
         txtProject = new javax.swing.JTextField();
         spProject = new javax.swing.JSeparator();
-        btnNext1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        btnNext1Project = new javax.swing.JButton();
+        descriptionproject = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
 
@@ -129,21 +141,21 @@ public class addProject extends javax.swing.JFrame {
 
         spProject.setForeground(new java.awt.Color(204, 204, 204));
 
-        btnNext1.setBackground(new java.awt.Color(0, 153, 255));
-        btnNext1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnNext1.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext1.setText("Siguiente");
-        btnNext1.setBorderPainted(false);
-        btnNext1.setFocusable(false);
-        btnNext1.addActionListener(new java.awt.event.ActionListener() {
+        btnNext1Project.setBackground(new java.awt.Color(0, 153, 255));
+        btnNext1Project.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnNext1Project.setForeground(new java.awt.Color(255, 255, 255));
+        btnNext1Project.setText("Siguiente");
+        btnNext1Project.setBorderPainted(false);
+        btnNext1Project.setFocusable(false);
+        btnNext1Project.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNext1ActionPerformed(evt);
+                btnNext1ProjectActionPerformed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Descripción del proyecto");
+        descriptionproject.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        descriptionproject.setForeground(new java.awt.Color(102, 102, 102));
+        descriptionproject.setText("Descripción del proyecto");
 
         txtDescription.setColumns(20);
         txtDescription.setRows(5);
@@ -165,12 +177,12 @@ public class addProject extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(271, 271, 271)
-                                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnNext1Project, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(spProject)
                                 .addComponent(txtProject, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(Nameprojectlbl)
-                            .addComponent(jLabel7))
+                            .addComponent(descriptionproject))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -186,11 +198,11 @@ public class addProject extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(spProject, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70)
-                .addComponent(jLabel7)
+                .addComponent(descriptionproject)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnNext1Project, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -231,7 +243,7 @@ public class addProject extends javax.swing.JFrame {
             evt.consume();
     }//GEN-LAST:event_txtProjectKeyTyped
 
-    private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
+    private void btnNext1ProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ProjectActionPerformed
         if(standardization.campoVacio(txtProject.getText()))
         {
             standardization.showMessage("warning","Hay campos vacios!",this);
@@ -250,7 +262,7 @@ public class addProject extends javax.swing.JFrame {
                 controller.rootFrame = controller.addPjDetails;
             }
         }
-    }//GEN-LAST:event_btnNext1ActionPerformed
+    }//GEN-LAST:event_btnNext1ProjectActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -258,10 +270,10 @@ public class addProject extends javax.swing.JFrame {
     private javax.swing.JLabel Nameprojectlbl;
     private javax.swing.JLabel addprojectlbl;
     private javax.swing.JButton btnNext;
-    private javax.swing.JButton btnNext1;
+    private javax.swing.JButton btnNext1Project;
+    private javax.swing.JLabel descriptionproject;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -1074,8 +1074,12 @@ public final class home extends javax.swing.JFrame {
         standardization.invokeHome(true);
         standardization.showMessage("ok", "Idioma cambiado");
     }//GEN-LAST:event_itemSpanishActionPerformed
-    //</editor-fold>
-    
+  
+      private void itemEnglishActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        controller.idioma = "ESPANOL";
+        standardization.invokeHome(true);
+        standardization.showMessage("ok", "Idioma cambiado");
+    }         
     public void disable (){
         pnGeneral.setBackground(new Color(34, 34, 34));
         pnUser.setBackground(new Color(34, 34, 34));
