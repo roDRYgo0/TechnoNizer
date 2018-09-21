@@ -67,6 +67,7 @@ public class jpCreateData extends javax.swing.JPanel {
        
         iconBirthday.setIcon(new controller().changeImage("/imagenes/birthday.png", 35, 35));
         iconGender.setIcon(new controller().changeImage("/imagenes/gender.png", 35, 35));
+        jButton1.setVisible(false);
         
         loadData();
         cargarComboBox();

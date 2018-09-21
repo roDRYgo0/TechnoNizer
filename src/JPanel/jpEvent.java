@@ -62,7 +62,7 @@ public final class jpEvent extends javax.swing.JPanel {
         }
         
         for(int i = 0; i < classEvent.eventosShow.size(); i++){
-            eventAdmin.showEvent show = new eventAdmin.showEvent(i);
+            eventOwner.showEvent show = new eventOwner.showEvent(i);
             show.setSize(190, 120);
 
             pnEvent.add(show, BorderLayout.CENTER);

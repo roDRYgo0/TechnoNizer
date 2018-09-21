@@ -300,20 +300,7 @@ public class standardization {
     }
     
    
-    public static void showaddReminder(JFrame over, JTable tabla){
-        aRem = new AddReminder(tabla);
-         aRem.setVisible(true);
-        aRem.setLocationRelativeTo(over);
-        over.setEnabled(false);
-        over.setOpacity(0.85f);
-    }
     
-    public static void hideaddReminder(JFrame over){
-        over.setVisible(true);
-        over.setEnabled(true);
-        over.setOpacity(1);
-        aRem.setVisible(false);
-    }
     
     
    

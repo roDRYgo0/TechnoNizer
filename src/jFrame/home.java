@@ -1,9 +1,6 @@
 package jFrame;
 
-import eventAdmin.eventAdmin;
 import JPanel.*;
-import eventAdmin.*;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -856,76 +853,86 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
+
     
-    public void showEventSettings(int e){
+    //<editor-fold defaultstate="collapsed" desc="Owner">
+    public void showEventSettingsOwner(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        pnSettings setting = new pnSettings(e);
+        eventOwner.pnSettings setting = new eventOwner.pnSettings(e);
         setting.setLocation(0,0);
         
         scrollContainer.setViewportView(setting);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
-    
-    public void showEventProblems(int e){
+    public void showEventProblemsOwner(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        pnProblem setting = new pnProblem(e);
+        eventOwner.pnProblem setting = new eventOwner.pnProblem(e);
         setting.setLocation(0,0);
         
         scrollContainer.setViewportView(setting);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
-    
-    public void showEventActivities(int e){
+    public void showEventActivitiesOwner(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        pnActivity activities = new pnActivity(e);
+        eventOwner.pnActivity activities = new eventOwner.pnActivity(e);
         activities.setLocation(0,0);
         
         scrollContainer.setViewportView(activities);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
-    public void showEventTask(int e){
+    public void showEventTaskOwner(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        pnTask tasks = new pnTask(e);
+        eventOwner.pnTask tasks = new eventOwner.pnTask(e);
         tasks.setLocation(0,0);
         
         scrollContainer.setViewportView(tasks);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
-    
-    public void showEventAnnoucements(int e){
+    public void showEventAnnoucementsOwner(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        pnSettings setting = new pnSettings(e);
-        setting.setLocation(0,0);
+        eventOwner.pnAnnouncement announcement = new eventOwner.pnAnnouncement(e);
+        announcement.setLocation(0,0);
         
-        scrollContainer.setViewportView(setting);
+        scrollContainer.setViewportView(announcement);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    public void showEventOwner(int e, boolean load){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        eventOwner.eventAdmin event = new eventOwner.eventAdmin(e, load);
+        event.setLocation(0,0);
+
+        scrollContainer.setViewportView(event);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
     
+    public void showEventMod(int e, boolean load){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        eventOwner.eventMod event = new eventOwner.eventMod(e, load);
+        event.setLocation(0,0);
+
+        scrollContainer.setViewportView(event);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
     
+    //</editor-fold>
+
     public void colorEvent(){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-    }
-    
-    public void showEvent(int e, boolean load){
-        disable();
-        pnEvents.setBackground(new Color(52, 52, 52));
-        controller.event = new eventAdmin(e, load);
-        controller.event.setLocation(0,0);
-
-        scrollContainer.setViewportView(controller.event);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
     }
     
     public void showEvent(){

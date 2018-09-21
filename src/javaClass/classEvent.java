@@ -14,6 +14,8 @@ import java.util.logging.Logger;
 
 public class classEvent {
 
+    public static int position;
+    
     private static Integer id;
     private static String eventName;
     private static String nicknameCreator;
@@ -38,6 +40,7 @@ public class classEvent {
     public static List<activity> activities = new ArrayList<>();
     public static List<Task> tasks = new ArrayList<>();
     public static List<problem> problems = new ArrayList<>();
+    public static List<announcement> announcements = new ArrayList<>();
 
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
@@ -327,6 +330,7 @@ public class classEvent {
         }
         return status;
     }
+
     
     public static boolean selectActivity(int idEvent){
         boolean status = false;
@@ -350,6 +354,46 @@ public class classEvent {
                 activiti.add(ac);
             }
             activities.addAll(activiti);
+            status = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return status;
+    }
+    
+    public static boolean updateAnnouncement(int condition, int id){
+        return methodsSQL.execute("update announcements set condition = ? where id = ?", condition, id);
+    }
+    
+    public static boolean deleteAnnouncement(int idAnnouncement){
+        return methodsSQL.execute("delete from announcements where id = ?", idAnnouncement);
+    }
+    
+    public static boolean insertAnnouncement(String announced, int priority, int publicGoal, int condition, String nickname, int idEvent){
+        boolean status = false;
+        status = methodsSQL.execute("insert into announcements values(?, ?, ?, ?, ?, ?)", announced, priority, publicGoal, condition, nickname, idEvent);
+        return status;
+    }
+    
+    public static boolean selectAnnouncement(int idEvent){
+        boolean status = false;
+        List<announcement> announc = new ArrayList<>();
+        announcement announ;
+        ResultSet rs = methodsSQL.getExecute("select id, announced, priority, publicGoal, condition, nickname from announcements where idEvent = ?", idEvent);
+        
+        try {
+            while(rs.next()){
+                announ = new announcement();
+                announ.setId(rs.getInt(1));
+                announ.setAnnouncement(rs.getString(2));
+                announ.setPriority(rs.getInt(3));
+                announ.setPublicGoal(rs.getInt(4));
+                announ.setCondition(rs.getInt(5));
+                announ.setNickname(rs.getString(6));
+                announc.add(announ);
+            }
+            announcements.addAll(announc);
             status = true;
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
@@ -496,6 +540,18 @@ public class classEvent {
         }
         
         return status;
+    }
+    
+    public static boolean updateProblem(String nickname, int idProblem, int condition){
+        boolean status = false;
+        status = methodsSQL.execute("update problems set responsable  = ?, condition = ? where id = ?", nickname, condition, idProblem);
+        return status;        
+    }
+    
+    public static boolean deleteProblem(int idProblem){
+        boolean status = false;
+        status = methodsSQL.execute("delete from problems where id = ?", idProblem);
+        return status;        
     }
     
     public static boolean selectProblems(int idEvent){

@@ -28,14 +28,23 @@ public class classReminder {
     private static String condition;
     private static String reminder;
     private static String datetime; 
-    private static Integer repeat;
-    private static String nickname;
+    private static String hour;
+
     
     
     
     public static List<reminder> reminders = new ArrayList<reminder>();
     public static List<reminder> remindersSearch = new ArrayList<reminder>();
+    
+public static String getHour() {
+        return hour;
+    }
 
+    public static void setHour(String hour) {
+        classReminder.hour = hour;
+    }
+    private static String nickname;
+    
 
     public static void setId(Integer id) {
         classReminder.id = id;
@@ -51,10 +60,6 @@ public class classReminder {
 
     public static void setDatetime(String datetime) {
         classReminder.datetime = datetime;
-    }
-
-    public static void setRepeat(Integer repeat) {
-        classReminder.repeat = repeat;
     }
 
     public static void setNickname(String nickname) {
@@ -77,9 +82,6 @@ public class classReminder {
         return datetime;
     }
 
-    public static Integer getRepeat() {
-        return repeat;
-    }
 
     public static String getNickname() {
         return nickname;
@@ -104,8 +106,8 @@ public class classReminder {
     public static boolean insert(){
         boolean status = false;
         
-        status = methodsSQL.execute("INSERT INTO reminders (condition, reminder, alarmDateTime, nickname) VALUES ( ?, ?, ?, ?)",
-                1, reminder, datetime, classUsuario.getNickname());
+        status = methodsSQL.execute("INSERT INTO reminders (condition, reminder, alarmDateTime, hour, nickname) VALUES ( ?, ?, ?, ?, ?)",
+                1, reminder, datetime, hour, classUsuario.getNickname());
         return status;
     }
     public static boolean update(){
