@@ -11,13 +11,24 @@ import javaClass.classEvent;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.util.Properties;
+import javaClass.controller;
 import javaClass.event;
 import javaClass.standardization;
+import properties.propiedades;
 
 
 
 public class place extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+        Properties pr=new propiedades(controller.idioma);
+        lblPlace.setText(pr.getProperty("lblPlace"));
+        lblMap.setText(pr.getProperty("lblMap"));
+        btnNext1.setText(pr.getProperty("btnNext1Map"));
+    }
+    
     private StaticMaps ObjStaticMaps=new StaticMaps();
     
     int idEvent;
@@ -26,6 +37,7 @@ public class place extends javax.swing.JPanel {
         initComponents();
         this.idEvent = idEvent;
         load(classEvent.eventosShow.get(idEvent).getPlace());
+         verificaridioma();
     }
     
     void load(String direction){
@@ -54,7 +66,7 @@ public class place extends javax.swing.JPanel {
     private void initComponents() {
 
         lblMap = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblplace = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         lblPlace = new javax.swing.JTextField();
         spEvent = new javax.swing.JSeparator();
@@ -77,9 +89,9 @@ public class place extends javax.swing.JPanel {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel7.setText("Lugar del evento");
+        lblplace.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblplace.setForeground(new java.awt.Color(153, 153, 153));
+        lblplace.setText("Lugar del evento");
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -123,7 +135,7 @@ public class place extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(jLabel7)
+                        .addComponent(lblplace)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -141,7 +153,7 @@ public class place extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
+                .addComponent(lblplace)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -219,10 +231,10 @@ public class place extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext1;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel lblMap;
     private javax.swing.JTextField lblPlace;
+    private javax.swing.JLabel lblplace;
     private javax.swing.JSeparator spEvent;
     // End of variables declaration//GEN-END:variables
 }

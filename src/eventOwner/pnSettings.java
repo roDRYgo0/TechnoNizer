@@ -5,15 +5,23 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.event;
 import javaClass.standardization;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import properties.propiedades;
 
 public class pnSettings extends javax.swing.JPanel {
 
+    void verificaridioma(){
+       Properties pr = new propiedades(controller.idioma); 
+       Confilbl1.setText(pr.getProperty("Confilbl1"));
+       Confilbl1.setText(pr.getProperty("Confilbl1"));
+    }
+    
     int idEvent;
     byte[] image, imageCover;
     
@@ -21,7 +29,7 @@ public class pnSettings extends javax.swing.JPanel {
         initComponents();
         this.idEvent = idEvent;  
         scrollContainer.getVerticalScrollBar().setUnitIncrement(16);
-        
+         verificaridioma();
         load(classEvent.eventosShow.get(idEvent));
         check();
     }
@@ -63,12 +71,12 @@ public class pnSettings extends javax.swing.JPanel {
         scrollContainer = new javax.swing.JScrollPane();
         pnContainer = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        Confilbl1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         pnImage = new javax.swing.JPanel();
         iconProfile = new javax.swing.JLabel();
         iconCover = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        Confilbl2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
 
         scrollContainer.setBorder(null);
@@ -92,9 +100,9 @@ public class pnSettings extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Configuraciones");
+        Confilbl1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        Confilbl1.setForeground(new java.awt.Color(255, 0, 0));
+        Confilbl1.setText("Configuraciones");
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -108,14 +116,14 @@ public class pnSettings extends javax.swing.JPanel {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jLabel2)))
+                        .addComponent(Confilbl1)))
                 .addContainerGap(537, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jLabel2)
+                .addComponent(Confilbl1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(7, Short.MAX_VALUE))
@@ -152,9 +160,9 @@ public class pnSettings extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel4.setText("Cambiar imagenes");
+        Confilbl2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Confilbl2.setForeground(new java.awt.Color(153, 153, 153));
+        Confilbl2.setText("Cambiar imagenes");
 
         jSeparator2.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -167,7 +175,7 @@ public class pnSettings extends javax.swing.JPanel {
                 .addGroup(pnImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnImageLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel4))
+                        .addComponent(Confilbl2))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(iconProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -178,7 +186,7 @@ public class pnSettings extends javax.swing.JPanel {
             pnImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnImageLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Confilbl2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
@@ -282,10 +290,10 @@ public class pnSettings extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Confilbl1;
+    private javax.swing.JLabel Confilbl2;
     private javax.swing.JLabel iconCover;
     private javax.swing.JLabel iconProfile;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
