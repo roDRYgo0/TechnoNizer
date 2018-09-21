@@ -234,7 +234,7 @@ public class jpAuthenticator extends javax.swing.JPanel {
                     }else{
                         classUsuario.select();
                         classContact.select();
-                        invokeHome(true);
+                        invokeHome(true, technonizer.TechnoNizer.log);
                     }      
                 } 
             }

@@ -26,15 +26,17 @@ public final class home extends javax.swing.JFrame {
     
     void verificaridioma()
     {
-    Properties pr = new propiedades (controller.idioma);
-    lblGral.setText(pr.getProperty("lblGral"));
-    HomeUser.setText(pr.getProperty("HomeUser"));
-    Homemembership.setText(pr.getProperty("Homemembership"));
-    SecurityHome.setText(pr.getProperty("SecurityHome"));
-    EventsHome.setText(pr.getProperty("EventsHome"));
-    ProjectsHome.setText(pr.getProperty("ProjectsHome"));
-    DiaryHome.setText(pr.getProperty("DiaryHome"));
-    lblImageUserTop.setText(pr.getProperty("lblImageUserTop"));
+        Properties pr = new propiedades (controller.idioma);
+        lblGral.setText(pr.getProperty("lblGral"));
+        HomeUser.setText(pr.getProperty("HomeUser"));
+        Homemembership.setText(pr.getProperty("Homemembership"));
+        SecurityHome.setText(pr.getProperty("SecurityHome"));
+        EventsHome.setText(pr.getProperty("EventsHome"));
+        ProjectsHome.setText(pr.getProperty("ProjectsHome"));
+        DiaryHome.setText(pr.getProperty("DiaryHome"));
+        lblImageUserTop.setText(pr.getProperty("lblImageUserTop"));
+        itemSpanish.setText(pr.getProperty("Spanish"));
+        itemEnglish.setText(pr.getProperty("English"));
     }
     
     public home(boolean load) {
@@ -205,6 +207,11 @@ public final class home extends javax.swing.JFrame {
         itemSettings.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 itemSettingsMouseReleased(evt);
+            }
+        });
+        itemSettings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSettingsActionPerformed(evt);
             }
         });
         popupSettings.add(itemSettings);
@@ -1127,13 +1134,17 @@ public final class home extends javax.swing.JFrame {
 
     private void itemSpanishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSpanishActionPerformed
         controller.idioma = "ESPANOL";
-        standardization.invokeHome(true);
+        standardization.invokeHome(true, technonizer.TechnoNizer.home);
         standardization.showMessage("ok", "Idioma cambiado");
     }//GEN-LAST:event_itemSpanishActionPerformed
+
+    private void itemSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSettingsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemSettingsActionPerformed
   
       private void itemEnglishActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        controller.idioma = "ESPANOL";
-        standardization.invokeHome(true);
+      controller.idioma = "INGLES";
+        standardization.invokeHome(true, technonizer.TechnoNizer.home);
         standardization.showMessage("ok", "Idioma cambiado");
     }         
     public void disable (){
