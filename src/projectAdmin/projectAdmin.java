@@ -1,6 +1,6 @@
 package projectAdmin;
 
-import eventAdmin.footer;
+import eventOwner.footer;
 import java.awt.Dimension;
 import javaClass.Project;
 import javaClass.classProjects;

@@ -8,10 +8,12 @@ import admin.jpUsers;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.util.Properties;
 import javaClass.*;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import properties.propiedades;
 
 public class admin extends javax.swing.JFrame {
 
@@ -21,6 +23,18 @@ public class admin extends javax.swing.JFrame {
     
     public static JLabel imageUserTop;
     public static JLabel imageUserLeft;
+    
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    lblUserPanelAdmins.setText(pr.getProperty("lblUserPanelAdmins"));
+    lblConfigurationsPanelAdmins.setText(pr.getProperty("lblConfigurationsPanelAdmins"));
+    lblSecurityPanelAdmins.setText(pr.getProperty("lblSecurityPanelAdmins"));
+    lblEventsPanelAdmins.setText(pr.getProperty("lblEventsPanelAdmins"));
+    lblProjectsPanelAdmins.setText(pr.getProperty("lblProjectsPanelAdmins"));
+    DiaryPanelAdmins.setText(pr.getProperty("DiaryPanelAdmins"));
+    lblImageUserTop.setText(pr.getProperty("lblImageUserTop"));
+    }
     
     public admin() {
         initComponents();
@@ -32,6 +46,7 @@ public class admin extends javax.swing.JFrame {
         controller.rootFrame = this;
         this.internet = logIn.internet;
         load();
+        verificaridioma();
     }
     
     void load(){        
@@ -88,25 +103,25 @@ public class admin extends javax.swing.JFrame {
         lblGral = new javax.swing.JLabel();
         pnUser = new javax.swing.JPanel();
         iconUser = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblUserPanelAdmins = new javax.swing.JLabel();
         pnSettings = new javax.swing.JPanel();
         iconSettings = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblConfigurationsPanelAdmins = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         lblImageUserLeft = new javax.swing.JLabel();
         pnEvents = new javax.swing.JPanel();
         iconEvents = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblEventsPanelAdmins = new javax.swing.JLabel();
         pnProj = new javax.swing.JPanel();
         iconProjects = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblProjectsPanelAdmins = new javax.swing.JLabel();
         pnAgenda = new javax.swing.JPanel();
         iconAgenda = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        DiaryPanelAdmins = new javax.swing.JLabel();
         pnSecurity = new javax.swing.JPanel();
         iconSecurity = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblSecurityPanelAdmins = new javax.swing.JLabel();
         lblAlert = new javax.swing.JLabel();
         scrollContainer = new javax.swing.JScrollPane();
 
@@ -116,6 +131,11 @@ public class admin extends javax.swing.JFrame {
 
         itemSpanish.setText("Español");
         itemSpanish.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        itemSpanish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSpanishActionPerformed(evt);
+            }
+        });
         popupLenguage.add(itemSpanish);
 
         itemEnglish.setText("Ingles");
@@ -357,9 +377,9 @@ public class admin extends javax.swing.JFrame {
         iconUser.setMinimumSize(new java.awt.Dimension(28, 28));
         iconUser.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Usuarios");
+        lblUserPanelAdmins.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblUserPanelAdmins.setForeground(new java.awt.Color(255, 255, 255));
+        lblUserPanelAdmins.setText("Usuarios");
 
         javax.swing.GroupLayout pnUserLayout = new javax.swing.GroupLayout(pnUser);
         pnUser.setLayout(pnUserLayout);
@@ -369,7 +389,7 @@ public class admin extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(iconUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblUserPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnUserLayout.setVerticalGroup(
@@ -378,7 +398,7 @@ public class admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(iconUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblUserPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -393,9 +413,9 @@ public class admin extends javax.swing.JFrame {
         iconSettings.setMinimumSize(new java.awt.Dimension(28, 28));
         iconSettings.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Configuraciones");
+        lblConfigurationsPanelAdmins.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblConfigurationsPanelAdmins.setForeground(new java.awt.Color(255, 255, 255));
+        lblConfigurationsPanelAdmins.setText("Configuraciones");
 
         javax.swing.GroupLayout pnSettingsLayout = new javax.swing.GroupLayout(pnSettings);
         pnSettings.setLayout(pnSettingsLayout);
@@ -405,7 +425,7 @@ public class admin extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(iconSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblConfigurationsPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnSettingsLayout.setVerticalGroup(
@@ -414,7 +434,7 @@ public class admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(iconSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblConfigurationsPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -451,9 +471,9 @@ public class admin extends javax.swing.JFrame {
         iconEvents.setMinimumSize(new java.awt.Dimension(28, 28));
         iconEvents.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Eventos");
+        lblEventsPanelAdmins.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblEventsPanelAdmins.setForeground(new java.awt.Color(255, 255, 255));
+        lblEventsPanelAdmins.setText("Eventos");
 
         javax.swing.GroupLayout pnEventsLayout = new javax.swing.GroupLayout(pnEvents);
         pnEvents.setLayout(pnEventsLayout);
@@ -463,7 +483,7 @@ public class admin extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(iconEvents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblEventsPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnEventsLayout.setVerticalGroup(
@@ -472,7 +492,7 @@ public class admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(iconEvents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblEventsPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -487,9 +507,9 @@ public class admin extends javax.swing.JFrame {
         iconProjects.setMinimumSize(new java.awt.Dimension(28, 28));
         iconProjects.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Proyectos");
+        lblProjectsPanelAdmins.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblProjectsPanelAdmins.setForeground(new java.awt.Color(255, 255, 255));
+        lblProjectsPanelAdmins.setText("Proyectos");
 
         javax.swing.GroupLayout pnProjLayout = new javax.swing.GroupLayout(pnProj);
         pnProj.setLayout(pnProjLayout);
@@ -499,7 +519,7 @@ public class admin extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(iconProjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblProjectsPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnProjLayout.setVerticalGroup(
@@ -507,7 +527,7 @@ public class admin extends javax.swing.JFrame {
             .addGroup(pnProjLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnProjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblProjectsPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(iconProjects, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -523,9 +543,9 @@ public class admin extends javax.swing.JFrame {
         iconAgenda.setMinimumSize(new java.awt.Dimension(28, 28));
         iconAgenda.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Agenda");
+        DiaryPanelAdmins.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        DiaryPanelAdmins.setForeground(new java.awt.Color(255, 255, 255));
+        DiaryPanelAdmins.setText("Agenda");
 
         javax.swing.GroupLayout pnAgendaLayout = new javax.swing.GroupLayout(pnAgenda);
         pnAgenda.setLayout(pnAgendaLayout);
@@ -535,7 +555,7 @@ public class admin extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(iconAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(DiaryPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnAgendaLayout.setVerticalGroup(
@@ -543,7 +563,7 @@ public class admin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnAgendaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DiaryPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(iconAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -559,9 +579,9 @@ public class admin extends javax.swing.JFrame {
         iconSecurity.setMinimumSize(new java.awt.Dimension(28, 28));
         iconSecurity.setPreferredSize(new java.awt.Dimension(28, 28));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Seguridad");
+        lblSecurityPanelAdmins.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblSecurityPanelAdmins.setForeground(new java.awt.Color(255, 255, 255));
+        lblSecurityPanelAdmins.setText("Seguridad");
 
         lblAlert.setMaximumSize(new java.awt.Dimension(28, 28));
         lblAlert.setMinimumSize(new java.awt.Dimension(28, 28));
@@ -575,7 +595,7 @@ public class admin extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(iconSecurity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblSecurityPanelAdmins, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblAlert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -586,7 +606,7 @@ public class admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnSecurityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(iconSecurity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblSecurityPanelAdmins, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -817,7 +837,7 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSettingsMouseReleased
 
     private void itemSettingsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemSettingsMouseReleased
-        standardization.invokeLogin(true);
+        standardization.invokeLogin();
     }//GEN-LAST:event_itemSettingsMouseReleased
 
     private void pnEventsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnEventsMouseReleased
@@ -869,6 +889,10 @@ public class admin extends javax.swing.JFrame {
         }else
             showUsers();
     }//GEN-LAST:event_lblImageUserTopMouseReleased
+
+    private void itemSpanishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSpanishActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemSpanishActionPerformed
     //</editor-fold>
     
     public void disable (){
@@ -920,6 +944,7 @@ public class admin extends javax.swing.JFrame {
     //<editor-fold defaultstate="collapsed" desc="compiled code">
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DiaryPanelAdmins;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnMax;
     private javax.swing.JButton btnMin;
@@ -934,22 +959,21 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemSettings;
     private javax.swing.JMenuItem itemSpanish;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAdmin;
     private javax.swing.JLabel lblAlert;
+    private javax.swing.JLabel lblConfigurationsPanelAdmins;
+    private javax.swing.JLabel lblEventsPanelAdmins;
     private javax.swing.JLabel lblGral;
     private javax.swing.JLabel lblImageUserLeft;
     private javax.swing.JLabel lblImageUserTop;
     private javax.swing.JLabel lblLenguage;
+    private javax.swing.JLabel lblProjectsPanelAdmins;
+    private javax.swing.JLabel lblSecurityPanelAdmins;
     private javax.swing.JLabel lblSettings;
+    private javax.swing.JLabel lblUserPanelAdmins;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JPanel pnAgenda;
     private javax.swing.JPanel pnEvents;

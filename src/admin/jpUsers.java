@@ -1,7 +1,5 @@
 package admin;
 
-import static groovy.ui.text.FindReplaceUtility.dispose;
-import jFrame.FrmParametrosUser;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -16,6 +14,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import javaClass.connection;
 import javaClass.standardization;
 import javaClass.user;
@@ -24,12 +23,66 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import properties.propiedades;
 
 
 /**@author rodri */
 
 public class jpUsers extends javax.swing.JPanel {
 
+    
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    lblStartAdminUserSee.setText(pr.getProperty("lblStartAdminUserSee"));
+    tbnFilter.setText(pr.getProperty("tbnFilterAdmin"));
+    tbnFirstName.setText(pr.getProperty("tbnFirstName"));
+    tbnLastName.setText(pr.getProperty("tbnLastName"));
+    tbnMail.setText(pr.getProperty("tbnMail"));
+    tbnGender.setText(pr.getProperty("tbnGender"));
+    tbnBirthdate.setText(pr.getProperty("tbnBirthdate"));
+    lblhasta.setText(pr.getProperty("lblhasta"));
+    Day1.setText(pr.getProperty("Dayjpedit"));
+    Month1.setText(pr.getProperty("monthjpedit"));
+    Year1.setText(pr.getProperty("yearjpedit"));
+    Day2.setText(pr.getProperty("Dayjpedit"));
+    Month2.setText(pr.getProperty("monthjpedit"));
+    Year2.setText(pr.getProperty("yearjpedit"));
+    
+            cmbGender.removeAllItems();
+            cmbMesStart.removeAllItems();
+            String meses[]={
+            pr.getProperty("firstmonth"),
+            pr.getProperty("secondmonth"),
+            pr.getProperty("thirdmonth"),
+            pr.getProperty("fourmonth"),
+            pr.getProperty("fivemonth"),
+            pr.getProperty("sixmonth"),
+            pr.getProperty("sevenmonth"),
+            pr.getProperty("eightmonth"),
+            pr.getProperty("ninemonth"),
+            pr.getProperty("tenmonth"),
+            pr.getProperty("elevenmonth"),
+            pr.getProperty("twelvemonth")
+            };
+            for(int i=0;i<meses.length;i++)
+            {
+                cmbMesStart.addItem(meses[i]);
+                cmbMesEnd.addItem(meses[i]);
+            }
+            
+            String generos[]={
+            pr.getProperty("Mascu"),
+            pr.getProperty("Feme")
+            };
+            
+           for(int x=0; x<generos.length;x++)
+           {
+           cmbGender.addItem(generos[x]);
+           }
+    SearchUserAdmin.setText(pr.getProperty("SearchUserAdmin"));
+    }
+    
     int view;
     
     boolean find = false;
@@ -42,7 +95,7 @@ public class jpUsers extends javax.swing.JPanel {
     public jpUsers() {
         initComponents();
         view = 0;
-        
+        verificaridioma();
         load();
     }
 
@@ -68,7 +121,7 @@ public class jpUsers extends javax.swing.JPanel {
     private void initComponents() {
 
         scrollUsers = new javax.swing.JScrollPane();
-        jLabel1 = new javax.swing.JLabel();
+        lblStartAdminUserSee = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         tbnFilter = new javax.swing.JToggleButton();
@@ -83,33 +136,33 @@ public class jpUsers extends javax.swing.JPanel {
         txtMail = new javax.swing.JTextField();
         spMail = new javax.swing.JSeparator();
         tbnBirthdate = new javax.swing.JToggleButton();
-        jLabel5 = new javax.swing.JLabel();
+        Day1 = new javax.swing.JLabel();
         txtDiaStart = new javax.swing.JTextField();
         spDayStart = new javax.swing.JSeparator();
-        jLabel6 = new javax.swing.JLabel();
+        Month1 = new javax.swing.JLabel();
         cmbMesStart = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
+        Year1 = new javax.swing.JLabel();
         txtAnioStart = new javax.swing.JTextField();
         spYearStart = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblhasta = new javax.swing.JLabel();
+        Day2 = new javax.swing.JLabel();
         txtDiaEnd = new javax.swing.JTextField();
         spDayEnd = new javax.swing.JSeparator();
-        jLabel9 = new javax.swing.JLabel();
+        Month2 = new javax.swing.JLabel();
         cmbMesEnd = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
+        Year2 = new javax.swing.JLabel();
         txtAnioEnd = new javax.swing.JTextField();
         spYearEnd = new javax.swing.JSeparator();
         tbnGender = new javax.swing.JToggleButton();
         cmbGender = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        SearchUserAdmin = new javax.swing.JLabel();
         spSearch = new javax.swing.JSeparator();
         iconSearch = new javax.swing.JLabel();
         iconView = new javax.swing.JLabel();
         iconReport = new javax.swing.JLabel();
-        User = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(980, 601));
@@ -119,9 +172,9 @@ public class jpUsers extends javax.swing.JPanel {
         scrollUsers.setBorder(null);
         scrollUsers.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Inicio");
+        lblStartAdminUserSee.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblStartAdminUserSee.setForeground(new java.awt.Color(255, 0, 0));
+        lblStartAdminUserSee.setText("Inicio");
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -248,7 +301,7 @@ public class jpUsers extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setText("Día");
+        Day1.setText("Día");
 
         txtDiaStart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtDiaStart.setText("12");
@@ -272,7 +325,7 @@ public class jpUsers extends javax.swing.JPanel {
 
         spDayStart.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel6.setText("Mes");
+        Month1.setText("Mes");
 
         cmbMesStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         cmbMesStart.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -282,7 +335,7 @@ public class jpUsers extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setText("Año");
+        Year1.setText("Año");
 
         txtAnioStart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtAnioStart.setText("2000");
@@ -306,10 +359,10 @@ public class jpUsers extends javax.swing.JPanel {
 
         spYearStart.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        jLabel2.setText("hasta");
+        lblhasta.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        lblhasta.setText("hasta");
 
-        jLabel7.setText("Día");
+        Day2.setText("Día");
 
         txtDiaEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtDiaEnd.setText("12");
@@ -333,7 +386,7 @@ public class jpUsers extends javax.swing.JPanel {
 
         spDayEnd.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel9.setText("Mes");
+        Month2.setText("Mes");
 
         cmbMesEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         cmbMesEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -343,7 +396,7 @@ public class jpUsers extends javax.swing.JPanel {
             }
         });
 
-        jLabel10.setText("Año");
+        Year2.setText("Año");
 
         txtAnioEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtAnioEnd.setText("2000");
@@ -424,7 +477,7 @@ public class jpUsers extends javax.swing.JPanel {
                         .addComponent(tbnBirthdate, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)
                         .addGroup(pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
+                            .addComponent(Day1)
                             .addGroup(pnFilterLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addGroup(pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -432,18 +485,18 @@ public class jpUsers extends javax.swing.JPanel {
                                     .addComponent(txtDiaStart, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
+                            .addComponent(Month1)
                             .addComponent(cmbMesStart, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtAnioStart)
-                            .addComponent(jLabel8)
+                            .addComponent(Year1)
                             .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblhasta, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
+                            .addComponent(Day2)
                             .addGroup(pnFilterLayout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addGroup(pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,14 +504,14 @@ public class jpUsers extends javax.swing.JPanel {
                                     .addComponent(txtDiaEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
+                            .addComponent(Month2)
                             .addComponent(cmbMesEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtAnioEnd)
-                            .addComponent(jLabel10)
+                            .addComponent(Year2)
                             .addComponent(spYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         pnFilterLayout.setVerticalGroup(
             pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -495,7 +548,7 @@ public class jpUsers extends javax.swing.JPanel {
                     .addGroup(pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnFilterLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(Day1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtDiaStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(1, 1, 1)
@@ -505,13 +558,13 @@ public class jpUsers extends javax.swing.JPanel {
                                 .addGroup(pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(pnFilterLayout.createSequentialGroup()
-                                            .addComponent(jLabel10)
+                                            .addComponent(Year2)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(txtAnioEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(10, 10, 10))
                                         .addComponent(spYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(pnFilterLayout.createSequentialGroup()
-                                        .addComponent(jLabel7)
+                                        .addComponent(Day2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtDiaEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(1, 1, 1)
@@ -519,18 +572,18 @@ public class jpUsers extends javax.swing.JPanel {
                                 .addGroup(pnFilterLayout.createSequentialGroup()
                                     .addGroup(pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(pnFilterLayout.createSequentialGroup()
-                                            .addComponent(jLabel8)
+                                            .addComponent(Year1)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addGroup(pnFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(txtAnioStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel2)))
+                                                .addComponent(lblhasta)))
                                         .addGroup(pnFilterLayout.createSequentialGroup()
-                                            .addComponent(jLabel9)
+                                            .addComponent(Month2)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(cmbMesEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGap(10, 10, 10))))
                         .addGroup(pnFilterLayout.createSequentialGroup()
-                            .addComponent(jLabel6)
+                            .addComponent(Month1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(cmbMesStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10))))
@@ -582,9 +635,9 @@ public class jpUsers extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Buscar por nombre de usuario");
+        SearchUserAdmin.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        SearchUserAdmin.setForeground(new java.awt.Color(102, 102, 102));
+        SearchUserAdmin.setText("Buscar por nombre de usuario");
 
         spSearch.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -598,7 +651,7 @@ public class jpUsers extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(SearchUserAdmin)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -613,7 +666,7 @@ public class jpUsers extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(SearchUserAdmin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -640,15 +693,10 @@ public class jpUsers extends javax.swing.JPanel {
             }
         });
 
-        User.setText("Usuario Específico");
-        User.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButton1.setText("Usuario Específico");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                UserMouseReleased(evt);
-            }
-        });
-        User.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserActionPerformed(evt);
+                jButton1MouseReleased(evt);
             }
         });
 
@@ -666,15 +714,15 @@ public class jpUsers extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(24, 24, 24)
-                                        .addComponent(jLabel1)
+                                        .addComponent(lblStartAdminUserSee)
                                         .addGap(53, 53, 53)
                                         .addComponent(iconView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(iconReport, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(55, 55, 55)
-                                        .addComponent(User))
+                                        .addGap(34, 34, 34)
+                                        .addComponent(jButton1))
                                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addComponent(scrollUsers, javax.swing.GroupLayout.Alignment.TRAILING)))
@@ -687,12 +735,15 @@ public class jpUsers extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(User, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1)
-                            .addComponent(iconView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(iconReport, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblStartAdminUserSee)
+                                    .addComponent(iconView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(iconReport, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -890,14 +941,14 @@ public class jpUsers extends javax.swing.JPanel {
     private void iconReportMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconReportMouseReleased
        String path="";
         try{
-
+            File file = new File("Usuarios.jasper");
             Map parametros = new HashMap();
 
-            InputStream xD = jpUsers.class.getResourceAsStream("/Reports/usuarios.jasper");
-            JasperReport jr=(JasperReport)JRLoader.loadObject(xD);
+            InputStream reportStream = new FileInputStream("Usuarios.jasper");
+            JasperReport jr=(JasperReport)JRLoader.loadObject(file);
             Connection cn= connection.getConnection();
             JasperPrint print =JasperFillManager.fillReport(jr,parametros,cn);
-            JasperViewer view = new JasperViewer(print, false);
+            JasperViewer view = new JasperViewer(print);
             view.setTitle("Reporte");
             view.setVisible(true);
             
@@ -1198,14 +1249,24 @@ public class jpUsers extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAnioEndKeyReleased
 
-    private void UserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UserActionPerformed
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        String path="";
+        try{
 
-    private void UserMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserMouseReleased
-        new FrmParametrosUser().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_UserMouseReleased
+            Map parametros = new HashMap();
+
+            InputStream xD = jpUsers.class.getResourceAsStream("/Reports/usuarios.jasper");
+            JasperReport jr=(JasperReport)JRLoader.loadObject(xD);
+            Connection cn= connection.getConnection();
+            JasperPrint print =JasperFillManager.fillReport(jr,parametros,cn);
+            JasperViewer view = new JasperViewer(print, false);
+            view.setTitle("Reporte");
+            view.setVisible(true);
+            
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }//GEN-LAST:event_jButton1MouseReleased
 
     void actionFilter(){
         if(tbnFilter.isSelected()){
@@ -1344,25 +1405,25 @@ public class jpUsers extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton User;
+    private javax.swing.JLabel Day1;
+    private javax.swing.JLabel Day2;
+    private javax.swing.JLabel Month1;
+    private javax.swing.JLabel Month2;
+    private javax.swing.JLabel SearchUserAdmin;
+    private javax.swing.JLabel Year1;
+    private javax.swing.JLabel Year2;
     private javax.swing.JComboBox<String> cmbGender;
     private javax.swing.JComboBox<String> cmbMesEnd;
     private javax.swing.JComboBox<String> cmbMesStart;
     private javax.swing.JLabel iconReport;
     private javax.swing.JLabel iconSearch;
     private javax.swing.JLabel iconView;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblStartAdminUserSee;
+    private javax.swing.JLabel lblhasta;
     private javax.swing.JPanel pnFilter;
     private javax.swing.JScrollPane scrollUsers;
     private javax.swing.JSeparator spDayEnd;

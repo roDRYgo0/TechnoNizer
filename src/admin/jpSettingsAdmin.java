@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import javaClass.classAdmin;
 import javaClass.classMembership;
 import javaClass.classUsuario;
@@ -18,9 +19,27 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import properties.propiedades;
 
 public class jpSettingsAdmin extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    ConfigAdmin.setText(pr.getProperty("ConfigAdmin"));
+    GendersAdmin.setText(pr.getProperty("GendersAdmin"));
+    AdminConfigMember.setText(pr.getProperty("AdminConfigMember"));
+    FreeAdmin.setText(pr.getProperty("FreeAdmin"));
+    btnChangeMembership.setText(pr.getProperty("btnChangeMembership"));
+    DesAdmin.setText(pr.getProperty("DescripcionMembership"));
+    NumberEventsAdmin.setText(pr.getProperty("NumberMembership"));
+    NumberofAdminsAdmin.setText(pr.getProperty("AdminsMembership"));
+    NumberofModeratorsAdmin.setText(pr.getProperty("NumberModerators"));
+    NumberInvitesaAdmin.setText(pr.getProperty("InvitesMembership"));
+    PriceMemberAdmin.setText(pr.getProperty("Pricemembership"));
+    btnChangeMembership.setText(pr.getProperty("btnChangeMembership"));
+    }
+    
     String name;
     String description;
     int condition;
@@ -53,18 +72,19 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         pnFree.setBackground(new Color(33,150,243));
         seleccionarMembership(membership);
         loadGender();
+        verificaridioma();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        ConfigAdmin = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        AdminConfigMember = new javax.swing.JLabel();
         pnFree = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        FreeAdmin = new javax.swing.JLabel();
         pnVip = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         pnPremium = new javax.swing.JPanel();
@@ -72,21 +92,21 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         sortFree = new javax.swing.JLabel();
         sortVip = new javax.swing.JLabel();
         sortPremium = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        DesAdmin = new javax.swing.JLabel();
+        PriceMemberAdmin = new javax.swing.JLabel();
         btnChangeMembership = new javax.swing.JButton();
         txtDescription = new javax.swing.JTextField();
         spDescription = new javax.swing.JSeparator();
         iconDescription = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        NumberEventsAdmin = new javax.swing.JLabel();
         iconNumEvents = new javax.swing.JLabel();
         spNumEvents = new javax.swing.JSeparator();
         txtNumEvents = new javax.swing.JTextField();
         txtAdmin = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
+        NumberofAdminsAdmin = new javax.swing.JLabel();
         iconAdmin = new javax.swing.JLabel();
         spAdmin = new javax.swing.JSeparator();
-        jLabel13 = new javax.swing.JLabel();
+        NumberofModeratorsAdmin = new javax.swing.JLabel();
         iconMod = new javax.swing.JLabel();
         txtMod = new javax.swing.JTextField();
         spMod = new javax.swing.JSeparator();
@@ -95,10 +115,10 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         spPrice = new javax.swing.JSeparator();
         spGuest = new javax.swing.JSeparator();
         txtGuest = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
+        NumberInvitesaAdmin = new javax.swing.JLabel();
         iconGuest = new javax.swing.JLabel();
         scrollGender = new javax.swing.JScrollPane();
-        jLabel7 = new javax.swing.JLabel();
+        GendersAdmin = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(254, 254, 254));
@@ -107,9 +127,9 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(980, 601));
         setRequestFocusEnabled(false);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Configuración");
+        ConfigAdmin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        ConfigAdmin.setForeground(new java.awt.Color(255, 0, 0));
+        ConfigAdmin.setText("Configuración");
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -117,8 +137,8 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         jPanel1.setMaximumSize(new java.awt.Dimension(420, 603));
         jPanel1.setMinimumSize(new java.awt.Dimension(420, 603));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Configura las membresias");
+        AdminConfigMember.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        AdminConfigMember.setText("Configura las membresias");
 
         pnFree.setBackground(new java.awt.Color(33, 150, 243));
         pnFree.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
@@ -134,9 +154,9 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Gratis");
+        FreeAdmin.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        FreeAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        FreeAdmin.setText("Gratis");
 
         javax.swing.GroupLayout pnFreeLayout = new javax.swing.GroupLayout(pnFree);
         pnFree.setLayout(pnFreeLayout);
@@ -144,14 +164,14 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
             pnFreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnFreeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addComponent(FreeAdmin)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         pnFreeLayout.setVerticalGroup(
             pnFreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnFreeLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel3)
+                .addComponent(FreeAdmin)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -237,13 +257,13 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         sortPremium.setMinimumSize(new java.awt.Dimension(36, 36));
         sortPremium.setPreferredSize(new java.awt.Dimension(36, 36));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel6.setText("Descripcion");
+        DesAdmin.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        DesAdmin.setForeground(new java.awt.Color(33, 150, 243));
+        DesAdmin.setText("Descripcion");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel10.setText("Precio");
+        PriceMemberAdmin.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        PriceMemberAdmin.setForeground(new java.awt.Color(33, 150, 243));
+        PriceMemberAdmin.setText("Precio");
 
         btnChangeMembership.setBackground(new java.awt.Color(255, 0, 0));
         btnChangeMembership.setForeground(new java.awt.Color(254, 254, 254));
@@ -280,9 +300,9 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         iconDescription.setMinimumSize(new java.awt.Dimension(25, 25));
         iconDescription.setPreferredSize(new java.awt.Dimension(25, 25));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel11.setText("Número de eventos");
+        NumberEventsAdmin.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        NumberEventsAdmin.setForeground(new java.awt.Color(33, 150, 243));
+        NumberEventsAdmin.setText("Número de eventos");
 
         iconNumEvents.setMaximumSize(new java.awt.Dimension(25, 25));
         iconNumEvents.setMinimumSize(new java.awt.Dimension(25, 25));
@@ -324,9 +344,9 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel12.setText("Número de administradores");
+        NumberofAdminsAdmin.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        NumberofAdminsAdmin.setForeground(new java.awt.Color(33, 150, 243));
+        NumberofAdminsAdmin.setText("Número de administradores");
 
         iconAdmin.setMaximumSize(new java.awt.Dimension(25, 25));
         iconAdmin.setMinimumSize(new java.awt.Dimension(25, 25));
@@ -334,9 +354,9 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
 
         spAdmin.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel13.setText("Número de moderadores");
+        NumberofModeratorsAdmin.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        NumberofModeratorsAdmin.setForeground(new java.awt.Color(33, 150, 243));
+        NumberofModeratorsAdmin.setText("Número de moderadores");
 
         iconMod.setMaximumSize(new java.awt.Dimension(25, 25));
         iconMod.setMinimumSize(new java.awt.Dimension(25, 25));
@@ -403,9 +423,9 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
             }
         });
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel14.setText("Número de invitados");
+        NumberInvitesaAdmin.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        NumberInvitesaAdmin.setForeground(new java.awt.Color(33, 150, 243));
+        NumberInvitesaAdmin.setText("Número de invitados");
 
         iconGuest.setMaximumSize(new java.awt.Dimension(25, 25));
         iconGuest.setMinimumSize(new java.awt.Dimension(25, 25));
@@ -417,7 +437,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(96, 96, 96)
-                .addComponent(jLabel1)
+                .addComponent(AdminConfigMember)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
@@ -439,11 +459,11 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                                     .addComponent(pnVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(pnPremium, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(DesAdmin, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel10)
+                                            .addComponent(PriceMemberAdmin)
                                             .addGap(160, 160, 160))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                             .addComponent(iconPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -462,14 +482,14 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                         .addContainerGap(48, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
+                            .addComponent(NumberofAdminsAdmin)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(iconAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtAdmin)
                                     .addComponent(spAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel11)
+                            .addComponent(NumberEventsAdmin)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(iconNumEvents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
@@ -478,7 +498,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                                     .addComponent(spNumEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
+                                    .addComponent(NumberofModeratorsAdmin)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(iconMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, 0)
@@ -487,7 +507,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                                             .addComponent(spMod))))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14)
+                                    .addComponent(NumberInvitesaAdmin)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(iconGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, 0)
@@ -500,7 +520,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(AdminConfigMember)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(pnFree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -512,7 +532,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                     .addComponent(sortVip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sortPremium, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
+                .addComponent(DesAdmin)
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(iconDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -520,7 +540,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(spDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
+                .addComponent(NumberEventsAdmin)
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(iconNumEvents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -528,7 +548,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(spNumEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
+                .addComponent(NumberofAdminsAdmin)
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -538,7 +558,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                         .addGap(0, 0, 0)
                         .addComponent(spAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel13)
+                        .addComponent(NumberofModeratorsAdmin)
                         .addGap(1, 1, 1)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(iconMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -546,7 +566,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                         .addGap(0, 0, 0)
                         .addComponent(spMod, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
+                        .addComponent(NumberInvitesaAdmin)
                         .addGap(1, 1, 1)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(iconGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -556,7 +576,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                 .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
+                        .addComponent(PriceMemberAdmin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(iconPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -575,8 +595,8 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         scrollGender.setMinimumSize(new java.awt.Dimension(341, 250));
         scrollGender.setPreferredSize(new java.awt.Dimension(341, 250));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel7.setText("Géneros");
+        GendersAdmin.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        GendersAdmin.setText("Géneros");
 
         jButton1.setText("REPORTE DE VENTAS");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -593,13 +613,13 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jLabel2))
+                        .addComponent(ConfigAdmin))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(scrollGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))))
+                            .addComponent(GendersAdmin))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73))
@@ -610,16 +630,16 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(ConfigAdmin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(81, 81, 81)
-                        .addComponent(jLabel7)
+                        .addComponent(GendersAdmin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(scrollGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(43, Short.MAX_VALUE))
@@ -766,7 +786,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_txtGuestKeyTyped
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-         String path="";
+        String path="";
         try{
 
             Map parametros = new HashMap();
@@ -907,6 +927,16 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AdminConfigMember;
+    private javax.swing.JLabel ConfigAdmin;
+    private javax.swing.JLabel DesAdmin;
+    private javax.swing.JLabel FreeAdmin;
+    private javax.swing.JLabel GendersAdmin;
+    private javax.swing.JLabel NumberEventsAdmin;
+    private javax.swing.JLabel NumberInvitesaAdmin;
+    private javax.swing.JLabel NumberofAdminsAdmin;
+    private javax.swing.JLabel NumberofModeratorsAdmin;
+    private javax.swing.JLabel PriceMemberAdmin;
     private javax.swing.JButton btnChangeMembership;
     private javax.swing.JLabel iconAdmin;
     private javax.swing.JLabel iconDescription;
@@ -915,18 +945,8 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel iconNumEvents;
     private javax.swing.JLabel iconPrice;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel pnFree;

@@ -51,7 +51,6 @@ public final class jpEditUser extends javax.swing.JPanel {
     
 //cargar combobox
             cmbMes.removeAllItems();
-            cmbGender.removeAllItems();
             String meses[]={
             pr.getProperty("firstmonth"),
             pr.getProperty("secondmonth"),
@@ -70,16 +69,6 @@ public final class jpEditUser extends javax.swing.JPanel {
             {
                 cmbMes.addItem(meses[i]);
             }
-            
-            String generos[]={
-            pr.getProperty("Mascu"),
-            pr.getProperty("Feme")
-            };
-            
-           for(int x=0; x<generos.length;x++)
-           {
-           cmbGender.addItem(generos[x]);
-           }
     
     LblContactjpedituser.setText(pr.getProperty("LblContactjpedituser"));
     lblenterjpedit.setText(pr.getProperty("lblenterjpedit"));
@@ -95,10 +84,11 @@ public final class jpEditUser extends javax.swing.JPanel {
         continueN = false;
         loadPanel(false);
         image = classUsuario.getImage();
-        loadImagenes();
-       
-        load(); 
+        loadImagenes(); 
         verificaridioma();
+        cargarComboBox();
+        load(); 
+       
     }
     
     public void enable(){

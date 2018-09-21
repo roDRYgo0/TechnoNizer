@@ -367,11 +367,11 @@ public class standardization {
         mess.setVisible(false);
     }
 //    
-    public static void invokeHome(boolean load)
+    public static void invokeHome(boolean load, JFrame hom)
     {
         home = new home(load);
         home.setLocationRelativeTo(null);
-        log.setVisible(false);
+        hom.setVisible(false);
         home.setVisible(true);
         new Thread(()->{
             usersBinnacle.binnacle(1);
@@ -398,11 +398,15 @@ public class standardization {
         log.setVisible(true);
     }
     
-    public static void invokeLogin(boolean admi)
+    public static void invokeLogin(boolean admi, JFrame login)
     {
         log = new logIn();
         log.setLocationRelativeTo(null);
-        admin.setVisible(false);
+        if(admi)
+            admin.setVisible(false);
+        else
+            login.setVisible(false);
+
         log.setVisible(true);
     }
     
@@ -572,7 +576,6 @@ public class standardization {
             
         }
         dat += d.getDate()+" ";
-        System.out.println(days[1]+"el mes");
         switch(days[1]){
             case "01":
                 dat += "de enero";
