@@ -5,6 +5,9 @@ import jFrame.addReminderGral;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javaClass.classProjects;
 import javaClass.classReminder;
 import javaClass.classUsuario;
@@ -37,6 +40,13 @@ public class jpReminder extends javax.swing.JPanel {
         insertarPaneles(classReminder.reminders.size(), false);
         
         loadImage();
+        Date now = new Date(System.currentTimeMillis());
+SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+SimpleDateFormat hour = new SimpleDateFormat("HH:mm:ss");
+
+System.out.println(date.format(now));
+System.out.println(hour.format(now));
+System.out.println(now);
     }
     
     void loadImage(){

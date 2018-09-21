@@ -161,7 +161,7 @@ public class AddReminder extends javax.swing.JFrame {
             
             classReminder.setReminder((txtReminder.getText()));
             classReminder.setDatetime((txtFecha.getText()));
-            classReminder.setRepeat((Integer.parseInt(txtHora.getText())));
+            classReminder.setHour(txtHora.getText());
             
             if(classReminder.insert()){
                 JOptionPane.showMessageDialog(this, "Recordatorio Guardado");
@@ -171,7 +171,7 @@ public class AddReminder extends javax.swing.JFrame {
                
         }
         
-        standardization.hideaddReminder(TechnoNizer.home);
+     
         tabla.setModel(classReminder.cargarReminder());
     }//GEN-LAST:event_jBInsertarActionPerformed
 
