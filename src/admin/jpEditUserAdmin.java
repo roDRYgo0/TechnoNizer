@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Properties;
 import javaClass.classAdmin;
 import javaClass.classContact;
 import javaClass.classUsuario;
@@ -19,9 +20,49 @@ import javaClass.methodsSQL;
 import javaClass.standardization;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import properties.propiedades;
 
 public final class jpEditUserAdmin extends javax.swing.JPanel {
 
+    void Verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    lbljpEditProfileAdmin1.setText(pr.getProperty("lbljpEditProfileAdmin1"));
+    lbljpEditProfileAdmin2.setText(pr.getProperty("lbljpEditProfileAdmin2"));
+    lbljpEditProfileAdmin3.setText(pr.getProperty("lbljpEditProfileAdmin3"));
+    lbljpEditProfileAdmin4.setText(pr.getProperty("lbljpEditProfileAdmin4"));
+    lbljpEditProfileAdmin5.setText(pr.getProperty("lbljpEditProfileAdmin5"));
+    lbljpEditProfileAdmin6.setText(pr.getProperty("lbljpEditProfileAdmin6"));
+    lbljpEditProfileAdmin7.setText(pr.getProperty("lbljpEditProfileAdmin7"));
+    Day.setText(pr.getProperty("DayCreate"));
+    Month.setText(pr.getProperty("MonthCreate"));
+    Year.setText(pr.getProperty("YearCreate"));
+    jButton4.setText(pr.getProperty("jButton4AdminEstadistic"));
+    lblcontactAdmin8.setText(pr.getProperty("lblcontactAdmin8"));
+    jButton3.setText(pr.getProperty("jButton3DeleteAdmin"));
+    jButton1.setText(pr.getProperty("jButton1SaveAdmin"));
+    
+      cmbMes.removeAllItems();
+            String meses[]={
+            pr.getProperty("firstmonth"),
+            pr.getProperty("secondmonth"),
+            pr.getProperty("thirdmonth"),
+            pr.getProperty("fourmonth"),
+            pr.getProperty("fivemonth"),
+            pr.getProperty("sixmonth"),
+            pr.getProperty("sevenmonth"),
+            pr.getProperty("eightmonth"),
+            pr.getProperty("ninemonth"),
+            pr.getProperty("tenmonth"),
+            pr.getProperty("elevenmonth"),
+            pr.getProperty("twelvemonth")
+            };
+            for(int i=0;i<meses.length;i++)
+            {
+                cmbMes.addItem(meses[i]);
+            }
+    }
+    
     boolean sw, continueM, continueN;
     boolean result;
     boolean chooseImg;
@@ -49,8 +90,9 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
         loadPanel(false);
         image = classUsuario.getImage();
         loadImagenes();
-        
+        Verificaridioma();
         load();
+        ;
     }
     
     public void enable(){
@@ -168,16 +210,16 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lbljpEditProfileAdmin1 = new javax.swing.JLabel();
+        lbljpEditProfileAdmin7 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbljpEditProfileAdmin3 = new javax.swing.JLabel();
+        lbljpEditProfileAdmin2 = new javax.swing.JLabel();
         lblNickname = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lbljpEditProfileAdmin4 = new javax.swing.JLabel();
         lblImage = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lbljpEditProfileAdmin5 = new javax.swing.JLabel();
+        lbljpEditProfileAdmin6 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         spName = new javax.swing.JSeparator();
         txtLastName = new javax.swing.JTextField();
@@ -186,20 +228,20 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
         spMail = new javax.swing.JSeparator();
         checkEmail = new javax.swing.JLabel();
         cmbMes = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
+        Month = new javax.swing.JLabel();
         txtAnio = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        Year = new javax.swing.JLabel();
         spYear = new javax.swing.JSeparator();
         iconBirthday = new javax.swing.JLabel();
         txtDia = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        Day = new javax.swing.JLabel();
         spDay = new javax.swing.JSeparator();
         cmbGender = new javax.swing.JComboBox<>();
         iconGender = new javax.swing.JLabel();
         iconEmail = new javax.swing.JLabel();
         iconUsername = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
+        lblcontactAdmin8 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         checkUpdate = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -211,30 +253,30 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(980, 601));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Editar perfil");
+        lbljpEditProfileAdmin1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lbljpEditProfileAdmin1.setForeground(new java.awt.Color(255, 0, 0));
+        lbljpEditProfileAdmin1.setText("Editar perfil");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel12.setText("Fecha de nacimiento");
+        lbljpEditProfileAdmin7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbljpEditProfileAdmin7.setForeground(new java.awt.Color(102, 102, 102));
+        lbljpEditProfileAdmin7.setText("Fecha de nacimiento");
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel13.setText("Género");
+        lbljpEditProfileAdmin3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbljpEditProfileAdmin3.setForeground(new java.awt.Color(102, 102, 102));
+        lbljpEditProfileAdmin3.setText("Género");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Nombre de usuario");
+        lbljpEditProfileAdmin2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbljpEditProfileAdmin2.setForeground(new java.awt.Color(102, 102, 102));
+        lbljpEditProfileAdmin2.setText("Nombre de usuario");
 
         lblNickname.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblNickname.setText("Not found");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("Nombres");
+        lbljpEditProfileAdmin4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbljpEditProfileAdmin4.setForeground(new java.awt.Color(102, 102, 102));
+        lbljpEditProfileAdmin4.setText("Nombres");
 
         lblImage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -242,13 +284,13 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Apellidos");
+        lbljpEditProfileAdmin5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbljpEditProfileAdmin5.setForeground(new java.awt.Color(102, 102, 102));
+        lbljpEditProfileAdmin5.setText("Apellidos");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("Email");
+        lbljpEditProfileAdmin6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbljpEditProfileAdmin6.setForeground(new java.awt.Color(102, 102, 102));
+        lbljpEditProfileAdmin6.setText("Email");
 
         txtName.setAutoscrolls(false);
         txtName.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -311,7 +353,7 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
         cmbMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         cmbMes.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        jLabel6.setText("Mes");
+        Month.setText("Mes");
 
         txtAnio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtAnio.setText("2000");
@@ -327,7 +369,7 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setText("Año");
+        Year.setText("Año");
 
         spYear.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -352,7 +394,7 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
             }
         });
 
-        jLabel10.setText("Día");
+        Day.setText("Día");
 
         spDay.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -382,9 +424,9 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel11.setText("Contactos");
+        lblcontactAdmin8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblcontactAdmin8.setForeground(new java.awt.Color(255, 0, 0));
+        lblcontactAdmin8.setText("Contactos");
 
         jSeparator2.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -454,7 +496,7 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jLabel2))
+                        .addComponent(lbljpEditProfileAdmin1))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -464,7 +506,7 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(40, 40, 40)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lbljpEditProfileAdmin4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtName)
                                             .addComponent(spName, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -474,21 +516,20 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(layout.createSequentialGroup()
                                                     .addGap(4, 4, 4)
-                                                    .addComponent(jLabel3))
+                                                    .addComponent(lbljpEditProfileAdmin2))
                                                 .addGroup(layout.createSequentialGroup()
                                                     .addComponent(iconUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGap(0, 0, 0)
                                                     .addComponent(lblNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lbljpEditProfileAdmin3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(layout.createSequentialGroup()
                                                     .addComponent(iconGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtLastName)
                                             .addComponent(spLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lbljpEditProfileAdmin6, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(iconEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -497,14 +538,15 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
                                                 .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGap(0, 0, 0)
                                             .addComponent(checkEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jLabel12))))
+                                        .addComponent(lbljpEditProfileAdmin7)
+                                        .addComponent(lbljpEditProfileAdmin5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(57, 57, 57)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel11)
+                                            .addComponent(lblcontactAdmin8)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(checkContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(layout.createSequentialGroup()
@@ -515,7 +557,7 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
                             .addComponent(iconBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel10)
+                                .addComponent(Day)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(10, 10, 10)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -523,12 +565,12 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
                                         .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
+                                .addComponent(Month)
                                 .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtAnio)
-                                .addComponent(jLabel8)
+                                .addComponent(Year)
                                 .addComponent(spYear, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
@@ -549,38 +591,38 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(jLabel2)
+                        .addComponent(lbljpEditProfileAdmin1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(lbljpEditProfileAdmin2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(iconUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblNickname))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel13)
+                                .addComponent(lbljpEditProfileAdmin3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(iconGender, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5)
+                        .addComponent(lbljpEditProfileAdmin4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(spName, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
+                        .addComponent(lbljpEditProfileAdmin5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(spLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel9)
+                        .addComponent(lbljpEditProfileAdmin6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -591,47 +633,45 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
                                 .addComponent(spMail, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(iconEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12))
+                        .addComponent(lbljpEditProfileAdmin7))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11)
+                            .addComponent(lblcontactAdmin8)
                             .addComponent(checkContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel10)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(iconBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(1, 1, 1)
-                                    .addComponent(spDay, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(spYear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Day)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(iconBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(1, 1, 1)
+                                .addComponent(spDay, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(spYear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(Month)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(10, 10, 10)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(Year)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE))
+                        .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(checkUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -844,6 +884,9 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Day;
+    private javax.swing.JLabel Month;
+    private javax.swing.JLabel Year;
     private javax.swing.JLabel checkContact;
     private javax.swing.JLabel checkEmail;
     private javax.swing.JLabel checkUpdate;
@@ -856,22 +899,19 @@ public final class jpEditUserAdmin extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblNickname;
+    private javax.swing.JLabel lblcontactAdmin8;
+    private javax.swing.JLabel lbljpEditProfileAdmin1;
+    private javax.swing.JLabel lbljpEditProfileAdmin2;
+    private javax.swing.JLabel lbljpEditProfileAdmin3;
+    private javax.swing.JLabel lbljpEditProfileAdmin4;
+    private javax.swing.JLabel lbljpEditProfileAdmin5;
+    private javax.swing.JLabel lbljpEditProfileAdmin6;
+    private javax.swing.JLabel lbljpEditProfileAdmin7;
     private javax.swing.JScrollPane scrollContact;
     private javax.swing.JSeparator spDay;
     private javax.swing.JSeparator spLastName;

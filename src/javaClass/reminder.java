@@ -7,11 +7,18 @@ public class reminder {
     private Integer condition;
     private String reminder;
     private String date;
-    private Integer repeat;
+    private String hour;
     private Integer myNumberRemDisp;
     private Integer myNumberRemUse;
     private String nickname;
     private Integer Num;
+    public String getHour() {
+        return hour;
+    }
+
+    public void setHour(String hour) {
+        this.hour = hour;
+    }
 
     public Integer getNum() {
         return Num;
@@ -29,13 +36,7 @@ public class reminder {
         this.nickname = nickname;
     }
     
-    public Integer getRepeat() {
-        return repeat;
-    }
-
-    public void setRepeat(Integer repeat) {
-        this.repeat = repeat;
-    }
+    
 
     
     

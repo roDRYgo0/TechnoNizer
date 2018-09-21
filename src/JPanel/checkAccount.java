@@ -242,7 +242,7 @@ public class checkAccount extends javax.swing.JPanel {
                         classUsuario.setCondition(2);
                         if(classUsuario.updateCondition(false)){
                             technonizer.TechnoNizer.home.setVisible(false);
-                            invokeHome(true);
+                            invokeHome(true, technonizer.TechnoNizer.log);
                             standardization.showMessage("ok", "Se verifico correctamente");
                         }
                         else

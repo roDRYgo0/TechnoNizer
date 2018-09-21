@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import javaClass.classUsuario;
 import javaClass.connection;
 import javaClass.controller;
@@ -18,11 +19,27 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import properties.propiedades;
 
 /**@author rodri */
 
 public class jpStats extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+     Properties pr=new propiedades(controller.idioma);
+     lbljpStats1.setText(pr.getProperty("lbljpStats1"));
+     lbljpStats2.setText(pr.getProperty("lbljpStats2"));
+     lbljpStats3.setText(pr.getProperty("lbljpStats3"));
+     lbljpStats4.setText(pr.getProperty("lbljpStats4"));
+     lbljpStats5.setText(pr.getProperty("lbljpStats5"));
+     lbljpStats6.setText(pr.getProperty("lbljpStats6"));
+     lblDes.setText(pr.getProperty("lblDes"));
+     lblAVer.setText(pr.getProperty("lblAVer"));
+     lblVer.setText(pr.getProperty("lblVer"));
+     lblAdm.setText(pr.getProperty("lblAdm"));
+    }
+    
     boolean action;
     
     public jpStats() {
@@ -42,6 +59,7 @@ public class jpStats extends javax.swing.JPanel {
                 lblAdm.setEnabled(false);
                 break;
         }
+        verificaridioma();
         loadImage();
     }
     
@@ -104,19 +122,19 @@ public class jpStats extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lbljpStats1 = new javax.swing.JLabel();
+        lbljpStats2 = new javax.swing.JLabel();
         txtDateTime = new javax.swing.JTextField();
         spDateTime = new javax.swing.JSeparator();
         txtDateTime1 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        lbljpStats3 = new javax.swing.JLabel();
         spDateTime1 = new javax.swing.JSeparator();
-        jLabel9 = new javax.swing.JLabel();
+        lbljpStats4 = new javax.swing.JLabel();
         txtDateTime2 = new javax.swing.JTextField();
         spDateTime2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lbljpStats5 = new javax.swing.JLabel();
+        lbljpStats6 = new javax.swing.JLabel();
         lblDes = new javax.swing.JLabel();
         lblAVer = new javax.swing.JLabel();
         lblVer = new javax.swing.JLabel();
@@ -126,12 +144,12 @@ public class jpStats extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(445, 465));
         setMinimumSize(new java.awt.Dimension(445, 465));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Estadísticas");
+        lbljpStats1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbljpStats1.setText("Estadísticas");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Fecha y hora de registro");
+        lbljpStats2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbljpStats2.setForeground(new java.awt.Color(102, 102, 102));
+        lbljpStats2.setText("Fecha y hora de registro");
 
         txtDateTime.setAutoscrolls(false);
         txtDateTime.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -169,15 +187,15 @@ public class jpStats extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("Número de inicios de sesión");
+        lbljpStats3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbljpStats3.setForeground(new java.awt.Color(102, 102, 102));
+        lbljpStats3.setText("Número de inicios de sesión");
 
         spDateTime1.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("Número de eventos");
+        lbljpStats4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbljpStats4.setForeground(new java.awt.Color(102, 102, 102));
+        lbljpStats4.setText("Número de eventos");
 
         txtDateTime2.setAutoscrolls(false);
         txtDateTime2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -205,13 +223,13 @@ public class jpStats extends javax.swing.JPanel {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel10.setText("Generar reporte");
+        lbljpStats5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbljpStats5.setForeground(new java.awt.Color(33, 150, 243));
+        lbljpStats5.setText("Generar reporte");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(33, 150, 243));
-        jLabel11.setText("Condición");
+        lbljpStats6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbljpStats6.setForeground(new java.awt.Color(33, 150, 243));
+        lbljpStats6.setText("Condición");
 
         lblDes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblDes.setText("Deshabilitado");
@@ -255,29 +273,29 @@ public class jpStats extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel7)
+                                .addComponent(lbljpStats1)
                                 .addComponent(txtDateTime)
-                                .addComponent(spDateTime, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(spDateTime, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbljpStats2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtDateTime1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lbljpStats3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(spDateTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(spDateTime2, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtDateTime2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(lbljpStats4, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbljpStats5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDes, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbljpStats6, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblAVer, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblVer, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -287,9 +305,9 @@ public class jpStats extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(lbljpStats1)
                 .addGap(28, 28, 28)
-                .addComponent(jLabel7)
+                .addComponent(lbljpStats2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDateTime, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -297,21 +315,21 @@ public class jpStats extends javax.swing.JPanel {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(lbljpStats3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDateTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(spDateTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addComponent(lbljpStats4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDateTime2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(spDateTime2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
+                    .addComponent(lbljpStats5)
+                    .addComponent(lbljpStats6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
@@ -418,16 +436,16 @@ public class jpStats extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblAVer;
     private javax.swing.JLabel lblAdm;
     private javax.swing.JLabel lblDes;
     private javax.swing.JLabel lblVer;
+    private javax.swing.JLabel lbljpStats1;
+    private javax.swing.JLabel lbljpStats2;
+    private javax.swing.JLabel lbljpStats3;
+    private javax.swing.JLabel lbljpStats4;
+    private javax.swing.JLabel lbljpStats5;
+    private javax.swing.JLabel lbljpStats6;
     private javax.swing.JSeparator spDateTime;
     private javax.swing.JSeparator spDateTime1;
     private javax.swing.JSeparator spDateTime2;

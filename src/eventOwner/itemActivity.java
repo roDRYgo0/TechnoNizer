@@ -1,15 +1,23 @@
 package eventOwner;
 
+import java.util.Properties;
 import javaClass.controller;
+import properties.propiedades;
 
 public class itemActivity extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+      Properties pr=new propiedades(controller.idioma);
+      lblSettings.setText(pr.getProperty("lblSettingsActivities"));
+    }
     int idEvent;
     
     public itemActivity(int idEvent) {
         initComponents();
         this.idEvent = idEvent;
         lblSettings.setIcon(new controller().changeImage("/imagenes/activities.png", 43, 43));
+        verificaridioma();
     }
 
     @SuppressWarnings("unchecked")

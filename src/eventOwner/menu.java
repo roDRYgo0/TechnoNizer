@@ -15,10 +15,12 @@ public class menu extends javax.swing.JPanel {
     void load(){
         System.out.println(classEvent.position+"    pero porque");
         this.add(new itemActivity(idEvent));
-        this.add(new itemTask(idEvent));
-        this.add(new itemProblem(idEvent));
+        if(classEvent.position != 3)
+            this.add(new itemTask(idEvent));
+        if(classEvent.position != 3)
+            this.add(new itemProblem(idEvent));
         this.add(new itemAnnouncement(idEvent));
-        if(classEvent.position != 2)
+        if(classEvent.position < 2)
             this.add(new itemSetting(idEvent));
         this.revalidate();
         this.repaint();
