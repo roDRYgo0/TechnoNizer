@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="usuarios" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="56063eb5-d082-47c5-993f-f013348fc3e4">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.6105100000000008"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
@@ -14,7 +14,15 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="61" splitType="Stretch"/>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="347" height="26" uuid="b1f4228b-b452-49fd-a389-fae5b19d8698"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[TECHNONIZER - Lista de Usuarios.]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="33" splitType="Stretch"/>
@@ -22,25 +30,25 @@
 	<columnHeader>
 		<band height="22" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="100" height="20" uuid="0c9f8bf0-ecb1-4440-a3ae-6f04f55328af"/>
-				<text><![CDATA[nickname]]></text>
+				<reportElement mode="Opaque" x="0" y="0" width="100" height="20" backcolor="#FFCC00" uuid="0c9f8bf0-ecb1-4440-a3ae-6f04f55328af"/>
+				<text><![CDATA[Nickname]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="110" y="0" width="100" height="20" uuid="1c87e9c6-7152-4e23-be30-cf89209c4f20"/>
-				<text><![CDATA[firstName]]></text>
+				<reportElement mode="Opaque" x="110" y="0" width="100" height="20" backcolor="#FFCC00" uuid="1c87e9c6-7152-4e23-be30-cf89209c4f20"/>
+				<text><![CDATA[Nombres]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="236" y="2" width="100" height="20" uuid="d9701029-06ad-472c-95cb-02a31e310154"/>
-				<text><![CDATA[lastName]]></text>
+				<reportElement mode="Opaque" x="236" y="2" width="100" height="20" backcolor="#FFCC00" uuid="d9701029-06ad-472c-95cb-02a31e310154"/>
+				<text><![CDATA[Apellidos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="377" y="2" width="100" height="20" uuid="d66037a3-68d6-4687-b26c-da71ce15c9d8"/>
-				<text><![CDATA[gender]]></text>
+				<reportElement mode="Opaque" x="377" y="2" width="100" height="20" backcolor="#FFCC00" uuid="d66037a3-68d6-4687-b26c-da71ce15c9d8"/>
+				<text><![CDATA[Género]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="21" splitType="Stretch">
+		<band height="24" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="100" height="20" uuid="45af3ed8-f489-42b5-8a99-fa0e0f93b008"/>
 				<textFieldExpression><![CDATA[$F{nickname}]]></textFieldExpression>
@@ -57,6 +65,12 @@
 				<reportElement x="377" y="1" width="100" height="20" uuid="709b3f33-82ab-4ae8-8ce3-e820bbd22d56"/>
 				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="21" width="477" height="1" uuid="4a8c8f53-7538-4ff3-bfb1-94f24d503787"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
