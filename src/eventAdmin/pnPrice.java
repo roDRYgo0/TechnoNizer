@@ -1,8 +1,10 @@
 package eventAdmin;
 
 import java.awt.BorderLayout;
+import java.util.Properties;
 import javaClass.controller;
 import javaClass.event;
+import properties.propiedades;
 
 /**
  *
@@ -14,9 +16,16 @@ public class pnPrice extends javax.swing.JPanel {
      * @param event
      * @param idEvent */
     
+    void verificaridioma()
+    {
+        Properties pr=new propiedades(controller.idioma);
+        PricelblpnPrice.setText(pr.getProperty("PricelblpnPrice"));
+    }
+    
     public pnPrice(event event, int idEvent) {
         initComponents();
         load(event, idEvent);
+        verificaridioma();
     }
 
     void load(event event, int idEvent){
@@ -40,7 +49,7 @@ public class pnPrice extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        PricelblpnPrice = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -56,12 +65,12 @@ public class pnPrice extends javax.swing.JPanel {
         jPanel4.setMinimumSize(new java.awt.Dimension(495, 62));
         jPanel4.setPreferredSize(new java.awt.Dimension(535, 65));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Precios");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        PricelblpnPrice.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        PricelblpnPrice.setForeground(new java.awt.Color(255, 0, 0));
+        PricelblpnPrice.setText("Precios");
+        PricelblpnPrice.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabel2MouseReleased(evt);
+                PricelblpnPriceMouseReleased(evt);
             }
         });
 
@@ -74,7 +83,7 @@ public class pnPrice extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PricelblpnPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(298, Short.MAX_VALUE))
         );
@@ -82,7 +91,7 @@ public class pnPrice extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PricelblpnPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -91,13 +100,13 @@ public class pnPrice extends javax.swing.JPanel {
         add(jPanel4);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+    private void PricelblpnPriceMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PricelblpnPriceMouseReleased
         technonizer.TechnoNizer.home.pnEvent();
-    }//GEN-LAST:event_jLabel2MouseReleased
+    }//GEN-LAST:event_PricelblpnPriceMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel PricelblpnPrice;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables

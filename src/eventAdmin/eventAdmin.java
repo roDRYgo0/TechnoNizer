@@ -2,21 +2,33 @@ package eventAdmin;
 
 import java.awt.Dimension;
 import java.util.Objects;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.event;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class eventAdmin extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+        Properties pr=new propiedades(controller.idioma);
+        lblVIsibiltyEventAdmin1.setText(pr.getProperty("lblVIsibiltyEventAdmin1"));
+        Gastos.setText(pr.getProperty("Gastos"));
+        Gastos1.setText(pr.getProperty("Gastos1"));
+        Gastos2.setText(pr.getProperty("Gastos2"));
+    }
+    
     int idEvent;
+    
     
     public eventAdmin(int idEvent, boolean load) {
         initComponents();
         this.idEvent = idEvent;
         scrollContainer.getVerticalScrollBar().setUnitIncrement(16);
         load(classEvent.eventosShow.get(idEvent), load);
-        
+        verificaridioma();
         
     }
     
@@ -170,7 +182,7 @@ public class eventAdmin extends javax.swing.JPanel {
         lblNickname = new javax.swing.JLabel();
         lblDays = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        lblVIsibiltyEventAdmin1 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         lblVisibility = new javax.swing.JLabel();
         lblLost = new javax.swing.JLabel();
@@ -247,12 +259,12 @@ public class eventAdmin extends javax.swing.JPanel {
         jPanel6.setMinimumSize(new java.awt.Dimension(304, 189));
         jPanel6.setPreferredSize(new java.awt.Dimension(304, 189));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel7.setText("Visibilidad");
-        jLabel7.setMaximumSize(new java.awt.Dimension(51, 20));
-        jLabel7.setMinimumSize(new java.awt.Dimension(51, 20));
-        jLabel7.setPreferredSize(new java.awt.Dimension(51, 20));
+        lblVIsibiltyEventAdmin1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblVIsibiltyEventAdmin1.setForeground(new java.awt.Color(153, 153, 153));
+        lblVIsibiltyEventAdmin1.setText("Visibilidad");
+        lblVIsibiltyEventAdmin1.setMaximumSize(new java.awt.Dimension(51, 20));
+        lblVIsibiltyEventAdmin1.setMinimumSize(new java.awt.Dimension(51, 20));
+        lblVIsibiltyEventAdmin1.setPreferredSize(new java.awt.Dimension(51, 20));
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -311,7 +323,7 @@ public class eventAdmin extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblVIsibiltyEventAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -356,7 +368,7 @@ public class eventAdmin extends javax.swing.JPanel {
                         .addGap(4, 4, 4)
                         .addComponent(lblIncome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblVIsibiltyEventAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
@@ -411,7 +423,6 @@ public class eventAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel Gastos1;
     private javax.swing.JLabel Gastos2;
     private javax.swing.JLabel iconCover;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JSeparator jSeparator3;
@@ -424,6 +435,7 @@ public class eventAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel lblIncome;
     private javax.swing.JLabel lblLost;
     private javax.swing.JLabel lblNickname;
+    private javax.swing.JLabel lblVIsibiltyEventAdmin1;
     private javax.swing.JLabel lblVisibility;
     private javax.swing.JPanel pnContainer;
     private javax.swing.JScrollPane scrollContainer;

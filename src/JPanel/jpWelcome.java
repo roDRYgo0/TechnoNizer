@@ -162,7 +162,7 @@ public class jpWelcome extends javax.swing.JPanel {
             progress.setForeground(new Color(33,150,243));
             new Thread(()->{
                 classUsuario.select();
-                invokeHome(false);
+                invokeHome(false, technonizer.TechnoNizer.log);
             }).start();
             start = false;
             btnNext.setEnabled(false);

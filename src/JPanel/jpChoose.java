@@ -163,7 +163,7 @@ public class jpChoose extends javax.swing.JPanel {
         new Thread(()->{
             classUsuario.select();
             classContact.select();
-            invokeHome(true);
+            invokeHome(true, technonizer.TechnoNizer.log);
         }).start();
         btnNext.setEnabled(false);
         btnNext1.setEnabled(false);

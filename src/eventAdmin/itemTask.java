@@ -1,15 +1,25 @@
 package eventAdmin;
 
+import java.util.Properties;
 import javaClass.controller;
+import properties.propiedades;
 
 public class itemTask extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+      Properties pr=new propiedades(controller.idioma);
+      lblSettings.setText(pr.getProperty("lblSettingsTask"));
+      
+    }
+    
     int idEvent;
     
     public itemTask(int idEvent) {
         initComponents();
         this.idEvent = idEvent;
         lblSettings.setIcon(new controller().changeImage("/imagenes/task.png", 43, 43));
+        verificaridioma();
     }
 
     @SuppressWarnings("unchecked")

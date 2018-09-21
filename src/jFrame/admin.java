@@ -131,6 +131,11 @@ public class admin extends javax.swing.JFrame {
 
         itemSpanish.setText("Español");
         itemSpanish.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        itemSpanish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSpanishActionPerformed(evt);
+            }
+        });
         popupLenguage.add(itemSpanish);
 
         itemEnglish.setText("Ingles");
@@ -832,7 +837,7 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSettingsMouseReleased
 
     private void itemSettingsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemSettingsMouseReleased
-        standardization.invokeLogin(true);
+        standardization.invokeLogin();
     }//GEN-LAST:event_itemSettingsMouseReleased
 
     private void pnEventsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnEventsMouseReleased
@@ -884,6 +889,10 @@ public class admin extends javax.swing.JFrame {
         }else
             showUsers();
     }//GEN-LAST:event_lblImageUserTopMouseReleased
+
+    private void itemSpanishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSpanishActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemSpanishActionPerformed
     //</editor-fold>
     
     public void disable (){

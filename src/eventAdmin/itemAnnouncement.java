@@ -1,15 +1,26 @@
 package eventAdmin;
 
+import java.util.Properties;
 import javaClass.controller;
+import properties.propiedades;
 
 public class itemAnnouncement extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+        
+     Properties pr=new propiedades(controller.idioma);
+     lblSettings.setText(pr.getProperty("lblSettingsAnnoun"));
+      
+    }
+    
     int idEvent;
     
     public itemAnnouncement(int idEvent) {
         initComponents();
         this.idEvent = idEvent;
         lblSettings.setIcon(new controller().changeImage("/imagenes/announcement.png", 43, 43));
+        verificaridioma();
     }
 
     @SuppressWarnings("unchecked")

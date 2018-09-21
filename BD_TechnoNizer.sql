@@ -1,10 +1,6 @@
 create database BD_TechnoNizer
-delete  from users
+
 use BD_TechnoNizer
-select * from reminders
-
-
-/*Users administration and memberships*/
 
 create table memberships(
 id int identity(1,1) primary key not null,
@@ -17,8 +13,6 @@ numberModerators numeric(4),
 numberGuests numeric(4),
 price smallmoney not null
 )
-
-/*UPDATE memberships SET name = ?, description = ?, condition = ?, numberEvents = ?, numberAdmins = ?, numberModerators = ?, numberGuests = ?, price = ? WHERE id = ?*/
 
 create table genders(
 id int not null primary key,
@@ -52,7 +46,7 @@ id int identity(1,1) primary key not null,
 type nvarchar(60)
 )
 
-insert into contactType values ('Tel�fono'),('Email')
+
 
 create table contactUsers(
 id int identity(1,1) primary key not null,
@@ -127,8 +121,6 @@ member nvarchar(50) not null references  users(nickname),
 idCardas int not null references cards(id)
 )
 
-/*Event manager*/
-
  create table events(
  id int identity(1,1) primary key not null,
  eventName nvarchar(60) not null,
@@ -146,14 +138,10 @@ idCardas int not null references cards(id)
  invitation int  not null
  )
 
+ 
 
-
- select * from events
-
-
- alter table tickets 
  create table tickets(
- id int identity(1,1) not null,
+ id int identity(1,1) not null primary key,
  nameTicket nvarchar(35) not null,
  quantityTicket int not null,
  priceTicket smallmoney not null,
@@ -172,7 +160,8 @@ idCardas int not null references cards(id)
  id int identity(1,1) primary key not null,
  idEvent int not null references events(id),
  idTickets int not null references tickets(id),
- nickname nvarchar(50) not null references users(nickname)
+ nickname nvarchar(50) not null references users(nickname),
+ datetime datetime not null
  )
 
  create table announcements(
@@ -196,10 +185,6 @@ idCardas int not null references cards(id)
  nickname nvarchar(50) not null
  )
 
-
-
- select * from activities
-
  create table problems(
  id int identity(1,1) primary key not null,
  problem nvarchar(190) not null,
@@ -208,7 +193,7 @@ idCardas int not null references cards(id)
  danger int not null,
  condition int not null,
  nickname nvarchar(50) not null references users(nickname),
- responsable nvarchar(50) not null references users(nickname),
+ responsable nvarchar(50) references users(nickname),
  idEvent int not null references events(id)
  )
 
@@ -221,10 +206,6 @@ idCardas int not null references cards(id)
  idEvent int not null references events(id),
  nickname nvarchar(50)
  )
-
- select * from tasks
-
- select id, task, condition, visible, price, nickname from tasks where idEvent = 3074
 
  create table checkList(
 id int identity(1,1) primary key not null,
@@ -252,6 +233,9 @@ idCheckList int not null references checkList(id)
  nickname nvarchar(50) references users(nickname)
  )
 
+ SELECT * FROM  contactType
+ SELECT * FROM users
+
  create table personalEvents(
  id int identity(1,1) primary key not null,
  title nvarchar(60) not null,
@@ -271,39 +255,9 @@ idCheckList int not null references checkList(id)
  condition int not null,
  reminder nvarchar(200) not null,
  alarmDateTime nvarchar(30),
- hour nvarchar(5) not null,
+ repeat int not null,
  nickname nvarchar(50) not null references users(nickname)
  )
-select * from reminders
-
- create table horary(
- id int identity(1,1) primary key not null,
- name nvarchar(90) not null,
- nickname nvarchar(50) not null references users(nickname)
- )
-
- create table class(
- id int identity(1,1) primary key not null,
- dayNumber int not null,
- condition int not null,
- nameClass nvarchar(90) not null,
- startTime time not null,
- endTime time not null,
- remember int not null,
- idHorary int not null references horary(id)
- )
-
- create table homework(
- id int identity(1,1) primary key not null,
- nameHomework nvarchar(300) not null,
- date date not null,
- priority int not null,
- note nvarchar(200),
- idClass int not null references class(id)
- )
-
-
- select * from users
 
  create table usersBinnacle(
 id int identity(1,1) primary key not null,
@@ -313,12 +267,41 @@ nickname nvarchar(50) not null references users(nickname),
 idType int not null
 )
 
+select * from activities
+select * from announcements
+select * from calendars
+select * from cards
+select * from checkList
+select * from checks
+select * from class
+select * from contactType
+select * from contactUsers
+select * from events
+select * from genders
+select * from homework
+select * from horary
+select * from lists
+select * from members
+select * from memberships
+select * from personalEvents
+select * from problems
+select * from projects
+select * from questionBank
+select * from reminders
+select * from security
+select * from staff
+select * from tags 
+select * from tasks
+select * from tasksList
+select * from teams
+select * from tickets
+select * from users
+select * from usersBinnacle
+select * from usersInformation
+
+
 insert into genders values (0, 'Femenino')
 insert into genders values (1, 'Masculino')
-
-select u.nickname, ui.firstName, ui.lastName, g.gender from users u, usersInformation ui, genders g where g.id = ui.id_gender and u.nickname = ui.nickname
-
-select u.nickname, ui.firstName, ui.lastName, g.gender, ui.id_gender, g.id from users u, usersInformation ui, genders g where g.id = ui.id_gender and u.nickname = ui.nickname ORDER BY g.gender DESC
 
 insert into memberships values('Free','free', 1, 40, 1, 0, 50, 0)
 insert into memberships values('Vip','vip', 1, -1, 10, 50, 500, 49.90)
@@ -417,36 +400,6 @@ insert into questionBank values
 ('�Cu�l es la emoci�n que menos te gusta sentir?'),
 ('�Qu� hiciste en tu �ltimo cumplea�os?'),
 ('�Cu�l es la cosa que m�s amas en todo el mundo?')
+insert into contactType values ('Tel�fono'),('Email')
 
-
-select * from activities
-select * from announcements
-select * from calendars
-select * from cards
-select * from checkList
-select * from checks
-select * from class
-select * from contactType
-select * from contactUsers
-select * from events
-select * from genders
-select * from homework
-select * from horary
-select * from lists
-select * from members
-select * from memberships
-select * from personalEvents
-select * from problems
-select * from projects
-select * from questionBank
-select * from reminders
-select * from security
-select * from staff
-select * from tags 
-select * from tasks
-select * from tasksList
-select * from teams
-select * from tickets
-select * from users
-select * from usersBinnacle
-select * from usersInformation
+ insert into guest values (3076,2,'dev.rodrig', '20120618 10:34:09 AM')

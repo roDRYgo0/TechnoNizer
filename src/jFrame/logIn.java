@@ -268,7 +268,7 @@ public class logIn extends javax.swing.JFrame {
     private void itemSpanishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSpanishActionPerformed
        //Espanol
        controller.idioma="ESPANOL";
-       standardization.invokeLogin(true);
+       standardization.invokeLogin(false, this);
      standardization.showMessage("ok", "IdiomaCambiado");
 
     }//GEN-LAST:event_itemSpanishActionPerformed
@@ -276,7 +276,7 @@ public class logIn extends javax.swing.JFrame {
     private void itemEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEnglishActionPerformed
        //Ingles
         controller.idioma="INGLES";
-        standardization.invokeLogin(true); 
+        standardization.invokeLogin(false, this); 
         standardization.showMessage("ok", "IdiomaCambiado");
 
     }//GEN-LAST:event_itemEnglishActionPerformed
