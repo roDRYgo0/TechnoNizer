@@ -4,17 +4,31 @@ import jFrame.logIn;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Arrays;
+import java.util.Properties;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class jpNewPassword extends javax.swing.JPanel {
 
     boolean sw, continueP;
     char echoChar;
     
+    void verificaridioma()
+    {
+    Properties pr= new propiedades(controller.idioma);
+    lblNewPass.setText(pr.getProperty("lblNewPass"));
+    lbl2NewPass.setText(pr.getProperty("lbl2NewPass"));
+    lbl3NewPass.setText(pr.getProperty("lbl3NewPass"));
+    btnBack.setText(pr.getProperty("btnBackNePass"));
+    btnNext.setText(pr.getProperty("btnNextNePass"));
+    
+    }
+    
     public jpNewPassword() {
         initComponents();
+        verificaridioma();
         loadIcon();
     }
 
@@ -25,12 +39,12 @@ public class jpNewPassword extends javax.swing.JPanel {
 
         lblTN = new javax.swing.JLabel();
         spTop = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblNewPass = new javax.swing.JLabel();
+        lbl2NewPass = new javax.swing.JLabel();
         spPasswordConfirm = new javax.swing.JSeparator();
         txtPasswordConfirm = new javax.swing.JPasswordField();
         lblEyeConfirm = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lbl3NewPass = new javax.swing.JLabel();
         iconPass = new javax.swing.JLabel();
         iconPass2 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
@@ -55,12 +69,12 @@ public class jpNewPassword extends javax.swing.JPanel {
 
         spTop.setForeground(new java.awt.Color(153, 153, 153));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Ingresa tu nueva contraseña");
+        lblNewPass.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblNewPass.setText("Ingresa tu nueva contraseña");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("Ingrese la contraseña");
+        lbl2NewPass.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lbl2NewPass.setForeground(new java.awt.Color(102, 102, 102));
+        lbl2NewPass.setText("Ingrese la contraseña");
 
         spPasswordConfirm.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -84,9 +98,9 @@ public class jpNewPassword extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("Confirme la contraseña");
+        lbl3NewPass.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lbl3NewPass.setForeground(new java.awt.Color(102, 102, 102));
+        lbl3NewPass.setText("Confirme la contraseña");
 
         iconPass.setMaximumSize(new java.awt.Dimension(35, 35));
         iconPass.setMinimumSize(new java.awt.Dimension(35, 35));
@@ -169,7 +183,7 @@ public class jpNewPassword extends javax.swing.JPanel {
                                 .addComponent(iconPass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
+                                    .addComponent(lbl3NewPass)
                                     .addComponent(spPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(txtPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,7 +193,7 @@ public class jpNewPassword extends javax.swing.JPanel {
                                 .addComponent(iconPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
+                                    .addComponent(lbl2NewPass)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(spPassword)
@@ -189,7 +203,7 @@ public class jpNewPassword extends javax.swing.JPanel {
                                                 .addComponent(lblEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(checkPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabel1)
+                            .addComponent(lblNewPass)
                             .addComponent(lblTN))
                         .addGap(0, 42, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
@@ -203,13 +217,13 @@ public class jpNewPassword extends javax.swing.JPanel {
                         .addGap(50, 50, 50)
                         .addComponent(lblTN)
                         .addGap(51, 51, 51)
-                        .addComponent(jLabel1)
+                        .addComponent(lblNewPass)
                         .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
+                                        .addComponent(lbl2NewPass)
                                         .addGap(0, 0, 0)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,7 +235,7 @@ public class jpNewPassword extends javax.swing.JPanel {
                         .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(lbl3NewPass)
                                 .addGap(0, 0, 0)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -386,11 +400,11 @@ public class jpNewPassword extends javax.swing.JPanel {
     private javax.swing.JLabel checkPass;
     private javax.swing.JLabel iconPass;
     private javax.swing.JLabel iconPass2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel lbl2NewPass;
+    private javax.swing.JLabel lbl3NewPass;
     private javax.swing.JLabel lblEye;
     private javax.swing.JLabel lblEyeConfirm;
+    private javax.swing.JLabel lblNewPass;
     private javax.swing.JLabel lblTN;
     private rojerusan.componentes.RSProgressMaterial progress;
     private javax.swing.JSeparator spPassword;

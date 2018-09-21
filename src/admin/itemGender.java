@@ -1,11 +1,21 @@
 package admin;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classAdmin;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class itemGender extends javax.swing.JPanel {
+    
+      void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    lblContact.setText(pr.getProperty("lblContactDelete"));
+    btnDelete.setText(pr.getProperty("btnDeleteGender"));
+    }
+    
     
     int id;
     
@@ -13,6 +23,7 @@ public class itemGender extends javax.swing.JPanel {
         initComponents();
         this.id = id;
         load();
+        verificaridioma();
     }
     
     public void load(){

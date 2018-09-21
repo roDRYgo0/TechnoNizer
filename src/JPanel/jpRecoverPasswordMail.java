@@ -4,14 +4,30 @@ import jFrame.*;
 import java.awt.BorderLayout;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javaClass.*;
+import properties.propiedades;
 
 public class jpRecoverPasswordMail extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr= new propiedades(controller.idioma);
+    lbl1title.setText(pr.getProperty("lbl1title"));
+    lbl2RecoverPass.setText(pr.getProperty("lbl2RecoverPass"));
+    lbl3RecoverPass.setText(pr.getProperty("lbl3RecoverPass"));
+    lbl4RecoverPass.setText(pr.getProperty("lbl4RecoverPass"));
+    lbl5RecorverPass.setText(pr.getProperty("lbl5RecorverPass"));
+    btnRecoverPassword.setText(pr.getProperty("btnRecoverPasswordMethod"));
+    btnBack.setText(pr.getProperty("btnBackPass"));
+    btnNext.setText(pr.getProperty("btnNextPass"));
+    }
+    
     public jpRecoverPasswordMail() {
-        initComponents();        
+        initComponents(); 
+        verificaridioma();
         load();
     }
     
@@ -46,12 +62,12 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
         spTop = new javax.swing.JSeparator();
         btnNext = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lbl4RecoverPass = new javax.swing.JLabel();
+        lbl5RecorverPass = new javax.swing.JLabel();
         lblMail = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbl1title = new javax.swing.JLabel();
+        lbl2RecoverPass = new javax.swing.JLabel();
+        lbl3RecoverPass = new javax.swing.JLabel();
         lblResetPassword = new javax.swing.JLabel();
         lblTN = new javax.swing.JLabel();
         lblThinking = new javax.swing.JLabel();
@@ -90,11 +106,11 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Obtener codigo de verificación.");
+        lbl4RecoverPass.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl4RecoverPass.setText("Obtener codigo de verificación.");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel5.setText("Te enviaremos un correo electrónico con el código a ");
+        lbl5RecorverPass.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        lbl5RecorverPass.setText("Te enviaremos un correo electrónico con el código a ");
 
         lblMail.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblMail.setText("Not Found");
@@ -102,14 +118,14 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
         lblMail.setMinimumSize(new java.awt.Dimension(302, 32));
         lblMail.setPreferredSize(new java.awt.Dimension(302, 32));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Recuperación de contraseña");
+        lbl1title.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl1title.setText("Recuperación de contraseña");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel1.setText("Podemos ayudarte a recuperar tu contraseña.");
+        lbl2RecoverPass.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lbl2RecoverPass.setText("Podemos ayudarte a recuperar tu contraseña.");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel3.setText("Pero primero verifica tu identidad.");
+        lbl3RecoverPass.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lbl3RecoverPass.setText("Pero primero verifica tu identidad.");
 
         lblResetPassword.setMaximumSize(new java.awt.Dimension(40, 40));
         lblResetPassword.setMinimumSize(new java.awt.Dimension(40, 40));
@@ -178,14 +194,14 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
                                 .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(checkMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2)
+                            .addComponent(lbl1title)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblResetPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3)))
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lbl2RecoverPass)
+                                    .addComponent(lbl3RecoverPass)))
+                            .addComponent(lbl4RecoverPass)
+                            .addComponent(lbl5RecorverPass, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 22, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -201,18 +217,18 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblThinking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(lbl1title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lbl2RecoverPass)
                         .addGap(5, 5, 5)
-                        .addComponent(jLabel3))
+                        .addComponent(lbl3RecoverPass))
                     .addComponent(lblResetPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
-                .addComponent(jLabel4)
+                .addComponent(lbl4RecoverPass)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(lbl5RecorverPass)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -294,11 +310,11 @@ public class jpRecoverPasswordMail extends javax.swing.JPanel {
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnRecoverPassword;
     private javax.swing.JLabel checkMail;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lbl1title;
+    private javax.swing.JLabel lbl2RecoverPass;
+    private javax.swing.JLabel lbl3RecoverPass;
+    private javax.swing.JLabel lbl4RecoverPass;
+    private javax.swing.JLabel lbl5RecorverPass;
     private javax.swing.JLabel lblImageMail;
     private javax.swing.JLabel lblMail;
     private javax.swing.JLabel lblResetPassword;

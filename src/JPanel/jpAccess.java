@@ -321,7 +321,7 @@ public class jpAccess extends javax.swing.JPanel {
     }//GEN-LAST:event_txtUsernameKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        classUsuario.setNickname("cerritosluis1");
+        classUsuario.setNickname("Alexgve7");
         ResultSet rs = methodsSQL.getExecute("SELECT password FROM users WHERE nickname = ?",classUsuario.getNickname() );
 
         try {
