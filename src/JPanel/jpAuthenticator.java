@@ -3,18 +3,30 @@ package JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.util.Properties;
 import javaClass.authenticator;
 import javaClass.classContact;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
 import static javaClass.standardization.invokeHome;
+import properties.propiedades;
 
 public class jpAuthenticator extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    lblVerifytwofeet.setText(pr.getProperty("lblVerifytwofeet"));
+    AuthIndication1.setText(pr.getProperty("AuthIndication1"));
+    AuthIndication2.setText(pr.getProperty("AuthIndication2"));
+    btnNext.setText(pr.getProperty("btnNextAuthen"));
+    }
+    
     public jpAuthenticator() {
         initComponents();
         lblGoogle.setIcon(new controller().changeImage("/imagenes/authenticator.png", 40, 40));
+        verificaridioma();
     }
 
     @SuppressWarnings("unchecked")
@@ -22,9 +34,9 @@ public class jpAuthenticator extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblVerifytwofeet = new javax.swing.JLabel();
+        AuthIndication1 = new javax.swing.JLabel();
+        AuthIndication2 = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
         spCode = new javax.swing.JSeparator();
         checkCode = new javax.swing.JLabel();
@@ -39,14 +51,14 @@ public class jpAuthenticator extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/confAuthenticaor.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 21)); // NOI18N
-        jLabel2.setText("Verificación de dos pasos");
+        lblVerifytwofeet.setFont(new java.awt.Font("Tahoma", 1, 21)); // NOI18N
+        lblVerifytwofeet.setText("Verificación de dos pasos");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setText("Ingrese el codigo de verificación ");
+        AuthIndication1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        AuthIndication1.setText("Ingrese el codigo de verificación ");
 
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setText("generado por su aplicación móvil.");
+        AuthIndication2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        AuthIndication2.setText("generado por su aplicación móvil.");
 
         txtCode.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtCode.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -117,13 +129,13 @@ public class jpAuthenticator extends javax.swing.JPanel {
                                     .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(checkCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel2)
+                            .addComponent(lblVerifytwofeet)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblGoogle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)))
+                                    .addComponent(AuthIndication1)
+                                    .addComponent(AuthIndication2)))
                             .addComponent(jLabel5))))
                 .addContainerGap(65, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -139,13 +151,13 @@ public class jpAuthenticator extends javax.swing.JPanel {
                 .addGap(64, 64, 64)
                 .addComponent(jLabel1)
                 .addGap(45, 45, 45)
-                .addComponent(jLabel2)
+                .addComponent(lblVerifytwofeet)
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(AuthIndication1)
                         .addGap(0, 0, 0)
-                        .addComponent(jLabel4))
+                        .addComponent(AuthIndication2))
                     .addComponent(lblGoogle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jLabel5)
@@ -247,14 +259,14 @@ public class jpAuthenticator extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AuthIndication1;
+    private javax.swing.JLabel AuthIndication2;
     private javax.swing.JButton btnNext;
     private javax.swing.JLabel checkCode;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblGoogle;
+    private javax.swing.JLabel lblVerifytwofeet;
     private rojerusan.componentes.RSProgressMaterial progress;
     private javax.swing.JSeparator spCode;
     private javax.swing.JTextField txtCode;

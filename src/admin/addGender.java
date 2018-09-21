@@ -1,15 +1,24 @@
 package admin;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classAdmin;
 import javaClass.classContact;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.gender;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class addGender extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    lblContact.setText(pr.getProperty("lblContactGender"));
+    btnAdd.setText(pr.getProperty("btnAddGender"));
+    }
+    
     boolean action;
     int contactType = 0;
     String [] contacts;
@@ -18,11 +27,13 @@ public class addGender extends javax.swing.JPanel {
     public addGender() {
         initComponents();
         this.action = false;
+          verificaridioma();
     }
     
     public addGender(boolean action){
         initComponents();
         this.action = action;
+          verificaridioma();
     }
     
 

@@ -1,10 +1,12 @@
 package JPanel.contact;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classContact;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class addContact extends javax.swing.JPanel {
 
@@ -13,9 +15,17 @@ public class addContact extends javax.swing.JPanel {
     String [] contacts;
     int numContact;
     
+    void verificaridioma()
+    {
+    Properties pr = new propiedades (controller.idioma);
+    lblContact.setText(pr.getProperty("lblContact"));
+    btnAdd.setText(pr.getProperty("btnAddContact"));
+    }
+    
     public addContact() {
         initComponents();
         this.action = false;
+        verificaridioma();
     }
     
     public addContact(boolean action){

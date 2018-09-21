@@ -2,12 +2,25 @@ package sucurity;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.util.Properties;
 import javaClass.classSecurityQuestions;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class questionsConf extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr = new propiedades (controller.idioma);
+    lblquestionConf.setText(pr.getProperty("lblquestionConf"));
+    lbl1questionConf.setText(pr.getProperty("lbl1questionConf"));
+    lbl2questionsConf.setText(pr.getProperty("lbl2questionsConf"));
+    lblQuestion.setText(pr.getProperty("lblQuestionConfig"));
+    lblAnswerConfig.setText(pr.getProperty("lblAnswerConfig"));
+    btnNext.setText(pr.getProperty("btnNextquestionConfig"));
+    }
+    
     int numQues, pos;
     boolean va, admin;
     
@@ -18,6 +31,7 @@ public class questionsConf extends javax.swing.JPanel {
         this.numQues = i;
         lblQuestion.setText(lblQuestion.getText()+" "+i);
         load();
+        verificaridioma();
     }
     
     public questionsConf(int i, boolean admin) {
@@ -47,12 +61,12 @@ public class questionsConf extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblquestionConf = new javax.swing.JLabel();
+        lbl1questionConf = new javax.swing.JLabel();
+        lbl2questionsConf = new javax.swing.JLabel();
         lblQuestion = new javax.swing.JLabel();
         cmbQuestion = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
+        lblAnswerConfig = new javax.swing.JLabel();
         txtAnswer = new javax.swing.JTextField();
         spAnswer = new javax.swing.JSeparator();
         btnNext = new javax.swing.JButton();
@@ -63,18 +77,18 @@ public class questionsConf extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(425, 379));
         setPreferredSize(new java.awt.Dimension(425, 379));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Conigura tus preguntas de seguridad");
+        lblquestionConf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblquestionConf.setText("Configura tus preguntas de seguridad");
 
-        jLabel2.setText("Selecciona tus preguntas de seguridad, ");
+        lbl1questionConf.setText("Selecciona tus preguntas de seguridad, ");
 
-        jLabel3.setText("estas nos ayudaran a validar tu identidad.");
+        lbl2questionsConf.setText("estas nos ayudaran a validar tu identidad.");
 
         lblQuestion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblQuestion.setText("Pregunta");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("Respuesta");
+        lblAnswerConfig.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblAnswerConfig.setText("Respuesta");
 
         txtAnswer.setAutoscrolls(false);
         txtAnswer.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -123,19 +137,19 @@ public class questionsConf extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel1))
+                                .addComponent(lblquestionConf))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(32, 32, 32)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3)
-                                    .addComponent(cmbQuestion, 0, 378, Short.MAX_VALUE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(txtAnswer)
-                                    .addComponent(spAnswer)
-                                    .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(lbl2questionsConf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                                        .addComponent(lbl1questionConf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cmbQuestion, 0, 378, Short.MAX_VALUE)
+                                        .addComponent(lblAnswerConfig)
+                                        .addComponent(txtAnswer)
+                                        .addComponent(spAnswer)
+                                        .addComponent(lblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 5, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -148,11 +162,11 @@ public class questionsConf extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblquestionConf)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(lbl1questionConf)
                 .addGap(1, 1, 1)
-                .addComponent(jLabel3)
+                .addComponent(lbl2questionsConf)
                 .addGap(52, 52, 52)
                 .addComponent(lblQuestion)
                 .addGap(18, 18, 18)
@@ -160,7 +174,7 @@ public class questionsConf extends javax.swing.JPanel {
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(lblAnswerConfig)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
@@ -257,11 +271,11 @@ public class questionsConf extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
     private javax.swing.JComboBox<String> cmbQuestion;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lbl1questionConf;
+    private javax.swing.JLabel lbl2questionsConf;
+    private javax.swing.JLabel lblAnswerConfig;
     private javax.swing.JLabel lblQuestion;
+    private javax.swing.JLabel lblquestionConf;
     private rojerusan.componentes.RSProgressMaterial progress;
     private javax.swing.JSeparator spAnswer;
     private javax.swing.JTextField txtAnswer;
