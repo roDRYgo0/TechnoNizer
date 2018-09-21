@@ -29,9 +29,10 @@ public class showPrice extends javax.swing.JPanel {
             txtAvailable.setText(available()+"");
         }
         
-        if(classEvent.eventosShow.get(idEvent).getPrices().size() == 1)
+        if(classEvent.position == 3)
+            btnNext.setVisible(true);
+        else
             btnNext.setVisible(false);
-        btnNext.setVisible(false);
         
     }
 
@@ -125,13 +126,13 @@ public class showPrice extends javax.swing.JPanel {
 
         spPrice.setForeground(new java.awt.Color(204, 204, 204));
 
-        btnNext.setBackground(new java.awt.Color(51, 204, 0));
+        btnNext.setBackground(new java.awt.Color(0, 153, 0));
         btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
         btnNext.setText("Comprar");
         btnNext.setBorderPainted(false);
-        btnNext.setEnabled(false);
         btnNext.setFocusable(false);
+        btnNext.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnNext.setMaximumSize(new java.awt.Dimension(79, 28));
         btnNext.setMinimumSize(new java.awt.Dimension(79, 28));
         btnNext.setPreferredSize(new java.awt.Dimension(79, 28));
