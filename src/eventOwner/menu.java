@@ -13,6 +13,7 @@ public class menu extends javax.swing.JPanel {
     }
 
     void load(){
+        System.out.println(classEvent.position+"    pero porque");
         this.add(new itemActivity(idEvent));
         this.add(new itemTask(idEvent));
         this.add(new itemProblem(idEvent));

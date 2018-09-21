@@ -255,7 +255,9 @@ public class addStaff extends javax.swing.JPanel {
                 user = false;
         }
         if(user){
-            if(cmbPos.getSelectedIndex() == 0){
+            int num = 0;
+            num +=  (classEvent.position == 1)?1:0;
+            if(cmbPos.getSelectedIndex() == num){
                 if(controller.member[classUsuario.getIdMemberships()-1].getNumberAdmins() > admin){
                     add();
                 }else if(controller.member[classUsuario.getIdMemberships()-1].getNumberAdmins() == -1)

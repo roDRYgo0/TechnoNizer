@@ -118,8 +118,11 @@ members int not null,
 expiration datetime,
 condition int not null,
 idLists int not null references lists(id),
-idTags int references tags(id)
+idTags int references tags(id),
+description nvarchar(150) null,
+idproject int references projects(id)
 )
+
 
 create table members(
 id int identity(1,1) primary key not null,
@@ -146,14 +149,12 @@ idCardas int not null references cards(id)
  invitation int  not null
  )
 
+select * from staff
 
 
- select * from events
-
-
- alter table tickets 
+ 
  create table tickets(
- id int identity(1,1) not null,
+ id int identity(1,1) not null primary key,
  nameTicket nvarchar(35) not null,
  quantityTicket int not null,
  priceTicket smallmoney not null,
@@ -172,11 +173,10 @@ idCardas int not null references cards(id)
  id int identity(1,1) primary key not null,
  idEvent int not null references events(id),
  idTickets int not null references tickets(id),
- nickname nvarchar(50) not null references users(nickname)
+ nickname nvarchar(50) not null references users(nickname),
+ datetime datetime not null
  )
 
-
- select * from guest
 
  create table announcements(
  id int identity(1,1) primary key not null,
@@ -212,10 +212,11 @@ idCardas int not null references cards(id)
  danger int not null,
  condition int not null,
  nickname nvarchar(50) not null references users(nickname),
- responsable nvarchar(50) not null references users(nickname),
+ responsable nvarchar(50) null references users(nickname),
  idEvent int not null references events(id)
  )
 
+ 
 
  create table tasks(
  id int identity(1,1) primary key not null,
@@ -227,9 +228,6 @@ idCardas int not null references cards(id)
  nickname nvarchar(50)
  )
 
- select * from tasks
-
- select id, task, condition, visible, price, nickname from tasks where idEvent = 3074
 
  create table checkList(
 id int identity(1,1) primary key not null,

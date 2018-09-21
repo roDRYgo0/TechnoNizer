@@ -3,14 +3,18 @@ package allEvent;
 import java.awt.Color;
 import java.awt.Font;
 import javaClass.classEvent;
+import javaClass.classUsuario;
+import javaClass.controller;
 import javaClass.event;
+import javaClass.staff;
 import javaClass.standardization;
 
 public class showEvent extends javax.swing.JPanel {
 
+    int event;
     public showEvent(int event) {
         initComponents();
-        
+        this.event = event;
         load(event);
     }
 
@@ -47,7 +51,7 @@ public class showEvent extends javax.swing.JPanel {
         if(ev.getQuantityTicket() == -1)
             lblNumGuest.setText("Ilimitadas");
         else
-            lblNumGuest.setText(ev.getQuantityTicket()+"");
+            lblNumGuest.setText(ev.getQuantityTicket()-numGuest()+"");
         
         if(standardization.currentDate().compareTo(standardization.getDate(ev.getStartDateTime())) == 0){
             lblDays.setText("Hoy");
@@ -61,6 +65,10 @@ public class showEvent extends javax.swing.JPanel {
             else
                 lblDays.setText(standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getStartDateTime()))+" días");
         }
+    }
+    
+    int numGuest(){
+            return classEvent.eventosShow.get(event).getGuests().size();
     }
     
     @SuppressWarnings("unchecked")
@@ -90,6 +98,11 @@ public class showEvent extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(190, 120));
         setMinimumSize(new java.awt.Dimension(190, 120));
         setPreferredSize(new java.awt.Dimension(190, 120));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
+            }
+        });
 
         lblEventName1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblEventName1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -177,7 +190,29 @@ public class showEvent extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        loadEvent();
+    }//GEN-LAST:event_formMouseReleased
 
+
+    void loadEvent(){
+        new Thread(()->{
+            technonizer.TechnoNizer.home.showLoad();
+            classEvent.position = 3;
+            if(classEvent.eventosShow.get(event).getNicknameCreator() == classUsuario.getNickname())
+                classEvent.position = 0;
+            else{
+                for(staff s : classEvent.eventosShow.get(event).getStaffs()){
+                    if(s.getNickname().equals(classUsuario.getNickname())){
+                        classEvent.position = s.getPosition();
+                    }
+                }
+            }
+            technonizer.TechnoNizer.home.showEventOwner(event, true);
+            
+        }).start();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblDays;
