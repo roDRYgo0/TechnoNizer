@@ -29,6 +29,7 @@ public final class jpEventP extends javax.swing.JPanel {
     public void load(){
         iconSearch.setIcon(new controller().changeImage("/imagenes/search.png", 35, 35));
         insertarPaneles(classPersonalE.eventos.size(), false);
+        
          
     }
    
@@ -169,6 +170,9 @@ public final class jpEventP extends javax.swing.JPanel {
         scrollEvent.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         pnEvent.setBackground(new java.awt.Color(255, 255, 255));
+        javaClass.ModifiedFlowLayout modifiedFlowLayout1 = new javaClass.ModifiedFlowLayout();
+        modifiedFlowLayout1.setAlignment(java.awt.FlowLayout.LEFT);
+        pnEvent.setLayout(modifiedFlowLayout1);
         scrollEvent.setViewportView(pnEvent);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

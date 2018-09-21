@@ -15,6 +15,15 @@ public class eventp {
     private String note;
     private String color;
     private String nickname;
+    private Integer num;
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
 
     public String getNickname() {
         return nickname;

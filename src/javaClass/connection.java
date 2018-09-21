@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package javaClass;
 
 import java.sql.Connection;
@@ -31,37 +31,3 @@ public class connection {
     }
     
 }
-=======
-package javaClass;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
-public class connection {
-    
-    static Connection contacto = null;
-    
-    public static Connection getConnection(){
-
-        Connection on = null;
-        try{
-            String url = "jdbc:sqlserver://localhost;databaseName=BD_TechnoNizer;integratedSecurity=true;";
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            on = DriverManager.getConnection(url,"technonizer","Masupial.48");
-        }catch(ClassNotFoundException | SQLException e){
-            System.out.println(e.getMessage());
-        }
-        return on;
-    }
-    
-    public static boolean validateConnection(){
-        contacto = getConnection();
-        if(contacto == null)
-            return false;
-        else
-            return true;
-    }
-    
-}
->>>>>>> 3f858b0041bdbd3950dc4e755dce487768281bb6

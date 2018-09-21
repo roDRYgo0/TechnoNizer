@@ -879,10 +879,10 @@ public class AddEventDetailsP extends javax.swing.JFrame {
             
             
             //eventp evento = new eventp();
+            classPersonalE.restart();
            classPersonalE.select();
                     standardization.hide(controller.addEventsP);               
-                    technonizer.TechnoNizer.home.showYourEvents(false);
-                    controller.jpREMI.load();
+                    technonizer.TechnoNizer.home.showYourEventsP(false);
                     controller.rootFrame = technonizer.TechnoNizer.home;
             standardization.showMessage("ok", "Exito al crear evento", technonizer.TechnoNizer.home);
         }

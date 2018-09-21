@@ -22,6 +22,15 @@ public class classPersonalE {
     private static String note;
     private static String color;
     private static String nickname;
+    private static Integer num;
+
+    public static Integer getNum() {
+        return num;
+    }
+
+    public static void setNum(Integer num) {
+        classPersonalE.num = num;
+    }
 
    
        public static List<eventp> eventos = new ArrayList<eventp>();
@@ -127,6 +136,7 @@ public class classPersonalE {
     
     
     
+    
     public static int spaceEvent(int num){
         int row = (num+1)/4;
         if((num+1)%4!=0)
@@ -147,6 +157,26 @@ public class classPersonalE {
             return row - 3;
     }
     
+    
+    public static boolean selectp(){
+     boolean status = false;
+        eventp evento;
+         ResultSet rs = methodsSQL.getExecute("SELECT count(*) from personalEvents where nickname=?", classUsuario.getNickname());
+         try {
+            while(rs.next()){
+                evento = new eventp();
+                evento.setNum(rs.getInt(1));
+                evento.setNickname(rs.getString(2));
+
+                eventosShow.add(evento);//aqui...... tambien ya esta.... d
+                //y los voy agregando a una lista...
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(classPersonalE.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return status;
+    }
     public static boolean select(){
         boolean status = false;
         eventp evento;

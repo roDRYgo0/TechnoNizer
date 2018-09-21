@@ -1,6 +1,6 @@
 package JPanel;
 
-import eventAdmin.*;
+
 import java.awt.Color;
 import java.awt.Font;
 import javaClass.classEvent;

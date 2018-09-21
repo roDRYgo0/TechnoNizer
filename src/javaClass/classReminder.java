@@ -113,8 +113,8 @@ public static String getHour() {
     public static boolean update(){
         boolean status = false;
         
-        status = methodsSQL.execute("UPDATE reminders SET condition=?, reminder=?, alarmDateTime=?, nickname=? where id=?",
-                1, reminder, datetime, classUsuario.getNickname(), id);
+        status = methodsSQL.execute("UPDATE reminders SET condition=?, reminder=?, alarmDateTime=?, hour=?, nickname=?  where id=?",
+                1, reminder, datetime, hour, classUsuario.getNickname(), id);
         return status;
     }
     
@@ -147,7 +147,7 @@ public static boolean deleteReminder(){
  public static boolean select(){
         boolean status = false;
         reminder recordatorio;
-        ResultSet rs = methodsSQL.getExecute("SELECT re.id, re.condition, re.reminder, re.alarmDateTime  FROM reminders re WHERE re.nickname =? order by alarmDateTime", classUsuario.getNickname());
+        ResultSet rs = methodsSQL.getExecute("SELECT re.id, re.condition, re.reminder, re.alarmDateTime, re.hour  FROM reminders re WHERE re.nickname =? order by alarmDateTime", classUsuario.getNickname());
         restart();
         try {
             while(rs.next()){
@@ -156,6 +156,8 @@ public static boolean deleteReminder(){
                 recordatorio.setCondition(rs.getInt(2));
                 recordatorio.setReminder(rs.getString(3));
                 recordatorio.setDate(rs.getString(4));
+                recordatorio.setHour(rs.getString(5));
+                
   
                 System.out.println("Los recordatorios son "+recordatorio.getMyNumberRemUse());
                 reminders.add(recordatorio);
