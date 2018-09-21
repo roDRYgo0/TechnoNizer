@@ -221,10 +221,36 @@
             <CodeStatement>
               <CodeExpression id="1_modifiedFlowLayout1"/>
               <StatementProvider type="CodeMethod">
-                <CodeMethod name="setAlignment" class="java.awt.FlowLayout" parameterTypes="int"/>
+                <CodeMethod name="setHgap" class="java.awt.FlowLayout" parameterTypes="int"/>
               </StatementProvider>
               <Parameters>
                 <CodeExpression id="2">
+                  <ExpressionOrigin>
+                    <Value type="int" value="10"/>
+                  </ExpressionOrigin>
+                </CodeExpression>
+              </Parameters>
+            </CodeStatement>
+            <CodeStatement>
+              <CodeExpression id="1_modifiedFlowLayout1"/>
+              <StatementProvider type="CodeMethod">
+                <CodeMethod name="setVgap" class="java.awt.FlowLayout" parameterTypes="int"/>
+              </StatementProvider>
+              <Parameters>
+                <CodeExpression id="3">
+                  <ExpressionOrigin>
+                    <Value type="int" value="10"/>
+                  </ExpressionOrigin>
+                </CodeExpression>
+              </Parameters>
+            </CodeStatement>
+            <CodeStatement>
+              <CodeExpression id="1_modifiedFlowLayout1"/>
+              <StatementProvider type="CodeMethod">
+                <CodeMethod name="setAlignment" class="java.awt.FlowLayout" parameterTypes="int"/>
+              </StatementProvider>
+              <Parameters>
+                <CodeExpression id="4">
                   <ExpressionOrigin>
                     <Value type="int" value="0"/>
                   </ExpressionOrigin>
@@ -232,7 +258,7 @@
               </Parameters>
             </CodeStatement>
             <CodeStatement>
-              <CodeExpression id="3_pnEvent">
+              <CodeExpression id="5_pnEvent">
                 <CodeVariable name="pnEvent" type="8194" declaredType="javax.swing.JPanel"/>
                 <ExpressionOrigin>
                   <ExpressionProvider type="ComponentRef">
