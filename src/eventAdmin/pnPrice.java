@@ -1,6 +1,7 @@
 package eventAdmin;
 
 import java.awt.BorderLayout;
+import javaClass.controller;
 import javaClass.event;
 
 /**
@@ -19,6 +20,7 @@ public class pnPrice extends javax.swing.JPanel {
     }
 
     void load(event event, int idEvent){
+        
         for(int i = 0; i <event.getPrices().size(); i++){
             showPrice sp = new showPrice(i, idEvent);
             sp.setSize(485, 45);
@@ -27,8 +29,6 @@ public class pnPrice extends javax.swing.JPanel {
             this.revalidate();
             this.repaint();
         }
-        
-        
 //        this.setPreferredSize(new Dimension(this.getPreferredSize().width, this.getPreferredSize().height+10));
 ////        scrollPrice.setSize(new Dimension(scrollPrice.getPreferredSize().width, pnPrice.getPreferredSize().height+10));
         this.revalidate();
@@ -54,6 +54,7 @@ public class pnPrice extends javax.swing.JPanel {
 
         jPanel4.setMaximumSize(new java.awt.Dimension(495, 62));
         jPanel4.setMinimumSize(new java.awt.Dimension(495, 62));
+        jPanel4.setPreferredSize(new java.awt.Dimension(535, 65));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
@@ -75,7 +76,7 @@ public class pnPrice extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,7 +85,7 @@ public class pnPrice extends javax.swing.JPanel {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         add(jPanel4);

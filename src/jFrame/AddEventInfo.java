@@ -637,7 +637,8 @@ public class AddEventInfo extends javax.swing.JFrame {
                 txtPlace.getText().trim().isEmpty() || txtPlace.getText().trim().length() < 4)
             {
                 standardization.showMessage("warning","Hay campos vacios!",this);            
-            }else if(methodsSQL.exists("SELECT eventName FROM events WHERE eventName = ? and nicknameCreator = ?", txtEvent.getText(), classUsuario.getNickname())){
+            }else if(methodsSQL.exists("SELECT eventName FROM events WHERE eventName = ? and nicknameCreator = ?", txtEvent.getText(),
+                    classUsuario.getNickname())){
                 standardization.showMessage("warning","Ya hay un evento con ese nombre",this);
             }
             else 
