@@ -872,10 +872,10 @@ public class jpUsers extends javax.swing.JPanel {
     private void iconReportMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconReportMouseReleased
        String path="";
         try{
-            File file = new File("Usuarios.jasper");
+            File file = new File("usuarios.jasper");
             Map parametros = new HashMap();
 
-            InputStream reportStream = new FileInputStream("Usuarios.jasper");
+            InputStream reportStream = new FileInputStream("usuarios.jrxml");
             JasperReport jr=(JasperReport)JRLoader.loadObject(file);
             Connection cn= connection.getConnection();
             JasperPrint print =JasperFillManager.fillReport(jr,parametros,cn);
