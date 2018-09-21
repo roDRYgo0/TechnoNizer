@@ -131,6 +131,11 @@ public class jpAgendaMenu extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153))));
         jPanel4.setForeground(new java.awt.Color(153, 153, 153));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel4MouseReleased(evt);
+            }
+        });
 
         lblPersonalEvents.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lblPersonalEvents.setForeground(new java.awt.Color(33, 150, 243));
@@ -571,6 +576,10 @@ public class jpAgendaMenu extends javax.swing.JPanel {
     private void txtInactive1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInactive1KeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txtInactive1KeyTyped
+
+    private void jPanel4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseReleased
+        technonizer.TechnoNizer.home.showYourPersonal(false);
+    }//GEN-LAST:event_jPanel4MouseReleased
 
      void load(){
     

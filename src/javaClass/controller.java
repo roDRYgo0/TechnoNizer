@@ -14,6 +14,7 @@ import admin.jpSecurityUser;
 import event.addPrice;
 import event.price;
 import jFrame.AddEventInfo;
+import jFrame.AddEventInfoP;
 import jFrame.AddProjectDetails;
 import jFrame.addProject;
 import jFrame.addReminderGral;
@@ -46,10 +47,12 @@ public class controller {
     public static admin.jpUsers jpUs;
     public static jpReminder jpAA;
     public static jpEvent jpE;
+     public static jpEventP jpEEP;
     public static showEvent jpEv;
     public static addEvent jpAE;
     public static jpSecurity jpSe;
     public static jpReminder jpREM;
+    public static jpEventP jpREMI;
     public static jpChangePassword jpCp;
     public static checkAccount checkAc;
     public static jpContactDisable jpContDis;
@@ -84,6 +87,8 @@ public class controller {
     
     public static eventAdmin event;
     
+    
+    
     public static classMembership[] member = new classMembership[3];
     public static contactUsers[] contac = new contactUsers[10];
     public static List<gender> genders;
@@ -97,9 +102,11 @@ public class controller {
     
     //<editor-fold defaultstate="collapsed" desc="jFrame">
     public static AddEventInfo gralEvent;
+    public static jFrame.AddEventInfoP addEventPer;
     public static addReminderGral gralReminder;
     public static addReminderGral1 gralReminder1;
     public static jFrame.AddEventDetails addEvents;
+    public static jFrame.AddEventDetailsP addEventsP;
 //</editor-fold>
     
     public static JFrame rootFrame;

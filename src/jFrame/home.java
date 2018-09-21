@@ -7,6 +7,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.util.Date;
 import java.util.Properties;
 import javaClass.*;
 import javax.swing.Icon;
@@ -41,10 +42,12 @@ public final class home extends javax.swing.JFrame {
     
     public home(boolean load) {
         initComponents();
+        noti();
         verificaridioma();
         new Thread(()->{
             classContact.select();
             classReminder.select();
+            classPersonalE.select();
 
         }).start();
         
@@ -63,7 +66,13 @@ public final class home extends javax.swing.JFrame {
         load();
        
     }
-    
+    public void noti(){
+        String date;
+        Date fecha = new Date();
+          date=fecha.toString();
+         System.out.println(""+fecha);
+        
+    }
     void load(){        
         
         if(classUsuario.getCondition()==1)
@@ -842,6 +851,17 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
+    public void showYourEventsP(boolean search){       
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        controller.jpEEP = new jpEventP(search);
+        controller.jpEEP.setPreferredSize(new Dimension(980,601));
+        controller.jpEEP.setLocation(0,0);
+
+        scrollContainer.setViewportView(controller.jpEEP);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
     
     public void showYourEvents(){
         disable();
@@ -933,6 +953,8 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
+    
+    
     
     public void showEvent(){
         disable();
@@ -1050,6 +1072,23 @@ public final class home extends javax.swing.JFrame {
             controller.jpREM.setLocation(0,0);
 
             scrollContainer.setViewportView(controller.jpREM);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+    
+    }
+    
+     public void pnAgenda12(){
+       
+            disable();
+            pnAgenda.setBackground(new Color(52, 52, 52));
+            classContact.reset();
+        boolean hi=false;
+ 
+            controller.jpREMI = new jpEventP(hi);
+            controller.jpREMI.setPreferredSize(new Dimension(980,601));
+            controller.jpREMI.setLocation(0,0);
+
+            scrollContainer.setViewportView(controller.jpREMI);
             scrollContainer.revalidate();
             scrollContainer.repaint();
     
@@ -1200,6 +1239,17 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
+    public void showYourPersonal(boolean i){
+        disable();
+        pnAgenda.setBackground(new Color(52, 52, 52));
+        jpEventP jE = new jpEventP(i);
+        jE.setPreferredSize(new Dimension(980,601));
+        jE.setLocation(0,0);
+
+        scrollContainer.setViewportView(jE);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
     
         
     
@@ -1261,6 +1311,8 @@ public final class home extends javax.swing.JFrame {
     private javax.swing.JToggleButton tbtnInternet;
     private javax.swing.JPanel topBar;
     // End of variables declaration//GEN-END:variables
+
+    
 
     
     //</editor-fold>
