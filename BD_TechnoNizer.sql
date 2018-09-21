@@ -164,6 +164,9 @@ idCardas int not null references cards(id)
  datetime datetime not null
  )
 
+
+ select * from guest
+
  create table announcements(
  id int identity(1,1) primary key not null,
  announced nvarchar(175) not null,
@@ -173,6 +176,7 @@ idCardas int not null references cards(id)
  nickname nvarchar(50) not null references users(nickname),
  idEvent int not null references events(id)
  )
+ 
 
  create table activities(
  id int identity(1,1) primary key not null,
@@ -196,6 +200,7 @@ idCardas int not null references cards(id)
  responsable nvarchar(50) references users(nickname),
  idEvent int not null references events(id)
  )
+
 
  create table tasks(
  id int identity(1,1) primary key not null,

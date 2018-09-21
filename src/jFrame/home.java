@@ -1,12 +1,10 @@
 package jFrame;
 
-import eventAdmin.eventAdmin;
 import JPanel.*;
-import eventAdmin.*;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.util.Date;
 import java.util.Properties;
 import javaClass.*;
 import javax.swing.Icon;
@@ -43,10 +41,12 @@ public final class home extends javax.swing.JFrame {
     
     public home(boolean load) {
         initComponents();
+        noti();
         verificaridioma();
         new Thread(()->{
             classContact.select();
             classReminder.select();
+            classPersonalE.select();
 
         }).start();
         
@@ -65,7 +65,13 @@ public final class home extends javax.swing.JFrame {
         load();
        
     }
-    
+    public void noti(){
+        String date;
+        Date fecha = new Date();
+          date=fecha.toString();
+         System.out.println(""+fecha);
+        
+    }
     void load(){        
         
         if(classUsuario.getCondition()==1)
@@ -849,6 +855,17 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
+    public void showYourEventsP(boolean search){       
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        controller.jpEEP = new jpEventP(search);
+        controller.jpEEP.setPreferredSize(new Dimension(980,601));
+        controller.jpEEP.setLocation(0,0);
+
+        scrollContainer.setViewportView(controller.jpEEP);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
     
     public void showYourEvents(){
         disable();
@@ -869,78 +886,89 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
+
     
-    public void showEventSettings(int e){
+    //<editor-fold defaultstate="collapsed" desc="Owner">
+    public void showEventSettingsOwner(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        pnSettings setting = new pnSettings(e);
+        eventOwner.pnSettings setting = new eventOwner.pnSettings(e);
         setting.setLocation(0,0);
         
         scrollContainer.setViewportView(setting);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
-    
-    public void showEventProblems(int e){
+    public void showEventProblemsOwner(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        pnProblem setting = new pnProblem(e);
+        eventOwner.pnProblem setting = new eventOwner.pnProblem(e);
         setting.setLocation(0,0);
         
         scrollContainer.setViewportView(setting);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
-    
-    public void showEventActivities(int e){
+    public void showEventActivitiesOwner(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        pnActivity activities = new pnActivity(e);
+        eventOwner.pnActivity activities = new eventOwner.pnActivity(e);
         activities.setLocation(0,0);
         
         scrollContainer.setViewportView(activities);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
-    public void showEventTask(int e){
+    public void showEventTaskOwner(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        pnTask tasks = new pnTask(e);
+        eventOwner.pnTask tasks = new eventOwner.pnTask(e);
         tasks.setLocation(0,0);
         
         scrollContainer.setViewportView(tasks);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
-    
-    public void showEventAnnoucements(int e){
+    public void showEventAnnoucementsOwner(int e){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        pnSettings setting = new pnSettings(e);
-        setting.setLocation(0,0);
+        eventOwner.pnAnnouncement announcement = new eventOwner.pnAnnouncement(e);
+        announcement.setLocation(0,0);
         
-        scrollContainer.setViewportView(setting);
+        scrollContainer.setViewportView(announcement);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    public void showEventOwner(int e, boolean load){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        eventOwner.eventAdmin event = new eventOwner.eventAdmin(e, load);
+        event.setLocation(0,0);
+
+        scrollContainer.setViewportView(event);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
     
+    public void showEventMod(int e, boolean load){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        eventOwner.eventMod event = new eventOwner.eventMod(e, load);
+        event.setLocation(0,0);
+
+        scrollContainer.setViewportView(event);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
     
+
+    //</editor-fold>
+
     public void colorEvent(){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
     }
-    
-    public void showEvent(int e, boolean load){
-        disable();
-        pnEvents.setBackground(new Color(52, 52, 52));
-        controller.event = new eventAdmin(e, load);
-        controller.event.setLocation(0,0);
 
-        scrollContainer.setViewportView(controller.event);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
-    }
-    
     public void showEvent(){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
@@ -1057,6 +1085,23 @@ public final class home extends javax.swing.JFrame {
             controller.jpREM.setLocation(0,0);
 
             scrollContainer.setViewportView(controller.jpREM);
+            scrollContainer.revalidate();
+            scrollContainer.repaint();
+    
+    }
+    
+     public void pnAgenda12(){
+       
+            disable();
+            pnAgenda.setBackground(new Color(52, 52, 52));
+            classContact.reset();
+        boolean hi=false;
+ 
+            controller.jpREMI = new jpEventP(hi);
+            controller.jpREMI.setPreferredSize(new Dimension(980,601));
+            controller.jpREMI.setLocation(0,0);
+
+            scrollContainer.setViewportView(controller.jpREMI);
             scrollContainer.revalidate();
             scrollContainer.repaint();
     
@@ -1211,6 +1256,17 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
+    public void showYourPersonal(boolean i){
+        disable();
+        pnAgenda.setBackground(new Color(52, 52, 52));
+        jpEventP jE = new jpEventP(i);
+        jE.setPreferredSize(new Dimension(980,601));
+        jE.setLocation(0,0);
+
+        scrollContainer.setViewportView(jE);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
     
         
     
@@ -1272,6 +1328,8 @@ public final class home extends javax.swing.JFrame {
     private javax.swing.JToggleButton tbtnInternet;
     private javax.swing.JPanel topBar;
     // End of variables declaration//GEN-END:variables
+
+    
 
     
     //</editor-fold>

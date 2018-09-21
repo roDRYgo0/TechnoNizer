@@ -1,3 +1,4 @@
+
 package javaClass;
 
 import java.sql.Connection;
@@ -12,7 +13,7 @@ public class connection {
 
         Connection on = null;
         try{
-            String url = "jdbc:sqlserver://DESKTOP-NJNP5CG\\SQLEXPRESS01;databaseName=BD_TechnoNizer";
+            String url = "jdbc:sqlserver://localhost;databaseName=BD_Technonizer;integratedSecurity=true;";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             on = DriverManager.getConnection(url,"meme","1234");
         }catch(ClassNotFoundException | SQLException e){
