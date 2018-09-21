@@ -89,16 +89,16 @@ public class AddEventInfo extends javax.swing.JFrame {
         this.event=event;
         guest = false;
        
-        loadImage(); 
         verificaridioma();
+        loadImage(); 
       
     }
     public AddEventInfo() {
         initComponents();
         guest = false;  
       
-        loadImage(); 
         verificaridioma();
+        loadImage(); 
     }
     
     void loadImage(){

@@ -69,16 +69,17 @@ public class MenuEvent extends javax.swing.JPanel {
 
         lbleventsall.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbleventsall.setForeground(new java.awt.Color(255, 255, 255));
+        lbleventsall.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbleventsall.setText("Todos los eventos");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(lbleventsall)
-                .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbleventsall, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,10 +98,12 @@ public class MenuEvent extends javax.swing.JPanel {
 
         adminlblevents1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         adminlblevents1.setForeground(new java.awt.Color(255, 255, 255));
+        adminlblevents1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         adminlblevents1.setText("Administar");
 
         adminlblevents2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         adminlblevents2.setForeground(new java.awt.Color(255, 255, 255));
+        adminlblevents2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         adminlblevents2.setText("eventos");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -108,13 +111,12 @@ public class MenuEvent extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(adminlblevents1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(adminlblevents2)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                    .addComponent(adminlblevents1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(adminlblevents2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,6 +132,7 @@ public class MenuEvent extends javax.swing.JPanel {
 
         lblmyevents.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblmyevents.setForeground(new java.awt.Color(255, 255, 255));
+        lblmyevents.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblmyevents.setText("Mis eventos");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -137,9 +140,9 @@ public class MenuEvent extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(lblmyevents)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblmyevents, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

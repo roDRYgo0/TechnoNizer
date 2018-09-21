@@ -47,7 +47,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="Activityslbl1" alignment="0" max="32767" attributes="0"/>
                       <Component id="jSeparator6" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="225" max="32767" attributes="0"/>
@@ -58,7 +58,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="Activityslbl1" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -67,7 +67,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="Activityslbl1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="1"/>
@@ -78,7 +78,7 @@
             <Property name="text" type="java.lang.String" value="Actividades"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseReleased"/>
+            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Activityslbl1MouseReleased"/>
           </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator6">

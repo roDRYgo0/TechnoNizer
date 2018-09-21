@@ -554,6 +554,14 @@ public class classEvent {
         return status;        
     }
     
+    public static boolean insertGuest(int idEvent, int idTicket, String nickname, String datetime){
+        return methodsSQL.execute("insert into guest values(?, ?, ?, ?)", idEvent, idTicket, nickname, datetime);
+    }
+    
+    public static boolean deleteGuest(int id){
+        return methodsSQL.execute("delete from guest where id = ?", id);
+    }
+    
     public static boolean selectProblems(int idEvent){
         boolean status = false;
         List<problem> problem = new ArrayList<>();

@@ -71,7 +71,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="Problemlbl1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="652" max="32767" attributes="0"/>
                           <Component id="btnNext1" min="-2" pref="118" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -83,7 +83,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="Problemlbl1" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="btnNext1" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="12" max="32767" attributes="0"/>
@@ -92,7 +92,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel2">
+                <Component class="javax.swing.JLabel" name="Problemlbl1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="24" style="1"/>

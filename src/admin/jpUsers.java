@@ -1,5 +1,7 @@
 package admin;
 
+import static groovy.ui.text.FindReplaceUtility.dispose;
+import jFrame.FrmParametrosUser;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -939,16 +941,16 @@ public class jpUsers extends javax.swing.JPanel {
     }//GEN-LAST:event_iconViewMouseReleased
 
     private void iconReportMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconReportMouseReleased
-       String path="";
+      String path="";
         try{
-            File file = new File("Usuarios.jasper");
+
             Map parametros = new HashMap();
 
-            InputStream reportStream = new FileInputStream("Usuarios.jasper");
-            JasperReport jr=(JasperReport)JRLoader.loadObject(file);
+            InputStream xD = jpUsers.class.getResourceAsStream("/Reports/usuarios.jasper");
+            JasperReport jr=(JasperReport)JRLoader.loadObject(xD);
             Connection cn= connection.getConnection();
             JasperPrint print =JasperFillManager.fillReport(jr,parametros,cn);
-            JasperViewer view = new JasperViewer(print);
+            JasperViewer view = new JasperViewer(print, false);
             view.setTitle("Reporte");
             view.setVisible(true);
             
@@ -1250,22 +1252,8 @@ public class jpUsers extends javax.swing.JPanel {
     }//GEN-LAST:event_txtAnioEndKeyReleased
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        String path="";
-        try{
-
-            Map parametros = new HashMap();
-
-            InputStream xD = jpUsers.class.getResourceAsStream("/Reports/usuarios.jasper");
-            JasperReport jr=(JasperReport)JRLoader.loadObject(xD);
-            Connection cn= connection.getConnection();
-            JasperPrint print =JasperFillManager.fillReport(jr,parametros,cn);
-            JasperViewer view = new JasperViewer(print, false);
-            view.setTitle("Reporte");
-            view.setVisible(true);
-            
-        }catch(Exception e){
-            System.out.println(e.toString());
-        }
+        new FrmParametrosUser().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1MouseReleased
 
     void actionFilter(){

@@ -4,22 +4,33 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javaClass.StaticMaps;
 import javaClass.classEvent;
+import javaClass.controller;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import properties.propiedades;
 
 
 public class placeMenu extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+        Properties pr=new propiedades(controller.idioma);
+        lblPlace.setText(pr.getProperty("lblPlace1"));
+        lblMap.setText(pr.getProperty("lblMap"));
+    }
+    
     private StaticMaps ObjStaticMaps=new StaticMaps();
     
     public placeMenu(int idEvent) {
         initComponents();
 
         load(classEvent.eventosShow.get(idEvent).getPlace());
+        verificaridioma();
     }
     
     void load(String direction){
@@ -48,7 +59,7 @@ public class placeMenu extends javax.swing.JPanel {
     private void initComponents() {
 
         lblMap = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblplace1 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         lblPlace = new javax.swing.JLabel();
 
@@ -64,9 +75,9 @@ public class placeMenu extends javax.swing.JPanel {
         lblMap.setMinimumSize(new java.awt.Dimension(945, 343));
         lblMap.setPreferredSize(new java.awt.Dimension(945, 343));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel7.setText("Lugar del evento");
+        lblplace1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblplace1.setForeground(new java.awt.Color(153, 153, 153));
+        lblplace1.setText("Lugar del evento");
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -86,14 +97,14 @@ public class placeMenu extends javax.swing.JPanel {
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(jLabel7)))
+                        .addComponent(lblplace1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel7)
+                .addComponent(lblplace1)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
@@ -105,9 +116,9 @@ public class placeMenu extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel lblMap;
     private javax.swing.JLabel lblPlace;
+    private javax.swing.JLabel lblplace1;
     // End of variables declaration//GEN-END:variables
 }

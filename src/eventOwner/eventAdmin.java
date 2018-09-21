@@ -89,8 +89,10 @@ public class eventAdmin extends javax.swing.JPanel {
         loadStaff(event);
         loadAnnouncement();
         loadActivity();
-        loadTask();
-        loadProblems();
+        if(classEvent.position != 3){
+            loadTask();
+            loadProblems();
+        }
         loadPlace();
         loadFooter();
     }

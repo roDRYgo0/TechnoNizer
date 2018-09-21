@@ -118,8 +118,11 @@ members int not null,
 expiration datetime,
 condition int not null,
 idLists int not null references lists(id),
-idTags int references tags(id)
+idTags int references tags(id),
+description nvarchar(150) null,
+idproject int references projects(id)
 )
+
 
 create table members(
 id int identity(1,1) primary key not null,
@@ -208,9 +211,11 @@ idCardas int not null references cards(id)
  danger int not null,
  condition int not null,
  nickname nvarchar(50) not null references users(nickname),
- responsable nvarchar(50) not null references users(nickname),
+ responsable nvarchar(50) null references users(nickname),
  idEvent int not null references events(id)
  )
+
+ 
 
  create table tasks(
  id int identity(1,1) primary key not null,
@@ -222,9 +227,6 @@ idCardas int not null references cards(id)
  nickname nvarchar(50)
  )
 
- select * from tasks
-
- select id, task, condition, visible, price, nickname from tasks where idEvent = 3074
 
  create table checkList(
 id int identity(1,1) primary key not null,
@@ -248,6 +250,7 @@ idCheckList int not null references checkList(id)
 
  drop table calendars
 
+
  create table personalEvents(
  id int identity(1,1) primary key not null,
  title nvarchar(60) not null,
@@ -269,6 +272,8 @@ delete from personalEvents
  hour nvarchar(5) not null,
  nickname nvarchar(50) not null references users(nickname)
  )
+
+ 
 
  
 
