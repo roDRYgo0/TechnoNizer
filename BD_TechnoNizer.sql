@@ -175,9 +175,6 @@ idCardas int not null references cards(id)
  nickname nvarchar(50) not null references users(nickname)
  )
 
-
- select * from guest
-
  create table announcements(
  id int identity(1,1) primary key not null,
  announced nvarchar(175) not null,
@@ -187,7 +184,6 @@ idCardas int not null references cards(id)
  nickname nvarchar(50) not null references users(nickname),
  idEvent int not null references events(id)
  )
- 
 
  create table activities(
  id int identity(1,1) primary key not null,
@@ -215,7 +211,6 @@ idCardas int not null references cards(id)
  responsable nvarchar(50) not null references users(nickname),
  idEvent int not null references events(id)
  )
-
 
  create table tasks(
  id int identity(1,1) primary key not null,
@@ -250,26 +245,21 @@ idCheckList int not null references checkList(id)
 )
 
 
- create table calendars(
- id int identity(1,1) primary key not null,
- name nvarchar(60) not null,
- color nvarchar(20) not null,
- nickname nvarchar(50) references users(nickname)
- )
+
+ drop table calendars
 
  create table personalEvents(
  id int identity(1,1) primary key not null,
  title nvarchar(60) not null,
  place nvarchar(80),
- stratDateTime datetime not null,
- endDateTime datetime not null,
- allDay int not null,
- repeat int not null,
- alert numeric(8,2),
+ startDateTime nvarchar(30) not null,
+ endDateTime nvarchar(30) not null,
  note nvarchar(250),
- idCalendar int not null references calendars(id),
+ color nvarchar(40),
  nickname nvarchar(50) not null references users(nickname)
  )
+select * from reminders
+delete from personalEvents
 
  create table reminders(
  id int identity(1,1) primary key not null,
@@ -279,34 +269,8 @@ idCheckList int not null references checkList(id)
  hour nvarchar(5) not null,
  nickname nvarchar(50) not null references users(nickname)
  )
-select * from reminders
 
- create table horary(
- id int identity(1,1) primary key not null,
- name nvarchar(90) not null,
- nickname nvarchar(50) not null references users(nickname)
- )
-
- create table class(
- id int identity(1,1) primary key not null,
- dayNumber int not null,
- condition int not null,
- nameClass nvarchar(90) not null,
- startTime time not null,
- endTime time not null,
- remember int not null,
- idHorary int not null references horary(id)
- )
-
- create table homework(
- id int identity(1,1) primary key not null,
- nameHomework nvarchar(300) not null,
- date date not null,
- priority int not null,
- note nvarchar(200),
- idClass int not null references class(id)
- )
-
+ 
 
  select * from users
 
