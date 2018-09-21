@@ -42,8 +42,8 @@ void load(int n, boolean search){
                  //carga la informacion hacia los labels y asigna colores//
                 
                 lbldelete.setIcon(new controller().changeImage("/imagenes/trash.png", 60, 60));
-                lblIm.setIcon(new controller().changeImage("/imagenes/icons8_Reminder_96px_1.png", 40, 32));
-                
+                lblIm.setIcon(new controller().changeImage("/imagenes/Reminder12.png", 40, 32));
+            jTextArea1.setText(classReminder.reminders.get(n).getReminder());  
             lblNickname.setText(classUsuario.getNickname());
             lblDate.setText(classReminder.remindersSearch.get(n).getDate());
             switch(classReminder.remindersSearch.get(n).getCondition()){

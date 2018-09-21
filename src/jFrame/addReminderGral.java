@@ -2,61 +2,22 @@ package jFrame;
 
 import java.awt.Color;
 import java.util.Date;
-import java.util.Properties;
 import javaClass.classReminder;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
-import properties.propiedades;
 
 /**
  * @author Alexg
  */
 public class addReminderGral extends javax.swing.JFrame {
 
-    void verificaridioma()
-    {
-    Properties pr= new propiedades(controller.idioma);
-    AddReminderGeneralLbl.setText(pr.getProperty("AddReminderGeneralLbl"));
-    DataGeneralAddReminder.setText(pr.getProperty("DataGeneralAddReminder"));
-    DescriptionReminder.setText(pr.getProperty("DescriptionReminder"));
-    DateReminder.setText(pr.getProperty("DateReminder"));
-    Day.setText(pr.getProperty("Dayjpedit"));
-    month.setText(pr.getProperty("monthjpedit"));
-    year.setText(pr.getProperty("yearjpedit"));
-    
-            cmbMonthEnd.removeAllItems();
-            String meses[]={
-            pr.getProperty("firstmonth"),
-            pr.getProperty("secondmonth"),
-            pr.getProperty("thirdmonth"),
-            pr.getProperty("fourmonth"),
-            pr.getProperty("fivemonth"),
-            pr.getProperty("sixmonth"),
-            pr.getProperty("sevenmonth"),
-            pr.getProperty("eightmonth"),
-            pr.getProperty("ninemonth"),
-            pr.getProperty("tenmonth"),
-            pr.getProperty("elevenmonth"),
-            pr.getProperty("twelvemonth")
-            };
-            for(int i=0;i<meses.length;i++)
-            {
-                cmbMonthEnd.addItem(meses[i]);
-            }
-            RepeatReminder.setText(pr.getProperty("RepeatReminder"));
-            Hour.setText(pr.getProperty("Hour"));
-            SaveReminder.setText(pr.getProperty("SaveReminder"));
-            
-    }
-    
     byte[] cover;
     byte[] profil;
 
     public addReminderGral() {
         initComponents();
         loadImage();
-        verificaridioma();
     }
 
     void loadImage() {
@@ -70,33 +31,31 @@ public class addReminderGral extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        AddReminderGeneralLbl = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnNext1 = new javax.swing.JButton();
         lblEvent = new javax.swing.JLabel();
-        DataGeneralAddReminder = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        DateReminder = new javax.swing.JLabel();
-        DescriptionReminder = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         spReminder = new javax.swing.JSeparator();
         checkEvent = new javax.swing.JLabel();
         spDayStart = new javax.swing.JSeparator();
         spYearStart = new javax.swing.JSeparator();
         iconStart = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        Hour = new javax.swing.JLabel();
         spDayEnd = new javax.swing.JSeparator();
-        SaveReminder = new javax.swing.JButton();
-        RepeatReminder = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtReminder = new javax.swing.JTextArea();
         txtYearEnd = new javax.swing.JTextField();
         cmbMonthEnd = new javax.swing.JComboBox<>();
         txtDayEnd = new javax.swing.JTextField();
-        Day = new javax.swing.JLabel();
-        month = new javax.swing.JLabel();
-        year = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -108,16 +67,16 @@ public class addReminderGral extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(35, 150, 243));
 
-        AddReminderGeneralLbl.setForeground(new java.awt.Color(255, 255, 255));
-        AddReminderGeneralLbl.setText("Agregar Recordatorio");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Agregar Recordatorio");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Technonizer");
 
-        btnNext1.setBackground(new java.awt.Color(0, 153, 255));
+        btnNext1.setBackground(new java.awt.Color(255, 255, 255));
         btnNext1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnNext1.setForeground(new java.awt.Color(255, 255, 255));
+        btnNext1.setForeground(new java.awt.Color(255, 0, 0));
         btnNext1.setText("X");
         btnNext1.setBorderPainted(false);
         btnNext1.setFocusable(false);
@@ -142,41 +101,41 @@ public class addReminderGral extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AddReminderGeneralLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(118, 118, 118))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnNext1)
-                .addGap(75, 75, 75))
+                .addGap(66, 66, 66))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(28, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(24, 24, 24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(4, 4, 4))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(btnNext1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AddReminderGeneralLbl))
+                .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        DataGeneralAddReminder.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        DataGeneralAddReminder.setText("Datos Generales");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setText("Datos Generales");
 
-        DateReminder.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        DateReminder.setText("Establecer fechas ");
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setText("Fecha de recordatorio");
 
-        DescriptionReminder.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        DescriptionReminder.setForeground(new java.awt.Color(102, 102, 102));
-        DescriptionReminder.setText("Descripción del recordatorio");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel4.setText("Descripción del recordatorio");
 
         spReminder.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -196,26 +155,24 @@ public class addReminderGral extends javax.swing.JFrame {
         txtHora.setText("12");
         txtHora.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        Hour.setText("Horas");
-
         spDayEnd.setForeground(new java.awt.Color(204, 204, 204));
 
-        SaveReminder.setBackground(new java.awt.Color(0, 153, 255));
-        SaveReminder.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        SaveReminder.setForeground(new java.awt.Color(255, 255, 255));
-        SaveReminder.setText("Guardar");
-        SaveReminder.setBorderPainted(false);
-        SaveReminder.setFocusable(false);
-        SaveReminder.addActionListener(new java.awt.event.ActionListener() {
+        btnNext.setBackground(new java.awt.Color(0, 153, 255));
+        btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnNext.setForeground(new java.awt.Color(255, 255, 255));
+        btnNext.setText("Guardar");
+        btnNext.setBorderPainted(false);
+        btnNext.setFocusable(false);
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaveReminderActionPerformed(evt);
+                btnNextActionPerformed(evt);
             }
         });
 
-        RepeatReminder.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        RepeatReminder.setText("Repetición");
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel12.setText("Hora en formato de 24 horas");
 
-        jButton2.setText("jButton2");
+        jScrollPane1.setBorder(null);
 
         txtReminder.setColumns(20);
         txtReminder.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -260,11 +217,11 @@ public class addReminderGral extends javax.swing.JFrame {
             }
         });
 
-        Day.setText("Día");
+        jLabel13.setText("Día");
 
-        month.setText("Mes");
+        jLabel14.setText("Mes");
 
-        year.setText("Año");
+        jLabel15.setText("Año");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -275,7 +232,7 @@ public class addReminderGral extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(DataGeneralAddReminder)
+                        .addComponent(jLabel5)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -283,10 +240,10 @@ public class addReminderGral extends javax.swing.JFrame {
                                 .addGap(249, 249, 249)
                                 .addComponent(checkEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(DateReminder)
+                                            .addComponent(jLabel9)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(35, 35, 35)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,10 +252,10 @@ public class addReminderGral extends javax.swing.JFrame {
                                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                                 .addGap(10, 10, 10)
                                                                 .addComponent(txtDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                            .addComponent(Day))
+                                                            .addComponent(jLabel13))
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(month)
+                                                            .addComponent(jLabel14)
                                                             .addComponent(cmbMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addGap(10, 10, 10)
@@ -306,34 +263,29 @@ public class addReminderGral extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                     .addComponent(txtYearEnd)
-                                                    .addComponent(year)
+                                                    .addComponent(jLabel15)
                                                     .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addGap(139, 139, 139))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(RepeatReminder)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton2)
+                                        .addComponent(jLabel12)
                                         .addGap(53, 53, 53)))
                                 .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(DescriptionReminder)
-                            .addComponent(spReminder)
-                            .addComponent(jScrollPane1)
+                            .addComponent(jLabel4)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(113, 113, 113)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(spDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Hour))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(SaveReminder, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(73, 73, 73)))))
+                                .addComponent(spDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(73, 73, 73))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(113, 113, 113)
+                                .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(spReminder, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -341,9 +293,9 @@ public class addReminderGral extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
-                .addComponent(DataGeneralAddReminder)
+                .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DescriptionReminder)
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
@@ -361,20 +313,20 @@ public class addReminderGral extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(DateReminder)
+                                .addComponent(jLabel9)
                                 .addGap(69, 69, 69))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(month)
+                                .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(Day)
+                                        .addComponent(jLabel13)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(year)
+                                        .addComponent(jLabel15)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(1, 1, 1)))
@@ -382,17 +334,13 @@ public class addReminderGral extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(spDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(RepeatReminder)
-                            .addComponent(jButton2))
+                        .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Hour))
+                        .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(spDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SaveReminder, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
 
@@ -411,10 +359,13 @@ public class addReminderGral extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-      
+       standardization.hide(controller.gralReminder);               
+                    technonizer.TechnoNizer.home.pnAgenda1();
+                    controller.jpREM.load();
+                    controller.rootFrame = technonizer.TechnoNizer.home;      
     }//GEN-LAST:event_btnNext1ActionPerformed
 
-    private void SaveReminderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveReminderActionPerformed
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         if (txtReminder.getText().isEmpty() || txtYearEnd.getText().isEmpty() || txtDayEnd.getText().isEmpty()) {
             standardization.showMessage("warning", "Hay campos vacios!", this);
         } else {
@@ -428,7 +379,7 @@ public class addReminderGral extends javax.swing.JFrame {
 
                 classReminder.setReminder((txtReminder.getText()));
                 classReminder.setDatetime((txtDayEnd.getText()) + "/" + (cmbMonthEnd.getSelectedIndex() + 1)+ "/" +txtYearEnd.getText() );
-                classReminder.setRepeat((Integer.parseInt(txtHora.getText())));
+                classReminder.setHour(txtHora.getText());
                 classReminder.setNickname(classUsuario.getNickname());
                 
                 
@@ -447,7 +398,7 @@ public class addReminderGral extends javax.swing.JFrame {
                 }
 }
             }
-    }//GEN-LAST:event_SaveReminderActionPerformed
+    }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtYearEndFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearEndFocusGained
         spYearStart.setBackground(Color.red);
@@ -479,27 +430,26 @@ public class addReminderGral extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AddReminderGeneralLbl;
-    private javax.swing.JLabel DataGeneralAddReminder;
-    private javax.swing.JLabel DateReminder;
-    private javax.swing.JLabel Day;
-    private javax.swing.JLabel DescriptionReminder;
-    private javax.swing.JLabel Hour;
-    private javax.swing.JLabel RepeatReminder;
-    private javax.swing.JButton SaveReminder;
+    private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
     private javax.swing.JLabel checkEvent;
     private javax.swing.JComboBox<String> cmbMonthEnd;
     private javax.swing.JLabel iconStart;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblEvent;
-    private javax.swing.JLabel month;
     private javax.swing.JSeparator spDayEnd;
     private javax.swing.JSeparator spDayStart;
     private javax.swing.JSeparator spReminder;
@@ -508,7 +458,6 @@ public class addReminderGral extends javax.swing.JFrame {
     private javax.swing.JTextField txtHora;
     private javax.swing.JTextArea txtReminder;
     private javax.swing.JTextField txtYearEnd;
-    private javax.swing.JLabel year;
     // End of variables declaration//GEN-END:variables
 
 }

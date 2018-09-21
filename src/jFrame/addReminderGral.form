@@ -59,7 +59,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="DataGeneralAddReminder" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -69,10 +69,10 @@
                                   <Component id="checkEvent" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="DateReminder" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -82,11 +82,11 @@
                                                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                                                   <Component id="txtDayEnd" min="-2" pref="40" max="-2" attributes="0"/>
                                                               </Group>
-                                                              <Component id="Day" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                                                           </Group>
                                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                           <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="month" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                                                               <Component id="cmbMonthEnd" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
                                                           </Group>
                                                       </Group>
@@ -98,7 +98,7 @@
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                       <Component id="txtYearEnd" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="year" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       <Component id="spYearStart" alignment="0" min="-2" pref="39" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -106,34 +106,27 @@
                                           <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="RepeatReminder" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="iconStart" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="DescriptionReminder" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="spReminder" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="spDayEnd" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="txtHora" min="-2" pref="40" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="Hour" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="SaveReminder" min="-2" pref="107" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="spDayEnd" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnNext" min="-2" pref="107" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                                  <Component id="txtHora" min="-2" pref="49" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="spReminder" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="0" pref="344" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -141,7 +134,7 @@
                   </Group>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="jSeparator2" min="-2" pref="362" max="-2" attributes="0"/>
+                  <Component id="jSeparator2" min="-2" pref="366" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -151,9 +144,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                  <Component id="DataGeneralAddReminder" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="DescriptionReminder" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="105" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
@@ -172,23 +165,23 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="DateReminder" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="69" pref="69" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="month" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cmbMonthEnd" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="Day" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="txtDayEnd" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="year" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="txtYearEnd" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -201,19 +194,13 @@
                               <Component id="spDayStart" alignment="0" min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="spYearStart" alignment="0" min="-2" pref="10" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="RepeatReminder" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtHora" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="Hour" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="txtHora" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="spDayEnd" min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="SaveReminder" min="-2" pref="48" max="-2" attributes="0"/>
+                              <Component id="btnNext" min="-2" pref="48" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -235,17 +222,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="AddReminderGeneralLbl" min="-2" pref="157" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblEvent" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnNext1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -254,22 +242,21 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="28" max="32767" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="btnNext1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblEvent" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="AddReminderGeneralLbl" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lblEvent" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="AddReminderGeneralLbl">
+            <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -291,13 +278,13 @@
             <Component class="javax.swing.JButton" name="btnNext1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="99" red="0" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="X"/>
                 <Property name="borderPainted" type="boolean" value="false"/>
@@ -323,7 +310,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="DataGeneralAddReminder">
+        <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
@@ -333,15 +320,15 @@
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator2">
         </Component>
-        <Component class="javax.swing.JLabel" name="DateReminder">
+        <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Establecer fechas "/>
+            <Property name="text" type="java.lang.String" value="Fecha de recordatorio"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="DescriptionReminder">
+        <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="10" style="0"/>
@@ -412,11 +399,6 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Hour">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Horas"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JSeparator" name="spDayEnd">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -424,7 +406,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="SaveReminder">
+        <Component class="javax.swing.JButton" name="btnNext">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -440,23 +422,23 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SaveReminderActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="RepeatReminder">
+        <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Repetici&#xf3;n"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jButton2"/>
+            <Property name="text" type="java.lang.String" value="Hora en formato de 24 horas"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
@@ -543,17 +525,17 @@
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDayEndKeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="Day">
+        <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
             <Property name="text" type="java.lang.String" value="D&#xed;a"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="month">
+        <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
             <Property name="text" type="java.lang.String" value="Mes"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="year">
+        <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
             <Property name="text" type="java.lang.String" value="A&#xf1;o"/>
           </Properties>

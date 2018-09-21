@@ -5,25 +5,18 @@ import jFrame.addReminderGral;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
-import java.util.Properties;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javaClass.classProjects;
 import javaClass.classReminder;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
-import properties.propiedades;
 
 
 public class jpReminder extends javax.swing.JPanel {
 
-    void verificaridioma()
-    {
- Properties pr = new propiedades (controller.idioma);
- reminderlbljpR.setText(pr.getProperty("reminderlbljpR"));
- titlejpR.setText(pr.getProperty("titlejpR"));
- SeekerjpR.setText(pr.getProperty("SeekerjpR"));
-
-    }
      int view;
    static boolean current_personal_state = false;
     
@@ -35,7 +28,9 @@ public class jpReminder extends javax.swing.JPanel {
         view = 0;
         
         load();
-        verificaridioma();
+        
+       
+      
     }
     
 
@@ -45,12 +40,19 @@ public class jpReminder extends javax.swing.JPanel {
         insertarPaneles(classReminder.reminders.size(), false);
         
         loadImage();
+        Date now = new Date(System.currentTimeMillis());
+SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+SimpleDateFormat hour = new SimpleDateFormat("HH:mm:ss");
+
+System.out.println(date.format(now));
+System.out.println(hour.format(now));
+System.out.println(now);
     }
     
     void loadImage(){
         iconSearch.setIcon(new controller().changeImage("/imagenes/search.png", 35, 35));
         iconView.setIcon(new controller().changeImage("/imagenes/Copybook.png", 50, 50));
-       
+        lblAdd.setIcon(new controller().changeImage("/imagenes/add_77928.png", 50, 50));
     }
 
 
@@ -84,12 +86,12 @@ public class jpReminder extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        titlejpR = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
-        reminderlbljpR = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         lblAdd = new javax.swing.JLabel();
-        SeekerjpR = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         iconSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         spSearch = new javax.swing.JSeparator();
@@ -101,10 +103,10 @@ public class jpReminder extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(980, 601));
         setPreferredSize(new java.awt.Dimension(980, 601));
 
-        titlejpR.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        titlejpR.setForeground(new java.awt.Color(255, 0, 0));
-        titlejpR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titlejpR.setText("Agenda");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Agenda");
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -117,19 +119,41 @@ public class jpReminder extends javax.swing.JPanel {
             }
         });
 
-        reminderlbljpR.setFont(new java.awt.Font("Cantarell", 1, 16)); // NOI18N
-        reminderlbljpR.setForeground(new java.awt.Color(51, 181, 255));
-        reminderlbljpR.setText("Agregar recordatorio");
-        jPanel1.add(reminderlbljpR);
+        jLabel2.setFont(new java.awt.Font("Cantarell", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 181, 255));
+        jLabel2.setText("Agregar recordatorio");
 
         lblAdd.setFont(new java.awt.Font("Cantarell", 1, 48)); // NOI18N
         lblAdd.setForeground(new java.awt.Color(255, 255, 255));
         lblAdd.setText(".");
-        jPanel1.add(lblAdd);
 
-        SeekerjpR.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        SeekerjpR.setForeground(new java.awt.Color(102, 102, 102));
-        SeekerjpR.setText("Buscador");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(lblAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel4.setText("Buscador");
 
         iconSearch.setMaximumSize(new java.awt.Dimension(35, 35));
         iconSearch.setMinimumSize(new java.awt.Dimension(35, 35));
@@ -186,7 +210,7 @@ public class jpReminder extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(67, 67, 67)
-                                        .addComponent(titlejpR, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(iconView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
@@ -195,7 +219,7 @@ public class jpReminder extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(SeekerjpR)
+                                        .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(iconSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,13 +240,13 @@ public class jpReminder extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titlejpR)
+                            .addComponent(jLabel1)
                             .addComponent(iconView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(SeekerjpR)
+                        .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -295,16 +319,16 @@ public class jpReminder extends javax.swing.JPanel {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel SeekerjpR;
     private javax.swing.JLabel iconSearch;
     private javax.swing.JLabel iconView;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAdd;
-    private javax.swing.JLabel reminderlbljpR;
     private javax.swing.JScrollPane scrollReminders;
     private javax.swing.JSeparator spSearch;
-    private javax.swing.JLabel titlejpR;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
