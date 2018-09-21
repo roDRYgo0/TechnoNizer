@@ -1,17 +1,29 @@
 package event;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.controller;
+import properties.propiedades;
 
 /** @author rodri */
 
 public class price extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    NameTicket.setText(pr.getProperty("NameTicket"));
+    priceTicket.setText(pr.getProperty("priceTicket"));
+    Count.setText(pr.getProperty("CountTickets"));
+    btnNext.setText(pr.getProperty("btnNextTicketsDelete"));
+    }
+    
     int id;
     
     public price(int id) {
         initComponents();
+        verificaridioma();
         this.id = id;
         txtNamePrice.setText(classEvent.prices.get(id).getName());
         txtPrice.setText(classEvent.prices.get(id).getPrice()+"");
@@ -26,14 +38,14 @@ public class price extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
+        NameTicket = new javax.swing.JLabel();
         txtNamePrice = new javax.swing.JTextField();
         spNamePrice = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
+        priceTicket = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
         spPrice = new javax.swing.JSeparator();
         btnNext = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        Count = new javax.swing.JLabel();
         txtCount = new javax.swing.JTextField();
         spCount = new javax.swing.JSeparator();
 
@@ -42,9 +54,9 @@ public class price extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(365, 45));
         setPreferredSize(new java.awt.Dimension(365, 45));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Nombre");
+        NameTicket.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        NameTicket.setForeground(new java.awt.Color(102, 102, 102));
+        NameTicket.setText("Nombre");
 
         txtNamePrice.setAutoscrolls(false);
         txtNamePrice.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -68,9 +80,9 @@ public class price extends javax.swing.JPanel {
 
         spNamePrice.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("Precio");
+        priceTicket.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        priceTicket.setForeground(new java.awt.Color(102, 102, 102));
+        priceTicket.setText("Precio");
 
         txtPrice.setAutoscrolls(false);
         txtPrice.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -109,9 +121,9 @@ public class price extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("Cantidad");
+        Count.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        Count.setForeground(new java.awt.Color(102, 102, 102));
+        Count.setText("Cantidad");
 
         txtCount.setAutoscrolls(false);
         txtCount.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -143,18 +155,18 @@ public class price extends javax.swing.JPanel {
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(NameTicket)
                         .addGap(0, 102, Short.MAX_VALUE))
                     .addComponent(spNamePrice)
                     .addComponent(txtNamePrice, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(priceTicket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtPrice)
                     .addComponent(spPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                    .addComponent(Count, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
                     .addComponent(spCount)
                     .addComponent(txtCount))
                 .addGap(17, 17, 17)
@@ -165,8 +177,8 @@ public class price extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(NameTicket)
+                    .addComponent(priceTicket, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(txtNamePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,7 +191,7 @@ public class price extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(Count)
                         .addGap(0, 0, 0)
                         .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -248,10 +260,10 @@ public class price extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Count;
+    private javax.swing.JLabel NameTicket;
     private javax.swing.JButton btnNext;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel priceTicket;
     private javax.swing.JSeparator spCount;
     private javax.swing.JSeparator spNamePrice;
     private javax.swing.JSeparator spPrice;

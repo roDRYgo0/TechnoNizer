@@ -572,7 +572,6 @@ public class standardization {
             
         }
         dat += d.getDate()+" ";
-        System.out.println(days[1]+"el mes");
         switch(days[1]){
             case "01":
                 dat += "de enero";

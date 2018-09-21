@@ -1,7 +1,7 @@
 package javaClass;
 
-import eventAdmin.showEvent;
-import eventAdmin.eventAdmin;
+import eventOwner.showEvent;
+import eventOwner.eventAdmin;
 import projectAdmin.projectAdmin;
 import JPanel.CheckIn.jpMembership;
 import JPanel.*;
