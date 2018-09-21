@@ -1,9 +1,18 @@
 package eventOwner;
 
+import java.util.Properties;
 import javaClass.classEvent;
+import javaClass.controller;
+import properties.propiedades;
 
 public class task extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    Tasklbl1.setText(pr.getProperty("Tasklbl1"));
+    }
+    
     int idEvent;
     int count;
     Double total, complete;
@@ -14,6 +23,7 @@ public class task extends javax.swing.JPanel {
         this.idEvent = idEvent;
         complete = 0.0;
         count = 0;
+        verificaridioma();
         load();
     }
     
@@ -52,7 +62,7 @@ public class task extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        Tasklbl1 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
         progressBar = new javax.swing.JProgressBar();
@@ -68,12 +78,12 @@ public class task extends javax.swing.JPanel {
         jPanel1.setMaximumSize(new java.awt.Dimension(448, 59));
         jPanel1.setMinimumSize(new java.awt.Dimension(448, 59));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Lista de tareas");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        Tasklbl1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        Tasklbl1.setForeground(new java.awt.Color(255, 0, 0));
+        Tasklbl1.setText("Lista de tareas");
+        Tasklbl1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabel2MouseReleased(evt);
+                Tasklbl1MouseReleased(evt);
             }
         });
 
@@ -86,7 +96,7 @@ public class task extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Tasklbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(225, Short.MAX_VALUE))
         );
@@ -94,7 +104,7 @@ public class task extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Tasklbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -137,13 +147,13 @@ public class task extends javax.swing.JPanel {
         add(jPanel5);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+    private void Tasklbl1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tasklbl1MouseReleased
         technonizer.TechnoNizer.home.pnEvent();
-    }//GEN-LAST:event_jLabel2MouseReleased
+    }//GEN-LAST:event_Tasklbl1MouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel Tasklbl1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator6;

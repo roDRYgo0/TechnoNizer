@@ -217,6 +217,12 @@ public class classPersonalE {
         
         return status;
     }
+    public static boolean deletePersonal(){
+    boolean status = false;
+    status = methodsSQL.execute("DELETE FROM personalEvents where id=?", id);
+    return status;
+  
+    }
 
     
     

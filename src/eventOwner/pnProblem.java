@@ -1,11 +1,21 @@
 package eventOwner;
 
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class pnProblem extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr= new propiedades(controller.idioma);
+    Problemlbl1.setText(pr.getProperty("Problemlbl1"));
+    btnNext1.setText(pr.getProperty("btnNext1Problems"));
+    }
+    
+    
     int idEvent;
     boolean stat;
     
@@ -14,7 +24,7 @@ public class pnProblem extends javax.swing.JPanel {
         this.idEvent = idEvent;  
         stat = true;
         scrollContainer.getVerticalScrollBar().setUnitIncrement(16);
-        
+         verificaridioma();
         load();
     }
     
@@ -45,7 +55,7 @@ public class pnProblem extends javax.swing.JPanel {
         scrollContainer = new javax.swing.JScrollPane();
         pnContainer = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        Problemlbl1 = new javax.swing.JLabel();
         btnNext1 = new javax.swing.JButton();
 
         scrollContainer.setBorder(null);
@@ -69,9 +79,9 @@ public class pnProblem extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Problemas");
+        Problemlbl1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        Problemlbl1.setForeground(new java.awt.Color(255, 0, 0));
+        Problemlbl1.setText("Problemas");
 
         btnNext1.setBackground(new java.awt.Color(0, 153, 255));
         btnNext1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -91,7 +101,7 @@ public class pnProblem extends javax.swing.JPanel {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jLabel2)
+                .addComponent(Problemlbl1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 652, Short.MAX_VALUE)
                 .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -101,7 +111,7 @@ public class pnProblem extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addComponent(Problemlbl1)
                     .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
@@ -137,8 +147,8 @@ public class pnProblem extends javax.swing.JPanel {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Problemlbl1;
     private javax.swing.JButton btnNext1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel pnContainer;
     private javax.swing.JScrollPane scrollContainer;

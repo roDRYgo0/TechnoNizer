@@ -310,7 +310,6 @@ public class jpAccess extends javax.swing.JPanel {
                 if(c != '.')
                     evt.consume();
             }
-            
         }else
             evt.consume();
     }//GEN-LAST:event_txtUsernameKeyTyped
