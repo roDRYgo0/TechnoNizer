@@ -1,8 +1,7 @@
 create database BD_TechnoNizer
-delete  from users
-use BD_TechnoNizer
-select * from reminders
 
+go
+use BD_TechnoNizer
 
 /*Users administration and memberships*/
 
@@ -88,8 +87,6 @@ color nvarchar(15),
 coverImage image
 )
 
-select * from projects
-
 create table teams(
 id int identity(1,1) primary key not null,
 nicknameGuest nvarchar(50) not null references users(nickname),
@@ -149,14 +146,8 @@ idCardas int not null references cards(id)
  invitation int  not null
  )
 
-
-
- select * from events
-
-
- alter table tickets 
  create table tickets(
- id int identity(1,1) not null,
+ id int identity(1,1) primary key not null,
  nameTicket nvarchar(35) not null,
  quantityTicket int not null,
  priceTicket smallmoney not null,
@@ -199,10 +190,6 @@ idCardas int not null references cards(id)
  nickname nvarchar(50) not null
  )
 
-
-
- select * from activities
-
  create table problems(
  id int identity(1,1) primary key not null,
  problem nvarchar(190) not null,
@@ -214,8 +201,6 @@ idCardas int not null references cards(id)
  responsable nvarchar(50) null references users(nickname),
  idEvent int not null references events(id)
  )
-
- 
 
  create table tasks(
  id int identity(1,1) primary key not null,
@@ -246,11 +231,6 @@ visible int not null,
 idCheckList int not null references checkList(id)
 )
 
-
-
- drop table calendars
-
-
  create table personalEvents(
  id int identity(1,1) primary key not null,
  title nvarchar(60) not null,
@@ -261,8 +241,6 @@ idCheckList int not null references checkList(id)
  color nvarchar(40),
  nickname nvarchar(50) not null references users(nickname)
  )
-select * from reminders
-delete from personalEvents
 
  create table reminders(
  id int identity(1,1) primary key not null,
@@ -272,12 +250,6 @@ delete from personalEvents
  hour nvarchar(5) not null,
  nickname nvarchar(50) not null references users(nickname)
  )
-
- 
-
- 
-
-delete from personalEvents
 
  create table usersBinnacle(
 id int identity(1,1) primary key not null,
@@ -289,10 +261,6 @@ idType int not null
 
 insert into genders values (0, 'Femenino')
 insert into genders values (1, 'Masculino')
-
-select u.nickname, ui.firstName, ui.lastName, g.gender from users u, usersInformation ui, genders g where g.id = ui.id_gender and u.nickname = ui.nickname
-
-select u.nickname, ui.firstName, ui.lastName, g.gender, ui.id_gender, g.id from users u, usersInformation ui, genders g where g.id = ui.id_gender and u.nickname = ui.nickname ORDER BY g.gender DESC
 
 insert into memberships values('Free','free', 1, 40, 1, 0, 50, 0)
 insert into memberships values('Vip','vip', 1, -1, 10, 50, 500, 49.90)
@@ -392,20 +360,15 @@ insert into questionBank values
 ('�Qu� hiciste en tu �ltimo cumplea�os?'),
 ('�Cu�l es la cosa que m�s amas en todo el mundo?')
 
-
 select * from activities
 select * from announcements
-select * from calendars
 select * from cards
 select * from checkList
 select * from checks
-select * from class
 select * from contactType
 select * from contactUsers
 select * from events
 select * from genders
-select * from homework
-select * from horary
 select * from lists
 select * from members
 select * from memberships

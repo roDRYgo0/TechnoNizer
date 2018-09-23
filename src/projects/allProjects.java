@@ -9,7 +9,6 @@ public class allProjects extends javax.swing.JPanel {
     public allProjects(int paneles, boolean search) {
         initComponents();
         load(paneles, search);
-        
     }
 
     public void load(int paneles, boolean search){

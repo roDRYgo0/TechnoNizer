@@ -128,7 +128,6 @@ public static Integer getId() {
     }
     
     public static boolean select(){
-        boolean status = false;
         Project project;
         projects = new ArrayList<>(); 
         projectsSearch = new ArrayList<>();
