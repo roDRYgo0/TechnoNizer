@@ -1,5 +1,7 @@
 package admin;
 
+import static groovy.ui.text.FindReplaceUtility.dispose;
+import jFrame.FrmParametrosUser;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -162,6 +164,7 @@ public class jpUsers extends javax.swing.JPanel {
         iconSearch = new javax.swing.JLabel();
         iconView = new javax.swing.JLabel();
         iconReport = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(980, 601));
@@ -692,6 +695,13 @@ public class jpUsers extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Usuario Específico");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -710,7 +720,9 @@ public class jpUsers extends javax.swing.JPanel {
                                         .addGap(53, 53, 53)
                                         .addComponent(iconView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(iconReport, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(iconReport, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(jButton1))
                                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -726,10 +738,14 @@ public class jpUsers extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblStartAdminUserSee)
-                            .addComponent(iconView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(iconReport, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblStartAdminUserSee)
+                                    .addComponent(iconView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(iconReport, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -925,16 +941,16 @@ public class jpUsers extends javax.swing.JPanel {
     }//GEN-LAST:event_iconViewMouseReleased
 
     private void iconReportMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconReportMouseReleased
-       String path="";
+      String path="";
         try{
-            File file = new File("Usuarios.jasper");
+
             Map parametros = new HashMap();
 
-            InputStream reportStream = new FileInputStream("Usuarios.jasper");
-            JasperReport jr=(JasperReport)JRLoader.loadObject(file);
+            InputStream xD = jpUsers.class.getResourceAsStream("/Reports/usuarios.jasper");
+            JasperReport jr=(JasperReport)JRLoader.loadObject(xD);
             Connection cn= connection.getConnection();
             JasperPrint print =JasperFillManager.fillReport(jr,parametros,cn);
-            JasperViewer view = new JasperViewer(print);
+            JasperViewer view = new JasperViewer(print, false);
             view.setTitle("Reporte");
             view.setVisible(true);
             
@@ -1235,6 +1251,11 @@ public class jpUsers extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAnioEndKeyReleased
 
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        new FrmParametrosUser().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1MouseReleased
+
     void actionFilter(){
         if(tbnFilter.isSelected()){
             enable();
@@ -1385,6 +1406,7 @@ public class jpUsers extends javax.swing.JPanel {
     private javax.swing.JLabel iconReport;
     private javax.swing.JLabel iconSearch;
     private javax.swing.JLabel iconView;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;

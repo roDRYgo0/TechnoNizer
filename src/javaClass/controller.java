@@ -102,7 +102,7 @@ public class controller {
     //<editor-fold defaultstate="collapsed" desc="jFrame">
     public static AddEventInfo gralEvent;
     public static jFrame.AddEventInfoP addEventPer;
-    public static jFrame.AddEventInfoP1 addEventPer1;
+
     public static addReminderGral gralReminder;
     public static addReminderGral1 gralReminder1;
     public static jFrame.AddEventDetails addEvents;

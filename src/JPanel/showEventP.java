@@ -1,7 +1,7 @@
 package JPanel;
 
 
-import jFrame.AddEventInfoP1;
+import jFrame.AddEventInfoP;
 import java.awt.Color;
 import java.awt.Font;
 import javaClass.classEvent;
@@ -288,9 +288,9 @@ public class showEventP extends javax.swing.JPanel {
     }//GEN-LAST:event_lblVis1MouseReleased
 
     private void lblPosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPosMouseReleased
-        controller.addEventPer1 = new AddEventInfoP1(eventp);
-        standardization.show(controller.addEventPer1);
-        controller.rootFrame = controller.addEventPer1;
+        controller.addEventPer = new AddEventInfoP();
+        standardization.show(controller.addEventPer);
+        controller.rootFrame = controller.addEventPer;
     }//GEN-LAST:event_lblPosMouseReleased
 
     void showEvent(){
