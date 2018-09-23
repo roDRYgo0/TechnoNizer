@@ -38,23 +38,23 @@ public class pnActivity extends javax.swing.JPanel {
     void load(event event){            
         
         
-        Collections.sort(classEvent.activities, new Comparator<activity>(){
+        Collections.sort(classEvent.evento.getActivities(), new Comparator<activity>(){
             @Override
             public int compare(activity o1, activity o2) {
                 return ( (o1.getDateTime().compareTo(o2.getDateTime()) > 0)? 1: (o1.getDateTime().compareTo(o2.getDateTime()) < 0) ? -1 : 0 );
             }
         });
 
-        for(int i = 0; i < classEvent.activities.size(); i++){
+        for(int i = 0; i < classEvent.evento.getActivities().size(); i++){
             if(i == 0){
-                days = getDays(classEvent.activities.get(i));
+                days = getDays(classEvent.evento.getActivities().get(i));
                 asignar(i);
                 pnContainer.add(new showActivity(i, idEvent));
             }else{
-                if(days == getDays(classEvent.activities.get(i))){
+                if(days == getDays(classEvent.evento.getActivities().get(i))){
                     pnContainer.add(new showActivity(i, idEvent));
                 }else{
-                    days = getDays(classEvent.activities.get(i));
+                    days = getDays(classEvent.evento.getActivities().get(i));
                     asignar(i);
                     pnContainer.add(new showActivity(i, idEvent));
                 }
@@ -83,7 +83,8 @@ public class pnActivity extends javax.swing.JPanel {
                 pnContainer.add(new Text("Pasado mañana"));
                 break;
             default:
-                pnContainer.add(new Text(standardization.getDateToString(classEvent.activities.get(i).getDate(),  standardization.getDate(classEvent.activities.get(i).getDate()), false)));
+                pnContainer.add(new Text(standardization.getDateToString(classEvent.evento.getActivities().get(i).getDate(),  
+                        standardization.getDate(classEvent.evento.getActivities().get(i).getDate()), false)));
                 break;
         }
     }

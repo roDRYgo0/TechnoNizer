@@ -16,10 +16,10 @@ public class pnAnnouncement extends javax.swing.JPanel {
     }
     
     void load(){
-        classEvent.announcements.clear();
+        
         classEvent.selectAnnouncement(classEvent.eventosShow.get(idEvent).getId());
         
-        for(int a = 0; a < classEvent.announcements.size(); a++){
+        for(int a = 0; a < classEvent.evento.getAnnouncements().size(); a++){
             pnContainer.add(new showAnnouncement(a, idEvent));
 
         }

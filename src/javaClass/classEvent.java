@@ -37,11 +37,9 @@ public class classEvent {
     public static List<event> eventos = new ArrayList<event>();
     public static List<event> eventosShow = new ArrayList<event>();
     public static List<event> eventosSearch = new ArrayList<event>();
-    public static List<activity> activities = new ArrayList<>();
-    public static List<Task> tasks = new ArrayList<>();
-    public static List<problem> problems = new ArrayList<>();
-    public static List<announcement> announcements = new ArrayList<>();
-
+    
+    public static infEvent evento;
+ 
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
     public static Integer getInvitation() {
@@ -207,25 +205,23 @@ public class classEvent {
     public static boolean select(){
         boolean status = false;
         event evento;
-        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket, e.color, e.invitation FROM events e");
+        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket, e.color, e.invitation FROM events e");
         
         try {
             while(rs.next()){
                 evento = new event();
                 evento.setId(rs.getInt(1));
                 evento.setEventName(rs.getString(2));
-                evento.setProfilePicture(rs.getBytes(3));
-                evento.setCoverPicture(rs.getBytes(4));
-                evento.setVisibility(rs.getInt(5));
-                evento.setStartDateTime(rs.getString(6));
-                evento.setEndDateTime(rs.getString(7));
-                evento.setStaff(rs.getInt(8));
-                evento.setCondition(rs.getInt(9));
-                evento.setNicknameCreator(rs.getString(10));
-                evento.setPlace(rs.getString(11));
-                evento.setQuantityTicket(rs.getInt(12));
-                evento.setColor(rs.getString(13));
-                evento.setInvitation(rs.getInt(14));
+                evento.setVisibility(rs.getInt(3));
+                evento.setStartDateTime(rs.getString(4));
+                evento.setEndDateTime(rs.getString(5));
+                evento.setStaff(rs.getInt(6));
+                evento.setCondition(rs.getInt(7));
+                evento.setNicknameCreator(rs.getString(8));
+                evento.setPlace(rs.getString(9));
+                evento.setQuantityTicket(rs.getInt(10));
+                evento.setColor(rs.getString(11));
+                evento.setInvitation(rs.getInt(12));
                 if(evento.getStaff() == 1){
                     List<staff> staffs = new ArrayList<>();
                     staff s;
@@ -272,8 +268,7 @@ public class classEvent {
                     }
                 });
                 evento.setPrices(pric);
-                eventos.add(evento);//aqui...... tambien ya esta.... d
-                //y los voy agregando a una lista...
+                eventos.add(evento);
             }
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
@@ -353,7 +348,7 @@ public class classEvent {
                 ac.setTime(dateTime[1]);
                 activiti.add(ac);
             }
-            activities.addAll(activiti);
+            evento.setActivities(activiti);
             status = true;
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
@@ -393,7 +388,7 @@ public class classEvent {
                 announ.setNickname(rs.getString(6));
                 announc.add(announ);
             }
-            announcements.addAll(announc);
+            evento.setAnnouncements(announc);
             status = true;
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
@@ -533,7 +528,7 @@ public class classEvent {
                 ta.setNickname(rs.getString(6));
                 task.add(ta);
             }
-            tasks.addAll(task);
+            evento.setTasks(task);
             status = true;
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
@@ -552,6 +547,14 @@ public class classEvent {
         boolean status = false;
         status = methodsSQL.execute("delete from problems where id = ?", idProblem);
         return status;        
+    }
+    
+    public static boolean insertGuest(int idEvent, int idTicket, String nickname, String datetime){
+        return methodsSQL.execute("insert into guest values(?, ?, ?, ?)", idEvent, idTicket, nickname, datetime);
+    }
+    
+    public static boolean deleteGuest(int id){
+        return methodsSQL.execute("delete from guest where id = ?", id);
     }
     
     public static boolean selectProblems(int idEvent){
@@ -573,7 +576,7 @@ public class classEvent {
                 pro.setResponsable(rs.getString(8));
                 problem.add(pro);
             }
-            problems.addAll(problem);
+            evento.setProblems(problem);
             status = true;
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);

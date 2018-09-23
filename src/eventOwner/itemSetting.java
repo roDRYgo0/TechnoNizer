@@ -1,15 +1,25 @@
 package eventOwner;
 
+import java.util.Properties;
 import javaClass.controller;
+import properties.propiedades;
 
 public class itemSetting extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+      Properties pr=new propiedades(controller.idioma);
+     lblSettings.setText(pr.getProperty("lblSettingsConfig"));
+      
+    }
+    
     int idEvent;
     
     public itemSetting(int idEvent) {
         initComponents();
         this.idEvent = idEvent;
         lblSettings.setIcon(new controller().changeImage("/imagenes/setting.png", 43, 43));
+        verificaridioma();
     }
 
     @SuppressWarnings("unchecked")
@@ -36,8 +46,7 @@ public class itemSetting extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

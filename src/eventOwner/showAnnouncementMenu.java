@@ -12,8 +12,8 @@ public class showAnnouncementMenu extends javax.swing.JPanel {
         initComponents();
         this.idProblem = idAnnounced;
         this.idEvent = idEvent;
-        lblAnnouncement.setText(classEvent.announcements.get(idAnnounced).getAnnouncement());
-        lblNickname.setText(classEvent.announcements.get(idAnnounced).getNickname());
+        lblAnnouncement.setText(classEvent.evento.getAnnouncements().get(idAnnounced).getAnnouncement());
+        lblNickname.setText(classEvent.evento.getAnnouncements().get(idAnnounced).getNickname());
     }
 
     

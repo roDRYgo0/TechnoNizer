@@ -14,8 +14,8 @@ public class showAnnouncement extends javax.swing.JPanel {
         initComponents();
         this.idAnnoun = idAnnoun;
         this.idEvent = idEvent;
-        txtDescription.setText(classEvent.announcements.get(idAnnoun).getAnnouncement());
-        visibility = classEvent.announcements.get(idAnnoun).getCondition();
+        txtDescription.setText(classEvent.evento.getAnnouncements().get(idAnnoun).getAnnouncement());
+        visibility = classEvent.evento.getAnnouncements().get(idAnnoun).getCondition();
         switchVisibility();
     }
 
@@ -163,7 +163,7 @@ public class showAnnouncement extends javax.swing.JPanel {
             visibility = 0;
             switchVisibility();
         }
-        if(classEvent.updateAnnouncement(visibility, classEvent.announcements.get(idAnnoun).getId()))
+        if(classEvent.updateAnnouncement(visibility, classEvent.evento.getAnnouncements().get(idAnnoun).getId()))
             standardization.showMessage("ok","Anuncio actualizado");
         else
             standardization.showMessage("cancel","Anuncio no actualizado");
@@ -171,8 +171,7 @@ public class showAnnouncement extends javax.swing.JPanel {
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         if(!txtDescription.getText().trim().isEmpty()){
-            if(classEvent.deleteAnnouncement(classEvent.announcements.get(idAnnoun).getId())){
-                classEvent.announcements.clear();
+            if(classEvent.deleteAnnouncement(classEvent.evento.getAnnouncements().get(idAnnoun).getId())){
                 classEvent.selectActivity(classEvent.eventosShow.get(idEvent).getId());
                 technonizer.TechnoNizer.home.showEventAnnoucementsOwner(idEvent);
                 controller.rootFrame = technonizer.TechnoNizer.home;

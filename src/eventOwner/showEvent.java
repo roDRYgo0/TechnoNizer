@@ -50,7 +50,7 @@ public class showEvent extends javax.swing.JPanel {
         else{
             for(staff s : ev.getStaffs()){
                 if(s.getNickname().equals(classUsuario.getNickname())){
-                    classEvent.position = s.getPosition();
+                    position = s.getPosition();
                     if(s.getPosition() == 1)
                         lblPos.setIcon(new controller().changeImage("/imagenes/admin.png", 25, 25));
                     else
@@ -285,18 +285,8 @@ public class showEvent extends javax.swing.JPanel {
     void showEvent(){
         new Thread(()->{
             technonizer.TechnoNizer.home.showLoad();
-            switch(position){
-                case 1:
-                    
-                    break;
-                case 2:
-                    technonizer.TechnoNizer.home.showEventMod(evento, true);
-                    break;
-                default:
-                    
-                    technonizer.TechnoNizer.home.showEventOwner(evento, true);
-                    break;
-            }
+            classEvent.position = position;
+            technonizer.TechnoNizer.home.showEventOwner(evento, true);
         }).start();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

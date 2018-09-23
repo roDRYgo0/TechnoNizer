@@ -34,13 +34,13 @@ public class showActivity extends javax.swing.JPanel {
     void load(int idActivity){
         lblClock.setIcon(new controller().changeImage("/imagenes/clock.png", 24, 24));
         iconPlace.setIcon(new controller().changeImage("/imagenes/place.png", 30, 30));
-        lblActivity.setText(classEvent.activities.get(idActivity).getActivity());
-        txtDescription.setText(classEvent.activities.get(idActivity).getDescription());
-        visibility = classEvent.activities.get(idActivity).getCondition();
+        lblActivity.setText(classEvent.evento.getActivities().get(idActivity).getActivity());
+        txtDescription.setText(classEvent.evento.getActivities().get(idActivity).getDescription());
+        visibility = classEvent.evento.getActivities().get(idActivity).getCondition();
         switchVisibility();
-        lblPlace.setText(classEvent.activities.get(idActivity).getPlace());
-        lblNickname.setText(classEvent.activities.get(idActivity).getNickname());
-        lblClock.setText(standardization.getTime(classEvent.activities.get(idActivity).getTime()));
+        lblPlace.setText(classEvent.evento.getActivities().get(idActivity).getPlace());
+        lblNickname.setText(classEvent.evento.getActivities().get(idActivity).getNickname());
+        lblClock.setText(standardization.getTime(classEvent.evento.getActivities().get(idActivity).getTime()));
         
     }
 
@@ -181,14 +181,14 @@ public class showActivity extends javax.swing.JPanel {
     private void lblSwitchMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSwitchMouseReleased
         if(visibility == 0){
             visibility = 1;
-            if(classEvent.updateStatus(visibility, classEvent.activities.get(idActivity).getId()))
+            if(classEvent.updateStatus(visibility, classEvent.evento.getActivities().get(idActivity).getId()))
                 standardization.showMessage("ok", "Actualizado");
             else
                 standardization.showMessage("cancel", "No se logro actualizar");
             switchVisibility();
         }else{
             visibility = 0;
-            if(classEvent.updateStatus(visibility, classEvent.activities.get(idActivity).getId()))
+            if(classEvent.updateStatus(visibility, classEvent.evento.getActivities().get(idActivity).getId()))
                 standardization.showMessage("ok", "Actualizado");
             else
                 standardization.showMessage("cancel", "No se logro actualizar");
@@ -197,8 +197,7 @@ public class showActivity extends javax.swing.JPanel {
     }//GEN-LAST:event_lblSwitchMouseReleased
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-        if(classEvent.deleteAct(classEvent.activities.get(idActivity).getId())){
-            classEvent.activities.clear();
+        if(classEvent.deleteAct(classEvent.evento.getActivities().get(idActivity).getId())){
             classEvent.selectActivity(classEvent.eventosShow.get(idEvent).getId());
             technonizer.TechnoNizer.home.showEventActivitiesOwner(idEvent);
             standardization.showMessage("ok", "Eliminado correctamente");

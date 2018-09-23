@@ -2,6 +2,8 @@ package eventOwner;
 
 import java.awt.Color;
 import javaClass.classEvent;
+import javaClass.classUsuario;
+import javaClass.standardization;
 
 /** @author rodri */
 
@@ -27,9 +29,10 @@ public class showPrice extends javax.swing.JPanel {
             txtAvailable.setText(available()+"");
         }
         
-        if(classEvent.eventosShow.get(idEvent).getPrices().size() == 1)
+        if(classEvent.position == 3)
+            btnNext.setVisible(true);
+        else
             btnNext.setVisible(false);
-        btnNext.setVisible(false);
         
     }
 
@@ -123,13 +126,13 @@ public class showPrice extends javax.swing.JPanel {
 
         spPrice.setForeground(new java.awt.Color(204, 204, 204));
 
-        btnNext.setBackground(new java.awt.Color(255, 0, 0));
+        btnNext.setBackground(new java.awt.Color(0, 153, 0));
         btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext.setText("Eliminar");
+        btnNext.setText("Comprar");
         btnNext.setBorderPainted(false);
-        btnNext.setEnabled(false);
         btnNext.setFocusable(false);
+        btnNext.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnNext.setMaximumSize(new java.awt.Dimension(79, 28));
         btnNext.setMinimumSize(new java.awt.Dimension(79, 28));
         btnNext.setPreferredSize(new java.awt.Dimension(79, 28));
@@ -253,8 +256,8 @@ public class showPrice extends javax.swing.JPanel {
                     .addComponent(spCount2)
                     .addComponent(txtUse, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11))
+                .addComponent(btnNext, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,7 +334,10 @@ public class showPrice extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPriceKeyTyped
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-
+        if(classEvent.insertGuest(classEvent.eventosShow.get(idEvent).getId(), classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getId(),
+                classUsuario.getNickname(), standardization.currentDateTimeSQL())){
+            standardization.showMessage("ok", "Ticket comprado");
+        }
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtCountFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCountFocusGained

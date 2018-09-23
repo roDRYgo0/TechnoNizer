@@ -349,7 +349,6 @@ public class AddProblem extends javax.swing.JFrame {
             String dateTime = standardization.currentDateTimeSQL();
             int id = classEvent.eventosShow.get(idEvent).getId();
             if(classEvent.insertProblem(problem, place, dateTime, groupDanger, 0, classUsuario.getNickname(), id)){
-                classEvent.problems.clear();
                 classEvent.selectProblems(classEvent.eventosShow.get(idEvent).getId());
                 technonizer.TechnoNizer.home.showEventProblemsOwner(idEvent);
                 controller.rootFrame = technonizer.TechnoNizer.home;

@@ -14,11 +14,11 @@ public class showProblemMenu extends javax.swing.JPanel {
         initComponents();
         this.idProblem = idProblem;
         this.idEvent = idEvent;
-        lblProblem.setText(classEvent.problems.get(idProblem).getProblem());
-        lblNickname.setText(classEvent.problems.get(idProblem).getNickname());
+        lblProblem.setText(classEvent.evento.getProblems().get(idProblem).getProblem());
+        lblNickname.setText(classEvent.evento.getProblems().get(idProblem).getNickname());
         lblSwitch.setText("Sin resolver");
         lblSwitch.setForeground(new Color(255,61,0));
-        switch(classEvent.problems.get(idProblem).getDanger()){
+        switch(classEvent.evento.getProblems().get(idProblem).getDanger()){
             case 1:
                 iconDanger.setIcon(new controller().changeImage("/imagenes/question.png", 32, 2));
                 break;
@@ -32,8 +32,8 @@ public class showProblemMenu extends javax.swing.JPanel {
     }
 
     void resolve(String nickname, int condition){
-        if(classEvent.updateProblem(nickname, classEvent.problems.get(idProblem).getId(), condition)){
-            classEvent.problems.clear();
+        if(classEvent.updateProblem(nickname, classEvent.evento.getProblems().get(idProblem).getId(), condition)){
+            classEvent.evento.getProblems().clear();
             classEvent.selectProblems(classEvent.eventosShow.get(idEvent).getId());
             technonizer.TechnoNizer.home.showEventOwner(idEvent, true);
             standardization.showMessage("ok", "Problema actualizado");

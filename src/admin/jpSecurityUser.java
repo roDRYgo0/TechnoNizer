@@ -3,17 +3,30 @@ package admin;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.Properties;
 import javaClass.classAdmin;
 import javaClass.classUsuario;
 import javaClass.controller;
+import properties.propiedades;
 
 
 /** @author rodri */
 
 public class jpSecurityUser extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+        Properties pr= new propiedades(controller.idioma);
+        lbljpSecurityUser1.setText(pr.getProperty("lbljpSecurityUser1"));
+        lbljpSecurityUser2.setText(pr.getProperty("lbljpSecurityUser2"));
+        lbljpSecurityUser3.setText(pr.getProperty("lbljpSecurityUser3"));
+        lbljpSecurityUser4.setText(pr.getProperty("lbljpSecurityUser4"));
+        lbljpSecurityUser5.setText(pr.getProperty("lbljpSecurityUser5"));
+    }
+    
     public jpSecurityUser() {
         initComponents();
+        verificaridioma();
         jpStats();
         jpBackStats.setBackground(new Color(33,150,243));
         loadImage();
@@ -24,25 +37,25 @@ public class jpSecurityUser extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lbljpSecurityUser1 = new javax.swing.JLabel();
         jpBackSecQuestions = new javax.swing.JPanel();
         jpFrontSecQuestions = new javax.swing.JPanel();
         iconSecQuestions = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lbljpSecurityUser5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jpBackPass = new javax.swing.JPanel();
         jpFrontPass = new javax.swing.JPanel();
         iconPass = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbljpSecurityUser3 = new javax.swing.JLabel();
         jpShow = new javax.swing.JPanel();
         jpBackAuthen = new javax.swing.JPanel();
         jpFrontAuthen = new javax.swing.JPanel();
         iconAuthen = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbljpSecurityUser4 = new javax.swing.JLabel();
         jpBackStats = new javax.swing.JPanel();
         jpFrontStats = new javax.swing.JPanel();
         iconStats = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lbljpSecurityUser2 = new javax.swing.JLabel();
         scrollLogs = new javax.swing.JScrollPane();
         jLabel2 = new javax.swing.JLabel();
 
@@ -50,12 +63,12 @@ public class jpSecurityUser extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(980, 601));
         setMinimumSize(new java.awt.Dimension(980, 601));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Seguridad y estadísticas");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbljpSecurityUser1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lbljpSecurityUser1.setForeground(new java.awt.Color(255, 0, 0));
+        lbljpSecurityUser1.setText("Seguridad y estadísticas");
+        lbljpSecurityUser1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabel1MouseReleased(evt);
+                lbljpSecurityUser1MouseReleased(evt);
             }
         });
 
@@ -72,8 +85,8 @@ public class jpSecurityUser extends javax.swing.JPanel {
         iconSecQuestions.setMinimumSize(new java.awt.Dimension(45, 45));
         iconSecQuestions.setPreferredSize(new java.awt.Dimension(45, 45));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Preguntas de seguridad");
+        lbljpSecurityUser5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbljpSecurityUser5.setText("Preguntas de seguridad");
 
         javax.swing.GroupLayout jpFrontSecQuestionsLayout = new javax.swing.GroupLayout(jpFrontSecQuestions);
         jpFrontSecQuestions.setLayout(jpFrontSecQuestionsLayout);
@@ -83,8 +96,8 @@ public class jpSecurityUser extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(iconSecQuestions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                .addGap(172, 172, 172))
+                .addComponent(lbljpSecurityUser5, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         jpFrontSecQuestionsLayout.setVerticalGroup(
             jpFrontSecQuestionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,7 +108,7 @@ public class jpSecurityUser extends javax.swing.JPanel {
                         .addComponent(iconSecQuestions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFrontSecQuestionsLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(lbljpSecurityUser5)
                         .addGap(24, 24, 24))))
         );
 
@@ -129,8 +142,8 @@ public class jpSecurityUser extends javax.swing.JPanel {
         iconPass.setMinimumSize(new java.awt.Dimension(45, 45));
         iconPass.setPreferredSize(new java.awt.Dimension(45, 45));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Cambiar contraseña");
+        lbljpSecurityUser3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbljpSecurityUser3.setText("Cambiar contraseña");
 
         javax.swing.GroupLayout jpFrontPassLayout = new javax.swing.GroupLayout(jpFrontPass);
         jpFrontPass.setLayout(jpFrontPassLayout);
@@ -140,7 +153,7 @@ public class jpSecurityUser extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(iconPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(lbljpSecurityUser3)
                 .addContainerGap(208, Short.MAX_VALUE))
         );
         jpFrontPassLayout.setVerticalGroup(
@@ -152,7 +165,7 @@ public class jpSecurityUser extends javax.swing.JPanel {
                         .addComponent(iconPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFrontPassLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(lbljpSecurityUser3)
                         .addGap(24, 24, 24))))
         );
 
@@ -197,8 +210,8 @@ public class jpSecurityUser extends javax.swing.JPanel {
         iconAuthen.setMinimumSize(new java.awt.Dimension(45, 45));
         iconAuthen.setPreferredSize(new java.awt.Dimension(45, 45));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Authenticator");
+        lbljpSecurityUser4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbljpSecurityUser4.setText("Authenticator");
 
         javax.swing.GroupLayout jpFrontAuthenLayout = new javax.swing.GroupLayout(jpFrontAuthen);
         jpFrontAuthen.setLayout(jpFrontAuthenLayout);
@@ -208,7 +221,7 @@ public class jpSecurityUser extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(iconAuthen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(lbljpSecurityUser4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpFrontAuthenLayout.setVerticalGroup(
@@ -220,7 +233,7 @@ public class jpSecurityUser extends javax.swing.JPanel {
                         .addComponent(iconAuthen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFrontAuthenLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(lbljpSecurityUser4)
                         .addGap(24, 24, 24))))
         );
 
@@ -252,8 +265,8 @@ public class jpSecurityUser extends javax.swing.JPanel {
         iconStats.setMinimumSize(new java.awt.Dimension(45, 45));
         iconStats.setPreferredSize(new java.awt.Dimension(45, 45));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Estadísticas");
+        lbljpSecurityUser2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbljpSecurityUser2.setText("Estadísticas");
 
         javax.swing.GroupLayout jpFrontStatsLayout = new javax.swing.GroupLayout(jpFrontStats);
         jpFrontStats.setLayout(jpFrontStatsLayout);
@@ -263,7 +276,7 @@ public class jpSecurityUser extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(iconStats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                .addComponent(lbljpSecurityUser2, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                 .addGap(172, 172, 172))
         );
         jpFrontStatsLayout.setVerticalGroup(
@@ -275,7 +288,7 @@ public class jpSecurityUser extends javax.swing.JPanel {
                         .addComponent(iconStats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFrontStatsLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(lbljpSecurityUser2)
                         .addGap(24, 24, 24))))
         );
 
@@ -309,7 +322,7 @@ public class jpSecurityUser extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(jLabel1))
+                        .addComponent(lbljpSecurityUser1))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -334,7 +347,7 @@ public class jpSecurityUser extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(jLabel1)
+                .addComponent(lbljpSecurityUser1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
@@ -356,11 +369,11 @@ public class jpSecurityUser extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
+    private void lbljpSecurityUser1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbljpSecurityUser1MouseReleased
         resetColor();
         jpBackAuthen.setBackground(Color.red);
         jpBackSecQuestions.setBackground(Color.red);
-    }//GEN-LAST:event_jLabel1MouseReleased
+    }//GEN-LAST:event_lbljpSecurityUser1MouseReleased
 
     private void jpFrontSecQuestionsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpFrontSecQuestionsMouseReleased
         resetColor();
@@ -501,12 +514,7 @@ public class jpSecurityUser extends javax.swing.JPanel {
     private javax.swing.JLabel iconPass;
     private javax.swing.JLabel iconSecQuestions;
     private javax.swing.JLabel iconStats;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel jpBackAuthen;
     private javax.swing.JPanel jpBackPass;
@@ -517,6 +525,11 @@ public class jpSecurityUser extends javax.swing.JPanel {
     private javax.swing.JPanel jpFrontSecQuestions;
     private javax.swing.JPanel jpFrontStats;
     private javax.swing.JPanel jpShow;
+    private javax.swing.JLabel lbljpSecurityUser1;
+    private javax.swing.JLabel lbljpSecurityUser2;
+    private javax.swing.JLabel lbljpSecurityUser3;
+    private javax.swing.JLabel lbljpSecurityUser4;
+    private javax.swing.JLabel lbljpSecurityUser5;
     private javax.swing.JScrollPane scrollLogs;
     // End of variables declaration//GEN-END:variables
 }

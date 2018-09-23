@@ -20,8 +20,8 @@ public class taskMenu extends javax.swing.JPanel {
     }
     
     void load(){
-        lblTask.setText(classEvent.tasks.get(idTask).getTask());
-        status = classEvent.tasks.get(idTask).getCondition();
+        lblTask.setText(classEvent.evento.getTasks().get(idTask).getTask());
+        status = classEvent.evento.getTasks().get(idTask).getCondition();
         switchStatus();
     }
 
@@ -89,7 +89,7 @@ public class taskMenu extends javax.swing.JPanel {
             status = 0;
             switchStatus();
         }
-        if(classEvent.updateTask(classEvent.tasks.get(idTask).getId(), status)){
+        if(classEvent.updateTask(classEvent.evento.getTasks().get(idTask).getId(), status)){
             new Thread(()->{
                 technonizer.TechnoNizer.home.showLoad();
                 technonizer.TechnoNizer.home.showEventOwner(idEvent, true);

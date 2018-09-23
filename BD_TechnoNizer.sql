@@ -1,8 +1,7 @@
 create database BD_TechnoNizer
-delete  from users
-use BD_TechnoNizer
-select * from reminders
 
+go
+use BD_TechnoNizer
 
 /*Users administration and memberships*/
 
@@ -88,8 +87,6 @@ color nvarchar(15),
 coverImage image
 )
 
-select * from projects
-
 create table teams(
 id int identity(1,1) primary key not null,
 nicknameGuest nvarchar(50) not null references users(nickname),
@@ -118,8 +115,11 @@ members int not null,
 expiration datetime,
 condition int not null,
 idLists int not null references lists(id),
-idTags int references tags(id)
+idTags int references tags(id),
+description nvarchar(150) null,
+idproject int references projects(id)
 )
+
 
 create table members(
 id int identity(1,1) primary key not null,
@@ -146,14 +146,8 @@ idCardas int not null references cards(id)
  invitation int  not null
  )
 
-
-
- select * from events
-
-
- alter table tickets 
  create table tickets(
- id int identity(1,1) not null,
+ id int identity(1,1) primary key not null,
  nameTicket nvarchar(35) not null,
  quantityTicket int not null,
  priceTicket smallmoney not null,
@@ -175,9 +169,6 @@ idCardas int not null references cards(id)
  nickname nvarchar(50) not null references users(nickname)
  )
 
-
- select * from guest
-
  create table announcements(
  id int identity(1,1) primary key not null,
  announced nvarchar(175) not null,
@@ -187,7 +178,6 @@ idCardas int not null references cards(id)
  nickname nvarchar(50) not null references users(nickname),
  idEvent int not null references events(id)
  )
- 
 
  create table activities(
  id int identity(1,1) primary key not null,
@@ -200,10 +190,6 @@ idCardas int not null references cards(id)
  nickname nvarchar(50) not null
  )
 
-
-
- select * from activities
-
  create table problems(
  id int identity(1,1) primary key not null,
  problem nvarchar(190) not null,
@@ -212,10 +198,9 @@ idCardas int not null references cards(id)
  danger int not null,
  condition int not null,
  nickname nvarchar(50) not null references users(nickname),
- responsable nvarchar(50) not null references users(nickname),
+ responsable nvarchar(50) null references users(nickname),
  idEvent int not null references events(id)
  )
-
 
  create table tasks(
  id int identity(1,1) primary key not null,
@@ -227,9 +212,6 @@ idCardas int not null references cards(id)
  nickname nvarchar(50)
  )
 
- select * from tasks
-
- select id, task, condition, visible, price, nickname from tasks where idEvent = 3074
 
  create table checkList(
 id int identity(1,1) primary key not null,
@@ -249,25 +231,14 @@ visible int not null,
 idCheckList int not null references checkList(id)
 )
 
-
- create table calendars(
- id int identity(1,1) primary key not null,
- name nvarchar(60) not null,
- color nvarchar(20) not null,
- nickname nvarchar(50) references users(nickname)
- )
-
  create table personalEvents(
  id int identity(1,1) primary key not null,
  title nvarchar(60) not null,
  place nvarchar(80),
- stratDateTime datetime not null,
- endDateTime datetime not null,
- allDay int not null,
- repeat int not null,
- alert numeric(8,2),
+ startDateTime nvarchar(30) not null,
+ endDateTime nvarchar(30) not null,
  note nvarchar(250),
- idCalendar int not null references calendars(id),
+ color nvarchar(40),
  nickname nvarchar(50) not null references users(nickname)
  )
 
@@ -279,36 +250,6 @@ idCheckList int not null references checkList(id)
  hour nvarchar(5) not null,
  nickname nvarchar(50) not null references users(nickname)
  )
-select * from reminders
-
- create table horary(
- id int identity(1,1) primary key not null,
- name nvarchar(90) not null,
- nickname nvarchar(50) not null references users(nickname)
- )
-
- create table class(
- id int identity(1,1) primary key not null,
- dayNumber int not null,
- condition int not null,
- nameClass nvarchar(90) not null,
- startTime time not null,
- endTime time not null,
- remember int not null,
- idHorary int not null references horary(id)
- )
-
- create table homework(
- id int identity(1,1) primary key not null,
- nameHomework nvarchar(300) not null,
- date date not null,
- priority int not null,
- note nvarchar(200),
- idClass int not null references class(id)
- )
-
-
- select * from users
 
  create table usersBinnacle(
 id int identity(1,1) primary key not null,
@@ -320,10 +261,6 @@ idType int not null
 
 insert into genders values (0, 'Femenino')
 insert into genders values (1, 'Masculino')
-
-select u.nickname, ui.firstName, ui.lastName, g.gender from users u, usersInformation ui, genders g where g.id = ui.id_gender and u.nickname = ui.nickname
-
-select u.nickname, ui.firstName, ui.lastName, g.gender, ui.id_gender, g.id from users u, usersInformation ui, genders g where g.id = ui.id_gender and u.nickname = ui.nickname ORDER BY g.gender DESC
 
 insert into memberships values('Free','free', 1, 40, 1, 0, 50, 0)
 insert into memberships values('Vip','vip', 1, -1, 10, 50, 500, 49.90)
@@ -423,20 +360,15 @@ insert into questionBank values
 ('�Qu� hiciste en tu �ltimo cumplea�os?'),
 ('�Cu�l es la cosa que m�s amas en todo el mundo?')
 
-
 select * from activities
 select * from announcements
-select * from calendars
 select * from cards
 select * from checkList
 select * from checks
-select * from class
 select * from contactType
 select * from contactUsers
 select * from events
 select * from genders
-select * from homework
-select * from horary
 select * from lists
 select * from members
 select * from memberships

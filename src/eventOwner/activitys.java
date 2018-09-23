@@ -2,12 +2,22 @@ package eventOwner;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Properties;
 import javaClass.activity;
 import javaClass.classEvent;
+import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class activitys extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+     Properties pr=new propiedades(controller.idioma);
+     Activityslbl1.setText(pr.getProperty("Activityslbl1"));
+     txtText.setText(pr.getProperty("txtText"));
+    }
+    
     int days;
     boolean d;
     String date;
@@ -18,28 +28,29 @@ public class activitys extends javax.swing.JPanel {
         this.idEvent = idEvent;
         d = true;
         count = 0;
+        verificaridioma();
         load();
     }
     
     void load(){            
 
-        Collections.sort(classEvent.activities, new Comparator<activity>(){
+        Collections.sort(classEvent.evento.getActivities(), new Comparator<activity>(){
             @Override
             public int compare(activity o1, activity o2) {
                 return ( (o1.getDateTime().compareTo(o2.getDateTime()) > 0)? 1: (o1.getDateTime().compareTo(o2.getDateTime()) < 0) ? -1 : 0 );
             }
         });
 
-        for(int i = 0; i < classEvent.activities.size(); i++){
-            if(!d && days == getDays(classEvent.activities.get(i))){
-                if(classEvent.activities.get(i).getCondition() == 1){
+        for(int i = 0; i < classEvent.evento.getActivities().size(); i++){
+            if(!d && days == getDays(classEvent.evento.getActivities().get(i))){
+                if(classEvent.evento.getActivities().get(i).getCondition() == 1){
                     this.add(new showActivityMenu(i));
                     count++;
                 }
             }
-            if(getDays(classEvent.activities.get(i)) >= 0 && d){
-                days = getDays(classEvent.activities.get(i));
-                if(classEvent.activities.get(i).getCondition() == 1){
+            if(getDays(classEvent.evento.getActivities().get(i)) >= 0 && d){
+                days = getDays(classEvent.evento.getActivities().get(i));
+                if(classEvent.evento.getActivities().get(i).getCondition() == 1){
                     this.add(new showActivityMenu(i));
                     count++;
                 }
@@ -70,7 +81,7 @@ public class activitys extends javax.swing.JPanel {
                 txtText.setText("Pasado mañana");
                 break;
             default:
-                txtText.setText(standardization.getDateToString(classEvent.activities.get(i).getDate(),  standardization.getDate(classEvent.activities.get(i).getDate()), false));
+                txtText.setText(standardization.getDateToString(classEvent.evento.getActivities().get(i).getDate(),  standardization.getDate(classEvent.evento.getActivities().get(i).getDate()), false));
                 break;
         }
     }
@@ -80,7 +91,7 @@ public class activitys extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        Activityslbl1 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
         txtText = new javax.swing.JLabel();
@@ -95,12 +106,12 @@ public class activitys extends javax.swing.JPanel {
         jPanel1.setMinimumSize(new java.awt.Dimension(448, 59));
         jPanel1.setPreferredSize(new java.awt.Dimension(448, 59));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Actividades");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        Activityslbl1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        Activityslbl1.setForeground(new java.awt.Color(255, 0, 0));
+        Activityslbl1.setText("Actividades");
+        Activityslbl1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabel2MouseReleased(evt);
+                Activityslbl1MouseReleased(evt);
             }
         });
 
@@ -113,7 +124,7 @@ public class activitys extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Activityslbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(225, Short.MAX_VALUE))
         );
@@ -121,7 +132,7 @@ public class activitys extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Activityslbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -157,13 +168,13 @@ public class activitys extends javax.swing.JPanel {
         add(jPanel5);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseReleased
+    private void Activityslbl1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Activityslbl1MouseReleased
         technonizer.TechnoNizer.home.pnEvent();
-    }//GEN-LAST:event_jLabel2MouseReleased
+    }//GEN-LAST:event_Activityslbl1MouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel Activityslbl1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator6;

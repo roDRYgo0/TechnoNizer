@@ -3,12 +3,22 @@ package admin;
 import jFrame.admin;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import javaClass.classAdmin;
 import javaClass.classMembership;
 import javaClass.classUsuario;
+import javaClass.connection;
 import javaClass.controller;
 import javaClass.standardization;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import properties.propiedades;
 
 public class jpSettingsAdmin extends javax.swing.JPanel {
@@ -109,6 +119,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         iconGuest = new javax.swing.JLabel();
         scrollGender = new javax.swing.JScrollPane();
         GendersAdmin = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(254, 254, 254));
         setMaximumSize(new java.awt.Dimension(980, 601));
@@ -587,6 +598,13 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
         GendersAdmin.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         GendersAdmin.setText("Géneros");
 
+        jButton1.setText("REPORTE DE VENTAS");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jButton1MouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -605,11 +623,15 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -763,6 +785,25 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
             evt.consume();
     }//GEN-LAST:event_txtGuestKeyTyped
 
+    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        String path="";
+        try{
+
+            Map parametros = new HashMap();
+
+            InputStream xD = jpSettingsAdmin.class.getResourceAsStream("/Reports/Memberships.jasper");
+            JasperReport jr=(JasperReport)JRLoader.loadObject(xD);
+            Connection cn= connection.getConnection();
+            JasperPrint print =JasperFillManager.fillReport(jr,parametros,cn);
+            JasperViewer view = new JasperViewer(print, false);
+            view.setTitle("Reporte");
+            view.setVisible(true);
+            
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }//GEN-LAST:event_jButton1MouseReleased
+
     void seleccionarMembership(int m){
         if(classUsuario.getCondition()==1){
             btnChangeMembership.setEnabled(false);
@@ -903,6 +944,7 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel iconMod;
     private javax.swing.JLabel iconNumEvents;
     private javax.swing.JLabel iconPrice;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;

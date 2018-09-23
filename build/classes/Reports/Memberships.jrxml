@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Memberships" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e567f56c-4da8-4187-a871-fb3afb007efb">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFBFCC">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFE6EB">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="5353ab8c-cd01-4cd5-ae86-1dbfeb011aac"/>
+	<queryString>
+		<![CDATA[SELECT m.name, m.description, m.numberAdmins, m.numberEvents, m.numberGuests, m.numberGuests, m.numberModerators, m.price, count(m.id) as 'Cantidad de personas' FROM memberships m, users u where m.id = u.idMemberships group by m.name , m.description, m.numberAdmins, m.numberEvents, m.numberGuests, m.numberGuests, m.numberModerators, m.price]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="numberAdmins" class="java.math.BigDecimal"/>
+	<field name="numberEvents" class="java.math.BigDecimal"/>
+	<field name="numberGuests" class="java.math.BigDecimal"/>
+	<field name="numberModerators" class="java.math.BigDecimal"/>
+	<field name="price" class="java.math.BigDecimal"/>
+	<field name="Cantidad de personas" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="12" width="347" height="26" uuid="aca15a7f-908e-4d4b-be28-664742f94173"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[TECHNONIZER - Membresías.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="81" splitType="Stretch">
+			<line>
+				<reportElement x="14" y="34" width="260" height="1" uuid="9758fe82-51fc-4abd-8b16-0fa4e3b543af"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="11" y="4" width="247" height="30" forecolor="#FF0033" uuid="def2286d-f59d-436b-8d63-a9f8ea39ac06"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[VENTA DE MEMBRESÍAS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="53" width="83" height="27" backcolor="#FFBF00" uuid="a88a84d1-7af9-4614-b6da-30037a968131"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="52" width="82" height="28" uuid="3a795967-29c8-469e-83cf-2072486b1b52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nombre ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="83" y="53" width="101" height="27" backcolor="#FFBF00" uuid="d632e849-5316-4a9f-8ba1-10bce7bb8835"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="83" y="53" width="101" height="26" uuid="7ea6b929-3663-4e57-8abd-ffeeb3b33d0f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="184" y="53" width="52" height="27" backcolor="#FFBF00" uuid="55310841-f98a-4a0d-88a3-e352572bfef5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="236" y="53" width="74" height="27" backcolor="#FFBF00" uuid="63ea9af4-88d9-4f3b-b45a-deb059bf12e5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="186" y="51" width="50" height="28" uuid="e130f0df-9b7c-461e-93ea-ae2f7524ef03"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Número de eventos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="52" width="73" height="28" uuid="8879ca7e-7a08-4909-81fe-a27b236cfa35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Número de administradores]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="310" y="53" width="74" height="27" backcolor="#FFBF00" uuid="734dde48-48c5-4346-882f-312717edd126"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="310" y="53" width="74" height="26" uuid="17013279-f10f-4808-be32-899cc6a67773"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Número de moderadores]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="458" y="53" width="48" height="27" backcolor="#FFBF00" uuid="0dbb1d15-7aba-4d5f-bc9c-717a5bfa4132"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="384" y="53" width="74" height="27" backcolor="#FFBF00" uuid="dc479c5a-dd19-4176-ab69-f18d9b28fc9a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="458" y="54" width="48" height="26" uuid="083b6b95-5fa5-4292-895a-e8d73977f7e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="385" y="53" width="73" height="26" uuid="08fc748e-4911-4e29-a4c9-fb72a34d5d2a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Número de invitados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="507" y="53" width="48" height="26" uuid="ee43ea29-74d1-490b-b641-ff9f023d1f0c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="507" y="53" width="64" height="27" backcolor="#FFBF00" uuid="bb7c78cd-1838-44d5-a219-117d2a82acc5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="507" y="53" width="65" height="26" uuid="8a46db89-54e8-4097-a9b5-9e3fe2102f08"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Ventas Totales]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="27" width="571" height="1" uuid="c0bb1df5-2d4f-4d7c-a248-b67c09733680"/>
+				<graphicElement>
+					<pen lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="1" y="2" width="82" height="20" uuid="5510e27b-2817-4531-8cb1-4ba0656eeb52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="83" y="2" width="103" height="20" uuid="cc6604cc-0b54-4853-80af-0dd1d83a5375"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="188" y="2" width="50" height="20" uuid="df40f0c6-cdfa-4290-b909-7a9169eb339a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{numberEvents}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="238" y="2" width="73" height="20" uuid="37520cf6-1b93-4221-b473-ac8172df9132"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{numberAdmins}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="312" y="2" width="73" height="20" uuid="7adbfb4a-a133-44dc-8b8d-53cab2745750"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{numberModerators}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="2" width="72" height="20" uuid="3c96fce8-b3c5-40ff-a78c-ea7ce999a469"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{numberGuests}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="461" y="2" width="46" height="20" uuid="ac735217-525c-40d2-bb98-62863f5a51b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="507" y="2" width="64" height="20" uuid="cd3f52d0-28bf-4ad7-84e3-7faaf20b2d5f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Cantidad de personas}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

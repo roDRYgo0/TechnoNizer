@@ -25,32 +25,31 @@ public class pnTask extends javax.swing.JPanel {
     }
     
     void load(){
-        classEvent.tasks.clear();
         classEvent.selectTasks(classEvent.eventosShow.get(idEvent).getId());
-        total = classEvent.tasks.size()*1.0;
-        if(classEvent.tasks.isEmpty())
+        total = classEvent.evento.getTasks().size()*1.0;
+        if(classEvent.evento.getTasks().isEmpty())
             pnContainer.add(new Text("Sin tareas"));
         else{
-            for(int i = 0; i < classEvent.tasks.size(); i++){
-                if(classEvent.tasks.get(i).getPrice() == 0.0){
+            for(int i = 0; i < classEvent.evento.getTasks().size(); i++){
+                if(classEvent.evento.getTasks().get(i).getPrice() == 0.0){
                     if(init){
                         pnContainer.add(new Text("Sin costos"));
                         init = false;
                     }
                     pnContainer.add(new showTask(i, idEvent));
-                    if(classEvent.tasks.get(i).getCondition() == 1)
+                    if(classEvent.evento.getTasks().get(i).getCondition() == 1)
                         complete++;
                 }
             }
             init = true;
-            for(int i = 0; i < classEvent.tasks.size(); i++){
-                if(classEvent.tasks.get(i).getPrice() > 0.0){
+            for(int i = 0; i < classEvent.evento.getTasks().size(); i++){
+                if(classEvent.evento.getTasks().get(i).getPrice() > 0.0){
                     if(init){
                         pnContainer.add(new Text("Con costos"));
                         init = false;
                     }
                     pnContainer.add(new showTask(i, idEvent));
-                    if(classEvent.tasks.get(i).getCondition() == 1)
+                    if(classEvent.evento.getTasks().get(i).getCondition() == 1)
                         complete++;
                 }
             }

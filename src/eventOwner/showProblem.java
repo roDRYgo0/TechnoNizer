@@ -20,24 +20,25 @@ public class showProblem extends javax.swing.JPanel {
     }
     
     void load(){
-        lblProblem.setText(classEvent.problems.get(idProblem).getProblem());
-        lblNickname.setText(classEvent.problems.get(idProblem).getNickname());
+        lblProblem.setText(classEvent.evento.getProblems().get(idProblem).getProblem());
+        lblNickname.setText(classEvent.evento.getProblems().get(idProblem).getNickname());
         iconPlace.setIcon(new controller().changeImage("/imagenes/place.png", 24, 24));
         iconDate.setIcon(new controller().changeImage("/imagenes/date.png", 24, 24));
-        lblPlace.setText(classEvent.problems.get(idProblem).getPlace());
-        condition = classEvent.problems.get(idProblem).getCondition();
-        if(!classEvent.problems.get(idProblem).getNickname().equals(classUsuario.getNickname()))
+        lblPlace.setText(classEvent.evento.getProblems().get(idProblem).getPlace());
+        condition = classEvent.evento.getProblems().get(idProblem).getCondition();
+        if(!classEvent.evento.getProblems().get(idProblem).getNickname().equals(classUsuario.getNickname()))
             btnDelete.setVisible(false);
-        if(classEvent.problems.get(idProblem).getResponsable() != null){
-            lblResponsable.setText(classEvent.problems.get(idProblem).getResponsable());
-            if(classEvent.problems.get(idProblem).getResponsable().equals(classUsuario.getNickname())){
+        if(classEvent.evento.getProblems().get(idProblem).getResponsable() != null){
+            lblResponsable.setText(classEvent.evento.getProblems().get(idProblem).getResponsable());
+            if(classEvent.evento.getProblems().get(idProblem).getResponsable().equals(classUsuario.getNickname())){
                 btnNext.setText("¿No resuelto?");
                 btnNext.setBackground(Color.blue);
             }else
                 btnNext.setVisible(false);
         }
         switchCondition();
-        lblDateTime.setText(standardization.getDateToString(classEvent.problems.get(idProblem).getDateTime(), standardization.getDate(classEvent.problems.get(idProblem).getDateTime()), false));
+        lblDateTime.setText(standardization.getDateToString(classEvent.evento.getProblems().get(idProblem).getDateTime(), 
+                standardization.getDate(classEvent.evento.getProblems().get(idProblem).getDateTime()), false));
     }
     
     void switchCondition(){
@@ -50,7 +51,7 @@ public class showProblem extends javax.swing.JPanel {
             case 1:
                 lblSwitch.setText("Resuelto por");
                 lblSwitch.setForeground(new Color(139, 195, 74));
-                lblResponsable.setText(classEvent.problems.get(idProblem).getResponsable());
+                lblResponsable.setText(classEvent.evento.getProblems().get(idProblem).getResponsable());
                 break;
         }
     }
@@ -240,7 +241,7 @@ public class showProblem extends javax.swing.JPanel {
     }//GEN-LAST:event_lblSwitchMouseReleased
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        if(classEvent.problems.get(idProblem).getResponsable() != null){
+        if(classEvent.evento.getProblems().get(idProblem).getResponsable() != null){
             resolve(null, 0);
             System.out.println("vam");
         }else
@@ -249,8 +250,7 @@ public class showProblem extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        if(classEvent.deleteProblem(classEvent.problems.get(idProblem).getId())){
-            classEvent.problems.clear();
+        if(classEvent.deleteProblem(classEvent.evento.getProblems().get(idProblem).getId())){
             classEvent.selectProblems(classEvent.eventosShow.get(idEvent).getId());
             technonizer.TechnoNizer.home.showEventProblemsOwner(idEvent);
             standardization.showMessage("ok", "Problema eliminado");
@@ -260,8 +260,7 @@ public class showProblem extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     void resolve(String nickname, int condition){
-        if(classEvent.updateProblem(nickname, classEvent.problems.get(idProblem).getId(), condition)){
-            classEvent.problems.clear();
+        if(classEvent.updateProblem(nickname, classEvent.evento.getProblems().get(idProblem).getId(), condition)){
             classEvent.selectProblems(classEvent.eventosShow.get(idEvent).getId());
             technonizer.TechnoNizer.home.showEventProblemsOwner(idEvent);
             standardization.showMessage("ok", "Problema actualizado");
