@@ -207,6 +207,7 @@ public class classEvent {
     public static boolean select(){
         boolean status = false;
         event evento;
+        eventos.clear();
         ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket, e.color, e.invitation FROM events e");
         
         try {

@@ -23,7 +23,7 @@ public final class jpEvent extends javax.swing.JPanel {
 
     public jpEvent(boolean start) {
         initComponents();
-        
+        controller.positionPanel = "allEvents";
         insertarPaneles(classEvent.eventos.size(), false);
         txtSearch.requestFocus();
         verificaridioma();

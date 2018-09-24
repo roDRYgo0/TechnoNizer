@@ -32,6 +32,8 @@ import sucurity.jpSecurityQuestions;
 
 public class controller {
     
+    public static String positionPanel;
+    
     public static JPanel rootPane;
     public static jpAccess jpA;
     public static jpPassword jpP;
