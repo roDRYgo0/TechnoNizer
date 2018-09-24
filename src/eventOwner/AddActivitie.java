@@ -13,29 +13,28 @@ import javaClass.controller;
 import javaClass.standardization;
 import properties.propiedades;
 
-
-
-/** @author Alexg */
-
+/**
+ * @author Alexg
+ */
 public class AddActivitie extends javax.swing.JFrame {
 
-     Properties pr= new propiedades(controller.idioma);
-    void verificaridioma()
-    {
-    pr= new propiedades(controller.idioma);
-    lblAddActivitie1F.setText(pr.getProperty("lblAddActivitie1F"));
-    lblAddActivitie2F.setText(pr.getProperty("lblAddActivitie2F"));
-    lblAddActivitie3F.setText(pr.getProperty("lblAddActivitie3F"));
-    lblAddActivitie4F.setText(pr.getProperty("lblAddActivitie4F"));
-    lblAddActivitie5F.setText(pr.getProperty("lblAddActivitie5F"));
-    lblAddActivitie6F.setText(pr.getProperty("lblAddActivitie6F"));
-    lblAddActivitie7F.setText(pr.getProperty("lblAddActivitie7F"));
-    lblAddActivitie8F.setText(pr.getProperty("lblAddActivitie8F"));
+    Properties pr = new propiedades(controller.idioma);
 
-    btnNext1.setText(pr.getProperty("btnNext1AddActivitie"));
-    
-            cmbMonthStart.removeAllItems();
-            String meses[]={
+    void verificaridioma() {
+        pr = new propiedades(controller.idioma);
+        lblAddActivitie1F.setText(pr.getProperty("lblAddActivitie1F"));
+        lblAddActivitie2F.setText(pr.getProperty("lblAddActivitie2F"));
+        lblAddActivitie3F.setText(pr.getProperty("lblAddActivitie3F"));
+        lblAddActivitie4F.setText(pr.getProperty("lblAddActivitie4F"));
+        lblAddActivitie5F.setText(pr.getProperty("lblAddActivitie5F"));
+        lblAddActivitie6F.setText(pr.getProperty("lblAddActivitie6F"));
+        lblAddActivitie7F.setText(pr.getProperty("lblAddActivitie7F"));
+        lblAddActivitie8F.setText(pr.getProperty("lblAddActivitie8F"));
+
+        btnNext1.setText(pr.getProperty("btnNext1AddActivitie"));
+
+        cmbMonthStart.removeAllItems();
+        String meses[] = {
             pr.getProperty("firstmonth"),
             pr.getProperty("secondmonth"),
             pr.getProperty("thirdmonth"),
@@ -48,22 +47,21 @@ public class AddActivitie extends javax.swing.JFrame {
             pr.getProperty("tenmonth"),
             pr.getProperty("elevenmonth"),
             pr.getProperty("twelvemonth")
-            };
-            for(int i=0;i<meses.length;i++)
-            {
-                cmbMonthStart.addItem(meses[i]);
-            }
-    Day.setText(pr.getProperty("DayCreate"));
-    Month.setText(pr.getProperty("MonthCreate"));
-    Year.setText(pr.getProperty("YearCreate"));
-    
+        };
+        for (int i = 0; i < meses.length; i++) {
+            cmbMonthStart.addItem(meses[i]);
+        }
+        Day.setText(pr.getProperty("DayCreate"));
+        Month.setText(pr.getProperty("MonthCreate"));
+        Year.setText(pr.getProperty("YearCreate"));
+
     }
-    
+
     int idEvent;
     int visibility;
     int horary;
-    
-    public AddActivitie(int idEvent){
+
+    public AddActivitie(int idEvent) {
         initComponents();
         this.idEvent = idEvent;
         visibility = 1;
@@ -74,17 +72,17 @@ public class AddActivitie extends javax.swing.JFrame {
         txtDescription.setLineWrap(true);
         start.setText(standardization.getDateToString(classEvent.eventosShow.get(idEvent).getStartDateTime(), standardization.getDate(classEvent.eventosShow.get(idEvent).getStartDateTime()), false));
         end.setText(standardization.getDateToString(classEvent.eventosShow.get(idEvent).getEndDateTime(), standardization.getDate(classEvent.eventosShow.get(idEvent).getEndDateTime()), false));
-    }   
+    }
 
-    void load(){
+    void load() {
         iconStart.setIcon(new controller().changeImage("/imagenes/date.png", 35, 35));
         iconClock.setIcon(new controller().changeImage("/imagenes/clock.png", 35, 35));
         iconPlace.setIcon(new controller().changeImage("/imagenes/place.png", 35, 35));
         String[] dateEventStart = classEvent.eventosShow.get(idEvent).getStartDateTime().split("-");
         txtDayStart.setText(dateEventStart[2]);
-        cmbMonthStart.setSelectedIndex(Integer.parseInt(dateEventStart[1])-1);
+        cmbMonthStart.setSelectedIndex(Integer.parseInt(dateEventStart[1]) - 1);
         txtYearStart.setText(dateEventStart[0]);
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -628,10 +626,10 @@ public class AddActivitie extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblSwitchMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSwitchMouseReleased
-        if(visibility == 0){
+        if (visibility == 0) {
             visibility = 1;
             switchVisibility();
-        }else{
+        } else {
             visibility = 0;
             switchVisibility();
         }
@@ -639,17 +637,19 @@ public class AddActivitie extends javax.swing.JFrame {
 
     private void txtPlaceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPlaceKeyTyped
         char c = evt.getKeyChar();
-        if(txtPlace.getText().length()<41){
-            if(Character.isLetter(c) || Character.isSpaceChar(c) || Character.isDigit(c)){}
-            else
+        if (txtPlace.getText().length() < 41) {
+            if (Character.isLetter(c) || Character.isSpaceChar(c) || Character.isDigit(c)) {
+            } else {
+                evt.consume();
+            }
+        } else {
             evt.consume();
-        }else
-        evt.consume();
+        }
     }//GEN-LAST:event_txtPlaceKeyTyped
 
     private void txtPlaceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPlaceFocusLost
         spPlace.setBackground(Color.white);
-        if(txtPlace.getText().trim().length() < 4 && !txtPlace.getText().trim().isEmpty()){
+        if (txtPlace.getText().trim().length() < 4 && !txtPlace.getText().trim().isEmpty()) {
             standardization.showMessage("cancel", "Dirección invalida", this);
             txtPlace.setText("");
         }
@@ -660,67 +660,70 @@ public class AddActivitie extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPlaceFocusGained
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-        if(standardization.validateDate(Integer.parseInt(txtYearStart.getText()), (cmbMonthStart.getSelectedIndex()+1),
-                Integer.parseInt(txtDayStart.getText()), false)){
+        if (standardization.validateDate(Integer.parseInt(txtYearStart.getText()), (cmbMonthStart.getSelectedIndex() + 1),
+                Integer.parseInt(txtDayStart.getText()), false)) {
             try {
                 String[] dateEventStart = classEvent.eventosShow.get(idEvent).getStartDateTime().split("-");
                 String[] dateEventEnd = classEvent.eventosShow.get(idEvent).getEndDateTime().split("-");
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                Date dateActivity =  sdf.parse(Integer.parseInt(txtYearStart.getText())+"-"+ (cmbMonthStart.getSelectedIndex()+1)+"-"+ Integer.parseInt(txtDayStart.getText()));
-                Date dateStart = sdf.parse(Integer.parseInt(dateEventStart[0])+"-"+ (dateEventStart[1])+"-"+ Integer.parseInt(dateEventStart[2]));
-                Date dateEnd = sdf.parse(Integer.parseInt(dateEventEnd[0])+"-"+ (dateEventEnd[1])+"-"+ Integer.parseInt(dateEventEnd[2]));
-                
-                if(standardization.compareDateBefore(dateStart, dateActivity) == 1){
-                    standardization.showMessage("warning","Fecha antes del evento", this);
-                    
-                }else{
+                Date dateActivity = sdf.parse(Integer.parseInt(txtYearStart.getText()) + "-" + (cmbMonthStart.getSelectedIndex() + 1) + "-" + Integer.parseInt(txtDayStart.getText()));
+                Date dateStart = sdf.parse(Integer.parseInt(dateEventStart[0]) + "-" + (dateEventStart[1]) + "-" + Integer.parseInt(dateEventStart[2]));
+                Date dateEnd = sdf.parse(Integer.parseInt(dateEventEnd[0]) + "-" + (dateEventEnd[1]) + "-" + Integer.parseInt(dateEventEnd[2]));
 
-                    if(standardization.compareDateAfer(dateEnd, dateActivity) == -1){
-                        if(!camposVacios()){
-                            String dateTime = txtYearStart.getText()+( ((cmbMonthStart.getSelectedIndex()+1)<10)?"0"+(cmbMonthStart.getSelectedIndex()+1):(cmbMonthStart.getSelectedIndex()+1) )+txtDayStart.getText()
-                                    +" "
-                                    +txtHour.getText()+":"+txtMinute.getText()+":00 "+((horary == 0)?"AM":"PM");;
-                            
+                if (standardization.compareDateBefore(dateStart, dateActivity) == 1) {
+                    standardization.showMessage("warning", "Fecha antes del evento", this);
+
+                } else {
+
+                    if (standardization.compareDateAfer(dateEnd, dateActivity) == -1) {
+                        if (!camposVacios()) {
+                            String dateTime = txtYearStart.getText() + (((cmbMonthStart.getSelectedIndex() + 1) < 10) ? "0" + (cmbMonthStart.getSelectedIndex() + 1) : (cmbMonthStart.getSelectedIndex() + 1)) + txtDayStart.getText()
+                                    + " "
+                                    + txtHour.getText() + ":" + txtMinute.getText() + ":00 " + ((horary == 0) ? "AM" : "PM");;
+
                             String activity = txtActivitie.getText();
                             String place = txtPlace.getText();
                             String description = txtDescription.getText();
                             int id = classEvent.eventosShow.get(idEvent).getId();
-                            if(classEvent.insertActivitie(dateTime, activity, place, visibility, description, id, classUsuario.getNickname())){
+                            if (classEvent.insertActivitie(dateTime, activity, place, visibility, description, id, classUsuario.getNickname())) {
                                 classEvent.selectActivity(classEvent.eventosShow.get(idEvent).getId());
                                 technonizer.TechnoNizer.home.showEventActivitiesOwner(idEvent);
                                 controller.rootFrame = technonizer.TechnoNizer.home;
                                 standardization.hide(this);
-                                standardization.showMessage("ok","Actividad ingresada", this);
+                                standardization.showMessage("ok", "Actividad ingresada", this);
+                            } else {
+                                standardization.showMessage("cancel", "No se logro ingresar", this);
                             }
-                            else
-                                standardization.showMessage("cancel","No se logro ingresar", this);
-                        }else
-                            standardization.showMessage("warning","Campos vacios", this);
-                    }else{
-                        standardization.showMessage("warning","Fecha después del evento", this);
+                        } else {
+                            standardization.showMessage("warning", "Campos vacios", this);
+                        }
+                    } else {
+                        standardization.showMessage("warning", "Fecha después del evento", this);
                     }
                 }
             } catch (ParseException ex) {
                 Logger.getLogger(AddActivitie.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
-            standardization.showMessage("warning","Fechas invalidas",this);
+        } else {
+            standardization.showMessage("warning", "Fechas invalidas", this);
         }
     }//GEN-LAST:event_btnNext1ActionPerformed
 
     private void txtActivitieKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtActivitieKeyTyped
         char c = evt.getKeyChar();
-        if(txtActivitie.getText().length()<41){
-            if(Character.isLetter(c) || Character.isSpaceChar(c) || Character.isDigit(c)){}
-            else
+        if (txtActivitie.getText().length() < 41) {
+            if (Character.isLetter(c) || Character.isSpaceChar(c) || Character.isDigit(c)) {
+            } else {
+                evt.consume();
+            }
+        } else {
             evt.consume();
-        }else
-        evt.consume();
+        }
     }//GEN-LAST:event_txtActivitieKeyTyped
 
     private void txtActivitieFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtActivitieFocusLost
         spEvent.setBackground(Color.white);
-        if(txtActivitie.getText().trim().length() < 4 && txtActivitie.getText().trim().length() > 0){
+        if (txtActivitie.getText().trim().length() < 4 && txtActivitie.getText().trim().length() > 0) {
             standardization.showMessage("cancel", "Evento invalido");
             txtActivitie.setText("");
         }
@@ -742,14 +745,16 @@ public class AddActivitie extends javax.swing.JFrame {
     private void txtHourFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHourFocusLost
         spHour.setBackground(Color.white);
         spHour.setBackground(Color.white);
-        if(Integer.parseInt(txtMinute.getText())>12)
+        if (Integer.parseInt(txtMinute.getText()) > 12) {
             txtHour.setText("");
+        }
     }//GEN-LAST:event_txtHourFocusLost
 
     private void txtHourKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHourKeyTyped
         char c = evt.getKeyChar();
-        if(txtHour.getText().length()>1 || c < '0' || c >'9')
+        if (txtHour.getText().length() > 1 || c < '0' || c > '9') {
             evt.consume();
+        }
     }//GEN-LAST:event_txtHourKeyTyped
 
     private void txtMinuteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMinuteFocusGained
@@ -758,28 +763,30 @@ public class AddActivitie extends javax.swing.JFrame {
 
     private void txtMinuteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMinuteFocusLost
         spHour.setBackground(Color.white);
-        if(Integer.parseInt(txtMinute.getText())>59)
+        if (Integer.parseInt(txtMinute.getText()) > 59) {
             txtMinute.setText("");
+        }
     }//GEN-LAST:event_txtMinuteFocusLost
 
     private void txtMinuteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMinuteKeyTyped
         char c = evt.getKeyChar();
-        if(txtMinute.getText().length()>1 || c < '0' || c >'9')
+        if (txtMinute.getText().length() > 1 || c < '0' || c > '9') {
             evt.consume();
+        }
     }//GEN-LAST:event_txtMinuteKeyTyped
 
     private void btnHoraryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoraryActionPerformed
-        if(horary == 0){
+        if (horary == 0) {
             horary = 1;
             btnHorary.setText("PM");
-        }else{
+        } else {
             horary = 0;
             btnHorary.setText("AM");
         }
     }//GEN-LAST:event_btnHoraryActionPerformed
 
     private void txtDescriptionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescriptionKeyReleased
-        
+
     }//GEN-LAST:event_txtDescriptionKeyReleased
 
     private void txtYearStartFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearStartFocusGained
@@ -792,8 +799,9 @@ public class AddActivitie extends javax.swing.JFrame {
 
     private void txtYearStartKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtYearStartKeyTyped
         char c = evt.getKeyChar();
-        if(txtYearStart.getText().length()>3 || c < '0' || c >'9')
-        evt.consume();
+        if (txtYearStart.getText().length() > 3 || c < '0' || c > '9') {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtYearStartKeyTyped
 
     private void txtDayStartFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDayStartFocusGained
@@ -806,25 +814,27 @@ public class AddActivitie extends javax.swing.JFrame {
 
     private void txtDayStartKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDayStartKeyTyped
         char c = evt.getKeyChar();
-        if(txtDayStart.getText().length()>1 || c < '0' || c >'9')
-        evt.consume();
+        if (txtDayStart.getText().length() > 1 || c < '0' || c > '9') {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtDayStartKeyTyped
 
-    boolean camposVacios(){
-        if(txtActivitie.getText().trim().isEmpty() || txtPlace.getText().trim().isEmpty() || txtDescription.getText().trim().isEmpty()
+    boolean camposVacios() {
+        if (txtActivitie.getText().trim().isEmpty() || txtPlace.getText().trim().isEmpty() || txtDescription.getText().trim().isEmpty()
                 || txtDayStart.getText().trim().isEmpty() || txtYearStart.getText().trim().isEmpty() || txtHour.getText().trim().isEmpty()
-                || txtMinute.getText().trim().isEmpty() || Integer.parseInt(txtHour.getText())>12 || Integer.parseInt(txtHour.getText()) == 0
-                || Integer.parseInt(txtMinute.getText()) > 59)
+                || txtMinute.getText().trim().isEmpty() || Integer.parseInt(txtHour.getText()) > 12 || Integer.parseInt(txtHour.getText()) == 0
+                || Integer.parseInt(txtMinute.getText()) > 59) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
-    
-    void switchVisibility(){
-        switch(visibility){
+
+    void switchVisibility() {
+        switch (visibility) {
             case 0:
                 lblStatus.setText(pr.getProperty("InActive"));
-                lblStatus.setForeground(new Color(255,61,0));
+                lblStatus.setForeground(new Color(255, 61, 0));
                 lblSwitch.setIcon(new controller().changeImage("/imagenes/toggleOff.png", 30, 30));
                 break;
             case 1:
@@ -834,8 +844,8 @@ public class AddActivitie extends javax.swing.JFrame {
                 break;
         }
     }
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Day;
     private javax.swing.JLabel Month;

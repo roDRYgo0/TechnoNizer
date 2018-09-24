@@ -127,6 +127,7 @@ idcard int references cards(id)
  color nvarchar(15),
  invitation int  not null
  )
+ alter table events add googleMaps image null
 
  create table tickets(
  id int identity(1,1) primary key not null,
