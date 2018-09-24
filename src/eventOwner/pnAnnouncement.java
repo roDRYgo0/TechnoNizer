@@ -1,18 +1,28 @@
 package eventOwner;
 
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class pnAnnouncement extends javax.swing.JPanel {
 
     int idEvent;
+    
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    Anuncios.setText(pr.getProperty("Anuncioslbl"));
+    btnNext1.setText(pr.getProperty("btnNext1Announ"));
+    }
     
     public pnAnnouncement(int idEvent) {
         initComponents();
         this.idEvent = idEvent;  
         scrollContainer.getVerticalScrollBar().setUnitIncrement(16);
         load();
+        verificaridioma();
     }
     
     void load(){

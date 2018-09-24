@@ -16,10 +16,10 @@ import sucurity.jpSecurityQuestions;
 public class jpSecurity extends javax.swing.JPanel {
 
     boolean perm;
-    
+     Properties pr = new propiedades (controller.idioma);
     void verificaridioma()
     {
-  Properties pr = new propiedades (controller.idioma);
+   pr = new propiedades (controller.idioma);
 lblSecurity.setText(pr.getProperty("lblSecurity"));
 SecondlblSecurity.setText(pr.getProperty("SecondlblSecurity"));
 SecurityQuestionslbl.setText(pr.getProperty("SecurityQuestionslbl"));
@@ -33,25 +33,25 @@ lblStatusQuestions.setText(pr.getProperty("lblStatusQuestions"));
         jpShow.setPreferredSize(new Dimension(445, 465));
         checkAccount();
         perm=true;
-        
-        load();
         verificaridioma();
+        load();
+        
     }
     
     void load(){
         
         if(classUsuario.getKeygen().equals("null")){
-            lblStatusAuthen.setText("No configurado");
+            lblStatusAuthen.setText(pr.getProperty("lblStatusQuestions"));
             lblStatusAuthen.setForeground(Color.red);
         }else{
-            lblStatusAuthen.setText("Configurado");
+            lblStatusAuthen.setText(pr.getProperty("lblStatusConfigurated"));
             lblStatusAuthen.setForeground(Color.green);
         }
         if(classSecurityQuestions.getQuestions()[0]==null){
-            lblStatusQuestions.setText("No configuradas");
+            lblStatusQuestions.setText(pr.getProperty("lblStatusQuestions"));
             lblStatusQuestions.setForeground(Color.red);
         }else{
-            lblStatusQuestions.setText("Configuradas");
+            lblStatusQuestions.setText(pr.getProperty("lblStatusConfigurated"));
             lblStatusQuestions.setForeground(Color.green);
         }
         if(classUsuario.getCondition()==1){
