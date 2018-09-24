@@ -84,7 +84,7 @@ public class SocketsClient {
             out = new DataOutputStream(sc.getOutputStream());
             out.writeUTF(instruction);
             
-            System.out.println(in.readUTF());
+            System.out.println(received(in.readUTF()));
             
             sc.close();
 
@@ -94,7 +94,7 @@ public class SocketsClient {
         }
     }
     
-    public static void received(String instruction){
+    public static String received(String instruction){
         switch(instruction){
             case "refresh events":
                 if(controller.positionPanel.equals("allEvents")){
@@ -103,6 +103,7 @@ public class SocketsClient {
                 }
                 break;
         }
+        return instruction;
     }
 
 }
