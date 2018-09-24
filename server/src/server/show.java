@@ -1,6 +1,11 @@
 package server;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.DatagramPacket;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class show extends javax.swing.JFrame {
 
@@ -45,10 +50,16 @@ public class show extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        byte[] buffer;
-        String message = "pues hola";
-        buffer = message.getBytes();
-        DatagramPacket rs = new DatagramPacket(buffer, buffer.length, server.Server.inetAddresClient, server.Server.portClient);
+        for(Socket cliente : Server.clientes){
+            try {
+                DataOutputStream out = new DataOutputStream(cliente.getOutputStream());
+                
+                out.writeUTF("Cliente activo");
+                
+            } catch (IOException ex) {
+                Logger.getLogger(show.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

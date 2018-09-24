@@ -3,9 +3,10 @@ package server;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,16 +17,15 @@ public class Server {
     static DataInputStream in;
     static DataOutputStream out;
     static final int puert = 4000;
-
-    public static InetAddress inetAddresClient;
-    public static int portClient;
+    
+    public static List<Socket> clientes = new ArrayList<>();
     
     public static void main(String[] args) {
         try {
             servidor = new ServerSocket(puert);
             while (true) {
                 Socket sc = servidor.accept();
-                
+                clientes.add(sc);
                 Thread t = new ThreadServerHandler(sc);
                 t.start();
             }
@@ -52,9 +52,6 @@ public class Server {
                 
                 String[] listen = in.readUTF().split("-");
                 System.out.println(in.readUTF());
-
-                inetAddresClient = sc.getInetAddress();
-                portClient = sc.getPort();
                 
                 out.writeUTF("buena mogro");
 
