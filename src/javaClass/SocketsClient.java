@@ -17,7 +17,7 @@ public class SocketsClient {
     static DataInputStream in;
     static DataOutputStream out;
 
-    public static String listenClient() {
+    public static String listenClients() {
 
         try {
             try (Socket sc = new Socket(hostServer, puert)) {
@@ -35,7 +35,7 @@ public class SocketsClient {
         return rs;
     }
 
-    public static String listenEvent() {
+    public static String listenEvents() {
 
         return "";
     }

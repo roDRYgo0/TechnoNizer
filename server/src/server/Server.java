@@ -3,20 +3,32 @@ package server;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Server {
+    
+    static DatagramSocket socket;
 
     static int numEvents = 0;
     static ServerSocket servidor = null;
     static DataInputStream in;
     static DataOutputStream out;
-    static final int puert = 4000;
+    static int puert = 4000;
 
+    public static InetAddress inetAddresClient;
+    public static int portClient;
+    
     public static void main(String[] args) {
+        show v = new show();
+        v.setVisible(true);
+        loadServer();
         try {
             servidor = new ServerSocket(puert);
             while (true) {
@@ -30,6 +42,14 @@ public class Server {
         }
 
     }
+    
+    static void loadServer(){
+        try {
+            socket = new DatagramSocket(4000);
+        } catch (SocketException ex) {
+            Logger.getLogger(show.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     static class ThreadServerHandler extends Thread {
         
@@ -41,15 +61,27 @@ public class Server {
 
         public void run() {
             try {
+                
 
                 in = new DataInputStream(sc.getInputStream());
                 out = new DataOutputStream(sc.getOutputStream());
                 
                 System.out.println(in.readUTF());
-                System.out.println(sc.getInetAddress());
-                System.out.println(sc.getPort());
-                out.writeUTF("recivido");
 
+                inetAddresClient = sc.getInetAddress();
+                portClient = sc.getPort();
+                
+                out.writeUTF("buena mogro");
+
+                byte[] buffer;
+            
+            String message = "pues hola";
+            buffer = message.getBytes();
+            DatagramPacket rs = new DatagramPacket(buffer, buffer.length, server.Server.inetAddresClient, server.Server.portClient);
+            System.out.println("pues sirve");
+            socket.send(rs);
+                
+                
                 sc.close();
 
             } catch (IOException ex) {
