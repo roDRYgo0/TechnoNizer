@@ -1,28 +1,20 @@
 package server;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.SocketException;
+import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class show extends javax.swing.JFrame {
 
     
-    DatagramSocket socket;
     public show() {
         initComponents();
-        loadServer();
+        
     }
 
-    void loadServer(){
-        try {
-            socket = new DatagramSocket(4000);
-        } catch (SocketException ex) {
-            Logger.getLogger(show.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -60,18 +52,17 @@ public class show extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            byte[] buffer;
-            
-            String message = "pues hola";
-            buffer = message.getBytes();
-            DatagramPacket rs = new DatagramPacket(buffer, buffer.length, server.Server.inetAddresClient, server.Server.portClient);
-            System.out.println("pues sirve");
-            socket.send(rs);
-        } catch (SocketException ex) {
-            Logger.getLogger(show.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(show.class.getName()).log(Level.SEVERE, null, ex);
+        for(Socket cliente : Server.clientes){
+            if(cliente.isConnected()){
+                try {
+                    DataOutputStream out = new DataOutputStream(cliente.getOutputStream());
+
+                    out.writeUTF("Cliente activo");
+
+                } catch (IOException ex) {
+                    Logger.getLogger(show.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

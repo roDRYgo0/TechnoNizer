@@ -28,6 +28,7 @@ public class jpProjects extends javax.swing.JPanel {
         current_personal_state = personal;
         initComponents();
         
+        classProjects.select();
         classProjects.onlyPersonal(personal);
         
         insertarPaneles(classProjects.projectsShow.size(), start);

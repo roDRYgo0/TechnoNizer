@@ -14,9 +14,10 @@ import admin.jpSecurityQuestionsAdmin;
 import admin.jpSecurityUser;
 import addEvent.addPrice;
 import addEvent.price;
+import jFrame.AddCardDetails;
 import jFrame.AddEventInfo;
-import jFrame.AddEventInfoP;
 import jFrame.AddProjectDetails;
+import jFrame.addCard;
 import jFrame.addProject;
 import jFrame.addReminderGral;
 import jFrame.addReminderGral1;
@@ -68,7 +69,8 @@ public class controller {
     public static jpSecurityQuestions jpSeQue;
     public static eventAdmin jpEvent;
     
-    
+    public static addCard addCr;
+    public static AddCardDetails addCrDetails;  
       
     public static addProject addPj;
     public static AddProjectDetails addPjDetails;

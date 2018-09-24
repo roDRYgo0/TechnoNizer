@@ -5,10 +5,11 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,10 +21,9 @@ public class Server {
     static ServerSocket servidor = null;
     static DataInputStream in;
     static DataOutputStream out;
-    static int puert = 4000;
-
-    public static InetAddress inetAddresClient;
-    public static int portClient;
+    static final int puert = 4000;
+    
+    public static List<Socket> clientes = new ArrayList<>();
     
     public static void main(String[] args) {
         show v = new show();
@@ -33,7 +33,7 @@ public class Server {
             servidor = new ServerSocket(puert);
             while (true) {
                 Socket sc = servidor.accept();
-                
+                clientes.add(sc);
                 Thread t = new ThreadServerHandler(sc);
                 t.start();
             }
@@ -67,22 +67,13 @@ public class Server {
                 out = new DataOutputStream(sc.getOutputStream());
                 
                 System.out.println(in.readUTF());
-
-                inetAddresClient = sc.getInetAddress();
-                portClient = sc.getPort();
                 
                 out.writeUTF("buena mogro");
 
                 byte[] buffer;
             
-            String message = "pues hola";
-            buffer = message.getBytes();
-            DatagramPacket rs = new DatagramPacket(buffer, buffer.length, server.Server.inetAddresClient, server.Server.portClient);
-            System.out.println("pues sirve");
-            socket.send(rs);
                 
                 
-                sc.close();
 
             } catch (IOException ex) {
                 Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
