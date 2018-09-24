@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 public class Server {
 
+    public static String res = "si";
     
     public static void main(String[] args) {
         
@@ -27,9 +28,12 @@ public class Server {
                 in = new DataInputStream(sc.getInputStream());
                 out = new DataOutputStream(sc.getOutputStream());
                 
-                System.out.println(in.readUTF());
-                out.writeUTF("Hola desde el server");
                 
+                System.out.println();
+                
+                out.writeUTF(res);
+                if("pues".equals(in.readUTF()))
+                    res="no";
                 sc.close();
                 
             }
