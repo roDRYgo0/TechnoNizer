@@ -3,6 +3,7 @@ package javaClass;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketAddress;
@@ -11,12 +12,13 @@ import java.util.logging.Logger;
 
 public class SocketsClient {
 
-    static ServerSocket servidor = null;
+    public static ServerSocket servidor = null;
     static DataInputStream in;
     static DataOutputStream out;
     static final int puert = 4001;
 
-    public static void listenClients() {
+    //<editor-fold defaultstate="collapsed" desc="Listen server">
+    public static void listenServer() {
         try {
             servidor = new ServerSocket(puert);
             while (true) {
@@ -54,6 +56,52 @@ public class SocketsClient {
             } catch (IOException ex) {
                 Logger.getLogger(SocketsClient.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+    }
+    
+//</editor-fold>
+    
+    public static String hotsAddress(){
+        try {
+            return InetAddress.getLocalHost().getHostAddress()+" // "+InetAddress.getLocalHost().getHostName();
+        } catch (IOException ex) {
+            Logger.getLogger(SocketsClient.class.getName()).log(Level.SEVERE, null, ex);
+            return "m";
+        }
+    }
+    
+    public static void sendServer(String instruction){
+        final String hostServer = "192.168.0.14";
+        final int puert = 4000;
+        
+        DataInputStream in;
+        DataOutputStream out;
+        
+        
+        try {
+            Socket sc = new Socket(hostServer, puert);
+            in = new DataInputStream(sc.getInputStream());
+            out = new DataOutputStream(sc.getOutputStream());
+            out.writeUTF(instruction);
+            
+            System.out.println(in.readUTF());
+            
+            sc.close();
+
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public static void received(String instruction){
+        switch(instruction){
+            case "refresh events":
+                if(controller.positionPanel.equals("allEvents")){
+                    classEvent.select();
+                    technonizer.TechnoNizer.home.showAllEvents(false);
+                }
+                break;
         }
     }
 
