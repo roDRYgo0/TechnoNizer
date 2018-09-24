@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -49,7 +50,8 @@ public class Server {
 
                 in = new DataInputStream(sc.getInputStream());
                 out = new DataOutputStream(sc.getOutputStream());
-                
+                SocketAddress s = sc.getRemoteSocketAddress();
+                System.out.println(s.toString());
                 String[] listen = in.readUTF().split("-");
                 System.out.println(in.readUTF());
                 

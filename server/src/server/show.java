@@ -53,7 +53,7 @@ public class show extends javax.swing.JFrame {
         for(Socket cliente : Server.clientes){
             try {
                 DataOutputStream out = new DataOutputStream(cliente.getOutputStream());
-                
+
                 out.writeUTF("Cliente activo");
                 
             } catch (IOException ex) {
