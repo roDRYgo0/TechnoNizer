@@ -22,6 +22,7 @@ public class classEvent {
     private static String nicknameCreator;
     private static byte[] profilePicture;
     private static byte[] coverPicture;
+    private static byte[] mapImage;
     private static Integer price;
     private static Integer visibility;
     private static Integer invitation;
@@ -41,9 +42,15 @@ public class classEvent {
     
     
     public static infEvent evento;
- 
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static byte[] getMapImage() {
+        return mapImage;
+    }
+
+    public static void setMapImage(byte[] mapImage) {
+        classEvent.mapImage = mapImage;
+    }
     public static Integer getInvitation() {
         return invitation;
     }
@@ -207,6 +214,7 @@ public class classEvent {
     public static boolean select(){
         boolean status = false;
         event evento;
+        eventos.clear();
         ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket, e.color, e.invitation FROM events e");
         
         try {
@@ -450,8 +458,12 @@ public class classEvent {
     
     public static boolean insert(){
         boolean status = false;
-        status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?, 1)",
+        if(mapImage == null)
+            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?, 1, "+null+")",
                 eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition, quantityTicket, place, color);
+        else
+            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?, 1, ?)",
+                eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition, quantityTicket, place, color, mapImage);
 
         
         if(status){

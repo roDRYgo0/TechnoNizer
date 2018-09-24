@@ -21,9 +21,10 @@ import properties.propiedades;
 
 public class jpAccess extends javax.swing.JPanel {
 
+    Properties pr = new propiedades (controller.idioma);
      void verificaridioma()
     {
-    Properties pr = new propiedades (controller.idioma);
+    pr = new propiedades (controller.idioma);
     AccederLabel.setText(pr.getProperty("AccesLabel"));
     NameLabelAcces.setText(pr.getProperty("NameLabel"));
     Accesoptionlabel.setText(pr.getProperty("OptionLabel"));
@@ -301,7 +302,7 @@ public class jpAccess extends javax.swing.JPanel {
                     }).start();
 
                 }else{
-                    standardization.showMessage("warning", "El usuario no existe.");
+                    standardization.showMessage("warning", pr.getProperty("Userdontexist"));
                     enable();
                 }
                     
@@ -343,7 +344,7 @@ public class jpAccess extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        classUsuario.setNickname("Alexgve7");
+        classUsuario.setNickname("dev.rodrig");
 
         ResultSet rs = methodsSQL.getExecute("SELECT password FROM users WHERE nickname = ?",classUsuario.getNickname() );
 
