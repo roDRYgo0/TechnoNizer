@@ -71,9 +71,8 @@ public class Server {
                 in = new DataInputStream(sc.getInputStream());
                 out = new DataOutputStream(sc.getOutputStream());
                 SocketAddress s = sc.getRemoteSocketAddress();
-                System.out.println(s.toString() + " la conexion");
-
-                out.writeUTF("buena mogro");
+                
+                out.writeUTF(process(in.readUTF()));
 
             } catch (IOException ex) {
                 Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
@@ -81,6 +80,18 @@ public class Server {
         }
     }
 
+    public static String process(String instruction){
+        String[] orden = instruction.split(":");
+        String result= "";
+        System.out.println(instruction);
+        switch(orden[0]){
+            case "connection from":
+                result = "Established connection with the server";
+                break;
+        }
+        return result;
+    }
+    
     public static void sendClient(String hostServer, int puert, int soc) {
 
         DataInputStream in;
