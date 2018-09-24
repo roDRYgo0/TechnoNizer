@@ -307,7 +307,6 @@ public class AddAnnouncement extends javax.swing.JFrame {
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
         if(!txtDescription.getText().trim().isEmpty()){
             if(classEvent.insertAnnouncement(txtDescription.getText().trim(), 1, publicGoal, visibility, classUsuario.getNickname(), classEvent.eventosShow.get(idEvent).getId())){
-                classEvent.announcements.clear();
                 classEvent.selectActivity(classEvent.eventosShow.get(idEvent).getId());
                 technonizer.TechnoNizer.home.showEventAnnoucementsOwner(idEvent);
                 controller.rootFrame = technonizer.TechnoNizer.home;

@@ -28,13 +28,13 @@ public class task extends javax.swing.JPanel {
     }
     
     void load(){
-        total = classEvent.tasks.size()*1.0;
-        for(int i = 0; i < classEvent.tasks.size(); i++){
-            if(classEvent.tasks.get(i).getCondition() == 1)
+        total = classEvent.evento.getTasks().size()*1.0;
+        for(int i = 0; i < classEvent.evento.getTasks().size(); i++){
+            if(classEvent.evento.getTasks().get(i).getCondition() == 1)
                 complete++;
         }
-        for(int i = 0; i < classEvent.tasks.size(); i++){
-            if(classEvent.tasks.get(i).getCondition() == 0){
+        for(int i = 0; i < classEvent.evento.getTasks().size(); i++){
+            if(classEvent.evento.getTasks().get(i).getCondition() == 0){
                 this.add(new taskMenu(i, idEvent));
                 count ++;
                 if(count == 8){

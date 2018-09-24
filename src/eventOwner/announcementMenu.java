@@ -24,8 +24,8 @@ public class announcementMenu extends javax.swing.JPanel {
     
     void load(){
         
-        for(int i = 0; i < classEvent.announcements.size(); i++){
-            if(classEvent.announcements.get(i).getCondition() == 1){
+        for(int i = 0; i < classEvent.evento.getAnnouncements().size(); i++){
+            if(classEvent.evento.getAnnouncements().get(i).getCondition() == 1){
                 this.add(new showAnnouncementMenu(i, idEvent));
             }
         }

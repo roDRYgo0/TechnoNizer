@@ -1,5 +1,6 @@
 package jFrame;
 
+import eventOwner.jpEvent;
 import JPanel.*;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -954,23 +955,23 @@ public final class home extends javax.swing.JFrame {
     public void showEventPP(int e, boolean load){
         disable();
         pnAgenda.setBackground(new Color(52, 52, 52));
-        eventOwner.eventAdminP event = new eventOwner.eventAdminP(e, load);
+        allEvent.eventAdminP event = new allEvent.eventAdminP(e, load);
         event.setLocation(0,0);
 
         scrollContainer.setViewportView(event);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
-    public void showEventMod(int e, boolean load){
-        disable();
-        pnEvents.setBackground(new Color(52, 52, 52));
-        eventOwner.eventMod event = new eventOwner.eventMod(e, load);
-        event.setLocation(0,0);
-
-        scrollContainer.setViewportView(event);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
-    }
+//    public void showEventMod(int e, boolean load){
+//        disable();
+//        pnEvents.setBackground(new Color(52, 52, 52));
+//        eventOwner.eventMod event = new eventOwner.eventMod(e, load);
+//        event.setLocation(0,0);
+//
+//        scrollContainer.setViewportView(event);
+//        scrollContainer.revalidate();
+//        scrollContainer.repaint();
+//    }
     
 
     //</editor-fold>

@@ -1,16 +1,29 @@
 package eventOwner;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.event;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class preferences extends javax.swing.JPanel {
 
     int idEvent;
     int visibility;
+    
+    void verificaridioma()
+    {
+    Properties pr= new propiedades(controller.idioma);
+    lblpreference1.setText(pr.getProperty("lblpreference1"));
+    lblpreference2.setText(pr.getProperty("lblpreference2"));
+    lblpreference3.setText(pr.getProperty("lblpreference3"));
+    rbtnPublico.setText(pr.getProperty("rbtnPublicoPreference"));
+    rbtnSolicitud.setText(pr.getProperty("rbtnSolicitudPreference"));
+    rbtnInvitacion.setText(pr.getProperty("rbtnInvitacionPreference"));
+    }
     
     public preferences(int idEvent) {
         initComponents();
@@ -19,7 +32,7 @@ public class preferences extends javax.swing.JPanel {
         switchVisibility();     
         member();
         invitation();
-        
+        verificaridioma();
     }
     
     void invitation(){
@@ -155,7 +168,7 @@ public class preferences extends javax.swing.JPanel {
         icon12 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         icon9 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblpreference1 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jPanel22 = new javax.swing.JPanel();
         icon15 = new javax.swing.JLabel();
@@ -182,10 +195,10 @@ public class preferences extends javax.swing.JPanel {
         icon8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         icon1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblpreference2 = new javax.swing.JLabel();
         lblVisibility = new javax.swing.JLabel();
         lblSwitch = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblpreference3 = new javax.swing.JLabel();
         rbtnPublico = new javax.swing.JRadioButton();
         rbtnSolicitud = new javax.swing.JRadioButton();
         rbtnInvitacion = new javax.swing.JRadioButton();
@@ -270,9 +283,9 @@ public class preferences extends javax.swing.JPanel {
             .addComponent(icon9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel7.setText("Preferencias");
+        lblpreference1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblpreference1.setForeground(new java.awt.Color(153, 153, 153));
+        lblpreference1.setText("Preferencias");
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -579,8 +592,8 @@ public class preferences extends javax.swing.JPanel {
             .addComponent(icon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel6.setText("Visibilidad");
+        lblpreference2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblpreference2.setText("Visibilidad");
 
         lblVisibility.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblVisibility.setText("Visible");
@@ -591,8 +604,8 @@ public class preferences extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel9.setText("Tipo de assistencia");
+        lblpreference3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblpreference3.setText("Tipo de asistencia");
 
         rbtnPublico.setBackground(new java.awt.Color(255, 255, 255));
         groupInvitation.add(rbtnPublico);
@@ -641,7 +654,7 @@ public class preferences extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jLabel7))
+                                .addComponent(lblpreference1))
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
@@ -687,9 +700,9 @@ public class preferences extends javax.swing.JPanel {
                                 .addComponent(rbtnInvitacion))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
+                                    .addComponent(lblpreference2)
                                     .addComponent(lblVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9))
+                                    .addComponent(lblpreference3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -698,7 +711,7 @@ public class preferences extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblpreference1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -727,13 +740,13 @@ public class preferences extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(lblpreference2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblVisibility)
                         .addGap(11, 11, 11))
                     .addComponent(lblSwitch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addComponent(jLabel9)
+                .addComponent(lblpreference3)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbtnPublico)
@@ -904,10 +917,7 @@ public class preferences extends javax.swing.JPanel {
     private javax.swing.JLabel icon7;
     private javax.swing.JLabel icon8;
     private javax.swing.JLabel icon9;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
@@ -926,6 +936,9 @@ public class preferences extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel lblSwitch;
     private javax.swing.JLabel lblVisibility;
+    private javax.swing.JLabel lblpreference1;
+    private javax.swing.JLabel lblpreference2;
+    private javax.swing.JLabel lblpreference3;
     private javax.swing.JRadioButton rbtnInvitacion;
     private javax.swing.JRadioButton rbtnPublico;
     private javax.swing.JRadioButton rbtnSolicitud;

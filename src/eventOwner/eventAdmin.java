@@ -6,6 +6,7 @@ import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.event;
+import javaClass.infEvent;
 import javaClass.standardization;
 import properties.propiedades;
 
@@ -34,13 +35,13 @@ public class eventAdmin extends javax.swing.JPanel {
     
     public void load(event event, boolean load){
         if(load){
-            classEvent.activities.clear();
+            classEvent.evento = new infEvent();
             classEvent.selectActivity(event.getId());
-            classEvent.tasks.clear();
+
             classEvent.selectTasks(event.getId());
-            classEvent.problems.clear();
+
             classEvent.selectProblems(event.getId());
-            classEvent.announcements.clear();
+
             classEvent.selectAnnouncement(event.getId());
         }
         
@@ -99,9 +100,9 @@ public class eventAdmin extends javax.swing.JPanel {
     
     double lost(){
         double lost = 0.0;
-        for(int i = 0; i < classEvent.tasks.size(); i++){
-            if(classEvent.tasks.get(i).getCondition()==1){
-                lost+=classEvent.tasks.get(i).getPrice();
+        for(int i = 0; i < classEvent.evento.getTasks().size(); i++){
+            if(classEvent.evento.getTasks().get(i).getCondition()==1){
+                lost+=classEvent.evento.getTasks().get(i).getPrice();
             }
         }
         return lost;
@@ -145,8 +146,8 @@ public class eventAdmin extends javax.swing.JPanel {
         int size;
         int count = 0;
         
-        for(int i = 0; i < classEvent.problems.size(); i++){
-            if(classEvent.problems.get(i).getCondition() == 0)
+        for(int i = 0; i < classEvent.evento.getProblems().size(); i++){
+            if(classEvent.evento.getProblems().get(i).getCondition() == 0)
                 count++;
         }
         size = (count <1 ) ? 0 : count * 47;
@@ -163,8 +164,8 @@ public class eventAdmin extends javax.swing.JPanel {
         int size;
         int count = 0;
         
-        for(int i = 0; i < classEvent.announcements.size(); i++){
-            if(classEvent.announcements.get(i).getCondition() == 1)
+        for(int i = 0; i < classEvent.evento.getAnnouncements().size(); i++){
+            if(classEvent.evento.getAnnouncements().get(i).getCondition() == 1)
                 count++;
         }
         size = (count <1 ) ? 0 : count * 47;

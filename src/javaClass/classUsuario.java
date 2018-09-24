@@ -388,6 +388,7 @@ public class classUsuario {
     public static void numEvents(){
         classEvent.restart();
         classEvent.select();
+        System.out.println("eventos listos");
         myNumberEventUse = 0;
         for(event e : classEvent.eventos){
             if(e.getNicknameCreator().equals(classUsuario.getNickname()))

@@ -20,7 +20,7 @@ public class placeMenu extends javax.swing.JPanel {
     void verificaridioma()
     {
         Properties pr=new propiedades(controller.idioma);
-        lblplace1.setText(pr.getProperty("lblPlace1"));
+        lblplace1.setText(pr.getProperty("lblplace1"));
         lblMap.setText(pr.getProperty("lblMap"));
     }
     

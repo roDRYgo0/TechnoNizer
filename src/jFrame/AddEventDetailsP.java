@@ -1,7 +1,7 @@
 package jFrame;
 
-import event.allPrice;
-import event.lockedPrices;
+import addEvent.allPrice;
+import addEvent.lockedPrices;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Properties;

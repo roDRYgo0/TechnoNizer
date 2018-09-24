@@ -23,13 +23,13 @@ public class showTask extends javax.swing.JPanel {
     }
     
     void load(int id){
-        lblTask.setText(classEvent.tasks.get(id).getTask());
-        lblNickname.setText(classEvent.tasks.get(id).getNickname());
-        if(classEvent.tasks.get(id).getPrice() == 0.0)
+        lblTask.setText(classEvent.evento.getTasks().get(id).getTask());
+        lblNickname.setText(classEvent.evento.getTasks().get(id).getNickname());
+        if(classEvent.evento.getTasks().get(id).getPrice() == 0.0)
             iconPrice.setIcon(null);        
         else
-            iconPrice.setText("$"+classEvent.tasks.get(id).getPrice());
-        status = classEvent.tasks.get(id).getCondition();
+            iconPrice.setText("$"+classEvent.evento.getTasks().get(id).getPrice());
+        status = classEvent.evento.getTasks().get(id).getCondition();
         switchStatus();
     }
 
@@ -166,7 +166,7 @@ public class showTask extends javax.swing.JPanel {
             status = 0;
             switchStatus();
         }
-        if(classEvent.updateTask(classEvent.tasks.get(idTask).getId(), status)){
+        if(classEvent.updateTask(classEvent.evento.getTasks().get(idTask).getId(), status)){
             new Thread(()->{
                     technonizer.TechnoNizer.home.showLoad();
                     technonizer.TechnoNizer.home.showEventTaskOwner(idEvent);
@@ -177,7 +177,7 @@ public class showTask extends javax.swing.JPanel {
     }//GEN-LAST:event_lblSwitchSMouseReleased
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-        if(classEvent.deleteTask(classEvent.tasks.get(idTask).getId())){
+        if(classEvent.deleteTask(classEvent.evento.getTasks().get(idTask).getId())){
             new Thread(()->{
                     technonizer.TechnoNizer.home.showLoad();
                     technonizer.TechnoNizer.home.showEventTaskOwner(idEvent);

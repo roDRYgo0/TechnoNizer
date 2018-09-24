@@ -1,1 +1,4 @@
 /dist/
+/server/nbproject/private/
+/server/dist/
+/server/build/

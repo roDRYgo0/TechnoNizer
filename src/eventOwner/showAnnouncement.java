@@ -1,12 +1,22 @@
 package eventOwner;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class showAnnouncement extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr= new propiedades(controller.idioma);
+    lblShowAnnouncement1.setText(pr.getProperty("lblShowAnnouncement1"));
+    lblShowAnnouncement2.setText(pr.getProperty("lblShowAnnouncement2"));
+    btnNext.setText(pr.getProperty("btnNextShoAnnoun"));
+    }
+    
     int visibility;
     int idAnnoun, idEvent;
     
@@ -14,20 +24,21 @@ public class showAnnouncement extends javax.swing.JPanel {
         initComponents();
         this.idAnnoun = idAnnoun;
         this.idEvent = idEvent;
-        txtDescription.setText(classEvent.announcements.get(idAnnoun).getAnnouncement());
-        visibility = classEvent.announcements.get(idAnnoun).getCondition();
+        txtDescription.setText(classEvent.evento.getAnnouncements().get(idAnnoun).getAnnouncement());
+        visibility = classEvent.evento.getAnnouncements().get(idAnnoun).getCondition();
         switchVisibility();
+        verificaridioma();
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel14 = new javax.swing.JLabel();
+        lblShowAnnouncement1 = new javax.swing.JLabel();
         txtDescription = new javax.swing.JTextArea();
         lblSwitch = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        lblShowAnnouncement2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnNext = new javax.swing.JButton();
 
@@ -36,9 +47,9 @@ public class showAnnouncement extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(311, 0));
         setPreferredSize(new java.awt.Dimension(311, 163));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel14.setText("Anuncio");
+        lblShowAnnouncement1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblShowAnnouncement1.setForeground(new java.awt.Color(102, 102, 102));
+        lblShowAnnouncement1.setText("Anuncio");
 
         txtDescription.setRows(2);
         txtDescription.setAutoscrolls(false);
@@ -70,10 +81,10 @@ public class showAnnouncement extends javax.swing.JPanel {
         lblStatus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblStatus.setText("Activo");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel15.setText("Visibilidad");
+        lblShowAnnouncement2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblShowAnnouncement2.setForeground(new java.awt.Color(102, 102, 102));
+        lblShowAnnouncement2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblShowAnnouncement2.setText("Visibilidad");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -114,34 +125,33 @@ public class showAnnouncement extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblShowAnnouncement2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18))))
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblShowAnnouncement1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(lblShowAnnouncement1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel15)
+                        .addComponent(lblShowAnnouncement2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblSwitch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -163,7 +173,7 @@ public class showAnnouncement extends javax.swing.JPanel {
             visibility = 0;
             switchVisibility();
         }
-        if(classEvent.updateAnnouncement(visibility, classEvent.announcements.get(idAnnoun).getId()))
+        if(classEvent.updateAnnouncement(visibility, classEvent.evento.getAnnouncements().get(idAnnoun).getId()))
             standardization.showMessage("ok","Anuncio actualizado");
         else
             standardization.showMessage("cancel","Anuncio no actualizado");
@@ -171,8 +181,7 @@ public class showAnnouncement extends javax.swing.JPanel {
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         if(!txtDescription.getText().trim().isEmpty()){
-            if(classEvent.deleteAnnouncement(classEvent.announcements.get(idAnnoun).getId())){
-                classEvent.announcements.clear();
+            if(classEvent.deleteAnnouncement(classEvent.evento.getAnnouncements().get(idAnnoun).getId())){
                 classEvent.selectActivity(classEvent.eventosShow.get(idEvent).getId());
                 technonizer.TechnoNizer.home.showEventAnnoucementsOwner(idEvent);
                 controller.rootFrame = technonizer.TechnoNizer.home;
@@ -205,9 +214,9 @@ void switchVisibility(){
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblShowAnnouncement1;
+    private javax.swing.JLabel lblShowAnnouncement2;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblSwitch;
     private javax.swing.JTextArea txtDescription;

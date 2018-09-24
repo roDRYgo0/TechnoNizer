@@ -2,16 +2,25 @@ package eventOwner;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.event;
 import javaClass.staff;
 import javaClass.standardization;
+import properties.propiedades;
 
 
 public class showEvent extends javax.swing.JPanel {
 
+    Properties pr = new propiedades(controller.idioma);
+    
+    void verificaridioma()
+    {
+    lblEventName1.setText(pr.getProperty("lblEventName1"));
+    }
+    
     int count;
     int evento;
     int position;
@@ -21,6 +30,7 @@ public class showEvent extends javax.swing.JPanel {
         count = 0;
         evento = e;
         load(e);
+        verificaridioma();
     }
 
     void load(int e){
@@ -68,22 +78,22 @@ public class showEvent extends javax.swing.JPanel {
                 lblPrice.setText("$"+ev.getPrices().get(0).getPrice());
         }     
         else
-            lblPrice.setText("Vacio");
+            lblPrice.setText(pr.getProperty("ShoweventEmpty"));
         if(ev.getQuantityTicket() == -1)
-            lblNumGuest.setText("Ilimitadas");
+            lblNumGuest.setText(pr.getProperty("UnlimitedEvent"));
         else
             lblNumGuest.setText(ev.getQuantityTicket()-numGuest()+"");
         if(standardization.currentDate().compareTo(standardization.getDate(ev.getStartDateTime())) == 0){
-            lblDays.setText("Hoy");
+            lblDays.setText(pr.getProperty("TodayEvent"));
             lblDays.setForeground(Color.red);
             Font f= new Font("Arial", Font.BOLD, 11);
             lblDays.setFont(f);
         }                            
         else{
             if(standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getStartDateTime())) < 0)
-                lblDays.setText("Hace "+(-1*standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getStartDateTime())))+" días");
+                lblDays.setText(pr.getProperty("HaceEvent")+" "+(-1*standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getStartDateTime())))+" "+pr.getProperty("DaysEventCreate"));
             else
-                lblDays.setText(standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getStartDateTime()))+" días");
+                lblDays.setText(standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getStartDateTime()))+" "+pr.getProperty("DaysEventCreate"));
         }
         numGuest();
     }
@@ -286,19 +296,7 @@ public class showEvent extends javax.swing.JPanel {
         new Thread(()->{
             technonizer.TechnoNizer.home.showLoad();
             classEvent.position = position;
-            switch(position){
-                case 1:
-                    System.out.println("khaa");
-                    technonizer.TechnoNizer.home.showEventOwner(evento, true);
-                    break;
-                case 2:
-                    System.out.println("mod");
-                    technonizer.TechnoNizer.home.showEventOwner(evento, true);
-                    break;
-                default:
-                    technonizer.TechnoNizer.home.showEventOwner(evento, true);
-                    break;
-            }
+            technonizer.TechnoNizer.home.showEventOwner(evento, true);
         }).start();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
