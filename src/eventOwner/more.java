@@ -1,13 +1,25 @@
 package eventOwner;
 
+import java.util.Properties;
+import javaClass.controller;
+import properties.propiedades;
+
 public class more extends javax.swing.JPanel {
 
     int idEvent, num;
+    
+    void verificaridioma()
+    {
+    Properties pr= new propiedades(controller.idioma);
+    jLabel1.setText(pr.getProperty("jLabel1More"));
+    
+    }
     
     public more(int idEvent, int num) {
         initComponents();
         this.idEvent = idEvent;
         this.num = num;
+        verificaridioma();
     }
 
 

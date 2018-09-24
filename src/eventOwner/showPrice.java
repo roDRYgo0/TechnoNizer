@@ -1,19 +1,34 @@
 package eventOwner;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.classUsuario;
+import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 /** @author rodri */
 
 public class showPrice extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr= new propiedades(controller.idioma);
+    ShowPricelbl1.setText(pr.getProperty("ShowPricelbl1"));
+    ShowPricelbl2.setText(pr.getProperty("ShowPricelbl2"));
+    ShowPricelbl3.setText(pr.getProperty("ShowPricelbl3"));
+    ShowPricelbl4.setText(pr.getProperty("ShowPricelbl4"));
+    ShowPricelbl5.setText(pr.getProperty("ShowPricelbl5"));
+    btnNext.setText(pr.getProperty("btnNextShop"));
+    }
+    
     int idPrice;
     int idEvent;
     
     public showPrice(int idPrice, int idEvent) {
         initComponents();
+        verificaridioma();
         this.idPrice = idPrice;
         this.idEvent = idEvent;
         txtNamePrice.setText(classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getName());
@@ -52,20 +67,20 @@ public class showPrice extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
+        ShowPricelbl1 = new javax.swing.JLabel();
         txtNamePrice = new javax.swing.JTextField();
         spNamePrice = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
+        ShowPricelbl2 = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
         spPrice = new javax.swing.JSeparator();
         btnNext = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        ShowPricelbl3 = new javax.swing.JLabel();
         txtCount = new javax.swing.JTextField();
         spCount = new javax.swing.JSeparator();
-        jLabel7 = new javax.swing.JLabel();
+        ShowPricelbl4 = new javax.swing.JLabel();
         txtAvailable = new javax.swing.JTextField();
         spCount1 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
+        ShowPricelbl5 = new javax.swing.JLabel();
         txtUse = new javax.swing.JTextField();
         spCount2 = new javax.swing.JSeparator();
 
@@ -74,9 +89,9 @@ public class showPrice extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(485, 45));
         setPreferredSize(new java.awt.Dimension(485, 45));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Nombre");
+        ShowPricelbl1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        ShowPricelbl1.setForeground(new java.awt.Color(102, 102, 102));
+        ShowPricelbl1.setText("Nombre");
 
         txtNamePrice.setAutoscrolls(false);
         txtNamePrice.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -100,9 +115,9 @@ public class showPrice extends javax.swing.JPanel {
 
         spNamePrice.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("Precio");
+        ShowPricelbl2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        ShowPricelbl2.setForeground(new java.awt.Color(102, 102, 102));
+        ShowPricelbl2.setText("Precio");
 
         txtPrice.setAutoscrolls(false);
         txtPrice.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -142,9 +157,9 @@ public class showPrice extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("Cantidad");
+        ShowPricelbl3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        ShowPricelbl3.setForeground(new java.awt.Color(102, 102, 102));
+        ShowPricelbl3.setText("Cantidad");
 
         txtCount.setText("Ilimitados");
         txtCount.setAutoscrolls(false);
@@ -169,9 +184,9 @@ public class showPrice extends javax.swing.JPanel {
 
         spCount.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Disponibles");
+        ShowPricelbl4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        ShowPricelbl4.setForeground(new java.awt.Color(102, 102, 102));
+        ShowPricelbl4.setText("Disponibles");
 
         txtAvailable.setForeground(new java.awt.Color(0, 153, 0));
         txtAvailable.setText("ilimitados");
@@ -197,9 +212,9 @@ public class showPrice extends javax.swing.JPanel {
 
         spCount1.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("En uso");
+        ShowPricelbl5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        ShowPricelbl5.setForeground(new java.awt.Color(102, 102, 102));
+        ShowPricelbl5.setText("En uso");
 
         txtUse.setForeground(new java.awt.Color(204, 0, 0));
         txtUse.setText("Ilimitados");
@@ -232,27 +247,27 @@ public class showPrice extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4)
+                    .addComponent(ShowPricelbl1)
                     .addComponent(txtNamePrice, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                     .addComponent(spNamePrice))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ShowPricelbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtPrice)
                     .addComponent(spPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ShowPricelbl3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(spCount)
                     .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ShowPricelbl4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(spCount1)
                     .addComponent(txtAvailable, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ShowPricelbl5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(spCount2)
                     .addComponent(txtUse, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
@@ -267,31 +282,31 @@ public class showPrice extends javax.swing.JPanel {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(ShowPricelbl2)
                         .addGap(0, 0, 0)
                         .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(spPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(ShowPricelbl3)
                         .addGap(0, 0, 0)
                         .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(spCount, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createSequentialGroup()
-                    .addComponent(jLabel4)
+                    .addComponent(ShowPricelbl1)
                     .addGap(0, 0, 0)
                     .addComponent(txtNamePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, 0)
                     .addComponent(spNamePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel7)
+                .addComponent(ShowPricelbl4)
                 .addGap(0, 0, 0)
                 .addComponent(txtAvailable, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(spCount1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel8)
+                .addComponent(ShowPricelbl5)
                 .addGap(0, 0, 0)
                 .addComponent(txtUse, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -390,12 +405,12 @@ public class showPrice extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ShowPricelbl1;
+    private javax.swing.JLabel ShowPricelbl2;
+    private javax.swing.JLabel ShowPricelbl3;
+    private javax.swing.JLabel ShowPricelbl4;
+    private javax.swing.JLabel ShowPricelbl5;
     private javax.swing.JButton btnNext;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator spCount;
     private javax.swing.JSeparator spCount1;
     private javax.swing.JSeparator spCount2;

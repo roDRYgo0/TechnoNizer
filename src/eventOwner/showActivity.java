@@ -1,17 +1,27 @@
 package eventOwner;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class showActivity extends javax.swing.JPanel {
 
     int visibility;
     int idActivity, idEvent;
+    Properties pr= new propiedades(controller.idioma);
+    
+    void verificaridioma()
+    {
+     pr= new propiedades(controller.idioma);
+     btnNext1.setText(pr.getProperty("btnNext1DeleteActivitie"));
+    }
     
     public showActivity(int idActivity, int idEvent) {
         initComponents();
+        verificaridioma();
         this.idActivity = idActivity;
         this.idEvent = idEvent;
         txtDescription.setLineWrap(true);
@@ -209,12 +219,12 @@ public class showActivity extends javax.swing.JPanel {
     void switchVisibility(){
         switch(visibility){
             case 0:
-                lblStatus.setText("Inactivo");
+                lblStatus.setText(pr.getProperty("InActive"));
                 lblStatus.setForeground(new Color(255,61,0));
                 lblSwitch.setIcon(new controller().changeImage("/imagenes/toggleOff.png", 30, 30));
                 break;
             case 1:
-                lblStatus.setText("Activo");
+                lblStatus.setText(pr.getProperty("Active"));
                 lblStatus.setForeground(new Color(139, 195, 74));
                 lblSwitch.setIcon(new controller().changeImage("/imagenes/toggleOn.png", 30, 30));
                 break;

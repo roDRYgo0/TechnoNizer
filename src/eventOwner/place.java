@@ -24,7 +24,7 @@ public class place extends javax.swing.JPanel {
     void verificaridioma()
     {
         Properties pr=new propiedades(controller.idioma);
-        lblPlace.setText(pr.getProperty("lblPlace"));
+        lblplace.setText(pr.getProperty("lblPlace"));
         lblMap.setText(pr.getProperty("lblMap"));
         btnNext1.setText(pr.getProperty("btnNext1Map"));
     }
