@@ -1,20 +1,10 @@
 package server;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class show extends javax.swing.JFrame {
 
-    
     public show() {
         initComponents();
-        
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -52,16 +42,11 @@ public class show extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        for(Socket cliente : Server.clientes){
-            if(cliente.isConnected()){
-                try {
-                    DataOutputStream out = new DataOutputStream(cliente.getOutputStream());
+        for(int i = 0; i<Server.clientes.size(); i++){
+            if (Server.clientes.get(i) != null) {
 
-                    out.writeUTF("Cliente activo");
+                Server.sendClient(Server.clientes.get(i).getInetAddress().getHostAddress(), 4001, i);
 
-                } catch (IOException ex) {
-                    Logger.getLogger(show.class.getName()).log(Level.SEVERE, null, ex);
-                }
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
