@@ -10,8 +10,11 @@ import java.util.logging.Logger;
 
 public class Server {
 
+    static int numEvents = 0;
     
     public static void main(String[] args) {
+        
+        
         
         ServerSocket servidor = null;
         Socket sc = null;
@@ -27,8 +30,10 @@ public class Server {
                 in = new DataInputStream(sc.getInputStream());
                 out = new DataOutputStream(sc.getOutputStream());
                 
+                String[] listen = in.readUTF().split("-");
                 System.out.println(in.readUTF());
-                out.writeUTF("Hola desde el server");
+                
+                out.writeUTF(listenOut(listen[0]));
                 
                 sc.close();
                 
@@ -38,6 +43,22 @@ public class Server {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }
+    
+    public static String listenOut(String listenIn){
+        String rs = "";
+        switch(listenIn){
+            case "insert event":
+                rs = "update event";
+                numEvents++;
+                break;
+            case "numEvent":
+                rs = numEvents+"";
+                break;
+            default:
+                break;
+        }
+        return rs;
     }
     
 }
