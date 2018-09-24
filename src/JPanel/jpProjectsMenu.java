@@ -411,6 +411,7 @@ public class jpProjectsMenu extends javax.swing.JPanel {
 
      void load(){
     
+        classProjects.select();
         txtCreated.setText(classProjects.projects.size()+"");
         
         int ActiveE = 0;

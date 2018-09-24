@@ -3,22 +3,25 @@ package projectAdmin;
 import eventOwner.footer;
 import java.awt.Dimension;
 import javaClass.Project;
+import javaClass.classCards;
 import javaClass.classProjects;
 import javaClass.classUsuario;
 import javaClass.standardization;
 
 public class projectAdmin extends javax.swing.JPanel {
 
-    int idProject;
+    int indexProject, idProject;
     
-    public projectAdmin(int idProject) {
+    public projectAdmin(int indexProject) {
         initComponents();
-        this.idProject = idProject;
+        this.indexProject = indexProject;
         scrollContainer.getVerticalScrollBar().setUnitIncrement(16);
-        load(classProjects.projectsShow.get(idProject));
+        load(classProjects.projectsShow.get(indexProject));
     }
     
     void load(Project project){
+        
+        this.idProject = project.getId();
         lblEventName.setText(project.getName());     
         lblNickname.setText(project.getNickname());
 
@@ -36,13 +39,13 @@ public class projectAdmin extends javax.swing.JPanel {
     }
     
     void loadMenu(){
-        pnContainer.add(new pnMenu(idProject));
+        pnContainer.add(new pnMenu(indexProject));
         pnContainer.revalidate();
         pnContainer.repaint();
     }
 
     void loadStaff(Project project){     
-        pnTeams pS = new pnTeams(idProject);
+        pnTeams pS = new pnTeams(indexProject);
         int size = 0;
         if(project.getMembers()!= null)
             size = (project.getMembers().size() <= 1) ? 1 : (project.getMembers().size() -1) * 50;
@@ -76,6 +79,7 @@ public class projectAdmin extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         lblDescription = new javax.swing.JLabel();
+        btnCards = new javax.swing.JButton();
 
         scrollContainer.setBorder(null);
 
@@ -160,6 +164,18 @@ public class projectAdmin extends javax.swing.JPanel {
         lblDescription.setText("Not found");
         lblDescription.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
+        btnCards.setBackground(new java.awt.Color(97, 189, 79));
+        btnCards.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        btnCards.setForeground(new java.awt.Color(255, 255, 255));
+        btnCards.setText("Tarjetas");
+        btnCards.setBorderPainted(false);
+        btnCards.setFocusable(false);
+        btnCards.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCardsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -171,11 +187,14 @@ public class projectAdmin extends javax.swing.JPanel {
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 905, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 807, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCards, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,7 +204,9 @@ public class projectAdmin extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCards, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -211,8 +232,14 @@ public class projectAdmin extends javax.swing.JPanel {
         technonizer.TechnoNizer.home.showYourProjects(false);
     }//GEN-LAST:event_jPanel8MouseReleased
 
+    private void btnCardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCardsActionPerformed
+        classCards.idproject = idProject;
+        technonizer.TechnoNizer.home.showYourCards();
+    }//GEN-LAST:event_btnCardsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCards;
     private javax.swing.JLabel iconCover;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel6;
