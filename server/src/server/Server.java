@@ -85,7 +85,7 @@ public class Server {
         String result= "";
         System.out.println(instruction);
         switch(orden[0]){
-            case "connection from":
+            case "connection from": 
                 result = "Established connection with the server";
                 break;
         }
