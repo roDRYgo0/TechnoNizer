@@ -3,6 +3,7 @@ package server;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -16,8 +17,12 @@ public class Server {
     static DataOutputStream out;
     static final int puert = 4000;
 
+    public static InetAddress inetAddresClient;
+    public static int portClient;
+    
     public static void main(String[] args) {
         try {
+            servidor = new ServerSocket(puert);
             while (true) {
                 Socket sc = servidor.accept();
                 
@@ -40,7 +45,7 @@ public class Server {
 
         public void run() {
             try {
-                servidor = new ServerSocket(puert);
+                
 
                 in = new DataInputStream(sc.getInputStream());
                 out = new DataOutputStream(sc.getOutputStream());
@@ -48,7 +53,10 @@ public class Server {
                 String[] listen = in.readUTF().split("-");
                 System.out.println(in.readUTF());
 
-                out.writeUTF("recivido");
+                inetAddresClient = sc.getInetAddress();
+                portClient = sc.getPort();
+                
+                out.writeUTF("buena mogro");
 
                 sc.close();
 
