@@ -2,6 +2,7 @@ package jFrame;
 
 import eventOwner.jpEvent;
 import JPanel.*;
+import cards.crCards;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -1230,6 +1231,18 @@ public final class home extends javax.swing.JFrame {
         controller.jpSe.setLocation(0, 0);
         
         scrollContainer.setViewportView(controller.jpSe);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
+    public void showYourCards(){
+        disable();
+        pnProj.setBackground(new Color(52, 52, 52));
+        crCards jpP = new crCards();
+        jpP.setPreferredSize(new Dimension(980,601));
+        jpP.setLocation(0,0);
+
+        scrollContainer.setViewportView(jpP);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }

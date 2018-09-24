@@ -11,50 +11,14 @@ package javaClass;
  */
 public class classChecklist {
 
-    
-    
-    private static Integer id;
-    private static String title;
-    private static Integer idBelongs;
-    private static Integer condition;
-    
-    
-    //<editor-fold defaultstate="collapsed" desc="Getter y Setter">
-    
-
-    public static Integer getId() {
-        return id;
-    }
-
-    public static void setId(Integer id) {
-        classChecklist.id = id;
-    }
-
-    public static String getTitle() {
-        return title;
-    }
-
-    public static void setTitle(String title) {
-        classChecklist.title = title;
-    }
-
-    public static Integer getIdBelongs() {
-        return idBelongs;
-    }
-
-    public static void setIdBelongs(Integer idBelongs) {
-        classChecklist.idBelongs = idBelongs;
-    }
-
-    public static Integer getCondition() {
-        return condition;
-    }
-
-    public static void setCondition(Integer condition) {
-        classChecklist.condition = condition;
-    }
-    //</editor-fold>
-    
-    
+    public Integer id;
+    public String title;
+    public Boolean checked;
+    public Integer idcard;
   
+    public boolean insert(){        
+        return methodsSQL.execute("insert into checklist values (?,?,?)", 
+            title, checked, idcard);
+    }
+    
 }

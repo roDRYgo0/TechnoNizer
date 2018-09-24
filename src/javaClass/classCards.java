@@ -5,82 +5,56 @@
  */
 package javaClass;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Lenovo
  */
 public class classCards {
 
-      private static Integer id;
-    private static String title;
-    private static Integer members;
-    private static String expiration;
-    private static Integer condition;
-    private static Integer idLists;
-    private static Integer idTags;
+    public static Integer idproject;
     
+    public static List<Card> cards = new ArrayList<>();
+    public static List<Card> cardsSearch = new ArrayList<>();
     
-    //<editor-fold defaultstate="collapsed" desc="Getter y Setter">
-    
-
-    public static Integer getId() {
-        return id;
-    }
-
-    public static void setId(Integer id) {
-        classCards.id = id;
-    }
-
-    public static String getTitle() {
-        return title;
-    }
-
-    public static void setTitle(String title) {
-        classCards.title = title;
-    }
-
-    public static Integer getMembers() {
-        return members;
-    }
-
-    public static void setMembers(Integer members) {
-        classCards.members = members;
-    }
-
-    public static String getExpiration() {
-        return expiration;
-    }
-
-    public static void setExpiration(String expiration) {
-        classCards.expiration = expiration;
-    }
-
-    public static Integer getCondition() {
-        return condition;
-    }
-
-    public static void setCondition(Integer condition) {
-        classCards.condition = condition;
-    }
-
-    public static Integer getIdLists() {
-        return idLists;
-    }
-
-    public static void setIdLists(Integer idLists) {
-        classCards.idLists = idLists;
-    }
-
-    public static Integer getIdTags() {
-        return idTags;
-    }
-
-    public static void setIdTags(Integer idTags) {
-        classCards.idTags = idTags;
+    public static int spaceCard(int num){
+        int row = (num+1)/4;
+        if((num+1)%4!=0)
+            row++;
+        if(row<=3)
+            return 0;
+        else
+            return row - 3;
     }
     
-    //</editor-fold>
-  
-    
+    public static void select() {
+        try {
+            cards = new ArrayList<>();
+            cardsSearch = new ArrayList<>();
+            
+            ResultSet rs = methodsSQL.getExecute(
+                    "SELECT *,"
+                    + "(SELECT COUNT(*) FROM checklist l WHERE c.id=l.idcard),"
+                    + "(SELECT COUNT(*) FROM checklist l WHERE c.id=l.idcard AND l.checked = 1) "
+                    + "FROM cards c WHERE idproject=?", idproject);
+            while(rs.next()) {
+                Card card = new Card();
+                card.id = rs.getInt(1);
+                card.title = rs.getString(2);
+                card.description = rs.getString(3);
+                card.color = rs.getString(4);
+                card.idproject = idproject;
+                card.totalActivities = rs.getInt(6);
+                card.activitiesCompleted = rs.getInt(7);
+                cards.add(card);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
     
 }
