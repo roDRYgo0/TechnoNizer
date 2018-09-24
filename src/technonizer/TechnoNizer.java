@@ -22,7 +22,6 @@ public class TechnoNizer {
     public static void main(String[] args) {
         new Thread(()->{
             controller.idioma="INGLES";
-            SocketsClient.listenEvent();
             classUsuario.loadAllFinal();
             classContact.loadCopntactType();
             System.out.println("Carga de constantes");

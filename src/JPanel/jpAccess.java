@@ -372,7 +372,28 @@ public class jpAccess extends javax.swing.JPanel {
     }//GEN-LAST:event_formKeyReleased
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        SocketsClient.listenClient();
+        final String hostServer = "192.168.0.14";
+        final int puert = 4000;
+        
+        DataInputStream in;
+        DataOutputStream out;
+        
+        
+        try {
+            Socket sc = new Socket(hostServer, puert);
+            in = new DataInputStream(sc.getInputStream());
+            out = new DataOutputStream(sc.getOutputStream());
+            
+            out.writeUTF("pues");
+            
+            System.out.println(in.readUTF());
+            
+            sc.close();
+
+            
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

@@ -37,30 +37,7 @@ public class SocketsClient {
 
     public static String listenEvent() {
 
-        try {
-            while (true) {
-                try (Socket sc = new Socket(hostServer, puert)) {
-                    in = new DataInputStream(sc.getInputStream());
-                    out = new DataOutputStream(sc.getOutputStream());
-
-                    out.writeUTF("numEvent-");
-
-                    if (numEvents == -1) {
-                        numEvents = Integer.parseInt(in.readUTF());
-                        System.out.println("entro");
-                    } else {
-                        if(numEvents != Integer.parseInt(in.readUTF())){
-                            System.out.println("eventos acutalizar");
-                            numEvents = Integer.parseInt(in.readUTF());
-                        }
-                    }
-                }
-            }
-
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return rs;
+        return "";
     }
 
 }
