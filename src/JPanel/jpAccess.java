@@ -383,8 +383,7 @@ public class jpAccess extends javax.swing.JPanel {
             Socket sc = new Socket(hostServer, puert);
             in = new DataInputStream(sc.getInputStream());
             out = new DataOutputStream(sc.getOutputStream());
-            
-            out.writeUTF("pues hola morro");
+            out.writeUTF("pues");
             
             System.out.println(in.readUTF());
             

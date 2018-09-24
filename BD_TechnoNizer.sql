@@ -94,37 +94,19 @@ permission int not null,
 idProjects int not null references projects(id)
 )
 
-create table lists(
-id int identity(1,1) primary key not null,
-title nvarchar(60) not null,
-position int not null,
-idProject int not null references projects(id)
-)
-
-create table tags(
-id int identity(1,1) primary key not null,
-color nvarchar(20),
-priority int not null,
-text nvarchar(25)
-)
-
 create table cards(
 id int identity primary key not null,
 title nvarchar(60) not null,
-members int not null,
-expiration datetime,
-condition int not null,
-idLists int not null references lists(id),
-idTags int references tags(id),
-description nvarchar(150) null,
+description text,
+color nvarchar(15),
 idproject int references projects(id)
 )
 
-
-create table members(
-id int identity(1,1) primary key not null,
-member nvarchar(50) not null references  users(nickname),
-idCardas int not null references cards(id)
+create table checklist(
+id int identity primary key not null,
+title nvarchar(60) not null,
+checked bit not null,
+idcard int references cards(id)
 )
 
 /*Event manager*/
@@ -211,25 +193,6 @@ idCardas int not null references cards(id)
  idEvent int not null references events(id),
  nickname nvarchar(50)
  )
-
-
- create table checkList(
-id int identity(1,1) primary key not null,
-title nvarchar(60) not null,
-idBelongs int not null,
-condition int not null,
-foreign key(idBelongs) references cards(id),
-foreign key(idBelongs) references tasks(id)
-)
-
-
-create table checks(
-id int identity(1,1) primary key not null,
-content nvarchar(300) not null,
-condition int not null,
-visible int not null,
-idCheckList int not null references checkList(id)
-)
 
  create table personalEvents(
  id int identity(1,1) primary key not null,
@@ -363,13 +326,11 @@ insert into questionBank values
 select * from activities
 select * from announcements
 select * from cards
-select * from checkList
-select * from checks
+select * from checklist
 select * from contactType
 select * from contactUsers
 select * from events
 select * from genders
-select * from lists
 select * from members
 select * from memberships
 select * from personalEvents
@@ -381,9 +342,12 @@ select * from security
 select * from staff
 select * from tags 
 select * from tasks
-select * from tasksList
 select * from teams
 select * from tickets
 select * from users
 select * from usersBinnacle
 select * from usersInformation
+
+SELECT p.* FROM projects p 
+WHERE p.nickname='ElianFran' OR 
+(SELECT 1 FROM teams WHERE teams.idProjects=p.id AND teams.nicknameGuest='ElianFran') = 1

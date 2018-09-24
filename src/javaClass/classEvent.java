@@ -1,5 +1,6 @@
 package javaClass;
 
+import java.net.Socket;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class classEvent {
     public static List<event> eventos = new ArrayList<event>();
     public static List<event> eventosShow = new ArrayList<event>();
     public static List<event> eventosSearch = new ArrayList<event>();
+    
     
     public static infEvent evento;
  
