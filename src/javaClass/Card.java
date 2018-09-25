@@ -36,4 +36,13 @@ public class Card {
         return 0;
     }
     
+    public boolean update() {
+        return methodsSQL.execute("UPDATE cards SET title=?,description=?,color=? WHERE id=?", 
+            title, description, color, id);
+    }
+    
+    public boolean delete() {
+        return methodsSQL.execute("DELETE FROM cards WHERE id=?", id);
+    }
+    
 }
