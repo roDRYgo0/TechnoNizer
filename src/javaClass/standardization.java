@@ -272,6 +272,10 @@ public class standardization {
     }
 //</editor-fold>
 
+    public byte[] getByte(){
+        return null;
+    }
+    
     public static Icon getImgIcon(byte[] bi) {
         Icon imgi = null;
         try {
