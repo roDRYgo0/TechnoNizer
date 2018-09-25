@@ -349,10 +349,8 @@ public class showPrice extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPriceKeyTyped
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        if(classEvent.insertGuest(classEvent.eventosShow.get(idEvent).getId(), classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getId(),
-                classUsuario.getNickname(), standardization.currentDateTimeSQL())){
-            standardization.showMessage("ok", "Ticket comprado");
-        }
+        standardization.show(new buyTicket(idPrice, idEvent));
+
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void txtCountFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCountFocusGained

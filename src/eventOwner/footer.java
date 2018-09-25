@@ -14,7 +14,7 @@ public class footer extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(204, 204, 204));
         setMaximumSize(new java.awt.Dimension(945, 70));
         setMinimumSize(new java.awt.Dimension(945, 70));
         setPreferredSize(new java.awt.Dimension(945, 70));

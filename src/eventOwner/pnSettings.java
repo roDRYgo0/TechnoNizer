@@ -29,7 +29,7 @@ public class pnSettings extends javax.swing.JPanel {
         initComponents();
         this.idEvent = idEvent;  
         scrollContainer.getVerticalScrollBar().setUnitIncrement(16);
-         verificaridioma();
+        verificaridioma();
         load(classEvent.eventosShow.get(idEvent));
         check();
     }
@@ -83,7 +83,7 @@ public class pnSettings extends javax.swing.JPanel {
         scrollContainer.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollContainer.setToolTipText("");
 
-        pnContainer.setBackground(new java.awt.Color(153, 204, 255));
+        pnContainer.setBackground(new java.awt.Color(204, 204, 204));
         javaClass.ModifiedFlowLayout modifiedFlowLayout1 = new javaClass.ModifiedFlowLayout();
         modifiedFlowLayout1.setAlignment(java.awt.FlowLayout.LEFT);
         modifiedFlowLayout1.setHgap(10);

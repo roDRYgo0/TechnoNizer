@@ -9,6 +9,7 @@ public class infEvent {
     private String nicknameCreator;
     private byte[] profilePicture;
     private byte[] coverPicture;
+    private byte[] mapImage;
     private Integer price;
     private Integer quantityTicket;
     private Integer visibility;
@@ -27,6 +28,16 @@ public class infEvent {
     private List<problem> problems = new ArrayList<>();
     private List<announcement> announcements = new ArrayList<>();
 
+    public byte[] getMapImage() {
+        return mapImage;
+    }
+
+    public void setMapImage(byte[] mapImage) {
+        this.mapImage = mapImage;
+    }
+
+    
+    
     public Integer getId() {
         return id;
     }

@@ -1,6 +1,5 @@
 package javaClass;
 
-import java.net.Socket;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,6 +15,8 @@ import java.util.logging.Logger;
 public class classEvent {
 
     public static int position;
+    
+    public static int evets;
     
     private static Integer id;
     private static String eventName;
@@ -407,6 +408,25 @@ public class classEvent {
         return status;
     }
     
+    public static boolean selectImages(int idEvent){
+        boolean status = false;
+        
+        ResultSet rs = methodsSQL.getExecute("select profilePicture, coverPicture, googleMaps from events where id = ?", idEvent);
+        
+        try {
+            while(rs.next()){
+                evento.setProfilePicture(rs.getBytes(1));
+                evento.setCoverPicture(rs.getBytes(2));
+                evento.setMapImage(rs.getBytes(3));
+            }
+            status = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return status;
+    }
+    
     public static boolean updateColor(int idEvent, String color){
         boolean status = false;
         status = methodsSQL.execute("update events set color = ? where id = ?", color, idEvent);
@@ -419,9 +439,18 @@ public class classEvent {
         return status;
     }
     
-    public static boolean updatePlace(int idEvent, String place){
+    public static boolean updatePlace(int idEvent, String place, byte[] mapImage, int visibility){
         boolean status = false;
-        status = methodsSQL.execute("update events set place = ? where id = ?", place, idEvent);
+        if(visibility == 0)
+            status = methodsSQL.execute("update events set place = ? where id = ?", place, idEvent);
+        else
+            status = methodsSQL.execute("update events set place = ?, googleMaps= ? where id = ?", place, mapImage, idEvent);
+        return status;
+    }
+    
+    public static boolean deleteMapImage(int idEvent){
+        boolean status = false;
+        status = methodsSQL.execute("update events set googleMaps = "+null+" where id = ?", idEvent);
         return status;
     }
     

@@ -297,6 +297,7 @@ public class showEvent extends javax.swing.JPanel {
             technonizer.TechnoNizer.home.showLoad();
             classEvent.position = position;
             technonizer.TechnoNizer.home.showEventOwner(evento, true);
+            classEvent.evets = 1;
         }).start();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
