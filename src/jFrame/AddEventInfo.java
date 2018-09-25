@@ -788,7 +788,7 @@ public class AddEventInfo extends javax.swing.JFrame {
                 classEvent.setPlace(txtPlace.getText().trim());
                 classEvent.setProfilePicture(profil);
                 classEvent.setCoverPicture(cover);
-                classEvent.setMapImage(profil);
+                classEvent.setMapImage(new byte[]);
                 classEvent.setStartDateTime(txtYearStart.getText()+"-"+(cmbMonthStart.getSelectedIndex()+1)+"-"+txtDayStart.getText());
                 classEvent.setEndDateTime(txtYearEnd.getText()+"-"+(cmbMonthEnd.getSelectedIndex()+1)+"-"+txtDayEnd.getText());
                 
