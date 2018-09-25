@@ -3,13 +3,26 @@ package JPanel;
 import java.awt.BorderLayout;
 import jFrame.*;
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.*;
+import properties.propiedades;
 
 public class jpRecoverPasswordMailCode extends javax.swing.JPanel {
+    
+    void verificaridioma()
+    {
+    Properties pr= new propiedades(controller.idioma);
+    LbljpRecoverPassMaCod1.setText(pr.getProperty("LbljpRecoverPassMaCod1"));
+    LbljpRecoverPassMaCod2.setText(pr.getProperty("LbljpRecoverPassMaCod2"));
+    LbljpRecoverPassMaCod3.setText(pr.getProperty("LbljpRecoverPassMaCod3"));
+    btnBack.setText(pr.getProperty("btnBackVer"));
+    jbNext.setText(pr.getProperty("jbNextVer"));
+    }
     
     public jpRecoverPasswordMailCode() {
         initComponents();
         lblMail.setText(classUsuario.getMail());
+        verificaridioma();
     }
 
     //<editor-fold defaultstate="collapsed" desc="compiled code">
@@ -23,9 +36,9 @@ public class jpRecoverPasswordMailCode extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lblTN = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        LbljpRecoverPassMaCod1 = new javax.swing.JLabel();
+        LbljpRecoverPassMaCod2 = new javax.swing.JLabel();
+        LbljpRecoverPassMaCod3 = new javax.swing.JLabel();
         lblMail = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -56,7 +69,6 @@ public class jpRecoverPasswordMailCode extends javax.swing.JPanel {
         btnBack.setText("Atras");
         btnBack.setBorderPainted(false);
         btnBack.setFocusable(false);
-        btnBack.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -73,14 +85,14 @@ public class jpRecoverPasswordMailCode extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Recuperación de contraseña");
+        LbljpRecoverPassMaCod1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        LbljpRecoverPassMaCod1.setText("Recuperación de contraseña");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Ingresa el código de verificación.");
+        LbljpRecoverPassMaCod2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        LbljpRecoverPassMaCod2.setText("Ingresa el código de verificación.");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel5.setText("Se a enviado un correo electrónico con el código a ");
+        LbljpRecoverPassMaCod3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        LbljpRecoverPassMaCod3.setText("Se a enviado un correo electrónico con el código a ");
 
         lblMail.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         lblMail.setText("Not Found");
@@ -93,12 +105,12 @@ public class jpRecoverPasswordMailCode extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+            .addComponent(LbljpRecoverPassMaCod3, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
             .addComponent(lblMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
+                    .addComponent(LbljpRecoverPassMaCod2)
+                    .addComponent(LbljpRecoverPassMaCod1)
                     .addComponent(lblTN))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -114,15 +126,15 @@ public class jpRecoverPasswordMailCode extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(lblTN)
                 .addGap(32, 32, 32)
-                .addComponent(jLabel2)
+                .addComponent(LbljpRecoverPassMaCod1)
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addComponent(LbljpRecoverPassMaCod2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(LbljpRecoverPassMaCod3)
                 .addGap(0, 0, 0)
                 .addComponent(lblMail))
         );
@@ -235,12 +247,12 @@ public class jpRecoverPasswordMailCode extends javax.swing.JPanel {
     //<editor-fold defaultstate="collapsed" desc="compiled code">
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LbljpRecoverPassMaCod1;
+    private javax.swing.JLabel LbljpRecoverPassMaCod2;
+    private javax.swing.JLabel LbljpRecoverPassMaCod3;
     private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jbNext;
     private javax.swing.JLabel lblMail;

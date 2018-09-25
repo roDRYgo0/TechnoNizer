@@ -14,13 +14,13 @@ import properties.propiedades;
 
 public class pnActivity extends javax.swing.JPanel {
 
+    Properties pr = new propiedades(controller.idioma);
     int idEvent;
     byte[] image, imageCover;
     int days;
     
     void verificaridioma()
     {
-    Properties pr = new propiedades(controller.idioma);
     lblpnActivity.setText(pr.getProperty("lblpnActivity"));
     btnNext1.setText(pr.getProperty("btnNext1Acti"));
     }
@@ -78,19 +78,19 @@ public class pnActivity extends javax.swing.JPanel {
     void asignar(int i){
         switch(days){
             case -2:
-                pnContainer.add(new Text("Antier"));
+                pnContainer.add(new Text(pr.getProperty("AntierAct")));
                 break;
             case -1:
-                pnContainer.add(new Text("Ayer"));
+                pnContainer.add(new Text(pr.getProperty("AyerAct")));
                 break;
             case 0:
-                pnContainer.add(new Text("Hoy"));
+                pnContainer.add(new Text(pr.getProperty("TodayAct")));
                 break;
             case 1:
-                pnContainer.add(new Text("Mañana"));
+                pnContainer.add(new Text(pr.getProperty("TomorrowAct")));
                 break;
             case 2:
-                pnContainer.add(new Text("Pasado mañana"));
+                pnContainer.add(new Text(pr.getProperty("PasadoMañActi")));
                 break;
             default:
                 pnContainer.add(new Text(standardization.getDateToString(classEvent.evento.getActivities().get(i).getDate(),  
