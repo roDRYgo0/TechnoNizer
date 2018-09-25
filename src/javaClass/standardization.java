@@ -54,6 +54,14 @@ public class standardization {
     static Calendar cal = Calendar.getInstance();
     private final String URLRoot = "http://maps.googleapis.com/maps/api/staticmap";
 
+    /**
+     *
+     * @param day TextField donde se muestra el día
+     * @param month ComboBox donde se mostrara el mes
+     * @param year  TextFiel donde se mostrara el año
+     * 
+     * Este metodo retornará la fecha actual en los conponentes ya dichos
+     */
     public static void setNowDate(JTextField day, JComboBox month, JTextField year) {
         day.setText(currentDateTime().getDate() + "");
         month.setSelectedIndex(currentDateTime().getMonth());
