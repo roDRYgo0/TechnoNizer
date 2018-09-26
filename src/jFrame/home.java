@@ -1262,6 +1262,14 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
+    public void showCard(int p){
+        disable();
+        pnProj.setBackground(new Color(52, 52, 52));
+        controller.updateCr = new jFrame.updateCard(p);
+        standardization.show(controller.updateCr);
+        controller.rootFrame = controller.updateCr;
+    }
+    
     public void showYourProjects(boolean search, boolean personal){
         disable();
         pnProj.setBackground(new Color(52, 52, 52));
