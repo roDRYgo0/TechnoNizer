@@ -17,10 +17,12 @@ import addEvent.price;
 import jFrame.AddCardDetails;
 import jFrame.AddEventInfo;
 import jFrame.AddProjectDetails;
+import jFrame.UpdateCardDetails;
 import jFrame.addCard;
 import jFrame.addProject;
 import jFrame.addReminderGral;
 import jFrame.addReminderGral1;
+import jFrame.updateCard;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.Icon;
@@ -72,7 +74,9 @@ public class controller {
     public static eventAdmin jpEvent;
     
     public static addCard addCr;
+    public static updateCard updateCr;
     public static AddCardDetails addCrDetails;  
+    public static UpdateCardDetails updateCrDetails;  
       
     public static addProject addPj;
     public static AddProjectDetails addPjDetails;
