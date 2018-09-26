@@ -244,17 +244,20 @@ public class jpAuthenticator extends javax.swing.JPanel {
         new Thread(()->{
             switch(classUsuario.getCheckKeygen()){
                 case 0:
+                    classUsuario.setCheckKeygen(1);
                     classUsuario.changeCheckKeygen(1, false);
                     home.pnSecurity();
                     controller.jpSe.authenticator();
                     controller.jpSe.changeColorAuthen();
+                    load();
                     break;
                 case 1:
+                    classUsuario.setCheckKeygen(0);
                     classUsuario.changeCheckKeygen(0, false);
                     home.pnSecurity();
                     controller.jpSe.authenticator();
                     controller.jpSe.changeColorAuthen();
-
+                    load();
                     break;
             }
         }).start();

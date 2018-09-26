@@ -30,10 +30,10 @@ public class admin extends javax.swing.JFrame {
     Properties pr=new propiedades(controller.idioma);
     lblUserPanelAdmins.setText(pr.getProperty("lblUserPanelAdmins"));
     lblConfigurationsPanelAdmins.setText(pr.getProperty("lblConfigurationsPanelAdmins"));
-    lblSecurityPanelAdmins.setText(pr.getProperty("lblSecurityPanelAdmins"));
-    lblEventsPanelAdmins.setText(pr.getProperty("lblEventsPanelAdmins"));
-    lblProjectsPanelAdmins.setText(pr.getProperty("lblProjectsPanelAdmins"));
-    DiaryPanelAdmins.setText(pr.getProperty("DiaryPanelAdmins"));
+//    lblSecurityPanelAdmins.setText(pr.getProperty("lblSecurityPanelAdmins"));
+//    lblEventsPanelAdmins.setText(pr.getProperty("lblEventsPanelAdmins"));
+//    lblProjectsPanelAdmins.setText(pr.getProperty("lblProjectsPanelAdmins"));
+//    DiaryPanelAdmins.setText(pr.getProperty("DiaryPanelAdmins"));
     lblImageUserTop.setText(pr.getProperty("lblImageUserTop"));
     }
     
@@ -48,6 +48,8 @@ public class admin extends javax.swing.JFrame {
         this.internet = logIn.internet;
         load();
         verificaridioma();
+        showUsers();
+        cambio = false;
     }
     
     void load(){        
@@ -62,13 +64,13 @@ public class admin extends javax.swing.JFrame {
         lblImageUserTop.setIcon(new controller().changeImage("/imagenes/services.png", 24, 24));
         lblImageUserTop.setText("Administración");
         
-        iconStart.setIcon(new controller().changeImage("/imagenes/home.png", 24, 24));
+//        iconStart.setIcon(new controller().changeImage("/imagenes/home.png", 24, 24));
         iconUser.setIcon(new controller().changeImage("/imagenes/username.png", 24, 24));
         iconSettings.setIcon(new controller().changeImage("/imagenes/setting.png", 24, 24));
-        iconSecurity.setIcon(new controller().changeImage("/imagenes/shield.png", 24, 24));
-        iconEvents.setIcon(new controller().changeImage("/imagenes/event.png", 24, 24));
-        iconProjects.setIcon(new controller().changeImage("/imagenes/project.png", 24, 24));
-        iconAgenda.setIcon(new controller().changeImage("/imagenes/agenda.png", 24, 24));
+//        iconSecurity.setIcon(new controller().changeImage("/imagenes/shield.png", 24, 24));
+//        iconEvents.setIcon(new controller().changeImage("/imagenes/event.png", 24, 24));
+//        iconProjects.setIcon(new controller().changeImage("/imagenes/project.png", 24, 24));
+//        iconAgenda.setIcon(new controller().changeImage("/imagenes/agenda.png", 24, 24));
 
 
         loadData("settings","", lblSettings);
@@ -99,9 +101,6 @@ public class admin extends javax.swing.JFrame {
         lblImageUserTop = new javax.swing.JLabel();
         lblAdmin = new javax.swing.JLabel();
         leftPanel = new javax.swing.JPanel();
-        pnGeneral = new javax.swing.JPanel();
-        iconStart = new javax.swing.JLabel();
-        lblGral = new javax.swing.JLabel();
         pnUser = new javax.swing.JPanel();
         iconUser = new javax.swing.JLabel();
         lblUserPanelAdmins = new javax.swing.JLabel();
@@ -111,19 +110,6 @@ public class admin extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         lblImageUserLeft = new javax.swing.JLabel();
-        pnEvents = new javax.swing.JPanel();
-        iconEvents = new javax.swing.JLabel();
-        lblEventsPanelAdmins = new javax.swing.JLabel();
-        pnProj = new javax.swing.JPanel();
-        iconProjects = new javax.swing.JLabel();
-        lblProjectsPanelAdmins = new javax.swing.JLabel();
-        pnAgenda = new javax.swing.JPanel();
-        iconAgenda = new javax.swing.JLabel();
-        DiaryPanelAdmins = new javax.swing.JLabel();
-        pnSecurity = new javax.swing.JPanel();
-        iconSecurity = new javax.swing.JLabel();
-        lblSecurityPanelAdmins = new javax.swing.JLabel();
-        lblAlert = new javax.swing.JLabel();
         scrollContainer = new javax.swing.JScrollPane();
 
         popupLenguage.setBorderPainted(false);
@@ -147,6 +133,11 @@ public class admin extends javax.swing.JFrame {
         itemSettings.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 itemSettingsMouseReleased(evt);
+            }
+        });
+        itemSettings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSettingsActionPerformed(evt);
             }
         });
         popupSettings.add(itemSettings);
@@ -331,42 +322,6 @@ public class admin extends javax.swing.JFrame {
 
         leftPanel.setBackground(new java.awt.Color(42, 42, 42));
 
-        pnGeneral.setBackground(new java.awt.Color(52, 52, 52));
-        pnGeneral.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                pnGeneralMouseReleased(evt);
-            }
-        });
-
-        iconStart.setMaximumSize(new java.awt.Dimension(28, 28));
-        iconStart.setMinimumSize(new java.awt.Dimension(28, 28));
-        iconStart.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        lblGral.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblGral.setForeground(new java.awt.Color(255, 255, 255));
-        lblGral.setText("General");
-
-        javax.swing.GroupLayout pnGeneralLayout = new javax.swing.GroupLayout(pnGeneral);
-        pnGeneral.setLayout(pnGeneralLayout);
-        pnGeneralLayout.setHorizontalGroup(
-            pnGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnGeneralLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblGral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pnGeneralLayout.setVerticalGroup(
-            pnGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGeneralLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(iconStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblGral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
         pnUser.setBackground(new java.awt.Color(34, 34, 34));
         pnUser.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -461,192 +416,26 @@ public class admin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnEvents.setBackground(new java.awt.Color(34, 34, 34));
-        pnEvents.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                pnEventsMouseReleased(evt);
-            }
-        });
-
-        iconEvents.setMaximumSize(new java.awt.Dimension(28, 28));
-        iconEvents.setMinimumSize(new java.awt.Dimension(28, 28));
-        iconEvents.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        lblEventsPanelAdmins.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblEventsPanelAdmins.setForeground(new java.awt.Color(255, 255, 255));
-        lblEventsPanelAdmins.setText("Eventos");
-
-        javax.swing.GroupLayout pnEventsLayout = new javax.swing.GroupLayout(pnEvents);
-        pnEvents.setLayout(pnEventsLayout);
-        pnEventsLayout.setHorizontalGroup(
-            pnEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnEventsLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(iconEvents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblEventsPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pnEventsLayout.setVerticalGroup(
-            pnEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnEventsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnEventsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(iconEvents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblEventsPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        pnProj.setBackground(new java.awt.Color(34, 34, 34));
-        pnProj.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                pnProjMouseReleased(evt);
-            }
-        });
-
-        iconProjects.setMaximumSize(new java.awt.Dimension(28, 28));
-        iconProjects.setMinimumSize(new java.awt.Dimension(28, 28));
-        iconProjects.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        lblProjectsPanelAdmins.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblProjectsPanelAdmins.setForeground(new java.awt.Color(255, 255, 255));
-        lblProjectsPanelAdmins.setText("Proyectos");
-
-        javax.swing.GroupLayout pnProjLayout = new javax.swing.GroupLayout(pnProj);
-        pnProj.setLayout(pnProjLayout);
-        pnProjLayout.setHorizontalGroup(
-            pnProjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnProjLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(iconProjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblProjectsPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pnProjLayout.setVerticalGroup(
-            pnProjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnProjLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnProjLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblProjectsPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(iconProjects, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        pnAgenda.setBackground(new java.awt.Color(34, 34, 34));
-        pnAgenda.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                pnAgendaMouseReleased(evt);
-            }
-        });
-
-        iconAgenda.setMaximumSize(new java.awt.Dimension(28, 28));
-        iconAgenda.setMinimumSize(new java.awt.Dimension(28, 28));
-        iconAgenda.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        DiaryPanelAdmins.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        DiaryPanelAdmins.setForeground(new java.awt.Color(255, 255, 255));
-        DiaryPanelAdmins.setText("Agenda");
-
-        javax.swing.GroupLayout pnAgendaLayout = new javax.swing.GroupLayout(pnAgenda);
-        pnAgenda.setLayout(pnAgendaLayout);
-        pnAgendaLayout.setHorizontalGroup(
-            pnAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnAgendaLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(iconAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DiaryPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pnAgendaLayout.setVerticalGroup(
-            pnAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnAgendaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnAgendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(DiaryPanelAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(iconAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        pnSecurity.setBackground(new java.awt.Color(34, 34, 34));
-        pnSecurity.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                pnSecurityMouseReleased(evt);
-            }
-        });
-
-        iconSecurity.setMaximumSize(new java.awt.Dimension(28, 28));
-        iconSecurity.setMinimumSize(new java.awt.Dimension(28, 28));
-        iconSecurity.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        lblSecurityPanelAdmins.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblSecurityPanelAdmins.setForeground(new java.awt.Color(255, 255, 255));
-        lblSecurityPanelAdmins.setText("Seguridad");
-
-        lblAlert.setMaximumSize(new java.awt.Dimension(28, 28));
-        lblAlert.setMinimumSize(new java.awt.Dimension(28, 28));
-        lblAlert.setPreferredSize(new java.awt.Dimension(28, 28));
-
-        javax.swing.GroupLayout pnSecurityLayout = new javax.swing.GroupLayout(pnSecurity);
-        pnSecurity.setLayout(pnSecurityLayout);
-        pnSecurityLayout.setHorizontalGroup(
-            pnSecurityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnSecurityLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(iconSecurity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblSecurityPanelAdmins, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblAlert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pnSecurityLayout.setVerticalGroup(
-            pnSecurityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSecurityLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnSecurityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(iconSecurity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblSecurityPanelAdmins, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblAlert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnEvents, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnProj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnAgenda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jSeparator1)
-            .addComponent(pnSecurity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPanelLayout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
                 .addComponent(pnUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(pnSettings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(pnSecurity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(pnEvents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(pnProj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(pnAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(366, Short.MAX_VALUE))
         );
 
         scrollContainer.setBackground(new java.awt.Color(255, 51, 255));
@@ -804,31 +593,6 @@ public class admin extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
-    private void pnGeneralMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnGeneralMouseReleased
-        
-    }//GEN-LAST:event_pnGeneralMouseReleased
-
-    private void pnProjMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnProjMouseReleased
-        if(classUsuario.getCondition()==1){
-            disable();
-            controller.jpDis = new jpDisable();
-            controller.jpDis.setLocation(0,0);
-
-            scrollContainer.setViewportView(controller.jpDis);
-            scrollContainer.revalidate();
-            scrollContainer.repaint();
-        }else{
-            disable();
-            pnProj.setBackground(new Color(52, 52, 52));
-            controller.jpPM = new jpProjectsMenu();
-            controller.jpPM.setLocation(0,0);
-
-            scrollContainer.setViewportView(controller.jpPM);
-            scrollContainer.revalidate();
-            scrollContainer.repaint();
-        }
-    }//GEN-LAST:event_pnProjMouseReleased
-
     private void pnSettingsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSettingsMouseReleased
         settings();
     }//GEN-LAST:event_pnSettingsMouseReleased
@@ -838,51 +602,8 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSettingsMouseReleased
 
     private void itemSettingsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_itemSettingsMouseReleased
-        standardization.invokeLogin();
+        standardization.invokeLogin(true);
     }//GEN-LAST:event_itemSettingsMouseReleased
-
-    private void pnEventsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnEventsMouseReleased
-        if(classUsuario.getCondition()==1){
-            disable();
-            controller.jpDis = new jpDisable();
-            controller.jpDis.setLocation(0,0);
-
-            scrollContainer.setViewportView(controller.jpDis);
-            scrollContainer.revalidate();
-            scrollContainer.repaint();
-        }else{
-            disable();
-            pnEvents.setBackground(new Color(52, 52, 52));
-            pnEvent(true);
-        }
-    }//GEN-LAST:event_pnEventsMouseReleased
-
-    private void pnAgendaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnAgendaMouseReleased
-         
-        if(classUsuario.getCondition()==1){
-            disable();
-            controller.jpDis = new jpDisable();
-            controller.jpDis.setLocation(0,0);
-
-            scrollContainer.setViewportView(controller.jpDis);
-            scrollContainer.revalidate();
-            scrollContainer.repaint();
-        }else{
-            disable();
-            pnAgenda.setBackground(new Color(52, 52, 52));
-            controller.jpAGE = new jpAgendaMenu();
-            controller.jpAGE.setLocation(0,0);
-
-            scrollContainer.setViewportView(controller.jpAGE);
-            scrollContainer.revalidate();
-            scrollContainer.repaint();
-        }
-        
-    }//GEN-LAST:event_pnAgendaMouseReleased
-
-    private void pnSecurityMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSecurityMouseReleased
-//        pnSecurity();
-    }//GEN-LAST:event_pnSecurityMouseReleased
 
     private void lblImageUserTopMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageUserTopMouseReleased
         if(classUsuario.getCondition()==1){
@@ -894,18 +615,22 @@ public class admin extends javax.swing.JFrame {
     private void itemSpanishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSpanishActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itemSpanishActionPerformed
+
+    private void itemSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSettingsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemSettingsActionPerformed
     //</editor-fold>
     
     public void disable (){
-        pnGeneral.setBackground(new Color(34, 34, 34));
+//        pnGeneral.setBackground(new Color(34, 34, 34));
         pnUser.setBackground(new Color(34, 34, 34));
         pnSettings.setBackground(new Color(34, 34, 34));
-        pnSecurity.setBackground(new Color(34, 34, 34));
+//        pnSecurity.setBackground(new Color(34, 34, 34));
         if(classUsuario.getCondition()!=1)
         {
-            pnEvents.setBackground(new Color(34, 34, 34));
-            pnProj.setBackground(new Color(34, 34, 34));
-            pnAgenda.setBackground(new Color(34, 34, 34));
+//            pnEvents.setBackground(new Color(34, 34, 34));
+//            pnProj.setBackground(new Color(34, 34, 34));
+//            pnAgenda.setBackground(new Color(34, 34, 34));
         }
     }
     
@@ -925,7 +650,7 @@ public class admin extends javax.swing.JFrame {
     
     public void pnSecurity(){
         disable();
-        pnSecurity.setBackground(new Color(52, 52, 52));
+//        pnSecurity.setBackground(new Color(52, 52, 52));
         controller.jpSe = new jpSecurity();
         controller.jpSe.setLocation(0, 0);
         
@@ -945,16 +670,10 @@ public class admin extends javax.swing.JFrame {
     //<editor-fold defaultstate="collapsed" desc="compiled code">
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel DiaryPanelAdmins;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnMax;
     private javax.swing.JButton btnMin;
-    private javax.swing.JLabel iconAgenda;
-    private javax.swing.JLabel iconEvents;
-    private javax.swing.JLabel iconProjects;
-    private javax.swing.JLabel iconSecurity;
     private javax.swing.JLabel iconSettings;
-    private javax.swing.JLabel iconStart;
     private javax.swing.JLabel iconUser;
     private javax.swing.JMenuItem itemEnglish;
     private javax.swing.JMenuItem itemSettings;
@@ -964,23 +683,13 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAdmin;
-    private javax.swing.JLabel lblAlert;
     private javax.swing.JLabel lblConfigurationsPanelAdmins;
-    private javax.swing.JLabel lblEventsPanelAdmins;
-    private javax.swing.JLabel lblGral;
     private javax.swing.JLabel lblImageUserLeft;
     private javax.swing.JLabel lblImageUserTop;
     private javax.swing.JLabel lblLenguage;
-    private javax.swing.JLabel lblProjectsPanelAdmins;
-    private javax.swing.JLabel lblSecurityPanelAdmins;
     private javax.swing.JLabel lblSettings;
     private javax.swing.JLabel lblUserPanelAdmins;
     private javax.swing.JPanel leftPanel;
-    private javax.swing.JPanel pnAgenda;
-    private javax.swing.JPanel pnEvents;
-    private javax.swing.JPanel pnGeneral;
-    private javax.swing.JPanel pnProj;
-    private javax.swing.JPanel pnSecurity;
     private javax.swing.JPanel pnSettings;
     private javax.swing.JPanel pnUser;
     private javax.swing.JPopupMenu popupLenguage;

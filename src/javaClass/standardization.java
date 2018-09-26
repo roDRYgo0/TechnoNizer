@@ -440,6 +440,13 @@ public class standardization {
         home.setVisible(false);
         log.setVisible(true);
     }
+    
+    public static void invokeLogin(boolean admi) {
+        log = new logIn();
+        log.setLocationRelativeTo(null);
+        admin.setVisible(false);
+        log.setVisible(true);
+    }
 
     public static void invokeLogin(boolean admi, JFrame login) {
         log = new logIn();
