@@ -1,8 +1,7 @@
 create database BD_TechnoNizer
-delete  from users
-use BD_TechnoNizer
-select * from reminders
 
+go
+use BD_TechnoNizer
 
 /*Users administration and memberships*/
 
@@ -88,8 +87,6 @@ color nvarchar(15),
 coverImage image
 )
 
-select * from projects
-
 create table teams(
 id int identity(1,1) primary key not null,
 nicknameGuest nvarchar(50) not null references users(nickname),
@@ -97,37 +94,19 @@ permission int not null,
 idProjects int not null references projects(id)
 )
 
-create table lists(
-id int identity(1,1) primary key not null,
-title nvarchar(60) not null,
-position int not null,
-idProject int not null references projects(id)
-)
-
-create table tags(
-id int identity(1,1) primary key not null,
-color nvarchar(20),
-priority int not null,
-text nvarchar(25)
-)
-
 create table cards(
 id int identity primary key not null,
 title nvarchar(60) not null,
-members int not null,
-expiration datetime,
-condition int not null,
-idLists int not null references lists(id),
-idTags int references tags(id),
-description nvarchar(150) null,
+description text,
+color nvarchar(15),
 idproject int references projects(id)
 )
 
-
-create table members(
-id int identity(1,1) primary key not null,
-member nvarchar(50) not null references  users(nickname),
-idCardas int not null references cards(id)
+create table checklist(
+id int identity primary key not null,
+title nvarchar(60) not null,
+checked bit not null,
+idcard int references cards(id)
 )
 
 /*Event manager*/
@@ -148,15 +127,10 @@ idCardas int not null references cards(id)
  color nvarchar(15),
  invitation int  not null
  )
+ alter table events add googleMaps image null
 
-
-
- select * from events
-
-
- alter table tickets 
  create table tickets(
- id int identity(1,1) not null,
+ id int identity(1,1) primary key not null,
  nameTicket nvarchar(35) not null,
  quantityTicket int not null,
  priceTicket smallmoney not null,
@@ -199,10 +173,6 @@ idCardas int not null references cards(id)
  nickname nvarchar(50) not null
  )
 
-
-
- select * from activities
-
  create table problems(
  id int identity(1,1) primary key not null,
  problem nvarchar(190) not null,
@@ -215,8 +185,6 @@ idCardas int not null references cards(id)
  idEvent int not null references events(id)
  )
 
- 
-
  create table tasks(
  id int identity(1,1) primary key not null,
  task nvarchar(60) not null,
@@ -226,30 +194,6 @@ idCardas int not null references cards(id)
  idEvent int not null references events(id),
  nickname nvarchar(50)
  )
-
-
- create table checkList(
-id int identity(1,1) primary key not null,
-title nvarchar(60) not null,
-idBelongs int not null,
-condition int not null,
-foreign key(idBelongs) references cards(id),
-foreign key(idBelongs) references tasks(id)
-)
-
-
-create table checks(
-id int identity(1,1) primary key not null,
-content nvarchar(300) not null,
-condition int not null,
-visible int not null,
-idCheckList int not null references checkList(id)
-)
-
-
-
- drop table calendars
-
 
  create table personalEvents(
  id int identity(1,1) primary key not null,
@@ -261,8 +205,6 @@ idCheckList int not null references checkList(id)
  color nvarchar(40),
  nickname nvarchar(50) not null references users(nickname)
  )
-select * from reminders
-delete from personalEvents
 
  create table reminders(
  id int identity(1,1) primary key not null,
@@ -272,12 +214,6 @@ delete from personalEvents
  hour nvarchar(5) not null,
  nickname nvarchar(50) not null references users(nickname)
  )
-
- 
-
- 
-
-delete from personalEvents
 
  create table usersBinnacle(
 id int identity(1,1) primary key not null,
@@ -289,10 +225,6 @@ idType int not null
 
 insert into genders values (0, 'Femenino')
 insert into genders values (1, 'Masculino')
-
-select u.nickname, ui.firstName, ui.lastName, g.gender from users u, usersInformation ui, genders g where g.id = ui.id_gender and u.nickname = ui.nickname
-
-select u.nickname, ui.firstName, ui.lastName, g.gender, ui.id_gender, g.id from users u, usersInformation ui, genders g where g.id = ui.id_gender and u.nickname = ui.nickname ORDER BY g.gender DESC
 
 insert into memberships values('Free','free', 1, 40, 1, 0, 50, 0)
 insert into memberships values('Vip','vip', 1, -1, 10, 50, 500, 49.90)
@@ -392,21 +324,14 @@ insert into questionBank values
 ('�Qu� hiciste en tu �ltimo cumplea�os?'),
 ('�Cu�l es la cosa que m�s amas en todo el mundo?')
 
-
 select * from activities
 select * from announcements
-select * from calendars
 select * from cards
-select * from checkList
-select * from checks
-select * from class
+select * from checklist
 select * from contactType
 select * from contactUsers
 select * from events
 select * from genders
-select * from homework
-select * from horary
-select * from lists
 select * from members
 select * from memberships
 select * from personalEvents
@@ -418,9 +343,12 @@ select * from security
 select * from staff
 select * from tags 
 select * from tasks
-select * from tasksList
 select * from teams
 select * from tickets
 select * from users
 select * from usersBinnacle
 select * from usersInformation
+
+SELECT p.* FROM projects p 
+WHERE p.nickname='ElianFran' OR 
+(SELECT 1 FROM teams WHERE teams.idProjects=p.id AND teams.nicknameGuest='ElianFran') = 1

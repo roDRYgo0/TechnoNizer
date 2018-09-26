@@ -6,6 +6,7 @@ import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.event;
+import javaClass.infEvent;
 import javaClass.standardization;
 import properties.propiedades;
 
@@ -14,7 +15,7 @@ public class eventAdmin extends javax.swing.JPanel {
     void verificaridioma()
     {
         Properties pr=new propiedades(controller.idioma);
-        lblVIsibiltyEventAdmin1.setText(pr.getProperty("lblVIsibiltyEventAdmin1"));
+        lblVis.setText(pr.getProperty("lblVIsibiltyEventAdmin1"));
         Gastos.setText(pr.getProperty("Gastos"));
         Gastos1.setText(pr.getProperty("Gastos1"));
         Gastos2.setText(pr.getProperty("Gastos2"));
@@ -34,13 +35,16 @@ public class eventAdmin extends javax.swing.JPanel {
     
     public void load(event event, boolean load){
         if(load){
-            classEvent.activities.clear();
+            classEvent.evento = new infEvent();
+            
+            classEvent.selectImages(event.getId());
+            
             classEvent.selectActivity(event.getId());
-            classEvent.tasks.clear();
+
             classEvent.selectTasks(event.getId());
-            classEvent.problems.clear();
+
             classEvent.selectProblems(event.getId());
-            classEvent.announcements.clear();
+
             classEvent.selectAnnouncement(event.getId());
         }
         
@@ -52,30 +56,35 @@ public class eventAdmin extends javax.swing.JPanel {
         lblGain.setText("$"+(income()-lost()));
         
         lblEventName.setText(event.getEventName());     
-        lblNickname.setText(event.getNicknameCreator());
-        if(event.getProfilePicture() != null)
-            lblEventName.setIcon(new controller().changeSizeImage(standardization.getImgIcon(event.getProfilePicture()), 90, 90));
+
         
-        if(event.getCoverPicture()!= null)
-            iconCover.setIcon(standardization.getImgIcon(event.getCoverPicture()));
+        switch(classEvent.position){
+            case 0:
+                lblPos.setIcon(new controller().changeImage("/imagenes/owner.png", 37, 37));
+                lblPosLabel.setText("Vista de creador");
+                break;
+            case 1:
+                lblPos.setIcon(new controller().changeImage("/imagenes/admin.png", 37, 37));
+                lblPosLabel.setText("Vista de administrador");
+                break;
+            case 2:
+                lblPos.setIcon(new controller().changeImage("/imagenes/mod.png", 37, 37));
+                lblPosLabel.setText("Vista de moderador");
+                break;
+            case 3:
+                lblPos.setIcon(new controller().changeImage("/imagenes/guest.png", 37, 37));
+                lblPosLabel.setText("Vista de invitado");
+                break;
+        }
+        
+        if(classEvent.evento.getProfilePicture() != null)
+            lblEventName.setIcon(new controller().changeSizeImage(standardization.getImgIcon(classEvent.evento.getProfilePicture()), 90, 90));
+        
+        if(classEvent.evento.getCoverPicture()!= null)
+            iconCover.setIcon(standardization.getImgIcon(classEvent.evento.getCoverPicture()));
         
         lblDays.setText(standardization.getDateToString(event.getStartDateTime(), standardization.getDate(event.getStartDateTime()), false));
-        
-//        switch(event.getInvitation()){
-//            case 1:
-//                lblInvitation.setText("Público");
-//                lblInvitation.setIcon(new controller().changeImage("/imagenes/public.png", 17, 17));
-//                break;
-//            case 2:
-//                lblInvitation.setText("Solicitud");
-//                lblInvitation.setIcon(new controller().changeImage("/imagenes/invite.png", 17, 17));
-//                break;
-//            case 3:
-//                lblInvitation.setText("Por invitación");
-//                lblInvitation.setIcon(new controller().changeImage("/imagenes/private.png", 17, 17));
-//                break;
-//        }
-        
+
         if(event.getVisibility() == 1){
             lblVisibility.setText("Visible");
             lblVisibility.setIcon(new controller().changeImage("/imagenes/visibility.png", 17, 17));
@@ -87,11 +96,13 @@ public class eventAdmin extends javax.swing.JPanel {
         loadMenu();
         loadPrice(event);
         loadStaff(event);
-        loadAnnouncement();
+        if(!classEvent.evento.getAnnouncements().isEmpty())
+            loadAnnouncement();
         loadActivity();
         if(classEvent.position != 3){
             loadTask();
-            loadProblems();
+            if(!classEvent.evento.getProblems().isEmpty())
+                loadProblems();
         }
         loadPlace();
         loadFooter();
@@ -99,9 +110,9 @@ public class eventAdmin extends javax.swing.JPanel {
     
     double lost(){
         double lost = 0.0;
-        for(int i = 0; i < classEvent.tasks.size(); i++){
-            if(classEvent.tasks.get(i).getCondition()==1){
-                lost+=classEvent.tasks.get(i).getPrice();
+        for(int i = 0; i < classEvent.evento.getTasks().size(); i++){
+            if(classEvent.evento.getTasks().get(i).getCondition()==1){
+                lost+=classEvent.evento.getTasks().get(i).getPrice();
             }
         }
         return lost;
@@ -145,8 +156,8 @@ public class eventAdmin extends javax.swing.JPanel {
         int size;
         int count = 0;
         
-        for(int i = 0; i < classEvent.problems.size(); i++){
-            if(classEvent.problems.get(i).getCondition() == 0)
+        for(int i = 0; i < classEvent.evento.getProblems().size(); i++){
+            if(classEvent.evento.getProblems().get(i).getCondition() == 0)
                 count++;
         }
         size = (count <1 ) ? 0 : count * 47;
@@ -163,8 +174,8 @@ public class eventAdmin extends javax.swing.JPanel {
         int size;
         int count = 0;
         
-        for(int i = 0; i < classEvent.announcements.size(); i++){
-            if(classEvent.announcements.get(i).getCondition() == 1)
+        for(int i = 0; i < classEvent.evento.getAnnouncements().size(); i++){
+            if(classEvent.evento.getAnnouncements().get(i).getCondition() == 1)
                 count++;
         }
         size = (count <1 ) ? 0 : count * 47;
@@ -208,7 +219,10 @@ public class eventAdmin extends javax.swing.JPanel {
     }
     
     void loadPlace(){       
-        pnContainer.add(new placeMenu(idEvent));
+        if(classEvent.evento.getMapImage() == null)
+            pnContainer.add(new placeMenu(idEvent, false));
+        else
+            pnContainer.add(new placeMenu(idEvent, true));
 
         pnContainer.revalidate();
         pnContainer.repaint();
@@ -222,10 +236,11 @@ public class eventAdmin extends javax.swing.JPanel {
         pnContainer = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         lblEventName = new javax.swing.JLabel();
-        lblNickname = new javax.swing.JLabel();
+        lblPos = new javax.swing.JLabel();
         lblDays = new javax.swing.JLabel();
+        lblPosLabel = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        lblVIsibiltyEventAdmin1 = new javax.swing.JLabel();
+        lblVis = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         lblVisibility = new javax.swing.JLabel();
         lblLost = new javax.swing.JLabel();
@@ -261,13 +276,21 @@ public class eventAdmin extends javax.swing.JPanel {
         lblEventName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/profile.png"))); // NOI18N
         lblEventName.setText("not found");
 
-        lblNickname.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblNickname.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblNickname.setText("not found");
+        lblPos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblPos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPos.setMaximumSize(new java.awt.Dimension(37, 37));
+        lblPos.setMinimumSize(new java.awt.Dimension(37, 37));
+        lblPos.setPreferredSize(new java.awt.Dimension(37, 37));
 
         lblDays.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblDays.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDays.setText("not found");
+
+        lblPosLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblPosLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPosLabel.setMaximumSize(new java.awt.Dimension(37, 37));
+        lblPosLabel.setMinimumSize(new java.awt.Dimension(37, 37));
+        lblPosLabel.setPreferredSize(new java.awt.Dimension(37, 37));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -276,21 +299,26 @@ public class eventAdmin extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblEventName, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNickname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDays, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblDays, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(lblPosLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(lblEventName, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 15, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblPos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPosLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(lblDays, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
@@ -302,12 +330,12 @@ public class eventAdmin extends javax.swing.JPanel {
         jPanel6.setMinimumSize(new java.awt.Dimension(304, 189));
         jPanel6.setPreferredSize(new java.awt.Dimension(304, 189));
 
-        lblVIsibiltyEventAdmin1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        lblVIsibiltyEventAdmin1.setForeground(new java.awt.Color(153, 153, 153));
-        lblVIsibiltyEventAdmin1.setText("Visibilidad");
-        lblVIsibiltyEventAdmin1.setMaximumSize(new java.awt.Dimension(51, 20));
-        lblVIsibiltyEventAdmin1.setMinimumSize(new java.awt.Dimension(51, 20));
-        lblVIsibiltyEventAdmin1.setPreferredSize(new java.awt.Dimension(51, 20));
+        lblVis.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblVis.setForeground(new java.awt.Color(153, 153, 153));
+        lblVis.setText("Visibilidad");
+        lblVis.setMaximumSize(new java.awt.Dimension(51, 20));
+        lblVis.setMinimumSize(new java.awt.Dimension(51, 20));
+        lblVis.setPreferredSize(new java.awt.Dimension(51, 20));
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -366,7 +394,7 @@ public class eventAdmin extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(lblVIsibiltyEventAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblVis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -411,7 +439,7 @@ public class eventAdmin extends javax.swing.JPanel {
                         .addGap(4, 4, 4)
                         .addComponent(lblIncome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(lblVIsibiltyEventAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblVis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
@@ -457,7 +485,17 @@ public class eventAdmin extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel8MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseReleased
-        technonizer.TechnoNizer.home.showYourEvents();
+        switch(classEvent.evets){
+            case 0:
+                technonizer.TechnoNizer.home.showAllEvents(false);
+                break;
+            case 1:
+                technonizer.TechnoNizer.home.showYourEvents(false);
+                break;
+            case 2:
+                break;
+        }
+        
     }//GEN-LAST:event_jPanel8MouseReleased
 
 
@@ -477,8 +515,9 @@ public class eventAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel lblGain;
     private javax.swing.JLabel lblIncome;
     private javax.swing.JLabel lblLost;
-    private javax.swing.JLabel lblNickname;
-    private javax.swing.JLabel lblVIsibiltyEventAdmin1;
+    private javax.swing.JLabel lblPos;
+    private javax.swing.JLabel lblPosLabel;
+    private javax.swing.JLabel lblVis;
     private javax.swing.JLabel lblVisibility;
     private javax.swing.JPanel pnContainer;
     private javax.swing.JScrollPane scrollContainer;

@@ -128,15 +128,15 @@ public static Integer getId() {
     }
     
     public static boolean select(){
-        boolean status = false;
         Project project;
         projects = new ArrayList<>(); 
         projectsSearch = new ArrayList<>();
         
         String query = "SELECT * FROM projects";
         if (classUsuario.getCondition() != 3)
-            query = "SELECT p.* FROM projects p, teams " +
-                "WHERE p.nickname='" + classUsuario.getNickname() + "' OR (teams.idProjects=p.id AND teams.nicknameGuest='" + classUsuario.getNickname() + "')";
+            query = "SELECT p.* FROM projects p "
+                + "WHERE p.nickname='" + classUsuario.getNickname() + "' OR " +
+                "(SELECT 1 FROM teams WHERE teams.idProjects=p.id AND teams.nicknameGuest='" + classUsuario.getNickname() + "') = 1";
             
         ResultSet rs = methodsSQL.getExecute(query);
         

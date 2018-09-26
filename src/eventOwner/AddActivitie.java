@@ -4,43 +4,85 @@ import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
-
-/** @author Alexg */
-
+/**
+ * @author Alexg
+ */
 public class AddActivitie extends javax.swing.JFrame {
+
+    Properties pr = new propiedades(controller.idioma);
+
+    void verificaridioma() {
+        pr = new propiedades(controller.idioma);
+        lblAddActivitie1F.setText(pr.getProperty("lblAddActivitie1F"));
+        lblAddActivitie2F.setText(pr.getProperty("lblAddActivitie2F"));
+        lblAddActivitie3F.setText(pr.getProperty("lblAddActivitie3F"));
+        lblAddActivitie4F.setText(pr.getProperty("lblAddActivitie4F"));
+        lblAddActivitie5F.setText(pr.getProperty("lblAddActivitie5F"));
+        lblAddActivitie6F.setText(pr.getProperty("lblAddActivitie6F"));
+        lblAddActivitie7F.setText(pr.getProperty("lblAddActivitie7F"));
+        lblAddActivitie8F.setText(pr.getProperty("lblAddActivitie8F"));
+
+        btnNext1.setText(pr.getProperty("btnNext1AddActivitie"));
+
+        cmbMonthStart.removeAllItems();
+        String meses[] = {
+            pr.getProperty("firstmonth"),
+            pr.getProperty("secondmonth"),
+            pr.getProperty("thirdmonth"),
+            pr.getProperty("fourmonth"),
+            pr.getProperty("fivemonth"),
+            pr.getProperty("sixmonth"),
+            pr.getProperty("sevenmonth"),
+            pr.getProperty("eightmonth"),
+            pr.getProperty("ninemonth"),
+            pr.getProperty("tenmonth"),
+            pr.getProperty("elevenmonth"),
+            pr.getProperty("twelvemonth")
+        };
+        for (int i = 0; i < meses.length; i++) {
+            cmbMonthStart.addItem(meses[i]);
+        }
+        Day.setText(pr.getProperty("DayCreate"));
+        Month.setText(pr.getProperty("MonthCreate"));
+        Year.setText(pr.getProperty("YearCreate"));
+
+    }
 
     int idEvent;
     int visibility;
     int horary;
-    
-    public AddActivitie(int idEvent){
+
+    public AddActivitie(int idEvent) {
         initComponents();
         this.idEvent = idEvent;
         visibility = 1;
         horary = 0;
         switchVisibility();
+        verificaridioma();
         load();
         txtDescription.setLineWrap(true);
         start.setText(standardization.getDateToString(classEvent.eventosShow.get(idEvent).getStartDateTime(), standardization.getDate(classEvent.eventosShow.get(idEvent).getStartDateTime()), false));
         end.setText(standardization.getDateToString(classEvent.eventosShow.get(idEvent).getEndDateTime(), standardization.getDate(classEvent.eventosShow.get(idEvent).getEndDateTime()), false));
-    }   
+    }
 
-    void load(){
+    void load() {
         iconStart.setIcon(new controller().changeImage("/imagenes/date.png", 35, 35));
         iconClock.setIcon(new controller().changeImage("/imagenes/clock.png", 35, 35));
         iconPlace.setIcon(new controller().changeImage("/imagenes/place.png", 35, 35));
         String[] dateEventStart = classEvent.eventosShow.get(idEvent).getStartDateTime().split("-");
         txtDayStart.setText(dateEventStart[2]);
-        cmbMonthStart.setSelectedIndex(Integer.parseInt(dateEventStart[1])-1);
+        cmbMonthStart.setSelectedIndex(Integer.parseInt(dateEventStart[1]) - 1);
         txtYearStart.setText(dateEventStart[0]);
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -50,27 +92,27 @@ public class AddActivitie extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        lblAddActivitie = new javax.swing.JLabel();
+        lblAddActivitie1F = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
         lblEvent = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblAddActivitie2F = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblAddActivitie6F = new javax.swing.JLabel();
+        lblAddActivitie3F = new javax.swing.JLabel();
         txtActivitie = new javax.swing.JTextField();
         spEvent = new javax.swing.JSeparator();
         btnNext1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        lblAddActivitie4F = new javax.swing.JLabel();
         txtPlace = new javax.swing.JTextField();
         spPlace = new javax.swing.JSeparator();
-        jLabel14 = new javax.swing.JLabel();
+        lblAddActivitie5F = new javax.swing.JLabel();
         iconPlace = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
         lblSwitch = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        lblAddActivitie7F = new javax.swing.JLabel();
         txtHour = new javax.swing.JTextField();
         spHour = new javax.swing.JSeparator();
         txtDayStart2 = new javax.swing.JTextField();
@@ -81,15 +123,15 @@ public class AddActivitie extends javax.swing.JFrame {
         iconStart = new javax.swing.JLabel();
         spDayStart = new javax.swing.JSeparator();
         cmbMonthStart = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
+        Month = new javax.swing.JLabel();
         txtYearStart = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        Year = new javax.swing.JLabel();
         spYearStart = new javax.swing.JSeparator();
         txtDayStart = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        Day = new javax.swing.JLabel();
         start = new javax.swing.JLabel();
         end = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        lblAddActivitie8F = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -100,9 +142,9 @@ public class AddActivitie extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(35, 150, 243));
 
-        lblAddActivitie.setForeground(new java.awt.Color(255, 255, 255));
-        lblAddActivitie.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblAddActivitie.setText("Agregar actividad");
+        lblAddActivitie1F.setForeground(new java.awt.Color(255, 255, 255));
+        lblAddActivitie1F.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblAddActivitie1F.setText("Agregar actividad");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,7 +178,7 @@ public class AddActivitie extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblAddActivitie, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblAddActivitie1F, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -153,19 +195,19 @@ public class AddActivitie extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblEvent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblAddActivitie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblAddActivitie1F, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Datos Generales");
+        lblAddActivitie2F.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblAddActivitie2F.setText("Datos Generales");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel9.setText("Establecer fecha y hora");
+        lblAddActivitie6F.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblAddActivitie6F.setText("Establecer fecha y hora");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Actividad");
+        lblAddActivitie3F.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblAddActivitie3F.setForeground(new java.awt.Color(102, 102, 102));
+        lblAddActivitie3F.setText("Actividad");
 
         txtActivitie.setAutoscrolls(false);
         txtActivitie.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -197,9 +239,9 @@ public class AddActivitie extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Lugar de la actividad");
+        lblAddActivitie4F.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblAddActivitie4F.setForeground(new java.awt.Color(102, 102, 102));
+        lblAddActivitie4F.setText("Lugar de la actividad");
 
         txtPlace.setAutoscrolls(false);
         txtPlace.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -219,9 +261,9 @@ public class AddActivitie extends javax.swing.JFrame {
 
         spPlace.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel14.setText("Descripción");
+        lblAddActivitie5F.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblAddActivitie5F.setForeground(new java.awt.Color(102, 102, 102));
+        lblAddActivitie5F.setText("Descripción");
 
         iconPlace.setMaximumSize(new java.awt.Dimension(35, 35));
         iconPlace.setMinimumSize(new java.awt.Dimension(35, 35));
@@ -256,9 +298,9 @@ public class AddActivitie extends javax.swing.JFrame {
         lblStatus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblStatus.setText("Activo");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel15.setText("Estado");
+        lblAddActivitie7F.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblAddActivitie7F.setForeground(new java.awt.Color(102, 102, 102));
+        lblAddActivitie7F.setText("Estado");
 
         txtHour.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtHour.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -331,7 +373,7 @@ public class AddActivitie extends javax.swing.JFrame {
         cmbMonthStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         cmbMonthStart.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        jLabel6.setText("Mes");
+        Month.setText("Mes");
 
         txtYearStart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtYearStart.setText("2000");
@@ -350,7 +392,7 @@ public class AddActivitie extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("Año");
+        Year.setText("Año");
 
         spYearStart.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -371,7 +413,7 @@ public class AddActivitie extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setText("Día");
+        Day.setText("Día");
 
         start.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         start.setText("start");
@@ -379,9 +421,9 @@ public class AddActivitie extends javax.swing.JFrame {
         end.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         end.setText("start");
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel16.setText("Fecha del evento");
+        lblAddActivitie8F.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblAddActivitie8F.setForeground(new java.awt.Color(102, 102, 102));
+        lblAddActivitie8F.setText("Fecha del evento");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -406,14 +448,14 @@ public class AddActivitie extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(spEvent)
                                 .addComponent(txtActivitie, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4))
+                            .addComponent(lblAddActivitie3F))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(lblAddActivitie7F, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(27, 27, 27))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -436,7 +478,7 @@ public class AddActivitie extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
+                                    .addComponent(Day)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -444,12 +486,12 @@ public class AddActivitie extends javax.swing.JFrame {
                                             .addComponent(txtDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
+                                    .addComponent(Month)
                                     .addComponent(cmbMonthStart, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtYearStart)
-                                    .addComponent(jLabel8)
+                                    .addComponent(Year)
                                     .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(125, 125, 125)))
                         .addGap(55, 68, Short.MAX_VALUE))
@@ -458,7 +500,7 @@ public class AddActivitie extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblAddActivitie8F, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,10 +510,10 @@ public class AddActivitie extends javax.swing.JFrame {
                                 .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel14))
+                                    .addComponent(lblAddActivitie2F)
+                                    .addComponent(lblAddActivitie4F)
+                                    .addComponent(lblAddActivitie6F)
+                                    .addComponent(lblAddActivitie5F))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
@@ -482,13 +524,13 @@ public class AddActivitie extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(lblAddActivitie2F)
                         .addGap(13, 13, 13)
-                        .addComponent(jLabel4)
+                        .addComponent(lblAddActivitie3F)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtActivitie, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
+                        .addComponent(lblAddActivitie7F)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblSwitch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -498,7 +540,7 @@ public class AddActivitie extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jLabel7)
+                        .addComponent(lblAddActivitie4F)
                         .addGap(9, 9, 9)
                         .addComponent(iconPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -507,7 +549,7 @@ public class AddActivitie extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(spPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(16, 16, 16)
-                .addComponent(jLabel14)
+                .addComponent(lblAddActivitie5F)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -515,27 +557,27 @@ public class AddActivitie extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addComponent(jLabel9)
+                        .addComponent(lblAddActivitie6F)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
+                                        .addComponent(Day)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(1, 1, 1)
                                         .addComponent(spDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel8)
+                                            .addComponent(Year)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(txtYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(10, 10, 10))
                                         .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
+                                    .addComponent(Month)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(cmbMonthStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(10, 10, 10))))
@@ -557,7 +599,7 @@ public class AddActivitie extends javax.swing.JFrame {
                                         .addComponent(spMinute, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(iconClock, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addComponent(jLabel16)
+                        .addComponent(lblAddActivitie8F)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(start)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -584,10 +626,10 @@ public class AddActivitie extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblSwitchMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSwitchMouseReleased
-        if(visibility == 0){
+        if (visibility == 0) {
             visibility = 1;
             switchVisibility();
-        }else{
+        } else {
             visibility = 0;
             switchVisibility();
         }
@@ -595,17 +637,19 @@ public class AddActivitie extends javax.swing.JFrame {
 
     private void txtPlaceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPlaceKeyTyped
         char c = evt.getKeyChar();
-        if(txtPlace.getText().length()<41){
-            if(Character.isLetter(c) || Character.isSpaceChar(c) || Character.isDigit(c)){}
-            else
+        if (txtPlace.getText().length() < 41) {
+            if (Character.isLetter(c) || Character.isSpaceChar(c) || Character.isDigit(c)) {
+            } else {
+                evt.consume();
+            }
+        } else {
             evt.consume();
-        }else
-        evt.consume();
+        }
     }//GEN-LAST:event_txtPlaceKeyTyped
 
     private void txtPlaceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPlaceFocusLost
         spPlace.setBackground(Color.white);
-        if(txtPlace.getText().trim().length() < 4 && !txtPlace.getText().trim().isEmpty()){
+        if (txtPlace.getText().trim().length() < 4 && !txtPlace.getText().trim().isEmpty()) {
             standardization.showMessage("cancel", "Dirección invalida", this);
             txtPlace.setText("");
         }
@@ -616,68 +660,70 @@ public class AddActivitie extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPlaceFocusGained
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-        if(standardization.validateDate(Integer.parseInt(txtYearStart.getText()), (cmbMonthStart.getSelectedIndex()+1),
-                Integer.parseInt(txtDayStart.getText()), false)){
+        if (standardization.validateDate(Integer.parseInt(txtYearStart.getText()), (cmbMonthStart.getSelectedIndex() + 1),
+                Integer.parseInt(txtDayStart.getText()), false)) {
             try {
                 String[] dateEventStart = classEvent.eventosShow.get(idEvent).getStartDateTime().split("-");
                 String[] dateEventEnd = classEvent.eventosShow.get(idEvent).getEndDateTime().split("-");
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                Date dateActivity =  sdf.parse(Integer.parseInt(txtYearStart.getText())+"-"+ (cmbMonthStart.getSelectedIndex()+1)+"-"+ Integer.parseInt(txtDayStart.getText()));
-                Date dateStart = sdf.parse(Integer.parseInt(dateEventStart[0])+"-"+ (dateEventStart[1])+"-"+ Integer.parseInt(dateEventStart[2]));
-                Date dateEnd = sdf.parse(Integer.parseInt(dateEventEnd[0])+"-"+ (dateEventEnd[1])+"-"+ Integer.parseInt(dateEventEnd[2]));
-                
-                if(standardization.compareDateBefore(dateStart, dateActivity) == 1){
-                    standardization.showMessage("warning","Fecha antes del evento", this);
-                    
-                }else{
+                Date dateActivity = sdf.parse(Integer.parseInt(txtYearStart.getText()) + "-" + (cmbMonthStart.getSelectedIndex() + 1) + "-" + Integer.parseInt(txtDayStart.getText()));
+                Date dateStart = sdf.parse(Integer.parseInt(dateEventStart[0]) + "-" + (dateEventStart[1]) + "-" + Integer.parseInt(dateEventStart[2]));
+                Date dateEnd = sdf.parse(Integer.parseInt(dateEventEnd[0]) + "-" + (dateEventEnd[1]) + "-" + Integer.parseInt(dateEventEnd[2]));
 
-                    if(standardization.compareDateAfer(dateEnd, dateActivity) == -1){
-                        if(!camposVacios()){
-                            String dateTime = txtYearStart.getText()+( ((cmbMonthStart.getSelectedIndex()+1)<10)?"0"+(cmbMonthStart.getSelectedIndex()+1):(cmbMonthStart.getSelectedIndex()+1) )+txtDayStart.getText()
-                                    +" "
-                                    +txtHour.getText()+":"+txtMinute.getText()+":00 "+((horary == 0)?"AM":"PM");;
-                            
+                if (standardization.compareDateBefore(dateStart, dateActivity) == 1) {
+                    standardization.showMessage("warning", "Fecha antes del evento", this);
+
+                } else {
+
+                    if (standardization.compareDateAfer(dateEnd, dateActivity) == -1) {
+                        if (!camposVacios()) {
+                            String dateTime = txtYearStart.getText() + (((cmbMonthStart.getSelectedIndex() + 1) < 10) ? "0" + (cmbMonthStart.getSelectedIndex() + 1) : (cmbMonthStart.getSelectedIndex() + 1)) + txtDayStart.getText()
+                                    + " "
+                                    + txtHour.getText() + ":" + txtMinute.getText() + ":00 " + ((horary == 0) ? "AM" : "PM");;
+
                             String activity = txtActivitie.getText();
                             String place = txtPlace.getText();
                             String description = txtDescription.getText();
                             int id = classEvent.eventosShow.get(idEvent).getId();
-                            if(classEvent.insertActivitie(dateTime, activity, place, visibility, description, id, classUsuario.getNickname())){
-                                classEvent.activities.clear();
+                            if (classEvent.insertActivitie(dateTime, activity, place, visibility, description, id, classUsuario.getNickname())) {
                                 classEvent.selectActivity(classEvent.eventosShow.get(idEvent).getId());
                                 technonizer.TechnoNizer.home.showEventActivitiesOwner(idEvent);
                                 controller.rootFrame = technonizer.TechnoNizer.home;
                                 standardization.hide(this);
-                                standardization.showMessage("ok","Actividad ingresada", this);
+                                standardization.showMessage("ok", "Actividad ingresada", this);
+                            } else {
+                                standardization.showMessage("cancel", "No se logro ingresar", this);
                             }
-                            else
-                                standardization.showMessage("cancel","No se logro ingresar", this);
-                        }else
-                            standardization.showMessage("warning","Campos vacios", this);
-                    }else{
-                        standardization.showMessage("warning","Fecha después del evento", this);
+                        } else {
+                            standardization.showMessage("warning", "Campos vacios", this);
+                        }
+                    } else {
+                        standardization.showMessage("warning", "Fecha después del evento", this);
                     }
                 }
             } catch (ParseException ex) {
                 Logger.getLogger(AddActivitie.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
-            standardization.showMessage("warning","Fechas invalidas",this);
+        } else {
+            standardization.showMessage("warning", "Fechas invalidas", this);
         }
     }//GEN-LAST:event_btnNext1ActionPerformed
 
     private void txtActivitieKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtActivitieKeyTyped
         char c = evt.getKeyChar();
-        if(txtActivitie.getText().length()<41){
-            if(Character.isLetter(c) || Character.isSpaceChar(c) || Character.isDigit(c)){}
-            else
+        if (txtActivitie.getText().length() < 41) {
+            if (Character.isLetter(c) || Character.isSpaceChar(c) || Character.isDigit(c)) {
+            } else {
+                evt.consume();
+            }
+        } else {
             evt.consume();
-        }else
-        evt.consume();
+        }
     }//GEN-LAST:event_txtActivitieKeyTyped
 
     private void txtActivitieFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtActivitieFocusLost
         spEvent.setBackground(Color.white);
-        if(txtActivitie.getText().trim().length() < 4 && txtActivitie.getText().trim().length() > 0){
+        if (txtActivitie.getText().trim().length() < 4 && txtActivitie.getText().trim().length() > 0) {
             standardization.showMessage("cancel", "Evento invalido");
             txtActivitie.setText("");
         }
@@ -699,14 +745,16 @@ public class AddActivitie extends javax.swing.JFrame {
     private void txtHourFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHourFocusLost
         spHour.setBackground(Color.white);
         spHour.setBackground(Color.white);
-        if(Integer.parseInt(txtMinute.getText())>12)
+        if (Integer.parseInt(txtMinute.getText()) > 12) {
             txtHour.setText("");
+        }
     }//GEN-LAST:event_txtHourFocusLost
 
     private void txtHourKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHourKeyTyped
         char c = evt.getKeyChar();
-        if(txtHour.getText().length()>1 || c < '0' || c >'9')
+        if (txtHour.getText().length() > 1 || c < '0' || c > '9') {
             evt.consume();
+        }
     }//GEN-LAST:event_txtHourKeyTyped
 
     private void txtMinuteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMinuteFocusGained
@@ -715,28 +763,30 @@ public class AddActivitie extends javax.swing.JFrame {
 
     private void txtMinuteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMinuteFocusLost
         spHour.setBackground(Color.white);
-        if(Integer.parseInt(txtMinute.getText())>59)
+        if (Integer.parseInt(txtMinute.getText()) > 59) {
             txtMinute.setText("");
+        }
     }//GEN-LAST:event_txtMinuteFocusLost
 
     private void txtMinuteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMinuteKeyTyped
         char c = evt.getKeyChar();
-        if(txtMinute.getText().length()>1 || c < '0' || c >'9')
+        if (txtMinute.getText().length() > 1 || c < '0' || c > '9') {
             evt.consume();
+        }
     }//GEN-LAST:event_txtMinuteKeyTyped
 
     private void btnHoraryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoraryActionPerformed
-        if(horary == 0){
+        if (horary == 0) {
             horary = 1;
             btnHorary.setText("PM");
-        }else{
+        } else {
             horary = 0;
             btnHorary.setText("AM");
         }
     }//GEN-LAST:event_btnHoraryActionPerformed
 
     private void txtDescriptionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescriptionKeyReleased
-        
+
     }//GEN-LAST:event_txtDescriptionKeyReleased
 
     private void txtYearStartFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearStartFocusGained
@@ -749,8 +799,9 @@ public class AddActivitie extends javax.swing.JFrame {
 
     private void txtYearStartKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtYearStartKeyTyped
         char c = evt.getKeyChar();
-        if(txtYearStart.getText().length()>3 || c < '0' || c >'9')
-        evt.consume();
+        if (txtYearStart.getText().length() > 3 || c < '0' || c > '9') {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtYearStartKeyTyped
 
     private void txtDayStartFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDayStartFocusGained
@@ -763,37 +814,42 @@ public class AddActivitie extends javax.swing.JFrame {
 
     private void txtDayStartKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDayStartKeyTyped
         char c = evt.getKeyChar();
-        if(txtDayStart.getText().length()>1 || c < '0' || c >'9')
-        evt.consume();
+        if (txtDayStart.getText().length() > 1 || c < '0' || c > '9') {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtDayStartKeyTyped
 
-    boolean camposVacios(){
-        if(txtActivitie.getText().trim().isEmpty() || txtPlace.getText().trim().isEmpty() || txtDescription.getText().trim().isEmpty()
+    boolean camposVacios() {
+        if (txtActivitie.getText().trim().isEmpty() || txtPlace.getText().trim().isEmpty() || txtDescription.getText().trim().isEmpty()
                 || txtDayStart.getText().trim().isEmpty() || txtYearStart.getText().trim().isEmpty() || txtHour.getText().trim().isEmpty()
-                || txtMinute.getText().trim().isEmpty() || Integer.parseInt(txtHour.getText())>12 || Integer.parseInt(txtHour.getText()) == 0
-                || Integer.parseInt(txtMinute.getText()) > 59)
+                || txtMinute.getText().trim().isEmpty() || Integer.parseInt(txtHour.getText()) > 12 || Integer.parseInt(txtHour.getText()) == 0
+                || Integer.parseInt(txtMinute.getText()) > 59) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
-    
-    void switchVisibility(){
-        switch(visibility){
+
+    void switchVisibility() {
+        switch (visibility) {
             case 0:
-                lblStatus.setText("Inactivo");
-                lblStatus.setForeground(new Color(255,61,0));
+                lblStatus.setText(pr.getProperty("InActive"));
+                lblStatus.setForeground(new Color(255, 61, 0));
                 lblSwitch.setIcon(new controller().changeImage("/imagenes/toggleOff.png", 30, 30));
                 break;
             case 1:
-                lblStatus.setText("Activo");
+                lblStatus.setText(pr.getProperty("Active"));
                 lblStatus.setForeground(new Color(139, 195, 74));
                 lblSwitch.setIcon(new controller().changeImage("/imagenes/toggleOn.png", 30, 30));
                 break;
         }
     }
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Day;
+    private javax.swing.JLabel Month;
+    private javax.swing.JLabel Year;
     private javax.swing.JButton btnHorary;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
@@ -803,22 +859,19 @@ public class AddActivitie extends javax.swing.JFrame {
     private javax.swing.JLabel iconPlace;
     private javax.swing.JLabel iconStart;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lblAddActivitie;
+    private javax.swing.JLabel lblAddActivitie1F;
+    private javax.swing.JLabel lblAddActivitie2F;
+    private javax.swing.JLabel lblAddActivitie3F;
+    private javax.swing.JLabel lblAddActivitie4F;
+    private javax.swing.JLabel lblAddActivitie5F;
+    private javax.swing.JLabel lblAddActivitie6F;
+    private javax.swing.JLabel lblAddActivitie7F;
+    private javax.swing.JLabel lblAddActivitie8F;
     private javax.swing.JLabel lblEvent;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblSwitch;

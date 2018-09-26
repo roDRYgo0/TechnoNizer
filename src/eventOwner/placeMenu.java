@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javaClass.StaticMaps;
 import javaClass.classEvent;
 import javaClass.controller;
+import javaClass.standardization;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import properties.propiedades;
@@ -20,13 +21,13 @@ public class placeMenu extends javax.swing.JPanel {
     void verificaridioma()
     {
         Properties pr=new propiedades(controller.idioma);
-        lblPlace.setText(pr.getProperty("lblPlace1"));
+        lblplace1.setText(pr.getProperty("lblplace1"));
         lblMap.setText(pr.getProperty("lblMap"));
     }
     
     private StaticMaps ObjStaticMaps=new StaticMaps();
     
-    public placeMenu(int idEvent) {
+    public placeMenu(int idEvent, boolean googleMap) {
         initComponents();
 
         load(classEvent.eventosShow.get(idEvent).getPlace());
@@ -35,23 +36,12 @@ public class placeMenu extends javax.swing.JPanel {
     
     void load(String direction){
         if(!direction.isEmpty()){
-            try {
-                this.lblPlace.setText(direction);
-                this.lblMap.setText("");
-                Image imagenMapa=ObjStaticMaps.getStaticMap(direction,
-                        Integer.valueOf(16),new Dimension(473,173),2,StaticMaps.Format.png,
-                        StaticMaps.Maptype.roadmap);
-                if(imagenMapa!=null){
-                    ImageIcon imgIcon=new ImageIcon(imagenMapa);
-                    Icon iconImage=(Icon)imgIcon;
-                    lblMap.setIcon(iconImage);
-                }
-            } catch (MalformedURLException ex) {
-                Logger.getLogger(placeMenu.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(placeMenu.class.getName()).log(Level.SEVERE, null, ex);
-            }
-         }
+            if(classEvent.evento.getMapImage()!= null)
+                lblMap.setIcon(standardization.getImgIcon(classEvent.evento.getMapImage()));
+            else
+                this.setPreferredSize(new Dimension(945,80));
+            lblPlace.setText(direction);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -108,7 +98,7 @@ public class placeMenu extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(lblPlace, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addComponent(lblPlace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );

@@ -1,6 +1,7 @@
 package technonizer;
 
 import jFrame.*;
+import javaClass.SocketsClient;
 import javaClass.classContact;
 import javaClass.classSecurityQuestions;
 import javaClass.classUsuario;
@@ -21,7 +22,10 @@ public class TechnoNizer {
     public static void main(String[] args) {
         new Thread(()->{
             controller.idioma="INGLES";
-            
+//            SocketsClient.sendServer("connection from: "+SocketsClient.hotsAddress());
+            new Thread(()->{
+                SocketsClient.listenServer();
+            }).start();
             classUsuario.loadAllFinal();
             classContact.loadCopntactType();
             System.out.println("Carga de constantes");

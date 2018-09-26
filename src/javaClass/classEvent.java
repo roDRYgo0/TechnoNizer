@@ -16,11 +16,14 @@ public class classEvent {
 
     public static int position;
     
+    public static int evets;
+    
     private static Integer id;
     private static String eventName;
     private static String nicknameCreator;
     private static byte[] profilePicture;
     private static byte[] coverPicture;
+    private static byte[] mapImage;
     private static Integer price;
     private static Integer visibility;
     private static Integer invitation;
@@ -37,13 +40,18 @@ public class classEvent {
     public static List<event> eventos = new ArrayList<event>();
     public static List<event> eventosShow = new ArrayList<event>();
     public static List<event> eventosSearch = new ArrayList<event>();
-    public static List<activity> activities = new ArrayList<>();
-    public static List<Task> tasks = new ArrayList<>();
-    public static List<problem> problems = new ArrayList<>();
-    public static List<announcement> announcements = new ArrayList<>();
-
+    
+    
+    public static infEvent evento;
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public static byte[] getMapImage() {
+        return mapImage;
+    }
+
+    public static void setMapImage(byte[] mapImage) {
+        classEvent.mapImage = mapImage;
+    }
     public static Integer getInvitation() {
         return invitation;
     }
@@ -207,25 +215,24 @@ public class classEvent {
     public static boolean select(){
         boolean status = false;
         event evento;
-        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.profilePicture, e.coverPicture, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket, e.color, e.invitation FROM events e");
+        eventos.clear();
+        ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket, e.color, e.invitation FROM events e");
         
         try {
             while(rs.next()){
                 evento = new event();
                 evento.setId(rs.getInt(1));
                 evento.setEventName(rs.getString(2));
-                evento.setProfilePicture(rs.getBytes(3));
-                evento.setCoverPicture(rs.getBytes(4));
-                evento.setVisibility(rs.getInt(5));
-                evento.setStartDateTime(rs.getString(6));
-                evento.setEndDateTime(rs.getString(7));
-                evento.setStaff(rs.getInt(8));
-                evento.setCondition(rs.getInt(9));
-                evento.setNicknameCreator(rs.getString(10));
-                evento.setPlace(rs.getString(11));
-                evento.setQuantityTicket(rs.getInt(12));
-                evento.setColor(rs.getString(13));
-                evento.setInvitation(rs.getInt(14));
+                evento.setVisibility(rs.getInt(3));
+                evento.setStartDateTime(rs.getString(4));
+                evento.setEndDateTime(rs.getString(5));
+                evento.setStaff(rs.getInt(6));
+                evento.setCondition(rs.getInt(7));
+                evento.setNicknameCreator(rs.getString(8));
+                evento.setPlace(rs.getString(9));
+                evento.setQuantityTicket(rs.getInt(10));
+                evento.setColor(rs.getString(11));
+                evento.setInvitation(rs.getInt(12));
                 if(evento.getStaff() == 1){
                     List<staff> staffs = new ArrayList<>();
                     staff s;
@@ -272,8 +279,7 @@ public class classEvent {
                     }
                 });
                 evento.setPrices(pric);
-                eventos.add(evento);//aqui...... tambien ya esta.... d
-                //y los voy agregando a una lista...
+                eventos.add(evento);
             }
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
@@ -353,7 +359,7 @@ public class classEvent {
                 ac.setTime(dateTime[1]);
                 activiti.add(ac);
             }
-            activities.addAll(activiti);
+            evento.setActivities(activiti);
             status = true;
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
@@ -393,7 +399,26 @@ public class classEvent {
                 announ.setNickname(rs.getString(6));
                 announc.add(announ);
             }
-            announcements.addAll(announc);
+            evento.setAnnouncements(announc);
+            status = true;
+        } catch (SQLException ex) {
+            Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return status;
+    }
+    
+    public static boolean selectImages(int idEvent){
+        boolean status = false;
+        
+        ResultSet rs = methodsSQL.getExecute("select profilePicture, coverPicture, googleMaps from events where id = ?", idEvent);
+        
+        try {
+            while(rs.next()){
+                evento.setProfilePicture(rs.getBytes(1));
+                evento.setCoverPicture(rs.getBytes(2));
+                evento.setMapImage(rs.getBytes(3));
+            }
             status = true;
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
@@ -414,9 +439,18 @@ public class classEvent {
         return status;
     }
     
-    public static boolean updatePlace(int idEvent, String place){
+    public static boolean updatePlace(int idEvent, String place, byte[] mapImage, int visibility){
         boolean status = false;
-        status = methodsSQL.execute("update events set place = ? where id = ?", place, idEvent);
+        if(visibility == 0)
+            status = methodsSQL.execute("update events set place = ? where id = ?", place, idEvent);
+        else
+            status = methodsSQL.execute("update events set place = ?, googleMaps= ? where id = ?", place, mapImage, idEvent);
+        return status;
+    }
+    
+    public static boolean deleteMapImage(int idEvent){
+        boolean status = false;
+        status = methodsSQL.execute("update events set googleMaps = "+null+" where id = ?", idEvent);
         return status;
     }
     
@@ -453,8 +487,12 @@ public class classEvent {
     
     public static boolean insert(){
         boolean status = false;
-        status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?, 1)",
+        if(mapImage == null)
+            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?, 1, "+null+")",
                 eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition, quantityTicket, place, color);
+        else
+            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?, 1, ?)",
+                eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition, quantityTicket, place, color, mapImage);
 
         
         if(status){
@@ -533,7 +571,7 @@ public class classEvent {
                 ta.setNickname(rs.getString(6));
                 task.add(ta);
             }
-            tasks.addAll(task);
+            evento.setTasks(task);
             status = true;
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
@@ -581,7 +619,7 @@ public class classEvent {
                 pro.setResponsable(rs.getString(8));
                 problem.add(pro);
             }
-            problems.addAll(problem);
+            evento.setProblems(problem);
             status = true;
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);

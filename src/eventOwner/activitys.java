@@ -34,23 +34,23 @@ public class activitys extends javax.swing.JPanel {
     
     void load(){            
 
-        Collections.sort(classEvent.activities, new Comparator<activity>(){
+        Collections.sort(classEvent.evento.getActivities(), new Comparator<activity>(){
             @Override
             public int compare(activity o1, activity o2) {
                 return ( (o1.getDateTime().compareTo(o2.getDateTime()) > 0)? 1: (o1.getDateTime().compareTo(o2.getDateTime()) < 0) ? -1 : 0 );
             }
         });
 
-        for(int i = 0; i < classEvent.activities.size(); i++){
-            if(!d && days == getDays(classEvent.activities.get(i))){
-                if(classEvent.activities.get(i).getCondition() == 1){
+        for(int i = 0; i < classEvent.evento.getActivities().size(); i++){
+            if(!d && days == getDays(classEvent.evento.getActivities().get(i))){
+                if(classEvent.evento.getActivities().get(i).getCondition() == 1){
                     this.add(new showActivityMenu(i));
                     count++;
                 }
             }
-            if(getDays(classEvent.activities.get(i)) >= 0 && d){
-                days = getDays(classEvent.activities.get(i));
-                if(classEvent.activities.get(i).getCondition() == 1){
+            if(getDays(classEvent.evento.getActivities().get(i)) >= 0 && d){
+                days = getDays(classEvent.evento.getActivities().get(i));
+                if(classEvent.evento.getActivities().get(i).getCondition() == 1){
                     this.add(new showActivityMenu(i));
                     count++;
                 }
@@ -81,7 +81,7 @@ public class activitys extends javax.swing.JPanel {
                 txtText.setText("Pasado mañana");
                 break;
             default:
-                txtText.setText(standardization.getDateToString(classEvent.activities.get(i).getDate(),  standardization.getDate(classEvent.activities.get(i).getDate()), false));
+                txtText.setText(standardization.getDateToString(classEvent.evento.getActivities().get(i).getDate(),  standardization.getDate(classEvent.evento.getActivities().get(i).getDate()), false));
                 break;
         }
     }

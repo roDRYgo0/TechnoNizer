@@ -7,29 +7,46 @@ import properties.propiedades;
 
 public class announcementMenu extends javax.swing.JPanel {
 
-    void verificaridioma()
-    {
-    Properties pr=new propiedades(controller.idioma);
-    lblAnnouncementMenu1.setText(pr.getProperty("lblAnnouncementMenu1"));
+    void verificaridioma() {
+        Properties pr = new propiedades(controller.idioma);
+        lblAnnouncementMenu1.setText(pr.getProperty("lblAnnouncementMenu1"));
     }
-    
+
     int idEvent;
-    
+
     public announcementMenu(int idEvent) {
         initComponents();
         this.idEvent = idEvent;
         verificaridioma();
         load();
     }
-    
-    void load(){
-        
-        for(int i = 0; i < classEvent.announcements.size(); i++){
-            if(classEvent.announcements.get(i).getCondition() == 1){
-                this.add(new showAnnouncementMenu(i, idEvent));
+
+    void load() {
+
+        for (int i = 0; i < classEvent.evento.getAnnouncements().size(); i++) {
+            if (classEvent.evento.getAnnouncements().get(i).getCondition() == 1) {
+
+                switch (classEvent.position) {
+                    case 0:
+                        this.add(new showAnnouncementMenu(i, idEvent));
+                        break;
+                    case 1:
+                        this.add(new showAnnouncementMenu(i, idEvent));
+                        break;
+                    case 2:
+                        if (classEvent.evento.getAnnouncements().get(i).getPublicGoal() >= 2) {
+                            this.add(new showAnnouncementMenu(i, idEvent));
+                        }
+                        break;
+                    case 3:
+                        if (classEvent.evento.getAnnouncements().get(i).getPublicGoal() == 3) {
+                            this.add(new showAnnouncementMenu(i, idEvent));
+                        }
+                        break;
+                }
             }
         }
-        
+
         this.revalidate();
         this.repaint();
     }

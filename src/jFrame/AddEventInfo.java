@@ -19,14 +19,17 @@ import properties.propiedades;
 
 public class AddEventInfo extends javax.swing.JFrame {
 
+    Properties pr = new propiedades(controller.idioma);
+    
     JFrame event;
     byte[] cover;
     byte[] profil;
     boolean guest;
+    int visibility;
     
     void verificaridioma()
     {
-    Properties pr = new propiedades (controller.idioma);
+    pr = new propiedades (controller.idioma);
     addeventlbl.setText(pr.getProperty("addeventlbl"));
     DataGenEventInfo.setText(pr.getProperty("DataGenEventInfo"));
     NameeventlblEventInfo.setText(pr.getProperty("NameeventlblEventInfo"));
@@ -89,6 +92,9 @@ public class AddEventInfo extends javax.swing.JFrame {
         this.event=event;
         guest = false;
        
+        visibility = 1;
+        switchVisibility();
+        
         verificaridioma();
         loadImage(); 
       
@@ -96,13 +102,17 @@ public class AddEventInfo extends javax.swing.JFrame {
     public AddEventInfo() {
         initComponents();
         guest = false;  
-      
+        
+        visibility = 1;
+        switchVisibility();
+        
         verificaridioma();
         loadImage(); 
     }
     
     void loadImage(){
         iconStart.setIcon(new controller().changeImage("/imagenes/calendarPlus.png", 35, 35));
+        iconGoogleMaps.setIcon(new controller().changeImage("/imagenes/googleMaps.png", 35, 35));
         iconEnd.setIcon(new controller().changeImage("/imagenes/calendarMinus.png", 35, 35));
         iconGuest.setIcon(new controller().changeImage("/imagenes/hashtag.png", 35, 35));
         iconPlace.setIcon(new controller().changeImage("/imagenes/place.png", 35, 35));
@@ -132,7 +142,6 @@ public class AddEventInfo extends javax.swing.JFrame {
         NameeventlblEventInfo = new javax.swing.JLabel();
         txtEvent = new javax.swing.JTextField();
         spEvent = new javax.swing.JSeparator();
-        checkEvent = new javax.swing.JLabel();
         spDayStart = new javax.swing.JSeparator();
         cmbMonthStart = new javax.swing.JComboBox<>();
         MonthEventInfo = new javax.swing.JLabel();
@@ -160,6 +169,10 @@ public class AddEventInfo extends javax.swing.JFrame {
         spNumber = new javax.swing.JSeparator();
         iconGuest = new javax.swing.JLabel();
         iconPlace = new javax.swing.JLabel();
+        InvitesnumberEventInfo1 = new javax.swing.JLabel();
+        iconGoogleMaps = new javax.swing.JLabel();
+        lblStatus = new javax.swing.JLabel();
+        lblSwitch = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -252,10 +265,6 @@ public class AddEventInfo extends javax.swing.JFrame {
         });
 
         spEvent.setForeground(new java.awt.Color(204, 204, 204));
-
-        checkEvent.setMaximumSize(new java.awt.Dimension(25, 25));
-        checkEvent.setMinimumSize(new java.awt.Dimension(25, 25));
-        checkEvent.setPreferredSize(new java.awt.Dimension(25, 25));
 
         spDayStart.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -428,6 +437,27 @@ public class AddEventInfo extends javax.swing.JFrame {
         iconPlace.setMinimumSize(new java.awt.Dimension(35, 35));
         iconPlace.setPreferredSize(new java.awt.Dimension(35, 35));
 
+        InvitesnumberEventInfo1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        InvitesnumberEventInfo1.setForeground(new java.awt.Color(102, 102, 102));
+        InvitesnumberEventInfo1.setText("Google maps");
+
+        iconGoogleMaps.setMaximumSize(new java.awt.Dimension(35, 35));
+        iconGoogleMaps.setMinimumSize(new java.awt.Dimension(35, 35));
+        iconGoogleMaps.setPreferredSize(new java.awt.Dimension(35, 35));
+
+        lblStatus.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblStatus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblStatus.setText("Activo");
+
+        lblSwitch.setMaximumSize(new java.awt.Dimension(30, 30));
+        lblSwitch.setMinimumSize(new java.awt.Dimension(30, 30));
+        lblSwitch.setPreferredSize(new java.awt.Dimension(30, 30));
+        lblSwitch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblSwitchMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -488,22 +518,27 @@ public class AddEventInfo extends javax.swing.JFrame {
                                 .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(NameeventlblEventInfo)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(InvitesnumberEventInfo)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(iconGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, 0)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtGuest, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                            .addComponent(spNumber))))
-                                .addGap(124, 124, 124)
-                                .addComponent(checkEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(iconGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtGuest, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                    .addComponent(spNumber))
+                                .addGap(18, 18, 18)
+                                .addComponent(iconGoogleMaps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(iconPlace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(spPlace)
-                                    .addComponent(txtPlace, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE))))
+                                    .addComponent(txtPlace, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(InvitesnumberEventInfo)
+                                .addGap(94, 94, 94)
+                                .addComponent(InvitesnumberEventInfo1)))
                         .addGap(0, 17, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -530,73 +565,82 @@ public class AddEventInfo extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(spPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(16, 16, 16)
-                .addComponent(InvitesnumberEventInfo)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(InvitesnumberEventInfo)
+                    .addComponent(InvitesnumberEventInfo1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(iconGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(spNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(33, 33, 33)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SetDatesEventInfo)
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(DayEventInfo)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(1, 1, 1)
-                            .addComponent(spDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(YearEventInfo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10))
-                            .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(MonthEventInfo)
+                                .addGap(3, 3, 3)
+                                .addComponent(iconGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(spNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblSwitch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(33, 33, 33)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbMonthStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(SetDatesEventInfo)
+                        .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(Day2EventInfo)
+                                            .addComponent(DayEventInfo)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(iconEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(1, 1, 1)
-                                    .addComponent(spDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(spYearEnd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(spDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(YearEventInfo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10))
+                                    .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Month2EventInfo)
+                                .addComponent(MonthEventInfo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbMonthStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)))
-                        .addGap(52, 52, 52))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                    .addComponent(Day2EventInfo)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(txtDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(iconEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(1, 1, 1)
+                                            .addComponent(spDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(spYearEnd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(Month2EventInfo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmbMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10)))
+                                .addGap(52, 52, 52))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Year2EventInfo)
+                                .addGap(12, 12, 12)
+                                .addComponent(txtYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
+                                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Year2EventInfo)
-                        .addGap(12, 12, 12)
-                        .addComponent(txtYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(iconGoogleMaps, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -744,6 +788,10 @@ public class AddEventInfo extends javax.swing.JFrame {
                 classEvent.setPlace(txtPlace.getText().trim());
                 classEvent.setProfilePicture(profil);
                 classEvent.setCoverPicture(cover);
+                if(visibility == 1)
+                    classEvent.setMapImage(standardization.getByte(standardization.getImageMap(txtPlace.getText().trim())));
+                else
+                    classEvent.setMapImage(null);
                 classEvent.setStartDateTime(txtYearStart.getText()+"-"+(cmbMonthStart.getSelectedIndex()+1)+"-"+txtDayStart.getText());
                 classEvent.setEndDateTime(txtYearEnd.getText()+"-"+(cmbMonthEnd.getSelectedIndex()+1)+"-"+txtDayEnd.getText());
                 
@@ -805,12 +853,37 @@ public class AddEventInfo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGuestActionPerformed
 
+    private void lblSwitchMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSwitchMouseReleased
+        if(visibility == 0){
+            visibility = 1;
+            switchVisibility();
+        }else{
+            visibility = 0;
+            switchVisibility();
+        }
+    }//GEN-LAST:event_lblSwitchMouseReleased
+
+    void switchVisibility(){
+        switch(visibility){
+            case 0:
+                lblStatus.setText(pr.getProperty("InActive"));
+                lblStatus.setForeground(new Color(255,61,0));
+                lblSwitch.setIcon(new controller().changeImage("/imagenes/toggleOff.png", 30, 30));
+                break;
+            case 1:
+                lblStatus.setText(pr.getProperty("Active"));
+                lblStatus.setForeground(new Color(139, 195, 74));
+                lblSwitch.setIcon(new controller().changeImage("/imagenes/toggleOn.png", 30, 30));
+                break;
+        }
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DataGenEventInfo;
     private javax.swing.JLabel Day2EventInfo;
     private javax.swing.JLabel DayEventInfo;
     private javax.swing.JLabel InvitesnumberEventInfo;
+    private javax.swing.JLabel InvitesnumberEventInfo1;
     private javax.swing.JLabel Month2EventInfo;
     private javax.swing.JLabel MonthEventInfo;
     private javax.swing.JLabel NameeventlblEventInfo;
@@ -820,10 +893,10 @@ public class AddEventInfo extends javax.swing.JFrame {
     private javax.swing.JLabel addeventlbl;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
-    private javax.swing.JLabel checkEvent;
     private javax.swing.JComboBox<String> cmbMonthEnd;
     private javax.swing.JComboBox<String> cmbMonthStart;
     private javax.swing.JLabel iconEnd;
+    private javax.swing.JLabel iconGoogleMaps;
     private javax.swing.JLabel iconGuest;
     private javax.swing.JLabel iconPlace;
     private javax.swing.JLabel iconStart;
@@ -833,6 +906,8 @@ public class AddEventInfo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblEvent;
+    private javax.swing.JLabel lblStatus;
+    private javax.swing.JLabel lblSwitch;
     private javax.swing.JLabel placeeventEventInfo;
     private javax.swing.JSeparator spDayEnd;
     private javax.swing.JSeparator spDayStart;

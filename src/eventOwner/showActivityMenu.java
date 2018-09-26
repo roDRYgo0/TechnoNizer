@@ -8,9 +8,9 @@ public class showActivityMenu extends javax.swing.JPanel {
 
     public showActivityMenu(int activity) {
         initComponents();
-        lblActivity.setText(classEvent.activities.get(activity).getActivity());
-        lblClock.setText(standardization.getTime(classEvent.activities.get(activity).getTime()));
-        lblPlace.setText(classEvent.activities.get(activity).getPlace());
+        lblActivity.setText(classEvent.evento.getActivities().get(activity).getActivity());
+        lblClock.setText(standardization.getTime(classEvent.evento.getActivities().get(activity).getTime()));
+        lblPlace.setText(classEvent.evento.getActivities().get(activity).getPlace());
         lblClock.setIcon(new controller().changeImage("/imagenes/clock.png", 23, 23));
         lblPlace.setIcon(new controller().changeImage("/imagenes/place.png", 23, 23));
     }

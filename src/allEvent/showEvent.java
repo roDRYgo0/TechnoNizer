@@ -2,20 +2,29 @@ package allEvent;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.event;
 import javaClass.staff;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class showEvent extends javax.swing.JPanel {
 
+    Properties pr= new propiedades(controller.idioma);
+     void verificaridioma()
+    {
+    lblEventName1.setText(pr.getProperty("lblEventName1"));
+    }
+    
     int event;
     public showEvent(int event) {
         initComponents();
         this.event = event;
         load(event);
+        verificaridioma();
     }
 
     void load(int e){
@@ -40,30 +49,30 @@ public class showEvent extends javax.swing.JPanel {
         lblNickname.setText(ev.getNicknameCreator());
         if(!ev.getPrices().isEmpty()){
             if(ev.getPrices().get(0).getPrice() == 0){
-                lblPrice.setText("Gratis");
+                lblPrice.setText(pr.getProperty("FreeTickets"));
                 lblPrice.setForeground(new Color(65,152,38));
             }
             else
                 lblPrice.setText("$"+ev.getPrices().get(0).getPrice());
         }     
         else
-            lblPrice.setText("Vacio");
+            lblPrice.setText(pr.getProperty("ShoweventEmpty"));
         if(ev.getQuantityTicket() == -1)
-            lblNumGuest.setText("Ilimitadas");
+            lblNumGuest.setText(pr.getProperty("UnlimitedEvent"));
         else
             lblNumGuest.setText(ev.getQuantityTicket()-numGuest()+"");
         
         if(standardization.currentDate().compareTo(standardization.getDate(ev.getStartDateTime())) == 0){
-            lblDays.setText("Hoy");
+            lblDays.setText(pr.getProperty("TodayEvent"));
             lblDays.setForeground(Color.red);
             Font f= new Font("Arial", Font.BOLD, 11);
             lblDays.setFont(f);
         }                            
         else{
             if(standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getStartDateTime())) < 0)
-                lblDays.setText("Hace "+(-1*standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getStartDateTime())))+" días");
+                lblDays.setText(pr.getProperty("HaceEvent")+" "+(-1*standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getStartDateTime())))+" "+pr.getProperty("DaysEventCreate"));
             else
-                lblDays.setText(standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getStartDateTime()))+" días");
+                lblDays.setText(standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getStartDateTime()))+" "+pr.getProperty("DaysEventCreate"));
         }
     }
     
@@ -199,7 +208,7 @@ public class showEvent extends javax.swing.JPanel {
         new Thread(()->{
             technonizer.TechnoNizer.home.showLoad();
             classEvent.position = 3;
-            if(classEvent.eventosShow.get(event).getNicknameCreator() == classUsuario.getNickname())
+            if(classEvent.eventosShow.get(event).getNicknameCreator().equals(classUsuario.getNickname()))
                 classEvent.position = 0;
             else{
                 for(staff s : classEvent.eventosShow.get(event).getStaffs()){
@@ -209,6 +218,7 @@ public class showEvent extends javax.swing.JPanel {
                 }
             }
             technonizer.TechnoNizer.home.showEventOwner(event, true);
+            classEvent.evets = 0;
             
         }).start();
     }

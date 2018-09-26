@@ -1,5 +1,6 @@
 package jFrame;
 
+import eventOwner.jpEvent;
 import JPanel.*;
 import admin.jpEditUserAdmin;
 import admin.jpSecurityUser;

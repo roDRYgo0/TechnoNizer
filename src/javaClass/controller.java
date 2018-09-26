@@ -1,5 +1,6 @@
 package javaClass;
 
+import eventOwner.jpEvent;
 import eventOwner.showEvent;
 import eventOwner.eventAdmin;
 import projectAdmin.projectAdmin;
@@ -11,14 +12,17 @@ import JPanel.contact.itemContact;
 import JPanel.contact.jpContact;
 import admin.jpSecurityQuestionsAdmin;
 import admin.jpSecurityUser;
-import event.addPrice;
-import event.price;
+import addEvent.addPrice;
+import addEvent.price;
+import jFrame.AddCardDetails;
 import jFrame.AddEventInfo;
-import jFrame.AddEventInfoP;
 import jFrame.AddProjectDetails;
+import jFrame.UpdateCardDetails;
+import jFrame.addCard;
 import jFrame.addProject;
 import jFrame.addReminderGral;
 import jFrame.addReminderGral1;
+import jFrame.updateCard;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.Icon;
@@ -29,6 +33,8 @@ import sucurity.jpChangePassword;
 import sucurity.jpSecurityQuestions;
 
 public class controller {
+    
+    public static String positionPanel;
     
     public static JPanel rootPane;
     public static jpAccess jpA;
@@ -67,7 +73,10 @@ public class controller {
     public static jpSecurityQuestions jpSeQue;
     public static eventAdmin jpEvent;
     
-    
+    public static addCard addCr;
+    public static updateCard updateCr;
+    public static AddCardDetails addCrDetails;  
+    public static UpdateCardDetails updateCrDetails;  
       
     public static addProject addPj;
     public static AddProjectDetails addPjDetails;

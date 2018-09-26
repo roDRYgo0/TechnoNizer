@@ -299,7 +299,7 @@ public class showEventP extends javax.swing.JPanel {
 
                 switch(position){
                 case 1:
-                    technonizer.TechnoNizer.home.showEventMod(eventp, true);
+                    
                     break;
                 default:
                     

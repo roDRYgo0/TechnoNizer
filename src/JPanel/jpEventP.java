@@ -3,15 +3,11 @@ package JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.classPersonalE;
 import javaClass.classUsuario;
 import javaClass.controller;
-import javaClass.event;
 import javaClass.eventp;
-import javaClass.staff;
-import properties.propiedades;
 
 public final class jpEventP extends javax.swing.JPanel {
 

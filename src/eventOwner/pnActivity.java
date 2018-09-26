@@ -4,17 +4,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Properties;
 import javaClass.activity;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.event;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class pnActivity extends javax.swing.JPanel {
 
     int idEvent;
     byte[] image, imageCover;
     int days;
+    
+    void verificaridioma()
+    {
+    Properties pr = new propiedades(controller.idioma);
+    lblpnActivity.setText(pr.getProperty("lblpnActivity"));
+    btnNext1.setText(pr.getProperty("btnNext1Acti"));
+    }
     
     public pnActivity(int idEvent) {
         initComponents();
@@ -23,6 +32,7 @@ public class pnActivity extends javax.swing.JPanel {
         
         load(classEvent.eventosShow.get(idEvent));
         check();
+        verificaridioma();
     }
 
     void check(){
@@ -38,23 +48,23 @@ public class pnActivity extends javax.swing.JPanel {
     void load(event event){            
         
         
-        Collections.sort(classEvent.activities, new Comparator<activity>(){
+        Collections.sort(classEvent.evento.getActivities(), new Comparator<activity>(){
             @Override
             public int compare(activity o1, activity o2) {
                 return ( (o1.getDateTime().compareTo(o2.getDateTime()) > 0)? 1: (o1.getDateTime().compareTo(o2.getDateTime()) < 0) ? -1 : 0 );
             }
         });
 
-        for(int i = 0; i < classEvent.activities.size(); i++){
+        for(int i = 0; i < classEvent.evento.getActivities().size(); i++){
             if(i == 0){
-                days = getDays(classEvent.activities.get(i));
+                days = getDays(classEvent.evento.getActivities().get(i));
                 asignar(i);
                 pnContainer.add(new showActivity(i, idEvent));
             }else{
-                if(days == getDays(classEvent.activities.get(i))){
+                if(days == getDays(classEvent.evento.getActivities().get(i))){
                     pnContainer.add(new showActivity(i, idEvent));
                 }else{
-                    days = getDays(classEvent.activities.get(i));
+                    days = getDays(classEvent.evento.getActivities().get(i));
                     asignar(i);
                     pnContainer.add(new showActivity(i, idEvent));
                 }
@@ -83,7 +93,8 @@ public class pnActivity extends javax.swing.JPanel {
                 pnContainer.add(new Text("Pasado mañana"));
                 break;
             default:
-                pnContainer.add(new Text(standardization.getDateToString(classEvent.activities.get(i).getDate(),  standardization.getDate(classEvent.activities.get(i).getDate()), false)));
+                pnContainer.add(new Text(standardization.getDateToString(classEvent.evento.getActivities().get(i).getDate(),  
+                        standardization.getDate(classEvent.evento.getActivities().get(i).getDate()), false)));
                 break;
         }
     }
@@ -99,7 +110,7 @@ public class pnActivity extends javax.swing.JPanel {
         scrollContainer = new javax.swing.JScrollPane();
         pnContainer = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblpnActivity = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnNext1 = new javax.swing.JButton();
 
@@ -124,9 +135,9 @@ public class pnActivity extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Actividades");
+        lblpnActivity.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblpnActivity.setForeground(new java.awt.Color(255, 0, 0));
+        lblpnActivity.setText("Actividades");
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -152,7 +163,7 @@ public class pnActivity extends javax.swing.JPanel {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jLabel2)))
+                        .addComponent(lblpnActivity)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 409, Short.MAX_VALUE)
                 .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -161,7 +172,7 @@ public class pnActivity extends javax.swing.JPanel {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jLabel2)
+                .addComponent(lblpnActivity)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
@@ -205,9 +216,9 @@ public class pnActivity extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNext1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblpnActivity;
     private javax.swing.JPanel pnContainer;
     private javax.swing.JScrollPane scrollContainer;
     // End of variables declaration//GEN-END:variables

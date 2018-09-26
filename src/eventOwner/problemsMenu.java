@@ -23,8 +23,8 @@ public class problemsMenu extends javax.swing.JPanel {
     }
     
     void load(){
-        for(int i = 0; i < classEvent.problems.size(); i++){
-            if(classEvent.problems.get(i).getCondition() == 0){
+        for(int i = 0; i < classEvent.evento.getProblems().size(); i++){
+            if(classEvent.evento.getProblems().get(i).getCondition() == 0){
                 this.add(new showProblemMenu(i, idEvent));
             }
         }

@@ -1,6 +1,8 @@
 package jFrame;
 
+import eventOwner.jpEvent;
 import JPanel.*;
+import cards.crCards;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -846,6 +848,18 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
+    public void showGuestEvents(boolean search){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        eventGuest.jpEvent event = new eventGuest.jpEvent(search);
+        event.setPreferredSize(new Dimension(980,601));
+        event.setLocation(0,0);
+
+        scrollContainer.setViewportView(event);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
     public void showYourEvents(boolean search){       
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
@@ -954,23 +968,23 @@ public final class home extends javax.swing.JFrame {
     public void showEventPP(int e, boolean load){
         disable();
         pnAgenda.setBackground(new Color(52, 52, 52));
-        eventOwner.eventAdminP event = new eventOwner.eventAdminP(e, load);
+        allEvent.eventAdminP event = new allEvent.eventAdminP(e, load);
         event.setLocation(0,0);
 
         scrollContainer.setViewportView(event);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
-    public void showEventMod(int e, boolean load){
-        disable();
-        pnEvents.setBackground(new Color(52, 52, 52));
-        eventOwner.eventMod event = new eventOwner.eventMod(e, load);
-        event.setLocation(0,0);
-
-        scrollContainer.setViewportView(event);
-        scrollContainer.revalidate();
-        scrollContainer.repaint();
-    }
+//    public void showEventMod(int e, boolean load){
+//        disable();
+//        pnEvents.setBackground(new Color(52, 52, 52));
+//        eventOwner.eventMod event = new eventOwner.eventMod(e, load);
+//        event.setLocation(0,0);
+//
+//        scrollContainer.setViewportView(event);
+//        scrollContainer.revalidate();
+//        scrollContainer.repaint();
+//    }
     
 
     //</editor-fold>
@@ -1231,6 +1245,26 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.setViewportView(controller.jpSe);
         scrollContainer.revalidate();
         scrollContainer.repaint();
+    }
+    
+    public void showYourCards(){
+        disable();
+        pnProj.setBackground(new Color(52, 52, 52));
+        crCards jpP = new crCards();
+        jpP.setPreferredSize(new Dimension(980,601));
+        jpP.setLocation(0,0);
+
+        scrollContainer.setViewportView(jpP);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
+    public void showCard(int p){
+        disable();
+        pnProj.setBackground(new Color(52, 52, 52));
+        controller.updateCr = new jFrame.updateCard(p);
+        standardization.show(controller.updateCr);
+        controller.rootFrame = controller.updateCr;
     }
     
     public void showYourProjects(boolean search, boolean personal){

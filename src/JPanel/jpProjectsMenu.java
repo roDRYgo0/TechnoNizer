@@ -119,6 +119,11 @@ public class jpProjectsMenu extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153))));
         jPanel4.setForeground(new java.awt.Color(153, 153, 153));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel4MouseReleased(evt);
+            }
+        });
 
         lbljpPM2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         lbljpPM2.setForeground(new java.awt.Color(33, 150, 243));
@@ -397,11 +402,16 @@ public class jpProjectsMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_txtInactiveKeyTyped
 
     private void jPanel3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseReleased
-        technonizer.TechnoNizer.home.showYourProjects(false);
+        technonizer.TechnoNizer.home.showYourProjects(false, true);
     }//GEN-LAST:event_jPanel3MouseReleased
+
+    private void jPanel4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseReleased
+        technonizer.TechnoNizer.home.showYourProjects(false, false);
+    }//GEN-LAST:event_jPanel4MouseReleased
 
      void load(){
     
+        classProjects.select();
         txtCreated.setText(classProjects.projects.size()+"");
         
         int ActiveE = 0;

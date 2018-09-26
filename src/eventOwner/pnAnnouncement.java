@@ -1,28 +1,54 @@
 package eventOwner;
 
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class pnAnnouncement extends javax.swing.JPanel {
 
     int idEvent;
+    
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    Anuncios.setText(pr.getProperty("Anuncioslbl"));
+    btnNext1.setText(pr.getProperty("btnNext1Announ"));
+    }
     
     public pnAnnouncement(int idEvent) {
         initComponents();
         this.idEvent = idEvent;  
         scrollContainer.getVerticalScrollBar().setUnitIncrement(16);
         load();
+        verificaridioma();
     }
     
     void load(){
-        classEvent.announcements.clear();
+        
         classEvent.selectAnnouncement(classEvent.eventosShow.get(idEvent).getId());
         
-        for(int a = 0; a < classEvent.announcements.size(); a++){
-            pnContainer.add(new showAnnouncement(a, idEvent));
-
+        for(int a = 0; a < classEvent.evento.getAnnouncements().size(); a++){
+            switch(classEvent.position){
+                case 0:
+                    pnContainer.add(new showAnnouncement(a, idEvent));
+                    break;
+                case 1:
+                    pnContainer.add(new showAnnouncement(a, idEvent));
+                    break;
+                case 2:
+                    if(classEvent.evento.getAnnouncements().get(a).getPublicGoal() >= 2 && classEvent.evento.getAnnouncements().get(a).getCondition() == 1)
+                        pnContainer.add(new showAnnouncement(a, idEvent));
+                    break;
+                case 3:
+                    if(classEvent.evento.getAnnouncements().get(a).getPublicGoal() == 3 && classEvent.evento.getAnnouncements().get(a).getCondition() == 1)
+                        pnContainer.add(new showAnnouncement(a, idEvent));
+                    break;
+            }
         }
+        if(classEvent.position == 3)
+            btnNext1.setVisible(false);
         pnContainer.revalidate();
         pnContainer.repaint();
     }

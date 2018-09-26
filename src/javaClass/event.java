@@ -12,6 +12,7 @@ public class event {
     private String nicknameCreator;
     private byte[] profilePicture;
     private byte[] coverPicture;
+    private byte[] mapImage;
     private Integer price;
     private Integer quantityTicket;
     private Integer visibility;
@@ -25,8 +26,15 @@ public class event {
     private List<classPrice> prices;
     private List<guest> guests;
     private List<staff> staffs = new ArrayList<>();
-
+    
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
+    public byte[] getMapImage() {
+        return mapImage;
+    }
+
+    public void setMapImage(byte[] mapImage) {
+        this.mapImage = mapImage;
+    }
     public List<guest> getGuests() {
         return guests;
     }

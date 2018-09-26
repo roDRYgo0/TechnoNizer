@@ -1,11 +1,21 @@
 package eventOwner;
 
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class pnTask extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr= new propiedades(controller.idioma);
+    Tasklistlbl.setText(pr.getProperty("Tasklistlbl"));
+    lblNickname.setText(pr.getProperty("lblNicknameT"));
+    btnNext1.setText(pr.getProperty("btnNext1TaskL"));
+    }
+    
     int idEvent;
     byte[] image, imageCover;
     Double total, complete;
@@ -14,6 +24,7 @@ public class pnTask extends javax.swing.JPanel {
     
     public pnTask(int idEvent) {
         initComponents();
+        verificaridioma();
         this.idEvent = idEvent;  
         complete = 0.0;
         total = 0.0;
@@ -25,32 +36,31 @@ public class pnTask extends javax.swing.JPanel {
     }
     
     void load(){
-        classEvent.tasks.clear();
         classEvent.selectTasks(classEvent.eventosShow.get(idEvent).getId());
-        total = classEvent.tasks.size()*1.0;
-        if(classEvent.tasks.isEmpty())
+        total = classEvent.evento.getTasks().size()*1.0;
+        if(classEvent.evento.getTasks().isEmpty())
             pnContainer.add(new Text("Sin tareas"));
         else{
-            for(int i = 0; i < classEvent.tasks.size(); i++){
-                if(classEvent.tasks.get(i).getPrice() == 0.0){
+            for(int i = 0; i < classEvent.evento.getTasks().size(); i++){
+                if(classEvent.evento.getTasks().get(i).getPrice() == 0.0){
                     if(init){
                         pnContainer.add(new Text("Sin costos"));
                         init = false;
                     }
                     pnContainer.add(new showTask(i, idEvent));
-                    if(classEvent.tasks.get(i).getCondition() == 1)
+                    if(classEvent.evento.getTasks().get(i).getCondition() == 1)
                         complete++;
                 }
             }
             init = true;
-            for(int i = 0; i < classEvent.tasks.size(); i++){
-                if(classEvent.tasks.get(i).getPrice() > 0.0){
+            for(int i = 0; i < classEvent.evento.getTasks().size(); i++){
+                if(classEvent.evento.getTasks().get(i).getPrice() > 0.0){
                     if(init){
                         pnContainer.add(new Text("Con costos"));
                         init = false;
                     }
                     pnContainer.add(new showTask(i, idEvent));
-                    if(classEvent.tasks.get(i).getCondition() == 1)
+                    if(classEvent.evento.getTasks().get(i).getCondition() == 1)
                         complete++;
                 }
             }
@@ -75,7 +85,7 @@ public class pnTask extends javax.swing.JPanel {
         scrollContainer = new javax.swing.JScrollPane();
         pnContainer = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        Tasklistlbl = new javax.swing.JLabel();
         btnNext1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         progressBar = new javax.swing.JProgressBar();
@@ -103,9 +113,9 @@ public class pnTask extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Lista de tareas");
+        Tasklistlbl.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        Tasklistlbl.setForeground(new java.awt.Color(255, 0, 0));
+        Tasklistlbl.setText("Lista de tareas");
 
         btnNext1.setBackground(new java.awt.Color(0, 153, 255));
         btnNext1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -166,7 +176,7 @@ public class pnTask extends javax.swing.JPanel {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jLabel2)
+                .addComponent(Tasklistlbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(88, 88, 88)
@@ -180,7 +190,7 @@ public class pnTask extends javax.swing.JPanel {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(Tasklistlbl)
                             .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addContainerGap()
@@ -218,8 +228,8 @@ public class pnTask extends javax.swing.JPanel {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Tasklistlbl;
     private javax.swing.JButton btnNext1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JLabel lblNickname;

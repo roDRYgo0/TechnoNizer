@@ -29,12 +29,11 @@ public class pnProblem extends javax.swing.JPanel {
     }
     
     void load(){
-        classEvent.problems.clear();
         classEvent.selectProblems(classEvent.eventosShow.get(idEvent).getId());
         
         for(int i = 3; i >=1 ; i--){
-            for(int a = 0; a < classEvent.problems.size(); a++){
-                if(classEvent.problems.get(a).getDanger() == i){
+            for(int a = 0; a < classEvent.evento.getProblems().size(); a++){
+                if(classEvent.evento.getProblems().get(a).getDanger() == i){
                     if(stat){
                         pnContainer.add(new level(i));
                         pnContainer.add(new showProblem(a, idEvent));
