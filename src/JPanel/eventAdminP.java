@@ -64,10 +64,10 @@ public class eventAdminP extends javax.swing.JPanel {
     }
     
     void loadPlace(){       
-        pnContainer.add(new placeMenu(idEvent));
-
-        pnContainer.revalidate();
-        pnContainer.repaint();
+//        pnContainer.add(new placeMenu(idEvent));
+//
+//        pnContainer.revalidate();
+//        pnContainer.repaint();
     }
     
     @SuppressWarnings("unchecked")
