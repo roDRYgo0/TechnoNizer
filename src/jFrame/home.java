@@ -848,6 +848,18 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.repaint();
     }
     
+    public void showGuestEvents(boolean search){
+        disable();
+        pnEvents.setBackground(new Color(52, 52, 52));
+        eventGuest.jpEvent event = new eventGuest.jpEvent(search);
+        event.setPreferredSize(new Dimension(980,601));
+        event.setLocation(0,0);
+
+        scrollContainer.setViewportView(event);
+        scrollContainer.revalidate();
+        scrollContainer.repaint();
+    }
+    
     public void showYourEvents(boolean search){       
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));

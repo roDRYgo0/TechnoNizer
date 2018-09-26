@@ -71,7 +71,7 @@ public class SocketsClient {
     }
     
     public static void sendServer(String instruction){
-        final String hostServer = "192.168.0.14";
+        final String hostServer = "192.168.43.159";
         final int puert = 4000;
         
         DataInputStream in;

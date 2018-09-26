@@ -129,6 +129,11 @@ public class MenuEvent extends javax.swing.JPanel {
         );
 
         jPanel3.setBackground(new java.awt.Color(33, 150, 243));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanel3MouseReleased(evt);
+            }
+        });
 
         lblmyevents.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblmyevents.setForeground(new java.awt.Color(255, 255, 255));
@@ -264,6 +269,10 @@ public class MenuEvent extends javax.swing.JPanel {
         if(c == ' ')
         evt.consume();
     }//GEN-LAST:event_txtMailKeyTyped
+
+    private void jPanel3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseReleased
+        technonizer.TechnoNizer.home.showGuestEvents(false);
+    }//GEN-LAST:event_jPanel3MouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -10,10 +10,11 @@ import properties.propiedades;
 public class jpHome extends javax.swing.JPanel {
 
     home hom;
+    Properties pr = new propiedades (controller.idioma);
     
     void verificaridioma()
     {
-    Properties pr = new propiedades (controller.idioma);
+    pr = new propiedades (controller.idioma);
     StartJpHome.setText(pr.getProperty("StartJpHome"));
     ProfilejpHome.setText(pr.getProperty("ProfilejpHome"));
     NameUserjpHome.setText(pr.getProperty("NameUserjpHome"));
@@ -64,7 +65,7 @@ public class jpHome extends javax.swing.JPanel {
             
             switch(lblNumEvents.getText()){
                 case "-1":
-                    lblNumEvents.setText("Ilimitados");
+                    lblNumEvents.setText(pr.getProperty("Unlimitedevents"));
                     lblImageEvent.setIcon(new controller().changeImage("/imagenes/infinity.png", 40, 40));
                     break;
                 default:

@@ -30,9 +30,25 @@ public class pnAnnouncement extends javax.swing.JPanel {
         classEvent.selectAnnouncement(classEvent.eventosShow.get(idEvent).getId());
         
         for(int a = 0; a < classEvent.evento.getAnnouncements().size(); a++){
-            pnContainer.add(new showAnnouncement(a, idEvent));
-
+            switch(classEvent.position){
+                case 0:
+                    pnContainer.add(new showAnnouncement(a, idEvent));
+                    break;
+                case 1:
+                    pnContainer.add(new showAnnouncement(a, idEvent));
+                    break;
+                case 2:
+                    if(classEvent.evento.getAnnouncements().get(a).getPublicGoal() >= 2 && classEvent.evento.getAnnouncements().get(a).getCondition() == 1)
+                        pnContainer.add(new showAnnouncement(a, idEvent));
+                    break;
+                case 3:
+                    if(classEvent.evento.getAnnouncements().get(a).getPublicGoal() == 3 && classEvent.evento.getAnnouncements().get(a).getCondition() == 1)
+                        pnContainer.add(new showAnnouncement(a, idEvent));
+                    break;
+            }
         }
+        if(classEvent.position == 3)
+            btnNext1.setVisible(false);
         pnContainer.revalidate();
         pnContainer.repaint();
     }

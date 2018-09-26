@@ -2,6 +2,7 @@ package javaClass;
 
 import jFrame.*;
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -26,6 +27,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageOutputStream;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -48,10 +50,18 @@ public class standardization {
 
     controller control = new controller();
     public static byte[] image;
-    private static StaticMaps ObjStaticMaps=new StaticMaps();
+    private static StaticMaps ObjStaticMaps = new StaticMaps();
     static Calendar cal = Calendar.getInstance();
     private final String URLRoot = "http://maps.googleapis.com/maps/api/staticmap";
 
+    /**
+     *
+     * @param day TextField donde se muestra el día
+     * @param month ComboBox donde se mostrara el mes
+     * @param year  TextFiel donde se mostrara el año
+     * 
+     * Este metodo retornará la fecha actual en los conponentes ya dichos
+     */
     public static void setNowDate(JTextField day, JComboBox month, JTextField year) {
         day.setText(currentDateTime().getDate() + "");
         month.setSelectedIndex(currentDateTime().getMonth());
@@ -64,7 +74,7 @@ public class standardization {
     }
 
     public static Icon getImageMap(String place) {
-        Icon iconImage  = null;
+        Icon iconImage = null;
         try {
             Image imagenMapa = ObjStaticMaps.getStaticMap(place,
                     Integer.valueOf(16), new Dimension(473, 173), 2, StaticMaps.Format.png,
@@ -271,6 +281,28 @@ public class standardization {
         return bi;
     }
 //</editor-fold>
+
+    public static byte[] getByte(Icon icon) {
+        byte[] bytes = null;
+        BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = img.createGraphics();
+        icon.paintIcon(null, g2d, 0, 0);
+        g2d.dispose();
+
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+            ImageOutputStream ios = ImageIO.createImageOutputStream(baos);
+            try {
+                ImageIO.write(img, "png", ios);
+                // Set a flag to indicate that the write was successful
+            } finally {
+                ios.close();
+            }
+            bytes = baos.toByteArray();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return bytes;
+    }
 
     public static Icon getImgIcon(byte[] bi) {
         Icon imgi = null;

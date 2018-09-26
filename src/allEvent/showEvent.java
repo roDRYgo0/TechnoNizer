@@ -208,7 +208,7 @@ public class showEvent extends javax.swing.JPanel {
         new Thread(()->{
             technonizer.TechnoNizer.home.showLoad();
             classEvent.position = 3;
-            if(classEvent.eventosShow.get(event).getNicknameCreator() == classUsuario.getNickname())
+            if(classEvent.eventosShow.get(event).getNicknameCreator().equals(classUsuario.getNickname()))
                 classEvent.position = 0;
             else{
                 for(staff s : classEvent.eventosShow.get(event).getStaffs()){
@@ -218,6 +218,7 @@ public class showEvent extends javax.swing.JPanel {
                 }
             }
             technonizer.TechnoNizer.home.showEventOwner(event, true);
+            classEvent.evets = 0;
             
         }).start();
     }
