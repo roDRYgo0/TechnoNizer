@@ -4,6 +4,7 @@ package JPanel;
 import jFrame.AddEventInfoP;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.classPersonalE;
 import javaClass.classUsuario;
@@ -13,10 +14,12 @@ import javaClass.eventp;
 import javaClass.staff;
 import javaClass.standardization;
 import javax.swing.JOptionPane;
+import properties.propiedades;
 
 
 public class showEventP extends javax.swing.JPanel {
 
+    Properties pr= new propiedades(controller.idioma);
     int count;
     int eventp;
     int position;
@@ -57,16 +60,16 @@ public class showEventP extends javax.swing.JPanel {
        
         
         if(standardization.currentDate().compareTo(standardization.getDate(ev.getDstart())) == 0){
-            lblDays.setText("Hoy");
+            lblDays.setText(pr.getProperty("TodayEvent"));
             lblDays.setForeground(Color.red);
             Font f= new Font("Arial", Font.BOLD, 11);
             lblDays.setFont(f);
         }                            
         else{
             if(standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getDstart())) < 0)
-                lblDays.setText("Hace "+(-1*standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getDstart())))+" días");
+                lblDays.setText(pr.getProperty("HaceEvent")+" "+(-1*standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getDstart())))+" "+pr.getProperty("DaysEventCreate"));
             else
-                lblDays.setText(standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getDstart()))+" días");
+                lblDays.setText(standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getDstart()))+" "+pr.getProperty("DaysEventCreate"));
         }
     }
     

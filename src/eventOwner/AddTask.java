@@ -1,13 +1,30 @@
 package eventOwner;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class AddTask extends javax.swing.JFrame {
 
+    Properties pr= new propiedades(controller.idioma);
+    
+     void verificaridioma()
+     {
+     LblAddTask1.setText(pr.getProperty("LblAddTask1"));
+     LblAddTask2.setText(pr.getProperty("LblAddTask2"));
+     LblAddTask3.setText(pr.getProperty("LblAddTask3"));
+     LblAddTask4.setText(pr.getProperty("LblAddTask4"));
+     LblAddTask5.setText(pr.getProperty("LblAddTask5"));
+     LblAddTask6.setText(pr.getProperty("LblAddTask6"));
+     LblAddTask7.setText(pr.getProperty("LblAddTask7"));
+     btnNext.setText(pr.getProperty("btnNextTask"));
+     
+     }
+    
     int idEvent;
     int visibility;
     int status;
@@ -19,6 +36,7 @@ public class AddTask extends javax.swing.JFrame {
         status = 0;
         switchVisibility();
         switchStatus();
+        verificaridioma();
         load();       
     }   
 
@@ -33,25 +51,25 @@ public class AddTask extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        LblAddTask1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        LblAddTask2 = new javax.swing.JLabel();
+        LblAddTask3 = new javax.swing.JLabel();
         txtTask = new javax.swing.JTextField();
         spEvent = new javax.swing.JSeparator();
-        jLabel7 = new javax.swing.JLabel();
+        LblAddTask6 = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
         spPlace = new javax.swing.JSeparator();
         iconPrice = new javax.swing.JLabel();
         lblSwitchS = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        LblAddTask5 = new javax.swing.JLabel();
         lblSwitchV = new javax.swing.JLabel();
         lblVisibility = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        LblAddTask4 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        LblAddTask7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -60,9 +78,9 @@ public class AddTask extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(35, 150, 243));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Agregar tarea");
+        LblAddTask1.setForeground(new java.awt.Color(255, 255, 255));
+        LblAddTask1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        LblAddTask1.setText("Agregar tarea");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -88,7 +106,7 @@ public class AddTask extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LblAddTask1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -103,16 +121,16 @@ public class AddTask extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(btnExit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LblAddTask1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Datos Generales");
+        LblAddTask2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        LblAddTask2.setText("Datos Generales");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Tarea");
+        LblAddTask3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        LblAddTask3.setForeground(new java.awt.Color(102, 102, 102));
+        LblAddTask3.setText("Tarea");
 
         txtTask.setAutoscrolls(false);
         txtTask.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -132,9 +150,9 @@ public class AddTask extends javax.swing.JFrame {
 
         spEvent.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Costo");
+        LblAddTask6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        LblAddTask6.setForeground(new java.awt.Color(102, 102, 102));
+        LblAddTask6.setText("Costo");
 
         txtPrice.setAutoscrolls(false);
         txtPrice.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -171,9 +189,9 @@ public class AddTask extends javax.swing.JFrame {
         lblStatus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblStatus.setText("Activo");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel15.setText("Estado");
+        LblAddTask5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        LblAddTask5.setForeground(new java.awt.Color(102, 102, 102));
+        LblAddTask5.setText("Estado");
 
         lblSwitchV.setMaximumSize(new java.awt.Dimension(30, 30));
         lblSwitchV.setMinimumSize(new java.awt.Dimension(30, 30));
@@ -188,9 +206,9 @@ public class AddTask extends javax.swing.JFrame {
         lblVisibility.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblVisibility.setText("Activo");
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel17.setText("Visibilidad");
+        LblAddTask4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        LblAddTask4.setForeground(new java.awt.Color(102, 102, 102));
+        LblAddTask4.setText("Visibilidad");
 
         btnNext.setBackground(new java.awt.Color(0, 153, 255));
         btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -204,9 +222,9 @@ public class AddTask extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel8.setText("(Opcional)");
+        LblAddTask7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        LblAddTask7.setForeground(new java.awt.Color(102, 102, 102));
+        LblAddTask7.setText("(Opcional)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -221,19 +239,19 @@ public class AddTask extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel17)
+                                    .addComponent(LblAddTask4)
                                     .addComponent(lblVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblSwitchV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel15)
+                                    .addComponent(LblAddTask5)
                                     .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblSwitchS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7))
+                            .addComponent(LblAddTask2)
+                            .addComponent(LblAddTask3)
+                            .addComponent(LblAddTask6))
                         .addGap(0, 99, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(iconPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,7 +260,7 @@ public class AddTask extends javax.swing.JFrame {
                             .addComponent(txtPrice)
                             .addComponent(spPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
+                        .addComponent(LblAddTask7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(spEvent))
@@ -253,9 +271,9 @@ public class AddTask extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
-                .addComponent(jLabel5)
+                .addComponent(LblAddTask2)
                 .addGap(13, 13, 13)
-                .addComponent(jLabel4)
+                .addComponent(LblAddTask3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTask, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -263,20 +281,20 @@ public class AddTask extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
+                        .addComponent(LblAddTask5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblSwitchS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel17)
+                        .addComponent(LblAddTask4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblSwitchV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(LblAddTask6)
                         .addGap(9, 9, 9)
                         .addComponent(iconPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -289,7 +307,7 @@ public class AddTask extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(spPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
+                                .addComponent(LblAddTask7)
                                 .addGap(12, 12, 12)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -418,7 +436,7 @@ public class AddTask extends javax.swing.JFrame {
                 lblSwitchS.setIcon(new controller().changeImage("/imagenes/toggleOff.png", 30, 30));
                 break;
             case 1:
-                lblStatus.setText("Si");
+                lblStatus.setText(pr.getProperty("StatusTask"));
                 lblStatus.setForeground(new Color(139, 195, 74));
                 lblSwitchS.setIcon(new controller().changeImage("/imagenes/toggleOn.png", 30, 30));
                 break;
@@ -428,17 +446,17 @@ public class AddTask extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LblAddTask1;
+    private javax.swing.JLabel LblAddTask2;
+    private javax.swing.JLabel LblAddTask3;
+    private javax.swing.JLabel LblAddTask4;
+    private javax.swing.JLabel LblAddTask5;
+    private javax.swing.JLabel LblAddTask6;
+    private javax.swing.JLabel LblAddTask7;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnNext;
     private javax.swing.JLabel iconPrice;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblStatus;

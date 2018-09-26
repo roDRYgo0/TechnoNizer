@@ -7,10 +7,11 @@ import javaClass.standardization;
 import properties.propiedades;
 
 public class pnTask extends javax.swing.JPanel {
-
+ 
+    Properties pr= new propiedades(controller.idioma);
     void verificaridioma()
     {
-    Properties pr= new propiedades(controller.idioma);
+    pr= new propiedades(controller.idioma);
     Tasklistlbl.setText(pr.getProperty("Tasklistlbl"));
     lblNickname.setText(pr.getProperty("lblNicknameT"));
     btnNext1.setText(pr.getProperty("btnNext1TaskL"));
@@ -39,12 +40,12 @@ public class pnTask extends javax.swing.JPanel {
         classEvent.selectTasks(classEvent.eventosShow.get(idEvent).getId());
         total = classEvent.evento.getTasks().size()*1.0;
         if(classEvent.evento.getTasks().isEmpty())
-            pnContainer.add(new Text("Sin tareas"));
+            pnContainer.add(new Text(pr.getProperty("TaskStatus")));
         else{
             for(int i = 0; i < classEvent.evento.getTasks().size(); i++){
                 if(classEvent.evento.getTasks().get(i).getPrice() == 0.0){
                     if(init){
-                        pnContainer.add(new Text("Sin costos"));
+                        pnContainer.add(new Text(pr.getProperty("CostTask")));
                         init = false;
                     }
                     pnContainer.add(new showTask(i, idEvent));
@@ -56,7 +57,7 @@ public class pnTask extends javax.swing.JPanel {
             for(int i = 0; i < classEvent.evento.getTasks().size(); i++){
                 if(classEvent.evento.getTasks().get(i).getPrice() > 0.0){
                     if(init){
-                        pnContainer.add(new Text("Con costos"));
+                        pnContainer.add(new Text(pr.getProperty("WithCostoTask")));
                         init = false;
                     }
                     pnContainer.add(new showTask(i, idEvent));

@@ -105,7 +105,7 @@ public class showCard extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pnColorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnColorMouseReleased
-        
+        technonizer.TechnoNizer.home.showCard(idcard);
     }//GEN-LAST:event_pnColorMouseReleased
 
 
