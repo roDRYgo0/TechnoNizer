@@ -5,6 +5,7 @@ import addEvent.lockedPrices;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Properties;
+import javaClass.SocketsClient;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
@@ -932,7 +933,9 @@ public class AddEventDetails extends javax.swing.JFrame {
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
         classEvent.setStaff(0);
         classEvent.setCondition(1);
-        
+        new Thread(()->{
+            SocketsClient.sendServer("insert event: "+classUsuario.getNickname());
+        }).start();
         standardization.hide(controller.addEvents);
         
         if(classEvent.insert()){

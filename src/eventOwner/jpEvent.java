@@ -25,6 +25,7 @@ public final class jpEvent extends javax.swing.JPanel {
 
     public jpEvent(boolean start) {
         initComponents();
+        controller.positionPanel = "allEvents";
         insertarPaneles(classUsuario.getMyNumberEventUse(), start);
         txtSearch.requestFocus();
         load();

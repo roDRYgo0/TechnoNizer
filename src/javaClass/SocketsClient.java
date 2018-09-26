@@ -47,9 +47,9 @@ public class SocketsClient {
                 in = new DataInputStream(sc.getInputStream());
                 out = new DataOutputStream(sc.getOutputStream());
                 SocketAddress s = sc.getRemoteSocketAddress();
+                out.writeUTF("Gracias Servidor");
                 System.out.println(in.readUTF());
                 
-                out.writeUTF("Gracias Servidor");
 
                 sc.close();
 
@@ -71,12 +71,12 @@ public class SocketsClient {
     }
     
     public static void sendServer(String instruction){
-        final String hostServer = "192.168.43.159";
+        final String hostServer = "192.168.137.1";
         final int puert = 4000;
         
         DataInputStream in;
         DataOutputStream out;
-        
+        System.out.println("socket start");
         
         try {
             Socket sc = new Socket(hostServer, puert);
@@ -95,6 +95,7 @@ public class SocketsClient {
     }
     
     public static String received(String instruction){
+        System.out.println(controller.positionPanel);
         switch(instruction){
             case "refresh events":
                 if(controller.positionPanel.equals("allEvents")){

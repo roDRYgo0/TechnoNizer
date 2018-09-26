@@ -11,6 +11,7 @@ import javaClass.classEvent;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.util.Arrays;
 import java.util.Properties;
 import javaClass.controller;
 import javaClass.event;
@@ -264,6 +265,7 @@ public class place extends javax.swing.JPanel {
                         ImageIcon imgIcon = new ImageIcon(imagenMapa);
                         Icon iconImage = (Icon) imgIcon;
                         classEvent.evento.setMapImage(standardization.getByte(standardization.getImageMap(lblPlace.getText().trim())));
+                        
                         lblMap.setIcon(iconImage);
                     }
                 }
