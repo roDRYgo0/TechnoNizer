@@ -3,16 +3,29 @@ package sucurity;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.Arrays;
+import java.util.Properties;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import properties.propiedades;
 
 public class jpChangePassword extends javax.swing.JPanel {
 
     boolean sw, continueA, continueP;
     char echoChar;
+    
+    void verificaridioma()
+    {
+    Properties pr= new propiedades(controller.idioma);
+    JpChangePassword1.setText(pr.getProperty("JpChangePassword1"));
+    JpChangePassword2.setText(pr.getProperty("JpChangePassword2"));
+    JpChangePassword3.setText(pr.getProperty("JpChangePassword3"));
+    JpChangePassword4.setText(pr.getProperty("JpChangePassword4"));
+    JpChangePassword5.setText(pr.getProperty("JpChangePassword5"));
+    btnNext.setText(pr.getProperty("btnNextNewPass"));
+    }
     
     boolean sww;
     char echoCharOld;
@@ -22,6 +35,7 @@ public class jpChangePassword extends javax.swing.JPanel {
         continueA =false;
         continueP =false;
         loadImagenes();
+        verificaridioma();
     }
 
     void loadImagenes(){
@@ -37,21 +51,21 @@ public class jpChangePassword extends javax.swing.JPanel {
     private void initComponents() {
 
         txtPasswordOld = new javax.swing.JPasswordField();
-        jLabel4 = new javax.swing.JLabel();
+        JpChangePassword2 = new javax.swing.JLabel();
         lblPasswordOld = new javax.swing.JLabel();
         lblEyeOld = new javax.swing.JLabel();
         spPasswordOld = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        JpChangePassword1 = new javax.swing.JLabel();
+        JpChangePassword3 = new javax.swing.JLabel();
         checkPassOld = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        JpChangePassword5 = new javax.swing.JLabel();
         iconPass = new javax.swing.JLabel();
         iconPass2 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         checkPass = new javax.swing.JLabel();
         spPassword = new javax.swing.JSeparator();
         iconEye = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        JpChangePassword4 = new javax.swing.JLabel();
         spPasswordConfirm = new javax.swing.JSeparator();
         txtPasswordConfirm = new javax.swing.JPasswordField();
         iconEyeConfirm = new javax.swing.JLabel();
@@ -77,9 +91,9 @@ public class jpChangePassword extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Ingrese la contraseña para continuar");
+        JpChangePassword2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        JpChangePassword2.setForeground(new java.awt.Color(102, 102, 102));
+        JpChangePassword2.setText("Ingrese la contraseña para continuar");
 
         lblPasswordOld.setMaximumSize(new java.awt.Dimension(35, 35));
         lblPasswordOld.setMinimumSize(new java.awt.Dimension(35, 35));
@@ -97,19 +111,19 @@ public class jpChangePassword extends javax.swing.JPanel {
 
         spPasswordOld.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Antigua contraseña");
+        JpChangePassword1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        JpChangePassword1.setText("Antigua contraseña");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Nueva contraseña");
+        JpChangePassword3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        JpChangePassword3.setText("Nueva contraseña");
 
         checkPassOld.setMaximumSize(new java.awt.Dimension(25, 25));
         checkPassOld.setMinimumSize(new java.awt.Dimension(25, 25));
         checkPassOld.setPreferredSize(new java.awt.Dimension(25, 25));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("Confirme la contraseña");
+        JpChangePassword5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        JpChangePassword5.setForeground(new java.awt.Color(102, 102, 102));
+        JpChangePassword5.setText("Confirme la contraseña");
 
         iconPass.setMaximumSize(new java.awt.Dimension(35, 35));
         iconPass.setMinimumSize(new java.awt.Dimension(35, 35));
@@ -145,9 +159,9 @@ public class jpChangePassword extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("Ingrese la contraseña");
+        JpChangePassword4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        JpChangePassword4.setForeground(new java.awt.Color(102, 102, 102));
+        JpChangePassword4.setText("Ingrese la contraseña");
 
         spPasswordConfirm.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -194,7 +208,7 @@ public class jpChangePassword extends javax.swing.JPanel {
                         .addComponent(iconPass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
+                            .addComponent(JpChangePassword5)
                             .addComponent(spPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,7 +218,7 @@ public class jpChangePassword extends javax.swing.JPanel {
                         .addComponent(iconPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
+                            .addComponent(JpChangePassword4)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(spPassword)
@@ -214,7 +228,7 @@ public class jpChangePassword extends javax.swing.JPanel {
                                         .addComponent(iconEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(checkPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabel4)
+                    .addComponent(JpChangePassword2)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblPasswordOld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
@@ -226,8 +240,8 @@ public class jpChangePassword extends javax.swing.JPanel {
                                 .addComponent(lblEyeOld, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(checkPassOld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                    .addComponent(JpChangePassword3)
+                    .addComponent(JpChangePassword1))
                 .addContainerGap(95, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -238,9 +252,9 @@ public class jpChangePassword extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jLabel1)
+                .addComponent(JpChangePassword1)
                 .addGap(29, 29, 29)
-                .addComponent(jLabel4)
+                .addComponent(JpChangePassword2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblPasswordOld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,7 +267,7 @@ public class jpChangePassword extends javax.swing.JPanel {
                             .addGap(0, 0, 0)
                             .addComponent(spPasswordOld, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(37, 37, 37)
-                .addComponent(jLabel2)
+                .addComponent(JpChangePassword3)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -265,7 +279,7 @@ public class jpChangePassword extends javax.swing.JPanel {
                                 .addGap(37, 37, 37)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
+                                        .addComponent(JpChangePassword5)
                                         .addGap(0, 0, 0)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,7 +291,7 @@ public class jpChangePassword extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(spPasswordConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(JpChangePassword4)
                         .addGap(0, 0, 0)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -447,6 +461,11 @@ public class jpChangePassword extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JpChangePassword1;
+    private javax.swing.JLabel JpChangePassword2;
+    private javax.swing.JLabel JpChangePassword3;
+    private javax.swing.JLabel JpChangePassword4;
+    private javax.swing.JLabel JpChangePassword5;
     private javax.swing.JButton btnNext;
     private javax.swing.JLabel checkPass;
     private javax.swing.JLabel checkPassOld;
@@ -454,11 +473,6 @@ public class jpChangePassword extends javax.swing.JPanel {
     private javax.swing.JLabel iconEyeConfirm;
     private javax.swing.JLabel iconPass;
     private javax.swing.JLabel iconPass2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lblEyeOld;
     private javax.swing.JLabel lblPasswordOld;
     private javax.swing.JSeparator spPassword;

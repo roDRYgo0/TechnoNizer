@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.util.Properties;
 import javaClass.controller;
 import javaClass.event;
+import javaClass.standardization;
 import properties.propiedades;
 
 /**
@@ -22,8 +23,11 @@ public class pnPrice extends javax.swing.JPanel {
         PricelblpnPrice.setText(pr.getProperty("PricelblpnPrice"));
     }
     
+    int idEvent;
+    
     public pnPrice(event event, int idEvent) {
         initComponents();
+        this.idEvent = idEvent;
         load(event, idEvent);
         verificaridioma();
     }
@@ -51,6 +55,7 @@ public class pnPrice extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         PricelblpnPrice = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        btnNext = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(530, 999999));
@@ -76,6 +81,22 @@ public class pnPrice extends javax.swing.JPanel {
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
+        btnNext.setBackground(new java.awt.Color(33, 150, 243));
+        btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnNext.setForeground(new java.awt.Color(255, 255, 255));
+        btnNext.setText("Invitados");
+        btnNext.setBorderPainted(false);
+        btnNext.setFocusable(false);
+        btnNext.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnNext.setMaximumSize(new java.awt.Dimension(79, 28));
+        btnNext.setMinimumSize(new java.awt.Dimension(79, 28));
+        btnNext.setPreferredSize(new java.awt.Dimension(79, 28));
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -85,15 +106,20 @@ public class pnPrice extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(PricelblpnPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addGap(172, 172, 172)
+                .addComponent(btnNext, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                .addGap(30, 30, 30))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PricelblpnPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(PricelblpnPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -104,9 +130,14 @@ public class pnPrice extends javax.swing.JPanel {
         technonizer.TechnoNizer.home.pnEvent();
     }//GEN-LAST:event_PricelblpnPriceMouseReleased
 
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        standardization.show(new listGuest(idEvent));
+    }//GEN-LAST:event_btnNextActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel PricelblpnPrice;
+    private javax.swing.JButton btnNext;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables

@@ -54,6 +54,14 @@ public class standardization {
     static Calendar cal = Calendar.getInstance();
     private final String URLRoot = "http://maps.googleapis.com/maps/api/staticmap";
 
+    /**
+     *
+     * @param day TextField donde se muestra el día
+     * @param month ComboBox donde se mostrara el mes
+     * @param year  TextFiel donde se mostrara el año
+     * 
+     * Este metodo retornará la fecha actual en los conponentes ya dichos
+     */
     public static void setNowDate(JTextField day, JComboBox month, JTextField year) {
         day.setText(currentDateTime().getDate() + "");
         month.setSelectedIndex(currentDateTime().getMonth());
@@ -276,6 +284,7 @@ public class standardization {
 
     public static byte[] getByte(Icon icon) {
         byte[] bytes = null;
+        System.out.println(icon);
         BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = img.createGraphics();
         icon.paintIcon(null, g2d, 0, 0);

@@ -10,14 +10,15 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/** @author rodri */
-
+/**
+ * @author rodri
+ */
 public class classEvent {
 
     public static int position;
-    
+
     public static int evets;
-    
+
     private static Integer id;
     private static String eventName;
     private static String nicknameCreator;
@@ -34,14 +35,12 @@ public class classEvent {
     private static String color;
     private static Integer quantityTicket;
     private static Integer condition;
-    public static List<classPrice> prices= new ArrayList<classPrice>();
+    public static List<classPrice> prices = new ArrayList<classPrice>();
 
-    
     public static List<event> eventos = new ArrayList<event>();
     public static List<event> eventosShow = new ArrayList<event>();
     public static List<event> eventosSearch = new ArrayList<event>();
-    
-    
+
     public static infEvent evento;
 
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
@@ -52,6 +51,7 @@ public class classEvent {
     public static void setMapImage(byte[] mapImage) {
         classEvent.mapImage = mapImage;
     }
+
     public static Integer getInvitation() {
         return invitation;
     }
@@ -59,6 +59,7 @@ public class classEvent {
     public static void setInvitation(Integer invitation) {
         classEvent.invitation = invitation;
     }
+
     public static String getColor() {
         return color;
     }
@@ -66,6 +67,7 @@ public class classEvent {
     public static void setColor(String color) {
         classEvent.color = color;
     }
+
     public static List<classPrice> getPrices() {
         return prices;
     }
@@ -73,6 +75,7 @@ public class classEvent {
     public static void setPrices(List<classPrice> prices) {
         classEvent.prices = prices;
     }
+
     public static Integer getQuantityTicket() {
         return quantityTicket;
     }
@@ -80,6 +83,7 @@ public class classEvent {
     public static void setQuantityTicket(Integer quantityTicket) {
         classEvent.quantityTicket = quantityTicket;
     }
+
     public static String getPlace() {
         return place;
     }
@@ -87,8 +91,7 @@ public class classEvent {
     public static void setPlace(String place) {
         classEvent.place = place;
     }
-    
-    
+
     public static Integer getId() {
         return id;
     }
@@ -177,49 +180,53 @@ public class classEvent {
         classEvent.condition = condition;
     }
 //</editor-fold>
-    
-    public static void restart(){
-        prices= new ArrayList<>();
+
+    public static void restart() {
+        prices = new ArrayList<>();
         eventosSearch = new ArrayList<>();
         eventos = new ArrayList<>();
     }
-    
-    public static int spacePrice(){
-        if(prices.size()<3)
+
+    public static int spacePrice() {
+        if (prices.size() < 3) {
             return 0;
-        else{
-            return prices.size()-3;
+        } else {
+            return prices.size() - 3;
         }
     }
-    
-    public static int spaceEvent(int num){
-        int row = (num+1)/4;
-        if((num+1)%4!=0)
+
+    public static int spaceEvent(int num) {
+        int row = (num + 1) / 4;
+        if ((num + 1) % 4 != 0) {
             row++;
-        if(row<=3)
+        }
+        if (row <= 3) {
             return 0;
-        else
+        } else {
             return row - 3;
+        }
     }
-    
-    public static int spaceAllEvent(int num){
-        int row = (num)/4;
-        if((num)%4!=0)
+
+    public static int spaceAllEvent(int num) {
+        int row = (num) / 4;
+        if ((num) % 4 != 0) {
             row++;
-        if(row<=3)
+        }
+        if (row <= 3) {
             return 0;
-        else
+        } else {
             return row - 3;
+        }
     }
-    
-    public static boolean select(){
+
+    public static boolean select() {
         boolean status = false;
         event evento;
         eventos.clear();
         ResultSet rs = methodsSQL.getExecute("SELECT e.id, e.eventName, e.visibility, e.startDateTime, e.endDateTime, e.staff, e.condition, e.nicknameCreator, e.place, e.quantityTicket, e.color, e.invitation FROM events e");
-        
+
         try {
-            while(rs.next()){
+            while (rs.next()) {
                 evento = new event();
                 evento.setId(rs.getInt(1));
                 evento.setEventName(rs.getString(2));
@@ -233,11 +240,11 @@ public class classEvent {
                 evento.setQuantityTicket(rs.getInt(10));
                 evento.setColor(rs.getString(11));
                 evento.setInvitation(rs.getInt(12));
-                if(evento.getStaff() == 1){
+                if (evento.getStaff() == 1) {
                     List<staff> staffs = new ArrayList<>();
                     staff s;
                     ResultSet rsS = methodsSQL.getExecute("select s.nickname, s.position from staff s where s.idEvent = ?", evento.getId());
-                    while(rsS.next()){
+                    while (rsS.next()) {
                         s = new staff();
                         s.setNickname(rsS.getString(1));
                         s.setPosition(rsS.getInt(2));
@@ -245,11 +252,11 @@ public class classEvent {
                     }
                     evento.setStaffs(staffs);
                 }
-                
+
                 List<guest> guest = new ArrayList<>();
                 guest g;
                 ResultSet rsG = methodsSQL.getExecute("select id, idTickets, nickname, datetime from guest where idEvent = ?", evento.getId());
-                while(rsG.next()){
+                while (rsG.next()) {
                     g = new guest();
                     g.setId(rsG.getInt(1));
                     g.setIdEvent(evento.getId());
@@ -258,12 +265,12 @@ public class classEvent {
                     g.setDateTime(rsG.getString(4));
                     guest.add(g);
                 }
-                
+
                 evento.setGuests(guest);
                 List<classPrice> pric = new ArrayList<>();
                 classPrice p;
                 ResultSet rsP = methodsSQL.getExecute("SELECT nameTicket, quantityTicket, priceTicket, id FROM tickets WHERE idEvent = ?", evento.getId());
-                while(rsP.next()){
+                while (rsP.next()) {
                     p = new classPrice();
                     p.setName(rsP.getString(1));
                     p.setCount(rsP.getInt(2));
@@ -272,10 +279,10 @@ public class classEvent {
                     pric.add(p);
                 }
 
-                Collections.sort(pric, new Comparator<classPrice>(){
+                Collections.sort(pric, new Comparator<classPrice>() {
                     @Override
                     public int compare(classPrice o1, classPrice o2) {
-                        return (o2.getPrice() > o1.getPrice())?-1:(o2.getPrice() < o1.getPrice())?1:0;
+                        return (o2.getPrice() > o1.getPrice()) ? -1 : (o2.getPrice() < o1.getPrice()) ? 1 : 0;
                     }
                 });
                 evento.setPrices(pric);
@@ -284,15 +291,35 @@ public class classEvent {
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return status;
     }
-    
-    public static boolean insetStaff(int idEvent, int pos, String nickname){
+
+    public static List<guest> selectGuests(int idEvent) {
+        List<guest> guest = new ArrayList<>();
+        try {
+            guest g;
+            ResultSet rsG = methodsSQL.getExecute("select id, idTickets, nickname, datetime from guest where idEvent = ?", idEvent);
+            while (rsG.next()) {
+                g = new guest();
+                g.setId(rsG.getInt(1));
+                g.setIdEvent(idEvent);
+                g.setIdTickets(rsG.getInt(2));
+                g.setNickname(rsG.getString(3));
+                g.setDateTime(rsG.getString(4));
+                guest.add(g);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return guest;
+    }
+
+    public static boolean insetStaff(int idEvent, int pos, String nickname) {
         boolean status = false;
-        for(event e : eventos){
-            if(Objects.equals(e.getId(), eventosShow.get(idEvent).getId())){
-                if(methodsSQL.execute("INSERT INTO staff VALUES (?, ?, ?) ", pos, nickname, eventosShow.get(idEvent).getId())){
+        for (event e : eventos) {
+            if (Objects.equals(e.getId(), eventosShow.get(idEvent).getId())) {
+                if (methodsSQL.execute("INSERT INTO staff VALUES (?, ?, ?) ", pos, nickname, eventosShow.get(idEvent).getId())) {
                     e.setStaff(1);
                     staff s = new staff();
                     s.setIdEvent(eventosShow.get(idEvent).getId());
@@ -300,31 +327,32 @@ public class classEvent {
                     s.setPosition(pos);
                     status = true;
                 }
-                if(status)
+                if (status) {
                     status = methodsSQL.execute("update events set staff = ? where id = ? ", 1, eventosShow.get(idEvent).getId());
+                }
             }
         }
         return status;
     }
-    
-    public static boolean deleteStaff(String nickname, int idEvent){
+
+    public static boolean deleteStaff(String nickname, int idEvent) {
         boolean status = false;
         status = methodsSQL.execute("delete from staff where nickname = ? and idEvent = ?", nickname, idEvent);
         return status;
     }
-    
-    public static boolean deletePrice(String nickname, int idEvent){
+
+    public static boolean deletePrice(String nickname, int idEvent) {
         boolean status = false;
         status = methodsSQL.execute("delete from staff where nickname = ? and idEvent = ?", nickname, idEvent);
         return status;
     }
-    
-    public static List<staff> selectStaff(int idEvent){
+
+    public static List<staff> selectStaff(int idEvent) {
         List<staff> status = new ArrayList<>();
         staff s;
         ResultSet rs = methodsSQL.getExecute("select nickname, position from staff where idEvent = ?", idEvent);
         try {
-            while(rs.next()){
+            while (rs.next()) {
                 s = new staff();
                 s.setIdEvent(idEvent);
                 s.setNickname(rs.getString(1));
@@ -337,15 +365,14 @@ public class classEvent {
         return status;
     }
 
-    
-    public static boolean selectActivity(int idEvent){
+    public static boolean selectActivity(int idEvent) {
         boolean status = false;
         List<activity> activiti = new ArrayList<>();
         activity ac;
         ResultSet rs = methodsSQL.getExecute("select a.dateTime, a.activity, a.place, a.condition, a.description, a.nickname, a.id from activities a where a.idEvent = ?", idEvent);
-        
+
         try {
-            while(rs.next()){
+            while (rs.next()) {
                 ac = new activity();
                 ac.setDateTime(rs.getString(1));
                 ac.setActivity(rs.getString(2));
@@ -364,32 +391,32 @@ public class classEvent {
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return status;
     }
-    
-    public static boolean updateAnnouncement(int condition, int id){
+
+    public static boolean updateAnnouncement(int condition, int id) {
         return methodsSQL.execute("update announcements set condition = ? where id = ?", condition, id);
     }
-    
-    public static boolean deleteAnnouncement(int idAnnouncement){
+
+    public static boolean deleteAnnouncement(int idAnnouncement) {
         return methodsSQL.execute("delete from announcements where id = ?", idAnnouncement);
     }
-    
-    public static boolean insertAnnouncement(String announced, int priority, int publicGoal, int condition, String nickname, int idEvent){
+
+    public static boolean insertAnnouncement(String announced, int priority, int publicGoal, int condition, String nickname, int idEvent) {
         boolean status = false;
         status = methodsSQL.execute("insert into announcements values(?, ?, ?, ?, ?, ?)", announced, priority, publicGoal, condition, nickname, idEvent);
         return status;
     }
-    
-    public static boolean selectAnnouncement(int idEvent){
+
+    public static boolean selectAnnouncement(int idEvent) {
         boolean status = false;
         List<announcement> announc = new ArrayList<>();
         announcement announ;
         ResultSet rs = methodsSQL.getExecute("select id, announced, priority, publicGoal, condition, nickname from announcements where idEvent = ?", idEvent);
-        
+
         try {
-            while(rs.next()){
+            while (rs.next()) {
                 announ = new announcement();
                 announ.setId(rs.getInt(1));
                 announ.setAnnouncement(rs.getString(2));
@@ -404,17 +431,17 @@ public class classEvent {
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return status;
     }
-    
-    public static boolean selectImages(int idEvent){
+
+    public static boolean selectImages(int idEvent) {
         boolean status = false;
-        
+
         ResultSet rs = methodsSQL.getExecute("select profilePicture, coverPicture, googleMaps from events where id = ?", idEvent);
-        
+
         try {
-            while(rs.next()){
+            while (rs.next()) {
                 evento.setProfilePicture(rs.getBytes(1));
                 evento.setCoverPicture(rs.getBytes(2));
                 evento.setMapImage(rs.getBytes(3));
@@ -423,90 +450,90 @@ public class classEvent {
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return status;
     }
-    
-    public static boolean updateColor(int idEvent, String color){
+
+    public static boolean updateColor(int idEvent, String color) {
         boolean status = false;
         status = methodsSQL.execute("update events set color = ? where id = ?", color, idEvent);
         return status;
     }
-    
-    public static boolean updateVisibility(int idEvent, int visibility){
+
+    public static boolean updateVisibility(int idEvent, int visibility) {
         boolean status = false;
         status = methodsSQL.execute("update events set visibility = ? where id = ?", visibility, idEvent);
         return status;
     }
-    
-    public static boolean updatePlace(int idEvent, String place, byte[] mapImage, int visibility){
+
+    public static boolean updatePlace(int idEvent, String place, byte[] mapImage, int visibility) {
         boolean status = false;
-        if(visibility == 0)
+        if (visibility == 0) {
             status = methodsSQL.execute("update events set place = ? where id = ?", place, idEvent);
-        else
+        } else {
             status = methodsSQL.execute("update events set place = ?, googleMaps= ? where id = ?", place, mapImage, idEvent);
+        }
         return status;
     }
-    
-    public static boolean deleteMapImage(int idEvent){
+
+    public static boolean deleteMapImage(int idEvent) {
         boolean status = false;
-        status = methodsSQL.execute("update events set googleMaps = "+null+" where id = ?", idEvent);
+        status = methodsSQL.execute("update events set googleMaps = " + null + " where id = ?", idEvent);
         return status;
     }
-    
-    public static boolean updateProfile(int idEvent, byte[] image){
+
+    public static boolean updateProfile(int idEvent, byte[] image) {
         boolean status = false;
         status = methodsSQL.execute("update events set profilePicture = ? where id = ?", image, idEvent);
         return status;
     }
-    
-    public static boolean updateCover(int idEvent, byte[] image){
+
+    public static boolean updateCover(int idEvent, byte[] image) {
         boolean status = false;
         status = methodsSQL.execute("update events set coverPicture = ? where id = ?", image, idEvent);
         return status;
     }
-    
-    public static boolean updateInvitation(int idEvent, int invitation){
+
+    public static boolean updateInvitation(int idEvent, int invitation) {
         boolean status = false;
         status = methodsSQL.execute("update events set invitation = ? where id = ?", invitation, idEvent);
         return status;
     }
-    
-    
-    public static boolean insertActivitie(String dateTime, String activity, String place, int condition, String description, int idEvent, String nickname){
+
+    public static boolean insertActivitie(String dateTime, String activity, String place, int condition, String description, int idEvent, String nickname) {
         boolean status = false;
         status = methodsSQL.execute("insert into activities values(?, ?, ?, ?, ?, ?, ?)", dateTime, activity, place, condition, description, idEvent, nickname);
         return status;
     }
-    
-    public static boolean insertProblem(String problem, String place, String dateTime, int danger, int condition, String nickname, int idEvent){
+
+    public static boolean insertProblem(String problem, String place, String dateTime, int danger, int condition, String nickname, int idEvent) {
         boolean status = false;
-        status = methodsSQL.execute("insert into problems values(?, ?, ?, ?, ?, ?, "+null+", ?)", problem, place, dateTime, danger, condition, nickname, idEvent);
+        status = methodsSQL.execute("insert into problems values(?, ?, ?, ?, ?, ?, " + null + ", ?)", problem, place, dateTime, danger, condition, nickname, idEvent);
         return status;
     }
-    
-    public static boolean insert(){
-        boolean status = false;
-        if(mapImage == null)
-            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?, 1, "+null+")",
-                eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition, quantityTicket, place, color);
-        else
-            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, "+null+", "+null+", ?, ?, ?, ?, ?, ?, ?, ?, 1, ?)",
-                eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition, quantityTicket, place, color, mapImage);
 
-        
-        if(status){
-            if(status && prices.isEmpty()){
+    public static boolean insert() {
+        boolean status = false;
+        if (mapImage == null) {
+            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, " + null + ", " + null + ", ?, ?, ?, ?, ?, ?, ?, ?, 1, " + null + ")",
+                    eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition, quantityTicket, place, color);
+        } else {
+            status = methodsSQL.execute("INSERT INTO events VALUES (?, ?, " + null + ", " + null + ", ?, ?, ?, ?, ?, ?, ?, ?, 1, ?)",
+                    eventName, nicknameCreator, visibility, startDateTime, endDateTime, staff, condition, quantityTicket, place, color, mapImage);
+        }
+
+        if (status) {
+            if (status && prices.isEmpty()) {
                 prices.add(0, new classPrice("Gratis", 0.0, quantityTicket));
             }
-            id = methodsSQL.getExecuteInt("SELECT id FROM events WHERE eventName = ? and nicknameCreator = ?", 
+            id = methodsSQL.getExecuteInt("SELECT id FROM events WHERE eventName = ? and nicknameCreator = ?",
                     eventName, classUsuario.getNickname());
             for (classPrice pric : prices) {
-                status = methodsSQL.execute("INSERT INTO tickets VALUES (?, ?, ?, ?)", pric.getName(), pric.getCount(), 
+                status = methodsSQL.execute("INSERT INTO tickets VALUES (?, ?, ?, ?)", pric.getName(), pric.getCount(),
                         pric.getPrice(), id);
             }
-        } 
-        
+        }
+
         return status;
     }
 
@@ -521,47 +548,48 @@ public class classEvent {
         status = methodsSQL.execute("delete from activities where id = ?", id);
         return status;
     }
-    
-    public static boolean inserttask(String task, int condition, int visibility, Double price, int idEvent, String nickname){
+
+    public static boolean inserttask(String task, int condition, int visibility, Double price, int idEvent, String nickname) {
         boolean status = false;
         status = methodsSQL.execute("insert into tasks values(?, ?, ?, ?, ?, ?)", task, condition, visibility, price, idEvent, nickname);
         return status;
     }
 
-    public static boolean updateTask(int id, int stat){
+    public static boolean updateTask(int id, int stat) {
         boolean status = false;
         status = methodsSQL.execute("update tasks set condition = ? where id = ?", stat, id);
         return status;
     }
-    
-    public static boolean deleteTask(int id){
+
+    public static boolean deleteTask(int id) {
         boolean status = false;
         status = methodsSQL.execute("delete from tasks where id = ?", id);
         return status;
     }
-    
-    public static int selectGuestTickets(int idTickets){
+
+    public static int selectGuestTickets(int idTickets) {
         int num = 0;
         ResultSet rs = methodsSQL.getExecute("select count(id) from guest where idTickets = ?", idTickets);
-        
+
         try {
-            while(rs.next())
-                num+=rs.getInt(1);
+            while (rs.next()) {
+                num += rs.getInt(1);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return num;
     }
-    
-    public static boolean selectTasks(int idEvent){
+
+    public static boolean selectTasks(int idEvent) {
         boolean status = false;
         List<Task> task = new ArrayList<>();
         Task ta;
         ResultSet rs = methodsSQL.getExecute("select id, task, condition, visible, price, nickname from tasks where idEvent = ?", idEvent);
-        
+
         try {
-            while(rs.next()){
+            while (rs.next()) {
                 ta = new Task();
                 ta.setId(rs.getInt(1));
                 ta.setTask(rs.getString(2));
@@ -576,38 +604,38 @@ public class classEvent {
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return status;
     }
-    
-    public static boolean updateProblem(String nickname, int idProblem, int condition){
+
+    public static boolean updateProblem(String nickname, int idProblem, int condition) {
         boolean status = false;
         status = methodsSQL.execute("update problems set responsable  = ?, condition = ? where id = ?", nickname, condition, idProblem);
-        return status;        
+        return status;
     }
-    
-    public static boolean deleteProblem(int idProblem){
+
+    public static boolean deleteProblem(int idProblem) {
         boolean status = false;
         status = methodsSQL.execute("delete from problems where id = ?", idProblem);
-        return status;        
+        return status;
     }
-    
-    public static boolean insertGuest(int idEvent, int idTicket, String nickname, String datetime){
+
+    public static boolean insertGuest(int idEvent, int idTicket, String nickname, String datetime) {
         return methodsSQL.execute("insert into guest values(?, ?, ?, ?)", idEvent, idTicket, nickname, datetime);
     }
-    
-    public static boolean deleteGuest(int id){
+
+    public static boolean deleteGuest(int id) {
         return methodsSQL.execute("delete from guest where id = ?", id);
     }
-    
-    public static boolean selectProblems(int idEvent){
+
+    public static boolean selectProblems(int idEvent) {
         boolean status = false;
         List<problem> problem = new ArrayList<>();
         problem pro;
         ResultSet rs = methodsSQL.getExecute("select id, problem, place, dateTime, danger, condition, nickname, responsable from problems where idEvent = ?", idEvent);
-        
+
         try {
-            while(rs.next()){
+            while (rs.next()) {
                 pro = new problem();
                 pro.setId(rs.getInt(1));
                 pro.setProblem(rs.getString(2));
@@ -624,8 +652,8 @@ public class classEvent {
         } catch (SQLException ex) {
             Logger.getLogger(classEvent.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return status;
     }
-    
+
 }

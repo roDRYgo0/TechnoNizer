@@ -1,9 +1,11 @@
 package eventOwner;
 
 import java.awt.Color;
+import java.util.Objects;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
+import javaClass.event;
 import javaClass.standardization;
 
 /**
@@ -405,38 +407,57 @@ public class buyTicket extends javax.swing.JFrame {
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
         boolean status = true;
-        if(txtAvailable.getText().equals("Ilimitados") || txtAvailable.getText().equals("Unlimited")){
-            for(int i = 0; i < Integer.parseInt(txtCount1.getText()); i++){
-                if(status)
-                    status = classEvent.insertGuest(classEvent.eventosShow.get(idEvent).getId(), classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getId(),
-                    classUsuario.getNickname(), standardization.currentDateTimeSQL());
-                else{
-                    standardization.showMessage("cancel", "Error en la compra", this);
-                    break;
+        if (!txtCount1.getText().trim().isEmpty()) {
+            if (txtAvailable.getText().equals("Ilimitados") || txtAvailable.getText().equals("Unlimited")) {
+                for (int i = 0; i < Integer.parseInt(txtCount1.getText()); i++) {
+                    if (status) {
+                        status = classEvent.insertGuest(classEvent.eventosShow.get(idEvent).getId(), classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getId(),
+                                classUsuario.getNickname(), standardization.currentDateTimeSQL());
+                    } else {
+                        standardization.showMessage("cancel", "Error en la compra", this);
+                        break;
+                    }
+                }
+                if (status) {
+                    for (int e = 0; e < classEvent.eventos.size(); e++) {
+                        if (Objects.equals(classEvent.eventos.get(e).getId(), classEvent.eventosShow.get(idEvent).getId())) {
+                            System.out.println("compra");
+                            classEvent.eventos.get(e).setGuests(classEvent.selectGuests(classEvent.eventosShow.get(idEvent).getId()));
+                            classEvent.eventosShow.get(idEvent).setGuests(classEvent.selectGuests(classEvent.eventosShow.get(idEvent).getId()));
+                        }
+                    }
+                    controller.rootFrame = technonizer.TechnoNizer.home;
+                    standardization.hide(this);
+                    standardization.showMessage("ok", "Exito en la compra");
+                }
+            } else if (Integer.parseInt(txtCount1.getText()) > Integer.parseInt(txtAvailable.getText())) {
+                standardization.showMessage("cancel", "Tickets insufucientes", this);
+            } else {
+                for (int i = 0; i < Integer.parseInt(txtCount1.getText()); i++) {
+                    if (status) {
+                        status = classEvent.insertGuest(classEvent.eventosShow.get(idEvent).getId(), classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getId(),
+                                classUsuario.getNickname(), standardization.currentDateTimeSQL());
+                    } else {
+                        standardization.showMessage("cancel", "Error en la compra", this);
+                        break;
+                    }
+                }
+                if (status) {
+                    for (int e = 0; e < classEvent.eventos.size(); e++) {
+                        if (Objects.equals(classEvent.eventos.get(e).getId(), classEvent.eventosShow.get(idEvent).getId())) {
+                            System.out.println("compra");
+                            classEvent.eventos.get(e).setGuests(classEvent.selectGuests(classEvent.eventosShow.get(idEvent).getId()));
+                            classEvent.eventosShow.get(idEvent).setGuests(classEvent.selectGuests(classEvent.eventosShow.get(idEvent).getId()));
+                        }
+                    }
+                    controller.rootFrame = technonizer.TechnoNizer.home;
+                    standardization.hide(this);
+                    standardization.showMessage("ok", "Exito en la compra");
                 }
             }
-            if(status){
-                controller.rootFrame = technonizer.TechnoNizer.home;
-                standardization.hide(this);
-                standardization.showMessage("ok", "Exito en la compra", this);
-            }
-        }else if (Integer.parseInt(txtCount1.getText())>Integer.parseInt(txtAvailable.getText())) {
-            standardization.showMessage("cancel", "Tickets insufucientes", this);
-        } else {
-            for(int i = 0; i < Integer.parseInt(txtCount1.getText()); i++){
-                if(status)
-                    status = classEvent.insertGuest(classEvent.eventosShow.get(idEvent).getId(), classEvent.eventosShow.get(idEvent).getPrices().get(idPrice).getId(),
-                    classUsuario.getNickname(), standardization.currentDateTimeSQL());
-                else{
-                    standardization.showMessage("cancel", "Error en la compra", this);
-                    break;
-                }
-            }
-            if(status){
-                controller.rootFrame = technonizer.TechnoNizer.home;
-                standardization.hide(this);
-                standardization.showMessage("ok", "Exito en la compra", this);
-            }
+            technonizer.TechnoNizer.home.evento.updateGain();
+        }else{
+            standardization.showMessage("ok", "Campos vacios");
         }
     }//GEN-LAST:event_btnNext1ActionPerformed
 

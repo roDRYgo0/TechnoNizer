@@ -21,6 +21,7 @@
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/announcementMenu.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/sucurity/jpQuestions.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/activitys.java</file>
+            <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/footer.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/staff.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/showActivity.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/admin/allGender.java</file>
@@ -44,6 +45,7 @@
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/preferences.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/menu.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/classPrice.java</file>
+            <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventGuest/jpEvent.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpMembershipChange.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/projects/showProject.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/connection.java</file>
@@ -69,6 +71,7 @@
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/admin/jpConfAuthenticatorAdmin.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/projects/allProjects.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/classSecurityQuestions.java</file>
+            <file>file:/C:/Users/rodri/git/TechnoNizer/src/jFrame/AddEventInfo.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/admin/logs.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/pnPrice.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/classMembership.java</file>
@@ -93,11 +96,14 @@
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/pnTask.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/admin/allUsers.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/showPrice.java</file>
+            <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/buyTicket.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/admin/addGender.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/admin/log.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/pnActivity.java</file>
+            <file>file:/C:/Users/rodri/git/TechnoNizer/src/properties/espanol.properties</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/problemsMenu.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/contact/itemContact.java</file>
+            <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/eventAdminP.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpWelcome.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/showAnnouncement.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/admin/jpUsers.java</file>
@@ -113,6 +119,7 @@
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/classAdmin.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/addEvent/allPrice.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/methodsSQL.java</file>
+            <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/place.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/controller.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/admin/jpSecurityUser.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/javaClass/MapsJava.java</file>
@@ -135,6 +142,7 @@
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/jFrame/logIn.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/com/warrenstrange/googleauth/IGoogleAuthenticator.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/AddProblem.java</file>
+            <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/placeMenu.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/projects/addProject.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/eventOwner/pnSettings.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/MenuEvent.java</file>

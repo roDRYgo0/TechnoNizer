@@ -129,6 +129,8 @@ idcard int references cards(id)
  )
  alter table events add googleMaps image null
 
+ select* from announcements
+
  create table tickets(
  id int identity(1,1) primary key not null,
  nameTicket nvarchar(35) not null,
