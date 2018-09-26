@@ -26,6 +26,8 @@ public final class home extends javax.swing.JFrame {
     public static JLabel imageUserTop;
     public static JLabel imageUserLeft;
     
+    public eventOwner.eventAdmin evento;
+    
     void verificaridioma()
     {
         Properties pr = new propiedades (controller.idioma);
@@ -955,13 +957,14 @@ public final class home extends javax.swing.JFrame {
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
+    
     public void showEventOwner(int e, boolean load){
         disable();
         pnEvents.setBackground(new Color(52, 52, 52));
-        eventOwner.eventAdmin event = new eventOwner.eventAdmin(e, load);
-        event.setLocation(0,0);
+        evento = new eventOwner.eventAdmin(e, load);
+        evento.setLocation(0,0);
 
-        scrollContainer.setViewportView(event);
+        scrollContainer.setViewportView(evento);
         scrollContainer.revalidate();
         scrollContainer.repaint();
     }
