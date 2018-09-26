@@ -1,5 +1,6 @@
 package JPanel;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Properties;
 import javaClass.classAdmin;
@@ -51,6 +52,11 @@ public class jpChoose extends javax.swing.JPanel {
 
         lblTN.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTN.setText("TechnoNizer");
+        lblTN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblTNMouseReleased(evt);
+            }
+        });
 
         spTop.setForeground(new java.awt.Color(153, 153, 153));
 
@@ -180,6 +186,14 @@ public class jpChoose extends javax.swing.JPanel {
         btnNext.setEnabled(false);
         btnNext1.setEnabled(false);
     }//GEN-LAST:event_btnNext1ActionPerformed
+
+    private void lblTNMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTNMouseReleased
+        controller.rootPane.removeAll();
+        controller.rootPane.add(controller.jpA,BorderLayout.CENTER);
+        controller.rootPane.revalidate();
+        controller.rootPane.repaint();
+        controller.jpA.enable();
+    }//GEN-LAST:event_lblTNMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

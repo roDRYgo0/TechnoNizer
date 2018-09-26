@@ -53,8 +53,8 @@ public class jpCreateData extends javax.swing.JPanel {
             }
             
             String generos[]={
-            pr.getProperty("Mascu"),
-            pr.getProperty("Feme")
+            pr.getProperty("Feme"),
+            pr.getProperty("Mascu")
             };
             
            for(int x=0; x<generos.length;x++)
