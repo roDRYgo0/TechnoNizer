@@ -21,6 +21,7 @@ public class pnPrice extends javax.swing.JPanel {
     {
         Properties pr=new propiedades(controller.idioma);
         PricelblpnPrice.setText(pr.getProperty("PricelblpnPrice"));
+        btnNext.setText(pr.getProperty("Guest"));
     }
     
     int idEvent;

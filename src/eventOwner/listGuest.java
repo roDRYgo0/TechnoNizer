@@ -3,17 +3,25 @@ package eventOwner;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.classPrice;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 /**
  * @author Alexg
  */
 public class listGuest extends javax.swing.JFrame {
 
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    Listguests.setText(pr.getProperty("ListGuest"));
+    }
+    
     int idEvent;
     boolean validate;
     int count;
@@ -23,6 +31,7 @@ public class listGuest extends javax.swing.JFrame {
         this.idEvent = idEvent;
         validate = true;
         load();
+        verificaridioma();
 
     }
 
@@ -73,7 +82,7 @@ public class listGuest extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        Listguests = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         container = new javax.swing.JPanel();
 
@@ -123,8 +132,8 @@ public class listGuest extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Lista de invitados");
+        Listguests.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Listguests.setText("Lista de invitados");
 
         jScrollPane1.setBorder(null);
 
@@ -140,7 +149,7 @@ public class listGuest extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
+                    .addComponent(Listguests)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -149,7 +158,7 @@ public class listGuest extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
-                .addComponent(jLabel5)
+                .addComponent(Listguests)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                 .addContainerGap())
@@ -176,12 +185,12 @@ public class listGuest extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Listguests;
     private javax.swing.JButton btnNext;
     private javax.swing.JPanel container;
     private javax.swing.ButtonGroup groupGoal;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
