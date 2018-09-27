@@ -50,10 +50,6 @@
 				<text><![CDATA[Nombre de Usuario]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="31" y="25" width="100" height="20" uuid="56317e0b-9572-492c-906a-a8b04676d8d7"/>
-				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="31" y="38" width="100" height="20" uuid="781422d5-c479-4e05-bd26-6e46645866dd"/>
 				<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
 			</textField>
@@ -151,6 +147,10 @@
 			<ellipse>
 				<reportElement x="293" y="87" width="18" height="13" backcolor="#000000" uuid="485d9092-fbd2-4659-a2c7-78317f45ae9f"/>
 			</ellipse>
+			<textField>
+				<reportElement x="31" y="25" width="100" height="20" uuid="28b3f620-aaff-41c9-b025-83a767a8acd1"/>
+				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
