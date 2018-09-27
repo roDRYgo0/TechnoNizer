@@ -19,10 +19,10 @@ public class preferences extends javax.swing.JPanel {
     Properties pr= new propiedades(controller.idioma);
     lblpreference1.setText(pr.getProperty("lblpreference1"));
     lblpreference2.setText(pr.getProperty("lblpreference2"));
-    lblpreference3.setText(pr.getProperty("lblpreference3"));
-    rbtnPublico.setText(pr.getProperty("rbtnPublicoPreference"));
-    rbtnSolicitud.setText(pr.getProperty("rbtnSolicitudPreference"));
-    rbtnInvitacion.setText(pr.getProperty("rbtnInvitacionPreference"));
+//    lblpreference3.setText(pr.getProperty("lblpreference3"));
+//    rbtnPublico.setText(pr.getProperty("rbtnPublicoPreference"));
+//    rbtnSolicitud.setText(pr.getProperty("rbtnSolicitudPreference"));
+//    rbtnInvitacion.setText(pr.getProperty("rbtnInvitacionPreference"));
     }
     
     public preferences(int idEvent) {
@@ -36,17 +36,17 @@ public class preferences extends javax.swing.JPanel {
     }
     
     void invitation(){
-        switch(classEvent.eventosShow.get(idEvent).getInvitation()){
-            case 1:
-                rbtnPublico.setSelected(true);
-                break;
-            case 2:
-                rbtnSolicitud.setSelected(true);
-                break;
-            case 3:
-                rbtnInvitacion.setSelected(true);
-                break;
-        }
+//        switch(classEvent.eventosShow.get(idEvent).getInvitation()){
+//            case 1:
+//                rbtnPublico.setSelected(true);
+//                break;
+//            case 2:
+//                rbtnSolicitud.setSelected(true);
+//                break;
+//            case 3:
+//                rbtnInvitacion.setSelected(true);
+//                break;
+//        }
     }
     
     void member(){
@@ -198,10 +198,6 @@ public class preferences extends javax.swing.JPanel {
         lblpreference2 = new javax.swing.JLabel();
         lblVisibility = new javax.swing.JLabel();
         lblSwitch = new javax.swing.JLabel();
-        lblpreference3 = new javax.swing.JLabel();
-        rbtnPublico = new javax.swing.JRadioButton();
-        rbtnSolicitud = new javax.swing.JRadioButton();
-        rbtnInvitacion = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(470, 400));
@@ -604,45 +600,6 @@ public class preferences extends javax.swing.JPanel {
             }
         });
 
-        lblpreference3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblpreference3.setText("Tipo de asistencia");
-
-        rbtnPublico.setBackground(new java.awt.Color(255, 255, 255));
-        groupInvitation.add(rbtnPublico);
-        rbtnPublico.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        rbtnPublico.setText("Público");
-        rbtnPublico.setToolTipText("");
-        rbtnPublico.setFocusPainted(false);
-        rbtnPublico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnPublicoActionPerformed(evt);
-            }
-        });
-
-        rbtnSolicitud.setBackground(new java.awt.Color(255, 255, 255));
-        groupInvitation.add(rbtnSolicitud);
-        rbtnSolicitud.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        rbtnSolicitud.setText("Solicitud");
-        rbtnSolicitud.setToolTipText("");
-        rbtnSolicitud.setFocusPainted(false);
-        rbtnSolicitud.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnSolicitudActionPerformed(evt);
-            }
-        });
-
-        rbtnInvitacion.setBackground(new java.awt.Color(255, 255, 255));
-        groupInvitation.add(rbtnInvitacion);
-        rbtnInvitacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        rbtnInvitacion.setText("Por invitación");
-        rbtnInvitacion.setToolTipText("");
-        rbtnInvitacion.setFocusPainted(false);
-        rbtnInvitacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnInvitacionActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -693,17 +650,10 @@ public class preferences extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(rbtnPublico, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(rbtnSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(rbtnInvitacion))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblpreference2)
-                                    .addComponent(lblVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblpreference3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(65, 65, 65)
                                 .addComponent(lblSwitch, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
@@ -745,14 +695,7 @@ public class preferences extends javax.swing.JPanel {
                         .addComponent(lblVisibility)
                         .addGap(11, 11, 11))
                     .addComponent(lblSwitch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(lblpreference3)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtnPublico)
-                    .addComponent(rbtnSolicitud)
-                    .addComponent(rbtnInvitacion))
-                .addGap(25, 25, 25))
+                .addGap(115, 115, 115))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -887,18 +830,6 @@ public class preferences extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_lblSwitchMouseReleased
 
-    private void rbtnPublicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnPublicoActionPerformed
-        changeInvitation(1);
-    }//GEN-LAST:event_rbtnPublicoActionPerformed
-
-    private void rbtnSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnSolicitudActionPerformed
-        changeInvitation(2);
-    }//GEN-LAST:event_rbtnSolicitudActionPerformed
-
-    private void rbtnInvitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnInvitacionActionPerformed
-        changeInvitation(3);
-    }//GEN-LAST:event_rbtnInvitacionActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup groupInvitation;
@@ -938,9 +869,5 @@ public class preferences extends javax.swing.JPanel {
     private javax.swing.JLabel lblVisibility;
     private javax.swing.JLabel lblpreference1;
     private javax.swing.JLabel lblpreference2;
-    private javax.swing.JLabel lblpreference3;
-    private javax.swing.JRadioButton rbtnInvitacion;
-    private javax.swing.JRadioButton rbtnPublico;
-    private javax.swing.JRadioButton rbtnSolicitud;
     // End of variables declaration//GEN-END:variables
 }

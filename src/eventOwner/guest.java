@@ -1,14 +1,25 @@
 package eventOwner;
 
 import java.awt.Color;
+import java.util.Properties;
+import javaClass.controller;
+import properties.propiedades;
 
 public class guest extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    ShowPricelbl1.setText(pr.getProperty("User"));
+    ShowPricelbl3.setText(pr.getProperty("Count"));
+    }
+    
     public guest(String nickname, int count, String ticket) {
         initComponents();
         txtNickname.setText(nickname);
         txtCount.setText(count+"");
         txtTicket.setText(ticket);
+        verificaridioma();
     }
 
 
