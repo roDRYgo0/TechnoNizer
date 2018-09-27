@@ -3,7 +3,6 @@ package eventOwner;
 import java.awt.Color;
 import java.util.Properties;
 import javaClass.classEvent;
-import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
 import properties.propiedades;
@@ -48,6 +47,10 @@ public class showPrice extends javax.swing.JPanel {
             btnNext.setVisible(true);
         else
             btnNext.setVisible(false);
+        
+        if(available()==0){
+            btnNext.setEnabled(false);
+        }
         
     }
 

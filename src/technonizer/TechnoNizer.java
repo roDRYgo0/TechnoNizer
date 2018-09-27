@@ -22,7 +22,7 @@ public class TechnoNizer {
     public static void main(String[] args) {
         new Thread(()->{
             controller.idioma="INGLES";
-//            SocketsClient.sendServer("connection from: "+SocketsClient.hotsAddress());
+            SocketsClient.sendServer("connection from: "+SocketsClient.hotsAddress());
             new Thread(()->{
                 SocketsClient.listenServer();
             }).start();

@@ -45,6 +45,12 @@ id_gender int not null references genders(id),
 nickname nvarchar(50) not null references users(nickname)
 )
 
+delete from usersInformation
+delete from usersBinnacle
+delete from checklist
+delete from cards
+delete from projects
+delete from users
 
 create table contactType(
 id int identity(1,1) primary key not null,
@@ -128,6 +134,8 @@ idcard int references cards(id)
  invitation int  not null
  )
  alter table events add googleMaps image null
+
+ select* from announcements
 
  create table tickets(
  id int identity(1,1) primary key not null,

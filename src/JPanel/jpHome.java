@@ -10,10 +10,11 @@ import properties.propiedades;
 public class jpHome extends javax.swing.JPanel {
 
     home hom;
+    Properties pr = new propiedades (controller.idioma);
     
     void verificaridioma()
     {
-    Properties pr = new propiedades (controller.idioma);
+    pr = new propiedades (controller.idioma);
     StartJpHome.setText(pr.getProperty("StartJpHome"));
     ProfilejpHome.setText(pr.getProperty("ProfilejpHome"));
     NameUserjpHome.setText(pr.getProperty("NameUserjpHome"));
@@ -64,7 +65,7 @@ public class jpHome extends javax.swing.JPanel {
             
             switch(lblNumEvents.getText()){
                 case "-1":
-                    lblNumEvents.setText("Ilimitados");
+                    lblNumEvents.setText(pr.getProperty("Unlimitedevents"));
                     lblImageEvent.setIcon(new controller().changeImage("/imagenes/infinity.png", 40, 40));
                     break;
                 default:
@@ -105,7 +106,6 @@ public class jpHome extends javax.swing.JPanel {
         AvaibleeventsjpHome = new javax.swing.JLabel();
         lblNumEvents = new javax.swing.JLabel();
         lblImageEvent = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(124100, 124100));
@@ -334,13 +334,6 @@ public class jpHome extends javax.swing.JPanel {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        jButton1.setText("MI INFORMACIÓN");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jButton1MouseReleased(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -351,9 +344,7 @@ public class jpHome extends javax.swing.JPanel {
                         .addGap(38, 38, 38)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(StartJpHome))
@@ -372,10 +363,7 @@ public class jpHome extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -383,10 +371,6 @@ public class jpHome extends javax.swing.JPanel {
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         hom.showEditUser();
     }//GEN-LAST:event_btnEditActionPerformed
-
-    private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -403,7 +387,6 @@ public class jpHome extends javax.swing.JPanel {
     private javax.swing.JLabel StartJpHome;
     private javax.swing.JLabel TypeMembershipjpHome;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;

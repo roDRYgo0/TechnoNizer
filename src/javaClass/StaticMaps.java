@@ -15,7 +15,7 @@ import org.w3c.dom.Document;
  * @author Luis Marcos
  */
 public class StaticMaps extends MapsJava {
-    private final String URLRoot="http://maps.googleapis.com/maps/api/staticmap";
+    private final String URLRoot="https://maps.googleapis.com/maps/api/staticmap";
     
     /**
      * Establece el tipo de formato del mapa estático. Sus posisbles valores son:<br/>
@@ -70,7 +70,7 @@ public class StaticMaps extends MapsJava {
         URL url=new URL(URLRoot + "?center=" + URLEncoder.encode(centerAddress, "utf-8") + "&zoom=" + zoom +
                 "&size=" + size.width + "x" + size.height + "&scale=" + scale +
                 "&format=" + format.toString() + "&maptype=" + maptype.toString() + 
-                "&markers=" + URLEncoder.encode(centerAddress, "utf-8") + super.getSelectPropertiesRequest());
+                "&markers=" + URLEncoder.encode(centerAddress, "utf-8") + super.getSelectPropertiesRequest()+"&key=AIzaSyDFa72UX_AqOXEYi5WNKu2QVC-BbIF4Hjs");
         try {
             Image imageReturn;
             imageReturn=ImageIO.read(url);

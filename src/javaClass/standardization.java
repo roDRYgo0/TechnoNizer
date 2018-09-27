@@ -284,6 +284,7 @@ public class standardization {
 
     public static byte[] getByte(Icon icon) {
         byte[] bytes = null;
+        System.out.println(icon);
         BufferedImage img = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = img.createGraphics();
         icon.paintIcon(null, g2d, 0, 0);
@@ -437,6 +438,13 @@ public class standardization {
         log = new logIn();
         log.setLocationRelativeTo(null);
         home.setVisible(false);
+        log.setVisible(true);
+    }
+    
+    public static void invokeLogin(boolean admi) {
+        log = new logIn();
+        log.setLocationRelativeTo(null);
+        admin.setVisible(false);
         log.setVisible(true);
     }
 

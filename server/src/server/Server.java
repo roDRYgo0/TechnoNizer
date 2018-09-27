@@ -2,6 +2,7 @@ package server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -30,14 +31,13 @@ public class Server {
             while (true) {
                 Socket sc = servidor.accept();
 
-
                 if (clientes.isEmpty()) {
                     clientes.add(sc);
                     Thread t = new ThreadServerHandler(sc);
                     t.start();
                 } else {
-                    for (int i = 0; i< clientes.size() ; i++) {
-                        if (!clientes.get(i).getLocalAddress().equals(sc.getLocalAddress())) {
+                    for (int i = 0; i < clientes.size(); i++) {
+                        if (!clientes.get(i).getInetAddress().equals(sc.getInetAddress())) {
                             clientes.add(sc);
                             Thread t = new ThreadServerHandler(sc);
                             t.start();
@@ -71,39 +71,59 @@ public class Server {
                 in = new DataInputStream(sc.getInputStream());
                 out = new DataOutputStream(sc.getOutputStream());
                 SocketAddress s = sc.getRemoteSocketAddress();
-                
-                out.writeUTF(process(in.readUTF()));
+                String instruction = process(in.readUTF());
+                out.writeUTF(instruction);
 
             } catch (IOException ex) {
-                Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+                //EOFException 
             }
         }
     }
 
-    public static String process(String instruction){
+    public static String process(String instruction) {
         String[] orden = instruction.split(":");
-        String result= "";
+        String result = "";
         System.out.println(instruction);
-        switch(orden[0]){
-            case "connection from": 
+        switch (orden[0]) {
+            case "connection from":
                 result = "Established connection with the server";
+                break;
+            default:
+                for (int i = 0; i < Server.clientes.size(); i++) {
+                    if (Server.clientes.get(i) != null) {
+                        System.out.println(Server.clientes.get(i).getInetAddress());
+                        Server.sendClient(Server.clientes.get(i).getInetAddress().getHostAddress(), 4001, i);
+                    }
+                }
                 break;
         }
         return result;
     }
     
+    public static String message(String instruction){
+        String[] orden = instruction.split(":");
+        String result = "";
+        System.out.println(instruction+" hey");
+        switch (orden[0]) {
+            case "insert event":
+                return "refresh events";
+            default:
+                return "morro";
+        }
+    }
+
     public static void sendClient(String hostServer, int puert, int soc) {
 
         DataInputStream in;
         DataOutputStream out;
-
+        System.out.println("socket");
         try {
             Socket sc = new Socket(hostServer, puert);
             in = new DataInputStream(sc.getInputStream());
             out = new DataOutputStream(sc.getOutputStream());
-            out.writeUTF("mensajeador pegro6");
 
-            System.out.println(in.readUTF());
+            
+            out.writeUTF(message(in.readUTF()));
 
             sc.close();
 

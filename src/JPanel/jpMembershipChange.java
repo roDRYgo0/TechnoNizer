@@ -21,10 +21,10 @@ public class jpMembershipChange extends javax.swing.JPanel {
     int yourMembership;
     int newMembership;
     home house;
-    
+    Properties pr = new propiedades (controller.idioma);
     void verificaridioma()
     {
-   Properties pr = new propiedades (controller.idioma);
+    pr = new propiedades (controller.idioma);
     MembershipChangelbltitle.setText(pr.getProperty("MembershipChangelbltitle"));
     YourmembershipJpMembershipChange.setText(pr.getProperty("YourmembershipJpMembershipChange"));
     typeMemberSChange.setText(pr.getProperty("typeMemberSChange"));
@@ -908,7 +908,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
         txtEvents.setText(numberEvents+"");
         if(numberEvents==-1){
             iconEvents.setIcon(new controller().changeImage("/imagenes/infinity.png", 25, 25));
-            txtEvents.setText("Ilimitados");
+            txtEvents.setText(pr.getProperty("Unlimitedevents"));
         }
         else
             iconEvents.setIcon(new controller().changeImage("/imagenes/hashtag.png", 25, 25));
@@ -916,7 +916,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
         txtAdmin.setText(numberAdmins+"");
         if(numberAdmins==-1){
             iconAdmin.setIcon(new controller().changeImage("/imagenes/infinity.png", 25, 25));
-            txtAdmin.setText("Ilimitados");
+            txtAdmin.setText(pr.getProperty("Unlimitedevents"));
         }
         else
             iconAdmin.setIcon(new controller().changeImage("/imagenes/hashtag.png", 25, 25));
@@ -924,7 +924,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
         txtModer.setText(numberModerators+"");
         if(numberModerators==-1){
             iconModer.setIcon(new controller().changeImage("/imagenes/infinity.png", 25, 25));
-            txtModer.setText("Ilimitados");
+            txtModer.setText(pr.getProperty("Unlimitedevents"));
         }
         else
             iconModer.setIcon(new controller().changeImage("/imagenes/hashtag.png", 25, 25));
@@ -937,7 +937,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
         
         txtGuest.setText(numberGuests+"");
         if(numberGuests==-1){
-            txtGuest.setText("Ilimitados");
+            txtGuest.setText(pr.getProperty("Unlimitedevents"));
             iconGuest.setIcon(new controller().changeImage("/imagenes/infinity.png", 25, 25));
         }
         else
@@ -973,7 +973,7 @@ public class jpMembershipChange extends javax.swing.JPanel {
 
         switch(lblNumEvents.getText()){
             case "-1":
-                lblNumEvents.setText("Ilimitados");
+                lblNumEvents.setText(pr.getProperty("Unlimitedevents"));
                 lblImageEvent.setIcon(new controller().changeImage("/imagenes/infinity.png", 40, 40));
                 break;
             default:
