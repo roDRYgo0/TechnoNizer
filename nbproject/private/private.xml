@@ -3,6 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Lenovo/Documents/EXPO%202018/TechnoNizer/TechnoNizer/src/JPanel/jpAccess.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/EXPO%202018/TechnoNizer/TechnoNizer/src/javaClass/connection.java</file>
+=======
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpConfAuthenticator.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/addEvent/price.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/addEvent/lockedPrices.java</file>
@@ -164,6 +168,7 @@
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpAuthenticator.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/admin/jpHome.java</file>
             <file>file:/C:/Users/rodri/git/TechnoNizer/src/JPanel/jpAccess.java</file>
+>>>>>>> cceeaaeb1c7bba84fd64e96633140bd09206ff91
         </group>
     </open-files>
 </project-private>
