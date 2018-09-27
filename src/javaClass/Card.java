@@ -18,7 +18,7 @@ public class Card {
     
     public int insert(){       
         try(Connection con = connection.getConnection();
-            PreparedStatement cmd = con.prepareStatement("INSERT INTO cards VALUES (?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
+            PreparedStatement cmd = con.prepareStatement("INSERT INTO cards VALUES (?,?,?,?,null,null,null)", Statement.RETURN_GENERATED_KEYS)) {
                 
             cmd.setString(1, title);
             cmd.setString(2, description);
