@@ -9,6 +9,10 @@ public class connection {
     
     static Connection contacto = null;
     
+    /**
+     *
+     * @return la conexion con la instancia descrita
+     */
     public static Connection getConnection(){
 
         Connection on = null;
@@ -23,6 +27,10 @@ public class connection {
         return on;
     }
     
+    /**
+     *
+     * @return valida si existe una conexion con la base
+     */
     public static boolean validateConnection(){
         contacto = getConnection();
         if(contacto == null)

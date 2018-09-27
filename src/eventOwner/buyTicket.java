@@ -2,17 +2,31 @@ package eventOwner;
 
 import java.awt.Color;
 import java.util.Objects;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.event;
 import javaClass.standardization;
+import properties.propiedades;
 
 /**
  * @author Alexg
  */
+
 public class buyTicket extends javax.swing.JFrame {
 
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    Buticketlbl1.setText(pr.getProperty("Buticketlbl1"));
+    Buticketlbl2.setText(pr.getProperty("Buticketlbl2"));
+    ShowPricelbl2.setText(pr.getProperty("ShowPricelbl2"));
+    ShowPricelbl4.setText(pr.getProperty("ShowPricelbl4"));
+    Buticketlbl3.setText(pr.getProperty("Buticketlbl3"));
+    CountTickets.setText(pr.getProperty("CountTickets"));
+    btnNext1.setText(pr.getProperty("btnNext1Tickets"));
+    }
     int idPrice;
     int idEvent;
     Double price;
@@ -22,6 +36,7 @@ public class buyTicket extends javax.swing.JFrame {
         this.idPrice = idPrice;
         this.idEvent = idEvent;
         load();
+        verificaridioma();
 
     }
 
@@ -51,13 +66,13 @@ public class buyTicket extends javax.swing.JFrame {
         txtCount = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Buticketlbl1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
         lblEvent = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        Buticketlbl2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel9 = new javax.swing.JLabel();
+        Buticketlbl3 = new javax.swing.JLabel();
         btnNext1 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         txtNamePrice = new javax.swing.JLabel();
@@ -102,9 +117,9 @@ public class buyTicket extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(35, 150, 243));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Agregar anuncio");
+        Buticketlbl1.setForeground(new java.awt.Color(255, 255, 255));
+        Buticketlbl1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Buticketlbl1.setText("Comprar Tickets");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,7 +153,7 @@ public class buyTicket extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Buticketlbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -155,15 +170,15 @@ public class buyTicket extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblEvent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Buticketlbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Datos Generales");
+        Buticketlbl2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Buticketlbl2.setText("Datos Generales");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel9.setText("Compra");
+        Buticketlbl3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Buticketlbl3.setText("Compra");
 
         btnNext1.setBackground(new java.awt.Color(0, 153, 255));
         btnNext1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -305,7 +320,7 @@ public class buyTicket extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(Buticketlbl2)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(56, 56, 56)
@@ -322,7 +337,7 @@ public class buyTicket extends javax.swing.JFrame {
                                 .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addComponent(Buticketlbl3)
                         .addGap(31, 419, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,7 +360,7 @@ public class buyTicket extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
-                .addComponent(jLabel5)
+                .addComponent(Buticketlbl2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -373,7 +388,7 @@ public class buyTicket extends javax.swing.JFrame {
                         .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addComponent(jLabel9)
+                        .addComponent(Buticketlbl3)
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -572,6 +587,9 @@ public class buyTicket extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Buticketlbl1;
+    private javax.swing.JLabel Buticketlbl2;
+    private javax.swing.JLabel Buticketlbl3;
     private javax.swing.JLabel CountTickets;
     private javax.swing.JLabel ShowPricelbl2;
     private javax.swing.JLabel ShowPricelbl3;
@@ -580,11 +598,8 @@ public class buyTicket extends javax.swing.JFrame {
     private javax.swing.JButton btnNext1;
     private javax.swing.ButtonGroup groupGoal;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator2;
