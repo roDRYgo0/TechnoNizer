@@ -139,6 +139,22 @@ idcard int references cards(id)
  )
  alter table events add googleMaps image null
 
+ delete from usersBinnacle
+ delete from usersInformation
+ delete from checklist
+ delete from cards
+ delete from projects
+ delete from personalEvents
+ delete from reminders
+ delete from users
+
+ delete from guest
+ delete from tickets
+ delete from problems
+ delete from tasks
+ delete from activities
+ delete from events
+
  select* from events
 
  create table tickets(
