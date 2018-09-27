@@ -34,6 +34,10 @@ import sucurity.jpSecurityQuestions;
 
 public class controller {
     
+    /**
+     *Todas las variables estaticas que ocuparemos en el programa
+     */
+    
     public static String positionPanel;
     
     public static JPanel rootPane;
