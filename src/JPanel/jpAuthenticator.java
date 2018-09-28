@@ -1,5 +1,6 @@
 package JPanel;
 
+import jFrame.Ayuda;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -27,6 +28,7 @@ public class jpAuthenticator extends javax.swing.JPanel {
         initComponents();
         lblGoogle.setIcon(new controller().changeImage("/imagenes/authenticator.png", 40, 40));
         verificaridioma();
+        lblAyuda.setIcon(new controller().changeImage("/imagenes/Ayuda.png", 25, 25));
     }
 
     @SuppressWarnings("unchecked")
@@ -44,6 +46,8 @@ public class jpAuthenticator extends javax.swing.JPanel {
         lblGoogle = new javax.swing.JLabel();
         progress = new rojerusan.componentes.RSProgressMaterial();
         jLabel5 = new javax.swing.JLabel();
+        lblTN = new javax.swing.JLabel();
+        lblAyuda = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -111,6 +115,24 @@ public class jpAuthenticator extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Ingresa tu codigo");
 
+        lblTN.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTN.setText("TechnoNizer");
+        lblTN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblTNMouseReleased(evt);
+            }
+        });
+
+        lblAyuda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblAyuda.setMaximumSize(new java.awt.Dimension(25, 25));
+        lblAyuda.setMinimumSize(new java.awt.Dimension(25, 25));
+        lblAyuda.setPreferredSize(new java.awt.Dimension(25, 25));
+        lblAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblAyudaMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,11 +140,11 @@ public class jpAuthenticator extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(spCode)
@@ -136,19 +158,31 @@ public class jpAuthenticator extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(AuthIndication1)
                                     .addComponent(AuthIndication2)))
-                            .addComponent(jLabel5))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                            .addComponent(jLabel5)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(lblTN)))
+                .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addContainerGap()
+                .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(lblTN)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(45, 45, 45)
                 .addComponent(lblVerifytwofeet)
@@ -167,7 +201,7 @@ public class jpAuthenticator extends javax.swing.JPanel {
                     .addComponent(checkCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(spCode, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnNext, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(progress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -245,6 +279,19 @@ public class jpAuthenticator extends javax.swing.JPanel {
         }).start();
     }//GEN-LAST:event_btnNextActionPerformed
 
+    private void lblTNMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTNMouseReleased
+        controller.rootPane.removeAll();
+        controller.rootPane.add(controller.jpA,BorderLayout.CENTER);
+        controller.rootPane.revalidate();
+        controller.rootPane.repaint();
+        controller.jpA.enable();
+    }//GEN-LAST:event_lblTNMouseReleased
+
+    private void lblAyudaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAyudaMouseReleased
+        controller.AyudaLogin = new Ayuda("Si por alguna razón no tienes el código del Authenticator, puedes reestablecer la contraseña para poder acceder al sistema");
+        standardization.show(controller.AyudaLogin);
+    }//GEN-LAST:event_lblAyudaMouseReleased
+
     public void enable(){
         progress.setForeground(new Color(255,255,255));
         txtCode.setEnabled(true);
@@ -265,7 +312,9 @@ public class jpAuthenticator extends javax.swing.JPanel {
     private javax.swing.JLabel checkCode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblAyuda;
     private javax.swing.JLabel lblGoogle;
+    private javax.swing.JLabel lblTN;
     private javax.swing.JLabel lblVerifytwofeet;
     private rojerusan.componentes.RSProgressMaterial progress;
     private javax.swing.JSeparator spCode;

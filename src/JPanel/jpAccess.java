@@ -1,7 +1,7 @@
 package JPanel;
 
 import JPanel.CheckIn.jpCreateUser;
-import jFrame.AyudaLogin;
+import jFrame.Ayuda;
 import jFrame.logIn;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -125,7 +125,7 @@ public class jpAccess extends javax.swing.JPanel {
             }
         });
 
-        btnNext.setBackground(new java.awt.Color(0, 153, 255));
+        btnNext.setBackground(new java.awt.Color(33, 150, 243));
         btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
         btnNext.setText("Siguiente");
@@ -212,7 +212,7 @@ public class jpAccess extends javax.swing.JPanel {
                 .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
+                .addGap(112, 112, 112)
                 .addComponent(AccederLabel)
                 .addGap(50, 50, 50)
                 .addComponent(NameLabelAcces)
@@ -225,7 +225,7 @@ public class jpAccess extends javax.swing.JPanel {
                         .addGap(0, 0, 0)
                         .addComponent(spMail, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(iconUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(218, 218, 218)
+                .addGap(171, 171, 171)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Questionlabel)
@@ -355,7 +355,7 @@ public class jpAccess extends javax.swing.JPanel {
 
     private void lblAyudaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAyudaMouseReleased
         
-        controller.AyudaLogin = new AyudaLogin();
+        controller.AyudaLogin = new Ayuda("Aquí debes ingresar tu usuario si  posees una cuenta, sino, puedes registrarte en el boton \"Crear Cuenta Nueva\" en la parte inferior.\n");
         standardization.show(controller.AyudaLogin);
        
     }//GEN-LAST:event_lblAyudaMouseReleased
