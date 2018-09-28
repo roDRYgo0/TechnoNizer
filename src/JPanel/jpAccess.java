@@ -27,7 +27,7 @@ public class jpAccess extends javax.swing.JPanel {
     pr = new propiedades (controller.idioma);
     AccederLabel.setText(pr.getProperty("AccesLabel"));
     NameLabelAcces.setText(pr.getProperty("NameLabel"));
-    Accesoptionlabel.setText(pr.getProperty("OptionLabel"));
+//    Accesoptionlabel.setText(pr.getProperty("OptionLabel"));
     Questionlabel.setText(pr.getProperty("Questionlabel"));
     btnCreateAccount.setText(pr.getProperty("btnCreateAccount"));
     btnNext.setText(pr.getProperty("btnNext"));
@@ -59,10 +59,7 @@ public class jpAccess extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         spMail = new javax.swing.JSeparator();
         txtUsername = new javax.swing.JTextField();
-        Accesoptionlabel = new javax.swing.JLabel();
         NameLabelAcces = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         Questionlabel = new javax.swing.JLabel();
         btnCreateAccount = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
@@ -108,15 +105,9 @@ public class jpAccess extends javax.swing.JPanel {
             }
         });
 
-        Accesoptionlabel.setText("O inicia sesión con");
-
         NameLabelAcces.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         NameLabelAcces.setForeground(new java.awt.Color(102, 102, 102));
         NameLabelAcces.setText("Ingrese su nombre de usuario");
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/facebook.png"))); // NOI18N
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/google.png"))); // NOI18N
 
         Questionlabel.setText("¿Todavía no eres miembro?");
 
@@ -174,11 +165,6 @@ public class jpAccess extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel6))
-                            .addComponent(Accesoptionlabel)
                             .addComponent(NameLabelAcces)
                             .addComponent(AccederLabel)
                             .addGroup(layout.createSequentialGroup()
@@ -223,13 +209,7 @@ public class jpAccess extends javax.swing.JPanel {
                         .addGap(0, 0, 0)
                         .addComponent(spMail, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(iconUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addComponent(Accesoptionlabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(115, 115, 115)
+                .addGap(218, 218, 218)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Questionlabel)
@@ -407,7 +387,6 @@ public class jpAccess extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AccederLabel;
-    private javax.swing.JLabel Accesoptionlabel;
     private javax.swing.JLabel NameLabelAcces;
     private javax.swing.JLabel Questionlabel;
     private javax.swing.JButton btnCreateAccount;
@@ -415,8 +394,6 @@ public class jpAccess extends javax.swing.JPanel {
     private javax.swing.JLabel checkMail;
     private javax.swing.JLabel iconUsername;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblTitle;
     private rojerusan.componentes.RSProgressMaterial progress;
