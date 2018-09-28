@@ -37,6 +37,7 @@ public class jpPassword extends javax.swing.JPanel {
         txtPassword.requestFocus();
         loadData(); 
         verificaridioma();
+          lblAyuda.setIcon(new controller().changeImage("/imagenes/Ayuda.png", 30, 30));
     }
     
     //<editor-fold defaultstate="collapsed" desc="compiled code">
@@ -60,6 +61,7 @@ public class jpPassword extends javax.swing.JPanel {
         progress = new rojerusan.componentes.RSProgressMaterial();
         checkPass = new javax.swing.JLabel();
         checkImage = new javax.swing.JLabel();
+        lblAyuda = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -166,6 +168,13 @@ public class jpPassword extends javax.swing.JPanel {
         checkImage.setMinimumSize(new java.awt.Dimension(25, 25));
         checkImage.setPreferredSize(new java.awt.Dimension(25, 25));
 
+        lblAyuda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblAyudaMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -207,12 +216,18 @@ public class jpPassword extends javax.swing.JPanel {
                                 .addGap(3, 3, 3)))
                         .addGap(0, 32, Short.MAX_VALUE)))
                 .addGap(18, 18, 18))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addGap(18, 18, 18)
+                .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -368,6 +383,13 @@ public class jpPassword extends javax.swing.JPanel {
         if(evt.getKeyCode()== KeyEvent.VK_ENTER)
             btnNextActionPerformed(null);
     }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void lblAyudaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAyudaMouseReleased
+
+        controller.AyudaLogin = new AyudaLogin();
+        standardization.show(controller.AyudaLogin);
+
+    }//GEN-LAST:event_lblAyudaMouseReleased
     
     public void disable(){
         checkPass.setIcon(standardization.checkImage(2));
@@ -457,6 +479,7 @@ public class jpPassword extends javax.swing.JPanel {
     private javax.swing.JLabel checkImage;
     private javax.swing.JLabel checkPass;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblAyuda;
     private javax.swing.JLabel lblEye;
     private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblPassword;

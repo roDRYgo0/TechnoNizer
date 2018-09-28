@@ -15,7 +15,7 @@ public class TechnoNizer {
     public static message mess;
     public static load sLoad;    
 
-    public static AddReminder aRem;
+    public static AyudaLogin aRem;
     public static UpdateProject uProj;
     public static DeleteReminder dRem;
     
