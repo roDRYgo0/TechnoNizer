@@ -1,5 +1,6 @@
 package javaClass;
 
+import JPanel.jpAccess;
 import jFrame.*;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -47,6 +48,8 @@ import static technonizer.TechnoNizer.*;
  * @author rodri
  */
 public class standardization {
+
+    
 
     controller control = new controller();
     public static byte[] image;
