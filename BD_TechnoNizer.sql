@@ -139,22 +139,6 @@ idcard int references cards(id)
  )
  alter table events add googleMaps image null
 
- delete from usersBinnacle
- delete from usersInformation
- delete from checklist
- delete from cards
- delete from projects
- delete from personalEvents
- delete from reminders
- delete from users
-
- delete from guest
- delete from tickets
- delete from problems
- delete from tasks
- delete from activities
- delete from events
-
  select* from events
 
  create table tickets(
@@ -244,6 +228,8 @@ idcard int references cards(id)
  hour nvarchar(5) not null,
  nickname nvarchar(50) not null references users(nickname)
  )
+ alter table reminders add alarmDateTimes nvarchar(200)
+ select * from reminders
 
  create table usersBinnacle(
 id int identity(1,1) primary key not null,
