@@ -12,9 +12,9 @@ import properties.propiedades;
 public class crCards extends javax.swing.JPanel {
 
     void verificaridioma(){
-//        Properties pr= new propiedades(controller.idioma);
-//        titlejpProjects.setText(pr.getProperty("titlejpProjects"));
-//        SearchjpProject.setText(pr.getProperty("SearchjpProject"));
+        Properties pr= new propiedades(controller.idioma);
+        titlejpProjects.setText(pr.getProperty("TitleCards"));
+        SearchjpProject.setText(pr.getProperty("SearchjpProject"));
     }
     
     int paneles;
