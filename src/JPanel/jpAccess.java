@@ -1,7 +1,7 @@
 package JPanel;
 
 import JPanel.CheckIn.jpCreateUser;
-import jFrame.AyudaLogin;
+import jFrame.Ayuda;
 import jFrame.logIn;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -28,7 +28,7 @@ public class jpAccess extends javax.swing.JPanel {
     pr = new propiedades (controller.idioma);
     AccederLabel.setText(pr.getProperty("AccesLabel"));
     NameLabelAcces.setText(pr.getProperty("NameLabel"));
-    Accesoptionlabel.setText(pr.getProperty("OptionLabel"));
+//    Accesoptionlabel.setText(pr.getProperty("OptionLabel"));
     Questionlabel.setText(pr.getProperty("Questionlabel"));
     btnCreateAccount.setText(pr.getProperty("btnCreateAccount"));
     btnNext.setText(pr.getProperty("btnNext"));
@@ -61,10 +61,7 @@ public class jpAccess extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         spMail = new javax.swing.JSeparator();
         txtUsername = new javax.swing.JTextField();
-        Accesoptionlabel = new javax.swing.JLabel();
         NameLabelAcces = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         Questionlabel = new javax.swing.JLabel();
         btnCreateAccount = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
@@ -111,15 +108,9 @@ public class jpAccess extends javax.swing.JPanel {
             }
         });
 
-        Accesoptionlabel.setText("O inicia sesión con");
-
         NameLabelAcces.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         NameLabelAcces.setForeground(new java.awt.Color(102, 102, 102));
         NameLabelAcces.setText("Ingrese su nombre de usuario");
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/facebook.png"))); // NOI18N
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/google.png"))); // NOI18N
 
         Questionlabel.setText("¿Todavía no eres miembro?");
 
@@ -134,7 +125,7 @@ public class jpAccess extends javax.swing.JPanel {
             }
         });
 
-        btnNext.setBackground(new java.awt.Color(0, 153, 255));
+        btnNext.setBackground(new java.awt.Color(33, 150, 243));
         btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
         btnNext.setText("Siguiente");
@@ -193,11 +184,6 @@ public class jpAccess extends javax.swing.JPanel {
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel6))
-                            .addComponent(Accesoptionlabel)
                             .addComponent(NameLabelAcces)
                             .addComponent(AccederLabel)
                             .addGroup(layout.createSequentialGroup()
@@ -226,7 +212,7 @@ public class jpAccess extends javax.swing.JPanel {
                 .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
+                .addGap(112, 112, 112)
                 .addComponent(AccederLabel)
                 .addGap(50, 50, 50)
                 .addComponent(NameLabelAcces)
@@ -239,13 +225,7 @@ public class jpAccess extends javax.swing.JPanel {
                         .addGap(0, 0, 0)
                         .addComponent(spMail, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(iconUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addComponent(Accesoptionlabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(115, 115, 115)
+                .addGap(171, 171, 171)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Questionlabel)
@@ -345,7 +325,7 @@ public class jpAccess extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        classUsuario.setNickname("dev.rodrig");
+        classUsuario.setNickname("Alexgve7");
 
         ResultSet rs = methodsSQL.getExecute("SELECT password FROM users WHERE nickname = ?",classUsuario.getNickname() );
 
@@ -375,7 +355,7 @@ public class jpAccess extends javax.swing.JPanel {
 
     private void lblAyudaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAyudaMouseReleased
         
-        controller.AyudaLogin = new AyudaLogin();
+        controller.AyudaLogin = new Ayuda("Aquí debes ingresar tu usuario si  posees una cuenta, sino, puedes registrarte en el boton \"Crear Cuenta Nueva\" en la parte inferior.\n");
         standardization.show(controller.AyudaLogin);
        
     }//GEN-LAST:event_lblAyudaMouseReleased
@@ -430,7 +410,6 @@ public class jpAccess extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AccederLabel;
-    private javax.swing.JLabel Accesoptionlabel;
     private javax.swing.JLabel NameLabelAcces;
     private javax.swing.JLabel Questionlabel;
     private javax.swing.JButton btnCreateAccount;
@@ -438,8 +417,6 @@ public class jpAccess extends javax.swing.JPanel {
     private javax.swing.JLabel checkMail;
     private javax.swing.JLabel iconUsername;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblAyuda;
     private javax.swing.JLabel lblTitle;

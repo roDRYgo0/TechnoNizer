@@ -386,7 +386,8 @@ public class jpPassword extends javax.swing.JPanel {
 
     private void lblAyudaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAyudaMouseReleased
 
-        controller.AyudaLogin = new AyudaLogin();
+        controller.AyudaLogin = new Ayuda("Si no recuerdas tu contraseña puedes recuperarla mediante correo o las preguntas de"
+                + "seguridad si ya están configuradas");
         standardization.show(controller.AyudaLogin);
 
     }//GEN-LAST:event_lblAyudaMouseReleased

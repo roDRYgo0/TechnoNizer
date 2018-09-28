@@ -45,6 +45,7 @@ public class jpCreateUser extends javax.swing.JPanel {
         iconEmail.setIcon(new controller().changeImage("/imagenes/email.png", 35, 35));
         iconPass.setIcon(new controller().changeImage("/imagenes/password.png", 35, 35));
         iconPass2.setIcon(new controller().changeImage("/imagenes/password.png", 35, 35));
+        lblAyuda.setIcon(new controller().changeImage("/imagenes/Ayuda.png", 25, 25));
     }
 
     //<editor-fold defaultstate="collapsed" desc="compiled code">
@@ -81,6 +82,7 @@ public class jpCreateUser extends javax.swing.JPanel {
         SubtituloCreateData = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         checkPass = new javax.swing.JLabel();
+        lblAyuda = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(204, 204, 204));
@@ -261,17 +263,22 @@ public class jpCreateUser extends javax.swing.JPanel {
         checkPass.setMinimumSize(new java.awt.Dimension(25, 25));
         checkPass.setPreferredSize(new java.awt.Dimension(25, 25));
 
+        lblAyuda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblAyuda.setMaximumSize(new java.awt.Dimension(25, 25));
+        lblAyuda.setMinimumSize(new java.awt.Dimension(25, 25));
+        lblAyuda.setPreferredSize(new java.awt.Dimension(25, 25));
+        lblAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblAyudaMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(Bback, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(189, 189, 189)
-                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,10 +305,7 @@ public class jpCreateUser extends javax.swing.JPanel {
                                                 .addGap(0, 0, 0)
                                                 .addComponent(lblEye, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(checkPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(checkPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(87, 87, 87)
                         .addComponent(SubtituloCreateData))
@@ -319,7 +323,11 @@ public class jpCreateUser extends javax.swing.JPanel {
                                 .addComponent(checkEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(st2)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(TituloCreateData)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                                .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,16 +342,23 @@ public class jpCreateUser extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(checkUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(TituloCreateData)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addComponent(Bback, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(189, 189, 189)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(TituloCreateData)
-                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(TituloCreateData)))
+                .addGap(28, 28, 28)
                 .addComponent(SubtituloCreateData)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(St1)
@@ -455,6 +470,7 @@ public class jpCreateUser extends javax.swing.JPanel {
             standardization.showMessage("warning", "La contraseña no cumple las espectativas");
             checkPass.setIcon(new controller().changeImage("/imagenes/cancel.png", 20, 20));
             continueP = false;
+            
         }
         else{
             checkPass.setIcon(new controller().changeImage("/imagenes/ok.png", 20, 20));
@@ -576,6 +592,15 @@ public class jpCreateUser extends javax.swing.JPanel {
     private void txtNickNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNickNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNickNameActionPerformed
+
+    private void lblAyudaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAyudaMouseReleased
+        controller.AyudaLogin = new Ayuda("Espectativas de la contraseña "
+                + "\nMínimo de 8 caracteres"
+                + "\nTener una mayúscula"
+                + "\nMínimo un número");
+        standardization.show(controller.AyudaLogin);
+
+    }//GEN-LAST:event_lblAyudaMouseReleased
     
     public boolean camposVacios(){
         if(standardization.campoVacio(txtNickName.getText()) || standardization.campoVacio(txtMail.getText()) )
@@ -625,6 +650,7 @@ public class jpCreateUser extends javax.swing.JPanel {
     private javax.swing.JLabel iconUsername;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblAyuda;
     private javax.swing.JLabel lblEye;
     private javax.swing.JLabel lblEyeConfirm;
     private javax.swing.JSeparator spMail;

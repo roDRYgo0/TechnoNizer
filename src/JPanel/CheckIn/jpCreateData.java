@@ -67,6 +67,7 @@ public class jpCreateData extends javax.swing.JPanel {
        
         iconBirthday.setIcon(new controller().changeImage("/imagenes/birthday.png", 35, 35));
         iconGender.setIcon(new controller().changeImage("/imagenes/gender.png", 35, 35));
+        lblAyuda.setIcon(new controller().changeImage("/imagenes/Ayuda.png", 25, 25));
         jButton1.setVisible(false);
         
         loadData();
@@ -105,6 +106,7 @@ public class jpCreateData extends javax.swing.JPanel {
         iconBirthday = new javax.swing.JLabel();
         iconGender = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        lblAyuda = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -253,6 +255,16 @@ public class jpCreateData extends javax.swing.JPanel {
             }
         });
 
+        lblAyuda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblAyuda.setMaximumSize(new java.awt.Dimension(25, 25));
+        lblAyuda.setMinimumSize(new java.awt.Dimension(25, 25));
+        lblAyuda.setPreferredSize(new java.awt.Dimension(25, 25));
+        lblAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblAyudaMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -313,14 +325,21 @@ public class jpCreateData extends javax.swing.JPanel {
                             .addComponent(LastnameCreate)
                             .addComponent(NameCreate)
                             .addComponent(Title))
-                        .addGap(0, 57, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(Title)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(Title))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +381,7 @@ public class jpCreateData extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                         .addComponent(GenderCreate)
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -505,6 +524,11 @@ public class jpCreateData extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void lblAyudaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAyudaMouseReleased
+        controller.AyudaLogin = new Ayuda("Para poder registrarse debes ser mayor de 15 años");
+        standardization.show(controller.AyudaLogin);
+    }//GEN-LAST:event_lblAyudaMouseReleased
+
     
     public void loadData()
     {
@@ -549,6 +573,7 @@ public class jpCreateData extends javax.swing.JPanel {
     private javax.swing.JLabel iconBirthday;
     private javax.swing.JLabel iconGender;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel lblAyuda;
     private javax.swing.JLabel lblImage;
     private javax.swing.JSeparator spDay;
     private javax.swing.JSeparator spLastName;

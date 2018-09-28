@@ -120,7 +120,7 @@ public class controller {
     public static addReminderGral gralReminder;
     public static addReminderGral1 gralReminder1;
     public static jFrame.AddEventDetails addEvents;
-    public static jFrame.AyudaLogin AyudaLogin;
+    public static jFrame.Ayuda AyudaLogin;
     public static jFrame.AddEventDetailsP addEventsP;
      public static jFrame.AddEventDetailsP1 addEventsP1;
 //</editor-fold>
