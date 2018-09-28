@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 import javaClass.Project;
 import javaClass.classProjects;
 import javaClass.controller;
@@ -13,14 +14,24 @@ import javaClass.standardization;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import properties.propiedades;
 
 public class pnProjSettings extends javax.swing.JPanel {
 
+    void verificariidoma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    LblSettings.setText(pr.getProperty("TitlePrSett"));
+    Lbl1.setText(pr.getProperty("ChangePic"));
+    
+    }
+    
     int idProject;
     byte[] imageCover;
     
     public pnProjSettings(int idProject) {
         initComponents();
+        verificariidoma();
         this.idProject = idProject;  
         scrollContainer.getVerticalScrollBar().setUnitIncrement(16);
         
@@ -55,12 +66,12 @@ public class pnProjSettings extends javax.swing.JPanel {
         scrollContainer = new javax.swing.JScrollPane();
         pnContainer = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        LblSettings = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnDelete5 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         iconCover = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        Lbl1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
 
         scrollContainer.setBorder(null);
@@ -84,9 +95,9 @@ public class pnProjSettings extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Configuraciones");
+        LblSettings.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        LblSettings.setForeground(new java.awt.Color(255, 0, 0));
+        LblSettings.setText("Configuraciones");
 
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -117,7 +128,7 @@ public class pnProjSettings extends javax.swing.JPanel {
                         .addContainerGap(537, Short.MAX_VALUE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jLabel2)
+                        .addComponent(LblSettings)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDelete5, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28))))
@@ -127,7 +138,7 @@ public class pnProjSettings extends javax.swing.JPanel {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(LblSettings)
                     .addComponent(btnDelete5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,9 +165,9 @@ public class pnProjSettings extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel4.setText("Cambiar imagenes");
+        Lbl1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Lbl1.setForeground(new java.awt.Color(153, 153, 153));
+        Lbl1.setText("Cambiar imagenes");
 
         jSeparator2.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -172,14 +183,14 @@ public class pnProjSettings extends javax.swing.JPanel {
                         .addGap(10, 10, 10)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(iconCover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))))
+                            .addComponent(Lbl1))))
                 .addContainerGap(294, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -256,15 +267,10 @@ public class pnProjSettings extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnDelete1;
-    private javax.swing.JButton btnDelete2;
-    private javax.swing.JButton btnDelete3;
-    private javax.swing.JButton btnDelete4;
+    private javax.swing.JLabel Lbl1;
+    private javax.swing.JLabel LblSettings;
     private javax.swing.JButton btnDelete5;
     private javax.swing.JLabel iconCover;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;

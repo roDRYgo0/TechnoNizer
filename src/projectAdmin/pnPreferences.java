@@ -1,19 +1,31 @@
 package projectAdmin;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.Project;
 import javaClass.classProjects;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.methodsSQL;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class pnPreferences extends javax.swing.JPanel {
 
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    Lbl1.setText(pr.getProperty("Titlepreference"));
+    Lbl2.setText(pr.getProperty("NamePnPrefer"));
+    Lbl3.setText(pr.getProperty("DescripPnPrefer"));
+    btnNext.setText(pr.getProperty("SavePnPrefer"));
+    }
+    
     int idProject;
     
     public pnPreferences(int idProject) {
         initComponents();
+        verificaridioma();
         this.idProject = idProject;
         Project project = classProjects.projectsShow.get(idProject);
         txtName.setText(project.getName());
@@ -99,13 +111,13 @@ public class pnPreferences extends javax.swing.JPanel {
         icon12 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         icon9 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        Lbl1 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jPanel22 = new javax.swing.JPanel();
         icon15 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         icon5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        Lbl2 = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         icon6 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -126,7 +138,7 @@ public class pnPreferences extends javax.swing.JPanel {
         icon8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         icon1 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        Lbl3 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -220,10 +232,10 @@ public class pnPreferences extends javax.swing.JPanel {
 
         add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel7.setText("Preferencias");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 11, -1, 30));
+        Lbl1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Lbl1.setForeground(new java.awt.Color(153, 153, 153));
+        Lbl1.setText("Preferencias");
+        add(Lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 11, -1, 30));
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 42, 300, 10));
@@ -282,9 +294,9 @@ public class pnPreferences extends javax.swing.JPanel {
 
         add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel8.setText("Nombre");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+        Lbl2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        Lbl2.setText("Nombre");
+        add(Lbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
 
         jPanel15.setBackground(new java.awt.Color(204, 0, 0));
         jPanel15.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -556,9 +568,9 @@ public class pnPreferences extends javax.swing.JPanel {
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel9.setText("Descripción");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+        Lbl3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        Lbl3.setText("Descripción");
+        add(Lbl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         txtName.setAutoscrolls(false);
         txtName.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -730,6 +742,9 @@ public class pnPreferences extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Lbl1;
+    private javax.swing.JLabel Lbl2;
+    private javax.swing.JLabel Lbl3;
     private javax.swing.JButton btnNext;
     private javax.swing.ButtonGroup groupInvitation;
     private javax.swing.JLabel icon1;
@@ -748,9 +763,6 @@ public class pnPreferences extends javax.swing.JPanel {
     private javax.swing.JLabel icon8;
     private javax.swing.JLabel icon9;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;

@@ -1,13 +1,22 @@
 package projectAdmin;
 
+import java.util.Properties;
 import javaClass.controller;
+import properties.propiedades;
 
 public class settings extends javax.swing.JPanel {
 
     int idProject;
     
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    lblSettings.setText(pr.getProperty("TitlePrSett"));
+    }
+    
     public settings(int idProject) {
         initComponents();
+        verificaridioma();
         this.idProject = idProject;
         lblSettings.setIcon(new controller().changeImage("/imagenes/setting.png", 43, 43));
     }
