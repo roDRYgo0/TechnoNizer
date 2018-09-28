@@ -1,8 +1,12 @@
 package jFrame;
 
 import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javaClass.classReminder;
 import javaClass.classUsuario;
 import javaClass.controller;
@@ -24,9 +28,9 @@ public class addReminderGral extends javax.swing.JFrame {
     DataGeneralAddReminder.setText(pr.getProperty("DataGeneralAddReminder"));
     DescriptionReminder.setText(pr.getProperty("DescriptionReminder"));
     DateReminder.setText(pr.getProperty("DateReminder"));
-    day.setText(pr.getProperty("Dayjpedit"));
-    month.setText(pr.getProperty("monthjpedit"));
-    yearR.setText(pr.getProperty("yearjpedit"));
+    //day.setText(pr.getProperty("Dayjpedit"));
+    //month.setText(pr.getProperty("monthjpedit"));
+    //yearR.setText(pr.getProperty("yearjpedit"));
     SaveReminder.setText(pr.getProperty("SaveReminder"));
      cmbMonthEnd.removeAllItems();
             String meses[]={
@@ -46,6 +50,7 @@ public class addReminderGral extends javax.swing.JFrame {
             for(int i=0;i<meses.length;i++)
             {
                 cmbMonthEnd.addItem(meses[i]);
+                cmbMonthStart.addItem(meses[i]);
             }
     }
     
@@ -76,18 +81,27 @@ public class addReminderGral extends javax.swing.JFrame {
         DescriptionReminder = new javax.swing.JLabel();
         spReminder = new javax.swing.JSeparator();
         checkEvent = new javax.swing.JLabel();
-        spDayStart = new javax.swing.JSeparator();
-        spYearStart = new javax.swing.JSeparator();
         iconStart = new javax.swing.JLabel();
         SaveReminder = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtReminder = new javax.swing.JTextArea();
-        txtYearEnd = new javax.swing.JTextField();
-        cmbMonthEnd = new javax.swing.JComboBox<>();
+        lblD = new javax.swing.JLabel();
+        spDayStart = new javax.swing.JSeparator();
+        spYearStart = new javax.swing.JSeparator();
+        spYearEnd = new javax.swing.JSeparator();
         txtDayEnd = new javax.swing.JTextField();
-        day = new javax.swing.JLabel();
-        month = new javax.swing.JLabel();
-        yearR = new javax.swing.JLabel();
+        spDayEnd = new javax.swing.JSeparator();
+        txtYearEnd = new javax.swing.JTextField();
+        Year2EventInfo = new javax.swing.JLabel();
+        YearEventInfo = new javax.swing.JLabel();
+        txtYearStart = new javax.swing.JTextField();
+        txtDayStart = new javax.swing.JTextField();
+        DayEventInfo = new javax.swing.JLabel();
+        Day2EventInfo = new javax.swing.JLabel();
+        Month2EventInfo = new javax.swing.JLabel();
+        cmbMonthEnd = new javax.swing.JComboBox<>();
+        cmbMonthStart = new javax.swing.JComboBox<>();
+        MonthEventInfo = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -175,10 +189,6 @@ public class addReminderGral extends javax.swing.JFrame {
         checkEvent.setMinimumSize(new java.awt.Dimension(25, 25));
         checkEvent.setPreferredSize(new java.awt.Dimension(25, 25));
 
-        spDayStart.setForeground(new java.awt.Color(204, 204, 204));
-
-        spYearStart.setForeground(new java.awt.Color(204, 204, 204));
-
         iconStart.setMaximumSize(new java.awt.Dimension(35, 35));
         iconStart.setMinimumSize(new java.awt.Dimension(35, 35));
         iconStart.setPreferredSize(new java.awt.Dimension(35, 35));
@@ -203,6 +213,34 @@ public class addReminderGral extends javax.swing.JFrame {
         txtReminder.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane1.setViewportView(txtReminder);
 
+        lblD.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblD.setText("Datos Generales");
+
+        spDayStart.setForeground(new java.awt.Color(204, 204, 204));
+
+        spYearStart.setForeground(new java.awt.Color(204, 204, 204));
+
+        spYearEnd.setForeground(new java.awt.Color(204, 204, 204));
+
+        txtDayEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtDayEnd.setText("29");
+        txtDayEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtDayEnd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDayEndFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDayEndFocusLost(evt);
+            }
+        });
+        txtDayEnd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDayEndKeyTyped(evt);
+            }
+        });
+
+        spDayEnd.setForeground(new java.awt.Color(204, 204, 204));
+
         txtYearEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtYearEnd.setText("2018");
         txtYearEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -220,31 +258,70 @@ public class addReminderGral extends javax.swing.JFrame {
             }
         });
 
-        cmbMonthEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-        cmbMonthEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        Year2EventInfo.setText("Año");
 
-        txtDayEnd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txtDayEnd.setText("24");
-        txtDayEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtDayEnd.addFocusListener(new java.awt.event.FocusAdapter() {
+        YearEventInfo.setText("Año");
+
+        txtYearStart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtYearStart.setText("2018");
+        txtYearStart.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtYearStart.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDayEndFocusGained(evt);
+                txtYearStartFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDayEndFocusLost(evt);
+                txtYearStartFocusLost(evt);
             }
         });
-        txtDayEnd.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtYearStart.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtDayEndKeyTyped(evt);
+                txtYearStartKeyTyped(evt);
             }
         });
 
-        day.setText("Día");
+        txtDayStart.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtDayStart.setText("29");
+        txtDayStart.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        txtDayStart.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDayStartFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDayStartFocusLost(evt);
+            }
+        });
+        txtDayStart.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDayStartKeyTyped(evt);
+            }
+        });
 
-        month.setText("Mes");
+        DayEventInfo.setText("Día");
 
-        yearR.setText("Año");
+        Day2EventInfo.setText("Día");
+
+        Month2EventInfo.setText("Mes");
+
+        cmbMonthEnd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        cmbMonthEnd.setSelectedIndex(8);
+        cmbMonthEnd.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        cmbMonthEnd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbMonthEndActionPerformed(evt);
+            }
+        });
+
+        cmbMonthStart.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        cmbMonthStart.setSelectedIndex(8);
+        cmbMonthStart.setToolTipText("");
+        cmbMonthStart.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        cmbMonthStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbMonthStartActionPerformed(evt);
+            }
+        });
+
+        MonthEventInfo.setText("Mes");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -255,9 +332,6 @@ public class addReminderGral extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(DataGeneralAddReminder)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(249, 249, 249)
@@ -266,27 +340,43 @@ public class addReminderGral extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(DateReminder)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
+                                        .addGap(20, 20, 20)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(DayEventInfo)
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addGap(10, 10, 10)
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(spDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(txtDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(MonthEventInfo)
+                                                    .addComponent(cmbMonthStart, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(txtYearStart)
+                                                    .addComponent(YearEventInfo)
+                                                    .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addGap(10, 10, 10)
-                                                        .addComponent(txtDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(day))
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(txtDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(spDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(Day2EventInfo))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(month)
-                                                    .addComponent(cmbMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(spDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtYearEnd)
-                                            .addComponent(yearR)
-                                            .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(139, 139, 139)
+                                                    .addComponent(Month2EventInfo)
+                                                    .addComponent(cmbMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(txtYearEnd)
+                                                    .addComponent(Year2EventInfo)
+                                                    .addComponent(spYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGap(132, 132, 132)
                                 .addComponent(iconStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(DescriptionReminder)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -295,7 +385,12 @@ public class addReminderGral extends javax.swing.JFrame {
                                 .addGap(73, 73, 73))
                             .addComponent(spReminder)
                             .addComponent(jScrollPane1))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(DataGeneralAddReminder)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblD)
+                        .addGap(81, 81, 81))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -305,7 +400,9 @@ public class addReminderGral extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
-                .addComponent(DataGeneralAddReminder)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DataGeneralAddReminder)
+                    .addComponent(lblD))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DescriptionReminder)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -323,30 +420,49 @@ public class addReminderGral extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DateReminder)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(DateReminder)
-                                .addGap(69, 69, 69))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(month)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(DayEventInfo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(1, 1, 1)
+                                    .addComponent(spDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(day)
+                                        .addComponent(YearEventInfo)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(yearR)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(1, 1, 1)))
+                                        .addComponent(txtYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10))
+                                    .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(MonthEventInfo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbMonthStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(Day2EventInfo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(1, 1, 1)
+                                    .addComponent(spDayEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(spYearEnd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Month2EventInfo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbMonthEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Year2EventInfo)
+                                .addGap(12, 12, 12)
+                                .addComponent(txtYearEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(11, 11, 11)))
                         .addGap(1, 1, 1)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spDayStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(spYearStart, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(SaveReminder, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
@@ -366,7 +482,7 @@ public class addReminderGral extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNext1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNext1ActionPerformed
-       standardization.hide(controller.gralReminder1);               
+       standardization.hide(controller.gralReminder);               
                     technonizer.TechnoNizer.home.pnAgenda1();
                     controller.jpREM.load();
                     controller.rootFrame = technonizer.TechnoNizer.home;      
@@ -376,16 +492,30 @@ public class addReminderGral extends javax.swing.JFrame {
         if (txtReminder.getText().isEmpty() || txtYearEnd.getText().isEmpty() || txtDayEnd.getText().isEmpty()) {
             standardization.showMessage("warning", "Hay campos vacios!", this);
         } else {
-            Date dateEnd = new Date(Integer.parseInt(txtYearEnd.getText()), (cmbMonthEnd.getSelectedIndex()+1), Integer.parseInt(txtDayEnd.getText()));
+            next();
+}
+            
+          
+        
+    }//GEN-LAST:event_SaveReminderActionPerformed
+ void next() {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date dateStart = sdf.parse(Integer.parseInt(txtYearStart.getText()) + "-" + (cmbMonthStart.getSelectedIndex() + 1) + "-" + Integer.parseInt(txtDayStart.getText()));
+            Date dateEnd = sdf.parse(Integer.parseInt(txtYearEnd.getText()) + "-" + (cmbMonthEnd.getSelectedIndex() + 1) + "-" + Integer.parseInt(txtDayEnd.getText()));
 
-            if (standardization.validateDate(Integer.parseInt(txtYearEnd.getText()), (cmbMonthEnd.getSelectedIndex() + 1), Integer.parseInt(txtDayEnd.getText()))) {
+            if (standardization.validateDate(Integer.parseInt(txtYearStart.getText()), (cmbMonthStart.getSelectedIndex() + 1), Integer.parseInt(txtDayStart.getText()))
+                    && standardization.validateDate(Integer.parseInt(txtYearEnd.getText()), (cmbMonthEnd.getSelectedIndex() + 1), Integer.parseInt(txtDayEnd.getText())
+                    )) {
                 standardization.showMessage("warning", "Fechas invalidas", this);
-            } else if (standardization.compareDateBefore(dateEnd, standardization.currentDateTime()) == -1) {
+            } else if (standardization.compareDate(dateEnd, dateStart, standardization.currentDate()) < 0) {
                 standardization.showMessage("warning", "Fechas invalidas", this);
             } else {
 
+                
                 classReminder.setReminder((txtReminder.getText()));
-                classReminder.setDatetime((txtDayEnd.getText()) + "/" + (cmbMonthEnd.getSelectedIndex() + 1)+ "/" +txtYearEnd.getText() );
+                classReminder.setDatetime((txtDayStart.getText()) + "/" + (cmbMonthStart.getSelectedIndex() + 1)+ "/" +txtYearStart.getText() );
+                classReminder.setDatetime1((txtDayEnd.getText()) + "/" + (cmbMonthEnd.getSelectedIndex() + 1)+ "/" +txtYearEnd.getText() );
                 classReminder.setNickname(classUsuario.getNickname());
                 
                 
@@ -402,49 +532,100 @@ public class addReminderGral extends javax.swing.JFrame {
                     standardization.hide(controller.gralReminder);
                       
                 }
-}
             }
-    }//GEN-LAST:event_SaveReminderActionPerformed
-
-    private void txtYearEndFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearEndFocusGained
-        spYearStart.setBackground(Color.red);
-    }//GEN-LAST:event_txtYearEndFocusGained
-
-    private void txtYearEndFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearEndFocusLost
-        spYearStart.setBackground(Color.white);
-    }//GEN-LAST:event_txtYearEndFocusLost
-
-    private void txtYearEndKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtYearEndKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtYearEndKeyTyped
-
-    private void txtDayEndFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDayEndFocusGained
-
-    }//GEN-LAST:event_txtDayEndFocusGained
-
-    private void txtDayEndFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDayEndFocusLost
-      
-    }//GEN-LAST:event_txtDayEndFocusLost
-
-    private void txtDayEndKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDayEndKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDayEndKeyTyped
-
+        } catch (ParseException ex) {
+            Logger.getLogger(AddEventInfoP.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private void btnNext1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNext1MouseReleased
          standardization.hide(controller.gralReminder);
     }//GEN-LAST:event_btnNext1MouseReleased
+
+    private void txtDayEndFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDayEndFocusGained
+        spDayEnd.setBackground(Color.red);
+    }//GEN-LAST:event_txtDayEndFocusGained
+
+    private void txtDayEndFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDayEndFocusLost
+        spDayEnd.setBackground(Color.white);
+    }//GEN-LAST:event_txtDayEndFocusLost
+
+    private void txtDayEndKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDayEndKeyTyped
+        char c = evt.getKeyChar();
+        if (txtDayEnd.getText().length() > 1 || c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDayEndKeyTyped
+
+    private void txtYearEndFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearEndFocusGained
+        spYearEnd.setBackground(Color.red);
+    }//GEN-LAST:event_txtYearEndFocusGained
+
+    private void txtYearEndFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearEndFocusLost
+        spYearEnd.setBackground(Color.white);
+    }//GEN-LAST:event_txtYearEndFocusLost
+
+    private void txtYearEndKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtYearEndKeyTyped
+        char c = evt.getKeyChar();
+        if (txtYearEnd.getText().length() > 3 || c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtYearEndKeyTyped
+
+    private void txtYearStartFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearStartFocusGained
+        spYearStart.setBackground(Color.red);
+    }//GEN-LAST:event_txtYearStartFocusGained
+
+    private void txtYearStartFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYearStartFocusLost
+        spYearStart.setBackground(Color.white);
+    }//GEN-LAST:event_txtYearStartFocusLost
+
+    private void txtYearStartKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtYearStartKeyTyped
+        char c = evt.getKeyChar();
+        if (txtYearStart.getText().length() > 3 || c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtYearStartKeyTyped
+
+    private void txtDayStartFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDayStartFocusGained
+        spDayStart.setBackground(Color.red);
+    }//GEN-LAST:event_txtDayStartFocusGained
+
+    private void txtDayStartFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDayStartFocusLost
+        spDayStart.setBackground(Color.white);
+    }//GEN-LAST:event_txtDayStartFocusLost
+
+    private void txtDayStartKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDayStartKeyTyped
+        char c = evt.getKeyChar();
+        if (txtDayStart.getText().length() > 1 || c < '0' || c > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDayStartKeyTyped
+
+    private void cmbMonthStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMonthStartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbMonthStartActionPerformed
+
+    private void cmbMonthEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMonthEndActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbMonthEndActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddReminderGeneralLbl;
     private javax.swing.JLabel DataGeneralAddReminder;
     private javax.swing.JLabel DateReminder;
+    private javax.swing.JLabel Day2EventInfo;
+    private javax.swing.JLabel DayEventInfo;
     private javax.swing.JLabel DescriptionReminder;
+    private javax.swing.JLabel Month2EventInfo;
+    private javax.swing.JLabel MonthEventInfo;
     private javax.swing.JButton SaveReminder;
+    private javax.swing.JLabel Year2EventInfo;
+    private javax.swing.JLabel YearEventInfo;
     private javax.swing.JButton btnNext1;
     private javax.swing.JLabel checkEvent;
     private javax.swing.JComboBox<String> cmbMonthEnd;
-    private javax.swing.JLabel day;
+    private javax.swing.JComboBox<String> cmbMonthStart;
     private javax.swing.JLabel iconStart;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
@@ -452,15 +633,18 @@ public class addReminderGral extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblD;
     private javax.swing.JLabel lblEvent;
-    private javax.swing.JLabel month;
+    private javax.swing.JSeparator spDayEnd;
     private javax.swing.JSeparator spDayStart;
     private javax.swing.JSeparator spReminder;
+    private javax.swing.JSeparator spYearEnd;
     private javax.swing.JSeparator spYearStart;
     private javax.swing.JTextField txtDayEnd;
+    private javax.swing.JTextField txtDayStart;
     private javax.swing.JTextArea txtReminder;
     private javax.swing.JTextField txtYearEnd;
-    private javax.swing.JLabel yearR;
+    private javax.swing.JTextField txtYearStart;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -28,6 +28,7 @@ public class classReminder {
     private static String condition;
     private static String reminder;
     private static String datetime; 
+    private static String datetime1; 
     private static String hour;
 
     
@@ -35,7 +36,14 @@ public class classReminder {
     
     public static List<reminder> reminders = new ArrayList<reminder>();
     public static List<reminder> remindersSearch = new ArrayList<reminder>();
-    
+  
+    public static String getDatetime1() {
+        return datetime1;
+    }
+
+    public static void setDatetime1(String datetime1) {
+        classReminder.datetime1 = datetime1;
+    }  
 public static String getHour() {
         return hour;
     }
@@ -106,15 +114,15 @@ public static String getHour() {
     public static boolean insert(){
         boolean status = false;
         
-        status = methodsSQL.execute("INSERT INTO reminders (condition, reminder, alarmDateTime, hour, nickname) VALUES ( ?, ?, ?, ?, ?)",
-                1, reminder, datetime, 12, classUsuario.getNickname());
+        status = methodsSQL.execute("INSERT INTO reminders (condition, reminder, alarmDateTime, hour, nickname, alarmDateTimes) VALUES ( ?, ?, ?, ?, ?, ?)",
+                1, reminder, datetime, 12, classUsuario.getNickname(), datetime1);
         return status;
     }
     public static boolean update(){
         boolean status = false;
         
-        status = methodsSQL.execute("UPDATE reminders SET condition=?, reminder=?, alarmDateTime=?, hour=?, nickname=?  where id=?",
-                1, reminder, datetime, 12, classUsuario.getNickname(), id);
+        status = methodsSQL.execute("UPDATE reminders SET condition=?, reminder=?, alarmDateTime=?, hour=?, nickname=?, alarmDateTimes=? where id=?",
+                1, reminder, datetime, 12, classUsuario.getNickname(), datetime1,id);
         return status;
     }
     
@@ -147,7 +155,7 @@ public static boolean deleteReminder(){
  public static boolean select(){
         boolean status = false;
         reminder recordatorio;
-        ResultSet rs = methodsSQL.getExecute("SELECT re.id, re.condition, re.reminder, re.alarmDateTime, re.hour  FROM reminders re WHERE re.nickname =? order by alarmDateTime", classUsuario.getNickname());
+        ResultSet rs = methodsSQL.getExecute("SELECT re.id, re.condition, re.reminder, re.alarmDateTime, re.hour, re.alarmDateTimes  FROM reminders re WHERE re.nickname =? order by alarmDateTime", classUsuario.getNickname());
         restart();
         try {
             while(rs.next()){
@@ -157,6 +165,8 @@ public static boolean deleteReminder(){
                 recordatorio.setReminder(rs.getString(3));
                 recordatorio.setDate(rs.getString(4));
                 recordatorio.setHour(rs.getString(5));
+                recordatorio.setDate1(rs.getString(6));
+                
                 
   
                 System.out.println("Los recordatorios son "+recordatorio.getMyNumberRemUse());

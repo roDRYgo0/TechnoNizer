@@ -46,6 +46,7 @@ void load(int n, boolean search){
             jTextArea1.setText(classReminder.reminders.get(n).getReminder());  
             lblNickname.setText(classUsuario.getNickname());
             lblDate.setText(classReminder.remindersSearch.get(n).getDate());
+             lblDateE.setText(classReminder.remindersSearch.get(n).getDate1());
             switch(classReminder.remindersSearch.get(n).getCondition()){
                  case 0:
                     this.setBackground(new Color(33, 150,255));
@@ -70,7 +71,7 @@ void load(int n, boolean search){
                 jTextArea1.setText(classReminder.reminders.get(n).getReminder());
             lblNickname.setText(classUsuario.getNickname());
             lblDate.setText(classReminder.reminders.get(n).getDate());
-            
+            lblDateE.setText(classReminder.reminders.get(n).getDate1());
             switch(classReminder.reminders.get(n).getCondition()){
                 case 0:
                     this.setBackground(new Color(198, 198, 198));
@@ -100,11 +101,14 @@ void load(int n, boolean search){
         iconMem = new javax.swing.JLabel();
         iconDuration = new javax.swing.JLabel();
         lblIm = new javax.swing.JLabel();
-        lblDate = new javax.swing.JLabel();
+        lblDateE = new javax.swing.JLabel();
         lbldelete = new javax.swing.JLabel();
         lblLastName2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextPane();
+        lblDate1 = new javax.swing.JLabel();
+        lblDate2 = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(380, 180));
         setMinimumSize(new java.awt.Dimension(380, 180));
@@ -132,9 +136,9 @@ void load(int n, boolean search){
         lblIm.setForeground(new java.awt.Color(204, 255, 255));
         lblIm.setText(".");
 
-        lblDate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblDate.setForeground(new java.awt.Color(51, 0, 153));
-        lblDate.setText("Not found");
+        lblDateE.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblDateE.setForeground(new java.awt.Color(51, 0, 153));
+        lblDateE.setText("Not found");
 
         lbldelete.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbldelete.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -169,6 +173,18 @@ void load(int n, boolean search){
         });
         jScrollPane1.setViewportView(jTextArea1);
 
+        lblDate1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblDate1.setForeground(new java.awt.Color(255, 255, 255));
+        lblDate1.setText("De:");
+
+        lblDate2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblDate2.setForeground(new java.awt.Color(255, 255, 255));
+        lblDate2.setText("Hasta:");
+
+        lblDate.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblDate.setForeground(new java.awt.Color(51, 0, 153));
+        lblDate.setText("Not found");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -181,17 +197,24 @@ void load(int n, boolean search){
                         .addComponent(lblIm, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblLastName2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(144, 144, 144)
                         .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbldelete, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(3, 3, 3)
+                                .addComponent(lblDate2)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblDateE, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbldelete, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(6, 6, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(iconDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(iconMem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -203,7 +226,6 @@ void load(int n, boolean search){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIm, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblLastName2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblId))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,8 +234,13 @@ void load(int n, boolean search){
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lbldelete, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblNickname)
-                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNickname)
+                    .addComponent(lblDateE, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(iconMail)
                     .addGroup(layout.createSequentialGroup()
@@ -263,6 +290,9 @@ void load(int n, boolean search){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextPane jTextArea1;
     private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblDate1;
+    private javax.swing.JLabel lblDate2;
+    private javax.swing.JLabel lblDateE;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblIm;
     private javax.swing.JLabel lblLastName2;

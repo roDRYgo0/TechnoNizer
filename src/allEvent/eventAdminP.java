@@ -36,6 +36,7 @@ public class eventAdminP extends javax.swing.JPanel {
         lblNo.setText(event.getNote());
         
         lblDays.setText(standardization.getDateToString(event.getDstart(), standardization.getDate(event.getDstart()), false));
+        lblDays1.setText(standardization.getDateToString(event.getDstart(), standardization.getDate(event.getDend()), false));
     }
         
 //        switch(event.getInvitation()){
@@ -79,6 +80,7 @@ public class eventAdminP extends javax.swing.JPanel {
         jPanel8 = new javax.swing.JPanel();
         lblEventName = new javax.swing.JLabel();
         lblNickname = new javax.swing.JLabel();
+        lblDays1 = new javax.swing.JLabel();
         lblDays = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -90,7 +92,7 @@ public class eventAdminP extends javax.swing.JPanel {
 
         scrollContainer.setBorder(null);
 
-        pnContainer.setBackground(new java.awt.Color(204, 204, 204));
+        pnContainer.setBackground(new java.awt.Color(170, 218, 255));
         javaClass.ModifiedFlowLayout modifiedFlowLayout1 = new javaClass.ModifiedFlowLayout();
         modifiedFlowLayout1.setAlignment(java.awt.FlowLayout.LEFT);
         modifiedFlowLayout1.setHgap(10);
@@ -114,6 +116,10 @@ public class eventAdminP extends javax.swing.JPanel {
         lblNickname.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNickname.setText("not found");
 
+        lblDays1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblDays1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblDays1.setText("not found");
+
         lblDays.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblDays.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDays.setText("not found");
@@ -128,20 +134,23 @@ public class eventAdminP extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNickname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDays1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDays, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(lblEventName, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDays, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(lblDays1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEventName, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 15, Short.MAX_VALUE))
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblDays, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
         );
 
         pnContainer.add(jPanel8);
@@ -246,6 +255,7 @@ public class eventAdminP extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JLabel lblDays;
+    private javax.swing.JLabel lblDays1;
     private javax.swing.JLabel lblEventName;
     private javax.swing.JLabel lblNickname;
     private javax.swing.JTextPane lblNo;

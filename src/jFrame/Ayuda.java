@@ -118,9 +118,17 @@ public class Ayuda extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     //controller.AyudaLogin = new AyudaLogin();
+       // standardization.hide(controller.AyudaLogin);  
+        //this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         standardization.hide(this);
     }//GEN-LAST:event_btnNextActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -18,6 +18,7 @@ public class connection {
         Connection on = null;
         try{
 
+
             String url = "jdbc:sqlserver://localhost;databaseName=BD_TechnoNizer";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             on = DriverManager.getConnection(url,"meme","1234");

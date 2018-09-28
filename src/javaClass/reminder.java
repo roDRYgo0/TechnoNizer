@@ -7,11 +7,20 @@ public class reminder {
     private Integer condition;
     private String reminder;
     private String date;
+    private String date1;
     private String hour;
     private Integer myNumberRemDisp;
     private Integer myNumberRemUse;
     private String nickname;
     private Integer Num;
+    
+    public String getDate1() {
+        return date1;
+    }
+
+    public void setDate1(String date1) {
+        this.date1 = date1;
+    }
     public String getHour() {
         return hour;
     }
