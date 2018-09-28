@@ -48,8 +48,8 @@ public class classCards {
                 card.description = rs.getString(3);
                 card.color = rs.getString(4);
                 card.idproject = idproject;
-                card.totalActivities = rs.getInt(6);
-                card.activitiesCompleted = rs.getInt(7);
+                card.totalActivities = rs.getInt(9);
+                card.activitiesCompleted = rs.getInt(10);
                 cards.add(card);
             }
         } catch (SQLException ex) {
