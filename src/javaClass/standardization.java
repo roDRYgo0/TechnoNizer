@@ -1,5 +1,6 @@
 package javaClass;
 
+import JPanel.jpAccess;
 import jFrame.*;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -7,6 +8,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -47,6 +49,8 @@ import static technonizer.TechnoNizer.*;
  * @author rodri
  */
 public class standardization {
+
+    
 
     controller control = new controller();
     public static byte[] image;

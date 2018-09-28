@@ -1,6 +1,7 @@
 package JPanel;
 
 import JPanel.CheckIn.jpCreateUser;
+import jFrame.Ayuda;
 import jFrame.logIn;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -27,7 +28,7 @@ public class jpAccess extends javax.swing.JPanel {
     pr = new propiedades (controller.idioma);
     AccederLabel.setText(pr.getProperty("AccesLabel"));
     NameLabelAcces.setText(pr.getProperty("NameLabel"));
-    Accesoptionlabel.setText(pr.getProperty("OptionLabel"));
+//    Accesoptionlabel.setText(pr.getProperty("OptionLabel"));
     Questionlabel.setText(pr.getProperty("Questionlabel"));
     btnCreateAccount.setText(pr.getProperty("btnCreateAccount"));
     btnNext.setText(pr.getProperty("btnNext"));
@@ -42,11 +43,12 @@ public class jpAccess extends javax.swing.JPanel {
         
     }
 
-    void load(){
+    public void load(){
         enable();
         classUsuario.restartUser();
         iconUsername.setIcon(new controller().changeImage("/imagenes/customer.png", 35, 35));
         lblTitle.setIcon(new controller().changeImage("/imagenes/technonizer.png", 285, 50));
+        lblAyuda.setIcon(new controller().changeImage("/imagenes/Ayuda.png", 30, 30));
     }
     
     //<editor-fold defaultstate="collapsed" desc="compiled code">
@@ -59,10 +61,7 @@ public class jpAccess extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         spMail = new javax.swing.JSeparator();
         txtUsername = new javax.swing.JTextField();
-        Accesoptionlabel = new javax.swing.JLabel();
         NameLabelAcces = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         Questionlabel = new javax.swing.JLabel();
         btnCreateAccount = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
@@ -71,6 +70,7 @@ public class jpAccess extends javax.swing.JPanel {
         checkMail = new javax.swing.JLabel();
         progress = new rojerusan.componentes.RSProgressMaterial();
         jButton1 = new javax.swing.JButton();
+        lblAyuda = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(420, 603));
@@ -108,15 +108,9 @@ public class jpAccess extends javax.swing.JPanel {
             }
         });
 
-        Accesoptionlabel.setText("O inicia sesión con");
-
         NameLabelAcces.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         NameLabelAcces.setForeground(new java.awt.Color(102, 102, 102));
         NameLabelAcces.setText("Ingrese su nombre de usuario");
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/facebook.png"))); // NOI18N
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/google.png"))); // NOI18N
 
         Questionlabel.setText("¿Todavía no eres miembro?");
 
@@ -131,7 +125,7 @@ public class jpAccess extends javax.swing.JPanel {
             }
         });
 
-        btnNext.setBackground(new java.awt.Color(0, 153, 255));
+        btnNext.setBackground(new java.awt.Color(33, 150, 243));
         btnNext.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
         btnNext.setText("Siguiente");
@@ -164,6 +158,13 @@ public class jpAccess extends javax.swing.JPanel {
             }
         });
 
+        lblAyuda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                lblAyudaMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,13 +173,17 @@ public class jpAccess extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Questionlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCreateAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel6))
-                            .addComponent(Accesoptionlabel)
                             .addComponent(NameLabelAcces)
                             .addComponent(AccederLabel)
                             .addGroup(layout.createSequentialGroup()
@@ -190,27 +195,24 @@ public class jpAccess extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(checkMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 34, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Questionlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCreateAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
+                        .addGap(0, 34, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
+                .addGap(112, 112, 112)
                 .addComponent(AccederLabel)
                 .addGap(50, 50, 50)
                 .addComponent(NameLabelAcces)
@@ -223,13 +225,7 @@ public class jpAccess extends javax.swing.JPanel {
                         .addGap(0, 0, 0)
                         .addComponent(spMail, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(iconUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addComponent(Accesoptionlabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(115, 115, 115)
+                .addGap(171, 171, 171)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Questionlabel)
@@ -357,6 +353,13 @@ public class jpAccess extends javax.swing.JPanel {
             
     }//GEN-LAST:event_formKeyReleased
 
+    private void lblAyudaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAyudaMouseReleased
+        
+        controller.AyudaLogin = new Ayuda("Aquí debes ingresar tu usuario si  posees una cuenta, sino, puedes registrarte en el boton \"Crear Cuenta Nueva\" en la parte inferior.\n");
+        standardization.show(controller.AyudaLogin);
+       
+    }//GEN-LAST:event_lblAyudaMouseReleased
+
 
     public void disable(){
         progress.setForeground(new Color(33,150,243));
@@ -407,7 +410,6 @@ public class jpAccess extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AccederLabel;
-    private javax.swing.JLabel Accesoptionlabel;
     private javax.swing.JLabel NameLabelAcces;
     private javax.swing.JLabel Questionlabel;
     private javax.swing.JButton btnCreateAccount;
@@ -415,9 +417,8 @@ public class jpAccess extends javax.swing.JPanel {
     private javax.swing.JLabel checkMail;
     private javax.swing.JLabel iconUsername;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblAyuda;
     private javax.swing.JLabel lblTitle;
     private rojerusan.componentes.RSProgressMaterial progress;
     private javax.swing.JSeparator spMail;

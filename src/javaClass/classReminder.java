@@ -107,14 +107,14 @@ public static String getHour() {
         boolean status = false;
         
         status = methodsSQL.execute("INSERT INTO reminders (condition, reminder, alarmDateTime, hour, nickname) VALUES ( ?, ?, ?, ?, ?)",
-                1, reminder, datetime, hour, classUsuario.getNickname());
+                1, reminder, datetime, 12, classUsuario.getNickname());
         return status;
     }
     public static boolean update(){
         boolean status = false;
         
         status = methodsSQL.execute("UPDATE reminders SET condition=?, reminder=?, alarmDateTime=?, hour=?, nickname=?  where id=?",
-                1, reminder, datetime, hour, classUsuario.getNickname(), id);
+                1, reminder, datetime, 12, classUsuario.getNickname(), id);
         return status;
     }
     
