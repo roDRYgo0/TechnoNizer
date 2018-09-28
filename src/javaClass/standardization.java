@@ -309,6 +309,21 @@ public class standardization {
             return false;
         }
     }
+    public static boolean validateDate1(int year, int month, int dayOfMonth) {
+        try {
+            if (year < 1900 || year > cal.get(Calendar.YEAR) - 15) {
+                throw new IllegalArgumentException("Año inválido.");
+            } else {
+                LocalDate today = LocalDate.of(year, month, dayOfMonth);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy/MM/dd");
+                return true;
+            }
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+    }
 
     /**
      *
