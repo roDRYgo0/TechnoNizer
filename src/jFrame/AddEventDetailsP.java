@@ -20,9 +20,18 @@ import properties.propiedades;
  */
 public class AddEventDetailsP extends javax.swing.JFrame {
 
+    void verificaridioma()
+    {
+    Properties pr=new propiedades(controller.idioma);
+    addEventDetaillbl1.setText(pr.getProperty("TitleAED"));
+    priceslblEventDetail.setText(pr.getProperty("DescriptionAED"));
+    visibilityeventdetail.setText(pr.getProperty("VisibilityAED"));
+    btnNext1.setText(pr.getProperty("btnNext1AED"));
+    }
+    
     public AddEventDetailsP() {
         initComponents();
-
+        verificaridioma();
         member();
         load();
         icon1.setIcon(new controller().changeImage("/imagenes/ok.png", 30, 30));

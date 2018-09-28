@@ -11,8 +11,8 @@ public class addCard extends javax.swing.JPanel {
     
     void verificaridioma()
     {
-//    Properties pr = new propiedades(controller.idioma);
-//    lbladdProject.setText(pr.getProperty("lbladdProject"));
+    Properties pr = new propiedades(controller.idioma);
+    lbladdProject.setText(pr.getProperty("AddCard"));
     }
     
     public addCard() {
