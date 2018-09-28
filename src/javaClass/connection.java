@@ -9,12 +9,15 @@ public class connection {
     
     static Connection contacto = null;
     
+    /**
+     *
+     * @return la conexion con la instancia descrita
+     */
     public static Connection getConnection(){
 
         Connection on = null;
         try{
-
-            String url = "jdbc:sqlserver://DESKTOP-VC45IK6\\SQLEXPRESS;databaseName=BD_Technonizer;integratedSecurity=true;"; 
+            String url = "jdbc:sqlserver://localhost;databaseName=BD_TechnoNizer";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             on = DriverManager.getConnection(url);
         }catch(ClassNotFoundException | SQLException e){
@@ -23,6 +26,10 @@ public class connection {
         return on;
     }
     
+    /**
+     *
+     * @return valida si existe una conexion con la base
+     */
     public static boolean validateConnection(){
         contacto = getConnection();
         if(contacto == null)

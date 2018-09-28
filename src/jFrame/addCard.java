@@ -2,11 +2,13 @@ package jFrame;
 
 import cards.CheckListItem;
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.Card;
 import javaClass.CheckList;
 import javaClass.controller;
 import javaClass.methodsSQL;
 import javaClass.standardization;
+import properties.propiedades;
 
 /**
  * 
@@ -17,12 +19,14 @@ public class addCard extends javax.swing.JFrame {
 
     void verificaridioma()
     {
-//        Properties pr = new propiedades(controller.idioma);
-//        addprojectlbl.setText(pr.getProperty("addprojectlbl"));
-//        Datageneraladdproject.setText(pr.getProperty("Datageneraladdproject"));
-//        Nameprojectlbl.setText(pr.getProperty("Nameprojectlbl"));
-//        descriptionproject.setText(pr.getProperty("descriptionproject"));
-//        btnNext1Project.setText(pr.getProperty("btnNext1Project"));
+      Properties pr = new propiedades(controller.idioma);
+        addprojectlbl.setText(pr.getProperty("AddCard"));
+        Datageneraladdproject.setText(pr.getProperty("CardData"));
+        Nameprojectlbl.setText(pr.getProperty("CardName"));
+        descriptionproject.setText(pr.getProperty("descriptionproject"));
+        btnNext1Project.setText(pr.getProperty("btnNext1Project"));
+        descriptionproject1.setText(pr.getProperty("ActivitieCard"));
+        btnAdd.setText(pr.getProperty("btnAddItem"));
     }
     
     public addCard() {

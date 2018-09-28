@@ -71,11 +71,20 @@ public class standardization {
         year.setText(currentDateTime().getYear() + "");
     }
 
+    /**
+     *
+     * @return fecha y hora actual del servidor en formato de Date
+     */
     public static Date currentDateTime() {
         cal = Calendar.getInstance();
         return new Date(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE), cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND));
     }
 
+    /**
+     *
+     * @param place cadena de texto del un lugar
+     * @return una imagen del lugar ingresado
+     */
     public static Icon getImageMap(String place) {
         Icon iconImage = null;
         try {
@@ -94,6 +103,10 @@ public class standardization {
         return iconImage;
     }
 
+    /**
+     *
+     * @return fecha y hora actual del servidor en formato de cadena
+     */
     public static String currentDateTimeString() {
         cal = Calendar.getInstance();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -103,6 +116,10 @@ public class standardization {
         return rs;
     }
 
+    /**
+     *
+     * @return fecha y hora actual para ser ingresada en sql server
+     */
     public static String currentDateTimeSQL() {
         cal = Calendar.getInstance();
         DateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
@@ -112,6 +129,10 @@ public class standardization {
         return rs;
     }
 
+    /**
+     *
+     * @return fecha actual del sistema en formato de Date
+     */
     public static Date currentDate() {
         Date date1 = null;
         try {
@@ -124,11 +145,22 @@ public class standardization {
         return date1;
     }
 
+    /**
+     *
+     * @return fecha y hora actual del servidor en un formato de String
+     */
     public static String getDateTime() {
         cal = Calendar.getInstance();
         return cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH)) + "-" + cal.get(Calendar.DATE) + " " + cal.get(Calendar.HOUR) + ":" + cal.get(Calendar.MINUTE) + ":" + cal.get(Calendar.SECOND) + "." + cal.get(Calendar.MILLISECOND);
     }
 
+    /**
+     *
+     * @param show frame que se desea mostrar
+     * 
+     * este metodo sirve para mostrar un panel y desvanecer con una 
+     * transparencia donde se muestra
+     */
     public static void show(JFrame show) {
         show.setVisible(true);
         show.setLocationRelativeTo(controller.rootFrame);
@@ -136,6 +168,12 @@ public class standardization {
         controller.rootFrame.setOpacity(0.85f);
     }
 
+    /**
+     *
+     * @param show frame que se desea ocultar
+     * para ocultar un frame y mostrar el que se habia 
+     * desvanecido
+     */
     public static void hide(JFrame show) {
         controller.rootFrame.setVisible(true);
         controller.rootFrame.setEnabled(true);
@@ -143,6 +181,13 @@ public class standardization {
         show.setVisible(false);
     }
 
+    /**
+     *
+     * @param dateEnd fecha de fin
+     * @param dateStart fecha de inicio
+     * @param dateCurrent fecha actual
+     * @return la validacion de las fechas
+     */
     public static int compareDate(Date dateEnd, Date dateStart, Date dateCurrent) {
         int res = 0;
         if (dateCurrent.before(dateStart)) {
@@ -155,6 +200,12 @@ public class standardization {
         return res;
     }
 
+    /**
+     *
+     * @param dateMenor fecha mayor
+     * @param dateMayor fecha menor
+     * @return 1un entero dependiendo si las fechas estan correctas
+     */
     public static int compareDateBefore(Date dateMenor, Date dateMayor) {
         int res;
         if (dateMenor.before(dateMayor) || dateMenor.equals(dateMayor)) {
@@ -165,6 +216,12 @@ public class standardization {
         return res;
     }
 
+    /**
+     *
+     * @param dateMenor fecha mayor
+     * @param dateMayor fecha menor
+     * @return 1un entero dependiendo si las fechas estan correctas
+     */
     public static int compareDateAfer(Date dateMenor, Date dateMayor) {
         int res;
         if (dateMenor.after(dateMayor) || dateMenor.equals(dateMayor)) {
@@ -175,6 +232,12 @@ public class standardization {
         return res;
     }
 
+    /**
+     *
+     * @param date fecha de nacimiento
+     * @param compareTo fecha actual
+     * @return edad segun su fecha
+     */
     public static int returnAge(Date date, Date compareTo) {
         int dateDay = date.getDate();
         int day = compareTo.getDate();
@@ -194,6 +257,14 @@ public class standardization {
         return age;
     }
 
+    /**
+     *
+     * @param year año
+     * @param month mes
+     * @param dayOfMonth dia del mes
+     * @param birthdate fecha de nacimiento
+     * @return si la fecha es correcta
+     */
     public static boolean validateDate(int year, int month, int dayOfMonth, boolean birthdate) {
         try {
             if (birthdate) {
@@ -216,6 +287,13 @@ public class standardization {
         }
     }
 
+    /**
+     *
+     * @param year año
+     * @param month mes
+     * @param dayOfMonth dia
+     * @return si la fecha es correcta
+     */
     public static boolean validateDate(int year, int month, int dayOfMonth) {
         try {
             if (year < 1900 || year > cal.get(Calendar.YEAR) - 15) {
@@ -232,6 +310,12 @@ public class standardization {
         }
     }
 
+    /**
+     *
+     * @param n numero del mes
+     * @return si el mes es menor que 10, entonces le agrega un 0
+     * para que el string sea de tamaño 2
+     */
     public static String month(int n) {
         String month;
 
@@ -243,6 +327,11 @@ public class standardization {
         return month;
     }
 
+    /**
+     *
+     * @param status estado
+     * @return la imagen segun el estado
+     */
     public static Icon checkImage(int status) {
         Icon ico = null;
         switch (status) {
@@ -260,6 +349,10 @@ public class standardization {
         return ico;
     }
 
+    /**
+     *
+     * @return una imagen de usuario por defecto
+     */
     public byte[] defaultImage() {
         ImageIcon original = new ImageIcon(getClass().getResource("/imagenes/user.png"));
         image = getImgBytes(original.getImage());
@@ -285,6 +378,11 @@ public class standardization {
     }
 //</editor-fold>
 
+    /**
+     *
+     * @param icon imagen
+     * @return un mapa de bytes a partir de una imagen
+     */
     public static byte[] getByte(Icon icon) {
         byte[] bytes = null;
         System.out.println(icon);
@@ -308,6 +406,11 @@ public class standardization {
         return bytes;
     }
 
+    /**
+     *
+     * @param bi mapa de bytes
+     * @return una imagen segun un mapa de bytes
+     */
     public static Icon getImgIcon(byte[] bi) {
         Icon imgi = null;
         try {
@@ -322,6 +425,13 @@ public class standardization {
         return imgi;
     }
 
+    /**
+     *
+     * @param bi mapa de bytes
+     * @param width ancho
+     * @param heght largo
+     * @return una megen con un tamaño
+     */
     public static Icon getImgIcon(byte[] bi, int width, int heght) {
         Icon imgi = null;
         try {
@@ -336,12 +446,22 @@ public class standardization {
         return imgi;
     }
 
+    /**
+     *
+     * @param width ancho
+     * @param height largo
+     * @return retorna una imagen por defecto segun un tamaño
+     */
     public Icon defaultIcon(int width, int height) {
         ImageIcon original = new ImageIcon(getClass().getResource("/imagenes/user.png"));
         Icon icono = new ImageIcon(original.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
         return icono;
     }
 
+    /**
+     *
+     * @param over sobre que se mostrara
+     */
     public static void showupdateProject(JFrame over) {
         uProj = new UpdateProject();
         uProj.setVisible(true);
@@ -350,6 +470,11 @@ public class standardization {
         over.setOpacity(0.85f);
     }
 
+    /**
+     *
+     * @param over sobre que se mostrara
+     */
+    
     public static void showdeleteReminder(JFrame over, JTable tabla) {
         dRem = new DeleteReminder(tabla);
         dRem.setVisible(true);
@@ -358,6 +483,10 @@ public class standardization {
         over.setOpacity(0.85f);
     }
 
+    /**
+     *
+     * @param over que se ocultara
+     */
     public static void hidedeleteReminder(JFrame over) {
         over.setVisible(true);
         over.setEnabled(true);
@@ -365,6 +494,10 @@ public class standardization {
         dRem.setVisible(false);
     }
 
+    /**
+     *
+     * @param over muestra una pantalla de carga sobre un frame
+     */
     public static void showLoad(JFrame over) {
         sLoad.setVisible(true);
         sLoad.setLocationRelativeTo(over);
@@ -372,6 +505,10 @@ public class standardization {
         over.setOpacity(0.85f);
     }
 
+    /**
+     *
+     * @param over oculota la pantalla de carga
+     */
     public static void hideLoad(JFrame over) {
         over.setVisible(true);
         over.setEnabled(true);
@@ -379,6 +516,11 @@ public class standardization {
         sLoad.setVisible(false);
     }
 
+    /**
+     *
+     * @param Image cadena del nombre de la imagen en el mensaje
+     * @param Message mensaje a mostrar
+     */
     public static void showMessage(String Image, String Message) {
         if (!Image.equals("")) {
             mess.changeImage(Image);
@@ -391,12 +533,23 @@ public class standardization {
         controller.rootFrame.setOpacity(0.85f);
     }
 
+    /**
+     *
+     * ocultar mensaje
+     * 
+     */
     public static void hideMessage() {
         controller.rootFrame.setEnabled(true);
         controller.rootFrame.setOpacity(1);
         mess.setVisible(false);
     }
 
+   /**
+     *
+     * @param Image cadena del nombre de la imagen en el mensaje
+     * @param Message mensaje a mostrar
+     * @param frame sobre que se mostrara el mensaje
+     */
     public static void showMessage(String Image, String Message, JFrame frame) {
         if (!Image.equals("")) {
             mess.changeImage(Image);
@@ -409,6 +562,10 @@ public class standardization {
         frame.setOpacity(0.85f);
     }
 
+    /**
+     *
+     * @param frame que frame se mostrara
+     */
     public static void hideMessage(JFrame frame) {
         frame.setEnabled(true);
         frame.setOpacity(1);
@@ -416,6 +573,13 @@ public class standardization {
     }
 //    
 
+    /**
+     *
+     * @param load si se ejecutan los selects
+     * @param hom que se ocultara
+     * 
+     * muestra el frame home
+     */
     public static void invokeHome(boolean load, JFrame hom) {
         home = new home(load);
         home.setLocationRelativeTo(null);
@@ -426,6 +590,9 @@ public class standardization {
         }).start();
     }
 
+    /**
+     *se muestra el frame admin
+     */
     public static void invokeAdmin() {
         admin = new admin();
         admin.setLocationRelativeTo(null);
@@ -437,6 +604,9 @@ public class standardization {
         }).start();
     }
 
+    /**
+     *se muestra el frame login ocultando home
+     */
     public static void invokeLogin() {
         log = new logIn();
         log.setLocationRelativeTo(null);
@@ -444,6 +614,11 @@ public class standardization {
         log.setVisible(true);
     }
     
+    /**
+     *
+     * @param admi
+     * se muestra el frame login ocultando admin
+     */
     public static void invokeLogin(boolean admi) {
         log = new logIn();
         log.setLocationRelativeTo(null);
@@ -463,6 +638,11 @@ public class standardization {
         log.setVisible(true);
     }
 
+    /**
+     *
+     * @param text
+     * @return si el campo esta vacio
+     */
     public static boolean campoVacio(String text) {
         text = text.replaceAll(" ", "");
         if (text.isEmpty() || text.length() == 0) {
@@ -472,6 +652,12 @@ public class standardization {
         }
     }
 
+    /**
+     *
+     * @param txt cadena a encriptar
+     * @param hashType metodo de encriptacion
+     * @return cadena encriptada
+     */
     public static String getHash(String txt, String hashType) {
         try {
             java.security.MessageDigest md = java.security.MessageDigest
@@ -497,11 +683,23 @@ public class standardization {
         return getHash(txt, "SHA1");
     }
 
+    /**
+     *
+     * @return un codigo de caractes random
+     */
     public static String generatedCode() {
         String[] codigos = UUID.randomUUID().toString().split("-");
         return codigos[0];
     }
 
+    /**
+     *
+     * @param destinatario
+     * @param asunto
+     * @param cuerpo
+     * 
+     * enviar correo con gmail
+     */
     public static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
         String remitente = "technonizer@technonizer.com";
         String clave = "Masupial.48";
@@ -532,6 +730,14 @@ public class standardization {
         }
     }
 
+    /**
+     *
+     * @param cadena
+     * @return
+     * 
+     * validar contraseña minimo 8 caracteres, una mayuscula, un numero
+     * y un caracter
+     */
     public static boolean validatePassword(String cadena) {
         Pattern pattern = Pattern.compile("(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$");
         Matcher mather = pattern.matcher(cadena);

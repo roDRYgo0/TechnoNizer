@@ -1,5 +1,6 @@
 package admin;
 
+import jFrame.FrmParametrosUser;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,6 +10,8 @@ import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javaClass.classUsuario;
 import javaClass.connection;
 import javaClass.controller;
@@ -416,21 +419,22 @@ public class jpStats extends javax.swing.JPanel {
     }//GEN-LAST:event_lblAdmMouseReleased
 
     private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
+         String path="";
         try{
-            File file = new File("UsersBinacle.jasper");
+            
             Map parametros = new HashMap();
-            parametros.put("Nickname", classUsuario.getNickname());
-            InputStream reportStream = new FileInputStream("UsersBinacle.jasper");
-            JasperReport jr=(JasperReport)JRLoader.loadObject(file);
-            Connection cn= connection.getConnection();
+             parametros.put("Usuario",String.format(classUsuario.getNickname()));
+            InputStream xD = FrmParametrosUser.class.getResourceAsStream("/Reports/UserInfo.jasper");
+            JasperReport jr=(JasperReport)JRLoader.loadObject(xD);
+            Connection cn= new connection().getConnection();
             JasperPrint print =JasperFillManager.fillReport(jr,parametros,cn);
-            JasperViewer view = new JasperViewer(print);
-            view.setTitle("Reporte");
+            JasperViewer view = new JasperViewer(print,false);
+            view.setTitle("Reporte Usuario");
             view.setVisible(true);
             
-        }catch(FileNotFoundException | JRException e){
-            System.out.println(e.toString());
-        }
+        }catch(Exception e){
+            Logger.getLogger(JPanel.jpHome.class.getName()).log(Level.SEVERE, null, e);
+        }  
     }//GEN-LAST:event_jLabel1MouseReleased
 
 
