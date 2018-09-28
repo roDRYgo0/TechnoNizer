@@ -1,16 +1,33 @@
 package eventOwner;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 
 /** @author Alexg */
 
 public class AddAnnouncement extends javax.swing.JFrame {
-
+    
+    
+    Properties pr= new propiedades(controller.idioma);
+    
+    void verificaridioma()
+    {
+        LblAddAnnouncement1.setText(pr.getProperty("LblAddAnnouncement1"));
+        LblAddAnnouncement2.setText(pr.getProperty("LblAddAnnouncement2"));
+        LblAddAnnouncement3.setText(pr.getProperty("LblAddAnnouncement3"));
+        LblAddAnnouncement4.setText(pr.getProperty("LblAddAnnouncement4"));
+        LblAddAnnouncement5.setText(pr.getProperty("LblAddAnnouncement5"));
+        jRadioButton1.setText(pr.getProperty("jRadioButton1Announ"));
+        jRadioButton3.setText(pr.getProperty("jRadioButton3Announ"));
+        btnNext1.setText(pr.getProperty("btnNext1Announ"));
+    }
+    
     int idEvent;
     int visibility;
     int publicGoal;
@@ -23,6 +40,7 @@ public class AddAnnouncement extends javax.swing.JFrame {
         switchVisibility();
         load();
         txtDescription.setLineWrap(true);
+        verificaridioma();
 
     }   
 
@@ -39,20 +57,20 @@ public class AddAnnouncement extends javax.swing.JFrame {
         groupGoal = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        LblAddAnnouncement1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
         lblEvent = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        LblAddAnnouncement2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel9 = new javax.swing.JLabel();
+        LblAddAnnouncement4 = new javax.swing.JLabel();
         btnNext1 = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
+        LblAddAnnouncement3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
         lblSwitch = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        LblAddAnnouncement5 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
@@ -66,9 +84,9 @@ public class AddAnnouncement extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(35, 150, 243));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Agregar anuncio");
+        LblAddAnnouncement1.setForeground(new java.awt.Color(255, 255, 255));
+        LblAddAnnouncement1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        LblAddAnnouncement1.setText("Agregar anuncio");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,7 +120,7 @@ public class AddAnnouncement extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LblAddAnnouncement1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -119,15 +137,15 @@ public class AddAnnouncement extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblEvent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(LblAddAnnouncement1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Datos Generales");
+        LblAddAnnouncement2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        LblAddAnnouncement2.setText("Datos Generales");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel9.setText("Dirigido a");
+        LblAddAnnouncement4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        LblAddAnnouncement4.setText("Dirigido a");
 
         btnNext1.setBackground(new java.awt.Color(0, 153, 255));
         btnNext1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -141,9 +159,9 @@ public class AddAnnouncement extends javax.swing.JFrame {
             }
         });
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel14.setText("Anuncio");
+        LblAddAnnouncement3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        LblAddAnnouncement3.setForeground(new java.awt.Color(102, 102, 102));
+        LblAddAnnouncement3.setText("Anuncio");
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -175,10 +193,10 @@ public class AddAnnouncement extends javax.swing.JFrame {
         lblStatus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblStatus.setText("Activo");
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel15.setText("Visibilidad");
+        LblAddAnnouncement5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        LblAddAnnouncement5.setForeground(new java.awt.Color(102, 102, 102));
+        LblAddAnnouncement5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        LblAddAnnouncement5.setText("Visibilidad");
 
         jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
         groupGoal.add(jRadioButton1);
@@ -225,13 +243,13 @@ public class AddAnnouncement extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel14))
+                                    .addComponent(LblAddAnnouncement2)
+                                    .addComponent(LblAddAnnouncement3))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
+                            .addComponent(LblAddAnnouncement4)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jRadioButton1)
                                 .addGap(18, 18, 18)
@@ -240,7 +258,7 @@ public class AddAnnouncement extends javax.swing.JFrame {
                                 .addComponent(jRadioButton3)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LblAddAnnouncement5, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -252,9 +270,9 @@ public class AddAnnouncement extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
-                .addComponent(jLabel5)
+                .addComponent(LblAddAnnouncement2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel14)
+                .addComponent(LblAddAnnouncement3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -262,7 +280,7 @@ public class AddAnnouncement extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addComponent(jLabel9)
+                        .addComponent(LblAddAnnouncement4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButton1)
@@ -270,7 +288,7 @@ public class AddAnnouncement extends javax.swing.JFrame {
                             .addComponent(jRadioButton3)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel15)
+                        .addComponent(LblAddAnnouncement5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblSwitch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -284,7 +302,7 @@ public class AddAnnouncement extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,7 +329,7 @@ public class AddAnnouncement extends javax.swing.JFrame {
                 technonizer.TechnoNizer.home.showEventAnnoucementsOwner(idEvent);
                 controller.rootFrame = technonizer.TechnoNizer.home;
                 standardization.hide(this);
-                standardization.showMessage("ok","Anuncio ingresada");
+                standardization.showMessage("ok","Anuncio ingresado");
             }else
                 standardization.showMessage("cancel","Anuncio no ingresado");
         }
@@ -363,16 +381,16 @@ public class AddAnnouncement extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LblAddAnnouncement1;
+    private javax.swing.JLabel LblAddAnnouncement2;
+    private javax.swing.JLabel LblAddAnnouncement3;
+    private javax.swing.JLabel LblAddAnnouncement4;
+    private javax.swing.JLabel LblAddAnnouncement5;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
     private javax.swing.ButtonGroup groupGoal;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;

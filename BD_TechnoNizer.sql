@@ -1,5 +1,9 @@
 create database BD_TechnoNizer
 
+backup database BD_TechnoNizer to DISK = 'C:\Users\rodri\git' WITH FORMAT,  
+      MEDIANAME = 'Z_SQLServerBackups',  
+      NAME = 'Full Backup of AdventureWorks2012'; 
+
 go
 use BD_TechnoNizer
 
@@ -45,6 +49,12 @@ id_gender int not null references genders(id),
 nickname nvarchar(50) not null references users(nickname)
 )
 
+delete from usersInformation
+delete from usersBinnacle
+delete from checklist
+delete from cards
+delete from projects
+delete from users
 
 create table contactType(
 id int identity(1,1) primary key not null,
@@ -129,6 +139,8 @@ idcard int references cards(id)
  )
  alter table events add googleMaps image null
 
+ select* from events
+
  create table tickets(
  id int identity(1,1) primary key not null,
  nameTicket nvarchar(35) not null,
@@ -151,6 +163,8 @@ idcard int references cards(id)
  idTickets int not null references tickets(id),
  nickname nvarchar(50) not null references users(nickname)
  )
+
+ select * from guest
 
  create table announcements(
  id int identity(1,1) primary key not null,

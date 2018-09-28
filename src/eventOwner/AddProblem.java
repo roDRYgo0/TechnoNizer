@@ -1,18 +1,38 @@
 package eventOwner;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.classUsuario;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 
 public class AddProblem extends javax.swing.JFrame {
 
+    Properties pr=new propiedades(controller.idioma);
+    
     int idEvent;
     int visibility;
     int horary;
     int groupDanger;
+    
+    void verificaridioma()
+    {
+        Lblproblem1.setText(pr.getProperty("Lblproblem1"));
+        Lblproblem2.setText(pr.getProperty("Lblproblem2"));
+        Lblproblem3.setText(pr.getProperty("Lblproblem3"));
+        Lblproblem4.setText(pr.getProperty("Lblproblem4"));
+        Lblproblem5.setText(pr.getProperty("Lblproblem5"));
+        
+        rbtnLeve.setText(pr.getProperty("rbtnLeveProblem"));
+        rbtnGrave.setText(pr.getProperty("rbtnGraveProblem"));
+        rbtnMuyGrave.setText(pr.getProperty("rbtnMuyGraveProblem"));
+        
+        btnNext1.setText(pr.getProperty("btnNext1Problem"));
+    
+    }
     
     public AddProblem(int idEvent){
         initComponents();
@@ -22,7 +42,7 @@ public class AddProblem extends javax.swing.JFrame {
         horary = 0;
         load();
         txtProblem.setLineWrap(true);
-        
+        verificaridioma();
     }   
 
     void load(){
@@ -38,23 +58,23 @@ public class AddProblem extends javax.swing.JFrame {
         groupDang = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Lblproblem1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
         lblEvent = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        Lblproblem2 = new javax.swing.JLabel();
         btnNext1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        Lblproblem4 = new javax.swing.JLabel();
         txtPlace = new javax.swing.JTextField();
         spPlace = new javax.swing.JSeparator();
-        jLabel14 = new javax.swing.JLabel();
+        Lblproblem3 = new javax.swing.JLabel();
         iconPlace = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtProblem = new javax.swing.JTextArea();
         rbtnLeve = new javax.swing.JRadioButton();
         rbtnGrave = new javax.swing.JRadioButton();
         rbtnMuyGrave = new javax.swing.JRadioButton();
-        jLabel11 = new javax.swing.JLabel();
+        Lblproblem5 = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -65,9 +85,9 @@ public class AddProblem extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(35, 150, 243));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Agregar problema");
+        Lblproblem1.setForeground(new java.awt.Color(255, 255, 255));
+        Lblproblem1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        Lblproblem1.setText("Agregar problema");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,7 +121,7 @@ public class AddProblem extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblEvent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Lblproblem1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -118,12 +138,12 @@ public class AddProblem extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblEvent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Lblproblem1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Datos Generales");
+        Lblproblem2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Lblproblem2.setText("Datos Generales");
 
         btnNext1.setBackground(new java.awt.Color(0, 153, 255));
         btnNext1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -137,9 +157,9 @@ public class AddProblem extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Lugar del problema");
+        Lblproblem4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        Lblproblem4.setForeground(new java.awt.Color(102, 102, 102));
+        Lblproblem4.setText("Lugar del problema");
 
         txtPlace.setAutoscrolls(false);
         txtPlace.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -159,9 +179,9 @@ public class AddProblem extends javax.swing.JFrame {
 
         spPlace.setForeground(new java.awt.Color(204, 204, 204));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel14.setText("Problema");
+        Lblproblem3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        Lblproblem3.setForeground(new java.awt.Color(102, 102, 102));
+        Lblproblem3.setText("Problema");
 
         iconPlace.setMaximumSize(new java.awt.Dimension(35, 35));
         iconPlace.setMinimumSize(new java.awt.Dimension(35, 35));
@@ -221,9 +241,9 @@ public class AddProblem extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText("Importancia");
+        Lblproblem5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        Lblproblem5.setForeground(new java.awt.Color(102, 102, 102));
+        Lblproblem5.setText("Importancia");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -234,15 +254,12 @@ public class AddProblem extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(Lblproblem2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(343, 343, 343))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel14)
+                                .addComponent(Lblproblem3)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(iconPlace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -251,15 +268,11 @@ public class AddProblem extends javax.swing.JFrame {
                                     .addComponent(spPlace)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                                        .addGap(0, 21, Short.MAX_VALUE)))))
                         .addGap(33, 33, 33))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
+                        .addComponent(Lblproblem5)
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(rbtnLeve, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,19 +281,28 @@ public class AddProblem extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(rbtnMuyGrave)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Lblproblem4, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(276, 276, 276))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
-                .addComponent(jLabel5)
+                .addComponent(Lblproblem2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel14)
+                .addComponent(Lblproblem3)
                 .addGap(1, 1, 1)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addComponent(Lblproblem4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -291,7 +313,7 @@ public class AddProblem extends javax.swing.JFrame {
                         .addGap(0, 0, 0)
                         .addComponent(spPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel11)
+                .addComponent(Lblproblem5)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbtnLeve)
@@ -389,17 +411,17 @@ public class AddProblem extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Lblproblem1;
+    private javax.swing.JLabel Lblproblem2;
+    private javax.swing.JLabel Lblproblem3;
+    private javax.swing.JLabel Lblproblem4;
+    private javax.swing.JLabel Lblproblem5;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnNext1;
     private javax.swing.ButtonGroup groupDang;
     private javax.swing.JLabel iconPlace;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

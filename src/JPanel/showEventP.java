@@ -2,8 +2,10 @@ package JPanel;
 
 
 import jFrame.AddEventInfoP;
+import jFrame.AddEventInfoP1;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.classPersonalE;
 import javaClass.classUsuario;
@@ -12,11 +14,14 @@ import javaClass.event;
 import javaClass.eventp;
 import javaClass.staff;
 import javaClass.standardization;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import properties.propiedades;
 
 
 public class showEventP extends javax.swing.JPanel {
 
+    Properties pr= new propiedades(controller.idioma);
     int count;
     int eventp;
     int position;
@@ -25,13 +30,15 @@ public class showEventP extends javax.swing.JPanel {
         count = 0;
         eventp = e;
         load(e);
+        lblPos.setVisible(false);
     }
 
     void load(int e){
         loadEvent(classPersonalE.eventosShow.get(e));
         if(lblEventName.getText().length() >= 22){
             lblEventName.setToolTipText(lblEventName.getText());
-            lblEventName.setText(lblEventName.getText().substring(0, 22)+"...");       
+            lblEventName.setText(lblEventName.getText().substring(0, 22)+"...");  
+            
         }
     }
     
@@ -57,16 +64,16 @@ public class showEventP extends javax.swing.JPanel {
        
         
         if(standardization.currentDate().compareTo(standardization.getDate(ev.getDstart())) == 0){
-            lblDays.setText("Hoy");
+            lblDays.setText(pr.getProperty("TodayEvent"));
             lblDays.setForeground(Color.red);
             Font f= new Font("Arial", Font.BOLD, 11);
             lblDays.setFont(f);
         }                            
         else{
             if(standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getDstart())) < 0)
-                lblDays.setText("Hace "+(-1*standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getDstart())))+" días");
+                lblDays.setText(pr.getProperty("HaceEvent")+" "+(-1*standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getDstart())))+" "+pr.getProperty("DaysEventCreate"));
             else
-                lblDays.setText(standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getDstart()))+" días");
+                lblDays.setText(standardization.numberDays(standardization.currentDate(), standardization.getDate(ev.getDstart()))+" "+pr.getProperty("DaysEventCreate"));
         }
     }
     
@@ -214,8 +221,8 @@ public class showEventP extends javax.swing.JPanel {
                             .addComponent(lblNumGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNickname, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblPos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(lblPos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,11 +236,13 @@ public class showEventP extends javax.swing.JPanel {
                 .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPos, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDays, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblVis1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVis, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(1, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblPos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblVis, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -288,9 +297,9 @@ public class showEventP extends javax.swing.JPanel {
     }//GEN-LAST:event_lblVis1MouseReleased
 
     private void lblPosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPosMouseReleased
-        controller.addEventPer = new AddEventInfoP();
-        standardization.show(controller.addEventPer);
-        controller.rootFrame = controller.addEventPer;
+        controller.addEventPer1 = new AddEventInfoP1();
+        standardization.show(controller.addEventPer1);
+        controller.rootFrame = controller.addEventPer1;
     }//GEN-LAST:event_lblPosMouseReleased
 
     void showEvent(){

@@ -34,6 +34,10 @@ import sucurity.jpSecurityQuestions;
 
 public class controller {
     
+    /**
+     *Todas las variables estaticas que ocuparemos en el programa
+     */
+    
     public static String positionPanel;
     
     public static JPanel rootPane;
@@ -111,10 +115,12 @@ public class controller {
     //<editor-fold defaultstate="collapsed" desc="jFrame">
     public static AddEventInfo gralEvent;
     public static jFrame.AddEventInfoP addEventPer;
+    public static jFrame.AddEventInfoP1 addEventPer1;
 
     public static addReminderGral gralReminder;
     public static addReminderGral1 gralReminder1;
     public static jFrame.AddEventDetails addEvents;
+    public static jFrame.AyudaLogin AyudaLogin;
     public static jFrame.AddEventDetailsP addEventsP;
      public static jFrame.AddEventDetailsP1 addEventsP1;
 //</editor-fold>

@@ -2,21 +2,32 @@ package projectAdmin;
 
 import eventOwner.footer;
 import java.awt.Dimension;
+import java.util.Properties;
 import javaClass.Project;
 import javaClass.classCards;
 import javaClass.classProjects;
 import javaClass.classUsuario;
+import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class projectAdmin extends javax.swing.JPanel {
 
     int indexProject, idProject;
+    
+    void verificaridioma()
+    {
+    Properties pr= new propiedades(controller.idioma);
+    ProjectAdminLbl1.setText(pr.getProperty("ProjectAdminLbl1"));
+    btnCards.setText(pr.getProperty("btnCardsPrAdmin"));
+    }
     
     public projectAdmin(int indexProject) {
         initComponents();
         this.indexProject = indexProject;
         scrollContainer.getVerticalScrollBar().setUnitIncrement(16);
         load(classProjects.projectsShow.get(indexProject));
+        verificaridioma();
     }
     
     void load(Project project){
@@ -76,7 +87,7 @@ public class projectAdmin extends javax.swing.JPanel {
         lblDays = new javax.swing.JLabel();
         iconCover = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        ProjectAdminLbl1 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         lblDescription = new javax.swing.JLabel();
         btnCards = new javax.swing.JButton();
@@ -151,12 +162,12 @@ public class projectAdmin extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(945, 100));
         jPanel6.setRequestFocusEnabled(false);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel7.setText("Descripción");
-        jLabel7.setMaximumSize(new java.awt.Dimension(51, 20));
-        jLabel7.setMinimumSize(new java.awt.Dimension(51, 20));
-        jLabel7.setPreferredSize(new java.awt.Dimension(51, 20));
+        ProjectAdminLbl1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        ProjectAdminLbl1.setForeground(new java.awt.Color(153, 153, 153));
+        ProjectAdminLbl1.setText("Descripción");
+        ProjectAdminLbl1.setMaximumSize(new java.awt.Dimension(51, 20));
+        ProjectAdminLbl1.setMinimumSize(new java.awt.Dimension(51, 20));
+        ProjectAdminLbl1.setPreferredSize(new java.awt.Dimension(51, 20));
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -184,7 +195,7 @@ public class projectAdmin extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ProjectAdminLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -200,7 +211,7 @@ public class projectAdmin extends javax.swing.JPanel {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ProjectAdminLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -239,9 +250,9 @@ public class projectAdmin extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ProjectAdminLbl1;
     private javax.swing.JButton btnCards;
     private javax.swing.JLabel iconCover;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JSeparator jSeparator3;

@@ -1,12 +1,21 @@
 package eventOwner;
 
 import java.awt.Color;
+import java.util.Properties;
 import javaClass.classEvent;
 import javaClass.controller;
 import javaClass.standardization;
+import properties.propiedades;
 
 public class showTask extends javax.swing.JPanel {
 
+    Properties pr= new propiedades(controller.idioma);
+    
+    void verificaridioma()
+    {
+        btnNext1.setText(pr.getProperty("btnNext1DeleteTask"));
+    }
+    
     int status;
     int idTask;
     int idEvent;
@@ -20,6 +29,7 @@ public class showTask extends javax.swing.JPanel {
         load(idTask);
         if(classEvent.position == 2)
             btnNext1.setVisible(false);
+        verificaridioma();
     }
     
     void load(int id){
@@ -194,12 +204,12 @@ public class showTask extends javax.swing.JPanel {
     void switchStatus(){
         switch(status){
             case 0:
-                lblStatus.setText("Sin completar");
+                lblStatus.setText(pr.getProperty("IncompleteTask"));
                 lblStatus.setForeground(new Color(255,61,0));
                 lblSwitchS.setIcon(new controller().changeImage("/imagenes/toggleOff.png", 30, 30));
                 break;
             case 1:
-                lblStatus.setText("Completada");
+                lblStatus.setText(pr.getProperty("Completetask"));
                 lblStatus.setForeground(new Color(139, 195, 74));
                 lblSwitchS.setIcon(new controller().changeImage("/imagenes/toggleOn.png", 30, 30));
                 break;

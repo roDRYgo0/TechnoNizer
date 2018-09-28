@@ -42,9 +42,9 @@ public class show extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        for(int i = 0; i<Server.clientes.size(); i++){
+        System.out.println(Server.clientes.size() + " el tama;o");
+        for (int i = 0; i < Server.clientes.size(); i++) {
             if (Server.clientes.get(i) != null) {
-
                 Server.sendClient(Server.clientes.get(i).getInetAddress().getHostAddress(), 4001, i);
 
             }

@@ -20,23 +20,59 @@ import properties.propiedades;
 
 public class AddEventInfoP extends javax.swing.JFrame {
 
-    JFrame event;
-
+    Properties pr=new propiedades(controller.idioma);
     
-   
-   
+    JFrame event;
+    
+    void verificaridioma()
+    {
+    addeventlbl.setText(pr.getProperty("addeventlbl"));
+    DataGenEventInfo.setText(pr.getProperty("DataGenEventInfo1"));
+    NameeventlblEventInfo.setText(pr.getProperty("NameeventlblEventInfo2"));
+    placeeventEventInfo.setText(pr.getProperty("placeeventEventInfo3"));
+    SetDatesEventInfo.setText(pr.getProperty("SetDatesEventInfo4"));
+    btnNext1.setText(pr.getProperty("btnNext1EventInfo5"));
+            
+            cmbMonthEnd.removeAllItems();
+            cmbMonthStart.removeAllItems();
+            String meses[]={
+            pr.getProperty("firstmonth"),
+            pr.getProperty("secondmonth"),
+            pr.getProperty("thirdmonth"),
+            pr.getProperty("fourmonth"),
+            pr.getProperty("fivemonth"),
+            pr.getProperty("sixmonth"),
+            pr.getProperty("sevenmonth"),
+            pr.getProperty("eightmonth"),
+            pr.getProperty("ninemonth"),
+            pr.getProperty("tenmonth"),
+            pr.getProperty("elevenmonth"),
+            pr.getProperty("twelvemonth")
+            };
+            for(int i=0;i<meses.length;i++)
+            {
+                cmbMonthStart.addItem(meses[i]);
+                cmbMonthEnd.addItem(meses[i]);
+            }
+            DayEventInfo.setText(pr.getProperty("DayCreate"));
+            MonthEventInfo.setText(pr.getProperty("MonthCreate"));
+            YearEventInfo.setText(pr.getProperty("YearCreate"));
+            Day2EventInfo.setText(pr.getProperty("DayCreate"));
+            Month2EventInfo.setText(pr.getProperty("MonthCreate"));
+            Year2EventInfo.setText(pr.getProperty("YearCreate"));
+            
+            
+    }
     
     public AddEventInfoP(JFrame event) {
         initComponents();
         this.event=event;
-
-       
+        verificaridioma();
         loadImage(); 
-
-      
     }
     public AddEventInfoP() {
         initComponents();
+        verificaridioma();
         loadImage(); 
 
     }
@@ -407,8 +443,8 @@ public class AddEventInfoP extends javax.swing.JFrame {
                         .addGap(0, 50, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(btnNext1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

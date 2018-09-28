@@ -3,6 +3,8 @@ package admin;
 import jFrame.admin;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.util.HashMap;
@@ -786,17 +788,18 @@ public class jpSettingsAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_txtGuestKeyTyped
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
+        
         String path="";
         try{
-
+    
             Map parametros = new HashMap();
-
-            InputStream xD = jpSettingsAdmin.class.getResourceAsStream("/Reports/Memberships.jasper");
+                
+          InputStream xD = jpSettingsAdmin.class.getResourceAsStream("/Reports/Memberships.jasper");
             JasperReport jr=(JasperReport)JRLoader.loadObject(xD);
-            Connection cn= connection.getConnection();
+           Connection cn= connection.getConnection();
             JasperPrint print =JasperFillManager.fillReport(jr,parametros,cn);
-            JasperViewer view = new JasperViewer(print, false);
-            view.setTitle("Reporte");
+            JasperViewer view = new JasperViewer(print,false);
+            view.setTitle("Reporte Proyectos");
             view.setVisible(true);
             
         }catch(Exception e){
